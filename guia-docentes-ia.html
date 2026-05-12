@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva para Docentes — Herramientas de IA Educativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-light: #4a4640;
+    --ink-muted: #8a8480;
+    --paper: #faf8f4;
+    --paper-warm: #f3efe8;
+    --paper-card: #ffffff;
+    --rule: #e0dbd3;
+    --rule-light: #ece8e0;
+    --accent-primary: #1e4d8c;
+    --accent-primary-light: #eef2f9;
+    --accent-secondary: #2d6a4f;
+    --accent-secondary-light: #edf4f0;
+    --accent-gold: #8b5e1a;
+    --accent-gold-light: #fdf6eb;
+    --accent-terra: #7a2e1a;
+    --accent-terra-light: #fdf0ec;
+    --classroom-blue: #1a73e8;
+    --gemini-violet: #5e35b1;
+    --notebook-teal: #00796b;
+    --tag-bg: #f0ede6;
+    --shadow-subtle: 0 1px 3px rgba(26,24,20,0.07), 0 4px 16px rgba(26,24,20,0.05);
+    --shadow-card: 0 2px 8px rgba(26,24,20,0.08), 0 8px 32px rgba(26,24,20,0.06);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+    background: var(--paper);
+    font-weight: 300;
+  }
+
+  /* ─── PRINT HEADER ─── */
+  .print-only { display: none; }
+
+  /* ─── TOP BAND ─── */
+  .institution-band {
+    background: var(--accent-primary);
+    color: #fff;
+    padding: 0.6rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'Playfair Display', serif;
+  }
+  .institution-band .logo-placeholder {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; text-align: center; line-height: 1.2;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .institution-band .logo-placeholder img {
+    width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+  }
+  .institution-band .inst-text { line-height: 1.3; }
+  .institution-band .inst-name { font-size: 1rem; font-weight: 600; }
+  .institution-band .inst-sub { font-size: 0.78rem; opacity: 0.75; font-style: italic; font-family: 'Source Serif 4', serif; font-weight: 300; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(160deg, var(--accent-primary) 0%, #0d2d5e 100%);
+    color: #fff;
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.75);
+    padding: 0.3rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 680px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero p {
+    font-size: 1.05rem; font-weight: 300;
+    color: rgba(255,255,255,0.82);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+    font-size: 0.8rem; color: rgba(255,255,255,0.6);
+    font-family: 'Source Serif 4', serif; font-style: italic;
+  }
+  .hero-meta span::before { content: '—\00a0'; }
+
+  /* ─── NAV ─── */
+  .toc-strip {
+    background: var(--paper-card);
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-strip::-webkit-scrollbar { display: none; }
+  .toc-inner {
+    display: flex; gap: 0;
+    max-width: 900px; margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .toc-inner a {
+    display: block;
+    font-size: 0.78rem; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toc-inner a:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
+
+  /* ─── LAYOUT ─── */
+  .page-wrap { max-width: 820px; margin: 0 auto; padding: 0 1.5rem; }
+
+  section { padding: 4rem 0; }
+  section + section { border-top: 1px solid var(--rule-light); }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    padding-top: 0.45rem;
+    flex-shrink: 0;
+  }
+  .section-titles h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem; font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .section-titles .section-sub {
+    font-size: 0.9rem; color: var(--ink-muted);
+    font-style: italic; font-weight: 300;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    line-height: 1.3;
+  }
+  h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink-light);
+    margin: 1.5rem 0 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  p { margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── TOOL BADGE ─── */
+  .tool-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .badge-classroom { background: #e8f0fe; color: #1a56c4; }
+  .badge-gemini { background: #ede7f6; color: #4527a0; }
+  .badge-notebook { background: #e0f2f1; color: #00695c; }
+  .badge-activity { background: var(--accent-gold-light); color: var(--accent-gold); }
+
+  /* ─── INTRO CARDS ─── */
+  .tool-intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .tool-card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-subtle);
+  }
+  .tool-card-icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  .tc-classroom .tool-card-icon { background: #e8f0fe; }
+  .tc-gemini .tool-card-icon { background: #ede7f6; }
+  .tc-notebook .tool-card-icon { background: #e0f2f1; }
+  .tool-card h4 { margin-top: 0; font-size: 1rem; }
+  .tool-card p { font-size: 0.88rem; color: var(--ink-light); line-height: 1.6; margin: 0; }
+
+  /* ─── STEP LISTS ─── */
+  .step-list { list-style: none; margin: 1.5rem 0; }
+  .step-list li {
+    display: flex; gap: 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--accent-primary);
+    background: var(--accent-primary-light);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    letter-spacing: 0;
+  }
+  .step-content { flex: 1; }
+  .step-content strong { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .step-content span { font-size: 0.9rem; color: var(--ink-light); }
+
+  /* ─── CALLOUTS ─── */
+  .callout {
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    border-left: 3px solid;
+  }
+  .callout-tip { background: var(--accent-secondary-light); border-color: var(--accent-secondary); }
+  .callout-tip .callout-label { color: var(--accent-secondary); }
+  .callout-note { background: var(--accent-primary-light); border-color: var(--accent-primary); }
+  .callout-note .callout-label { color: var(--accent-primary); }
+  .callout-warn { background: var(--accent-gold-light); border-color: var(--accent-gold); }
+  .callout-warn .callout-label { color: var(--accent-gold); }
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .callout p { font-size: 0.9rem; margin: 0; line-height: 1.65; }
+
+  /* ─── ACTIVITY CARDS ─── */
+  .activity-card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    margin: 2.5rem 0;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .activity-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .activity-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--accent-primary);
+    opacity: 0.15;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 2.5rem;
+  }
+  .activity-meta { flex: 1; }
+  .activity-meta h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
+  .activity-meta .activity-tags {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem;
+  }
+  .tag {
+    font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;
+    background: var(--tag-bg);
+    color: var(--ink-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+  .activity-body { padding: 1.75rem 2rem; }
+  .activity-body > * + * { margin-top: 1.25rem; }
+
+  .activity-section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .deliverable-box {
+    background: var(--accent-gold-light);
+    border: 1px solid rgba(139,94,26,0.2);
+    border-radius: 4px;
+    padding: 1.1rem 1.4rem;
+  }
+  .deliverable-box .activity-section-title { color: var(--accent-gold); }
+  .deliverable-box p { font-size: 0.9rem; margin: 0; }
+
+  .objective-box {
+    background: var(--accent-primary-light);
+    border: 1px solid rgba(30,77,140,0.15);
+    border-radius: 4px;
+    padding: 1.1rem 1.4rem;
+  }
+  .objective-box .activity-section-title { color: var(--accent-primary); }
+  .objective-box p { font-size: 0.9rem; margin: 0; }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; margin: 0.75rem 0; }
+  .checklist li {
+    display: flex; gap: 0.75rem;
+    font-size: 0.9rem; color: var(--ink-light);
+    padding: 0.35rem 0;
+    line-height: 1.5;
+  }
+  .checklist li::before {
+    content: '';
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  /* ─── CODE BLOCK ─── */
+  .prompt-block {
+    background: #f8f5f0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--ink-light);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt-block .prompt-label {
+    display: block;
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  .prompt-block .prompt-text { color: var(--ink); }
+
+  /* ─── TIMELINE / PHASES ─── */
+  .phase-list { margin: 1.5rem 0; }
+  .phase-item {
+    display: flex; gap: 1.25rem;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .phase-item::before {
+    content: '';
+    position: absolute;
+    left: 15px; top: 32px;
+    width: 1px; bottom: 0;
+    background: var(--rule);
+  }
+  .phase-item:last-child::before { display: none; }
+  .phase-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--paper-card);
+    border: 2px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 500;
+    color: var(--ink-muted);
+    position: relative; z-index: 1;
+  }
+  .phase-dot.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #fff;
+  }
+  .phase-content {
+    padding-bottom: 2rem;
+    flex: 1;
+  }
+  .phase-content strong { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .phase-content p { font-size: 0.88rem; color: var(--ink-light); margin: 0; line-height: 1.6; }
+
+  /* ─── TABLE ─── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 1.5rem 0;
+  }
+  .data-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+  .data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--ink-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td:first-child { color: var(--ink); font-weight: 400; }
+
+  /* ─── RUBRIC ─── */
+  .rubric-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.83rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .rubric-table th {
+    background: var(--accent-primary);
+    color: #fff;
+    padding: 0.65rem 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-align: center; font-weight: 500;
+  }
+  .rubric-table th:first-child { text-align: left; }
+  .rubric-table td {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--rule-light);
+    border-right: 1px solid var(--rule-light);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--ink-light);
+  }
+  .rubric-table tr:last-child td { border-bottom: none; }
+  .rubric-table td:first-child { color: var(--ink); font-weight: 600; background: var(--paper-warm); }
+  .rubric-table td:last-child { border-right: none; }
+  .rubric-pts { text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--accent-primary); }
+
+  /* ─── INTERACTIVE TABS ─── */
+  .tabs-wrapper { margin: 2rem 0; }
+  .tab-nav {
+    display: flex; gap: 0; border-bottom: 1px solid var(--rule);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.88rem; font-weight: 400;
+    color: var(--ink-muted);
+    background: none; border: none;
+    padding: 0.7rem 1.25rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent-primary); border-color: var(--accent-primary); font-weight: 600; }
+  .tab-content { display: none; padding: 1.75rem 0; }
+  .tab-content.active { display: block; }
+
+  /* ─── ACCORDION ─── */
+  .accordion { margin: 1rem 0; }
+  .acc-item {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  .acc-btn {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 1.25rem;
+    background: var(--paper-card);
+    border: none; cursor: pointer;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.92rem; font-weight: 600;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .acc-btn:hover { background: var(--paper-warm); }
+  .acc-icon {
+    font-size: 1.2rem; color: var(--ink-muted);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .acc-item.open .acc-icon { transform: rotate(45deg); }
+  .acc-body {
+    display: none;
+    padding: 1rem 1.25rem 1.25rem;
+    background: var(--paper-card);
+    border-top: 1px solid var(--rule-light);
+    font-size: 0.9rem; color: var(--ink-light); line-height: 1.7;
+  }
+  .acc-item.open .acc-body { display: block; }
+
+  /* ─── PROGRESS TRACKER (interactive) ─── */
+  .progress-section {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-subtle);
+  }
+  .progress-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .progress-items { display: flex; flex-direction: column; gap: 0.75rem; }
+  .progress-item {
+    display: flex; align-items: center; gap: 1rem;
+    cursor: pointer; padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .progress-item:hover { background: var(--paper-warm); }
+  .prog-check {
+    width: 22px; height: 22px;
+    border: 2px solid var(--rule);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-size: 0.85rem; color: transparent;
+  }
+  .progress-item.done .prog-check {
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+    color: #fff;
+  }
+  .progress-item .prog-label { font-size: 0.9rem; color: var(--ink-light); }
+  .progress-item.done .prog-label { color: var(--ink-muted); text-decoration: line-through; }
+  .progress-bar-wrap {
+    margin-top: 1.25rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--rule-light);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .prog-bar-track {
+    flex: 1; height: 6px;
+    background: var(--rule-light);
+    border-radius: 3px; overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%; width: 0%;
+    background: var(--accent-secondary);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+  .prog-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--accent-secondary);
+    min-width: 3rem; text-align: right;
+  }
+
+  /* ─── REFLECTION FORM ─── */
+  .reflection-form { margin: 2rem 0; }
+  .form-field { margin-bottom: 1.5rem; }
+  .form-field label {
+    display: block;
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .form-field .field-hint {
+    font-size: 0.8rem; color: var(--ink-muted);
+    font-style: italic; margin-bottom: 0.4rem;
+    display: block;
+  }
+  .form-field textarea, .form-field input[type="text"] {
+    width: 100%;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--paper-card);
+    resize: vertical;
+    transition: border-color 0.2s;
+    line-height: 1.65;
+  }
+  .form-field textarea:focus, .form-field input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(30,77,140,0.08);
+  }
+  .form-field textarea { min-height: 90px; }
+  .form-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+  .btn-primary {
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem; font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #163d73; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink-muted);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 0.65rem 1.25rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .form-saved {
+    display: none;
+    background: var(--accent-secondary-light);
+    border: 1px solid rgba(45,106,79,0.2);
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.88rem; color: var(--accent-secondary);
+    margin-top: 1rem;
+  }
+
+  /* ─── PRINT BUTTON ─── */
+  .print-btn {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 52px; height: 52px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(30,77,140,0.3);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 200;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,77,140,0.35); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  footer strong { color: rgba(255,255,255,0.75); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .hero-meta { gap: 0.75rem; flex-direction: column; align-items: center; }
+    .activity-header { flex-direction: column; gap: 0.5rem; }
+    .activity-number { font-size: 1.5rem; }
+    .activity-body { padding: 1.25rem; }
+    .section-header { flex-direction: column; gap: 0.25rem; }
+    .tool-intro-grid { grid-template-columns: 1fr; }
+    .rubric-table { font-size: 0.75rem; }
+    .rubric-table th, .rubric-table td { padding: 0.5rem 0.6rem; }
+    .form-actions { flex-direction: column; }
+    .print-btn { display: none; }
+  }
+
+  @media print {
+    .toc-strip, .print-btn { display: none; }
+    .institution-band { print-color-adjust: exact; }
+    section { padding: 2rem 0; break-inside: avoid; }
+    .activity-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- INSTITUTION BAND -->
+<div class="institution-band">
+  <div class="logo-placeholder" id="logo-container">
+    <span id="logo-text">UC</span>
+  </div>
+  <div class="inst-text">
+    <div class="inst-name">Universidad de la Ciénega</div>
+    <div class="inst-sub">Dirección Académica — Formación y Desarrollo Docente</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Guía de Formación Docente · 2025</div>
+  <h1>Herramientas de Inteligencia Artificial para la Práctica Educativa</h1>
+  <p>Una guía constructivista para la integración pedagógica de Google Classroom, Gemini Gems y NotebookLM en el aula universitaria.</p>
+  <div class="hero-meta">
+    <span>Pedagogía Activa</span>
+    <span>Tres actividades prácticas</span>
+    <span>Nivel: Docente universitario</span>
+    <span>Duración estimada: 6 horas</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="toc-strip" aria-label="Tabla de contenidos">
+  <div class="toc-inner">
+    <a href="#introduccion">Introducción</a>
+    <a href="#classroom">Classroom</a>
+    <a href="#gemini">Gemini Gems</a>
+    <a href="#notebooklm">NotebookLM</a>
+    <a href="#actividad-1">Actividad I</a>
+    <a href="#actividad-2">Actividad II</a>
+    <a href="#actividad-3">Actividad III</a>
+    <a href="#reflexion">Reflexión</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- ── SECTION 0: INTRODUCCIÓN ── -->
+<section id="introduccion">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">00</div>
+    <div class="section-titles">
+      <h2>Introducción y Fundamento Pedagógico</h2>
+      <div class="section-sub">Marco constructivista para la integración tecnológica</div>
+    </div>
+  </div>
+
+  <p>La integración de herramientas digitales en la práctica docente no consiste en transferir contenidos a nuevos soportes, sino en transformar los procesos mediante los cuales el conocimiento se construye, se comparte y se valida. Esta guía adopta un enfoque constructivista: el docente no es receptor pasivo de instrucciones técnicas, sino agente activo que experimenta, reflexiona y rediseña su práctica pedagógica.</p>
+
+  <p>A lo largo de esta guía, usted explorará tres herramientas digitales de alto impacto educativo. Cada sección combina instrucciones paso a paso con actividades que requieren aplicación directa, reflexión crítica y producción de conocimiento situado en su propia asignatura.</p>
+
+  <div class="callout callout-note">
+    <div class="callout-label">Premisa constructivista</div>
+    <p>El aprendizaje significativo ocurre cuando el docente conecta el nuevo conocimiento con su experiencia previa y lo aplica a contextos auténticos. Por ello, todas las actividades de esta guía piden que usted las vincule explícitamente con su asignatura, sus estudiantes y sus objetivos de aprendizaje específicos.</p>
+  </div>
+
+  <h3>Herramientas abordadas</h3>
+
+  <div class="tool-intro-grid">
+    <div class="tool-card tc-classroom">
+      <div class="tool-card-icon">
+        <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 10C6 7.79086 7.79086 6 10 6H38C40.2091 6 42 7.79086 42 10V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V10Z" fill="#1a73e8" opacity="0.15"/>
+          <path d="M18 18C18 15.7909 19.7909 14 22 14H26C28.2091 14 30 15.7909 30 18C30 20.2091 28.2091 22 26 22H22C19.7909 22 18 20.2091 18 18Z" fill="#1a73e8"/>
+          <path d="M14 30C14 27.7909 15.7909 26 18 26H30C32.2091 26 34 27.7909 34 30C34 32.2091 32.2091 34 30 34H18C15.7909 34 14 32.2091 14 30Z" fill="#1a73e8" opacity="0.4"/>
+        </svg>
+      </div>
+      <h4>Google Classroom</h4>
+      <p>Plataforma de gestión de aula virtual para la organización de tareas, distribución de materiales, retroalimentación y seguimiento del progreso estudiantil.</p>
+    </div>
+    <div class="tool-card tc-gemini">
+      <div class="tool-card-icon">
+        <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L28 20L44 24L28 28L24 44L20 28L4 24L20 20L24 4Z" fill="#7c4dff" opacity="0.2"/>
+          <path d="M24 10L26.5 19L35 21.5L26.5 24L24 33L21.5 24L13 21.5L21.5 19L24 10Z" fill="#5e35b1"/>
+        </svg>
+      </div>
+      <h4>Gemini Gems</h4>
+      <p>Asistentes de IA personalizados integrados en el ecosistema de Google, configurables para roles pedagógicos específicos: tutor, evaluador, generador de contenido disciplinar.</p>
+    </div>
+    <div class="tool-card tc-notebook">
+      <div class="tool-card-icon">
+        <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="32" height="36" rx="3" fill="#00796b" opacity="0.15"/>
+          <rect x="8" y="6" width="6" height="36" rx="3" fill="#00796b" opacity="0.4"/>
+          <rect x="16" y="14" width="18" height="2" rx="1" fill="#00796b"/>
+          <rect x="16" y="20" width="18" height="2" rx="1" fill="#00796b"/>
+          <rect x="16" y="26" width="12" height="2" rx="1" fill="#00796b"/>
+        </svg>
+      </div>
+      <h4>NotebookLM</h4>
+      <p>Herramienta de análisis de fuentes impulsada por IA que permite a los docentes organizar, sintetizar y hacer preguntas a corpus documentales propios de su disciplina.</p>
+    </div>
+  </div>
+
+  <h3>Cómo utilizar esta guía</h3>
+  <p>Esta guía está organizada en bloques secuenciales. Se recomienda seguir el orden propuesto, dado que cada sección construye sobre la anterior. El tiempo estimado total es de seis horas de trabajo, distribuibles en sesiones de dos horas. Las tres actividades prácticas deben completarse y subirse a Google Classroom como evidencia de aprendizaje.</p>
+
+  <!-- PROGRESS TRACKER -->
+  <div class="progress-section">
+    <div class="progress-title">Seguimiento de avance personal</div>
+    <div class="progress-items" id="progress-list">
+      <div class="progress-item" data-id="p0" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">He leído la introducción y el fundamento pedagógico</span>
+      </div>
+      <div class="progress-item" data-id="p1" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Completé la sección de Google Classroom con sus pasos</span>
+      </div>
+      <div class="progress-item" data-id="p2" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Completé la sección de Gemini Gems con sus pasos</span>
+      </div>
+      <div class="progress-item" data-id="p3" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Completé la sección de NotebookLM con sus pasos</span>
+      </div>
+      <div class="progress-item" data-id="p4" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Subí la Actividad I a Classroom</span>
+      </div>
+      <div class="progress-item" data-id="p5" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Subí la Actividad II a Classroom</span>
+      </div>
+      <div class="progress-item" data-id="p6" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Subí la Actividad III a Classroom</span>
+      </div>
+      <div class="progress-item" data-id="p7" onclick="toggleProgress(this)">
+        <div class="prog-check">✓</div>
+        <span class="prog-label">Completé la sección de Reflexión Final</span>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="prog-bar-track">
+        <div class="prog-bar-fill" id="prog-fill"></div>
+      </div>
+      <div class="prog-pct" id="prog-pct">0%</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 1: GOOGLE CLASSROOM ── -->
+<section id="classroom">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div class="section-titles">
+      <h2>Google Classroom</h2>
+      <div class="section-sub">Gestión del aula virtual y entorno de entrega de actividades</div>
+    </div>
+  </div>
+
+  <span class="tool-badge badge-classroom">Google Classroom</span>
+
+  <p>Google Classroom es el entorno central donde los docentes crean, distribuyen y evalúan tareas. En el contexto de esta guía, Classroom funciona además como el repositorio donde usted entregará las evidencias de las tres actividades prácticas. Familiarizarse con su funcionamiento es, por lo tanto, el primer paso.</p>
+
+  <h3>Acceso y configuración inicial</h3>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Acceder a la plataforma</strong>
+        <span>Ingrese a <a href="https://classroom.google.com" target="_blank" rel="noopener">classroom.google.com</a> con su cuenta institucional de Google (@ucienega.edu.mx o equivalente). Si aún no tiene cuenta institucional, contacte al área de soporte técnico de la universidad.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Unirse a la clase de formación docente</strong>
+        <span>El área académica le habrá proporcionado un código de clase. Haga clic en el botón "+" ubicado en la esquina superior derecha y seleccione "Unirse a una clase". Introduzca el código y confirme su inscripción.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Explorar la interfaz principal</strong>
+        <span>Identifique las tres pestañas principales: <em>Novedades</em> (flujo de comunicaciones), <em>Trabajo de clase</em> (tareas y materiales organizados por temas) y <em>Personas</em> (lista de participantes). Dedique diez minutos a navegar cada sección antes de continuar.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Completar el perfil docente</strong>
+        <span>Haga clic en su foto de perfil (esquina superior derecha) y verifique que su nombre y foto estén actualizados. Esta información aparece en todas las interacciones con estudiantes.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Revisar una tarea de ejemplo</strong>
+        <span>En la pestaña "Trabajo de clase", abra la tarea de ejemplo publicada por el facilitador. Observe los componentes: título, instrucciones, fecha límite, rúbrica y modo de entrega. Estos son los mismos componentes que usted usará al crear tareas para sus estudiantes.</span>
+      </div>
+    </li>
+  </ul>
+
+  <h3>Creación de una tarea propia</h3>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <strong>Iniciar una nueva tarea</strong>
+        <span>En el panel izquierdo, haga clic en "Crear". Seleccione "Tarea". Se abrirá un editor con múltiples campos configurables.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <strong>Redactar instrucciones claras</strong>
+        <span>Use el campo de instrucciones para describir: qué debe hacer el estudiante, cuál es el producto esperado, cómo se evaluará y cuándo debe entregarse. La claridad en las instrucciones reduce significativamente las consultas de los estudiantes.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">8</div>
+      <div class="step-content">
+        <strong>Adjuntar una rúbrica</strong>
+        <span>En el panel derecho, haga clic en "Rúbrica" y luego en "Crear rúbrica". Defina al menos tres criterios de evaluación con sus respectivos niveles de desempeño y puntajes. Las rúbricas hacen explícita la evaluación y reducen la subjetividad.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">9</div>
+      <div class="step-content">
+        <strong>Configurar la fecha límite y el puntaje</strong>
+        <span>Establezca una fecha y hora de entrega realistas. Defina el puntaje máximo. Si la tarea forma parte de un módulo evaluado, verifique que esté asignada a la categoría de calificación correcta.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">10</div>
+      <div class="step-content">
+        <strong>Publicar o guardar como borrador</strong>
+        <span>Si la tarea es para sus estudiantes reales, elija "Publicar". Si es una práctica o aún está en desarrollo, seleccione "Guardar borrador". Para esta guía, guarde como borrador hasta haber completado las instrucciones de las tres actividades.</span>
+      </div>
+    </li>
+  </ul>
+
+  <h3>Retroalimentación y seguimiento</h3>
+
+  <p>Google Classroom permite retroalimentar las entregas estudiantiles directamente sobre el documento adjunto. Para hacerlo, abra la entrega del estudiante, use la barra lateral de comentarios y, si el archivo es un Google Doc, active el modo "Sugerencias" para proponer cambios con trazabilidad. Esta modalidad es especialmente eficaz para el desarrollo de competencias escriturales y argumentativas.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Buena práctica pedagógica</div>
+    <p>La retroalimentación más efectiva es oportuna, específica y orientada al proceso, no solo al producto. En lugar de escribir "incompleto", especifique: "El análisis de causas no incluye evidencia del texto fuente. Revise el párrafo 3 y apoye su argumentación con al menos dos citas directas."</p>
+  </div>
+
+  <div class="accordion">
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Preguntas frecuentes sobre Google Classroom
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body">
+        <p><strong>¿Puedo usar Classroom sin que mis estudiantes tengan cuenta institucional?</strong><br>No. Google Classroom requiere que todos los participantes tengan una cuenta de Google, preferentemente institucional. Coordine con el área de TI para la activación masiva de cuentas estudiantiles.</p>
+        <br>
+        <p><strong>¿Mis tareas son visibles para otros docentes?</strong><br>No. Cada clase es un espacio privado. Solo los miembros inscritos (docente y estudiantes) pueden ver el contenido de la clase.</p>
+        <br>
+        <p><strong>¿Puedo integrar Google Forms como cuestionarios?</strong><br>Sí. Al crear una tarea, seleccione "Usar Google Forms" para crear cuestionarios con calificación automática. Esto es especialmente útil para evaluaciones diagnósticas y formativas.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Consideraciones éticas y de privacidad
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body">
+        <p>Al utilizar Google Classroom con estudiantes menores de edad o con datos sensibles, considere que toda la información se procesa en servidores de Google. Asegúrese de que su institución tenga vigente un convenio de manejo de datos con Google Workspace for Education. No comparta información personal de los estudiantes fuera de la plataforma. Informe a los estudiantes qué datos se recopilan y con qué propósito.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 2: GEMINI GEMS ── -->
+<section id="gemini">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-titles">
+      <h2>Gemini Gems</h2>
+      <div class="section-sub">Asistentes de IA personalizados para enriquecer contenidos disciplinares</div>
+    </div>
+  </div>
+
+  <span class="tool-badge badge-gemini">Gemini · Google AI</span>
+
+  <p>Los Gems de Gemini son versiones personalizadas del asistente de inteligencia artificial de Google. Permiten al docente configurar un asistente con un rol, tono, nivel de profundidad y restricciones específicas según el contexto pedagógico. Un Gem puede actuar como tutor socrático, como generador de casos de estudio para una disciplina particular, o como evaluador formativo de argumentos académicos.</p>
+
+  <h3>Acceso a Gemini y a la función Gems</h3>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Acceder a Gemini</strong>
+        <span>Ingrese a <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con su cuenta de Google. Si su institución usa Google Workspace for Education, verifique que el administrador haya habilitado el acceso a Gemini para docentes.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Localizar la opción Gems</strong>
+        <span>En el panel lateral izquierdo, busque la sección "Gem Manager" o "Administrador de Gems". Esta función está disponible en Gemini Advanced (incluido en cuentas Google Workspace for Education Plus) y en la versión de consumidor con suscripción Google One AI Premium.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Crear un nuevo Gem</strong>
+        <span>Haga clic en "Nuevo Gem". Se abrirá un panel de configuración con tres campos principales: nombre del Gem, instrucciones del sistema (rol y comportamiento) y, opcionalmente, archivos de contexto que el Gem usará como fuente de conocimiento.</span>
+      </div>
+    </li>
+  </ul>
+
+  <h3>Configuración pedagógica de un Gem</h3>
+
+  <p>La clave de un Gem pedagógicamente efectivo está en las instrucciones del sistema. A continuación se presentan tres plantillas de instrucciones según el rol deseado:</p>
+
+  <div class="tabs-wrapper">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(this, 'gem-tutor')">Tutor socrático</button>
+      <button class="tab-btn" onclick="switchTab(this, 'gem-casos')">Generador de casos</button>
+      <button class="tab-btn" onclick="switchTab(this, 'gem-eval')">Evaluador formativo</button>
+    </div>
+    <div class="tab-content active" id="gem-tutor">
+      <p>Este Gem guía al estudiante mediante preguntas en lugar de respuestas directas, fomentando el pensamiento crítico y la construcción autónoma del conocimiento.</p>
+      <div class="prompt-block">
+        <span class="prompt-label">Instrucciones del sistema — Tutor socrático</span>
+        <span class="prompt-text">Eres un tutor universitario especializado en [nombre de la asignatura]. Tu rol es guiar al estudiante mediante preguntas, no proporcionar respuestas directas. Cuando el estudiante presente una duda, responde con una pregunta que lo lleve a explorar el concepto por sí mismo. Usa ejemplos del contexto disciplinar de [área de conocimiento]. Mantén un tono académico pero accesible. Si el estudiante pide la respuesta directamente, explica el valor del proceso de descubrimiento y formula una pregunta alternativa. Nunca resuelvas ejercicios completos; en su lugar, desglosa el problema en pasos y pregunta sobre cada uno.</span>
+      </div>
+    </div>
+    <div class="tab-content" id="gem-casos">
+      <p>Este Gem genera casos de estudio contextualizados a la disciplina del docente, con niveles de complejidad ajustables y preguntas reflexivas incorporadas.</p>
+      <div class="prompt-block">
+        <span class="prompt-label">Instrucciones del sistema — Generador de casos disciplinares</span>
+        <span class="prompt-text">Eres un experto en diseño de casos de estudio para educación universitaria en [disciplina]. Cuando el docente te proporcione un tema, genera un caso de estudio realista con: (1) contexto situacional de 150 a 200 palabras, (2) datos o información relevante del problema, (3) tres preguntas de análisis de complejidad creciente, y (4) una pregunta de reflexión ética o profesional. Adapta el nivel de complejidad al semestre indicado. Usa nombres y contextos mexicanos o latinoamericanos cuando sea posible. No incluyas la respuesta en el mismo documento; solo el caso y las preguntas.</span>
+      </div>
+    </div>
+    <div class="tab-content" id="gem-eval">
+      <p>Este Gem revisa producciones escritas de los estudiantes y proporciona retroalimentación formativa estructurada con base en criterios definidos por el docente.</p>
+      <div class="prompt-block">
+        <span class="prompt-label">Instrucciones del sistema — Evaluador formativo</span>
+        <span class="prompt-text">Eres un evaluador académico formativo. Tu tarea es revisar el texto que te proporciona el estudiante y generar retroalimentación estructurada con las siguientes secciones: (1) Fortalezas identificadas, (2) Áreas de oportunidad específicas con ejemplos del texto, (3) Sugerencias concretas de mejora, y (4) Pregunta reflexiva final para que el estudiante profundice. No asignes calificaciones numéricas. Evalúa en función de los siguientes criterios: [lista los criterios de la rúbrica]. Mantén un tono constructivo, respetuoso y orientado al crecimiento. Si el texto presenta errores conceptuales graves, señálalos claramente pero sin descalificar al estudiante.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <div class="callout-label">Consideración crítica</div>
+    <p>Los Gems de Gemini, como cualquier sistema de IA generativa, pueden producir información inexacta o desactualizada. Es responsabilidad del docente validar los contenidos generados antes de compartirlos con estudiantes, especialmente en disciplinas que requieren precisión factual como ciencias de la salud, derecho o ingeniería.</p>
+  </div>
+
+  <h3>Integración de Gemini Gems con Google Classroom</h3>
+
+  <p>Una vez que su Gem esté configurado, puede compartir el enlace directo con los estudiantes a través de Google Classroom. Para hacerlo: abra el Gem creado, haga clic en el ícono de compartir (si está disponible en su versión), o copie la URL de la conversación y publíquela como material en Classroom con instrucciones claras sobre cómo usarlo y cuáles son sus límites como herramienta de apoyo, no de sustitución del pensamiento propio.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Uso pedagógico adecuado</th>
+        <th>Uso a evitar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Generar borradores de casos que el docente revisa y adapta</td>
+        <td>Publicar el contenido de Gemini sin revisión crítica</td>
+      </tr>
+      <tr>
+        <td>Usar el Gem como primer nivel de retroalimentación formativa</td>
+        <td>Sustituir la retroalimentación docente por la del Gem</td>
+      </tr>
+      <tr>
+        <td>Solicitar variaciones de un ejercicio para diferentes niveles</td>
+        <td>Solicitar que Gemini evalúe y asigne calificaciones finales</td>
+      </tr>
+      <tr>
+        <td>Explorar perspectivas disciplinares múltiples sobre un tema</td>
+        <td>Asumir que la perspectiva de Gemini es la única o la correcta</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ── SECTION 3: NOTEBOOKLM ── -->
+<section id="notebooklm">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-titles">
+      <h2>NotebookLM</h2>
+      <div class="section-sub">Organización y análisis inteligente de fuentes disciplinares</div>
+    </div>
+  </div>
+
+  <span class="tool-badge badge-notebook">NotebookLM · Google</span>
+
+  <p>NotebookLM es una herramienta de Google que permite cargar documentos propios (artículos académicos, libros, notas, transcripciones, presentaciones) y conversar con ellos mediante un asistente de IA. A diferencia de Gemini, NotebookLM solo responde con base en las fuentes que el docente carga, lo que elimina el riesgo de alucinaciones sobre contenidos ajenos y garantiza que las respuestas estén ancladas en el corpus documental seleccionado.</p>
+
+  <h3>Creación de un cuaderno de trabajo</h3>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Acceder a NotebookLM</strong>
+        <span>Ingrese a <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> con su cuenta de Google. La herramienta es gratuita para cuentas personales y está disponible en Google Workspace for Education en las regiones habilitadas.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Crear un nuevo cuaderno</strong>
+        <span>Haga clic en "Nuevo cuaderno". Asígnele un nombre relacionado con su asignatura o tema de estudio (por ejemplo: "Bibliografía Unidad III — Bioética" o "Fuentes: Análisis de algoritmos"). Este cuaderno será un espacio de trabajo persistente que puede ir actualizando.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Cargar las fuentes de información</strong>
+        <span>En el panel de fuentes (izquierda), haga clic en "+ Agregar fuente". Puede cargar: archivos PDF, documentos de Google Drive, URLs de sitios web, o texto copiado directamente. NotebookLM procesará cada fuente y la integrará al sistema de consulta. Se recomienda cargar entre 5 y 15 fuentes curadas y de calidad académica verificada.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Explorar el panel de resumen automático</strong>
+        <span>Una vez cargadas las fuentes, NotebookLM genera automáticamente un resumen del corpus, preguntas sugeridas y los temas principales identificados. Revise este panel para verificar que las fuentes se procesaron correctamente y que los temas identificados coinciden con el enfoque disciplinar esperado.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Realizar consultas al cuaderno</strong>
+        <span>Use el chat integrado para hacer preguntas sobre el contenido cargado. Ejemplos de preguntas pedagógicamente útiles: "¿Cuáles son los puntos de coincidencia entre los tres autores sobre el tema X?", "¿Qué vacíos de información existen en estas fuentes respecto a Y?", "Resume los argumentos en contra de Z presentes en el corpus." NotebookLM citará las fuentes específicas en cada respuesta.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <strong>Generar materiales de apoyo</strong>
+        <span>NotebookLM puede generar, con base en sus fuentes: guías de estudio, preguntas de comprensión, líneas de tiempo, tablas comparativas y síntesis temáticas. Use estas generaciones como insumos para diseñar actividades de aprendizaje, no como productos finales listos para entregar a los estudiantes.</span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Aplicación constructivista</div>
+    <p>Invitar a los estudiantes a construir sus propios cuadernos de NotebookLM con las fuentes de una unidad temática promueve habilidades de síntesis, curación de información y lectura crítica. En lugar de proporcionar resúmenes de textos, pida a los estudiantes que carguen las lecturas obligatorias, interactúen con ellas en NotebookLM y produzcan un mapa de argumentos o un análisis comparativo propio.</p>
+  </div>
+
+  <h3>Funciones avanzadas</h3>
+
+  <div class="accordion">
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Audio Overview: convertir el cuaderno en un pódcast
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body">
+        <p>NotebookLM ofrece la función "Audio Overview" que genera automáticamente una conversación de estilo pódcast que resume y discute los temas del cuaderno. Esta función puede usarse pedagógicamente para crear materiales de repaso auditivos, accesibles para estudiantes con distintos estilos de aprendizaje. Los archivos de audio pueden descargarse y compartirse en Classroom.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Notas del cuaderno: síntesis elaboradas por el docente
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body">
+        <p>Además de las consultas en el chat, NotebookLM permite crear "Notas" dentro del cuaderno. Estas notas son documentos de texto que el docente redacta y que también pueden usarse como fuente adicional. Esto permite construir un cuaderno híbrido que combina fuentes originales con elaboraciones propias del docente, enriqueciendo el corpus con perspectivas analíticas personales.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Compartir un cuaderno con estudiantes
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-body">
+        <p>Es posible compartir un cuaderno de NotebookLM con otras personas mediante la opción "Compartir" disponible en la esquina superior derecha. Al compartir, puede elegir si los colaboradores pueden editar o solo ver. Para actividades estudiantiles, se recomienda que cada estudiante cree su propio cuaderno, para que el proceso de curación y consulta sea parte de la experiencia de aprendizaje activo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── ACTIVIDAD 1 ── -->
+<section id="actividad-1">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">A1</div>
+    <div class="section-titles">
+      <h2>Actividad Práctica I</h2>
+      <div class="section-sub">Diseño de una tarea enriquecida con IA para su asignatura</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-number">I</div>
+      <div class="activity-meta">
+        <span class="tool-badge badge-activity">Entrega en Classroom</span>
+        <h3>Del Aula Presencial al Aula Virtual: Mi Primera Tarea Enriquecida con IA</h3>
+        <div class="activity-tags">
+          <span class="tag">Google Classroom</span>
+          <span class="tag">Gemini Gems</span>
+          <span class="tag">Aprendizaje significativo</span>
+          <span class="tag">Duración: 90 min.</span>
+        </div>
+      </div>
+    </div>
+    <div class="activity-body">
+
+      <div class="objective-box">
+        <div class="activity-section-title">Aprendizaje esperado</div>
+        <p>El docente diseña una tarea académica para su asignatura que integra intencionalmente el uso de un Gem de Gemini como recurso de apoyo al aprendizaje estudiantil, justificando pedagógicamente su diseño.</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Descripción de la actividad</div>
+        <p>Esta actividad le pide que transite de la observación a la producción. Usted utilizará Google Classroom para crear una tarea real —o un diseño detallado de ella— que sus propios estudiantes podrían realizar. La tarea debe integrar un Gem de Gemini como herramienta de apoyo, y debe incluir instrucciones explícitas sobre cómo usarlo y cuáles son sus límites.</p>
+      </div>
+
+      <div class="phase-list">
+        <div class="phase-item">
+          <div class="phase-dot active">A</div>
+          <div class="phase-content">
+            <strong>Fase de diseño (30 minutos)</strong>
+            <p>Seleccione un tema de su asignatura que represente una dificultad común para sus estudiantes. Defina: el objetivo de aprendizaje, el producto esperado, los criterios de evaluación y cómo el Gem de Gemini apoyará el proceso sin sustituir el pensamiento del estudiante. Use papel o un documento digital para este borrador inicial.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">B</div>
+          <div class="phase-content">
+            <strong>Fase de configuración del Gem (20 minutos)</strong>
+            <p>Cree un Gem de Gemini con instrucciones específicas para la tarea que diseñó. Use una de las plantillas de la Sección 02 como punto de partida y adáptela a su disciplina, nivel educativo y objetivo específico.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">C</div>
+          <div class="phase-content">
+            <strong>Fase de publicación en Classroom (25 minutos)</strong>
+            <p>Cree la tarea en Google Classroom con todos sus componentes: instrucciones completas, rúbrica de evaluación, materiales de apoyo y el enlace o descripción del Gem configurado. Publíquela o guárdela como borrador.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot">D</div>
+          <div class="phase-content">
+            <strong>Fase de reflexión escrita (15 minutos)</strong>
+            <p>En un documento aparte, responda: ¿Qué decisiones pedagógicas tomó al diseñar la tarea? ¿Cómo garantiza que el Gem apoya el aprendizaje en lugar de sustituirlo? ¿Qué anticiparía que será difícil para sus estudiantes al usar esta combinación de herramientas?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliverable-box">
+        <div class="activity-section-title">Productos a entregar en Classroom</div>
+        <p>1. Captura de pantalla o enlace a la tarea diseñada en Google Classroom.<br>
+        2. Documento de reflexión pedagógica (mínimo 400 palabras) que responda las tres preguntas de la Fase D.<br>
+        3. Descripción escrita de las instrucciones del sistema configuradas en su Gem.</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Criterios de evaluación</div>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Logrado (100%)</th>
+              <th>En proceso (60%)</th>
+              <th>Pts.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Coherencia pedagógica</td>
+              <td>El objetivo, las instrucciones y la rúbrica son coherentes entre sí y con el nivel educativo.</td>
+              <td>Existe coherencia parcial; algunos elementos no están alineados.</td>
+              <td class="rubric-pts">30</td>
+            </tr>
+            <tr>
+              <td>Integración del Gem</td>
+              <td>Las instrucciones del Gem están claramente justificadas y establecen límites explícitos de uso.</td>
+              <td>El Gem está presente pero su integración no está fundamentada pedagógicamente.</td>
+              <td class="rubric-pts">35</td>
+            </tr>
+            <tr>
+              <td>Reflexión crítica</td>
+              <td>La reflexión muestra análisis genuino de las decisiones pedagógicas y anticipa desafíos concretos.</td>
+              <td>La reflexión es descriptiva pero no analítica; no hay anticipación de desafíos.</td>
+              <td class="rubric-pts">35</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── ACTIVIDAD 2 ── -->
+<section id="actividad-2">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">A2</div>
+    <div class="section-titles">
+      <h2>Actividad Práctica II</h2>
+      <div class="section-sub">Construcción colaborativa de un corpus documental con NotebookLM</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-number">II</div>
+      <div class="activity-meta">
+        <span class="tool-badge badge-activity">Entrega en Classroom</span>
+        <h3>El Cuaderno del Experto: Análisis Crítico de Fuentes Disciplinares con NotebookLM</h3>
+        <div class="activity-tags">
+          <span class="tag">NotebookLM</span>
+          <span class="tag">Pensamiento crítico</span>
+          <span class="tag">Colaboración</span>
+          <span class="tag">Duración: 90 min.</span>
+        </div>
+      </div>
+    </div>
+    <div class="activity-body">
+
+      <div class="objective-box">
+        <div class="activity-section-title">Aprendizaje esperado</div>
+        <p>El docente construye un cuaderno de NotebookLM con fuentes curadas de su disciplina, realiza un análisis crítico comparativo de las mismas y diseña una actividad derivada para sus propios estudiantes que fomente la curación informacional activa.</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Descripción de la actividad</div>
+        <p>Esta actividad está diseñada para que el docente experimente el rol del estudiante que debe gestionar, sintetizar y criticar fuentes de información. Al mismo tiempo, construirá un recurso pedagógico concreto —el cuaderno de NotebookLM— que podrá reutilizar en sus clases. La actividad se desarrolla en grupos de tres docentes de la misma área disciplinar o afín.</p>
+      </div>
+
+      <div class="phase-list">
+        <div class="phase-item">
+          <div class="phase-dot active">A</div>
+          <div class="phase-content">
+            <strong>Curación colaborativa de fuentes (25 minutos)</strong>
+            <p>En grupo, seleccionen entre 8 y 12 fuentes académicas sobre un tema central de su área. Cada integrante propone al menos dos fuentes y argumenta su relevancia. Prioricen diversidad de perspectivas: fuentes que coincidan, fuentes que contrasten y al menos una fuente crítica del enfoque dominante.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">B</div>
+          <div class="phase-content">
+            <strong>Construcción del cuaderno en NotebookLM (20 minutos)</strong>
+            <p>Un integrante crea el cuaderno de NotebookLM y carga las fuentes seleccionadas. Los demás observan el proceso y sugieren ajustes. Al terminar, revisen juntos el resumen automático generado y evalúen si refleja adecuadamente el corpus cargado.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">C</div>
+          <div class="phase-content">
+            <strong>Análisis crítico mediante consultas dirigidas (25 minutos)</strong>
+            <p>Formulen al cuaderno las siguientes preguntas y registren las respuestas con sus respectivas citas: (1) ¿Cuáles son los puntos de mayor consenso entre las fuentes? (2) ¿Dónde existen contradicciones o tensiones teóricas? (3) ¿Qué perspectivas o voces están ausentes en este corpus? Discutan las respuestas en grupo y evalúen críticamente si las citas son pertinentes.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot">D</div>
+          <div class="phase-content">
+            <strong>Diseño de una actividad derivada para estudiantes (20 minutos)</strong>
+            <p>Con base en la experiencia anterior, diseñen una actividad de máximo dos párrafos que sus propios estudiantes realizarían con un cuaderno de NotebookLM similar. Definan: qué fuentes cargarían los estudiantes, qué preguntas deberían formular y qué producto entregarían como evidencia de análisis crítico.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliverable-box">
+        <div class="activity-section-title">Productos a entregar en Classroom</div>
+        <p>1. Enlace compartido al cuaderno de NotebookLM construido (en modo vista para el evaluador).<br>
+        2. Documento de análisis crítico con las respuestas a las tres preguntas de la Fase C, incluyendo las citas de NotebookLM y el comentario crítico del grupo sobre la pertinencia de cada respuesta (mínimo 500 palabras).<br>
+        3. Diseño de la actividad derivada para estudiantes (máximo una cuartilla).</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Criterios de evaluación</div>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Logrado (100%)</th>
+              <th>En proceso (60%)</th>
+              <th>Pts.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Calidad del corpus</td>
+              <td>Las fuentes son académicamente sólidas, diversas en perspectivas y relevantes para el tema.</td>
+              <td>Las fuentes son relevantes pero homogéneas en perspectiva o algunas carecen de rigor académico.</td>
+              <td class="rubric-pts">25</td>
+            </tr>
+            <tr>
+              <td>Profundidad del análisis</td>
+              <td>El análisis identifica coincidencias, tensiones y ausencias con argumentación sustentada.</td>
+              <td>El análisis es superficial o solo describe sin comparar ni criticar.</td>
+              <td class="rubric-pts">40</td>
+            </tr>
+            <tr>
+              <td>Transferencia pedagógica</td>
+              <td>La actividad derivada es viable, pedagógicamente fundamentada y promueve pensamiento crítico.</td>
+              <td>La actividad derivada existe pero carece de fundamento pedagógico o no promueve análisis crítico.</td>
+              <td class="rubric-pts">35</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-note">
+        <div class="callout-label">Dimensión colaborativa</div>
+        <p>El proceso de curación grupal en la Fase A es tan importante como el análisis. Presten atención a los desacuerdos que emerjan al seleccionar fuentes: ¿Por qué algunos integrantes valoran ciertas fuentes más que otros? Esa tensión es en sí misma un aprendizaje sobre los criterios de autoridad epistémica en su disciplina.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── ACTIVIDAD 3 ── -->
+<section id="actividad-3">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">A3</div>
+    <div class="section-titles">
+      <h2>Actividad Práctica III</h2>
+      <div class="section-sub">Diseño de un ecosistema integrado de herramientas para una unidad temática</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-number">III</div>
+      <div class="activity-meta">
+        <span class="tool-badge badge-activity">Entrega en Classroom</span>
+        <h3>Arquitectura Pedagógica Digital: Diseño de una Unidad Temática con IA Integrada</h3>
+        <div class="activity-tags">
+          <span class="tag">Integración de herramientas</span>
+          <span class="tag">Diseño curricular</span>
+          <span class="tag">Reflexión crítica</span>
+          <span class="tag">Duración: 120 min.</span>
+        </div>
+      </div>
+    </div>
+    <div class="activity-body">
+
+      <div class="objective-box">
+        <div class="activity-section-title">Aprendizaje esperado</div>
+        <p>El docente diseña la arquitectura pedagógica completa de una unidad temática de su asignatura, articulando intencionalmente las tres herramientas (Google Classroom, Gemini Gems y NotebookLM) en función de los objetivos de aprendizaje y el perfil de egreso de sus estudiantes.</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Descripción de la actividad</div>
+        <p>Esta es la actividad integradora de la guía. En lugar de diseñar una tarea aislada, el docente planifica la estructura completa de una unidad temática de su asignatura, definiendo qué herramienta se utilizará en cada momento del proceso de aprendizaje y por qué. El resultado debe ser un documento de diseño pedagógico que otro docente podría leer y aplicar.</p>
+        <p>La actividad se realiza de manera individual, aunque se recomienda una sesión de retroalimentación entre pares al final.</p>
+      </div>
+
+      <div class="phase-list">
+        <div class="phase-item">
+          <div class="phase-dot active">A</div>
+          <div class="phase-content">
+            <strong>Selección y análisis de la unidad (20 minutos)</strong>
+            <p>Seleccione una unidad temática de su asignatura que presente retos de aprendizaje complejos. Identifique: los objetivos de aprendizaje de la unidad, las competencias que desarrolla, los conocimientos previos que requiere y los errores o dificultades más comunes que observa en sus estudiantes.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">B</div>
+          <div class="phase-content">
+            <strong>Mapeo de herramientas a momentos pedagógicos (35 minutos)</strong>
+            <p>Complete la tabla de diseño pedagógico que se presenta a continuación, definiendo el uso específico de cada herramienta en los distintos momentos del proceso de enseñanza-aprendizaje: diagnóstico, introducción al tema, construcción del conocimiento, práctica y aplicación, evaluación formativa y evaluación sumativa.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot active">C</div>
+          <div class="phase-content">
+            <strong>Creación de los recursos en las plataformas (40 minutos)</strong>
+            <p>Cree al menos uno de los recursos diseñados en la tabla: puede ser una tarea en Classroom, un Gem configurado o un cuaderno de NotebookLM. Documente el proceso con capturas de pantalla y notas sobre las decisiones tomadas.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot">D</div>
+          <div class="phase-content">
+            <strong>Retroalimentación entre pares (25 minutos)</strong>
+            <p>Comparta su diseño con otro docente participante y solicite retroalimentación sobre: coherencia pedagógica, claridad de las instrucciones, potencial de la herramienta seleccionada para el momento pedagógico y posibles riesgos de mal uso de la IA. Incorpore al menos dos sugerencias en una versión revisada.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Tabla de diseño pedagógico — Plantilla</div>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Momento pedagógico</th>
+              <th>Herramienta</th>
+              <th>Uso específico</th>
+              <th>Evidencia esperada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Diagnóstico inicial</td>
+              <td>Classroom (Forms)</td>
+              <td>Cuestionario de conocimientos previos con retroalimentación automática</td>
+              <td>Mapa de saberes previos del grupo</td>
+            </tr>
+            <tr>
+              <td>Introducción al tema</td>
+              <td>NotebookLM</td>
+              <td>Audio Overview con fuentes curadas por el docente</td>
+              <td>Notas de escucha del estudiante</td>
+            </tr>
+            <tr>
+              <td>Construcción del conocimiento</td>
+              <td>Gemini Gem (Tutor socrático)</td>
+              <td>Exploración guiada del concepto central mediante preguntas</td>
+              <td>Transcripción de la conversación con el Gem</td>
+            </tr>
+            <tr>
+              <td>Práctica y aplicación</td>
+              <td>Classroom + Gem (Casos)</td>
+              <td>Caso de estudio generado por el Gem y entregado en Classroom</td>
+              <td>Análisis escrito del caso</td>
+            </tr>
+            <tr>
+              <td>Evaluación formativa</td>
+              <td>Gem (Evaluador) + Classroom</td>
+              <td>Retroalimentación del Gem al borrador + comentarios docentes en Classroom</td>
+              <td>Versión revisada con cambios documentados</td>
+            </tr>
+            <tr>
+              <td>Evaluación sumativa</td>
+              <td>Classroom (Rúbrica)</td>
+              <td>Entrega final con evaluación mediante rúbrica docente</td>
+              <td>Producto final calificado</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.82rem; color: var(--ink-muted); font-style: italic;">La tabla anterior es un ejemplo ilustrativo. El diseño propio del docente debe adaptarse a su asignatura, su contexto y los objetivos específicos de la unidad seleccionada.</p>
+      </div>
+
+      <div class="deliverable-box">
+        <div class="activity-section-title">Productos a entregar en Classroom</div>
+        <p>1. Tabla de diseño pedagógico completa para su unidad temática (formato PDF o Google Docs).<br>
+        2. Evidencia del recurso creado en las plataformas (capturas de pantalla con anotaciones o enlace compartido).<br>
+        3. Documento de reflexión post retroalimentación (mínimo 300 palabras): ¿Qué cambió en su diseño después de la retroalimentación entre pares? ¿Qué aprendizaje sobre el diseño pedagógico digital le lleva de esta actividad?</p>
+      </div>
+
+      <div>
+        <div class="activity-section-title">Criterios de evaluación</div>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Logrado (100%)</th>
+              <th>En proceso (60%)</th>
+              <th>Pts.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pertinencia del mapeo herramienta-momento</td>
+              <td>Cada herramienta está asignada a un momento donde su uso es pedagógicamente óptimo y justificado.</td>
+              <td>Las herramientas están asignadas pero sin justificación pedagógica o de forma arbitraria.</td>
+              <td class="rubric-pts">30</td>
+            </tr>
+            <tr>
+              <td>Viabilidad y concreción del diseño</td>
+              <td>El diseño es implementable en el contexto real del docente; las instrucciones son claras y específicas.</td>
+              <td>El diseño es general o idealizado; presenta ambigüedades que dificultarían su implementación.</td>
+              <td class="rubric-pts">30</td>
+            </tr>
+            <tr>
+              <td>Integración de la retroalimentación entre pares</td>
+              <td>La versión final incorpora cambios sustanciales derivados de la retroalimentación, con justificación.</td>
+              <td>Se incorporan cambios menores o la reflexión no muestra evidencia de análisis de la retroalimentación.</td>
+              <td class="rubric-pts">20</td>
+            </tr>
+            <tr>
+              <td>Reflexión metacognitiva</td>
+              <td>La reflexión muestra conciencia sobre el propio proceso de aprendizaje y sobre los límites de las herramientas.</td>
+              <td>La reflexión es descriptiva del proceso pero no metacognitiva.</td>
+              <td class="rubric-pts">20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION: REFLEXIÓN FINAL ── -->
+<section id="reflexion">
+<div class="page-wrap">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div class="section-titles">
+      <h2>Reflexión y Plan de Aplicación</h2>
+      <div class="section-sub">Del aprendizaje a la transformación de la práctica docente</div>
+    </div>
+  </div>
+
+  <p>Esta sección final tiene dos propósitos: consolidar los aprendizajes de la guía mediante la reflexión metacognitiva, y producir un plan de acción concreto y realista para la incorporación de estas herramientas en las asignaturas que imparte actualmente.</p>
+
+  <p>La reflexión que se le pide no es un ejercicio retórico. Requiere honestidad sobre las brechas entre lo aprendido en esta guía y las condiciones reales de su contexto: acceso tecnológico de sus estudiantes, infraestructura institucional, tiempo disponible para el diseño pedagógico y su propia curva de aprendizaje con estas herramientas.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Perspectiva constructivista</div>
+    <p>El conocimiento no se transfiere: se construye. El mayor aprendizaje de esta guía no ocurre al leerla, sino al aplicarla, equivocarse, ajustar y reflexionar sobre lo que funcionó y lo que no. El plan de aplicación que produzca aquí es un punto de partida, no un contrato inamovible.</p>
+  </div>
+
+  <h3>Plan de aplicación personal</h3>
+
+  <p>Complete el siguiente formulario de reflexión. Sus respuestas son personales y constituyen el producto final de esta guía. Entréguelas en Google Classroom como documento adjunto a la Actividad III o como entrega independiente, según las instrucciones del facilitador.</p>
+
+  <div class="reflection-form">
+
+    <div class="form-field">
+      <label>1. Asignatura(s) donde aplicaré estas herramientas</label>
+      <span class="field-hint">Indique el nombre, nivel educativo y semestre o grado de cada asignatura.</span>
+      <textarea id="r1" placeholder="Ejemplo: Metodología de la Investigación — Ingeniería Industrial, 4.º semestre..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>2. Herramienta prioritaria y justificación pedagógica</label>
+      <span class="field-hint">De las tres herramientas abordadas, ¿cuál incorporará primero? ¿Por qué esa y no otra? Fundamente su elección en las necesidades de aprendizaje de sus estudiantes, no en sus preferencias personales.</span>
+      <textarea id="r2" placeholder="Comenzaré con... porque mis estudiantes necesitan... y esta herramienta permite..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>3. Primera acción concreta (en los próximos 15 días)</label>
+      <span class="field-hint">Describa una acción específica, acotada y verificable que realizará antes de la próxima sesión de seguimiento.</span>
+      <input type="text" id="r3" placeholder="Ejemplo: Diseñar y publicar en Classroom la tarea de análisis de casos con el Gem configurado para el Tema 4...">
+    </div>
+
+    <div class="form-field">
+      <label>4. Obstáculos anticipados y estrategias de mitigación</label>
+      <span class="field-hint">Identifique dos obstáculos reales (técnicos, pedagógicos o contextuales) y proponga una estrategia concreta para cada uno.</span>
+      <textarea id="r4" placeholder="Obstáculo 1: Mis estudiantes no tienen acceso a internet en casa. Estrategia: Diseñar las actividades con IA para realizarse en el aula durante las horas de laboratorio de cómputo..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>5. Postura crítica sobre la IA en su práctica docente</label>
+      <span class="field-hint">¿Qué riesgos específicos identifica en el uso de estas herramientas con sus estudiantes? ¿Qué garantías pedagógicas incorporará en su diseño para mitigarlos? Argumente desde su experiencia docente concreta.</span>
+      <textarea id="r5" placeholder="El principal riesgo que identifico en mi contexto es... Lo abordaré mediante..."></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>6. Indicador personal de éxito</label>
+      <span class="field-hint">¿Cómo sabrá, al finalizar el siguiente período escolar, que la integración de estas herramientas tuvo un impacto positivo en el aprendizaje de sus estudiantes? Defina un indicador observable y medible.</span>
+      <textarea id="r6" placeholder="Consideraré que la implementación fue exitosa cuando observé que... medido a través de..."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="saveReflection()">Guardar reflexión localmente</button>
+      <button class="btn-secondary" onclick="exportReflection()">Exportar como texto</button>
+      <button class="btn-secondary" onclick="clearReflection()">Limpiar campos</button>
+    </div>
+    <div class="form-saved" id="form-saved-msg">
+      Las respuestas han sido guardadas en este navegador. Recuerde exportar el texto y subirlo a Google Classroom como entrega final.
+    </div>
+  </div>
+
+  <h3>Consideraciones finales sobre el uso crítico de la IA en educación</h3>
+
+  <p>La integración de herramientas de inteligencia artificial en la práctica docente no es una tendencia pasajera ni una solución universal. Es una decisión pedagógica que requiere evaluación continua, criterio disciplinar y responsabilidad ética. La IA puede amplificar las capacidades del docente reflexivo, pero también puede amplificar las deficiencias del docente que delega el pensamiento crítico a una herramienta.</p>
+
+  <p>Los tres principios que deben guiar su implementación son: la <em>intencionalidad pedagógica</em> (cada herramienta cumple un propósito de aprendizaje específico y justificado), la <em>supervisión docente activa</em> (el docente valida, ajusta y critica lo que la IA produce antes de llevarlo al aula) y la <em>alfabetización de los estudiantes</em> (los estudiantes aprenden no solo a usar las herramientas, sino a evaluar críticamente sus outputs y reconocer sus limitaciones).</p>
+
+  <div class="callout callout-warn">
+    <div class="callout-label">Recordatorio institucional</div>
+    <p>El uso de herramientas de IA con fines educativos debe enmarcarse en las políticas institucionales de la Universidad de la Ciénega y respetar las normativas vigentes sobre protección de datos personales (Ley Federal de Protección de Datos Personales en Posesión de los Particulares) y derechos de autor. Ante dudas, consulte a la Dirección Académica o al área jurídica de la institución.</p>
+  </div>
+
+  <h3>Recursos complementarios recomendados</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Recurso</th>
+        <th>Institución</th>
+        <th>Pertinencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://teachercenter.withgoogle.com" target="_blank" rel="noopener">Google Teacher Center</a></td>
+        <td>Google for Education</td>
+        <td>Cursos gratuitos de certificación en herramientas Google para docentes</td>
+      </tr>
+      <tr>
+        <td><a href="https://ai.google/education/" target="_blank" rel="noopener">Google AI for Education</a></td>
+        <td>Google</td>
+        <td>Marco de referencia para uso ético de IA en contextos educativos</td>
+      </tr>
+      <tr>
+        <td>Recomendación de la UNESCO sobre la Ética de la IA (2021)</td>
+        <td>UNESCO</td>
+        <td>Marco ético internacional para el desarrollo y uso de sistemas de IA</td>
+      </tr>
+      <tr>
+        <td>Marco de Competencias Docentes en IA de ISTE</td>
+        <td>ISTE</td>
+        <td>Estándares para docentes que integran IA en sus prácticas pedagógicas</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:600px; margin:0 auto;">
+    <strong>Universidad de la Ciénega — Dirección Académica</strong><br>
+    Guía de Formación Docente en Herramientas de IA Educativa<br>
+    Versión 1.0 · 2025<br><br>
+    <span style="font-size:0.75rem; opacity:0.6;">Este documento ha sido diseñado con fines de formación docente interna. Su reproducción parcial o total con fines diferentes a los establecidos por la institución requiere autorización expresa de la Dirección Académica.</span>
+  </div>
+</footer>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn" onclick="window.print()" title="Imprimir guía" aria-label="Imprimir esta guía">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+    <rect x="6" y="14" width="12" height="8"/>
+  </svg>
+</button>
+
+<script>
+// ── TABS ──
+function switchTab(btn, id) {
+  const wrapper = btn.closest('.tabs-wrapper');
+  wrapper.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  wrapper.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// ── ACCORDION ──
+function toggleAcc(btn) {
+  const item = btn.closest('.acc-item');
+  const isOpen = item.classList.contains('open');
+  item.closest('div').querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── PROGRESS ──
+function toggleProgress(el) {
+  el.classList.toggle('done');
+  updateProgress();
+  saveProgress();
+}
+
+function updateProgress() {
+  const items = document.querySelectorAll('.progress-item');
+  const done = document.querySelectorAll('.progress-item.done').length;
+  const pct = Math.round((done / items.length) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+}
+
+function saveProgress() {
+  const states = [];
+  document.querySelectorAll('.progress-item').forEach(el => {
+    states.push(el.classList.contains('done') ? '1' : '0');
+  });
+  try { localStorage.setItem('guia_progress', states.join(',')); } catch(e) {}
+}
+
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem('guia_progress');
+    if (saved) {
+      const states = saved.split(',');
+      document.querySelectorAll('.progress-item').forEach((el, i) => {
+        if (states[i] === '1') el.classList.add('done');
+      });
+      updateProgress();
+    }
+  } catch(e) {}
+}
+
+// ── REFLECTION ──
+function saveReflection() {
+  const fields = ['r1','r2','r3','r4','r5','r6'];
+  const data = {};
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
+  });
+  try {
+    localStorage.setItem('guia_reflection', JSON.stringify(data));
+    document.getElementById('form-saved-msg').style.display = 'block';
+    setTimeout(() => { document.getElementById('form-saved-msg').style.display = 'none'; }, 4000);
+  } catch(e) { alert('No fue posible guardar. Exporte el texto manualmente.'); }
+}
+
+function loadReflection() {
+  try {
+    const saved = localStorage.getItem('guia_reflection');
+    if (saved) {
+      const data = JSON.parse(saved);
+      Object.keys(data).forEach(id => {
+        const el = document.getElementById(id);
+        if (el && data[id]) el.value = data[id];
+      });
+    }
+  } catch(e) {}
+}
+
+function exportReflection() {
+  const labels = [
+    '1. Asignaturas donde aplicaré estas herramientas',
+    '2. Herramienta prioritaria y justificación pedagógica',
+    '3. Primera acción concreta (próximos 15 días)',
+    '4. Obstáculos anticipados y estrategias de mitigación',
+    '5. Postura crítica sobre la IA en mi práctica docente',
+    '6. Indicador personal de éxito'
+  ];
+  const ids = ['r1','r2','r3','r4','r5','r6'];
+  let text = 'PLAN DE APLICACIÓN PERSONAL\nGuía de Formación Docente — Herramientas de IA Educativa\nUniversidad de la Ciénega\n';
+  text += '─'.repeat(60) + '\n\n';
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    text += labels[i] + '\n\n';
+    text += (el && el.value ? el.value : '[Sin respuesta]') + '\n\n';
+    text += '─'.repeat(60) + '\n\n';
+  });
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'plan-aplicacion-docente.txt';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function clearReflection() {
+  if (!confirm('¿Desea eliminar todas las respuestas guardadas? Esta acción no se puede deshacer.')) return;
+  ['r1','r2','r3','r4','r5','r6'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  try { localStorage.removeItem('guia_reflection'); } catch(e) {}
+}
+
+// ── LOGO LOADING ──
+// Placeholder for future logo integration.
+// To add the official logo, replace the following with:
+// document.getElementById('logo-text').style.display = 'none';
+// const img = document.createElement('img');
+// img.src = 'logo-ucienega.png'; // Place the logo file in the same directory
+// img.alt = 'Logo Universidad de la Ciénega';
+// document.getElementById('logo-container').appendChild(img);
+
+// ── INIT ──
+loadProgress();
+loadReflection();
+</script>
+</body>
+</html>
