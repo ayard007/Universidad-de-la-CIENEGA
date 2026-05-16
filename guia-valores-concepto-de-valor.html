@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva | Concepto de Valor | Valores y Educación</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-oscuro: #1a2c5b;
+    --azul-medio: #2d4a8a;
+    --azul-claro: #5b7ec4;
+    --azul-suave: #e8edf7;
+    --gris-oscuro: #2c2c2c;
+    --gris-medio: #5a5a5a;
+    --gris-claro: #f4f5f7;
+    --blanco: #ffffff;
+    --acento: #c8a84b;
+    --acento-suave: #f7f0e0;
+    --verde: #2d6a4f;
+    --verde-suave: #e8f4ef;
+    --rojo: #8b1a1a;
+    --rojo-suave: #f7e8e8;
+    --borde: #dde2ee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--gris-oscuro);
+    background: var(--gris-claro);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+    color: var(--blanco);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border: 40px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 200px; height: 200px;
+    border: 30px solid rgba(200,168,75,0.1);
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .logo-wrap img {
+    height: 72px;
+    filter: brightness(0) invert(1);
+    display: block;
+  }
+
+  .inst-info {
+    flex: 1;
+  }
+
+  .inst-info .universidad {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    opacity: 0.95;
+  }
+
+  .inst-info .programa {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .badge-materia {
+    background: rgba(200,168,75,0.2);
+    border: 1px solid rgba(200,168,75,0.4);
+    color: #f0d98a;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .header-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header-content h1 span {
+    color: var(--acento);
+  }
+
+  .header-content .subtitulo {
+    font-size: 1rem;
+    opacity: 0.78;
+    font-weight: 300;
+    max-width: 640px;
+    margin-bottom: 22px;
+  }
+
+  .meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meta-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 0.78rem;
+    opacity: 0.85;
+  }
+
+  /* NAVEGACIÓN */
+  nav.toc {
+    background: var(--blanco);
+    border-bottom: 2px solid var(--borde);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .toc-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .toc-inner a {
+    color: var(--gris-medio);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 14px 16px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .toc-inner a:hover {
+    color: var(--azul-medio);
+    border-bottom-color: var(--azul-medio);
+    background: var(--azul-suave);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* SECCIONES */
+  .seccion {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .seccion-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .seccion-num {
+    background: var(--azul-medio);
+    color: var(--blanco);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .seccion-num.acento { background: var(--acento); color: var(--azul-oscuro); }
+  .seccion-num.verde { background: var(--verde); }
+  .seccion-num.quiz { background: var(--azul-oscuro); }
+
+  .seccion-titulo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    margin-bottom: 4px;
+  }
+
+  .seccion-titulo .etiqueta {
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gris-medio);
+  }
+
+  /* TIPOGRAFÍA */
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin: 24px 0 10px;
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  p { margin-bottom: 14px; color: var(--gris-oscuro); }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--azul-oscuro); font-weight: 600; }
+
+  /* CAJAS */
+  .caja {
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 4px solid;
+  }
+
+  .caja.info {
+    background: var(--azul-suave);
+    border-color: var(--azul-medio);
+  }
+
+  .caja.objetivo {
+    background: var(--acento-suave);
+    border-color: var(--acento);
+  }
+
+  .caja.ejemplo {
+    background: var(--verde-suave);
+    border-color: var(--verde);
+  }
+
+  .caja.importante {
+    background: var(--rojo-suave);
+    border-color: var(--rojo);
+  }
+
+  .caja-titulo {
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .caja.info .caja-titulo { color: var(--azul-medio); }
+  .caja.objetivo .caja-titulo { color: #7a6010; }
+  .caja.ejemplo .caja-titulo { color: var(--verde); }
+  .caja.importante .caja-titulo { color: var(--rojo); }
+
+  /* LISTAS */
+  ul.lista, ol.lista {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  ul.lista li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px solid var(--gris-claro);
+  }
+
+  ul.lista li:last-child { border-bottom: none; }
+
+  ul.lista li::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 17px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+  }
+
+  ol.lista { counter-reset: item; }
+
+  ol.lista li {
+    padding: 10px 0 10px 36px;
+    position: relative;
+    border-bottom: 1px solid var(--gris-claro);
+    counter-increment: item;
+  }
+
+  ol.lista li:last-child { border-bottom: none; }
+
+  ol.lista li::before {
+    content: counter(item);
+    position: absolute;
+    left: 0; top: 9px;
+    background: var(--azul-medio);
+    color: white;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* TABLA */
+  table.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 16px 0;
+  }
+
+  table.tabla th {
+    background: var(--azul-oscuro);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  table.tabla td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+  }
+
+  table.tabla tr:nth-child(even) td { background: var(--azul-suave); }
+
+  /* ACTIVIDADES */
+  .actividad-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--azul-oscuro);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  .actividad-badge.foro { background: #2d6a4f; }
+  .actividad-badge.individual { background: #2d4a8a; }
+  .actividad-badge.quiz { background: #4a2d8a; }
+
+  .paso {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gris-claro);
+    align-items: flex-start;
+  }
+
+  .paso:last-child { border-bottom: none; }
+
+  .paso-num {
+    background: var(--azul-suave);
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 0.88rem;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 1px solid var(--borde);
+  }
+
+  .paso-contenido { flex: 1; }
+
+  /* PREGUNTA DETONADORA */
+  .pregunta-detonadora {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .pregunta-detonadora::before {
+    content: '\201C';
+    position: absolute;
+    top: 10px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+  }
+
+  .pregunta-detonadora p {
+    color: white;
+    font-size: 1.08rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+  }
+
+  /* CRITERIOS RÚBRICA */
+  .rubrica-item {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gris-claro);
+    align-items: center;
+  }
+
+  .rubrica-item:last-child { border-bottom: none; }
+
+  .rubrica-puntos {
+    background: var(--azul-oscuro);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  /* QUIZ */
+  .quiz-container {
+    background: var(--gris-claro);
+    border-radius: 10px;
+    padding: 28px;
+  }
+
+  .quiz-progreso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .quiz-barra {
+    flex: 1;
+    height: 6px;
+    background: var(--borde);
+    border-radius: 3px;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+
+  .quiz-barra-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--azul-medio), var(--azul-claro));
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .quiz-num {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gris-medio);
+  }
+
+  .quiz-pregunta {
+    display: none;
+  }
+
+  .quiz-pregunta.activa { display: block; }
+
+  .quiz-pregunta h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .opcion {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    background: white;
+    border: 2px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+
+  .opcion:hover {
+    border-color: var(--azul-claro);
+    background: var(--azul-suave);
+  }
+
+  .opcion.seleccionada {
+    border-color: var(--azul-medio);
+    background: var(--azul-suave);
+  }
+
+  .opcion.correcta {
+    border-color: var(--verde);
+    background: var(--verde-suave);
+  }
+
+  .opcion.incorrecta {
+    border-color: var(--rojo);
+    background: var(--rojo-suave);
+  }
+
+  .opcion-letra {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--borde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+  }
+
+  .opcion.seleccionada .opcion-letra { background: var(--azul-medio); color: white; }
+  .opcion.correcta .opcion-letra { background: var(--verde); color: white; }
+  .opcion.incorrecta .opcion-letra { background: var(--rojo); color: white; }
+
+  .opcion-texto { font-size: 0.94rem; line-height: 1.5; }
+
+  .retroalimentacion {
+    display: none;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .retroalimentacion.correcta {
+    background: var(--verde-suave);
+    border: 1px solid var(--verde);
+    color: var(--verde);
+  }
+
+  .retroalimentacion.incorrecta {
+    background: var(--rojo-suave);
+    border: 1px solid var(--rojo);
+    color: var(--rojo);
+  }
+
+  .retroalimentacion.visible { display: block; }
+
+  /* BOTONES */
+  .btn {
+    padding: 12px 24px;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primario {
+    background: var(--azul-medio);
+    color: white;
+  }
+
+  .btn-primario:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29,74,138,0.25);
+  }
+
+  .btn-primario:disabled {
+    background: var(--borde);
+    color: var(--gris-medio);
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .btn-secundario {
+    background: transparent;
+    color: var(--azul-medio);
+    border: 2px solid var(--azul-medio);
+  }
+
+  .btn-secundario:hover {
+    background: var(--azul-suave);
+  }
+
+  /* RESULTADOS QUIZ */
+  .resultado-quiz {
+    display: none;
+    text-align: center;
+    padding: 32px 20px;
+  }
+
+  .resultado-quiz.visible { display: block; }
+
+  .resultado-puntuacion {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .resultado-puntuacion span {
+    font-size: 1.8rem;
+    color: var(--gris-medio);
+  }
+
+  .resultado-nivel {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .resultado-mensaje {
+    color: var(--gris-medio);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* REFLEXIÓN */
+  .reflexion-item {
+    background: var(--gris-claro);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--borde);
+  }
+
+  .reflexion-item label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 10px;
+  }
+
+  .reflexion-item textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 1.5px solid var(--borde);
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    resize: vertical;
+    background: white;
+    color: var(--gris-oscuro);
+    transition: border-color 0.2s;
+  }
+
+  .reflexion-item textarea:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--azul-oscuro);
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    padding: 28px 32px;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+  }
+
+  footer strong { color: rgba(255,255,255,0.9); }
+
+  /* CLASSROOM LINK */
+  .classroom-cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #0f9d58;
+    color: white;
+    padding: 16px 22px;
+    border-radius: 8px;
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 0.92rem;
+  }
+
+  .classroom-cta .icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .header-inner { padding: 24px 20px 28px; }
+    .header-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .header-content h1 { font-size: 1.7rem; }
+    main { padding: 24px 16px 48px; }
+    .seccion { padding: 24px 18px; }
+    .toc-inner { padding: 0 16px; }
+    .toc-inner a { padding: 12px 10px; font-size: 0.76rem; }
+    table.tabla { font-size: 0.82rem; }
+    table.tabla th, table.tabla td { padding: 9px 10px; }
+  }
+
+  /* ANIMACIÓN DE ENTRADA */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .seccion {
+    animation: fadeInUp 0.4s ease both;
+  }
+
+  .seccion:nth-child(1) { animation-delay: 0.05s; }
+  .seccion:nth-child(2) { animation-delay: 0.1s; }
+  .seccion:nth-child(3) { animation-delay: 0.15s; }
+  .seccion:nth-child(4) { animation-delay: 0.2s; }
+  .seccion:nth-child(5) { animation-delay: 0.25s; }
+  .seccion:nth-child(6) { animation-delay: 0.3s; }
+  .seccion:nth-child(7) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- ENCABEZADO -->
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Universidad de la Ciénega">
+      </div>
+      <div class="inst-info">
+        <div class="universidad">Universidad de la Ciénega</div>
+        <div class="programa">Licenciatura en Pedagogía · Departamento de Ciencias de la Educación</div>
+      </div>
+      <div class="badge-materia">Valores y Educación</div>
+    </div>
+    <div class="header-content">
+      <h1>El <span>Concepto de Valor</span>:<br>Fundamentos y Comprensión Crítica</h1>
+      <p class="subtitulo">Guía de aprendizaje activo y constructivista para el análisis, problematización y apropiación del concepto de valor en contextos educativos contemporáneos.</p>
+      <div class="meta-tags">
+        <span class="meta-tag">Pedagogía Activa</span>
+        <span class="meta-tag">Aprendizaje Constructivista</span>
+        <span class="meta-tag">ABP</span>
+        <span class="meta-tag">Nivel Licenciatura</span>
+        <span class="meta-tag">3 Actividades para Classroom</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAVEGACIÓN -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#introduccion">Introducción</a>
+    <a href="#contenido">Contenido Teórico</a>
+    <a href="#actividad1">Actividad 1 · Foro</a>
+    <a href="#actividad2">Actividad 2 · Aplicada</a>
+    <a href="#actividad3">Actividad 3 · Quiz</a>
+    <a href="#reflexion">Reflexión Final</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- INTRODUCCIÓN -->
+  <section class="seccion" id="introduccion">
+    <div class="seccion-header">
+      <div class="seccion-num acento">I</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Punto de partida</div>
+        <h2>Introducción y Propósito de la Guía</h2>
+      </div>
+    </div>
+
+    <p>Esta guía ha sido diseñada con el propósito de acompañarle en el proceso de construcción de un conocimiento sólido, crítico y aplicable sobre el <strong>concepto de valor</strong> como categoría filosófica, ética y pedagógica. No se trata únicamente de memorizar definiciones, sino de comprender de manera profunda qué son los valores, cómo se originan, cómo se transmiten y cuál es su relevancia en la educación contemporánea.</p>
+
+    <p>Como estudiante de la Licenciatura en Pedagogía, se encuentra en una posición singular: es, simultáneamente, educando y futuro agente educativo. Esta doble condición le permite observar, analizar y cuestionar los valores tanto desde la experiencia propia como desde la perspectiva del profesional que formará a otros.</p>
+
+    <div class="caja objetivo">
+      <div class="caja-titulo">Competencias a desarrollar</div>
+      <p>Al concluir esta guía, el estudiante será capaz de: <strong>(1)</strong> definir y diferenciar el concepto de valor desde diversas perspectivas teóricas; <strong>(2)</strong> identificar la presencia de valores en situaciones educativas concretas; <strong>(3)</strong> argumentar de manera crítica y fundamentada sobre la función de los valores en la formación humana; y <strong>(4)</strong> plantear estrategias para la integración consciente de valores en su práctica como futuro pedagogo.</p>
+    </div>
+
+    <div class="caja info">
+      <div class="caja-titulo">Metodología de trabajo</div>
+      <p>Esta guía se fundamenta en tres principios pedagógicos: el <strong>constructivismo</strong> (el conocimiento se construye a partir de la experiencia y la reflexión activa), la <strong>pedagogía activa</strong> (el estudiante es protagonista de su aprendizaje) y el <strong>aprendizaje basado en problemas</strong> (se parte de situaciones problemáticas reales para generar comprensión significativa).</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO TEÓRICO -->
+  <section class="seccion" id="contenido">
+    <div class="seccion-header">
+      <div class="seccion-num">II</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Marco teórico</div>
+        <h2>Concepto de Valor: Fundamentos Teóricos</h2>
+      </div>
+    </div>
+
+    <h3>1. ¿Qué es un valor?</h3>
+    <p>El término <strong>valor</strong> proviene del latín <em>valere</em>, que significa "ser fuerte", "valer", "tener importancia". En su sentido filosófico más amplio, un valor es aquello que se considera deseable, importante o digno de ser preferido sobre otras opciones en un contexto determinado. Los valores no son entidades abstractas ni neutrales: expresan formas de ver el mundo, prioridades humanas y fundamentos sobre los cuales se construyen las culturas y las instituciones.</p>
+
+    <p>La <strong>axiología</strong> —del griego <em>axios</em> (valioso) y <em>logos</em> (estudio)— es la rama de la filosofía que se ocupa específicamente del estudio de los valores. Desde esta perspectiva, se examina tanto la naturaleza de los valores como los criterios que usamos para valorar y jerarquizar.</p>
+
+    <div class="caja ejemplo">
+      <div class="caja-titulo">Ejemplo para reflexionar</div>
+      <p>Cuando un estudiante decide no copiar en un examen, incluso cuando tendría la oportunidad de hacerlo sin consecuencias, está actuando conforme al valor de la <em>honestidad</em>. Ese valor orienta su conducta de manera más determinante que el miedo al castigo. ¿Qué diferencia existe entre actuar por convicción valorativa y actuar por temor a la sanción? Esta distinción es central en la educación en valores.</p>
+    </div>
+
+    <h3>2. Perspectivas teóricas sobre los valores</h3>
+    <p>Existen diversas corrientes filosóficas que explican el origen y la naturaleza de los valores. Conocerlas permite al pedagogo adoptar una posición crítica y fundamentada:</p>
+
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Perspectiva</th>
+          <th>Planteamiento central</th>
+          <th>Implicación educativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Objetivismo axiológico</strong><br>(Scheler, Hartmann)</td>
+          <td>Los valores existen con independencia del sujeto que los percibe; son entidades objetivas que el ser humano descubre.</td>
+          <td>El educador tiene la tarea de "revelar" los valores al estudiante como verdades universales.</td>
+        </tr>
+        <tr>
+          <td><strong>Subjetivismo axiológico</strong><br>(Meinong, Ehrenfels)</td>
+          <td>Los valores son proyecciones de los deseos, emociones o actitudes del sujeto; no existen fuera de él.</td>
+          <td>La formación en valores requiere atender la dimensión emocional y subjetiva de cada estudiante.</td>
+        </tr>
+        <tr>
+          <td><strong>Relacionismo axiológico</strong><br>(Dewey, enfoque pragmatista)</td>
+          <td>Los valores emergen de la relación entre el sujeto y su entorno social e histórico; son construcciones dinámicas.</td>
+          <td>Los valores se aprenden mediante la experiencia reflexiva y la participación en la vida comunitaria.</td>
+        </tr>
+        <tr>
+          <td><strong>Perspectiva constructivista</strong><br>(Piaget, Kohlberg)</td>
+          <td>Los valores son construcciones progresivas que el individuo elabora en interacción con su contexto social y moral.</td>
+          <td>El desarrollo moral es un proceso evolutivo que la educación puede estimular a través del diálogo y el conflicto cognitivo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. Características esenciales de los valores</h3>
+    <ul class="lista">
+      <li><strong>Polaridad:</strong> Todo valor tiene su contravalor. La justicia se opone a la injusticia, la honestidad al engaño. Esta bipolaridad es constitutiva de la estructura axiológica.</li>
+      <li><strong>Gradación o jerarquía:</strong> Los valores admiten distintos grados. Una persona puede ser más o menos honesta, más o menos solidaria. Además, en cada sistema de valores existe una jerarquía que determina cuáles son prioritarios.</li>
+      <li><strong>Objetividad relativa:</strong> Aunque los valores tienen una dimensión universal (el respeto a la dignidad humana), su expresión concreta varía según el contexto cultural e histórico.</li>
+      <li><strong>Dinamismo:</strong> Los sistemas de valores cambian a lo largo del tiempo y de las culturas. Lo que en una época se consideró un valor puede ser cuestionado en otra.</li>
+      <li><strong>Relacionalidad:</strong> Los valores no operan de forma aislada, sino en sistemas interconectados donde unos fundamentan a otros.</li>
+      <li><strong>Carácter orientador de la conducta:</strong> Los valores funcionan como criterios que guían las decisiones y las acciones humanas en situaciones de elección moral.</li>
+    </ul>
+
+    <h3>4. Clasificación de los valores</h3>
+    <p>Existen múltiples propuestas de clasificación. Una de las más empleadas en el ámbito educativo distingue las siguientes categorías:</p>
+
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>Ejemplos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Valores morales</strong></td>
+          <td>Honestidad, justicia, responsabilidad, solidaridad, respeto, tolerancia</td>
+        </tr>
+        <tr>
+          <td><strong>Valores intelectuales</strong></td>
+          <td>Verdad, rigor, curiosidad intelectual, pensamiento crítico</td>
+        </tr>
+        <tr>
+          <td><strong>Valores estéticos</strong></td>
+          <td>Belleza, armonía, creatividad, originalidad</td>
+        </tr>
+        <tr>
+          <td><strong>Valores sociales</strong></td>
+          <td>Cooperación, ciudadanía, equidad, bien común, participación</td>
+        </tr>
+        <tr>
+          <td><strong>Valores religiosos o trascendentes</strong></td>
+          <td>Fe, esperanza, sacralidad (según sistemas de creencias específicos)</td>
+        </tr>
+        <tr>
+          <td><strong>Valores vitales</strong></td>
+          <td>Salud, fuerza, vitalidad, bienestar</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5. Los valores en el contexto educativo</h3>
+    <p>La educación no es neutra en términos axiológicos. Toda práctica educativa, consciente o no, transmite valores: el modo en que el docente se relaciona con los estudiantes, los contenidos que se priorizan, las formas de evaluación que se utilizan, las normas que rigen la convivencia escolar —todo ello porta una carga valorativa.</p>
+
+    <p>El pedagogo contemporáneo debe ser capaz de <strong>identificar, analizar y cuestionar</strong> los valores implícitos en el currículo oculto, así como de promover de manera intencionada aquellos valores que favorecen el desarrollo integral de la persona y la construcción de una sociedad más justa y equitativa.</p>
+
+    <div class="caja importante">
+      <div class="caja-titulo">Punto de problematización</div>
+      <p>Una cuestión central para su formación como pedagogo es la siguiente: ¿Puede la educación ser neutral en cuanto a valores? ¿Es posible y deseable que el docente "no transmita" ningún valor? La respuesta a estas preguntas definirá, en gran medida, su posición ética como profesional de la educación.</p>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 1: FORO -->
+  <section class="seccion" id="actividad1">
+    <div class="seccion-header">
+      <div class="seccion-num verde">1</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Para entregar en Google Classroom</div>
+        <h2>Actividad 1: Foro de Mediación y Reflexión Crítica</h2>
+      </div>
+    </div>
+
+    <div class="actividad-badge foro">Foro colaborativo · Mediación pedagógica</div>
+
+    <div class="caja objetivo">
+      <div class="caja-titulo">Propósito de la actividad</div>
+      <p>Desarrollar el pensamiento crítico, la argumentación fundamentada y la escucha activa mediante el intercambio de perspectivas diversas sobre la naturaleza y el papel de los valores en la experiencia educativa propia.</p>
+    </div>
+
+    <h3>Pregunta detonadora del foro</h3>
+
+    <div class="pregunta-detonadora">
+      <p>Desde su experiencia como estudiante universitario, ¿en qué medida considera que la institución educativa ha sido un agente real de formación en valores? ¿Puede identificar un momento concreto —una clase, una situación, una interacción con un docente o compañero— en el que haya experimentado o cuestionado un valor de manera significativa? A partir de esa experiencia, reflexione: ¿los valores se enseñan de manera explícita, o se aprenden de manera implícita a través del ambiente y las relaciones escolares?</p>
+    </div>
+
+    <h3>Instrucciones paso a paso</h3>
+    <ol class="lista">
+      <li>
+        <div><strong>Ingrese al Foro en Google Classroom.</strong> En la plataforma, localice la actividad denominada "Foro: El Concepto de Valor en mi Experiencia Educativa". Haga clic en el enlace habilitado por el docente.</div>
+      </li>
+      <li>
+        <div><strong>Redacte su participación inicial.</strong> Antes de escribir, dedique al menos 10 minutos a reflexionar sobre la pregunta detonadora. Su respuesta debe incluir: (a) una experiencia educativa concreta y observable (no generalidades), (b) una conexión explícita con algún concepto teórico abordado en esta guía, y (c) su posición argumentada sobre cómo se aprenden los valores en la universidad.</div>
+      </li>
+      <li>
+        <div><strong>Extensión y formato.</strong> Su participación debe tener entre 200 y 350 palabras. Utilice lenguaje formal, párrafos bien estructurados y referencias directas a su experiencia. Evite afirmaciones genéricas que no estén respaldadas por evidencia o argumento.</div>
+      </li>
+      <li>
+        <div><strong>Lea las participaciones de al menos dos compañeros.</strong> Identifique puntos de coincidencia, divergencia o aspectos no considerados en su propia reflexión.</div>
+      </li>
+      <li>
+        <div><strong>Realice dos réplicas argumentadas.</strong> Sus respuestas a compañeros deben ir más allá de la simple aprobación o desacuerdo. Aporte un argumento nuevo, un cuestionamiento fundamentado o una perspectiva complementaria. Cada réplica debe tener entre 80 y 120 palabras.</div>
+      </li>
+      <li>
+        <div><strong>Suba evidencia en Classroom.</strong> Capture una imagen o realice una exportación en PDF de su participación y las dos réplicas, y súbala como entrega en la tarea correspondiente de Google Classroom antes de la fecha límite indicada por el docente.</div>
+      </li>
+    </ol>
+
+    <div class="caja ejemplo">
+      <div class="caja-titulo">Ejemplo de participación efectiva (extracto orientador)</div>
+      <p>"Durante mi segundo semestre, participé en un seminario donde el docente aplicaba una dinámica de debate sobre temas éticos. En una sesión específica, discutimos la obligación moral de denunciar la deshonestidad académica. Observé que, aunque institucionalmente se promovía la integridad, el ambiente informal del grupo generaba presión para guardar silencio. Esta experiencia me permitió identificar lo que Dewey denominaba el currículo oculto: los valores que realmente se aprenden no siempre coinciden con los que se declaran. Considero que la universidad, más que enseñar valores de manera explícita, los transmite a través de las normas relacionales implícitas que rigen su cotidianidad..."</p>
+    </div>
+
+    <div class="caja importante">
+      <div class="caja-titulo">Criterio de reflexión crítica — Por qué no puede copiarse de IA</div>
+      <p>La pregunta detonadora requiere que usted narre una experiencia <strong>real, concreta y verificable</strong> de su propia trayectoria en esta universidad. Ningún sistema de inteligencia artificial puede conocer su historia personal, las asignaturas que cursó, los docentes con quienes interactuó, ni las situaciones específicas que vivió. Su participación deberá ser auténtica, y el docente podrá solicitar que amplíe o precise los detalles de la experiencia narrada.</p>
+    </div>
+
+    <h3>Rúbrica de evaluación</h3>
+    <div class="rubrica-item"><div><strong>Pertinencia y autenticidad de la experiencia narrada</strong><br>La situación descrita es concreta, verificable y propia.</div><div class="rubrica-puntos">25 pts</div></div>
+    <div class="rubrica-item"><div><strong>Conexión con el marco teórico</strong><br>Se cita o aplica al menos un concepto de los fundamentos teóricos de la guía.</div><div class="rubrica-puntos">25 pts</div></div>
+    <div class="rubrica-item"><div><strong>Calidad argumentativa</strong><br>La posición se sostiene con razones, no con meras opiniones o generalidades.</div><div class="rubrica-puntos">20 pts</div></div>
+    <div class="rubrica-item"><div><strong>Participación dialógica (dos réplicas)</strong><br>Las respuestas a compañeros aportan perspectivas nuevas y son respetuosas.</div><div class="rubrica-puntos">20 pts</div></div>
+    <div class="rubrica-item"><div><strong>Forma y registro</strong><br>Extensión adecuada, lenguaje formal, ausencia de errores ortográficos graves.</div><div class="rubrica-puntos">10 pts</div></div>
+
+    <div class="classroom-cta">
+      <span class="icon">📋</span>
+      <div><strong>Entregar en Google Classroom:</strong> Acceda al foro desde la sección "Actividades" de su clase y suba la captura de evidencia antes de la fecha indicada por su docente.</div>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 2: APLICADA -->
+  <section class="seccion" id="actividad2">
+    <div class="seccion-header">
+      <div class="seccion-num">2</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Para entregar en Google Classroom</div>
+        <h2>Actividad 2: Análisis de Valores en la Práctica Universitaria</h2>
+      </div>
+    </div>
+
+    <div class="actividad-badge individual">Actividad individual · Aprendizaje significativo aplicado</div>
+
+    <div class="caja objetivo">
+      <div class="caja-titulo">Propósito de la actividad</div>
+      <p>Desarrollar la capacidad de observación y análisis crítico del entorno educativo inmediato, identificando la presencia —explícita e implícita— de valores en la dinámica de las clases universitarias y elaborando propuestas concretas de acción pedagógica fundamentadas en los contenidos teóricos.</p>
+    </div>
+
+    <h3>Situación problemática de base (ABP)</h3>
+    <div class="caja info">
+      <div class="caja-titulo">Contexto del problema</div>
+      <p>Imagine que acaba de ser convocado a una reunión del Consejo Académico de su programa. La coordinadora de Pedagogía le pide que elabore un <strong>mapa axiológico de su experiencia universitaria actual</strong>: un diagnóstico fundamentado de los valores que realmente opera en su trayectoria como estudiante —tanto en las clases que toma como en las interacciones que establece—, con el fin de diseñar acciones de mejora. Usted tiene una semana para presentar su análisis.</p>
+    </div>
+
+    <h3>Instrucciones paso a paso</h3>
+    <ol class="lista">
+      <li>
+        <div><strong>Seleccione tres materias o espacios universitarios distintos</strong> en los que usted participe actualmente (pueden ser clases, talleres, prácticas, actividades extracurriculares de la institución). Anótelos con su nombre completo.</div>
+      </li>
+      <li>
+        <div><strong>Para cada espacio, complete la siguiente observación:</strong> identifique (a) un valor que se promueve de forma <em>explícita</em> (declarado en el programa, mencionado por el docente, contenido en el reglamento); (b) un valor que se opera de forma <em>implícita</em> (se infiere de las prácticas, las dinámicas o los ejemplos que se usan sin nombrarse directamente); y (c) un posible <em>contravalor</em> o tensión axiológica presente (algo que, a su juicio, contradice o debilita los valores declarados).</div>
+      </li>
+      <li>
+        <div><strong>Organice sus hallazgos en una tabla de análisis axiológico.</strong> Puede hacerlo en Google Docs, una hoja de cálculo, un documento Word o cualquier herramienta de su preferencia, siempre que sea legible y esté estructurado.</div>
+      </li>
+      <li>
+        <div><strong>Redacte un análisis interpretativo</strong> de entre 400 y 500 palabras donde explique sus hallazgos, conecte al menos dos perspectivas teóricas estudiadas en esta guía con lo observado, y responda a la pregunta: ¿qué valores considera prioritarios para su futura práctica como pedagogo y por qué?</div>
+      </li>
+      <li>
+        <div><strong>Incluya una sección de propuesta de acción.</strong> Plantee al menos dos estrategias concretas y viables que, como futuro pedagogo, podría implementar para fortalecer la formación en valores en el nivel universitario. Fundamente cada propuesta con algún referente teórico o ejemplo de práctica pedagógica documentada.</div>
+      </li>
+      <li>
+        <div><strong>Suba el documento completo a Google Classroom</strong> en la tarea correspondiente, con portada que incluya su nombre completo, matrícula, nombre de la materia, fecha y nombre del docente.</div>
+      </li>
+    </ol>
+
+    <div class="caja ejemplo">
+      <div class="caja-titulo">Modelo de tabla de análisis axiológico</div>
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Espacio / Materia</th>
+            <th>Valor explícito</th>
+            <th>Valor implícito</th>
+            <th>Tensión axiológica observada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Teorías del Aprendizaje</td>
+            <td>Pensamiento crítico (mencionado en el programa)</td>
+            <td>Autonomía (el docente fomenta la búsqueda propia de fuentes)</td>
+            <td>Competitividad implícita al comparar calificaciones públicamente</td>
+          </tr>
+          <tr>
+            <td>Práctica Docente</td>
+            <td>Respeto (normas de convivencia explícitas)</td>
+            <td>Solidaridad (apoyo entre compañeros en las observaciones)</td>
+            <td>El cumplimiento formal prima sobre la reflexión auténtica</td>
+          </tr>
+          <tr>
+            <td>[Su tercer espacio]</td>
+            <td>[Registro propio]</td>
+            <td>[Registro propio]</td>
+            <td>[Registro propio]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="caja importante">
+      <div class="caja-titulo">Criterio de reflexión crítica — Por qué no puede copiarse de IA</div>
+      <p>Esta actividad exige que usted registre los datos <strong>exactos y actuales</strong> de las materias en las que está inscrito en este semestre, con los valores que ha observado en las sesiones reales a las que ha asistido. Sus hallazgos deben reflejar su contexto institucional específico y su experiencia vivida. El análisis deberá presentar ejemplos concretos de situaciones observadas —no afirmaciones genéricas— que un sistema de inteligencia artificial no podría conocer ni inventar de manera verificable.</p>
+    </div>
+
+    <h3>Rúbrica de evaluación</h3>
+    <div class="rubrica-item"><div><strong>Completitud y rigor del registro observacional</strong><br>La tabla incluye tres espacios con todos los campos llenos y con datos auténticos y específicos.</div><div class="rubrica-puntos">20 pts</div></div>
+    <div class="rubrica-item"><div><strong>Profundidad del análisis interpretativo</strong><br>Conecta los hallazgos con al menos dos perspectivas teóricas de forma pertinente y no superficial.</div><div class="rubrica-puntos">30 pts</div></div>
+    <div class="rubrica-item"><div><strong>Pertinencia de las propuestas de acción</strong><br>Las estrategias propuestas son viables, concretas y fundamentadas teóricamente.</div><div class="rubrica-puntos">25 pts</div></div>
+    <div class="rubrica-item"><div><strong>Coherencia y estructura del documento</strong><br>El texto está bien organizado, tiene portada y cumple con los requisitos de extensión y formato.</div><div class="rubrica-puntos">15 pts</div></div>
+    <div class="rubrica-item"><div><strong>Uso correcto del lenguaje académico</strong><br>Registro formal, vocabulario técnico pertinente, ausencia de errores ortográficos graves.</div><div class="rubrica-puntos">10 pts</div></div>
+
+    <div class="classroom-cta">
+      <span class="icon">📋</span>
+      <div><strong>Entregar en Google Classroom:</strong> Suba el documento completo (tabla + análisis + propuestas + portada) en la tarea "Actividad 2 — Análisis Axiológico" antes de la fecha límite.</div>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 3: QUIZ -->
+  <section class="seccion" id="actividad3">
+    <div class="seccion-header">
+      <div class="seccion-num quiz">3</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Para entregar en Google Classroom</div>
+        <h2>Actividad 3: Quiz de Comprensión — Concepto de Valor</h2>
+      </div>
+    </div>
+
+    <div class="actividad-badge quiz">Quiz interactivo · 5 preguntas · Con puntaje</div>
+
+    <div class="caja objetivo">
+      <div class="caja-titulo">Propósito de la actividad</div>
+      <p>Verificar y consolidar la comprensión conceptual de los fundamentos teóricos del concepto de valor mediante un instrumento de autoevaluación interactivo que proporciona retroalimentación inmediata sobre cada respuesta.</p>
+    </div>
+
+    <div class="caja info">
+      <div class="caja-titulo">Instrucciones para el quiz</div>
+      <p>Responda las cinco preguntas a continuación. Seleccione la opción que considere correcta y haga clic en "Verificar respuesta" para recibir retroalimentación inmediata. Al finalizar, obtendrá su puntaje total. <strong>Capture una imagen de su resultado final y súbala a Google Classroom como evidencia de la actividad.</strong></p>
+    </div>
+
+    <div class="quiz-container" id="quiz">
+      <div class="quiz-progreso">
+        <span class="quiz-num" id="quiz-progreso-texto">Pregunta 1 de 5</span>
+        <div class="quiz-barra"><div class="quiz-barra-fill" id="quiz-barra" style="width:20%"></div></div>
+        <span class="quiz-num" id="quiz-puntaje-parcial">0 / 5 correctas</span>
+      </div>
+
+      <!-- P1 -->
+      <div class="quiz-pregunta activa" id="p1">
+        <h4>1. La rama de la filosofía que se dedica al estudio sistemático de los valores, sus fundamentos y jerarquías se denomina:</h4>
+        <div class="opciones">
+          <div class="opcion" onclick="seleccionar(this, 'p1', false)">
+            <div class="opcion-letra">A</div>
+            <div class="opcion-texto">Deontología, ya que estudia los deberes y las normas morales que orientan la conducta humana.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p1', true)">
+            <div class="opcion-letra">B</div>
+            <div class="opcion-texto">Axiología, proveniente del griego <em>axios</em> (valioso) y <em>logos</em> (estudio o razón).</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p1', false)">
+            <div class="opcion-letra">C</div>
+            <div class="opcion-texto">Epistemología, puesto que se ocupa del origen y validez del conocimiento humano.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p1', false)">
+            <div class="opcion-letra">D</div>
+            <div class="opcion-texto">Teleología, porque analiza los fines y propósitos últimos de la acción humana.</div>
+          </div>
+        </div>
+        <div class="retroalimentacion correcta" id="ret1c">Correcto. La axiología es la disciplina filosófica que estudia los valores: su naturaleza, su estructura, su jerarquía y los criterios que empleamos para valorar. Es una de las bases teóricas indispensables en la formación del pedagogo.</div>
+        <div class="retroalimentacion incorrecta" id="ret1i">Incorrecto. La respuesta correcta es la Axiología (opción B). La deontología, la epistemología y la teleología son ramas filosóficas distintas con objetos de estudio propios, aunque relacionados con la filosofía moral y educativa.</div>
+        <button class="btn btn-primario" onclick="siguiente('p1', 'p2', 1)" id="btn-p1" disabled>Verificar y continuar</button>
+      </div>
+
+      <!-- P2 -->
+      <div class="quiz-pregunta" id="p2">
+        <h4>2. Según el <strong>objetivismo axiológico</strong> (representado por filósofos como Max Scheler), los valores:</h4>
+        <div class="opciones">
+          <div class="opcion" onclick="seleccionar(this, 'p2', false)">
+            <div class="opcion-letra">A</div>
+            <div class="opcion-texto">Son creaciones del sujeto que emergen de sus deseos y emociones; no tienen existencia independiente del individuo.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p2', false)">
+            <div class="opcion-letra">B</div>
+            <div class="opcion-texto">Se construyen progresivamente en la interacción del individuo con su entorno social y cultural.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p2', true)">
+            <div class="opcion-letra">C</div>
+            <div class="opcion-texto">Existen de manera objetiva e independiente del sujeto que los percibe; el ser humano los descubre, no los inventa.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p2', false)">
+            <div class="opcion-letra">D</div>
+            <div class="opcion-texto">Son convenciones sociales acordadas por las comunidades en función de sus intereses pragmáticos y utilitarios.</div>
+          </div>
+        </div>
+        <div class="retroalimentacion correcta" id="ret2c">Correcto. Para el objetivismo axiológico, los valores poseen existencia propia independiente del sujeto. El ser humano los capta o descubre mediante una intuición emocional —en el caso de Scheler— pero no los crea ni los inventa a partir de sus preferencias.</div>
+        <div class="retroalimentacion incorrecta" id="ret2i">Incorrecto. La opción correcta es la C. El objetivismo axiológico sostiene que los valores existen objetivamente, con independencia del sujeto. Las demás opciones describen el subjetivismo axiológico, el constructivismo y el relativismo o pragmatismo, respectivamente.</div>
+        <button class="btn btn-primario" onclick="siguiente('p2', 'p3', 2)" id="btn-p2" disabled>Verificar y continuar</button>
+      </div>
+
+      <!-- P3 -->
+      <div class="quiz-pregunta" id="p3">
+        <h4>3. La <strong>polaridad</strong> como característica esencial de los valores significa que:</h4>
+        <div class="opciones">
+          <div class="opcion" onclick="seleccionar(this, 'p3', false)">
+            <div class="opcion-letra">A</div>
+            <div class="opcion-texto">Los valores se organizan en una jerarquía donde unos son superiores a otros según su importancia para la vida humana.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p3', false)">
+            <div class="opcion-letra">B</div>
+            <div class="opcion-texto">Los valores son universales en su contenido pero particulares en su expresión cultural e histórica.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p3', true)">
+            <div class="opcion-letra">C</div>
+            <div class="opcion-texto">Todo valor implica necesariamente su contrario o contravalor; honestidad y deshonestidad, justicia e injusticia son pares constitutivos de la estructura axiológica.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p3', false)">
+            <div class="opcion-letra">D</div>
+            <div class="opcion-texto">Los valores pueden variar y transformarse a lo largo del tiempo y de los contextos culturales.</div>
+          </div>
+        </div>
+        <div class="retroalimentacion correcta" id="ret3c">Correcto. La polaridad es una característica estructural de los valores: cada valor positivo tiene su contravalor negativo correspondiente. La justicia se opone a la injusticia, la lealtad a la traición. Esta bipolariedad es inherente a la lógica axiológica y no puede suprimirse.</div>
+        <div class="retroalimentacion incorrecta" id="ret3i">Incorrecto. La opción correcta es la C. La opción A describe la <em>jerarquía</em> de los valores; la opción B se refiere a su <em>objetividad relativa</em>; la opción D alude al <em>dinamismo</em> de los valores. La polaridad, específicamente, refiere a la estructura de pares opuestos (valor–contravalor).</div>
+        <button class="btn btn-primario" onclick="siguiente('p3', 'p4', 3)" id="btn-p3" disabled>Verificar y continuar</button>
+      </div>
+
+      <!-- P4 -->
+      <div class="quiz-pregunta" id="p4">
+        <h4>4. Desde la perspectiva del <strong>currículo oculto</strong>, los valores en la educación se transmiten principalmente a través de:</h4>
+        <div class="opciones">
+          <div class="opcion" onclick="seleccionar(this, 'p4', false)">
+            <div class="opcion-letra">A</div>
+            <div class="opcion-texto">Las asignaturas de ética y formación cívica que se incluyen de manera explícita en el plan de estudios oficial.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p4', false)">
+            <div class="opcion-letra">B</div>
+            <div class="opcion-texto">Los libros de texto y materiales didácticos seleccionados por el docente para cada unidad temática.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p4', true)">
+            <div class="opcion-letra">C</div>
+            <div class="opcion-texto">Las prácticas, relaciones, normas y dinámicas cotidianas de la institución escolar que no están declaradas en ningún documento formal.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p4', false)">
+            <div class="opcion-letra">D</div>
+            <div class="opcion-texto">Los programas de orientación y tutoría diseñados específicamente para la formación en valores y convivencia.</div>
+          </div>
+        </div>
+        <div class="retroalimentacion correcta" id="ret4c">Correcto. El currículo oculto hace referencia a todos aquellos aprendizajes —incluidos los valores— que se producen en la institución educativa de manera no declarada: la forma en que el docente trata a los estudiantes, las reglas implícitas de convivencia, los modelos de éxito que se promueven, la distribución del poder en el aula, etcétera.</div>
+        <div class="retroalimentacion incorrecta" id="ret4i">Incorrecto. La respuesta correcta es la C. El currículo oculto, a diferencia del currículo formal, no está enunciado en ningún documento oficial. Las opciones A, B y D describen elementos del currículo explícito o formal, que sí está planificado y declarado institucionalmente.</div>
+        <button class="btn btn-primario" onclick="siguiente('p4', 'p5', 4)" id="btn-p4" disabled>Verificar y continuar</button>
+      </div>
+
+      <!-- P5 -->
+      <div class="quiz-pregunta" id="p5">
+        <h4>5. Según el <strong>enfoque constructivista</strong> del desarrollo moral (Kohlberg), la formación en valores en el ámbito educativo se favorece principalmente a través de:</h4>
+        <div class="opciones">
+          <div class="opcion" onclick="seleccionar(this, 'p5', false)">
+            <div class="opcion-letra">A</div>
+            <div class="opcion-texto">La memorización y repetición de normas morales establecidas por la autoridad educativa competente.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p5', true)">
+            <div class="opcion-letra">B</div>
+            <div class="opcion-texto">La exposición a dilemas morales, el diálogo reflexivo y el conflicto cognitivo que estimulan el razonamiento ético propio.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p5', false)">
+            <div class="opcion-letra">C</div>
+            <div class="opcion-texto">La imitación de modelos adultos virtuosos mediante el ejemplo constante y la autoridad moral del docente.</div>
+          </div>
+          <div class="opcion" onclick="seleccionar(this, 'p5', false)">
+            <div class="opcion-letra">D</div>
+            <div class="opcion-texto">La instrucción directa y sistemática de los valores universales reconocidos por la tradición filosófica occidental.</div>
+          </div>
+        </div>
+        <div class="retroalimentacion correcta" id="ret5c">Correcto. Para Kohlberg, el desarrollo moral no se produce por transmisión directa ni por imitación, sino mediante la progresiva reorganización cognitiva del razonamiento ético del sujeto. Los dilemas morales funcionan como detonadores que provocan desequilibrio cognitivo y estimulan el avance hacia estadios más complejos del razonamiento moral.</div>
+        <div class="retroalimentacion incorrecta" id="ret5i">Incorrecto. La respuesta correcta es la B. La opción A describe un modelo conductista de transmisión de normas; la C se corresponde más con la teoría del aprendizaje por modelado (Bandura); y la D con un enfoque doctrinario. Kohlberg, desde el constructivismo, enfatizó el diálogo y el conflicto cognitivo como motores del desarrollo moral.</div>
+        <button class="btn btn-primario" onclick="mostrarResultado()" id="btn-p5" disabled>Ver resultado final</button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="resultado-quiz" id="resultado">
+        <div class="resultado-puntuacion" id="puntuacion-display">0<span>/5</span></div>
+        <div class="resultado-nivel" id="nivel-display"></div>
+        <div class="resultado-mensaje" id="mensaje-display"></div>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn btn-secundario" onclick="reiniciarQuiz()">Intentar nuevamente</button>
+          <button class="btn btn-primario" onclick="window.print()">Imprimir resultado</button>
+        </div>
+        <div style="margin-top: 20px; padding: 16px; background: var(--azul-suave); border-radius: 8px; font-size: 0.9rem; color: var(--azul-oscuro);">
+          Capture una imagen de esta pantalla con su puntaje y nombre, y súbala a Google Classroom como evidencia de la Actividad 3.
+        </div>
+      </div>
+    </div>
+
+    <div class="classroom-cta" style="margin-top:24px;">
+      <span class="icon">📋</span>
+      <div><strong>Entregar en Google Classroom:</strong> Suba una captura de pantalla de su resultado final (que muestre claramente el puntaje obtenido) en la tarea "Actividad 3 — Quiz: Concepto de Valor".</div>
+    </div>
+  </section>
+
+  <!-- REFLEXIÓN FINAL -->
+  <section class="seccion" id="reflexion">
+    <div class="seccion-header">
+      <div class="seccion-num acento">R</div>
+      <div class="seccion-titulo">
+        <div class="etiqueta">Cierre formativo</div>
+        <h2>Reflexión Final y Plan de Aplicación</h2>
+      </div>
+    </div>
+
+    <p>El proceso de aprendizaje no concluye con la entrega de las actividades. Esta sección le propone un ejercicio de metacognición y proyección profesional: pensar en lo que aprendió, en cómo lo aprendió y en cómo planea llevarlo a su práctica como estudiante universitario y, en el futuro, como pedagogo.</p>
+
+    <p>Responda de manera escrita y reflexiva cada una de las siguientes preguntas. No existe una respuesta "correcta": lo que se valora es la autenticidad, la profundidad y la conexión entre lo teórico y lo vivencial. Puede usar este espacio para un ejercicio personal de reflexión; la versión que entregue en Classroom deberá estar redactada en documento con portada.</p>
+
+    <div class="reflexion-item">
+      <label>1. ¿Cuál fue el aprendizaje más significativo que obtuvo sobre el concepto de valor en esta guía? ¿Qué le resultó novedoso o desafiante?</label>
+      <textarea placeholder="Escriba su reflexión aquí de manera personal y auténtica..."></textarea>
+    </div>
+
+    <div class="reflexion-item">
+      <label>2. ¿De qué manera el análisis del concepto de valor ha modificado o enriquecido su comprensión de su propia experiencia como estudiante universitario?</label>
+      <textarea placeholder="Reflexione sobre conexiones concretas entre la teoría y su vida académica..."></textarea>
+    </div>
+
+    <div class="reflexion-item">
+      <label>3. Como futuro pedagogo, ¿qué valores considera imprescindibles en su práctica profesional? ¿Por qué? ¿Cómo planea cultivarlos durante su formación?</label>
+      <textarea placeholder="Sea específico y fundamente su respuesta en los contenidos estudiados..."></textarea>
+    </div>
+
+    <div class="reflexion-item">
+      <label>4. Identifique una acción concreta —pequeña pero realizable— que llevará a cabo en los próximos 30 días como resultado de lo aprendido en esta guía. Descríbala en detalle: qué hará, cuándo, en qué contexto y qué valor estará poniendo en práctica.</label>
+      <textarea placeholder="Plantee algo concreto, observable y verificable en su vida universitaria cotidiana..."></textarea>
+    </div>
+
+    <div class="caja objetivo">
+      <div class="caja-titulo">Nota sobre la reflexión final</div>
+      <p>Las respuestas de esta sección deberán entregarse como parte de un documento independiente en Google Classroom, bajo la tarea "Reflexión Final — Valores y Educación". La extensión mínima es de 150 palabras por pregunta. Se evaluarán la profundidad reflexiva, la autenticidad del análisis y la coherencia entre los contenidos teóricos y la proyección práctica.</p>
+    </div>
+
+    <h3>Recursos complementarios recomendados</h3>
+    <ul class="lista">
+      <li><strong>Scheler, M.</strong> (1941). <em>Ética: nuevo ensayo de fundamentación de un personalismo ético</em>. Revista de Occidente. — Para profundizar en el objetivismo axiológico y la jerarquía de valores.</li>
+      <li><strong>Kohlberg, L.</strong> (1992). <em>Psicología del desarrollo moral</em>. Desclée de Brouwer. — Para comprender el desarrollo moral desde la perspectiva constructivista.</li>
+      <li><strong>Dewey, J.</strong> (1995). <em>Democracia y educación</em>. Morata. — Para analizar la relación entre valores, experiencia y educación desde el pragmatismo.</li>
+      <li><strong>Escámez, J. y Gil, R.</strong> (2001). <em>La educación en la responsabilidad</em>. Paidós. — Una perspectiva aplicada de la educación en valores para el contexto hispanohablante.</li>
+      <li><strong>Freire, P.</strong> (1970). <em>Pedagogía del oprimido</em>. Siglo XXI. — Para problematizar la dimensión política y ética de la práctica educativa.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Ciénega</strong> · Licenciatura en Pedagogía<br>
+  Materia: Valores y Educación · Tema: Concepto de Valor<br>
+  Guía diseñada con principios de pedagogía activa, constructivismo y aprendizaje basado en problemas.<br>
+  Material de uso educativo exclusivo · Ciclo Escolar vigente
+</footer>
+
+<script>
+  // Estado del quiz
+  const estado = {
+    puntaje: 0,
+    preguntaActual: 1,
+    respondidas: {}
+  };
+
+  function seleccionar(elem, pregunta, esCorrecta) {
+    // Si ya respondió esta pregunta, no hacer nada
+    if (estado.respondidas[pregunta] !== undefined) return;
+    
+    // Marcar seleccionada
+    const opciones = elem.parentElement.querySelectorAll('.opcion');
+    opciones.forEach(o => o.classList.remove('seleccionada'));
+    elem.classList.add('seleccionada');
+    
+    // Guardar respuesta
+    estado.respondidas[pregunta] = esCorrecta;
+    
+    // Bloquear opciones
+    opciones.forEach(o => {
+      o.style.cursor = 'default';
+      o.setAttribute('onclick', '');
+    });
+    
+    // Marcar correcta/incorrecta
+    if (esCorrecta) {
+      elem.classList.add('correcta');
+      estado.puntaje++;
+    } else {
+      elem.classList.add('incorrecta');
+      // Mostrar cuál era la correcta
+      opciones.forEach(o => {
+        const onclick_str = o.getAttribute('data-correcto');
+      });
+    }
+    
+    // Mostrar retroalimentación
+    const num = pregunta.replace('p', '');
+    const retC = document.getElementById('ret' + num + 'c');
+    const retI = document.getElementById('ret' + num + 'i');
+    
+    if (esCorrecta) {
+      retC.classList.add('visible');
+    } else {
+      retI.classList.add('visible');
+    }
+    
+    // Habilitar botón
+    const btn = document.getElementById('btn-' + pregunta);
+    btn.disabled = false;
+    
+    // Actualizar puntaje parcial
+    const total = Object.keys(estado.respondidas).length;
+    const correctas = Object.values(estado.respondidas).filter(v => v).length;
+    document.getElementById('quiz-puntaje-parcial').textContent = correctas + ' / ' + total + ' correctas';
+  }
+
+  function siguiente(actual, siguiente, num) {
+    document.getElementById(actual).classList.remove('activa');
+    document.getElementById(siguiente).classList.add('activa');
+    estado.preguntaActual = num + 1;
+    document.getElementById('quiz-progreso-texto').textContent = 'Pregunta ' + (num + 1) + ' de 5';
+    document.getElementById('quiz-barra').style.width = ((num + 1) * 20) + '%';
+    window.scrollTo({top: document.getElementById('actividad3').offsetTop - 80, behavior: 'smooth'});
+  }
+
+  function mostrarResultado() {
+    document.getElementById('p5').classList.remove('activa');
+    const resultado = document.getElementById('resultado');
+    resultado.classList.add('visible');
+    
+    const p = estado.puntaje;
+    document.getElementById('puntuacion-display').innerHTML = p + '<span>/5</span>';
+    
+    let nivel, mensaje, color;
+    if (p === 5) {
+      nivel = 'Dominio sobresaliente';
+      mensaje = 'Ha demostrado una comprensión sólida y completa de los fundamentos del concepto de valor. Está preparado para profundizar en los debates contemporáneos de la axiología educativa.';
+      color = 'var(--verde)';
+    } else if (p === 4) {
+      nivel = 'Dominio satisfactorio';
+      mensaje = 'Ha respondido correctamente la mayoría de los planteamientos. Revise los ítems en los que obtuvo retroalimentación de mejora para consolidar su comprensión conceptual.';
+      color = 'var(--azul-medio)';
+    } else if (p === 3) {
+      nivel = 'Dominio en proceso';
+      mensaje = 'Ha comprendido los conceptos centrales, pero algunos aspectos requieren mayor estudio. Se recomienda releer las secciones teóricas correspondientes a las preguntas no respondidas correctamente.';
+      color = 'var(--acento)';
+    } else {
+      nivel = 'Requiere refuerzo';
+      mensaje = 'Algunos conceptos fundamentales necesitan un trabajo más sistemático. Se recomienda releer la guía completa, consultar las fuentes bibliográficas señaladas y retomar el quiz después del repaso.';
+      color = 'var(--rojo)';
+    }
+    
+    document.getElementById('nivel-display').textContent = nivel;
+    document.getElementById('nivel-display').style.color = color;
+    document.getElementById('mensaje-display').textContent = mensaje;
+    document.getElementById('quiz-progreso-texto').textContent = 'Quiz completado';
+    document.getElementById('quiz-barra').style.width = '100%';
+    document.getElementById('quiz-puntaje-parcial').textContent = p + ' / 5 correctas';
+    
+    window.scrollTo({top: document.getElementById('actividad3').offsetTop - 80, behavior: 'smooth'});
+  }
+
+  function reiniciarQuiz() {
+    estado.puntaje = 0;
+    estado.preguntaActual = 1;
+    estado.respondidas = {};
+    
+    // Ocultar resultado
+    document.getElementById('resultado').classList.remove('visible');
+    
+    // Reiniciar preguntas
+    ['p1','p2','p3','p4','p5'].forEach((id, idx) => {
+      const pregunta = document.getElementById(id);
+      pregunta.classList.remove('activa');
+      
+      // Restaurar opciones
+      pregunta.querySelectorAll('.opcion').forEach((op, i) => {
+        op.classList.remove('seleccionada', 'correcta', 'incorrecta');
+        op.style.cursor = 'pointer';
+        const letras = ['A','B','C','D'];
+        // Restaurar eventos - necesitamos reconstruir los onclick
+      });
+      
+      // Ocultar retroalimentación
+      pregunta.querySelectorAll('.retroalimentacion').forEach(r => r.classList.remove('visible'));
+      
+      // Deshabilitar botón
+      const btnId = id === 'p5' ? 'btn-p5' : 'btn-' + id;
+      document.getElementById(btnId).disabled = true;
+    });
+    
+    // Mostrar primera
+    document.getElementById('p1').classList.add('activa');
+    document.getElementById('quiz-progreso-texto').textContent = 'Pregunta 1 de 5';
+    document.getElementById('quiz-barra').style.width = '20%';
+    document.getElementById('quiz-puntaje-parcial').textContent = '0 / 5 correctas';
+    
+    // Recargar la página es la forma más limpia de reiniciar
+    location.reload();
+  }
+
+  // Navegación suave
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
