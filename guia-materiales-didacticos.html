@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva — Los Nuevos Materiales Didácticos | Universidad de la Ciénega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #243054;
+    --navy-light: #2e3d6b;
+    --steel: #4a6fa5;
+    --steel-light: #6b8fc4;
+    --silver: #c8d4e8;
+    --cream: #f5f3ee;
+    --warm-white: #faf9f6;
+    --text-dark: #1a1f2e;
+    --text-mid: #3a4256;
+    --text-muted: #6b748a;
+    --gold: #b08d57;
+    --gold-light: #d4aa70;
+    --success: #2e7d52;
+    --success-light: #e8f5ee;
+    --border: #dde3ed;
+    --shadow: 0 4px 24px rgba(26,39,68,0.10);
+    --shadow-lg: 0 12px 48px rgba(26,39,68,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    line-height: 1.75;
+    font-size: 17px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--steel) 100%);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 40px 48px 48px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .logo-wrap {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    flex-shrink: 0;
+  }
+  .logo-wrap img { display: block; height: 72px; width: auto; }
+  .header-text { position: relative; z-index: 1; }
+  .header-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 15px;
+    color: var(--silver);
+    opacity: 0.9;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .header-meta {
+    margin-top: 22px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── NAVIGATION ── */
+  .nav-strip {
+    background: var(--navy-mid);
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .nav-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--silver);
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    padding: 14px 18px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    color: white;
+    border-bottom-color: var(--gold-light);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main-wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    border-left: 5px solid var(--gold);
+    padding: 32px 0 32px 28px;
+    margin: 48px 0 36px;
+  }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+  .section-desc {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  /* ── PROSE ── */
+  .prose h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin: 32px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .prose h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin: 24px 0 8px;
+  }
+  .prose p { margin-bottom: 16px; color: var(--text-mid); line-height: 1.8; }
+  .prose ul, .prose ol { margin: 0 0 16px 24px; color: var(--text-mid); }
+  .prose li { margin-bottom: 6px; line-height: 1.7; }
+
+  /* ── CARDS GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 28px 0;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .card-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--steel) 100%);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .card-accent { border-top: 3px solid var(--gold); }
+
+  /* ── INFO BOXES ── */
+  .info-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--steel);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: var(--shadow);
+  }
+  .info-box.highlight { border-left-color: var(--gold); background: #fdf8f0; }
+  .info-box.note { border-left-color: var(--success); background: var(--success-light); }
+  .info-box-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .info-box p { margin: 0; color: var(--text-mid); font-size: 15px; }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 10px; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; background: white; }
+  thead { background: var(--navy); color: white; }
+  th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  td { padding: 12px 18px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-mid); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f7f9fc; }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+  .tag-digital { background: #e8f0fe; color: #1967d2; }
+  .tag-traditional { background: #fce8e6; color: #c5221f; }
+  .tag-hybrid { background: #e6f4ea; color: #137333; }
+
+  /* ── ACTIVITY BLOCK ── */
+  .activity-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 32px 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .activity-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 28px 36px;
+    color: white;
+  }
+  .activity-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .activity-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .activity-subtitle {
+    margin-top: 6px;
+    color: var(--silver);
+    font-size: 14px;
+    font-style: italic;
+  }
+  .activity-badges {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .activity-body { padding: 36px; }
+
+  /* ── STEPS ── */
+  .steps { list-style: none; margin: 20px 0; }
+  .step-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-content { flex: 1; }
+  .step-title { font-weight: 600; color: var(--navy); margin-bottom: 4px; font-size: 15px; }
+  .step-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+
+  /* ── CLASSROOM UPLOAD BOX ── */
+  .classroom-box {
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .classroom-icon { font-size: 36px; flex-shrink: 0; }
+  .classroom-text h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .classroom-text p { font-size: 14px; opacity: 0.9; margin: 0; line-height: 1.5; }
+
+  /* ── FORO SIMULADOR ── */
+  .forum-sim {
+    background: #f8f9fc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  .forum-header-bar {
+    background: var(--navy-mid);
+    color: white;
+    padding: 12px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .forum-question-box {
+    background: white;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px;
+  }
+  .forum-question-box p { margin: 0; font-size: 15px; font-style: italic; color: var(--text-dark); line-height: 1.7; }
+  .forum-response-area {
+    margin: 0 16px 16px;
+  }
+  .forum-response-area textarea {
+    width: 100%;
+    min-height: 110px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .forum-response-area textarea:focus { border-color: var(--steel); }
+  .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .forum-btn-row { margin-top: 10px; display: flex; gap: 10px; }
+
+  /* ── RUBRIC TABLE ── */
+  .rubric { margin: 24px 0; }
+  .rubric-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-wrap { margin: 20px 0; }
+  .quiz-question {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    transition: border-color 0.3s;
+  }
+  .quiz-question.answered-correct { border-color: var(--success); background: var(--success-light); }
+  .quiz-question.answered-wrong { border-color: #d93025; background: #fce8e6; }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .q-options { display: flex; flex-direction: column; gap: 10px; }
+  .q-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: var(--text-mid);
+    background: white;
+    text-align: left;
+  }
+  .q-option:hover { border-color: var(--steel); background: #f0f4fb; }
+  .q-option.selected { border-color: var(--navy); background: #eef2fb; color: var(--navy); }
+  .q-option.correct { border-color: var(--success); background: var(--success-light); color: var(--success); }
+  .q-option.incorrect { border-color: #d93025; background: #fce8e6; color: #c5221f; }
+  .q-option input[type="radio"] { display: none; }
+  .q-bullet {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+  }
+  .q-option.selected .q-bullet { border-color: var(--navy); background: var(--navy); color: white; }
+  .q-option.correct .q-bullet { border-color: var(--success); background: var(--success); color: white; }
+  .q-option.incorrect .q-bullet { border-color: #d93025; background: #d93025; color: white; }
+  .q-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+  .q-feedback.show { display: block; }
+  .q-feedback.ok { background: var(--success-light); color: var(--success); border: 1px solid #a8d5b5; }
+  .q-feedback.fail { background: #fce8e6; color: #c5221f; border: 1px solid #f5c6c3; }
+
+  /* Score panel */
+  .score-panel {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    display: none;
+    margin-top: 24px;
+  }
+  .score-panel.show { display: block; animation: fadeIn 0.5s ease; }
+  .score-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .score-label { font-size: 16px; color: var(--silver); margin-bottom: 20px; }
+  .score-message { font-size: 18px; font-style: italic; margin-bottom: 28px; }
+  .score-detail { font-size: 14px; color: var(--silver); opacity: 0.85; }
+
+  /* ── REFLECTION SECTION ── */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 28px 0;
+  }
+  .reflection-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .reflection-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .reflection-card textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .reflection-card textarea:focus { border-color: var(--gold); }
+  .reflection-card p { font-size: 13px; color: var(--text-muted); margin: 0 0 10px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar-wrap { background: var(--border); border-radius: 100px; height: 6px; margin: 6px 0 20px; }
+  .progress-bar { height: 6px; border-radius: 100px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); transition: width 0.5s ease; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--navy);
+    color: var(--silver);
+    text-align: center;
+    padding: 32px 48px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .site-footer strong { color: white; }
+
+  /* ── COMPETENCY TAGS ── */
+  .competency-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .comp-tag {
+    background: var(--navy);
+    color: var(--silver);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--steel) 100%);
+  }
+  .timeline-item { position: relative; margin-bottom: 24px; }
+  .timeline-dot {
+    position: absolute;
+    left: -26px; top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .timeline-content { font-size: 14px; color: var(--text-mid); }
+  .timeline-label { font-weight: 600; color: var(--navy); font-size: 15px; margin-bottom: 4px; }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .header-inner { grid-template-columns: 1fr; padding: 28px 24px 32px; gap: 24px; }
+    .main-wrap { padding: 0 24px 60px; }
+    .nav-inner { padding: 0 16px; }
+    .activity-body { padding: 24px; }
+    .activity-header { padding: 22px 24px; }
+    .header-meta { gap: 10px; }
+  }
+
+  /* Example block */
+  .example-block {
+    border-left: 3px solid var(--gold);
+    background: #fdf8f0;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+    font-style: italic;
+  }
+  .example-block strong { color: var(--navy); font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════ HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="data:image/jpeg;base64,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" alt="Universidad de la Ciénega">
+    </div>
+    <div class="header-text">
+      <div class="header-kicker">Universidad de la Ciénega &mdash; Licenciatura en Pedagogía</div>
+      <h1 class="header-title">Los Nuevos Materiales Didácticos<br>y los Materiales Educativos Digitales</h1>
+      <div class="header-subtitle">Guía interactiva para el aprendizaje activo y significativo &mdash; Tecnología y Educación II</div>
+      <div class="header-meta">
+        <span class="meta-pill">Tema 1 &mdash; Unidad I</span>
+        <span class="meta-pill">Nivel Licenciatura</span>
+        <span class="meta-pill">Constructivismo &amp; ABP</span>
+        <span class="meta-pill">3 Actividades</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ NAV -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('intro')">Introducción</button>
+    <button class="nav-btn" onclick="showSection('contenido')">Contenido Temático</button>
+    <button class="nav-btn" onclick="showSection('act1')">Actividad 1 &mdash; Foro</button>
+    <button class="nav-btn" onclick="showSection('act2')">Actividad 2 &mdash; Aplicación</button>
+    <button class="nav-btn" onclick="showSection('act3')">Actividad 3 &mdash; Quiz</button>
+    <button class="nav-btn" onclick="showSection('reflexion')">Reflexión Final</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════ MAIN -->
+<main class="main-wrap">
+
+  <!-- ══ SECCIÓN: INTRODUCCIÓN ══ -->
+  <section id="intro" class="section active">
+    <div class="section-header">
+      <div class="section-tag">Punto de partida</div>
+      <h2 class="section-title">Bienvenida a la Guía de Aprendizaje</h2>
+      <p class="section-desc">Pedagogía activa, constructivismo y aprendizaje basado en problemas aplicados a la práctica docente universitaria.</p>
+    </div>
+
+    <div class="prose">
+      <p>Esta guía interactiva ha sido diseñada para que usted, como estudiante de la Licenciatura en Pedagogía, no solo comprenda el concepto de materiales didácticos, sino que sea capaz de <strong>seleccionarlos, evaluarlos e integrarlos conscientemente</strong> en su práctica educativa. El conocimiento se construye a través de la experiencia y la reflexión, no de la memorización.</p>
+      <p>A lo largo de esta guía encontrará marcos conceptuales, actividades prácticas colaborativas y un espacio de reflexión personal. Cada actividad ha sido diseñada bajo los principios del <strong>constructivismo</strong>, la <strong>pedagogía activa</strong> y el <strong>Aprendizaje Basado en Problemas (ABP)</strong>.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card card-accent">
+        <div class="card-icon">&#128218;</div>
+        <div class="card-title">Propósito de la guía</div>
+        <p>Que el estudiante identifique, analice y evalúe los materiales didácticos —incluyendo los digitales— como mediadores del aprendizaje en contextos educativos contemporáneos.</p>
+      </div>
+      <div class="card card-accent">
+        <div class="card-icon">&#9881;</div>
+        <div class="card-title">Competencias a desarrollar</div>
+        <p>Pensamiento crítico sobre recursos educativos, selección fundamentada de materiales y aplicación práctica en el diseño instruccional universitario.</p>
+      </div>
+      <div class="card card-accent">
+        <div class="card-icon">&#128101;</div>
+        <div class="card-title">Metodología de trabajo</div>
+        <p>Construcción colaborativa del conocimiento mediante foros de discusión, producción de recursos propios y autoevaluación mediante quiz interactivo.</p>
+      </div>
+    </div>
+
+    <div class="info-box highlight">
+      <div class="info-box-title">Pregunta problema generadora</div>
+      <p><em>"Si un estudiante puede encontrar cualquier contenido en internet en segundos, ¿cuál es el papel real del docente y de los materiales didácticos en el aprendizaje significativo?"</em></p>
+    </div>
+
+    <div class="section-header" style="margin-top: 40px;">
+      <div class="section-tag">Estructura de la guía</div>
+      <h3 class="section-title" style="font-size:22px;">¿Cómo está organizada esta guía?</h3>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Contenido Temático</div>
+          Marcos conceptuales, clasificaciones y análisis de los materiales didácticos tradicionales y digitales.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Actividad 1 — Foro de Mediación</div>
+          Participación en un foro con pregunta detonadora para el análisis crítico colaborativo. Entrega en Classroom.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Actividad 2 — Aplicación Práctica</div>
+          Diseño de un banco de recursos didácticos para una materia de su licenciatura. Entrega en Classroom.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Actividad 3 — Quiz de autoevaluación</div>
+          5 preguntas de opción múltiple con retroalimentación inmediata y puntaje final. Entrega en Classroom.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Reflexión y aplicación</div>
+          Planificación personal de cómo integrar lo aprendido en su vida académica y futura práctica docente.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box note">
+      <div class="info-box-title">Indicacion importante</div>
+      <p>Lea detenidamente cada sección antes de realizar las actividades. Las tres actividades deberán subirse a Google Classroom en los plazos indicados por su docente. Esta guía es un recurso de apoyo continuo, no un formulario de una sola vez.</p>
+    </div>
+  </section>
+
+  <!-- ══ SECCIÓN: CONTENIDO TEMÁTICO ══ -->
+  <section id="contenido" class="section">
+    <div class="section-header">
+      <div class="section-tag">Tema 1 &mdash; Unidad I</div>
+      <h2 class="section-title">Los Nuevos Materiales Didácticos</h2>
+      <p class="section-desc">Fundamentos conceptuales, clasificaciones y análisis crítico de los materiales educativos en la era digital.</p>
+    </div>
+
+    <div class="prose">
+      <h3>1.1 ¿Qué es un material didáctico?</h3>
+      <p>Un <strong>material didáctico</strong> es cualquier recurso —objeto, texto, tecnología, dispositivo o experiencia— que el docente utiliza intencionalmente para mediar entre el contenido a enseñar y el aprendizaje del estudiante. Su función va más allá de la transmisión de información: actúa como un andamiaje cognitivo que facilita la construcción de significados.</p>
+      <p>Desde la perspectiva constructivista de Vigotsky, los materiales didácticos operan como herramientas mediadoras dentro de la Zona de Desarrollo Próximo (ZDP), conectando lo que el estudiante ya sabe con lo que es capaz de aprender con apoyo adecuado.</p>
+
+      <div class="example-block">
+        <strong>Ejemplo para reflexionar:</strong> Una presentación de diapositivas no es, en sí misma, un material didáctico eficaz; lo se convierte cuando el docente la diseña con preguntas que provocan reflexión, actividades intercaladas y conexiones con la experiencia del estudiante. El material es didáctico por su <em>uso pedagógico</em>, no solo por su forma.
+      </div>
+
+      <h3>1.2 Características de los materiales didácticos efectivos</h3>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Pertinencia</div>
+        <p>El material responde a los objetivos de aprendizaje establecidos y se ajusta al nivel cognitivo, cultural y contextual del estudiante.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Significatividad</div>
+        <p>Conecta los nuevos contenidos con los conocimientos previos del estudiante, generando aprendizaje significativo (Ausubel).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Funcionalidad</div>
+        <p>Es operativo: el estudiante puede utilizarlo de forma autónoma o guiada, y transfiere lo aprendido a situaciones nuevas.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Motivación</div>
+        <p>Despierta el interés genuino del estudiante, genera curiosidad y sostiene la atención durante el proceso de aprendizaje.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Interactividad</div>
+        <p>Permite la participación activa: el estudiante no es receptor pasivo, sino que interactúa, produce, cuestiona y construye.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Adaptabilidad</div>
+        <p>Puede ajustarse a distintos estilos de aprendizaje, ritmos individuales y condiciones de acceso de los estudiantes.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>1.3 Clasificación de los materiales didácticos</h3>
+      <p>Existen diversas taxonomías para clasificar los materiales didácticos. Una de las más útiles para la práctica docente contemporánea distingue tres grandes categorías:</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Tipo</th>
+            <th>Ejemplos</th>
+            <th>Función pedagógica principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag tag-traditional">Tradicionales</span></td>
+            <td>Impresos y visuales</td>
+            <td>Libros de texto, mapas, láminas, carteles, fichas de trabajo, modelos anatómicos</td>
+            <td>Presentar información estructurada; desarrollar habilidades de análisis y síntesis</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-digital">Digitales</span></td>
+            <td>Recursos tecnológicos interactivos</td>
+            <td>Videos educativos, podcasts, simuladores, OVA, plataformas LMS, REA, realidad aumentada</td>
+            <td>Facilitar el aprendizaje autónomo, interactivo y a ritmo propio; conectar con fuentes primarias</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-hybrid">Híbridos</span></td>
+            <td>Combinación de medios</td>
+            <td>Libros digitales interactivos (ePub3), aprendizaje mixto (blended), kits de laboratorio con soporte digital</td>
+            <td>Aprovechar las fortalezas de ambos medios; atender la diversidad de estilos de aprendizaje</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <h3>1.4 Los materiales educativos digitales (MED)</h3>
+      <p>Los <strong>Materiales Educativos Digitales (MED)</strong> son recursos creados o adaptados mediante tecnologías digitales con una intención pedagógica explícita. Se distinguen de los recursos digitales generales en que han sido diseñados —o seleccionados con criterio fundamentado— para apoyar procesos específicos de enseñanza y aprendizaje.</p>
+
+      <h4>Tipología de los MED en la educación superior</h4>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Objetos Virtuales de Aprendizaje (OVA)</div>
+        <p>Unidades digitales independientes y reutilizables que integran contenido, actividad y evaluación sobre un objetivo de aprendizaje específico. Ejemplo: un OVA sobre las etapas del desarrollo cognitivo de Piaget.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Recursos Educativos Abiertos (REA)</div>
+        <p>Materiales con licencia abierta que permiten su uso, adaptación y redistribución libre. Khan Academy, MIT OpenCourseWare y MERLOT son repositorios de REA reconocidos internacionalmente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Simuladores y entornos virtuales</div>
+        <p>Recrean situaciones reales o abstractas para que el estudiante experimente sin riesgo. En pedagogía, los simuladores de aula permiten practicar estrategias docentes antes de la práctica real.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Video educativo y podcast</div>
+        <p>Contenidos audiovisuales diseñados pedagógicamente: con objetivos claros, estructura didáctica y actividades de comprensión. Difieren del video informativo en su intencionalidad formativa.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Plataformas LMS</div>
+        <p>Sistemas de gestión del aprendizaje como Google Classroom, Moodle o Canvas. No son materiales en sí mismos, sino entornos que organizan, distribuyen y evalúan el uso de materiales y actividades.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Infografías y mapas conceptuales digitales</div>
+        <p>Representaciones visuales que sintetizan y organizan la información de manera gráfica. Canva, MindMeister y Coggle son herramientas para su creación colaborativa.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>1.5 Criterios para la selección y evaluación de materiales didácticos</h3>
+      <p>El docente reflexivo no elige materiales por hábito, novedad tecnológica o conveniencia, sino a partir de criterios pedagógicos fundamentados. A continuación se presenta una guía de criterios de evaluación:</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Pregunta orientadora</th>
+            <th>Indicadores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Alineación curricular</strong></td>
+            <td>¿El material responde al objetivo de aprendizaje?</td>
+            <td>Coherencia con competencias, contenidos y perfil del egresado</td>
+          </tr>
+          <tr>
+            <td><strong>Calidad del contenido</strong></td>
+            <td>¿La información es veraz, actualizada y rigurosa?</td>
+            <td>Fuentes confiables, autoría identificable, referencias bibliográficas</td>
+          </tr>
+          <tr>
+            <td><strong>Usabilidad</strong></td>
+            <td>¿El estudiante puede utilizarlo de manera autónoma?</td>
+            <td>Instrucciones claras, navegación intuitiva, accesibilidad</td>
+          </tr>
+          <tr>
+            <td><strong>Interactividad</strong></td>
+            <td>¿Promueve la participación activa del estudiante?</td>
+            <td>Actividades, retroalimentación, posibilidad de producción</td>
+          </tr>
+          <tr>
+            <td><strong>Accesibilidad</strong></td>
+            <td>¿Todos los estudiantes pueden acceder a él?</td>
+            <td>Costo, conectividad requerida, compatibilidad con dispositivos</td>
+          </tr>
+          <tr>
+            <td><strong>Pertinencia cultural</strong></td>
+            <td>¿Respeta y representa el contexto del estudiante?</td>
+            <td>Lenguaje inclusivo, representación cultural, ejemplos contextualizados</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">Para profundizar</div>
+      <p>Se recomienda consultar el repositorio de la <strong>UNESCO</strong> sobre Recursos Educativos Abiertos en: <a href="https://www.oercommons.org" target="_blank" style="color:var(--steel);">oercommons.org</a>; el portal de <strong>Colombia Aprende</strong> del Ministerio de Educación de Colombia sobre OVA: <a href="https://colombiaaprende.edu.co" target="_blank" style="color:var(--steel);">colombiaaprende.edu.co</a>; y el texto de <strong>Area Moreira, M. (2009)</strong>, <em>Introducción a la Tecnología Educativa</em>, disponible en acceso abierto.</p>
+    </div>
+  </section>
+
+  <!-- ══ SECCIÓN: ACTIVIDAD 1 — FORO ══ -->
+  <section id="act1" class="section">
+    <div class="activity-block">
+      <div class="activity-header">
+        <div class="activity-num">Actividad 01 de 03</div>
+        <div class="activity-title">Foro de Mediación: Reflexión Crítica Colaborativa</div>
+        <div class="activity-subtitle">Construcción colectiva del conocimiento a través del diálogo argumentado</div>
+        <div class="activity-badges">
+          <span class="badge">Foro de discusión</span>
+          <span class="badge">Entrega en Classroom</span>
+          <span class="badge">Trabajo individual</span>
+          <span class="badge">Valor: según rúbrica</span>
+        </div>
+      </div>
+      <div class="activity-body">
+
+        <div class="info-box highlight">
+          <div class="info-box-title">Fundamentación pedagógica</div>
+          <p>El foro de discusión, dentro del enfoque constructivista social, replica la estructura de la <em>zona de desarrollo próximo</em> en un entorno colaborativo: cada participante aporta su perspectiva y, al entrar en contacto con la de los demás, avanza más allá de lo que alcanzaría de forma individual. La pregunta detonadora no tiene una respuesta única; su función es provocar pensamiento, no confirmar información.</p>
+        </div>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--navy); margin:24px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px;">Propósito de la actividad</h3>
+        <p style="color:var(--text-mid); margin-bottom:20px;">Analizar críticamente el papel de los materiales didácticos —especialmente los digitales— en el aprendizaje universitario, a partir de su propia experiencia como estudiante activo, y construir una postura argumentada mediante el intercambio con sus compañeros.</p>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--navy); margin:24px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px;">Pregunta detonadora</h3>
+
+        <div class="forum-sim">
+          <div class="forum-header-bar">SIMULADOR DE FORO &mdash; TECNOLOGÍA Y EDUCACIÓN II</div>
+          <div style="padding:16px 16px 0;">
+            <div class="forum-question-box">
+              <p>"En un entorno universitario donde los estudiantes tienen acceso ilimitado a información digital, <strong>¿puede un video de YouTube, una infografía de internet o un podcast reemplazar al docente como material didáctico?</strong> ¿Bajo qué condiciones un recurso digital se convierte en un verdadero material educativo y cuándo permanece solo como entretenimiento informativo? Fundamente su respuesta con ejemplos concretos de su experiencia universitaria actual."</p>
+            </div>
+          </div>
+          <div class="forum-response-area">
+            <p style="font-size:12px; color:var(--text-muted); margin:0 0 8px; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em;">ESPACIO DE PRÁCTICA &mdash; SU RESPUESTA REAL DEBE PUBLICARSE EN GOOGLE CLASSROOM</p>
+            <textarea id="forum-draft" placeholder="Redacte aquí un borrador de su respuesta antes de publicarla en Classroom. Recuerde: debe argumentar con base en su experiencia real como estudiante universitario. No puede ser respondida con una búsqueda de internet porque requiere su perspectiva personal y vivencial."></textarea>
+            <div class="forum-btn-row">
+              <button class="btn btn-primary" onclick="saveDraft()">Guardar borrador</button>
+              <button class="btn btn-gold" onclick="clearDraft()">Limpiar</button>
+            </div>
+            <p id="draft-msg" style="font-size:13px; color:var(--success); margin-top:8px; display:none;">Borrador guardado. Cuando esté listo, publique su respuesta definitiva en Google Classroom.</p>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--navy); margin:28px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px;">Instrucciones paso a paso</h3>
+
+        <ul class="steps">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Leer y reflexionar (antes de escribir)</div>
+              <div class="step-desc">Lea la pregunta detonadora completa. Dedique al menos 10 minutos a reflexionar sobre su experiencia real como estudiante universitario antes de escribir. Evite buscar respuestas en internet; esta actividad requiere su vivencia personal.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Redactar una respuesta fundamentada</div>
+              <div class="step-desc">Escriba una respuesta de entre 250 y 400 palabras. Debe incluir: (a) su postura clara frente a la pregunta, (b) al menos dos argumentos que la sustenten, y (c) un ejemplo concreto de su experiencia universitaria (nombre la materia, el recurso y lo que ocurrió con su aprendizaje). Puede utilizar el espacio de práctica de arriba para redactar su borrador.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Publicar en Google Classroom</div>
+              <div class="step-desc">Acceda a Google Classroom, entre a la actividad "Foro 1 — Materiales Didácticos" y publique su respuesta como comentario de clase. No copie ni pegue desde motores de búsqueda; los foros se leen en clase y su docente identificará respuestas genéricas.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Leer y responder a dos compañeros</div>
+              <div class="step-desc">Lea las respuestas de al menos dos compañeros y publique un comentario de respuesta para cada uno. Sus comentarios deben: (a) identificar un punto de acuerdo o desacuerdo específico, (b) agregar un argumento nuevo, y (c) tener un tono académico y respetuoso. No es suficiente escribir "estoy de acuerdo" sin argumentar.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-title">Captura de pantalla como evidencia</div>
+              <div class="step-desc">Tome una captura de pantalla que muestre su publicación original y sus dos respuestas a compañeros en Classroom. Súbala como archivo adjunto en la tarea correspondiente dentro de la misma plataforma.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="example-block">
+          <strong>Ejemplo de respuesta bien estructurada (extracto):</strong> "En mi experiencia en la materia de Psicología Educativa, el docente asignó un video de TED Talks sobre motivación. La primera vez que vi el video fue entretenido, pero no cambió nada en mi comprensión. Sin embargo, cuando el mismo video fue acompañado de una guía de observación con preguntas específicas y una discusión grupal posterior, se convirtió en un material educativo real. Esto me lleva a argumentar que la diferencia entre un recurso digital y un material didáctico no reside en el formato, sino en la intencionalidad pedagógica con que se usa..."
+        </div>
+
+        <div class="rubric">
+          <div class="rubric-title">Rúbrica de evaluación — Foro de Mediación</div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Criterio</th>
+                  <th>Excelente (100%)</th>
+                  <th>Satisfactorio (75%)</th>
+                  <th>En desarrollo (50%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Postura y argumentación</strong></td>
+                  <td>Postura clara, argumentos sólidos con ejemplos reales y pertinentes</td>
+                  <td>Postura identificable, argumentos presentes pero con ejemplos genéricos</td>
+                  <td>Postura vaga o ausente; argumentos insuficientes</td>
+                </tr>
+                <tr>
+                  <td><strong>Pertinencia y originalidad</strong></td>
+                  <td>Respuesta basada en vivencia real; no reproducible por IA o búsqueda web</td>
+                  <td>Mezcla de experiencia personal y contenido general</td>
+                  <td>Respuesta genérica sin experiencia personal</td>
+                </tr>
+                <tr>
+                  <td><strong>Interacción con compañeros</strong></td>
+                  <td>Dos respuestas sustantivas que avanzan el diálogo académico</td>
+                  <td>Dos respuestas con contenido pero sin profundidad argumentativa</td>
+                  <td>Una sola respuesta o respuestas superficiales</td>
+                </tr>
+                <tr>
+                  <td><strong>Calidad académica</strong></td>
+                  <td>Vocabulario pedagógico adecuado, ortografía impecable, tono formal</td>
+                  <td>Vocabulario adecuado con algunos errores menores</td>
+                  <td>Vocabulario informal o errores frecuentes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="classroom-box">
+          <div class="classroom-icon">&#128197;</div>
+          <div class="classroom-text">
+            <h4>Entrega en Google Classroom</h4>
+            <p>Publicación original + 2 respuestas a compañeros + captura de pantalla como evidencia. Entrega antes de la fecha indicada por su docente en la plataforma. El acceso a Classroom es mediante su cuenta institucional de la Universidad de la Ciénega.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECCIÓN: ACTIVIDAD 2 — APLICACIÓN ══ -->
+  <section id="act2" class="section">
+    <div class="activity-block">
+      <div class="activity-header">
+        <div class="activity-num">Actividad 02 de 03</div>
+        <div class="activity-title">Banco de Recursos Didácticos para mi Formación Universitaria</div>
+        <div class="activity-subtitle">Aprendizaje Basado en Problemas aplicado a la práctica pedagógica real</div>
+        <div class="activity-badges">
+          <span class="badge">Producción individual</span>
+          <span class="badge">Entrega en Classroom</span>
+          <span class="badge">Aplicación práctica</span>
+          <span class="badge">Valor: según rúbrica</span>
+        </div>
+      </div>
+      <div class="activity-body">
+
+        <div class="info-box highlight">
+          <div class="info-box-title">Situación problema (ABP)</div>
+          <p>Usted es estudiante universitario de Pedagogía y, al mismo tiempo, futuro docente. Actualmente cursa varias materias y ha identificado que muchos de sus profesores utilizan repetidamente los mismos materiales (presentaciones de diapositivas y el libro de texto). Como próximo egresado, <strong>¿cómo diseñaría un banco diversificado de recursos didácticos para una de sus materias actuales</strong>, incorporando tanto materiales tradicionales como digitales, y sustentando cada elección con criterios pedagógicos?</p>
+        </div>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--navy); margin:24px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px;">Propósito de la actividad</h3>
+        <p style="color:var(--text-mid); margin-bottom:20px;">Diseñar y fundamentar un banco de recursos didácticos para una materia real de su Licenciatura en Pedagogía, demostrando capacidad de selección crítica, diversificación de formatos y justificación pedagógica de cada recurso seleccionado.</p>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--navy); margin:24px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px;">Instrucciones paso a paso</h3>
+
+        <ul class="steps">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Seleccionar una materia real de su licenciatura</div>
+              <div class="step-desc">Elija una materia que esté cursando actualmente o que haya cursado en los últimos dos semestres en la Licenciatura en Pedagogía. Anote su nombre exacto, el tema o unidad específica que tomará como referencia, y el objetivo de aprendizaje de esa unidad según el programa de estudios.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Identificar y seleccionar al menos 8 recursos</div>
+              <div class="step-desc">Seleccione un mínimo de 8 recursos didácticos para esa unidad. Deben incluir: al menos 2 materiales tradicionales (texto, diagrama, lámina, modelo), al menos 4 materiales digitales de tipos distintos (video, podcast, simulador, OVA, REA, infografía digital, etc.) y al menos 1 recurso de producción propia (una infografía que usted elabore, un mapa conceptual digital, una presentación de diapositivas pedagógica). Para los recursos existentes, incluya el enlace URL o referencia completa.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Completar la ficha de cada recurso</div>
+              <div class="step-desc">Para cada recurso, complete una ficha con los siguientes campos: (a) Nombre del recurso, (b) Tipo de material (tradicional / digital / híbrido), (c) Formato (video / texto / audio / interactivo / visual / otro), (d) Fuente o enlace, (e) Objetivo de aprendizaje al que responde, (f) Justificación pedagógica (¿por qué este recurso es pertinente para ese objetivo y ese grupo de estudiantes?), y (g) Criterio de calidad evaluado (seleccione de la tabla de criterios del contenido temático).</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Elaborar la reflexión pedagógica</div>
+              <div class="step-desc">Al final del banco de recursos, escriba un párrafo de reflexión (150-200 palabras) que explique: ¿Qué criterios guiaron su selección? ¿Qué dificultades encontró al buscar materiales de calidad? ¿Cómo este banco podría enriquecer su propio aprendizaje en esa materia? Esta reflexión debe estar escrita en primera persona y basarse en su experiencia concreta, no en definiciones generales.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-title">Organizar y presentar el banco de recursos</div>
+              <div class="step-desc">Organice su banco en un documento de Google Docs o en una presentación de Google Slides. Puede usar la plantilla sugerida abajo. La presentación debe ser visualmente clara: use tablas, colores para distinguir tipos de materiales, y asegúrese de que todos los enlaces sean funcionales. Comparta el archivo en Classroom con permisos de lectura para su docente.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="info-box">
+          <div class="info-box-title">Plantilla sugerida para cada ficha de recurso</div>
+          <p><strong>Recurso N.°:</strong> [Número] | <strong>Nombre:</strong> [Título del recurso] | <strong>Tipo:</strong> [Tradicional / Digital / Híbrido] | <strong>Formato:</strong> [Video / Texto / Audio / Interactivo / Visual] | <strong>Fuente:</strong> [URL o referencia APA] | <strong>Objetivo:</strong> [¿Qué aprenderá el estudiante con este recurso?] | <strong>Justificación pedagógica:</strong> [¿Por qué es pertinente? ¿Cómo se conecta con el constructivismo?] | <strong>Criterio de calidad:</strong> [Criterio del cuadro de evaluación + cómo lo cumple este recurso]</p>
+        </div>
+
+        <div class="example-block">
+          <strong>Ejemplo de ficha completa:</strong><br>
+          <strong>Recurso N.° 3 — Video educativo</strong><br>
+          <strong>Nombre:</strong> "Zona de Desarrollo Próximo — Vigotsky explicado" (Canal Docentes en red, YouTube, 12 min.)<br>
+          <strong>Tipo:</strong> Digital | <strong>Formato:</strong> Video<br>
+          <strong>Fuente:</strong> https://www.youtube.com/watch?v=ejemplo123 (verificado el 15/mayo/2026)<br>
+          <strong>Objetivo:</strong> Identificar los componentes de la ZDP y aplicarlos al análisis de situaciones de aprendizaje.<br>
+          <strong>Justificación pedagógica:</strong> El video combina animación, ejemplos concretos y narración clara, lo que favorece el aprendizaje multicanal. Al ser de duración media (12 min.), puede integrarse en una clase como actividad previa al debate, cumpliendo la función de andamiaje cognitivo inicial.<br>
+          <strong>Criterio de calidad evaluado:</strong> Calidad del contenido (fuente identificable, docente especializado, referencias a obras originales de Vigotsky) y usabilidad (subtítulos disponibles, acceso gratuito, compatible con dispositivos móviles).
+        </div>
+
+        <div class="rubric">
+          <div class="rubric-title">Rúbrica de evaluación — Banco de Recursos Didácticos</div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Criterio</th>
+                  <th>Excelente (100%)</th>
+                  <th>Satisfactorio (75%)</th>
+                  <th>En desarrollo (50%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Diversidad de recursos</strong></td>
+                  <td>8+ recursos con tipos y formatos variados; incluye recurso de producción propia</td>
+                  <td>8 recursos con cierta variedad pero sin producción propia</td>
+                  <td>Menos de 8 recursos o tipos repetitivos</td>
+                </tr>
+                <tr>
+                  <td><strong>Justificación pedagógica</strong></td>
+                  <td>Cada ficha incluye justificación fundamentada en teoría constructivista</td>
+                  <td>Justificaciones presentes pero genéricas o sin referencia teórica</td>
+                  <td>Justificaciones ausentes o muy superficiales</td>
+                </tr>
+                <tr>
+                  <td><strong>Calidad de los recursos</strong></td>
+                  <td>Todos los recursos cumplen criterios de calidad pedagógica; enlaces funcionales</td>
+                  <td>La mayoría cumple criterios; algún enlace no funcional</td>
+                  <td>Recursos de baja calidad pedagógica; varios enlaces rotos</td>
+                </tr>
+                <tr>
+                  <td><strong>Reflexión pedagógica</strong></td>
+                  <td>Reflexión profunda, personal, basada en experiencia real; 150-200 palabras</td>
+                  <td>Reflexión presente pero general; experiencia personal poco articulada</td>
+                  <td>Reflexión ausente, muy breve o basada en definiciones</td>
+                </tr>
+                <tr>
+                  <td><strong>Presentación y organización</strong></td>
+                  <td>Documento claro, visualmente organizado; formato consistente en todas las fichas</td>
+                  <td>Organización aceptable con inconsistencias menores</td>
+                  <td>Desorganización evidente; difícil de leer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="classroom-box">
+          <div class="classroom-icon">&#128197;</div>
+          <div class="classroom-text">
+            <h4>Entrega en Google Classroom</h4>
+            <p>Comparta el enlace a su Google Docs o Google Slides en la tarea "Actividad 2 — Banco de Recursos Didácticos". Asegúrese de que el documento tenga permisos de lectura para cualquier persona con el enlace o específicamente para su docente. Incluya su nombre completo en el título del documento.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECCIÓN: ACTIVIDAD 3 — QUIZ ══ -->
+  <section id="act3" class="section">
+    <div class="activity-block">
+      <div class="activity-header">
+        <div class="activity-num">Actividad 03 de 03</div>
+        <div class="activity-title">Quiz de Autoevaluación: Los Materiales Didácticos</div>
+        <div class="activity-subtitle">Verificación de comprensión con retroalimentación inmediata</div>
+        <div class="activity-badges">
+          <span class="badge">5 preguntas</span>
+          <span class="badge">Entrega en Classroom</span>
+          <span class="badge">Retroalimentación inmediata</span>
+          <span class="badge">Puntaje: 20 pts c/u</span>
+        </div>
+      </div>
+      <div class="activity-body">
+
+        <div class="info-box highlight">
+          <div class="info-box-title">Instrucciones del quiz</div>
+          <p>Responda cada pregunta seleccionando la opción que considere correcta. Recibirá retroalimentación inmediata después de seleccionar cada respuesta. Al finalizar todas las preguntas, se mostrará su puntaje total. Para entregar en Classroom, tome una captura de pantalla de su resultado final y súbala como evidencia en la tarea correspondiente.</p>
+        </div>
+
+        <div class="quiz-wrap" id="quiz-container">
+
+          <!-- Pregunta 1 -->
+          <div class="quiz-question" id="q1">
+            <div class="q-num">PREGUNTA 01 / 05</div>
+            <div class="q-text">Desde la perspectiva constructivista de Vigotsky, la función principal de un material didáctico es:</div>
+            <div class="q-options">
+              <label class="q-option" onclick="checkAnswer('q1', 'a', 'b')">
+                <span class="q-bullet">A</span>
+                <span>Transmitir información de manera eficiente y en el menor tiempo posible.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q1', 'b', 'b')">
+                <span class="q-bullet">B</span>
+                <span>Actuar como mediador que facilita la construcción de conocimiento dentro de la Zona de Desarrollo Próximo.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q1', 'c', 'b')">
+                <span class="q-bullet">C</span>
+                <span>Sustituir la explicación del docente para optimizar el tiempo de clase.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q1', 'd', 'b')">
+                <span class="q-bullet">D</span>
+                <span>Motivar al estudiante mediante estímulos visuales atractivos y novedosos.</span>
+              </label>
+            </div>
+            <div class="q-feedback" id="q1-fb"></div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="quiz-question" id="q2">
+            <div class="q-num">PREGUNTA 02 / 05</div>
+            <div class="q-text">¿Cuál de las siguientes opciones describe correctamente la diferencia entre un Objeto Virtual de Aprendizaje (OVA) y un Recurso Educativo Abierto (REA)?</div>
+            <div class="q-options">
+              <label class="q-option" onclick="checkAnswer('q2', 'a', 'c')">
+                <span class="q-bullet">A</span>
+                <span>Los OVA son siempre gratuitos; los REA requieren suscripción de pago.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q2', 'b', 'c')">
+                <span class="q-bullet">B</span>
+                <span>Los OVA son físicos y los REA son exclusivamente digitales.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q2', 'c', 'c')">
+                <span class="q-bullet">C</span>
+                <span>Los OVA son unidades digitales independientes con objetivo específico; los REA tienen licencia abierta que permite su adaptación y redistribución.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q2', 'd', 'c')">
+                <span class="q-bullet">D</span>
+                <span>No existe diferencia; ambos términos son sinónimos en la literatura pedagógica actual.</span>
+              </label>
+            </div>
+            <div class="q-feedback" id="q2-fb"></div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="quiz-question" id="q3">
+            <div class="q-num">PREGUNTA 03 / 05</div>
+            <div class="q-text">Un docente universitario desea que sus estudiantes analicen casos clínicos en un entorno sin riesgo real. ¿Qué tipo de material didáctico digital sería más pertinente según los criterios de selección estudiados?</div>
+            <div class="q-options">
+              <label class="q-option" onclick="checkAnswer('q3', 'a', 'b')">
+                <span class="q-bullet">A</span>
+                <span>Un video documental de 45 minutos sobre casos históricos de la especialidad.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q3', 'b', 'b')">
+                <span class="q-bullet">B</span>
+                <span>Un simulador interactivo que permita tomar decisiones y recibir retroalimentación inmediata ante distintos escenarios.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q3', 'c', 'b')">
+                <span class="q-bullet">C</span>
+                <span>Un libro de texto digital con los mismos contenidos del libro impreso.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q3', 'd', 'b')">
+                <span class="q-bullet">D</span>
+                <span>Un podcast donde un experto describe verbalmente varios casos sin posibilidad de interacción.</span>
+              </label>
+            </div>
+            <div class="q-feedback" id="q3-fb"></div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="quiz-question" id="q4">
+            <div class="q-num">PREGUNTA 04 / 05</div>
+            <div class="q-text">La <em>pertinencia cultural</em> como criterio de evaluación de un material didáctico implica principalmente que:</div>
+            <div class="q-options">
+              <label class="q-option" onclick="checkAnswer('q4', 'a', 'd')">
+                <span class="q-bullet">A</span>
+                <span>El material está disponible en el idioma español y tiene subtítulos.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q4', 'b', 'd')">
+                <span class="q-bullet">B</span>
+                <span>El material fue producido por una institución del mismo país que los estudiantes.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q4', 'c', 'd')">
+                <span class="q-bullet">C</span>
+                <span>El material incluye música e imágenes tradicionales del contexto geográfico del estudiante.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q4', 'd', 'd')">
+                <span class="q-bullet">D</span>
+                <span>El material usa lenguaje inclusivo, ejemplos contextualizados y representaciones que respetan la diversidad cultural del grupo de estudiantes.</span>
+              </label>
+            </div>
+            <div class="q-feedback" id="q4-fb"></div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="quiz-question" id="q5">
+            <div class="q-num">PREGUNTA 05 / 05</div>
+            <div class="q-text">¿Cuál de las siguientes afirmaciones refleja mejor el principio de <em>aprendizaje significativo</em> de Ausubel aplicado a la selección de materiales didácticos?</div>
+            <div class="q-options">
+              <label class="q-option" onclick="checkAnswer('q5', 'a', 'a')">
+                <span class="q-bullet">A</span>
+                <span>El material más efectivo es aquel que conecta el nuevo contenido con los conocimientos previos del estudiante, generando una estructura cognitiva más compleja.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q5', 'b', 'a')">
+                <span class="q-bullet">B</span>
+                <span>El material más efectivo es el que presenta mayor cantidad de información en el menor tiempo posible.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q5', 'c', 'a')">
+                <span class="q-bullet">C</span>
+                <span>El aprendizaje significativo ocurre solo cuando el estudiante trabaja con materiales físicos manipulables, no digitales.</span>
+              </label>
+              <label class="q-option" onclick="checkAnswer('q5', 'd', 'a')">
+                <span class="q-bullet">D</span>
+                <span>El material más significativo es aquel que genera mayor entretenimiento y motivación extrínseca en el estudiante.</span>
+              </label>
+            </div>
+            <div class="q-feedback" id="q5-fb"></div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center; margin-top:16px;">
+          <button class="btn btn-primary" onclick="showScore()" id="score-btn" style="display:none; padding:14px 40px; font-size:16px;">Ver mi puntaje final</button>
+        </div>
+
+        <div class="score-panel" id="score-panel">
+          <div class="score-number" id="score-number">—</div>
+          <div class="score-label" id="score-label">puntos de 100</div>
+          <div class="score-message" id="score-message"></div>
+          <div class="score-detail" id="score-detail"></div>
+          <div style="margin-top:28px;">
+            <button class="btn" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);" onclick="retakeQuiz()">Intentar nuevamente</button>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <div class="classroom-box">
+            <div class="classroom-icon">&#128197;</div>
+            <div class="classroom-text">
+              <h4>Entrega en Google Classroom</h4>
+              <p>Al finalizar el quiz, tome una captura de pantalla del panel de resultados (donde aparece su puntaje final y el mensaje de retroalimentación). Súbala como imagen adjunta en la tarea "Actividad 3 — Quiz de Autoevaluación" en Classroom. También puede anotar en el comentario de entrega su reflexión sobre las respuestas incorrectas.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECCIÓN: REFLEXIÓN FINAL ══ -->
+  <section id="reflexion" class="section">
+    <div class="section-header">
+      <div class="section-tag">Cierre del aprendizaje</div>
+      <h2 class="section-title">Reflexión y Plan de Aplicación</h2>
+      <p class="section-desc">El aprendizaje se consolida cuando se proyecta hacia la acción futura. Planifique cómo integrará lo aprendido en su vida académica y profesional.</p>
+    </div>
+
+    <div class="prose">
+      <p>La reflexión metacognitiva es un componente esencial de la formación pedagógica. Un docente reflexivo no solo aplica estrategias; comprende <em>por qué</em> las aplica, <em>cuándo</em> son pertinentes y <em>cómo</em> puede mejorarlas. Esta sección le invita a consolidar su aprendizaje proyectándolo hacia su práctica académica y futura práctica docente.</p>
+    </div>
+
+    <div class="reflection-grid">
+      <div class="reflection-card">
+        <h4>1. Lo que transformó mi forma de pensar</h4>
+        <p>Describa un concepto, idea o perspectiva de esta guía que cambió su manera de entender los materiales didácticos. ¿Qué creía antes? ¿Qué piensa ahora?</p>
+        <textarea placeholder="Escriba aquí su reflexión..."></textarea>
+      </div>
+      <div class="reflection-card">
+        <h4>2. Mi práctica como estudiante</h4>
+        <p>¿Cómo utilizará lo aprendido para aprovechar mejor los materiales didácticos que sus docentes actuales emplean en sus clases universitarias?</p>
+        <textarea placeholder="Describa acciones concretas que implementará..."></textarea>
+      </div>
+      <div class="reflection-card">
+        <h4>3. Mi futura práctica docente</h4>
+        <p>Como futuro pedagogo o docente, ¿qué tres criterios priorizará al seleccionar materiales didácticos para su grupo? ¿Por qué esos tres?</p>
+        <textarea placeholder="Liste y justifique sus tres criterios prioritarios..."></textarea>
+      </div>
+      <div class="reflection-card">
+        <h4>4. Un recurso que diseñaré</h4>
+        <p>Identifique una materia o tema de su licenciatura para el cual le gustaría crear un material educativo digital propio. ¿Qué tipo de material sería? ¿Con qué herramienta lo crearía?</p>
+        <textarea placeholder="Describa su idea de material educativo propio..."></textarea>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:40px;">
+      <div class="section-tag">Plan de acción</div>
+      <h3 class="section-title" style="font-size:22px;">Compromisos para los próximos 30 días</h3>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">&#127919;</div>
+        <div class="card-title">Semana 1-2: Observación crítica</div>
+        <p>Identifique y registre en una bitácora todos los materiales didácticos que sus docentes utilicen esta semana. Clasifíquelos según la tipología estudiada y evalúe un recurso por semana con la tabla de criterios.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128269;</div>
+        <div class="card-title">Semana 2-3: Exploración de repositorios</div>
+        <p>Explore al menos dos repositorios de Recursos Educativos Abiertos (OER Commons, MERLOT, Procomún). Identifique tres recursos pertinentes para alguna de sus materias actuales y evalúe su calidad con los criterios aprendidos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9999;</div>
+        <div class="card-title">Semana 3-4: Producción propia</div>
+        <p>Cree un material educativo digital original para un tema de una de sus materias actuales. Puede ser una infografía (Canva), un mapa conceptual interactivo (MindMeister), una presentación pedagógica o un podcast educativo breve.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-box note">
+      <div class="info-box-title">Recursos recomendados para seguir aprendiendo</div>
+      <p><strong>Repositorios:</strong> OER Commons (oercommons.org) | MERLOT (merlot.org) | Procomún del INTEF (procomun.intef.es) | RedDOLAC (reddolac.org)</p><br>
+      <p><strong>Herramientas de creación:</strong> Canva (canva.com) | MindMeister (mindmeister.com) | Genially (genially.com) | Loom (loom.com para video educativo) | Anchor/Spotify for Podcasters (para podcast)</p><br>
+      <p><strong>Lecturas recomendadas:</strong> Area Moreira, M. (2009). <em>Introducción a la Tecnología Educativa</em>. | Marquès Graells, P. (2011). Los medios didácticos. Departamento de Pedagogía Aplicada, UAB. | Ausubel, D., Novak, J. y Hanesian, H. (1983). <em>Psicología Educativa</em>. Trillas.</p>
+    </div>
+
+    <div class="activity-block" style="margin-top:36px;">
+      <div class="activity-header">
+        <div class="activity-num">Cierre integrador</div>
+        <div class="activity-title">Síntesis personal del aprendizaje</div>
+        <div class="activity-subtitle">Opcional enriquecedor — No requiere entrega en Classroom</div>
+      </div>
+      <div class="activity-body">
+        <p style="color:var(--text-mid); margin-bottom:20px;">Como ejercicio integrador voluntario, redacte en su cuaderno o en un documento personal una <strong>carta pedagógica</strong> dirigida a su "yo docente del futuro". En ella explique qué tipo de docente quiere ser en relación con los materiales que utilizará, qué compromisos asume con la calidad, pertinencia e innovación de sus recursos, y cómo el enfoque constructivista orientará sus decisiones pedagógicas.</p>
+        <div class="example-block">
+          <strong>Inicio sugerido:</strong> "Querido/a [tu nombre], cuando estés frente a un grupo de estudiantes y debas elegir cómo presentarles un contenido nuevo, recuerda que el material que elijas no es una decoración de tu clase: es el puente entre lo que ellos ya saben y lo que están a punto de descubrir..."
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════ FOOTER -->
+<footer class="site-footer">
+  <p><strong>Universidad de la Ciénega</strong> &mdash; Licenciatura en Pedagogía</p>
+  <p>Materia: Tecnología y Educación II &mdash; Tema 1: Los Nuevos Materiales Didácticos (1.1 Materiales Educativos Digitales)</p>
+  <p style="margin-top:8px; font-size:12px; opacity:0.7;">Guía diseñada bajo principios de pedagogía activa, constructivismo y aprendizaje basado en problemas. Jalisco, México &mdash; 2026.</p>
+</footer>
+
+<script>
+  // ── NAVIGATION
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const idx = ['intro','contenido','act1','act2','act3','reflexion'].indexOf(id);
+    document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── FORUM DRAFT
+  function saveDraft() {
+    const txt = document.getElementById('forum-draft').value.trim();
+    if (txt) {
+      localStorage.setItem('forum-draft', txt);
+      const msg = document.getElementById('draft-msg');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 4000);
+    }
+  }
+  function clearDraft() {
+    document.getElementById('forum-draft').value = '';
+    localStorage.removeItem('forum-draft');
+  }
+  // Load saved draft
+  window.addEventListener('load', () => {
+    const saved = localStorage.getItem('forum-draft');
+    if (saved) document.getElementById('forum-draft').value = saved;
+  });
+
+  // ── QUIZ
+  const quizState = { answered: {}, score: 0 };
+  const feedbackTexts = {
+    q1: {
+      correct: 'Correcto. Desde el constructivismo de Vigotsky, el material didáctico opera como mediador dentro de la Zona de Desarrollo Próximo (ZDP), facilitando que el estudiante construya nuevos significados con el apoyo apropiado.',
+      wrong: 'Incorrecto. La función de mediación cognitiva dentro de la ZDP es el eje central del constructivismo vigotskiano. Los materiales no transmiten; acompañan la construcción del conocimiento.'
+    },
+    q2: {
+      correct: 'Correcto. Los OVA son unidades digitales independientes con objetivos específicos e integran contenido, actividad y evaluación. Los REA, por su parte, se distinguen por su licencia abierta que permite uso, adaptación y redistribución libre.',
+      wrong: 'Incorrecto. Los OVA son unidades digitales independientes con objetivos específicos; los REA se definen por su licencia abierta que permite adaptar y redistribuir el material libremente. Son categorías distintas con criterios de clasificación diferentes.'
+    },
+    q3: {
+      correct: 'Correcto. El simulador interactivo es el material más pertinente porque permite al estudiante tomar decisiones, experimentar consecuencias y recibir retroalimentación inmediata, todo ello en un entorno sin riesgo real.',
+      wrong: 'Incorrecto. Para practicar la toma de decisiones ante casos sin riesgo real, el simulador interactivo es el material más pertinente: permite experimentar, equivocarse y recibir retroalimentación, condiciones que no ofrece un video o podcast unidireccional.'
+    },
+    q4: {
+      correct: 'Correcto. La pertinencia cultural va más allá del idioma o la procedencia: implica que el material usa lenguaje inclusivo, ejemplos significativos para ese contexto específico y representaciones que respetan y reflejan la diversidad del grupo.',
+      wrong: 'Incorrecto. La pertinencia cultural no se limita al idioma ni al país de origen del material. Implica que el recurso usa lenguaje inclusivo, ejemplos contextualizados y representaciones que respetan la diversidad cultural específica de los estudiantes.'
+    },
+    q5: {
+      correct: 'Correcto. El aprendizaje significativo de Ausubel se produce cuando el nuevo material se vincula de manera sustantiva y no arbitraria con la estructura cognitiva existente del estudiante, enriqueciéndola y ampliándola.',
+      wrong: 'Incorrecto. Para Ausubel, el aprendizaje significativo ocurre cuando el nuevo contenido se conecta con lo que el estudiante ya sabe, formando una red cognitiva más compleja. La cantidad de información, el formato del material y la motivación extrínseca son factores secundarios.'
+    }
+  };
+
+  let answeredCount = 0;
+
+  function checkAnswer(questionId, chosen, correct) {
+    if (quizState.answered[questionId]) return;
+    quizState.answered[questionId] = { chosen, correct };
+    answeredCount++;
+
+    const qEl = document.getElementById(questionId);
+    const options = qEl.querySelectorAll('.q-option');
+    const isCorrect = chosen === correct;
+
+    options.forEach((opt, i) => {
+      const letter = ['a','b','c','d'][i];
+      opt.style.pointerEvents = 'none';
+      if (letter === correct) { opt.classList.add('correct'); opt.querySelector('.q-bullet').textContent = '✓'; }
+      else if (letter === chosen && !isCorrect) { opt.classList.add('incorrect'); opt.querySelector('.q-bullet').textContent = '✗'; }
+    });
+
+    const fb = document.getElementById(questionId + '-fb');
+    fb.classList.add('show');
+    if (isCorrect) {
+      fb.classList.add('ok');
+      fb.textContent = feedbackTexts[questionId].correct;
+      quizState.score += 20;
+      qEl.classList.add('answered-correct');
+    } else {
+      fb.classList.add('fail');
+      fb.textContent = feedbackTexts[questionId].wrong;
+      qEl.classList.add('answered-wrong');
+    }
+
+    if (answeredCount === 5) {
+      document.getElementById('score-btn').style.display = 'inline-block';
+    }
+  }
+
+  function showScore() {
+    const panel = document.getElementById('score-panel');
+    panel.classList.add('show');
+    document.getElementById('score-number').textContent = quizState.score;
+    document.getElementById('score-label').textContent = 'puntos de 100';
+
+    const correct = quizState.score / 20;
+    document.getElementById('score-detail').textContent = `Respondió correctamente ${correct} de 5 preguntas.`;
+
+    let msg = '';
+    if (quizState.score === 100) msg = 'Desempeño sobresaliente. Domina los conceptos fundamentales de los materiales didácticos. Continúe profundizando en la aplicación práctica.';
+    else if (quizState.score >= 80) msg = 'Muy buen desempeño. Comprende los conceptos clave. Revise las preguntas respondidas incorrectamente y consulte la sección de contenido.';
+    else if (quizState.score >= 60) msg = 'Desempeño satisfactorio. Hay áreas que requieren mayor estudio. Se recomienda releer la sección de contenido temático antes de continuar.';
+    else msg = 'Se recomienda revisar el contenido temático de esta guía, especialmente las secciones sobre clasificación de materiales y criterios de selección, y volver a intentar el quiz.';
+    document.getElementById('score-message').textContent = msg;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('score-btn').style.display = 'none';
+  }
+
+  function retakeQuiz() {
+    quizState.answered = {};
+    quizState.score = 0;
+    answeredCount = 0;
+
+    document.querySelectorAll('.quiz-question').forEach(q => {
+      q.className = 'quiz-question';
+      q.querySelectorAll('.q-option').forEach(o => {
+        o.className = 'q-option';
+        o.style.pointerEvents = '';
+        o.querySelector('.q-bullet').textContent = o.querySelector('.q-bullet').textContent.length === 1
+          ? o.querySelector('.q-bullet').textContent
+          : '';
+      });
+      const letters = ['A','B','C','D'];
+      q.querySelectorAll('.q-bullet').forEach((b, i) => b.textContent = letters[i]);
+      const fb = q.querySelector('.q-feedback');
+      fb.className = 'q-feedback';
+      fb.textContent = '';
+    });
+
+    document.getElementById('score-panel').classList.remove('show');
+    document.getElementById('score-btn').style.display = 'none';
+    window.scrollTo({ top: document.getElementById('act3').offsetTop - 80, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

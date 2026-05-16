@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva | Tecnología y Educación I | Universidad de la Ciénega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-light: #263460;
+    --blue-mid: #3b5998;
+    --blue-accent: #4a6fa5;
+    --blue-pale: #dce6f7;
+    --blue-ghost: #eef3fb;
+    --gold: #c8a951;
+    --gold-light: #e8d49a;
+    --gold-pale: #fdf8ee;
+    --text-dark: #1c1f2e;
+    --text-body: #2d3348;
+    --text-muted: #5c6480;
+    --border: #cdd6ea;
+    --white: #ffffff;
+    --success: #2a7d4f;
+    --success-bg: #eaf5ef;
+    --danger: #9b2335;
+    --danger-bg: #fdf0f2;
+    --warning: #7a5a00;
+    --warning-bg: #fdf8ee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-body);
+    background: #f4f6fb;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    gap: 24px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .header-logo img {
+    height: 52px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .header-title {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 16px;
+  }
+  .header-title strong {
+    display: block;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .header-nav {
+    display: flex;
+    gap: 4px;
+  }
+  .header-nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .header-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--blue-mid) 100%);
+    padding: 72px 32px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(200,169,81,0.08);
+    border: 1px solid rgba(200,169,81,0.1);
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,169,81,0.15);
+    color: var(--gold-light);
+    border: 1px solid rgba(200,169,81,0.3);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero-subtitle {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .hero-meta-item strong {
+    display: block;
+    color: var(--gold-light);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 2px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .page-main { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: sticky;
+    top: 88px;
+  }
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .sidebar-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sidebar-nav a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--text-body);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .sidebar-nav a:last-child { border-bottom: none; }
+  .sidebar-nav a:hover { background: var(--blue-ghost); color: var(--blue-mid); padding-left: 24px; }
+  .sidebar-nav a.active { background: var(--blue-pale); color: var(--navy); font-weight: 600; padding-left: 24px; border-left: 3px solid var(--blue-mid); }
+  .sidebar-nav .nav-num {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .info-block {
+    padding: 14px 18px;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row strong { color: var(--text-dark); font-weight: 600; text-align: right; max-width: 55%; }
+
+  /* ─── MAIN CONTENT ─── */
+  .content-area {}
+
+  .section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .section-header {
+    background: var(--navy);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-num {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+  .section-header-text p {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+  .section-body { padding: 28px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--blue-pale);
+  }
+  h3:first-child { margin-top: 0; }
+  h4 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  p { margin-bottom: 14px; color: var(--text-body); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── CALLOUTS ─── */
+  .callout {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    border-left: 4px solid;
+  }
+  .callout-info { background: var(--blue-ghost); border-color: var(--blue-mid); color: var(--navy); }
+  .callout-gold { background: var(--gold-pale); border-color: var(--gold); color: var(--warning); }
+  .callout-success { background: var(--success-bg); border-color: var(--success); color: var(--success); }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ─── OBJECTIVE GRID ─── */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .obj-card {
+    background: var(--blue-ghost);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .obj-card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .obj-card h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .obj-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+  /* ─── CONTENT LISTS ─── */
+  .content-list {
+    list-style: none;
+    margin: 12px 0 16px;
+    padding: 0;
+  }
+  .content-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.93rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-body);
+  }
+  .content-list li:last-child { border-bottom: none; }
+  .content-list li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue-mid);
+  }
+
+  /* ─── STEPS ─── */
+  .steps { counter-reset: step-counter; list-style: none; padding: 0; margin: 16px 0; }
+  .steps li {
+    counter-increment: step-counter;
+    padding: 14px 16px 14px 56px;
+    position: relative;
+    background: var(--blue-ghost);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+  }
+  .steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--navy);
+    color: var(--white);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .steps li strong { color: var(--navy); }
+
+  /* ─── ACTIVITY CARDS ─── */
+  .activity-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: var(--blue-ghost);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .activity-badge {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .activity-header-text h3 {
+    border: none;
+    padding: 0;
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+  }
+  .activity-header-text p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+  .activity-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .meta-pill {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .pill-blue { background: var(--blue-pale); color: var(--blue-mid); border-color: var(--blue-mid); }
+  .pill-gold { background: var(--gold-pale); color: var(--warning); border-color: var(--gold); }
+  .pill-green { background: var(--success-bg); color: var(--success); border-color: var(--success); }
+
+  /* ─── FORUM QUESTION ─── */
+  .forum-box {
+    background: var(--gold-pale);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .forum-box .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .forum-box blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-style: italic;
+    line-height: 1.6;
+    border: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+  .forum-box p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+  /* ─── TABLE ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 16px 0;
+  }
+  .data-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-body);
+  }
+  .data-table tr:nth-child(even) td { background: var(--blue-ghost); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* ─── RUBRIC ─── */
+  .rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 16px 0;
+    overflow-x: auto;
+    display: block;
+  }
+  .rubric-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    min-width: 90px;
+  }
+  .rubric-table th:first-child { text-align: left; min-width: 140px; }
+  .rubric-table td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-body);
+    line-height: 1.4;
+  }
+  .rubric-table td:first-child { font-weight: 600; color: var(--navy); background: var(--blue-ghost); }
+  .rubric-table .pts { text-align: center; font-weight: 700; color: var(--blue-mid); }
+
+  /* ─── QUIZ ─── */
+  #quiz-section { }
+  .quiz-progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-mid), var(--gold));
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .quiz-question {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .quiz-question.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .question-counter {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue-mid);
+    margin-bottom: 12px;
+  }
+  .question-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .options-list { list-style: none; padding: 0; margin: 0 0 24px; }
+  .options-list li { margin-bottom: 10px; }
+  .option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 18px;
+    background: var(--blue-ghost);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--text-body);
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .option-btn:hover:not(:disabled) { background: var(--blue-pale); border-color: var(--blue-mid); color: var(--navy); }
+  .option-btn .opt-letter {
+    background: var(--navy);
+    color: var(--white);
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .option-btn.correct { background: var(--success-bg); border-color: var(--success); color: var(--success); }
+  .option-btn.correct .opt-letter { background: var(--success); }
+  .option-btn.incorrect { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+  .option-btn.incorrect .opt-letter { background: var(--danger); }
+  .option-btn:disabled { cursor: default; }
+  .feedback-box {
+    display: none;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+  }
+  .feedback-box.correct { background: var(--success-bg); border-color: var(--success); color: var(--success); }
+  .feedback-box.incorrect { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+  .feedback-box strong { display: block; margin-bottom: 4px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .quiz-btn {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    display: none;
+  }
+  .quiz-btn:hover { background: var(--blue-mid); }
+  .quiz-result {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.4s ease;
+  }
+  .result-score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid;
+  }
+  .result-score-circle .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .result-score-circle .score-denom {
+    font-size: 0.85rem;
+    color: inherit;
+    opacity: 0.7;
+  }
+  .result-excellent { border-color: var(--success); color: var(--success); background: var(--success-bg); }
+  .result-good { border-color: var(--gold); color: var(--warning); background: var(--gold-pale); }
+  .result-needs-work { border-color: var(--danger); color: var(--danger); background: var(--danger-bg); }
+  .result-message { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; font-weight: 600; }
+  .result-detail { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 28px; }
+  .btn-retry {
+    background: var(--white);
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    padding: 10px 28px;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-retry:hover { background: var(--navy); color: var(--white); }
+
+  /* ─── REFLECTION PLANNER ─── */
+  .planner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  @media (max-width: 600px) { .planner-grid { grid-template-columns: 1fr; } }
+  .planner-card {
+    background: var(--blue-ghost);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .planner-card h4 { margin-top: 0; font-size: 0.88rem; }
+  .planner-card textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-body);
+    background: var(--white);
+    resize: vertical;
+    line-height: 1.5;
+    transition: border-color 0.2s;
+    margin-top: 8px;
+  }
+  .planner-card textarea:focus { outline: none; border-color: var(--blue-mid); }
+  .planner-card textarea::placeholder { color: var(--text-muted); font-style: italic; }
+  .save-btn {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 11px 28px;
+    border-radius: 7px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 16px;
+  }
+  .save-btn:hover { background: var(--blue-mid); }
+  .save-confirmation {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--success-bg);
+    border: 1px solid var(--success);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--success);
+    font-weight: 600;
+  }
+
+  /* ─── CONCEPT MAP ─── */
+  .concept-map {
+    background: var(--blue-ghost);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 20px;
+    margin: 20px 0;
+  }
+  .map-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .map-row:last-child { margin-bottom: 0; }
+  .map-node {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    min-width: 120px;
+  }
+  .map-node.gold { background: var(--gold); color: var(--navy); }
+  .map-node.outline { background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
+  .map-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  .map-connector {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ─── CLASSROOM INSTRUCTION ─── */
+  .classroom-box {
+    background: #f0f4ff;
+    border: 1px solid #c0ccee;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .classroom-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .classroom-icon svg { width: 20px; height: 20px; fill: var(--white); }
+  .classroom-box h4 { margin: 0 0 6px; font-size: 0.88rem; color: var(--navy); }
+  .classroom-box p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+    margin-top: 40px;
+    line-height: 1.8;
+  }
+  .site-footer strong { color: rgba(255,255,255,0.85); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* ─── EXAMPLE BOX ─── */
+  .example-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    position: relative;
+  }
+  .example-box::before {
+    content: 'Ejemplo';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--white);
+    color: var(--blue-mid);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .example-box p { font-size: 0.88rem; color: var(--text-muted); font-style: italic; margin: 0; }
+
+  /* ─── SCENARIO CARD (ABP) ─── */
+  .scenario-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 20px 0;
+    color: var(--white);
+  }
+  .scenario-card .sc-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+  }
+  .scenario-card p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .scenario-card p:last-child { margin-bottom: 0; }
+  .scenario-card .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .scenario-card .task-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .scenario-card .task-list li:last-child { border-bottom: none; }
+  .scenario-card .task-list li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* print */
+  @media print {
+    .sidebar { display: none; }
+    .site-header .header-nav { display: none; }
+    .page-main { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="data:image/jpeg;base64,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" alt="Universidad de la Ciénega">
+      <div class="header-title">
+        Licenciatura en Pedagogía
+        <strong>Tecnología y Educación I</strong>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="#contenidos">Contenidos</a>
+      <a href="#actividad-1">Foro</a>
+      <a href="#actividad-2">Actividad</a>
+      <a href="#actividad-3">Quiz</a>
+      <a href="#reflexion">Reflexión</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Guía de Aprendizaje Interactiva</div>
+    <h1>Los Cambios del <em>Escenario Educativo</em></h1>
+    <p class="hero-subtitle">
+      Cambio en el proceso educativo · Cambio en el objeto de la enseñanza<br>
+      Unidad 1 | Tecnología y Educación I
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <strong>Licenciatura en Pedagogía</strong>
+        Programa educativo
+      </div>
+      <div class="hero-meta-item">
+        <strong>Universidad de la Ciénega</strong>
+        Institución
+      </div>
+      <div class="hero-meta-item">
+        <strong>Constructivismo · ABP</strong>
+        Enfoque pedagógico
+      </div>
+      <div class="hero-meta-item">
+        <strong>3 Actividades</strong>
+        Para Google Classroom
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<main class="page-main">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-header">Contenido de la guía</div>
+      <nav class="sidebar-nav">
+        <a href="#presentacion"><span class="nav-num">1</span> Presentación</a>
+        <a href="#objetivos"><span class="nav-num">2</span> Objetivos</a>
+        <a href="#contenidos"><span class="nav-num">3</span> Marco conceptual</a>
+        <a href="#actividad-1"><span class="nav-num">4</span> Actividad 1: Foro</a>
+        <a href="#actividad-2"><span class="nav-num">5</span> Actividad 2: ABP</a>
+        <a href="#actividad-3"><span class="nav-num">6</span> Actividad 3: Quiz</a>
+        <a href="#reflexion"><span class="nav-num">7</span> Reflexión y cierre</a>
+      </nav>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-header">Datos del curso</div>
+      <div class="info-block">
+        <div class="info-row"><span>Materia</span><strong>Tecnología y Educación I</strong></div>
+        <div class="info-row"><span>Licenciatura</span><strong>Pedagogía</strong></div>
+        <div class="info-row"><span>Tema</span><strong>Unidad 1 — Escenario educativo</strong></div>
+        <div class="info-row"><span>Subtemas</span><strong>1.1 Proceso · 1.2 Objeto</strong></div>
+        <div class="info-row"><span>Modalidad</span><strong>Mixta (presencial + Classroom)</strong></div>
+        <div class="info-row"><span>Actividades</span><strong>3 entregables</strong></div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-header">Metodología</div>
+      <div class="info-block">
+        <div class="info-row"><span>Enfoque</span><strong>Constructivismo</strong></div>
+        <div class="info-row"><span>Estrategia</span><strong>Aprendizaje basado en problemas</strong></div>
+        <div class="info-row"><span>Pedagogía</span><strong>Activa y colaborativa</strong></div>
+        <div class="info-row"><span>Plataforma</span><strong>Google Classroom</strong></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content-area">
+
+    <!-- PRESENTACIÓN -->
+    <section class="section" id="presentacion">
+      <div class="section-header">
+        <div class="section-num">I</div>
+        <div class="section-header-text">
+          <h2>Presentación de la guía</h2>
+          <p>Propósito, orientación pedagógica y modo de uso</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Esta guía de aprendizaje ha sido diseñada para acompañar el estudio del Tema 1 de la materia Tecnología y Educación I, perteneciente a la Licenciatura en Pedagogía de la Universidad de la Ciénega. Su propósito es orientar al estudiante en la comprensión crítica y reflexiva de los cambios que han reconfigurado el escenario educativo contemporáneo, con especial énfasis en los cambios del proceso educativo y del objeto de la enseñanza.</p>
+
+        <div class="callout callout-gold">
+          <strong>Orientación pedagógica</strong>
+          La guía adopta un enfoque constructivista y de pedagogía activa. El conocimiento no se recibe de manera pasiva: se construye a partir de la interacción con los contenidos, el diálogo con los pares y la aplicación en contextos reales. Como futuro pedagogo, usted es el protagonista de su propio aprendizaje.
+        </div>
+
+        <p>El recorrido propuesto integra tres dimensiones formativas: la comprensión teórica del tema, la reflexión crítica sobre la práctica educativa actual y la proyección de lo aprendido hacia su desempeño como estudiante universitario y futuro profesional de la educación.</p>
+
+        <div class="callout callout-info">
+          <strong>Modo de uso</strong>
+          Lea la guía en orden secuencial. Cada sección prepara para la siguiente. Las tres actividades al final deberán entregarse en Google Classroom según las instrucciones específicas de cada una. Se recomienda tener abierto el aula virtual en paralelo durante el desarrollo de esta guía.
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section class="section" id="objetivos">
+      <div class="section-header">
+        <div class="section-num">II</div>
+        <div class="section-header-text">
+          <h2>Objetivos de aprendizaje</h2>
+          <p>Competencias que se desarrollan a lo largo de esta unidad</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>Al concluir el estudio de este tema y completar las actividades propuestas, el estudiante será capaz de:</p>
+
+        <div class="obj-grid">
+          <div class="obj-card">
+            <span class="obj-card-icon">&#9670;</span>
+            <h5>Comprender</h5>
+            <p>Los principales cambios que han transformado el proceso educativo en la era digital y tecnológica.</p>
+          </div>
+          <div class="obj-card">
+            <span class="obj-card-icon">&#9670;</span>
+            <h5>Analizar</h5>
+            <p>El desplazamiento del objeto de la enseñanza: de la transmisión de contenidos hacia el desarrollo de competencias.</p>
+          </div>
+          <div class="obj-card">
+            <span class="obj-card-icon">&#9670;</span>
+            <h5>Reflexionar</h5>
+            <p>Críticamente sobre su propia experiencia como alumno universitario en un entorno tecnológicamente mediado.</p>
+          </div>
+          <div class="obj-card">
+            <span class="obj-card-icon">&#9670;</span>
+            <h5>Aplicar</h5>
+            <p>Las ideas del tema en la comprensión y mejora de sus propias prácticas de aprendizaje universitario.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDOS -->
+    <section class="section" id="contenidos">
+      <div class="section-header">
+        <div class="section-num">III</div>
+        <div class="section-header-text">
+          <h2>Marco conceptual del tema</h2>
+          <p>Subtemas 1.1 y 1.2 — Escenario educativo contemporáneo</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <!-- MAPA CONCEPTUAL VISUAL -->
+        <h3>Mapa conceptual del tema</h3>
+        <div class="concept-map">
+          <div class="map-row">
+            <div class="map-node gold">Cambios del escenario educativo</div>
+          </div>
+          <div class="map-row">
+            <span class="map-arrow">&#9660;</span>
+            <span class="map-connector" style="width:100%; text-align:center;">se manifiesta en dos dimensiones fundamentales</span>
+            <span class="map-arrow">&#9660;</span>
+          </div>
+          <div class="map-row">
+            <div class="map-node">1.1 Proceso educativo</div>
+            <span style="width:60px;"></span>
+            <div class="map-node">1.2 Objeto de la enseñanza</div>
+          </div>
+          <div class="map-row">
+            <div class="map-node outline" style="font-size:0.75rem; min-width:130px;">Roles · Entornos · Tecnología · Tiempo</div>
+            <span style="width:60px;"></span>
+            <div class="map-node outline" style="font-size:0.75rem; min-width:130px;">Contenidos · Competencias · Aprendizaje</div>
+          </div>
+          <div class="map-row" style="margin-top:8px;">
+            <div class="map-node" style="background:var(--blue-accent); min-width:280px; font-size:0.8rem; text-align:center;">
+              Implicaciones para la pedagogía del siglo XXI
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- SUBTEMA 1.1 -->
+        <h3>1.1 Cambio en el proceso educativo</h3>
+
+        <p>El proceso educativo ha experimentado transformaciones profundas y aceleradas en las últimas décadas. El avance de las tecnologías de la información y la comunicación, la globalización del conocimiento y las nuevas demandas sociales han cuestionado los modelos educativos tradicionales, obligando a una reconfiguración de los actores, los espacios y las dinámicas del aprendizaje.</p>
+
+        <p>En el modelo educativo tradicional, el proceso se estructuraba de manera unidireccional: el docente transmitía el conocimiento y el alumno lo recibía de forma pasiva. Este paradigma —conocido como modelo bancario, en términos de Paulo Freire— ha sido desafiado por enfoques que sitúan al estudiante como constructor activo de su propio aprendizaje.</p>
+
+        <h4>Dimensiones del cambio en el proceso educativo</h4>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dimensión</th>
+              <th>Modelo tradicional</th>
+              <th>Modelo contemporáneo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Rol del docente</strong></td>
+              <td>Transmisor de conocimiento</td>
+              <td>Mediador, facilitador y diseñador de experiencias</td>
+            </tr>
+            <tr>
+              <td><strong>Rol del estudiante</strong></td>
+              <td>Receptor pasivo</td>
+              <td>Constructor activo del conocimiento</td>
+            </tr>
+            <tr>
+              <td><strong>Espacio educativo</strong></td>
+              <td>Aula física, horario fijo</td>
+              <td>Entornos híbridos, presenciales y virtuales</td>
+            </tr>
+            <tr>
+              <td><strong>Tiempo del aprendizaje</strong></td>
+              <td>Sincrónico y presencial</td>
+              <td>Sincrónico, asincrónico y autónomo</td>
+            </tr>
+            <tr>
+              <td><strong>Recursos didácticos</strong></td>
+              <td>Libro de texto, pizarrón</td>
+              <td>Plataformas digitales, multimedia, REA</td>
+            </tr>
+            <tr>
+              <td><strong>Evaluación</strong></td>
+              <td>Sumativa y final</td>
+              <td>Formativa, continua y diversificada</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>La irrupción de la tecnología no ha sido simplemente la incorporación de herramientas digitales al aula. Ha implicado un replanteamiento ontológico del acto educativo: quién enseña, cómo se aprende, dónde ocurre el aprendizaje y para qué sirve lo que se aprende.</p>
+
+        <div class="callout callout-info">
+          <strong>Para reflexionar</strong>
+          Piense en su propia experiencia como estudiante universitario: ¿en qué medida el proceso educativo que usted vive cotidianamente corresponde al modelo contemporáneo? ¿Qué elementos del modelo tradicional persisten y cuáles han cambiado? Esta reflexión será el punto de partida para las actividades de aprendizaje de esta guía.
+        </div>
+
+        <hr class="divider">
+
+        <!-- SUBTEMA 1.2 -->
+        <h3>1.2 Cambio en el objeto de la enseñanza</h3>
+
+        <p>El segundo gran cambio del escenario educativo contemporáneo se ubica en el objeto mismo de la enseñanza: aquello que se propone que el estudiante aprenda. La pregunta central ha pasado de ser "¿qué contenidos debe conocer el alumno?" a "¿qué competencias debe desarrollar el estudiante para actuar en un mundo complejo, cambiante e incierto?"</p>
+
+        <p>Durante gran parte de la historia de la educación moderna, el objeto de la enseñanza fue definido como un corpus de conocimientos disciplinares estables que debían ser transmitidos de una generación a otra. La escuela y la universidad eran los depositarios autorizados del saber legítimo. Esta concepción entró en crisis con la llamada sociedad del conocimiento y la explosión informacional característica del siglo XXI.</p>
+
+        <h4>Del conocimiento a las competencias: una transición no lineal</h4>
+
+        <p>Autores como César Coll, Philippe Perrenoud y Edgar Morin han argumentado que el aprendizaje significativo en el siglo XXI requiere el desarrollo de competencias transversales que van más allá de la acumulación de datos. Entre las más relevantes para la educación superior se encuentran:</p>
+
+        <ul class="content-list">
+          <li>La capacidad de aprender a aprender y de gestionar el propio proceso de aprendizaje a lo largo de toda la vida.</li>
+          <li>El pensamiento crítico y la evaluación de fuentes de información en entornos digitales saturados de datos.</li>
+          <li>La comunicación efectiva en contextos presenciales y mediados por tecnología.</li>
+          <li>La colaboración y el trabajo en red para la construcción colectiva del conocimiento.</li>
+          <li>La resolución de problemas complejos y la toma de decisiones en condiciones de incertidumbre.</li>
+          <li>La creatividad e innovación en la generación de soluciones pertinentes al contexto social.</li>
+          <li>La competencia digital: uso crítico, ético y eficiente de las tecnologías de la información.</li>
+        </ul>
+
+        <div class="callout callout-gold">
+          <strong>Implicación para la pedagogía</strong>
+          El cambio en el objeto de la enseñanza tiene consecuencias directas para la práctica pedagógica. No basta con saber el contenido disciplinar: el pedagogo debe ser capaz de diseñar experiencias de aprendizaje que movilicen competencias, que sitúen al estudiante frente a problemas auténticos y que promuevan la metacognición y la reflexión sobre el propio aprendizaje.
+        </div>
+
+        <h4>Tensiones del cambio</h4>
+        <p>Cabe señalar que este proceso de cambio no es lineal ni exento de tensiones. En muchas instituciones educativas coexisten modelos y concepciones diversas sobre qué debe enseñarse y cómo. La transición del paradigma transmisivo al paradigma competencial genera debates legítimos sobre el papel del conocimiento disciplinar, los riesgos de la superficialidad y la importancia de la rigurosidad académica. Como futuro pedagogo, será parte de su labor profesional navegar con criterio estas tensiones.</p>
+
+        <div class="example-box">
+          <p>Un aula universitaria en la que el docente dicta su clase magistral mientras los estudiantes toman notas reproduce el modelo tradicional. Una aula en la que los estudiantes analizan un caso real de su comunidad, buscan información en diversas fuentes, debaten sus hallazgos y presentan una propuesta de intervención opera bajo el nuevo paradigma —aunque ambas pueden coexistir de manera complementaria y fundamentada.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 1: FORO -->
+    <section class="section" id="actividad-1">
+      <div class="section-header">
+        <div class="section-num">IV</div>
+        <div class="section-header-text">
+          <h2>Actividad 1 — Foro de mediación</h2>
+          <p>Reflexión crítica y construcción colaborativa del conocimiento</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <div class="activity-header">
+          <div class="activity-badge">F1</div>
+          <div class="activity-header-text">
+            <h3>Foro de discusión: El escenario educativo que vivimos</h3>
+            <p>Mediación académica · Participación en Google Classroom</p>
+            <div class="activity-meta">
+              <span class="meta-pill pill-blue">Trabajo individual</span>
+              <span class="meta-pill pill-gold">Valor: 20 puntos</span>
+              <span class="meta-pill pill-green">Plataforma: Google Classroom</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Pregunta detonadora</h3>
+
+        <div class="forum-box">
+          <div class="label">Pregunta para el foro</div>
+          <blockquote>
+            "Considerando los cambios del escenario educativo estudiados en esta unidad, ¿en qué medida su propia experiencia como estudiante universitario refleja una transición real hacia un nuevo paradigma educativo, o considera que persisten prácticas del modelo tradicional? Fundamente su respuesta con al menos un ejemplo concreto de su vida académica actual y relacione su reflexión con algún concepto del tema."
+          </blockquote>
+          <p>Esta pregunta no tiene una respuesta correcta única. Se espera que argumente con base en el tema estudiado y en su experiencia real como alumno de licenciatura.</p>
+        </div>
+
+        <h3>Propósito pedagógico</h3>
+        <p>El foro de mediación busca que los estudiantes articulen la teoría con su experiencia vivida, promoviendo el pensamiento crítico, el diálogo académico fundamentado y la construcción colectiva del conocimiento. La diversidad de perspectivas en el foro enriquece la comprensión del tema para todos los participantes.</p>
+
+        <h3>Instrucciones paso a paso</h3>
+        <ol class="steps">
+          <li><strong>Revise el marco conceptual</strong> de los subtemas 1.1 y 1.2 antes de redactar su participación. Identifique al menos dos conceptos clave que quiera incorporar en su respuesta.</li>
+          <li><strong>Redacte su aportación inicial</strong> con una extensión de entre 200 y 300 palabras. Estructure su texto en tres partes: posicionamiento, argumentación con ejemplos y conclusión reflexiva.</li>
+          <li><strong>Ingrese a Google Classroom</strong>, localice la tarea denominada "Foro 1 — El escenario educativo que vivimos" y publique su aportación en el espacio de comentarios del foro.</li>
+          <li><strong>Lea al menos dos participaciones de sus compañeros</strong> y elabore una respuesta reflexiva a cada una (mínimo 80 palabras por respuesta), aportando una perspectiva complementaria, una pregunta que profundice el debate o una reflexión que enriquezca lo planteado.</li>
+          <li><strong>Revise su ortografía y registro académico</strong> antes de publicar. Recuerde que el foro es un espacio de intercambio intelectual que requiere un lenguaje formal y respetuoso.</li>
+        </ol>
+
+        <h3>Ejemplo orientador de participación</h3>
+        <div class="example-box">
+          <p>
+            "En mi experiencia como estudiante de cuarto semestre, observo que la mayoría de mis cursos mantienen una estructura predominantemente transmisiva: el docente expone, los alumnos escuchamos y tomamos notas. Sin embargo, en materias como Didáctica General comencé a encontrar un enfoque diferente, donde se nos pide diseñar situaciones de aprendizaje y reflexionar sobre ellas. Esto corresponde a lo que los autores describen como el desplazamiento del objeto de la enseñanza: ya no se trata únicamente de que yo adquiera un corpus de contenidos pedagógicos, sino de que desarrolle competencias para diseñar experiencias educativas. No obstante, considero que la transición es parcial: la evaluación sigue siendo predominantemente sumativa en la mayoría de mis cursos, lo cual contradice los principios del nuevo paradigma. Esto me lleva a reflexionar sobre la brecha que existe entre el discurso curricular y la práctica cotidiana..."
+          </p>
+        </div>
+
+        <h3>Criterios de evaluación</h3>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Excelente (5 pts)</th>
+              <th>Satisfactorio (3 pts)</th>
+              <th>Insuficiente (1 pt)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fundamentación teórica</td>
+              <td>Utiliza con precisión al menos dos conceptos del tema, con argumentación sólida.</td>
+              <td>Menciona conceptos del tema pero sin profundidad argumentativa.</td>
+              <td>No relaciona su respuesta con los contenidos del tema.</td>
+            </tr>
+            <tr>
+              <td>Ejemplo concreto y pertinente</td>
+              <td>Aporta un ejemplo específico de su vida universitaria, claramente vinculado al argumento.</td>
+              <td>Menciona un ejemplo, pero la vinculación con el argumento es débil.</td>
+              <td>No incluye ejemplos o son genéricos e inespecíficos.</td>
+            </tr>
+            <tr>
+              <td>Interacción con pares</td>
+              <td>Responde a dos participaciones con argumentos reflexivos y enriquecedores.</td>
+              <td>Responde a una participación o las respuestas son superficiales.</td>
+              <td>No interactúa con las participaciones de los compañeros.</td>
+            </tr>
+            <tr>
+              <td>Calidad formal del texto</td>
+              <td>Lenguaje académico, ortografía correcta, estructura clara y extensión adecuada.</td>
+              <td>Texto comprensible con algunos errores formales menores.</td>
+              <td>Texto informal, con múltiples errores o extensión insuficiente.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="classroom-box">
+          <div class="classroom-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6zm5.08 9.07L12 14.94l-5.08-2.87L5 11.2V17c0 .71 1.86 2 5 2s5-1.29 5-2v-5.8l-3 1.63z"/></svg>
+          </div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Acceda al aula virtual de la materia Tecnología y Educación I, localice la tarea "Foro 1 — El escenario educativo que vivimos" y publique su aportación directamente en el espacio de comentarios. La fecha límite de entrega aparece en el tablón del aula. Esta actividad no requiere la carga de un archivo: la participación se realiza directamente en la plataforma.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 2: ABP -->
+    <section class="section" id="actividad-2">
+      <div class="section-header">
+        <div class="section-num">V</div>
+        <div class="section-header-text">
+          <h2>Actividad 2 — Aprendizaje Basado en Problemas</h2>
+          <p>Diagnóstico pedagógico del escenario educativo universitario</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <div class="activity-header">
+          <div class="activity-badge">A2</div>
+          <div class="activity-header-text">
+            <h3>Diagnóstico pedagógico: El escenario educativo de mi licenciatura</h3>
+            <p>Análisis crítico aplicado · Entregable individual en Classroom</p>
+            <div class="activity-meta">
+              <span class="meta-pill pill-blue">Trabajo individual</span>
+              <span class="meta-pill pill-gold">Valor: 30 puntos</span>
+              <span class="meta-pill pill-green">Entregable: Documento en Classroom</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Situación problemática</h3>
+
+        <div class="scenario-card">
+          <div class="sc-label">Escenario para el aprendizaje basado en problemas</div>
+          <p>Usted ha sido contratado como asesor pedagógico externo por la coordinación de su propia licenciatura. La tarea que le encomiendan es realizar un breve diagnóstico del escenario educativo del programa a partir de su experiencia como alumno activo. La coordinación necesita identificar en qué medida el proceso educativo y el objeto de la enseñanza en la licenciatura responden a los cambios del escenario educativo contemporáneo descritos en la literatura pedagógica.</p>
+          <p>El diagnóstico será presentado a las autoridades como insumo para la mejora curricular. Por ello, debe estar fundamentado, ser específico y propositivo.</p>
+          <p>Para realizar este diagnóstico, deberá responder las siguientes preguntas orientadoras:</p>
+          <ul class="task-list">
+            <li>¿Qué características del proceso educativo que usted vive en su licenciatura corresponden al nuevo paradigma descrito en el Subtema 1.1?</li>
+            <li>¿Cuáles características del proceso educativo responden todavía al modelo transmisivo tradicional?</li>
+            <li>¿El objeto de la enseñanza en sus cursos está orientado predominantemente a la transmisión de contenidos o al desarrollo de competencias?</li>
+            <li>¿Qué oportunidades o brechas identifica para avanzar hacia un escenario educativo más pertinente y contemporáneo en su programa?</li>
+          </ul>
+        </div>
+
+        <h3>Instrucciones paso a paso</h3>
+        <ol class="steps">
+          <li><strong>Lea cuidadosamente la situación problemática</strong> y asegúrese de comprenderla. Identifique el problema central que se le plantea y las preguntas orientadoras que estructuran su análisis.</li>
+          <li><strong>Observe y reflexione durante dos o tres días</strong> sobre su experiencia cotidiana como alumno universitario, a la luz de los conceptos estudiados en el tema. Tome notas de situaciones concretas que ilustren los aspectos que analizará.</li>
+          <li><strong>Redacte su diagnóstico</strong> siguiendo la estructura indicada (ver apartado siguiente). El documento debe tener una extensión de entre 500 y 700 palabras y estar redactado en lenguaje académico formal.</li>
+          <li><strong>Revise su documento</strong> verificando que haya integrado conceptos del tema, que sus observaciones sean específicas y que las propuestas sean fundamentadas y viables.</li>
+          <li><strong>Suba su documento</strong> en formato PDF o Word a Google Classroom, en la tarea denominada "Actividad 2 — Diagnóstico pedagógico".</li>
+        </ol>
+
+        <h3>Estructura del documento</h3>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sección</th>
+              <th>Contenido esperado</th>
+              <th>Extensión sugerida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Encabezado</strong></td>
+              <td>Nombre completo, matrícula, fecha, nombre de la materia y licenciatura</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>2. Introducción</strong></td>
+              <td>Presentación breve del propósito del diagnóstico y el contexto analizado</td>
+              <td>60–80 palabras</td>
+            </tr>
+            <tr>
+              <td><strong>3. Análisis del proceso educativo</strong></td>
+              <td>Descripción fundamentada de las características del proceso educativo observadas, distinguiendo elementos del modelo tradicional y del modelo contemporáneo. Incluir ejemplos específicos.</td>
+              <td>180–220 palabras</td>
+            </tr>
+            <tr>
+              <td><strong>4. Análisis del objeto de la enseñanza</strong></td>
+              <td>Reflexión sobre si el énfasis de los cursos se orienta a contenidos o a competencias. Vincular con al menos un concepto del Subtema 1.2.</td>
+              <td>150–180 palabras</td>
+            </tr>
+            <tr>
+              <td><strong>5. Propuesta de mejora</strong></td>
+              <td>Identificación de al menos dos oportunidades de mejora concretas y fundamentadas pedagógicamente para avanzar hacia un escenario más contemporáneo.</td>
+              <td>100–130 palabras</td>
+            </tr>
+            <tr>
+              <td><strong>6. Reflexión final</strong></td>
+              <td>Breve cierre personal sobre lo que esta actividad le permite comprender sobre su propio proceso de aprendizaje universitario.</td>
+              <td>50–70 palabras</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-gold">
+          <strong>Nota importante: diseño anti-IA</strong>
+          Esta actividad requiere observaciones derivadas de su experiencia personal, inmediata y específica como alumno de esta licenciatura. Respuestas genéricas o generadas sin este anclaje experiencial no cumplen con el propósito formativo de la actividad. El valor de su diagnóstico reside precisamente en que es irrepetible: solo usted puede describir lo que vive en sus aulas.
+        </div>
+
+        <h3>Criterios de evaluación</h3>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Excelente (10 pts)</th>
+              <th>Satisfactorio (6 pts)</th>
+              <th>Insuficiente (2 pts)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fundamentación con conceptos del tema</td>
+              <td>Integra con precisión y pertinencia conceptos de los Subtemas 1.1 y 1.2 a lo largo del análisis.</td>
+              <td>Menciona algunos conceptos pero sin una integración sistemática.</td>
+              <td>No vincula el análisis con los conceptos del tema.</td>
+            </tr>
+            <tr>
+              <td>Especificidad de las observaciones</td>
+              <td>Las observaciones son concretas, situadas en su experiencia real como alumno de la licenciatura.</td>
+              <td>Las observaciones son parcialmente específicas; algunas son genéricas.</td>
+              <td>Las observaciones son genéricas e indiferenciadas.</td>
+            </tr>
+            <tr>
+              <td>Pertinencia de la propuesta de mejora</td>
+              <td>Las propuestas son viables, pedagógicamente fundamentadas y relevantes para el contexto analizado.</td>
+              <td>Las propuestas son razonables pero poco fundamentadas.</td>
+              <td>Las propuestas son vagas o no corresponden al análisis previo.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="classroom-box">
+          <div class="classroom-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6zm5.08 9.07L12 14.94l-5.08-2.87L5 11.2V17c0 .71 1.86 2 5 2s5-1.29 5-2v-5.8l-3 1.63z"/></svg>
+          </div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Acceda a la tarea "Actividad 2 — Diagnóstico pedagógico" en el tablón de la materia. Adjunte su documento en formato PDF o .docx y haga clic en "Entregar". Verifique que el archivo se haya cargado correctamente antes de confirmar la entrega. La calificación y retroalimentación se publicarán en Classroom dentro del plazo indicado por el docente.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 3: QUIZ -->
+    <section class="section" id="actividad-3">
+      <div class="section-header">
+        <div class="section-num">VI</div>
+        <div class="section-header-text">
+          <h2>Actividad 3 — Quiz de conocimientos</h2>
+          <p>Evaluación formativa sobre los contenidos del Tema 1</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <div class="activity-header">
+          <div class="activity-badge">Q3</div>
+          <div class="activity-header-text">
+            <h3>Quiz: Los cambios del escenario educativo</h3>
+            <p>5 preguntas de opción múltiple · Retroalimentación inmediata</p>
+            <div class="activity-meta">
+              <span class="meta-pill pill-blue">Trabajo individual</span>
+              <span class="meta-pill pill-gold">Valor: 20 puntos</span>
+              <span class="meta-pill pill-green">Evidencia: Captura de pantalla en Classroom</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <strong>Instrucciones del quiz</strong>
+          Responda cada una de las 5 preguntas seleccionando la opción que considere correcta. Al finalizar, recibirá su puntaje y una breve retroalimentación. Para entregar esta actividad en Google Classroom, tome una captura de pantalla de su resultado final y adjúntela en la tarea correspondiente.
+        </div>
+
+        <!-- QUIZ INTERACTIVO -->
+        <div id="quiz-section">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress"></div>
+          </div>
+
+          <!-- PREGUNTA 1 -->
+          <div class="quiz-question active" id="q1">
+            <div class="question-counter">Pregunta 1 de 5</div>
+            <div class="question-text">¿Cuál de las siguientes afirmaciones describe con mayor precisión el cambio en el rol del docente en el escenario educativo contemporáneo?</div>
+            <ul class="options-list">
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q1', 'El dominio del contenido disciplinar sigue siendo la única función relevante del docente en la actualidad.')"><span class="opt-letter">A</span> El dominio del contenido disciplinar sigue siendo la única función relevante del docente.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, true, 'q1', '¡Correcto! El docente contemporáneo actúa principalmente como mediador y diseñador de experiencias de aprendizaje, más que como transmisor exclusivo de contenidos.')"><span class="opt-letter">B</span> El docente actúa como mediador y diseñador de experiencias de aprendizaje, más que como transmisor exclusivo de contenidos.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q1', 'La tecnología no reemplaza al docente, pero sí transforma profundamente su función.')"><span class="opt-letter">C</span> La tecnología ha reemplazado completamente la función del docente en el aula.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q1', 'Aunque el docente sigue siendo importante, el cambio no implica que enseñe menos, sino de manera diferente.')"><span class="opt-letter">D</span> El nuevo paradigma implica que el docente enseña menos para que los alumnos descubran más.</button></li>
+            </ul>
+            <div class="feedback-box" id="feedback-q1"></div>
+            <button class="quiz-btn" id="next-q1" onclick="nextQuestion('q1', 'q2')">Siguiente pregunta</button>
+          </div>
+
+          <!-- PREGUNTA 2 -->
+          <div class="quiz-question" id="q2">
+            <div class="question-counter">Pregunta 2 de 5</div>
+            <div class="question-text">El concepto de "modelo bancario de la educación", desarrollado por Paulo Freire, hace referencia a:</div>
+            <ul class="options-list">
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q2', 'El modelo bancario no alude al financiamiento educativo, sino a la relación pedagógica entre docente y alumno.')"><span class="opt-letter">A</span> La dependencia del sistema educativo respecto del financiamiento público o privado.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q2', 'Es lo contrario: el modelo bancario describe una educación en la que el alumno es receptor pasivo, sin agencia ni pensamiento crítico.')"><span class="opt-letter">B</span> Un modelo en el que los estudiantes desarrollan pensamiento crítico a través del diálogo con el docente.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, true, 'q2', '¡Correcto! Freire critica el modelo bancario porque concibe al alumno como un recipiente vacío en el que el docente deposita conocimiento, sin considerar su agencia ni su contexto.')"><span class="opt-letter">C</span> Una concepción educativa en la que el docente "deposita" conocimiento en el alumno, quien lo recibe pasivamente.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q2', 'Freire precisamente critica el modelo bancario y propone alternativas dialógicas y liberadoras.')"><span class="opt-letter">D</span> Una propuesta pedagógica alternativa promovida por Freire para superar la educación tradicional.</button></li>
+            </ul>
+            <div class="feedback-box" id="feedback-q2"></div>
+            <button class="quiz-btn" id="next-q2" onclick="nextQuestion('q2', 'q3')">Siguiente pregunta</button>
+          </div>
+
+          <!-- PREGUNTA 3 -->
+          <div class="quiz-question" id="q3">
+            <div class="question-counter">Pregunta 3 de 5</div>
+            <div class="question-text">¿En qué consiste fundamentalmente el cambio en el "objeto de la enseñanza" descrito en el Subtema 1.2?</div>
+            <ul class="options-list">
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q3', 'El cambio no implica eliminar el conocimiento disciplinar, sino reorientar el propósito de la enseñanza hacia el desarrollo de competencias.')"><span class="opt-letter">A</span> En la eliminación de los contenidos disciplinares del currículo escolar y universitario.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, true, 'q3', '¡Correcto! El cambio en el objeto de la enseñanza implica pasar de priorizar la acumulación y transmisión de contenidos a orientar el aprendizaje hacia el desarrollo de competencias para actuar en contextos complejos.')"><span class="opt-letter">B</span> En el desplazamiento desde la acumulación de contenidos hacia el desarrollo de competencias para actuar en contextos complejos.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q3', 'Aunque las tecnologías son parte del contexto, el cambio en el objeto de la enseñanza es más profundo y no se reduce a incorporar herramientas digitales.')"><span class="opt-letter">C</span> En la incorporación obligatoria de tecnologías digitales como herramienta principal de aprendizaje.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q3', 'La especialización disciplinar sigue siendo valiosa, pero el cambio apunta a reorientar el propósito del aprendizaje.')"><span class="opt-letter">D</span> En la fragmentación del conocimiento en asignaturas cada vez más especializadas y acotadas.</button></li>
+            </ul>
+            <div class="feedback-box" id="feedback-q3"></div>
+            <button class="quiz-btn" id="next-q3" onclick="nextQuestion('q3', 'q4')">Siguiente pregunta</button>
+          </div>
+
+          <!-- PREGUNTA 4 -->
+          <div class="quiz-question" id="q4">
+            <div class="question-counter">Pregunta 4 de 5</div>
+            <div class="question-text">¿Cuál de las siguientes competencias corresponde a las que se priorizan en el paradigma educativo del siglo XXI, según los autores como Coll y Perrenoud?</div>
+            <ul class="options-list">
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q4', 'La memorización de datos no corresponde a las competencias del siglo XXI; de hecho, es una característica del modelo tradicional.')"><span class="opt-letter">A</span> Memorización precisa de fechas, fórmulas y definiciones disciplinares.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q4', 'La reproducción de información es más característica del modelo transmisivo que del nuevo paradigma.')"><span class="opt-letter">B</span> Reproducción fiel de los contenidos impartidos por el docente en las evaluaciones finales.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q4', 'La velocidad de lectura no es específicamente una competencia del siglo XXI vinculada al nuevo escenario educativo.')"><span class="opt-letter">C</span> Lectura rápida y eficiente de materiales bibliográficos extensos.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, true, 'q4', '¡Correcto! El aprender a aprender, el pensamiento crítico y la colaboración son competencias transversales fundamentales del paradigma del siglo XXI.')"><span class="opt-letter">D</span> Aprender a aprender, pensamiento crítico, colaboración y uso ético de la información digital.</button></li>
+            </ul>
+            <div class="feedback-box" id="feedback-q4"></div>
+            <button class="quiz-btn" id="next-q4" onclick="nextQuestion('q4', 'q5')">Siguiente pregunta</button>
+          </div>
+
+          <!-- PREGUNTA 5 -->
+          <div class="quiz-question" id="q5">
+            <div class="question-counter">Pregunta 5 de 5</div>
+            <div class="question-text">Un estudiante universitario de Pedagogía comenta: "Mis clases son todas de exposición del docente. Nunca tenemos oportunidad de discutir ni de aplicar lo que aprendemos." Esta situación ilustra principalmente:</div>
+            <ul class="options-list">
+              <li><button class="option-btn" onclick="selectAnswer(this, true, 'q5', '¡Correcto! La situación descrita es un ejemplo claro de persistencia del modelo educativo tradicional o transmisivo, en el que el proceso educativo no ha incorporado los cambios del escenario contemporáneo.')"><span class="opt-letter">A</span> La persistencia del modelo educativo tradicional, donde el proceso no ha incorporado los cambios del escenario contemporáneo.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q5', 'No es un modelo innovador; describe precisamente el modelo transmisivo que los nuevos enfoques buscan transformar.')"><span class="opt-letter">B</span> Un modelo educativo innovador centrado en la eficiencia del tiempo de instrucción.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q5', 'La ausencia de tecnología no es el problema central que se describe; el problema es la unidireccionalidad del proceso educativo.')"><span class="opt-letter">C</span> Una situación derivada únicamente de la falta de recursos tecnológicos en el aula.</button></li>
+              <li><button class="option-btn" onclick="selectAnswer(this, false, 'q5', 'No es una característica del aprendizaje basado en problemas; este enfoque implica justamente lo contrario: participación activa y resolución de situaciones reales.')"><span class="opt-letter">D</span> Una característica propia del aprendizaje basado en problemas, que requiere exposición teórica previa.</button></li>
+            </ul>
+            <div class="feedback-box" id="feedback-q5"></div>
+            <button class="quiz-btn" id="next-q5" onclick="showResult()">Ver resultado final</button>
+          </div>
+
+          <!-- RESULTADO -->
+          <div class="quiz-result" id="quiz-result">
+            <div class="result-score-circle" id="result-circle">
+              <span class="score-num" id="score-num">0</span>
+              <span class="score-denom">de 5</span>
+            </div>
+            <div class="result-message" id="result-msg"></div>
+            <div class="result-detail" id="result-detail"></div>
+            <div class="callout callout-gold" style="text-align:left; margin-bottom: 20px;">
+              <strong>Para entregar en Classroom</strong>
+              Tome una captura de pantalla de esta pantalla de resultados y adjúntela en la tarea "Actividad 3 — Quiz Tema 1" de Google Classroom. La captura debe mostrar su puntaje final.
+            </div>
+            <button class="btn-retry" onclick="retryQuiz()">Intentar nuevamente</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REFLEXIÓN Y CIERRE -->
+    <section class="section" id="reflexion">
+      <div class="section-header">
+        <div class="section-num">VII</div>
+        <div class="section-header-text">
+          <h2>Reflexión y aplicación</h2>
+          <p>Planificación de la transferencia del aprendizaje a la vida académica y profesional</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <p>El aprendizaje significativo no se agota en la comprensión de los contenidos ni en la realización de las actividades: se consolida cuando somos capaces de transferir lo aprendido a nuestra vida cotidiana y de planificar cómo ese aprendizaje transformará nuestra manera de actuar. Esta sección final le invita a cerrar el ciclo reflexivo del tema.</p>
+
+        <div class="callout callout-success">
+          <strong>Metacognición</strong>
+          La metacognición —pensar sobre el propio pensamiento y aprendizaje— es, precisamente, una de las competencias centrales del escenario educativo del siglo XXI que acaba de estudiar. Al completar este planificador, usted está ejerciendo esa competencia.
+        </div>
+
+        <h3>Planificador de transferencia del aprendizaje</h3>
+        <p>Complete las siguientes reflexiones de manera honesta y específica. No existen respuestas correctas o incorrectas: el valor formativo reside en la profundidad y autenticidad de su reflexión.</p>
+
+        <div class="planner-grid">
+          <div class="planner-card">
+            <h4>Lo que aprendí</h4>
+            <p style="font-size:0.82rem; color: var(--text-muted); margin-top:4px;">¿Cuál fue el aprendizaje más significativo del tema para usted? ¿Qué idea le resultó más nueva o desafiante?</p>
+            <textarea id="learned" placeholder="Escriba aquí su reflexión sobre los aprendizajes más significativos del tema..."></textarea>
+          </div>
+          <div class="planner-card">
+            <h4>Lo que me cuestiona</h4>
+            <p style="font-size:0.82rem; color: var(--text-muted); margin-top:4px;">¿Qué aspectos del tema generaron preguntas o cuestionamientos en usted que no están del todo resueltos?</p>
+            <textarea id="questions" placeholder="Escriba aquí las dudas, cuestionamientos o tensiones que este tema abre para usted..."></textarea>
+          </div>
+          <div class="planner-card">
+            <h4>Cómo lo aplicaré como estudiante</h4>
+            <p style="font-size:0.82rem; color: var(--text-muted); margin-top:4px;">¿Qué cambio concreto puede realizar en su forma de aprender en la universidad a partir de este tema?</p>
+            <textarea id="student-apply" placeholder="Escriba aquí al menos una acción concreta que realizará diferente como alumno universitario..."></textarea>
+          </div>
+          <div class="planner-card">
+            <h4>Cómo lo aplicaré como pedagogo</h4>
+            <p style="font-size:0.82rem; color: var(--text-muted); margin-top:4px;">Como futuro profesional de la educación, ¿qué implicaciones tiene este tema para su práctica pedagógica?</p>
+            <textarea id="professional-apply" placeholder="Escriba aquí cómo este tema influirá en su visión y práctica como futuro pedagogo..."></textarea>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <button class="save-btn" onclick="saveReflection()">Guardar mi reflexión</button>
+          <div class="save-confirmation" id="save-confirm">
+            Su reflexión ha sido guardada en este dispositivo. Puede imprimirla o tomar una captura para su portafolio de evidencias.
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <h3>Para continuar aprendiendo</h3>
+        <p>Se sugieren los siguientes recursos para profundizar en los contenidos de este tema:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Tipo</th>
+              <th>Relevancia para el tema</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Freire, P. Pedagogía del oprimido</strong></td>
+              <td>Libro</td>
+              <td>Fundamento crítico del modelo bancario y sus alternativas dialógicas.</td>
+            </tr>
+            <tr>
+              <td><strong>Coll, C. Psicología y currículo</strong></td>
+              <td>Libro</td>
+              <td>Marco constructivista para comprender el objeto del aprendizaje escolar.</td>
+            </tr>
+            <tr>
+              <td><strong>Perrenoud, P. Diez nuevas competencias para enseñar</strong></td>
+              <td>Libro</td>
+              <td>Propuesta sobre las competencias docentes para el nuevo escenario educativo.</td>
+            </tr>
+            <tr>
+              <td><strong>Morin, E. Los siete saberes necesarios para la educación del futuro</strong></td>
+              <td>Libro/UNESCO</td>
+              <td>Reflexión sobre el cambio en el objeto de la enseñanza desde una perspectiva compleja.</td>
+            </tr>
+            <tr>
+              <td><strong>OCDE. El futuro de la educación y las competencias</strong></td>
+              <td>Documento</td>
+              <td>Marco internacional sobre las competencias prioritarias del siglo XXI.</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+  </div><!-- /.content-area -->
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <strong>Universidad de la Ciénega</strong><br>
+  Licenciatura en Pedagogía · Tecnología y Educación I<br>
+  Tema 1: Los cambios del escenario educativo<br>
+  <span style="font-size:0.75rem; opacity:0.6;">Guía de aprendizaje interactiva · Uso exclusivo para fines académicos</span>
+</footer>
+
+<script>
+  var score = 0;
+  var answeredQuestions = {};
+
+  function selectAnswer(btn, isCorrect, questionId, feedback) {
+    if (answeredQuestions[questionId]) return;
+    answeredQuestions[questionId] = true;
+
+    var allBtns = btn.closest('.options-list').querySelectorAll('.option-btn');
+    allBtns.forEach(function(b) { b.disabled = true; });
+
+    var feedbackEl = document.getElementById('feedback-' + questionId);
+    var nextBtn = document.getElementById('next-' + questionId);
+
+    if (isCorrect) {
+      btn.classList.add('correct');
+      score++;
+      feedbackEl.className = 'feedback-box correct';
+      feedbackEl.innerHTML = '<strong>Respuesta correcta</strong>' + feedback;
+    } else {
+      btn.classList.add('incorrect');
+      feedbackEl.className = 'feedback-box incorrect';
+      feedbackEl.innerHTML = '<strong>Respuesta incorrecta</strong>' + feedback;
+    }
+    feedbackEl.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+
+    var qNum = parseInt(questionId.replace('q', ''));
+    var progress = (qNum / 5) * 100;
+    document.getElementById('quiz-progress').style.width = progress + '%';
+  }
+
+  function nextQuestion(currentId, nextId) {
+    document.getElementById(currentId).classList.remove('active');
+    document.getElementById(nextId).classList.add('active');
+  }
+
+  function showResult() {
+    document.getElementById('q5').classList.remove('active');
+    var resultEl = document.getElementById('quiz-result');
+    resultEl.style.display = 'block';
+    document.getElementById('quiz-progress').style.width = '100%';
+
+    document.getElementById('score-num').textContent = score;
+
+    var circle = document.getElementById('result-circle');
+    var msg = document.getElementById('result-msg');
+    var detail = document.getElementById('result-detail');
+
+    if (score === 5) {
+      circle.className = 'result-score-circle result-excellent';
+      msg.textContent = 'Resultado sobresaliente';
+      detail.textContent = 'Ha respondido correctamente todas las preguntas del quiz. Su comprensión de los conceptos del tema es sólida y precisa.';
+    } else if (score >= 3) {
+      circle.className = 'result-score-circle result-good';
+      msg.textContent = 'Resultado satisfactorio';
+      detail.textContent = 'Ha respondido correctamente ' + score + ' de 5 preguntas. Se recomienda revisar los conceptos en los que hubo error antes de continuar.';
+    } else {
+      circle.className = 'result-score-circle result-needs-work';
+      msg.textContent = 'Se recomienda reforzar el tema';
+      detail.textContent = 'Ha respondido correctamente ' + score + ' de 5 preguntas. Se sugiere releer el marco conceptual de la guía y volver a intentar el quiz.';
+    }
+  }
+
+  function retryQuiz() {
+    score = 0;
+    answeredQuestions = {};
+
+    document.getElementById('quiz-result').style.display = 'none';
+    document.getElementById('quiz-progress').style.width = '0%';
+
+    for (var i = 1; i <= 5; i++) {
+      var q = document.getElementById('q' + i);
+      q.classList.remove('active');
+
+      var btns = q.querySelectorAll('.option-btn');
+      btns.forEach(function(b) {
+        b.disabled = false;
+        b.className = 'option-btn';
+      });
+
+      var fb = document.getElementById('feedback-q' + i);
+      fb.style.display = 'none';
+      fb.className = 'feedback-box';
+
+      var nb = document.getElementById('next-q' + i);
+      if (nb) nb.style.display = 'none';
+    }
+
+    document.getElementById('q1').classList.add('active');
+  }
+
+  function saveReflection() {
+    var learned = document.getElementById('learned').value;
+    var questions = document.getElementById('questions').value;
+    var studentApply = document.getElementById('student-apply').value;
+    var profApply = document.getElementById('professional-apply').value;
+
+    if (!learned && !questions && !studentApply && !profApply) {
+      alert('Por favor, complete al menos uno de los campos de reflexión antes de guardar.');
+      return;
+    }
+
+    var data = { learned: learned, questions: questions, studentApply: studentApply, profApply: profApply, date: new Date().toLocaleDateString('es-MX') };
+    localStorage.setItem('reflexion_tema1', JSON.stringify(data));
+
+    document.getElementById('save-confirm').style.display = 'block';
+    setTimeout(function() {
+      document.getElementById('save-confirm').style.display = 'none';
+    }, 5000);
+  }
+
+  window.addEventListener('load', function() {
+    var saved = localStorage.getItem('reflexion_tema1');
+    if (saved) {
+      try {
+        var data = JSON.parse(saved);
+        if (data.learned) document.getElementById('learned').value = data.learned;
+        if (data.questions) document.getElementById('questions').value = data.questions;
+        if (data.studentApply) document.getElementById('student-apply').value = data.studentApply;
+        if (data.profApply) document.getElementById('professional-apply').value = data.profApply;
+      } catch(e) {}
+    }
+  });
+
+  // Sidebar active state
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  window.addEventListener('scroll', function() {
+    var current = '';
+    sections.forEach(function(s) {
+      var sTop = s.offsetTop - 120;
+      if (window.pageYOffset >= sTop) current = s.getAttribute('id');
+    });
+    navLinks.forEach(function(a) {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
