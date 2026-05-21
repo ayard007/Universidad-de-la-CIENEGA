@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT como Asistente Académico — Habilidades Digitales | Universidad de la Ciénega Plantel Centro</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ───────────────────────────────────────────
+   TOKENS
+─────────────────────────────────────────── */
+:root {
+  --azul:        #1e3a7b;
+  --azul-medio:  #2f57b5;
+  --azul-claro:  #8fa5da;
+  --azul-palido: #e4eaf8;
+  --azul-hielo:  #f2f5fc;
+  --acento:      #b8860b;
+  --acento-claro:#fdf3d8;
+  --gris-oscuro: #1c1e2c;
+  --gris-medio:  #4b5068;
+  --gris-suave:  #f5f6fa;
+  --verde:       #1a6b3a;
+  --verde-claro: #e4f4ec;
+  --blanco:      #ffffff;
+  --sombra-suave: 0 2px 16px rgba(30,58,123,.09);
+  --sombra-media: 0 6px 32px rgba(30,58,123,.14);
+  --r:  12px;
+  --rl: 20px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Source Sans 3',sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  color:var(--gris-oscuro);
+  background:var(--gris-suave);
+}
+
+/* ── BARRA SCROLL ── */
+#scroll-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--azul),var(--azul-claro));
+  z-index:200;transition:width .1s linear;
+}
+
+/* ── HEADER ── */
+header{
+  background:var(--blanco);
+  border-bottom:2px solid var(--azul-palido);
+  position:sticky;top:0;z-index:100;
+  box-shadow:var(--sombra-suave);
+}
+.header-inner{
+  max-width:980px;margin:0 auto;
+  padding:12px 24px;
+  display:flex;align-items:center;gap:16px;
+}
+.header-inner img{height:56px;width:auto;}
+.header-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--azul);line-height:1.25;
+}
+.header-text p{
+  font-size:.76rem;color:var(--gris-medio);
+  font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:2px;
+}
+.header-divider{width:1px;height:44px;background:var(--azul-palido);flex-shrink:0;}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(130deg,var(--azul) 0%,var(--azul-medio) 55%,#4a72c9 100%);
+  color:var(--blanco);padding:80px 24px 64px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 30%,rgba(255,255,255,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-chip{
+  display:inline-block;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  color:var(--blanco);
+  font-size:.73rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 18px;border-radius:100px;margin-bottom:28px;
+}
+.hero h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,5vw,3rem);
+  line-height:1.2;margin-bottom:18px;position:relative;
+}
+.hero h2 em{font-style:italic;color:#f5d87a;}
+.hero-sub{
+  font-size:1.05rem;font-weight:300;
+  max-width:580px;margin:0 auto 40px;
+  opacity:.9;position:relative;
+}
+.hero-pills{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;
+}
+.hero-pill{
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.25);
+  color:var(--blanco);font-size:.8rem;font-weight:600;
+  padding:7px 18px;border-radius:100px;letter-spacing:.03em;
+}
+
+/* ── NAV ÍNDICE ── */
+.nav-idx{
+  background:var(--blanco);
+  border-bottom:1px solid var(--azul-palido);
+  overflow-x:auto;
+}
+.nav-idx ul{
+  list-style:none;display:flex;gap:0;
+  max-width:980px;margin:0 auto;white-space:nowrap;
+}
+.nav-idx a{
+  display:block;padding:15px 18px;
+  font-size:.78rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--gris-medio);text-decoration:none;
+  border-bottom:3px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav-idx a:hover{color:var(--azul);border-bottom-color:var(--azul);}
+
+/* ── CONTENIDO PRINCIPAL ── */
+main{max-width:980px;margin:0 auto;padding:52px 24px 100px;}
+section{margin-bottom:72px;}
+
+/* ── TITULOS DE SECCIÓN ── */
+.sec-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;color:var(--azul);
+  margin-bottom:6px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-titulo .dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--azul);flex-shrink:0;
+}
+.sec-linea{
+  height:3px;width:64px;border-radius:2px;
+  background:linear-gradient(to right,var(--azul),var(--azul-palido));
+  margin-bottom:28px;
+}
+.sec-intro{font-size:1rem;color:var(--gris-medio);max-width:740px;margin-bottom:28px;}
+
+/* ── TARJETAS ── */
+.card{
+  background:var(--blanco);border-radius:var(--rl);
+  border:1px solid var(--azul-palido);
+  padding:30px 32px;margin-bottom:22px;
+  box-shadow:var(--sombra-suave);
+}
+.card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.18rem;color:var(--azul);margin-bottom:12px;
+}
+.card p,.card li{font-size:.97rem;}
+.card ul,.card ol{margin-left:22px;margin-top:10px;}
+.card li{margin-bottom:7px;}
+.card-borde{border-left:5px solid var(--azul);border-radius:0 var(--rl) var(--rl) 0;}
+.card-dorada{background:var(--acento-claro);border-color:#e0c46a;}
+.card-verde{background:var(--verde-claro);border-color:#8ecba8;}
+
+/* ── ACTIVIDAD HEADER ── */
+.act-header{display:flex;align-items:flex-start;gap:18px;margin-bottom:24px;flex-wrap:wrap;}
+.act-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:54px;height:54px;border-radius:50%;
+  background:var(--azul);color:var(--blanco);
+  font-family:'Playfair Display',serif;font-size:1.6rem;flex-shrink:0;
+}
+.act-meta h3{font-family:'Playfair Display',serif;font-size:1.28rem;color:var(--azul);margin-bottom:6px;}
+.badges{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{
+  display:inline-block;padding:3px 13px;border-radius:100px;
+  font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+}
+.b-azul{background:var(--azul-palido);color:var(--azul);}
+.b-oro{background:var(--acento-claro);color:#6b4e00;}
+.b-verde{background:var(--verde-claro);color:var(--verde);}
+
+/* ── PASOS ── */
+.pasos{counter-reset:paso;list-style:none;padding:0;}
+.paso{
+  counter-increment:paso;
+  display:flex;gap:16px;margin-bottom:22px;align-items:flex-start;
+}
+.paso::before{
+  content:counter(paso);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--azul);color:var(--blanco);
+  font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:2px;
+}
+.paso p{font-size:.97rem;}
+.paso strong{color:var(--azul);}
+
+/* ── EJEMPLO ── */
+.ejemplo{
+  background:#f6f9ff;border:1px dashed var(--azul-claro);
+  border-radius:var(--r);padding:20px 24px;margin:16px 0;position:relative;
+}
+.ejemplo::before{
+  content:'Ejemplo';
+  position:absolute;top:-11px;left:18px;
+  background:var(--azul-medio);color:var(--blanco);
+  font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:2px 12px;border-radius:100px;
+}
+.ejemplo p,.ejemplo li{font-size:.92rem;color:var(--gris-medio);font-style:italic;}
+.ejemplo ul{margin-left:18px;margin-top:8px;}
+
+/* ── CUADRO NOTA ── */
+.nota{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--acento-claro);border:1px solid #ddc46a;
+  border-radius:var(--r);padding:18px 22px;margin:18px 0;
+}
+.nota svg{flex-shrink:0;margin-top:2px;}
+.nota p{font-size:.9rem;color:#4a3300;}
+.nota strong{color:#2d1f00;}
+
+/* ── CLASSROOM BOX ── */
+.classroom{
+  background:var(--verde-claro);border:2px solid #6bbc90;
+  border-radius:var(--r);padding:20px 24px;margin-top:26px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.classroom-ico{font-size:1.6rem;flex-shrink:0;line-height:1;}
+.classroom h4{color:var(--verde);font-weight:700;font-size:.9rem;margin-bottom:4px;}
+.classroom p,.classroom li{font-size:.88rem;color:#1a4a29;}
+.classroom ul{margin-left:16px;margin-top:6px;}
+
+/* ── MATERIALES EXTERNOS ── */
+.mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px;}
+@media(max-width:600px){.mat-grid{grid-template-columns:1fr;}}
+.mat-item{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--r);padding:22px 24px;
+  box-shadow:var(--sombra-suave);
+  text-decoration:none;color:inherit;
+  transition:box-shadow .2s,transform .2s;display:block;
+}
+.mat-item:hover{box-shadow:var(--sombra-media);transform:translateY(-2px);}
+.mat-tipo{
+  font-size:.7rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--azul-medio);margin-bottom:6px;
+}
+.mat-item h4{font-weight:700;font-size:.95rem;color:var(--gris-oscuro);margin-bottom:4px;}
+.mat-item p{font-size:.84rem;color:var(--gris-medio);}
+
+/* ── CONOCIMIENTO PREVIO ── */
+.previo-box{
+  background:linear-gradient(135deg,var(--azul-palido),#d8e4f8);
+  border:1px solid var(--azul-claro);border-radius:var(--rl);
+  padding:32px;margin-bottom:24px;
+}
+.previo-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;color:var(--azul);margin-bottom:16px;
+}
+.previo-opciones{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+.previo-op{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;border:1.5px solid var(--azul-claro);
+  border-radius:var(--r);background:var(--blanco);cursor:pointer;
+  transition:all .2s;font-size:.95rem;
+}
+.previo-op:hover{border-color:var(--azul);background:var(--azul-hielo);}
+.previo-op input{accent-color:var(--azul);}
+.previo-feedback{
+  display:none;margin-top:16px;padding:16px 20px;
+  border-radius:var(--r);font-size:.92rem;
+}
+.previo-feedback.show{display:block;}
+.pf-correcto{background:var(--verde-claro);border:1px solid #7cc49a;color:var(--verde);}
+.pf-incorrecto{background:#fff3e0;border:1px solid #f0b04a;color:#7a4000;}
+
+/* ── FORO SIMULADOR ── */
+.foro-wrap{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--rl);overflow:hidden;margin-top:24px;
+}
+.foro-head{background:var(--azul);color:var(--blanco);padding:18px 26px;font-weight:700;font-size:.88rem;letter-spacing:.03em;}
+.foro-pregunta{
+  background:var(--azul-palido);margin:22px;
+  border-left:4px solid var(--azul);border-radius:0 var(--r) var(--r) 0;padding:22px 24px;
+}
+.foro-pregunta p{
+  font-family:'Playfair Display',serif;
+  font-size:1.08rem;color:var(--azul);line-height:1.55;
+}
+.foro-body{padding:0 22px 22px;}
+.foro-body label{
+  display:block;font-size:.8rem;font-weight:700;
+  color:var(--gris-medio);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;
+}
+.foro-body textarea{
+  width:100%;min-height:130px;padding:14px 16px;
+  border:1.5px solid var(--azul-palido);border-radius:var(--r);
+  font-family:'Source Sans 3',sans-serif;font-size:.95rem;
+  color:var(--gris-oscuro);resize:vertical;outline:none;
+  transition:border-color .2s;
+}
+.foro-body textarea:focus{border-color:var(--azul-medio);}
+.word-count{text-align:right;font-size:.76rem;color:var(--gris-medio);margin-top:4px;}
+.foro-ejemplos{padding:0 22px 22px;}
+.foro-ejemplos h4{
+  font-size:.8rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--gris-medio);margin-bottom:12px;
+}
+.foro-item{
+  background:var(--gris-suave);border-radius:var(--r);
+  padding:16px;margin-bottom:10px;border-left:3px solid var(--azul-claro);
+}
+.foro-item .fi-autor{font-size:.78rem;font-weight:700;color:var(--azul);margin-bottom:4px;}
+.foro-item p{font-size:.9rem;}
+#respuestas-publicadas .ri-propia{border-left-color:var(--azul);}
+
+/* ── BOTONES ── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:100px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:.88rem;font-weight:700;
+  cursor:pointer;border:none;transition:all .2s;
+  text-decoration:none;
+}
+.btn-primario{background:var(--azul);color:var(--blanco);box-shadow:0 4px 14px rgba(30,58,123,.28);}
+.btn-primario:hover{background:var(--azul-medio);transform:translateY(-1px);}
+.btn-secundario{background:var(--blanco);color:var(--azul);border:2px solid var(--azul);}
+.btn-secundario:hover{background:var(--azul-palido);}
+.btn-dorado{background:var(--acento);color:var(--blanco);font-weight:700;}
+.btn-dorado:hover{background:#a07508;transform:translateY(-1px);}
+.btn-sm{padding:9px 18px;font-size:.82rem;}
+.btn-block{width:100%;justify-content:center;}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+
+/* ── CASO PRÁCTICO ── */
+.caso-contenedor{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--rl);overflow:hidden;
+  box-shadow:var(--sombra-suave);margin-top:24px;
+}
+.caso-head{
+  background:linear-gradient(90deg,var(--azul),var(--azul-medio));
+  color:var(--blanco);padding:22px 28px;
+}
+.caso-head h4{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:4px;}
+.caso-head p{font-size:.86rem;opacity:.85;}
+.caso-body{padding:28px;}
+.caso-tab-nav{display:flex;gap:0;border-bottom:2px solid var(--azul-palido);margin-bottom:24px;overflow-x:auto;}
+.caso-tab{
+  padding:12px 20px;font-size:.82rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--gris-medio);
+  cursor:pointer;border-bottom:3px solid transparent;
+  white-space:nowrap;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'Source Sans 3',sans-serif;
+}
+.caso-tab.activo{color:var(--azul);border-bottom-color:var(--azul);}
+.caso-panel{display:none;}
+.caso-panel.activo{display:block;}
+.preguntas-analisis{margin-top:16px;}
+.pa-item{margin-bottom:20px;}
+.pa-item label{
+  display:block;font-size:.85rem;font-weight:700;
+  color:var(--azul);margin-bottom:8px;
+}
+.pa-item textarea{
+  width:100%;min-height:90px;padding:13px 16px;
+  border:1.5px solid var(--azul-palido);border-radius:var(--r);
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;
+  color:var(--gris-oscuro);resize:vertical;outline:none;
+  background:var(--gris-suave);transition:all .2s;
+}
+.pa-item textarea:focus{border-color:var(--azul-medio);background:var(--blanco);}
+
+/* ── TABLA ── */
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0;}
+th{background:var(--azul);color:var(--blanco);padding:12px 14px;text-align:left;font-weight:700;}
+td{padding:11px 14px;border-bottom:1px solid var(--azul-palido);}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:var(--azul-hielo);}
+
+/* ── QUIZ ── */
+.quiz-pregunta{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--rl);padding:26px;margin-bottom:20px;
+  box-shadow:var(--sombra-suave);
+}
+.qp-num{font-size:.73rem;font-weight:700;color:var(--azul-claro);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+.qp-enun{font-weight:600;font-size:.98rem;color:var(--azul);margin-bottom:16px;line-height:1.55;}
+.qp-opciones{display:flex;flex-direction:column;gap:10px;}
+.qp-op{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 16px;border:1.5px solid var(--azul-palido);
+  border-radius:var(--r);cursor:pointer;transition:all .2s;
+}
+.qp-op:hover{border-color:var(--azul-medio);background:var(--azul-hielo);}
+.qp-op input{accent-color:var(--azul);flex-shrink:0;margin-top:3px;}
+.qp-op label{cursor:pointer;font-size:.93rem;}
+.qp-op.correcta{border-color:#2e7d32;background:#e4f4ec;}
+.qp-op.incorrecta{border-color:#c62828;background:#ffebee;}
+.quiz-resultado{
+  display:none;background:var(--blanco);border-radius:var(--rl);
+  padding:44px 32px;text-align:center;
+  box-shadow:var(--sombra-media);border:2px solid var(--azul-palido);
+}
+.quiz-resultado.visible{display:block;}
+.qr-circulo{
+  width:120px;height:120px;border-radius:50%;
+  background:var(--azul);color:var(--blanco);
+  font-family:'Playfair Display',serif;font-size:2.4rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+}
+.qr-titulo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--azul);margin-bottom:8px;}
+.barra-prog{background:var(--azul-palido);border-radius:100px;height:12px;overflow:hidden;margin:16px 0;}
+.barra-fill{height:100%;background:linear-gradient(to right,var(--azul),var(--azul-medio));border-radius:100px;transition:width 1s ease;}
+.qr-msg{font-size:1rem;color:var(--gris-medio);margin-bottom:16px;}
+.qr-retro{text-align:left;margin-top:28px;}
+.qr-item{
+  border-radius:var(--r);padding:16px;margin-bottom:12px;
+}
+.qr-item-ok{background:var(--verde-claro);border-left:4px solid var(--verde);}
+.qr-item-err{background:#fff3e0;border-left:4px solid #e65100;}
+.qr-item-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+.qr-item-ok .qr-item-label{color:var(--verde);}
+.qr-item-err .qr-item-label{color:#bf360c;}
+.qr-item p{font-size:.9rem;color:#333;}
+
+/* ── REFLEXIÓN FINAL ── */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+@media(max-width:640px){.ref-grid{grid-template-columns:1fr;}}
+.ref-item{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--rl);padding:24px;
+  box-shadow:var(--sombra-suave);
+}
+.ref-item h4{
+  font-weight:700;color:var(--azul);font-size:.88rem;
+  text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;
+}
+.ref-item textarea{
+  width:100%;min-height:100px;padding:12px 14px;
+  border:1.5px solid var(--azul-palido);border-radius:var(--r);
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;
+  background:var(--gris-suave);outline:none;resize:vertical;
+  transition:all .2s;
+}
+.ref-item textarea:focus{border-color:var(--azul-medio);background:var(--blanco);}
+
+/* ── CIERRE HERO ── */
+.cierre{
+  background:linear-gradient(135deg,var(--azul),var(--azul-medio));
+  color:var(--blanco);border-radius:var(--rl);
+  padding:40px 36px;margin-top:32px;
+}
+.cierre h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--blanco);margin-bottom:12px;}
+.cierre p{color:rgba(255,255,255,.9);font-size:.97rem;}
+
+/* ── DIVISOR ── */
+.div{height:1px;background:linear-gradient(to right,transparent,var(--azul-palido),transparent);margin:56px 0;}
+
+/* ── CONTENIDO TEMATICO ACORDEON ── */
+.acord-item{
+  background:var(--blanco);border:1px solid var(--azul-palido);
+  border-radius:var(--r);margin-bottom:12px;overflow:hidden;
+}
+.acord-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:18px 24px;background:none;border:none;
+  cursor:pointer;font-family:'Source Sans 3',sans-serif;
+  font-size:.97rem;font-weight:700;color:var(--gris-oscuro);
+  text-align:left;
+}
+.acord-btn:hover{background:var(--azul-hielo);}
+.acord-icon{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--azul-palido);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;font-size:.8rem;color:var(--azul);font-weight:900;
+}
+.acord-item.open .acord-icon{transform:rotate(45deg);}
+.acord-body{display:none;padding:0 24px 22px;font-size:.95rem;line-height:1.75;}
+.acord-item.open .acord-body{display:block;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--azul);color:rgba(255,255,255,.7);
+  text-align:center;padding:32px 24px;font-size:.8rem;
+}
+footer strong{color:var(--blanco);}
+
+/* ── ANIMACIÓN ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.fu{animation:fadeUp .5s ease both;}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar"></div>
+
+<!-- ════════════ HEADER ════════════ -->
+<header>
+  <div class="header-inner">
+    <img src="data:image/png;base64,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" alt="Universidad de la Ciénega">
+    <div class="header-divider"></div>
+    <div class="header-text">
+      <h1>Universidad de la Ciénega</h1>
+      <p>Habilidades Digitales &nbsp;&middot;&nbsp; Plantel Centro, Guadalajara, Jalisco</p>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════ HERO ════════════ -->
+<div class="hero">
+  <div class="hero-chip">Pedagogía Activa &nbsp;·&nbsp; Constructivismo &nbsp;·&nbsp; ABP</div>
+  <h2>ChatGPT como <em>Asistente Académico</em> en la Universidad</h2>
+  <p class="hero-sub">Guía de integración de inteligencia artificial generativa como herramienta de tutoría, escritura y comprensión conceptual en el aula universitaria.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">Nivel Licenciatura</span>
+    <span class="hero-pill">Todas las Carreras</span>
+    <span class="hero-pill">4 Actividades Classroom</span>
+    <span class="hero-pill">Aprendizaje Significativo</span>
+  </div>
+</div>
+
+<!-- ════════════ NAVEGACIÓN ════════════ -->
+<nav class="nav-idx">
+  <ul>
+    <li><a href="#introduccion">Introduccion</a></li>
+    <li><a href="#contenido">Contenido</a></li>
+    <li><a href="#materiales">Materiales</a></li>
+    <li><a href="#previo">Conocimiento Previo</a></li>
+    <li><a href="#act1">Foro</a></li>
+    <li><a href="#act2">Actividad</a></li>
+    <li><a href="#act3">Caso Practico</a></li>
+    <li><a href="#act4">Quiz</a></li>
+    <li><a href="#reflexion">Reflexion</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════ MAIN ════════════ -->
+<main>
+
+<!-- ══ INTRODUCCIÓN ══ -->
+<section id="introduccion">
+  <h2 class="sec-titulo"><span class="dot"></span> Introduccion</h2>
+  <div class="sec-linea"></div>
+  <p class="sec-intro">La inteligencia artificial generativa ha transformado la forma en que las personas acceden al conocimiento, redactan textos y resuelven problemas. En el entorno universitario, estas herramientas representan tanto una oportunidad pedagogica extraordinaria como un desafio etico que exige criterio, responsabilidad y pensamiento critico.</p>
+
+  <div class="card card-borde">
+    <h3>Proposito de esta guia</h3>
+    <p>Esta guia tiene como objetivo central que el estudiante de licenciatura comprenda el funcionamiento, las posibilidades y los limites de ChatGPT (OpenAI) como asistente de tutoria y escritura academica, y sea capaz de integrarlo de manera etica, estrategica y efectiva en su proceso de aprendizaje universitario, con independencia de la carrera que curse.</p>
+    <p style="margin-top:12px;">Al concluir esta guia, el estudiante podra:</p>
+    <ul>
+      <li>Explicar el funcionamiento basico de ChatGPT y sus capacidades como asistente academico.</li>
+      <li>Utilizar ChatGPT para obtener explicaciones de conceptos complejos, orientacion metodologica y apoyo en la redaccion de textos academicos.</li>
+      <li>Distinguir los usos academicamente legitimos de aquellos que comprometen la integridad intelectual.</li>
+      <li>Disenar un protocolo personal de uso etico y productivo de la herramienta en sus estudios.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Marco metodologico</h3>
+    <p>La guia adopta tres principios pedagogicos que orientan el diseno de cada actividad:</p>
+    <ul>
+      <li><strong>Constructivismo:</strong> el conocimiento se construye a partir de lo que el estudiante ya sabe y de su interaccion directa con la herramienta. No se transmiten respuestas prefabricadas; se generan experiencias de aprendizaje.</li>
+      <li><strong>Pedagogia activa:</strong> el estudiante no es receptor pasivo de informacion sobre ChatGPT; lo usa, lo cuestiona, lo compara y lo evalua en situaciones concretas de su vida academica.</li>
+      <li><strong>Aprendizaje basado en problemas (ABP):</strong> cada actividad parte de una situacion o problema real del entorno universitario, para que el conocimiento adquirido tenga sentido y aplicabilidad inmediata.</li>
+    </ul>
+  </div>
+
+  <div class="nota">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <p><strong>Sobre el uso de IA en esta guia:</strong> Algunas actividades te invitaran a interactuar directamente con ChatGPT. Los productos que debes entregar en Classroom deben reflejar tu propio analisis, redaccion y juicio critico. El proposito es que aprendas <em>con</em> la herramienta, no que ella sustituya tu pensamiento.</p>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ CONTENIDO TEMÁTICO ══ -->
+<section id="contenido">
+  <h2 class="sec-titulo"><span class="dot"></span> Contenido Tematico</h2>
+  <div class="sec-linea"></div>
+  <p class="sec-intro">A continuacion se presenta el contenido conceptual que sustenta las actividades practicas de esta guia. Explora cada tema haciendo clic en el titulo correspondiente.</p>
+
+  <div class="acord-item open">
+    <button class="acord-btn" onclick="toggleAcord(this)">
+      1. ¿Que es ChatGPT y como funciona?
+      <span class="acord-icon">+</span>
+    </button>
+    <div class="acord-body">
+      <p>ChatGPT es un modelo de lenguaje de gran escala (LLM, por sus siglas en ingles) desarrollado por OpenAI. A diferencia de un motor de busqueda, ChatGPT no recupera informacion de internet en tiempo real: genera texto nuevo prediciendo, con base en patrones estadisticos aprendidos durante su entrenamiento con grandes cantidades de texto, cuales palabras son mas probables dado un contexto.</p>
+      <br>
+      <p>Esto significa que ChatGPT puede:</p>
+      <ul style="margin-left:20px;margin-top:8px;">
+        <li>Explicar conceptos complejos con distintos niveles de profundidad y usando diferentes analogias.</li>
+        <li>Generar borradores de textos, estructuras argumentativas y propuestas de redaccion.</li>
+        <li>Responder preguntas en tiempo real durante el proceso de estudio.</li>
+        <li>Detectar errores logicos o gramaticales en un texto.</li>
+        <li>Reformular ideas en distintos estilos o registros del lenguaje.</li>
+      </ul>
+      <br>
+      <p>Sin embargo, ChatGPT tiene limitaciones estructurales importantes: puede generar informacion plausible pero incorrecta (fenomeno conocido como "alucinacion"), no tiene acceso a fuentes actualizadas en tiempo real (salvo en versiones con navegacion web), y no comprende el contexto particular del estudiante ni el de su carrera de forma automatica.</p>
+    </div>
+  </div>
+
+  <div class="acord-item">
+    <button class="acord-btn" onclick="toggleAcord(this)">
+      2. ChatGPT como asistente de tutoria
+      <span class="acord-icon">+</span>
+    </button>
+    <div class="acord-body">
+      <p>Uno de los usos mas valiosos de ChatGPT en el contexto universitario es como tutor personalizado disponible en cualquier momento. A diferencia de un docente cuyo tiempo es limitado, ChatGPT puede:</p>
+      <ul style="margin-left:20px;margin-top:8px;">
+        <li>Explicar el mismo concepto de cinco maneras distintas hasta que el estudiante lo comprenda.</li>
+        <li>Responder preguntas "basicas" que el estudiante puede sentir verguenza de hacer en clase.</li>
+        <li>Proporcionar ejercicios de practica adicionales sobre un tema especifico.</li>
+        <li>Ayudar a conectar conceptos de distintas materias para una comprension mas integrada.</li>
+        <li>Revisar el razonamiento del estudiante ante un problema y senalar donde se produce el error logico.</li>
+      </ul>
+      <br>
+      <p><strong>Principio clave:</strong> el uso de ChatGPT como tutor es productivo cuando el estudiante <em>lidera</em> el dialogo. En lugar de pedir "explicame el tema X", resulta mas efectivo decir "intento comprender X pero me confundo en el punto Y, ¿puedes explicarlo de esta manera?". Cuanto mas especifica es la pregunta, mas util es la respuesta.</p>
+      <div class="ejemplo" style="margin-top:16px;">
+        <p><strong>Indicacion poco efectiva:</strong> "Explicate el calculo diferencial."</p>
+        <p style="margin-top:6px;"><strong>Indicacion efectiva:</strong> "Soy estudiante de primer semestre de Ingenieria. Entiendo el concepto de limite, pero no comprendo por que la derivada representa la tasa de cambio instantanea. Usa un ejemplo con velocidad de un auto."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="acord-item">
+    <button class="acord-btn" onclick="toggleAcord(this)">
+      3. ChatGPT como asistente de escritura academica
+      <span class="acord-icon">+</span>
+    </button>
+    <div class="acord-body">
+      <p>La escritura academica es una competencia transversal fundamental en cualquier carrera universitaria. ChatGPT puede apoyar el proceso de escritura en distintas etapas, siempre que el estudiante mantenga la autoria intelectual del contenido:</p>
+      <table>
+        <thead><tr><th>Etapa del proceso</th><th>Uso legitimo de ChatGPT</th><th>Uso que compromete el aprendizaje</th></tr></thead>
+        <tbody>
+          <tr><td>Planeacion</td><td>Generar un esquema tentativo de argumentos</td><td>Pedir que defina el tema por el estudiante</td></tr>
+          <tr><td>Borrador</td><td>Redactar una seccion a partir de ideas propias del estudiante</td><td>Generar todo el texto sin ideas previas</td></tr>
+          <tr><td>Revision</td><td>Detectar errores gramaticales, de coherencia o de estilo</td><td>Reescribir el ensayo por completo</td></tr>
+          <tr><td>Argumentacion</td><td>Solicitar contraargumentos para fortalecer la tesis propia</td><td>Pedir que construya la tesis sin participacion del estudiante</td></tr>
+          <tr><td>Citas y fuentes</td><td>Identificar autores o teorias que puedan ser relevantes</td><td>Asumir como validas citas que el modelo genera sin verificarlas</td></tr>
+        </tbody>
+      </table>
+      <br>
+      <p><strong>Advertencia critica:</strong> ChatGPT puede fabricar referencias bibliograficas que parecen reales pero no existen. Toda fuente generada por el modelo debe verificarse en bases de datos academicas (Google Scholar, JSTOR, Redalyc, SciELO) antes de ser citada en cualquier trabajo.</p>
+    </div>
+  </div>
+
+  <div class="acord-item">
+    <button class="acord-btn" onclick="toggleAcord(this)">
+      4. Diseño de prompts efectivos para uso academico
+      <span class="acord-icon">+</span>
+    </button>
+    <div class="acord-body">
+      <p>Un "prompt" es la indicacion o instruccion que se proporciona a ChatGPT. La calidad del prompt determina directamente la calidad de la respuesta. Un prompt academicamente efectivo incluye los siguientes elementos:</p>
+      <ul style="margin-left:20px;margin-top:8px;">
+        <li><strong>Contexto:</strong> quien eres y en que situacion te encuentras ("Soy estudiante de cuarto semestre de Psicologia").</li>
+        <li><strong>Objetivo especifico:</strong> que quieres lograr exactamente, no solo el tema general.</li>
+        <li><strong>Limitaciones o condiciones:</strong> nivel de profundidad, extension, estilo, restricciones de vocabulario.</li>
+        <li><strong>Rol asignado:</strong> puedes pedirle al modelo que actue como un docente, un revisor, un crítico o un interlocutor.</li>
+      </ul>
+      <div class="ejemplo" style="margin-top:16px;">
+        <p><strong>Estructura de prompt efectivo:</strong> "Actua como un tutor universitario especializado en [disciplina]. Soy estudiante de [semestre y carrera]. Estoy trabajando en [tarea o concepto]. Mi duda especifica es [descripcion precisa]. Necesito que me [tipo de ayuda: expliques, revises, generes opciones, etc.]."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="acord-item">
+    <button class="acord-btn" onclick="toggleAcord(this)">
+      5. Etica y limites del uso academico de ChatGPT
+      <span class="acord-icon">+</span>
+    </button>
+    <div class="acord-body">
+      <p>El uso de herramientas de IA en contextos academicos plantea preguntas eticas que cada universidad, y cada estudiante, debe abordar con seriedad. Los principios que guian un uso etico incluyen:</p>
+      <ul style="margin-left:20px;margin-top:8px;">
+        <li><strong>Transparencia:</strong> cuando el trabajo utilizo asistencia de IA, se declara de forma explicita en el documento.</li>
+        <li><strong>Autoria intelectual:</strong> las ideas, el argumento central y la postura del trabajo son originales del estudiante; ChatGPT apoya la forma, no sustituye el fondo.</li>
+        <li><strong>Verificacion:</strong> toda informacion generada por el modelo se verifica en fuentes primarias antes de ser presentada como hecho.</li>
+        <li><strong>Aprendizaje genuino:</strong> el objetivo final no es obtener un producto academico, sino desarrollar competencias. Si el uso de IA impide ese desarrollo, compromete el proposito de la educacion universitaria.</li>
+      </ul>
+      <br>
+      <p>Cada institucion puede tener politicas especificas sobre el uso de IA en trabajos academicos. El estudiante debe conocer y cumplir las directrices de su universidad y de cada docente.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ MATERIALES EXTERNOS ══ -->
+<section id="materiales">
+  <h2 class="sec-titulo"><span class="dot"></span> Materiales Externos de Consulta</h2>
+  <div class="sec-linea"></div>
+  <p class="sec-intro">Los siguientes recursos han sido seleccionados por su rigor academico y su relevancia directa para el contenido de esta guia. Se recomienda su consulta antes o durante las actividades practicas.</p>
+
+  <div class="mat-grid">
+    <a class="mat-item" href="https://openai.com/chatgpt" target="_blank" rel="noopener">
+      <div class="mat-tipo">Plataforma oficial</div>
+      <h4>ChatGPT — OpenAI</h4>
+      <p>Acceso oficial a la herramienta. Se recomienda crear una cuenta gratuita con correo institucional antes de comenzar las actividades.</p>
+    </a>
+    <a class="mat-item" href="https://doi.org/10.1016/j.iheduc.2023.100857" target="_blank" rel="noopener">
+      <div class="mat-tipo">Articulo Cientifico</div>
+      <h4>ChatGPT and the rise of AI writers (Kasneci et al., 2023)</h4>
+      <p>Analisis del impacto de los LLMs en educacion superior, publicado en Computers &amp; Education: Artificial Intelligence. Acceso desde ScienceDirect.</p>
+    </a>
+    <a class="mat-item" href="https://www.oecd.org/education/ai-in-education/" target="_blank" rel="noopener">
+      <div class="mat-tipo">Informe Internacional</div>
+      <h4>OCDE — Artificial Intelligence in Education</h4>
+      <p>Marco de referencia de la OCDE sobre el uso etico y pedagogico de la inteligencia artificial en contextos educativos.</p>
+    </a>
+    <a class="mat-item" href="https://www.redalyc.org" target="_blank" rel="noopener">
+      <div class="mat-tipo">Base de datos academica</div>
+      <h4>Redalyc — Red de Revistas Cientificas de America Latina</h4>
+      <p>Para verificar referencias bibliograficas generadas por ChatGPT y buscar articulos sobre IA en educacion en contexto latinoamericano.</p>
+    </a>
+    <a class="mat-item" href="https://scholar.google.com" target="_blank" rel="noopener">
+      <div class="mat-tipo">Buscador academico</div>
+      <h4>Google Scholar</h4>
+      <p>Herramienta esencial para verificar la existencia y autenticidad de cualquier fuente bibliografica sugerida por ChatGPT.</p>
+    </a>
+    <a class="mat-item" href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" target="_blank" rel="noopener">
+      <div class="mat-tipo">Documentacion tecnica</div>
+      <h4>OpenAI Help Center — ChatGPT</h4>
+      <p>Documentacion oficial sobre las capacidades, limitaciones y actualizaciones de ChatGPT. Util para comprender las diferencias entre versiones gratuitas y de pago.</p>
+    </a>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ CONOCIMIENTO PREVIO ══ -->
+<section id="previo">
+  <h2 class="sec-titulo"><span class="dot"></span> Activacion de Conocimiento Previo</h2>
+  <div class="sec-linea"></div>
+  <p class="sec-intro">Antes de comenzar las actividades, reflexiona sobre lo que ya sabes. Responde la siguiente pregunta de forma honesta; no existe una respuesta unica correcta para la segunda parte, pero si hay una opcion que describe con mayor precision el funcionamiento real de la herramienta.</p>
+
+  <div class="previo-box">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p style="font-size:.97rem;color:var(--gris-medio);">Cuando un estudiante universitario le pide a ChatGPT que le ayude a redactar un ensayo sobre un tema de su carrera y simplemente copia y pega el texto generado, ¿cual de las siguientes afirmaciones describe mejor la consecuencia principal de esa accion?</p>
+    <div class="previo-opciones" id="previo-ops">
+      <label class="previo-op"><input type="radio" name="previo" value="a" onclick="evaluarPrevio('a')"> <span>El ensayo resultante sera de mayor calidad academica porque ChatGPT tiene acceso a mas informacion que el estudiante.</span></label>
+      <label class="previo-op"><input type="radio" name="previo" value="b" onclick="evaluarPrevio('b')"> <span>El estudiante evade el proceso de aprendizaje para el que fue disenada la actividad y presenta trabajo que no representa su propio desarrollo intelectual.</span></label>
+      <label class="previo-op"><input type="radio" name="previo" value="c" onclick="evaluarPrevio('c')"> <span>No existe consecuencia negativa siempre que el estudiante revise el texto generado antes de entregarlo.</span></label>
+      <label class="previo-op"><input type="radio" name="previo" value="d" onclick="evaluarPrevio('d')"> <span>El principal riesgo es que el software antiplagio de la universidad detecte el texto y lo rechace automaticamente.</span></label>
+    </div>
+    <div class="previo-feedback pf-correcto" id="pf-correcto">
+      <strong>Respuesta acertada.</strong> La consecuencia principal no es tecnica ni de deteccion: es pedagogica. El proposito de un ensayo universitario es desarrollar en el estudiante capacidades de analisis, argumentacion y escritura academica. Al eludir ese proceso, el estudiante obtiene un producto sin haber construido las competencias que ese producto debia evidenciar. Esto compromete su formacion independientemente de que sea detectado o no.
+    </div>
+    <div class="previo-feedback pf-incorrecto" id="pf-incorrecto">
+      <strong>Esta opcion no describe la consecuencia principal.</strong> Considera lo siguiente: el objetivo central de una actividad academica no es obtener un producto de alta calidad, sino desarrollar competencias. Si ChatGPT produce el texto, el estudiante obtiene el producto pero no desarrolla las capacidades para las que fue disenada la tarea. La respuesta que describe mejor esa consecuencia es la segunda opcion. Te invitamos a releer la seccion de etica del contenido tematico.
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ ACTIVIDAD 1: FORO ══ -->
+<section id="act1">
+  <div class="act-header">
+    <div class="act-num">1</div>
+    <div class="act-meta">
+      <h3>Foro de Mediacion: Dialogo Critico</h3>
+      <div class="badges">
+        <span class="badge b-azul">Participacion en foro</span>
+        <span class="badge b-oro">Entregar en Classroom</span>
+        <span class="badge b-verde">Reflexion critica</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Descripcion de la actividad</h3>
+    <p>La participacion en foros de discusion es una practica academica fundamental en la educacion superior. Implica construir argumentos con sustento, escuchar perspectivas distintas y enriquecer el debate colectivo. En esta actividad te incorporaras a un foro sobre el uso de ChatGPT como asistente en el aula universitaria, aportando tu perspectiva critica y dialogando con las aportaciones de tus companeros.</p>
+  </div>
+
+  <div class="card">
+    <h3>Instrucciones paso a paso</h3>
+    <ol class="pasos">
+      <li class="paso"><p><strong>Lee la pregunta detonadora</strong> que aparece en el recuadro de abajo. Dedica al menos cinco minutos a reflexionar antes de comenzar a escribir.</p></li>
+      <li class="paso"><p><strong>Redacta tu participacion inicial</strong> en el campo de texto del simulador. Debe tener un minimo de 150 palabras e incluir: (a) tu postura clara y definida frente a la pregunta, (b) al menos un argumento basado en tu experiencia como estudiante universitario, y (c) una referencia a un aspecto especifico de ChatGPT que apoye o problematice tu postura.</p></li>
+      <li class="paso"><p><strong>Publica tu participacion</strong> en el foro habilitado en Google Classroom. Ademas, <strong>responde al menos a dos companeros</strong> con comentarios que extiendan, cuestionen o complementen sus argumentos (minimo 80 palabras por respuesta).</p></li>
+      <li class="paso"><p><strong>Guarda capturas de pantalla</strong> de tu participacion inicial y de tus dos respuestas a companeros, y subelas a la tarea correspondiente en Classroom.</p></li>
+    </ol>
+  </div>
+
+  <div class="foro-wrap">
+    <div class="foro-head">Foro — Habilidades Digitales: ChatGPT en el Aula Universitaria</div>
+    <div class="foro-pregunta">
+      <p>Algunos docentes universitarios sostienen que el uso de ChatGPT en actividades academicas fomenta la dependencia tecnologica y debilita el pensamiento propio del estudiante; otros argumentan que rechazarlo equivale a ignorar una herramienta que ya forma parte del entorno profesional al que los egresados se incorporaran. A partir de tu experiencia como estudiante universitario, ¿en que condiciones consideras que el uso de ChatGPT fortalece el aprendizaje academico y en cuales lo obstaculiza? ¿Que responsabilidades corresponden al estudiante, al docente y a la institucion en la definicion de esos limites?</p>
+    </div>
+    <div class="foro-body">
+      <label for="foro-texto">Tu participacion (minimo 150 palabras)</label>
+      <textarea id="foro-texto" placeholder="Redacta aqui tu participacion. Recuerda incluir tu postura, un argumento basado en tu experiencia y una referencia a algun aspecto especifico de ChatGPT..." oninput="contarForo()"></textarea>
+      <div class="word-count" id="foro-wc">0 palabras</div>
+      <div class="btn-row">
+        <button class="btn btn-primario btn-sm" onclick="publicarForo()">Publicar en el simulador</button>
+        <button class="btn btn-secundario btn-sm" onclick="limpiarForo()">Limpiar</button>
+      </div>
+    </div>
+    <div id="respuestas-publicadas" style="padding:0 22px 4px;"></div>
+    <div class="foro-ejemplos">
+      <h4>Participaciones de referencia (modelos de estilo, no de contenido)</h4>
+      <div class="foro-item">
+        <div class="fi-autor">Ejemplo — Estudiante de Administracion de Empresas</div>
+        <p>Considero que el uso de ChatGPT fortalece el aprendizaje cuando el estudiante mantiene la direccion del proceso. En mi caso, lo he utilizado para preparar exposiciones: le pido que me genere preguntas que un publico experto podria hacerme, y eso me obliga a profundizar en los aspectos que tengo menos consolidados. Eso es diferente a pedirle que redacte mis diapositivas. La responsabilidad del estudiante es clara: si usas la herramienta para evitar pensar, el unico perjudicado eres tu mismo. Pero hay una responsabilidad institucional que a veces se ignora: las universidades deberian ensenarnos a usar estas herramientas bien, no simplemente prohibirlas o ignorarlas. Un profesionista que no sepa trabajar con IA en 2025 tendra una desventaja competitiva real.</p>
+      </div>
+      <div class="foro-item">
+        <div class="fi-autor">Ejemplo — Estudiante de Trabajo Social</div>
+        <p>Mi postura es cautelosa. Trabajo con poblaciones en situacion de vulnerabilidad, y una de las competencias mas importantes de mi carrera es la capacidad de escucha, de lectura de contextos humanos complejos. Eso no lo puede hacer ChatGPT y, lo que es peor, si delego en el modelo la comprension de esos contextos, nunca desarrollo esa habilidad yo misma. Sin embargo, reconozco que hay usos validos: para buscar marcos teoricos iniciales, para corregir la redaccion de mis informes o para entender mejor una ley o norma especifica. El punto clave que mencionas sobre las responsabilidades me parece fundamental. El docente tiene un papel en esto: si sus actividades estan disenadas de tal manera que ChatGPT puede resolverlas sin que el estudiante piense, el problema no es la herramienta.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="classroom">
+    <div class="classroom-ico">&#128203;</div>
+    <div>
+      <h4>Lo que debes subir a Classroom</h4>
+      <ul>
+        <li>Captura de pantalla de tu participacion inicial en el foro (minimo 150 palabras).</li>
+        <li>Capturas de pantalla de tus dos respuestas a companeros (minimo 80 palabras cada una).</li>
+        <li>Las tres capturas pueden integrarse en un unico archivo PDF o Word.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ ACTIVIDAD 2 ══ -->
+<section id="act2">
+  <div class="act-header">
+    <div class="act-num">2</div>
+    <div class="act-meta">
+      <h3>Laboratorio de Prompts Academicos</h3>
+      <div class="badges">
+        <span class="badge b-azul">Aprendizaje significativo</span>
+        <span class="badge b-oro">Entregar en Classroom</span>
+        <span class="badge b-verde">Aplicacion practica</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Descripcion de la actividad</h3>
+    <p>El diseno de indicaciones (prompts) efectivas es la competencia central para usar ChatGPT como asistente academico. En esta actividad experimentaras de forma sistematica con distintos tipos de indicaciones, evaluaras la calidad de las respuestas obtenidas y construiras un repertorio propio de prompts para las necesidades academicas de tu carrera.</p>
+  </div>
+
+  <div class="card">
+    <h3>Instrucciones paso a paso</h3>
+    <ol class="pasos">
+      <li class="paso"><p><strong>Accede a ChatGPT</strong> en <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color:var(--azul);font-weight:600;">chatgpt.com</a>. Si no tienes cuenta, crea una gratuita. No se requiere version de pago para esta actividad.</p></li>
+      <li class="paso"><p><strong>Elige una tarea academica real</strong> de alguna de tus materias actuales: puede ser la comprension de un concepto dificil, la elaboracion de un esquema para un ensayo o la revision de un parrafo que hayas escrito.</p></li>
+      <li class="paso"><p><strong>Ejecuta los tres experimentos de prompts</strong> que se describen en las tarjetas de abajo. Para cada experimento, copia la indicacion exacta que usaste y la respuesta que obtuviste, y registra tu evaluacion critica en el espacio correspondiente.</p></li>
+      <li class="paso"><p><strong>Elabora un "Repertorio personal de prompts"</strong>: un listado de al menos cinco indicaciones propias, disenadas para las necesidades especificas de tu carrera, con una breve explicacion del tipo de situacion academica en que cada una es util.</p></li>
+      <li class="paso"><p><strong>Sube a Classroom</strong> un documento con: los tres registros de experimento (indicacion + respuesta + evaluacion) y tu repertorio personal de prompts. Incluye capturas de pantalla de las interacciones con ChatGPT.</p></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Experimento 1: Prompt generico vs. prompt contextualizado</h3>
+    <p>Ejecuta las siguientes dos indicaciones sobre el mismo tema de tu materia y compara los resultados:</p>
+    <div class="ejemplo">
+      <p><strong>Indicacion generica (Prompt A):</strong> "Explicame [tema de tu materia]."</p>
+    </div>
+    <div class="ejemplo">
+      <p><strong>Indicacion contextualizada (Prompt B):</strong> "Actua como un tutor universitario. Soy estudiante de [tu semestre y carrera]. Ya entiendo [concepto previo relacionado], pero no comprendo como se relaciona con [tema especifico]. Explicamelo con un ejemplo aplicado al campo de [tu carrera], en un nivel adecuado para alguien que recien comienza a estudiar el tema."</p>
+    </div>
+    <p style="margin-top:12px;font-size:.95rem;"><strong>Que debes registrar:</strong> ¿En que dimensiones difieren las respuestas? (nivel de profundidad, relevancia, claridad, aplicabilidad a tu carrera). ¿Que elementos del Prompt B producen esas diferencias?</p>
+    <textarea class="pa-item textarea" style="width:100%;min-height:100px;padding:13px 16px;border:1.5px solid var(--azul-palido);border-radius:var(--r);font-family:'Source Sans 3',sans-serif;font-size:.9rem;background:var(--gris-suave);outline:none;resize:vertical;margin-top:12px;transition:all .2s;" placeholder="Escribe aqui tu analisis comparativo de los dos prompts y sus respuestas..."></textarea>
+  </div>
+
+  <div class="card">
+    <h3>Experimento 2: ChatGPT como revisor de tu escritura</h3>
+    <p>Toma un parrafo que hayas escrito recientemente (de un trabajo, apunte o tarea) y aplica la siguiente indicacion:</p>
+    <div class="ejemplo">
+      <p>"Actua como un revisor academico universitario. A continuacion te comparto un parrafo de un texto que estoy redactando para la materia de [nombre de la materia]. Identifica: (a) errores gramaticales o de ortografia, (b) ideas que no estan suficientemente desarrolladas, (c) problemas de coherencia o cohesion, y (d) al menos una sugerencia para fortalecer el argumento. No reescribas el parrafo: solo dame el diagnostico y las recomendaciones. Aqui el parrafo: [pega tu parrafo]."</p>
+    </div>
+    <p style="margin-top:12px;font-size:.95rem;"><strong>Que debes registrar:</strong> ¿Las observaciones de ChatGPT son pertinentes? ¿Identifico algo que tu no habias notado? ¿Hubo alguna sugerencia que consideras incorrecta o inapropiada para el contexto de tu materia? Explica por que.</p>
+    <textarea class="pa-item textarea" style="width:100%;min-height:100px;padding:13px 16px;border:1.5px solid var(--azul-palido);border-radius:var(--r);font-family:'Source Sans 3',sans-serif;font-size:.9rem;background:var(--gris-suave);outline:none;resize:vertical;margin-top:12px;transition:all .2s;" placeholder="Registra tu evaluacion critica de las observaciones de ChatGPT sobre tu parrafo..."></textarea>
+  </div>
+
+  <div class="card">
+    <h3>Experimento 3: Verificacion de informacion generada</h3>
+    <p>Pide a ChatGPT que te proporcione tres referencias bibliograficas sobre un tema de tu carrera. Luego, verifica cada una en Google Scholar o Redalyc.</p>
+    <div class="ejemplo">
+      <p>"Proporciona tres referencias bibliograficas de articulos academicos arbitrados publicados entre 2018 y 2024 sobre [tema especifico de tu carrera]. Para cada referencia incluye: autor(es), año, titulo, nombre de la revista y DOI o URL de acceso."</p>
+    </div>
+    <p style="margin-top:12px;font-size:.95rem;"><strong>Que debes registrar:</strong> De las tres referencias, ¿cuantas existen realmente y son accesibles? ¿Alguna fue fabricada por el modelo? ¿Que implicaciones tiene esto para el uso de ChatGPT en trabajos de investigacion?</p>
+    <textarea class="pa-item textarea" style="width:100%;min-height:100px;padding:13px 16px;border:1.5px solid var(--azul-palido);border-radius:var(--r);font-family:'Source Sans 3',sans-serif;font-size:.9rem;background:var(--gris-suave);outline:none;resize:vertical;margin-top:12px;transition:all .2s;" placeholder="Registra cuales referencias existian realmente, cuales eran falsas y tu analisis de esta limitacion del modelo..."></textarea>
+  </div>
+
+  <div class="classroom">
+    <div class="classroom-ico">&#128203;</div>
+    <div>
+      <h4>Lo que debes subir a Classroom</h4>
+      <ul>
+        <li>Documento con los tres registros de experimento (indicacion exacta, respuesta obtenida y tu evaluacion critica).</li>
+        <li>Tu "Repertorio personal de prompts" (minimo 5 indicaciones propias con su explicacion de uso).</li>
+        <li>Capturas de pantalla de las tres interacciones con ChatGPT.</li>
+        <li>Extension minima del documento: 500 palabras entre los tres analisis y el repertorio.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ ACTIVIDAD 3: CASO PRÁCTICO ══ -->
+<section id="act3">
+  <div class="act-header">
+    <div class="act-num">3</div>
+    <div class="act-meta">
+      <h3>Caso Practico: "El Dilema de Sofia"</h3>
+      <div class="badges">
+        <span class="badge b-azul">Analisis de caso</span>
+        <span class="badge b-oro">Entregar en Classroom</span>
+        <span class="badge b-verde">Pensamiento critico</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="caso-contenedor">
+    <div class="caso-head">
+      <h4>Caso practico para analisis</h4>
+      <p>Lee el caso completo en la pestana "Descripcion del caso" antes de responder las preguntas de analisis.</p>
+    </div>
+    <div class="caso-body">
+      <div class="caso-tab-nav">
+        <button class="caso-tab activo" onclick="cambiarTab(0)">Descripcion del caso</button>
+        <button class="caso-tab" onclick="cambiarTab(1)">Preguntas de analisis</button>
+        <button class="caso-tab" onclick="cambiarTab(2)">Contexto adicional</button>
+      </div>
+
+      <!-- TAB 0 -->
+      <div class="caso-panel activo">
+        <p><strong>Sofia Mendoza</strong> es estudiante de tercer semestre de la Licenciatura en Comunicacion. Tiene pendiente la entrega de un ensayo de 1,500 palabras sobre la influencia de las redes sociales en la formacion de la opinion publica, para la materia de Teoria de la Comunicacion. El trabajo representa el 30% de la calificacion del parcial.</p>
+        <br>
+        <p>La noche anterior a la entrega, Sofia aun no ha comenzado el ensayo. Abre ChatGPT y escribe: "Escribeme un ensayo de 1,500 palabras sobre la influencia de las redes sociales en la opinion publica. Incluye introduccion, desarrollo y conclusion, con citas de autores reconocidos." En menos de dos minutos, ChatGPT le proporciona un texto completo, bien estructurado, con referencias que parecen legitimas.</p>
+        <br>
+        <p>Sofia revisa el texto rapido, cambia algunos parrafos de lugar y corrige dos oraciones que le parecen demasiado "roboticas". Entrega el trabajo como propio.</p>
+        <br>
+        <p>Tres dias despues, su docente le devuelve el ensayo con una calificacion de 9.5 y una nota que dice: "Excelente estructura argumentativa. Noto mayor madurez en tu escritura esta vez." Sofia siente una mezcla de alivio y malestar. Dos semanas mas tarde, en el examen parcial, el docente pide a los estudiantes que desarrollen por escrito un analisis de opinion publica sobre un caso real reciente. Sofia no sabe como empezar.</p>
+      </div>
+
+      <!-- TAB 1 -->
+      <div class="caso-panel">
+        <p style="font-size:.95rem;color:var(--gris-medio);margin-bottom:20px;">Responde cada una de las siguientes preguntas de forma individual. Tus respuestas deben basarse en el caso y en el contenido tematico de esta guia. Extension minima: 60 palabras por pregunta.</p>
+        <div class="preguntas-analisis">
+          <div class="pa-item">
+            <label>1. Identifica los actores involucrados en este caso (Sofia, el docente, ChatGPT, la institucion) y describe la responsabilidad etica de cada uno en lo que ocurrio.</label>
+            <textarea placeholder="Responde aqui tu analisis sobre los actores y sus responsabilidades..."></textarea>
+          </div>
+          <div class="pa-item">
+            <label>2. El docente califico el ensayo con 9.5 sin detectar el uso de IA. ¿Que implicaciones tiene esto para Sofia? ¿Y para el sistema de evaluacion universitaria?</label>
+            <textarea placeholder="Analiza las implicaciones para Sofia y para el sistema de evaluacion..."></textarea>
+          </div>
+          <div class="pa-item">
+            <label>3. La escena del examen parcial revela una consecuencia directa de la decision de Sofia. ¿Cual es esa consecuencia y como se relaciona con los principios de aprendizaje genuino discutidos en el contenido de esta guia?</label>
+            <textarea placeholder="Describe la consecuencia y su relacion con el aprendizaje genuino..."></textarea>
+          </div>
+          <div class="pa-item">
+            <label>4. Propone una alternativa: ¿como podria Sofia haber utilizado ChatGPT de manera etica y productiva para realizar el ensayo sin evadir el proceso de aprendizaje?</label>
+            <textarea placeholder="Describe una estrategia etica de uso de ChatGPT para este caso especifico..."></textarea>
+          </div>
+          <div class="pa-item">
+            <label>5. ¿Que cambios podria hacer el docente en el diseno de la actividad para que el uso de ChatGPT no pueda sustituir el proceso de aprendizaje del estudiante?</label>
+            <textarea placeholder="Propone ajustes pedagogicos al diseno de la actividad..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2 -->
+      <div class="caso-panel">
+        <h4 style="font-family:'Playfair Display',serif;color:var(--azul);margin-bottom:14px;">Datos de contexto para enriquecer el analisis</h4>
+        <table>
+          <thead><tr><th>Elemento</th><th>Informacion adicional</th></tr></thead>
+          <tbody>
+            <tr><td>Historia academica de Sofia</td><td>Estudiante regular con promedio de 8.2. No es la primera vez que enfrenta dificultades con trabajos escritos de largo aliento.</td></tr>
+            <tr><td>Politica institucional</td><td>La universidad no tiene una politica explicita sobre el uso de IA en trabajos academicos al momento de los hechos.</td></tr>
+            <tr><td>Referencias del ensayo</td><td>ChatGPT cito a Jurgen Habermas y Walter Lippmann. La cita de Habermas es correcta; la cita de Lippmann incluye un numero de pagina que no corresponde al texto citado.</td></tr>
+            <tr><td>El examen parcial</td><td>El caso real que el docente pide analizar en el examen fue publicado 72 horas antes de la evaluacion: no existe informacion de ese evento en la base de datos de ChatGPT.</td></tr>
+            <tr><td>Reaccion de Sofia</td><td>Tras el examen, Sofia confiesa a una companera: "El ensayo lo hizo ChatGPT pero yo no sabia nada del tema. Cuando tuve que escribir sola, me di cuenta."</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="classroom" style="margin-top:24px;">
+    <div class="classroom-ico">&#128203;</div>
+    <div>
+      <h4>Lo que debes subir a Classroom</h4>
+      <ul>
+        <li>Documento con las cinco respuestas al analisis del caso (minimo 60 palabras por pregunta).</li>
+        <li>Una reflexion personal final (minimo 100 palabras): ¿en que medida te identificas con alguna de las situaciones que describe el caso? ¿Que aprendiste de este analisis?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ ACTIVIDAD 4: QUIZ ══ -->
+<section id="act4">
+  <div class="act-header">
+    <div class="act-num">4</div>
+    <div class="act-meta">
+      <h3>Quiz de Autoevaluacion</h3>
+      <div class="badges">
+        <span class="badge b-azul">5 preguntas</span>
+        <span class="badge b-oro">Captura a Classroom</span>
+        <span class="badge b-verde">Evaluacion formativa</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Instrucciones</h3>
+    <p>Responde las cinco preguntas con atencion. Al concluir, haz clic en "Ver mis resultados" para conocer tu puntaje y acceder a la retroalimentacion de cada pregunta. Toma una captura de pantalla de la pantalla de resultados y subela a Classroom junto con un parrafo de reflexion sobre las preguntas que no respondiste correctamente.</p>
+  </div>
+
+  <div id="quiz-preguntas">
+    <div class="quiz-pregunta">
+      <div class="qp-num">Pregunta 1 de 5</div>
+      <div class="qp-enun">Un estudiante utiliza ChatGPT para generar una lista de referencias bibliograficas sobre su tema de tesis. La lista incluye autores reales y titulos plausibles. ¿Cual debe ser el paso inmediato despues de obtener esa lista?</div>
+      <div class="qp-opciones">
+        <label class="qp-op"><input type="radio" name="q1" value="a"> <span>Incluir las referencias directamente en el trabajo, ya que ChatGPT es una fuente confiable de informacion academica.</span></label>
+        <label class="qp-op"><input type="radio" name="q1" value="b"> <span>Verificar cada referencia en una base de datos academica (Google Scholar, Redalyc, SciELO) antes de citarla en cualquier documento.</span></label>
+        <label class="qp-op"><input type="radio" name="q1" value="c"> <span>Pedir a ChatGPT que verifique el por si mismo si las referencias son correctas.</span></label>
+        <label class="qp-op"><input type="radio" name="q1" value="d"> <span>Usar solo las referencias que parecen mas antiguas, ya que tienen mayor probabilidad de ser reales.</span></label>
+      </div>
+    </div>
+
+    <div class="quiz-pregunta">
+      <div class="qp-num">Pregunta 2 de 5</div>
+      <div class="qp-enun">¿Cual de los siguientes enunciados describe con mayor precision el fenomeno de "alucinacion" en los modelos de lenguaje como ChatGPT?</div>
+      <div class="qp-opciones">
+        <label class="qp-op"><input type="radio" name="q2" value="a"> <span>El modelo se vuelve inestable y produce errores de programacion cuando se le hacen preguntas muy complejas.</span></label>
+        <label class="qp-op"><input type="radio" name="q2" value="b"> <span>El modelo genera informacion estadisticamente coherente y plausible que sin embargo es incorrecta, inexistente o inventada.</span></label>
+        <label class="qp-op"><input type="radio" name="q2" value="c"> <span>El modelo accede a sitios web no confiables y reproduce su contenido sin filtrarlo.</span></label>
+        <label class="qp-op"><input type="radio" name="q2" value="d"> <span>El modelo presenta diferencias en la calidad de las respuestas dependiendo del idioma utilizado.</span></label>
+      </div>
+    </div>
+
+    <div class="quiz-pregunta">
+      <div class="qp-num">Pregunta 3 de 5</div>
+      <div class="qp-enun">Un estudiante quiere utilizar ChatGPT para prepararse para un examen oral de su materia. ¿Cual de las siguientes estrategias representa el uso mas productivo de la herramienta para ese objetivo?</div>
+      <div class="qp-opciones">
+        <label class="qp-op"><input type="radio" name="q3" value="a"> <span>Pedirle a ChatGPT que le envie un resumen del tema que pueda memorizar la noche anterior al examen.</span></label>
+        <label class="qp-op"><input type="radio" name="q3" value="b"> <span>Pedirle a ChatGPT que le haga preguntas sobre el tema, evaluate sus respuestas y le senale los aspectos que necesita reforzar.</span></label>
+        <label class="qp-op"><input type="radio" name="q3" value="c"> <span>Copiar las definiciones que ChatGPT genera para repasarlas antes del examen.</span></label>
+        <label class="qp-op"><input type="radio" name="q3" value="d"> <span>Preguntarle a ChatGPT cuales preguntas cree que el docente hara en el examen.</span></label>
+      </div>
+    </div>
+
+    <div class="quiz-pregunta">
+      <div class="qp-num">Pregunta 4 de 5</div>
+      <div class="qp-enun">En el marco de la escritura academica, ¿cual de los siguientes usos de ChatGPT es mas compatible con el principio de autoria intelectual del estudiante?</div>
+      <div class="qp-opciones">
+        <label class="qp-op"><input type="radio" name="q4" value="a"> <span>Pedir que ChatGPT redacte la introduccion del ensayo a partir del titulo de la investigacion.</span></label>
+        <label class="qp-op"><input type="radio" name="q4" value="b"> <span>Compartir el esquema argumentativo propio del estudiante y pedir a ChatGPT que identifique debilidades logicas o argumentos no desarrollados.</span></label>
+        <label class="qp-op"><input type="radio" name="q4" value="c"> <span>Pedirle a ChatGPT que redacte un parrafo "de ejemplo" que el estudiante pueda adaptar.</span></label>
+        <label class="qp-op"><input type="radio" name="q4" value="d"> <span>Usar ChatGPT para generar la conclusion del trabajo una vez que el desarrollo ya esta completo.</span></label>
+      </div>
+    </div>
+
+    <div class="quiz-pregunta">
+      <div class="qp-num">Pregunta 5 de 5</div>
+      <div class="qp-enun">¿Que elemento diferencia principalmente a un prompt academicamente efectivo de uno que produce respuestas genericas e imprecisas?</div>
+      <div class="qp-opciones">
+        <label class="qp-op"><input type="radio" name="q5" value="a"> <span>La extension del prompt: cuanto mas largo, mejor sera la respuesta.</span></label>
+        <label class="qp-op"><input type="radio" name="q5" value="b"> <span>El uso de palabras tecnicas del area de conocimiento del estudiante.</span></label>
+        <label class="qp-op"><input type="radio" name="q5" value="c"> <span>La especificidad del contexto, el objetivo concreto y las condiciones o restricciones que el estudiante establece en la indicacion.</span></label>
+        <label class="qp-op"><input type="radio" name="q5" value="d"> <span>Escribir el prompt en ingles, ya que ChatGPT procesa ese idioma con mayor precision.</span></label>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn btn-dorado" style="font-size:1rem;padding:16px 40px;" onclick="calificarQuiz()">Ver mis resultados</button>
+    </div>
+  </div>
+
+  <div class="quiz-resultado" id="quiz-resultado">
+    <div class="qr-circulo" id="qr-circulo">0/5</div>
+    <h3 class="qr-titulo" id="qr-titulo">—</h3>
+    <div class="barra-prog"><div class="barra-fill" id="qr-barra" style="width:0%"></div></div>
+    <p class="qr-msg" id="qr-msg"></p>
+    <div class="qr-retro" id="qr-retro"></div>
+    <button class="btn btn-secundario" style="margin-top:28px;" onclick="reiniciarQuiz()">Intentar de nuevo</button>
+  </div>
+
+  <div class="classroom" style="margin-top:28px;">
+    <div class="classroom-ico">&#128203;</div>
+    <div>
+      <h4>Lo que debes subir a Classroom</h4>
+      <ul>
+        <li>Captura de pantalla de la pantalla de resultados del quiz con tu puntaje visible.</li>
+        <li>Parrafo de reflexion (minimo 80 palabras) sobre las preguntas que no acertaste: ¿por que elegiste esa opcion y que comprendiste al leer la retroalimentacion?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ REFLEXIÓN FINAL ══ -->
+<section id="reflexion">
+  <h2 class="sec-titulo"><span class="dot"></span> Reflexion y Plan de Aplicacion</h2>
+  <div class="sec-linea"></div>
+  <p class="sec-intro">El aprendizaje que no se conecta con la accion futura tiende a diluirse. Esta seccion final te invita a convertir lo aprendido en un plan concreto de integracion academica y profesional.</p>
+
+  <div class="card card-dorada">
+    <h3>Sintesis de las tres dimensiones de aprendizaje</h3>
+    <p>A lo largo de esta guia has trabajado en tres planos complementarios:</p>
+    <ul style="margin-top:10px;">
+      <li><strong>Dimension critica (Foro):</strong> ¿Bajo que condiciones el uso de ChatGPT favorece o dificulta el aprendizaje universitario?</li>
+      <li><strong>Dimension practica (Laboratorio de prompts):</strong> ¿Como usar ChatGPT de forma efectiva como tutor y asistente de escritura?</li>
+      <li><strong>Dimension etica (Caso practico y Quiz):</strong> ¿Donde estan los limites del uso academicamente legitimo de la herramienta?</li>
+    </ul>
+    <p style="margin-top:12px;">Tu plan de aplicacion debe responder a las tres dimensiones con compromisos especificos y verificables.</p>
+  </div>
+
+  <div class="ref-grid">
+    <div class="ref-item">
+      <h4>1. Mis principios de uso</h4>
+      <p style="font-size:.88rem;color:var(--gris-medio);margin-bottom:10px;">Redacta entre dos y cuatro principios personales que guiaran tu uso de ChatGPT en tus estudios. Escribelos en primera persona y de forma especifica, no como enunciados genericos.</p>
+      <textarea placeholder="Ejemplo: 'Utilizare ChatGPT para comprender conceptos que no haya entendido en clase, pero siempre redactare yo mismo los productos academicos que entregue...'"></textarea>
+    </div>
+    <div class="ref-item">
+      <h4>2. Tres usos concretos en mis materias</h4>
+      <p style="font-size:.88rem;color:var(--gris-medio);margin-bottom:10px;">Identifica tres situaciones especificas de tus materias actuales en las que usaras ChatGPT de forma etica y efectiva. Se especifico: nombre de la materia, tipo de tarea y tipo de asistencia que solicitaras.</p>
+      <textarea placeholder="Materia 1: [nombre] — Uso: [descripcion especifica]&#10;Materia 2: [nombre] — Uso: [descripcion especifica]&#10;Materia 3: [nombre] — Uso: [descripcion especifica]"></textarea>
+    </div>
+    <div class="ref-item">
+      <h4>3. Una competencia que no delegare</h4>
+      <p style="font-size:.88rem;color:var(--gris-medio);margin-bottom:10px;">Identifica una habilidad central de tu formacion profesional que consideras que podria debilitarse si la delegaras sistematicamente en ChatGPT. Describe como planeas mantenerla y fortalecerla.</p>
+      <textarea placeholder="La habilidad que no delegare es... porque en mi carrera implica... Para mantenerla, me comprometo a..."></textarea>
+    </div>
+    <div class="ref-item">
+      <h4>4. ChatGPT y mi futuro profesional</h4>
+      <p style="font-size:.88rem;color:var(--gris-medio);margin-bottom:10px;">Reflexiona sobre el impacto de las herramientas de IA en el campo profesional al que aspiras. ¿Que tipo de tareas seran automatizables? ¿Que competencias humanas seran mas valiosas?</p>
+      <textarea placeholder="En mi area de [carrera], las herramientas de IA transformaran principalmente... Las competencias que seran mas valiosas seran..."></textarea>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h3>Para cerrar: autonomia, criterio y confianza</h3>
+    <p>ChatGPT y las herramientas de inteligencia artificial seguiran evolucionando. Lo que no cambiara es la necesidad de profesionales capaces de pensar con rigor, juzgar con etica, comunicar con precision y asumir responsabilidad por sus decisiones. Esta guia no busca que te conviertas en un tecnico experto en IA, sino en un usuario consciente, critico y estrategico de una herramienta que ya forma parte de tu entorno academico y que formara parte de tu vida profesional.</p>
+    <p style="margin-top:14px;">Tu formacion universitaria te proporciona algo que ningun modelo de lenguaje posee: experiencia vivida, contexto profesional, juicio etico situado y la capacidad de hacerte responsable de las consecuencias de tus decisiones. Esas son competencias irreemplazables. ChatGPT puede ser un asistente valioso; el criterio con que lo usas es tuyo.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Universidad de la Ciénega &nbsp;&middot;&nbsp; Plantel Centro</strong></p>
+  <p style="margin-top:6px;">Habilidades Digitales &nbsp;&middot;&nbsp; Plantel Centro, Guadalajara, Jalisco &nbsp;&middot;&nbsp; Nivel Licenciatura</p>
+  <p style="margin-top:6px;">Ciclo Escolar 2025&ndash;2026 &nbsp;|&nbsp; Todas las carreras</p>
+</footer>
+
+<script>
+/* ── Barra de scroll ── */
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('scroll-bar').style.width=p+'%';
+});
+
+/* ── Acordeon ── */
+function toggleAcord(btn){
+  const item=btn.closest('.acord-item');
+  item.classList.toggle('open');
+}
+
+/* ── Conocimiento previo ── */
+function evaluarPrevio(val){
+  document.getElementById('pf-correcto').classList.remove('show');
+  document.getElementById('pf-incorrecto').classList.remove('show');
+  if(val==='b'){
+    document.getElementById('pf-correcto').classList.add('show');
+  } else {
+    document.getElementById('pf-incorrecto').classList.add('show');
+  }
+}
+
+/* ── Foro ── */
+function contarForo(){
+  const t=document.getElementById('foro-texto').value.trim();
+  const w=t?t.split(/\s+/).length:0;
+  const el=document.getElementById('foro-wc');
+  el.textContent=w+' palabras';
+  el.style.color=w>=150?'var(--verde)':'#c62828';
+}
+function publicarForo(){
+  const t=document.getElementById('foro-texto').value.trim();
+  if(!t){alert('Por favor escribe tu participacion antes de publicar.');return;}
+  const w=t?t.split(/\s+/).length:0;
+  if(w<150){alert('Tu participacion debe tener al menos 150 palabras. Actualmente tiene '+w+'.');return;}
+  const cont=document.getElementById('respuestas-publicadas');
+  if(!cont.querySelector('h4')){
+    const h=document.createElement('h4');
+    h.style.cssText='font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gris-medio);padding:0 0 10px;';
+    h.textContent='Tu participacion publicada';
+    cont.appendChild(h);
+  }
+  const d=document.createElement('div');
+  d.className='foro-item ri-propia';
+  d.innerHTML='<div class="fi-autor">Tu participacion — '+new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'})+'</div><p>'+t.replace(/\n/g,'<br>')+'</p>';
+  cont.appendChild(d);
+  document.getElementById('foro-texto').value='';
+  document.getElementById('foro-wc').textContent='0 palabras';
+  d.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function limpiarForo(){
+  document.getElementById('foro-texto').value='';
+  document.getElementById('foro-wc').textContent='0 palabras';
+}
+
+/* ── Pestañas caso ── */
+function cambiarTab(n){
+  document.querySelectorAll('.caso-tab').forEach((t,i)=>t.classList.toggle('activo',i===n));
+  document.querySelectorAll('.caso-panel').forEach((p,i)=>p.classList.toggle('activo',i===n));
+}
+
+/* ── Quiz ── */
+const QA={q1:'b',q2:'b',q3:'b',q4:'b',q5:'c'};
+const QE={
+  q1:{ok:true,txt:'Correcto. ChatGPT puede generar referencias que parecen reales pero no existen (hallucination). Toda fuente debe verificarse en bases de datos academicas antes de ser citada.'},
+  q2:{ok:true,txt:'Correcto. La "alucinacion" es la tendencia del modelo a generar texto estadisticamente coherente pero factualmente incorrecto. No es un error de programacion, sino una limitacion estructural de como funcionan los LLMs.'},
+  q3:{ok:true,txt:'Correcto. Usar ChatGPT como interlocutor que genera preguntas y evalua las respuestas del estudiante es un uso activo que fortalece el aprendizaje, a diferencia de recibir pasivamente resumenes para memorizar.'},
+  q4:{ok:true,txt:'Correcto. Compartir el esquema propio y pedir retroalimentacion preserva la autoria intelectual: el estudiante genera las ideas y ChatGPT las pone a prueba. Los otros usos delegan en el modelo partes del proceso de pensamiento que corresponden al estudiante.'},
+  q5:{ok:true,txt:'Correcto. La especificidad del contexto, el objetivo concreto y las condiciones o restricciones son los elementos que transforman una pregunta generica en un prompt academicamente efectivo. La extension o el idioma del prompt no determinan por si solos la calidad de la respuesta.'}
+};
+const QETIQUETAS={q1:'Pregunta 1',q2:'Pregunta 2',q3:'Pregunta 3',q4:'Pregunta 4',q5:'Pregunta 5'};
+const QERR={
+  q1:'La respuesta correcta es verificar cada referencia en una base de datos academica. ChatGPT no puede verificar sus propias referencias, y su aparente credibilidad no garantiza que existan.',
+  q2:'La respuesta correcta es la segunda opcion. La alucinacion es la generacion de informacion plausible pero incorrecta, no un error de programacion ni un problema de idioma.',
+  q3:'La estrategia mas productiva es usar ChatGPT como interlocutor que genera preguntas y evalua respuestas. Memorizar resumenes o definiciones generados por el modelo no desarrolla la comprension profunda que el examen oral exige.',
+  q4:'La opcion correcta es compartir el esquema propio y pedir retroalimentacion. En los demas casos, ChatGPT asume partes del proceso de construccion intelectual que corresponden al estudiante.',
+  q5:'El elemento diferenciador es la especificidad: contexto del estudiante, objetivo concreto y condiciones. La extension del prompt o el idioma no determinan por si solos la calidad de la respuesta.'
+};
+
+function calificarQuiz(){
+  let puntaje=0;const qs=['q1','q2','q3','q4','q5'];
+  let resp=false;
+  qs.forEach(q=>{if(document.querySelector('input[name="'+q+'"]:checked'))resp=true;});
+  if(!resp){alert('Por favor responde al menos una pregunta antes de ver tus resultados.');return;}
+  qs.forEach(q=>{
+    const sel=document.querySelector('input[name="'+q+'"]:checked');
+    document.querySelectorAll('input[name="'+q+'"]').forEach(op=>{
+      op.disabled=true;
+      const lbl=op.closest('.qp-op');
+      if(op.value===QA[q])lbl.classList.add('correcta');
+      if(sel&&op===sel&&op.value!==QA[q])lbl.classList.add('incorrecta');
+    });
+    if(sel&&sel.value===QA[q])puntaje++;
+  });
+  const pct=puntaje/5*100;
+  document.getElementById('qr-circulo').textContent=puntaje+'/5';
+  document.getElementById('qr-barra').style.width=pct+'%';
+  let titulo,msg;
+  if(puntaje===5){titulo='Dominio excelente del contenido';msg='Respondiste correctamente las cinco preguntas. Demuestras una comprension solida de los principios del uso etico y efectivo de ChatGPT en contextos academicos.';}
+  else if(puntaje>=3){titulo='Comprension en desarrollo';msg='Respondiste '+puntaje+' de 5 preguntas correctamente. Revisa la retroalimentacion de las preguntas que no acertaste para consolidar tu comprension.';}
+  else{titulo='Hay conceptos por reforzar';msg='Respondiste '+puntaje+' de 5 preguntas correctamente. Te recomendamos releer el contenido tematico de la guia y revisar la retroalimentacion con atencion.';}
+  document.getElementById('qr-titulo').textContent=titulo;
+  document.getElementById('qr-msg').textContent=msg;
+  let html='<h4 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--azul);margin-bottom:16px;">Retroalimentacion por pregunta</h4>';
+  qs.forEach(q=>{
+    const sel=document.querySelector('input[name="'+q+'"]:checked');
+    const ok=sel&&sel.value===QA[q];
+    const cls=ok?'qr-item-ok':'qr-item-err';
+    const lbl=ok?'Correcta':'Incorrecta';
+    const txt=ok?QE[q].txt:QERR[q];
+    html+='<div class="qr-item '+cls+'"><div class="qr-item-label">'+QETIQUETAS[q]+': '+lbl+'</div><p>'+txt+'</p></div>';
+  });
+  document.getElementById('qr-retro').innerHTML=html;
+  const res=document.getElementById('quiz-resultado');
+  res.classList.add('visible');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function reiniciarQuiz(){
+  ['q1','q2','q3','q4','q5'].forEach(q=>{
+    document.querySelectorAll('input[name="'+q+'"]').forEach(op=>{
+      op.disabled=false;op.checked=false;
+      op.closest('.qp-op').classList.remove('correcta','incorrecta');
+    });
+  });
+  document.getElementById('quiz-resultado').classList.remove('visible');
+  document.getElementById('qr-barra').style.width='0%';
+  document.getElementById('quiz-preguntas').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
