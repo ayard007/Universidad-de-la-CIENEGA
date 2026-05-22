@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | El Concepto de Grupo | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===========================
+   TOKENS & VARIABLES
+   =========================== */
+:root {
+  --ucm-azul:       #2b3a7a;
+  --ucm-azul-m:     #3d52a0;
+  --ucm-azul-l:     #6b80c4;
+  --ucm-azul-xl:    #dce3f5;
+  --ucm-azul-bg:    #f0f3fb;
+  --dorado:         #c49a28;
+  --dorado-l:       #f6eccc;
+  --dorado-xl:      #fdf8ec;
+  --crema:          #faf9f6;
+  --blanco:         #ffffff;
+  --texto:          #18192a;
+  --texto-2:        #444460;
+  --texto-3:        #757590;
+  --verde:          #1f7a4f;
+  --verde-l:        #e6f5ee;
+  --verde-b:        #9ecdb4;
+  --rojo:           #b82a2a;
+  --rojo-l:         #fdecea;
+  --naranja:        #d4730a;
+  --naranja-l:      #fef0e0;
+  --sombra-s:       0 1px 8px rgba(43,58,122,0.08);
+  --sombra-m:       0 3px 18px rgba(43,58,122,0.11);
+  --sombra-l:       0 6px 32px rgba(43,58,122,0.16);
+  --r:              6px;
+  --rg:             14px;
+  --rl:             20px;
+  --max:            980px;
+}
+
+/* ===========================
+   RESET & BASE
+   =========================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  line-height: 1.75;
+}
+
+/* ===========================
+   READING PROGRESS
+   =========================== */
+#progreso {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--dorado), var(--ucm-azul-l));
+  z-index: 9999; transition: width .1s linear;
+}
+
+/* ===========================
+   TOP BAR
+   =========================== */
+.topbar {
+  background: var(--ucm-azul);
+  color: rgba(255,255,255,.7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: 7px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.topbar strong { color: rgba(255,255,255,.92); }
+
+/* ===========================
+   HEADER
+   =========================== */
+header {
+  background: linear-gradient(135deg, #1a2860 0%, var(--ucm-azul) 55%, #2e468c 100%);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 90% 50%, rgba(107,128,196,.18) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255,255,255,.014) 100px, rgba(255,255,255,.014) 101px),
+    repeating-linear-gradient(0deg,  transparent, transparent 100px, rgba(255,255,255,.014) 100px, rgba(255,255,255,.014) 101px);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 40px 40px 52px;
+  display: grid; grid-template-columns: 160px 1fr; gap: 36px; align-items: center;
+  position: relative;
+}
+.logo-card {
+  background: var(--blanco);
+  border-radius: var(--rg);
+  padding: 16px 20px;
+  box-shadow: 0 0 0 3px rgba(196,154,40,.45), var(--sombra-l);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-card img { width: 100%; height: auto; display: block; }
+
+.header-meta .breadcrumb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--dorado); margin-bottom: 10px; display: block;
+}
+.header-meta h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 900; color: var(--blanco);
+  line-height: 1.15; margin-bottom: 6px;
+}
+.header-meta .subtitulo {
+  font-size: 1rem; color: rgba(255,255,255,.72);
+  font-style: italic; margin-bottom: 22px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
+  color: rgba(255,255,255,.88);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .09em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 99px;
+}
+
+/* ===========================
+   NAV STICKY
+   =========================== */
+nav {
+  background: var(--ucm-azul-m);
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 2px 14px rgba(0,0,0,.22);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 40px;
+  display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+nav a {
+  color: rgba(255,255,255,.76); text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .63rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 13px 16px; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  display: block;
+}
+nav a:hover { color: var(--blanco); border-bottom-color: var(--dorado); }
+
+/* ===========================
+   MAIN
+   =========================== */
+main { max-width: var(--max); margin: 0 auto; padding: 56px 40px 100px; }
+section { margin-bottom: 72px; scroll-margin-top: 56px; }
+
+/* ===========================
+   SECTION LABELS & HEADINGS
+   =========================== */
+.label-sec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .63rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dorado); display: block; margin-bottom: 4px; padding-left: 20px;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; font-weight: 700; color: var(--ucm-azul);
+  margin-bottom: 22px; padding-left: 20px; position: relative; line-height: 1.2;
+}
+h2::before {
+  content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
+  width: 4px; background: var(--dorado); border-radius: 2px;
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.22rem; font-weight: 700; color: var(--ucm-azul-m);
+  margin: 32px 0 12px;
+}
+h4 {
+  font-size: .88rem; font-weight: 600; color: var(--texto);
+  text-transform: uppercase; letter-spacing: .08em; margin: 20px 0 8px;
+}
+p { margin-bottom: 14px; color: var(--texto-2); font-size: .97rem; }
+strong { color: var(--texto); }
+
+/* ===========================
+   CARDS
+   =========================== */
+.card {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--rg); padding: 26px 30px;
+  margin-bottom: 20px; box-shadow: var(--sombra-s);
+}
+.card-blue  { background: var(--ucm-azul-bg); border-color: #b6c4e8; }
+.card-gold  { background: var(--dorado-xl); border-color: var(--dorado); border-left: 5px solid var(--dorado); }
+.card-green { background: var(--verde-l); border-color: var(--verde-b); border-left: 5px solid var(--verde); }
+.card-orange{ background: var(--naranja-l); border-color: #f0b06a; border-left: 5px solid var(--naranja); }
+
+/* ===========================
+   OBJETIVO HERO
+   =========================== */
+.objetivo {
+  background: var(--ucm-azul);
+  color: var(--blanco);
+  border-radius: var(--rg); padding: 30px 36px;
+  margin-bottom: 32px; position: relative; overflow: hidden;
+}
+.objetivo::after {
+  content: 'OBJETIVO';
+  position: absolute; right: -20px; top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 900;
+  color: rgba(255,255,255,.04); pointer-events: none; white-space: nowrap;
+}
+.objetivo .etiqueta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dorado); display: block; margin-bottom: 8px;
+}
+.objetivo p { color: rgba(255,255,255,.88); font-size: 1rem; margin: 0; }
+
+/* ===========================
+   COMPETENCIAS GRID
+   =========================== */
+.comp-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 14px; margin-top: 18px;
+}
+.comp-item {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--r); padding: 18px 20px;
+  border-top: 3px solid var(--ucm-azul-m);
+}
+.comp-item .tipo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ucm-azul-l); display: block; margin-bottom: 6px;
+}
+.comp-item p { font-size: .88rem; margin: 0; color: var(--texto-2); }
+
+/* ===========================
+   DEFINITION BLOCK
+   =========================== */
+.defblock {
+  border-left: 4px solid var(--ucm-azul-m);
+  background: var(--ucm-azul-bg); border-radius: 0 var(--r) var(--r) 0;
+  padding: 18px 22px; margin: 20px 0;
+}
+.defblock .fuente {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .1em; color: var(--ucm-azul-l);
+  margin-top: 8px; display: block;
+}
+
+/* ===========================
+   TABLA
+   =========================== */
+.tabla-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--sombra-s); }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+thead th {
+  background: var(--ucm-azul); color: var(--blanco);
+  padding: 12px 16px; text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+}
+tbody td { padding: 11px 16px; border-bottom: 1px solid var(--ucm-azul-xl); color: var(--texto-2); }
+tbody tr:nth-child(even) td { background: var(--ucm-azul-bg); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--dorado-xl); }
+
+/* ===========================
+   STEPS LIST
+   =========================== */
+.steps { list-style: none; counter-reset: sc; margin: 16px 0; }
+.steps li {
+  counter-increment: sc;
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-bottom: 14px; padding: 16px 20px;
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--r); box-shadow: var(--sombra-s);
+}
+.steps li::before {
+  content: counter(sc);
+  background: var(--ucm-azul); color: var(--blanco);
+  min-width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 500;
+  flex-shrink: 0; margin-top: 1px;
+}
+.steps li p { margin: 0; font-size: .92rem; }
+
+/* ===========================
+   ACORDEON
+   =========================== */
+.acordeon { border: 1px solid var(--ucm-azul-xl); border-radius: var(--r); margin: 14px 0; overflow: hidden; }
+.acord-btn {
+  width: 100%; background: var(--ucm-azul-bg); border: none;
+  padding: 14px 20px; text-align: left; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Inter', sans-serif; font-size: .95rem; font-weight: 600;
+  color: var(--ucm-azul); transition: background .2s;
+}
+.acord-btn:hover { background: #d0d9f0; }
+.acord-btn .ic { font-style: normal; transition: transform .28s; font-size: 1.1rem; }
+.acord-btn.open .ic { transform: rotate(45deg); }
+.acord-body { display: none; padding: 18px 22px; background: var(--blanco); border-top: 1px solid var(--ucm-azul-xl); font-size: .93rem; color: var(--texto-2); }
+.acord-body.show { display: block; }
+
+/* ===========================
+   ACTIVIDAD HEADER
+   =========================== */
+.act-wrap { margin-bottom: 40px; }
+.act-head {
+  background: var(--ucm-azul);
+  border-radius: var(--rg) var(--rg) 0 0;
+  padding: 20px 28px; display: flex; align-items: center; gap: 18px;
+}
+.act-num {
+  background: var(--dorado); color: var(--blanco);
+  font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.act-head-text .act-tipo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--dorado); display: block; margin-bottom: 2px;
+}
+.act-head-text h3 { color: var(--blanco); margin: 0; font-size: 1.08rem; }
+.act-body {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-top: none; border-radius: 0 0 var(--rg) var(--rg);
+  padding: 28px 30px; box-shadow: var(--sombra-s);
+}
+
+/* ===========================
+   CLASSROOM BADGE
+   =========================== */
+.cl-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--verde); color: var(--blanco);
+  padding: 8px 18px; border-radius: var(--r);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 22px;
+}
+
+/* ===========================
+   FORO DEMO
+   =========================== */
+.foro-demo { background: var(--ucm-azul-bg); border: 1px solid #b6c4e8; border-radius: var(--r); overflow: hidden; margin: 18px 0; }
+.foro-head { background: var(--ucm-azul); color: var(--blanco); padding: 10px 18px; font-family: 'JetBrains Mono', monospace; font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; }
+.foro-post { padding: 14px 18px; border-bottom: 1px solid #b6c4e8; font-size: .9rem; }
+.foro-post:last-child { border-bottom: none; }
+.foro-post .autor { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: var(--ucm-azul-m); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; display: block; }
+.foro-post.rep { margin-left: 28px; background: var(--blanco); }
+
+/* ===========================
+   PREGUNTA CONOCIMIENTO PREVIO
+   =========================== */
+.previo-box {
+  background: var(--dorado-xl); border: 2px solid var(--dorado);
+  border-radius: var(--rg); padding: 28px 32px; margin: 22px 0;
+}
+.previo-box .pq-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--dorado); display: block; margin-bottom: 10px;
+}
+.previo-box .pq-text { font-size: 1.05rem; font-style: italic; color: var(--texto); margin-bottom: 14px; }
+.pq-input {
+  width: 100%; border: 1px solid #d4b86a; border-radius: var(--r);
+  padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: .93rem;
+  background: var(--blanco); color: var(--texto); resize: vertical; min-height: 80px;
+}
+.pq-input:focus { outline: 2px solid var(--dorado); border-color: var(--dorado); }
+.btn-gold {
+  background: var(--dorado); color: var(--blanco); border: none;
+  padding: 10px 28px; border-radius: var(--r); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 12px; transition: background .2s;
+}
+.btn-gold:hover { background: #a07820; }
+.pq-respuesta {
+  display: none; margin-top: 14px;
+  background: var(--ucm-azul); color: var(--blanco);
+  border-radius: var(--r); padding: 16px 20px; font-size: .92rem;
+}
+.pq-respuesta.show { display: block; }
+
+/* ===========================
+   ORGANIZADOR
+   =========================== */
+.org-wrap { background: var(--ucm-azul-bg); border: 1px solid #b6c4e8; border-radius: var(--r); padding: 24px; margin: 18px 0; }
+.org-central { background: var(--ucm-azul); color: var(--blanco); padding: 14px 24px; border-radius: var(--r); font-family: 'Playfair Display', serif; font-size: .98rem; font-weight: 700; text-align: center; margin-bottom: 18px; }
+.org-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.org-nodo { background: var(--blanco); border: 2px solid var(--ucm-azul-l); border-radius: var(--r); padding: 12px; }
+.org-nodo::before { content: attr(data-lbl); font-family: 'JetBrains Mono', monospace; font-size: .57rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ucm-azul-l); display: block; margin-bottom: 5px; }
+.org-nodo textarea { width: 100%; border: 1px solid var(--ucm-azul-xl); border-radius: 4px; padding: 8px; font-family: 'Inter', sans-serif; font-size: .85rem; background: var(--ucm-azul-bg); resize: vertical; min-height: 62px; color: var(--texto); }
+.org-nodo textarea:focus { outline: 2px solid var(--ucm-azul-m); background: var(--blanco); }
+.btn-primary {
+  background: var(--ucm-azul); color: var(--blanco); border: none;
+  padding: 11px 28px; border-radius: var(--r); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 16px; transition: background .2s;
+}
+.btn-primary:hover { background: var(--ucm-azul-m); }
+.btn-outline {
+  background: transparent; color: var(--ucm-azul); border: 2px solid var(--ucm-azul);
+  padding: 10px 24px; border-radius: var(--r); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 16px; margin-left: 10px; transition: background .2s;
+}
+.btn-outline:hover { background: var(--ucm-azul-bg); }
+
+/* ===========================
+   CASO PRACTICO
+   =========================== */
+.caso-box {
+  background: var(--naranja-l); border: 1px solid #f0b06a;
+  border-left: 5px solid var(--naranja);
+  border-radius: var(--r); padding: 24px 28px; margin: 18px 0;
+}
+.caso-box .caso-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--naranja); display: block; margin-bottom: 10px;
+}
+.caso-preguntas { list-style: none; counter-reset: cp; margin-top: 16px; }
+.caso-preguntas li {
+  counter-increment: cp;
+  display: flex; gap: 12px;
+  padding: 12px 16px; margin-bottom: 10px;
+  background: var(--blanco); border-radius: var(--r);
+  border: 1px solid #f0b06a;
+}
+.caso-preguntas li::before {
+  content: counter(cp);
+  background: var(--naranja); color: var(--blanco);
+  min-width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: .68rem; font-weight: 500;
+  flex-shrink: 0; margin-top: 1px;
+}
+.caso-preguntas li p { margin: 0; font-size: .92rem; color: var(--texto-2); }
+.caso-resp {
+  width: 100%; border: 1px solid #f0b06a; border-radius: 4px;
+  padding: 10px; font-family: 'Inter', sans-serif; font-size: .88rem;
+  background: var(--blanco); resize: vertical; min-height: 70px; color: var(--texto);
+  margin-top: 8px;
+}
+.caso-resp:focus { outline: 2px solid var(--naranja); }
+
+/* ===========================
+   QUIZ
+   =========================== */
+.quiz-wrap { margin-top: 8px; }
+.pregunta {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--rg); padding: 22px 26px;
+  margin-bottom: 16px; box-shadow: var(--sombra-s);
+}
+.pregunta .qnum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ucm-azul-l); display: block; margin-bottom: 6px;
+}
+.pregunta .qtext { font-size: .98rem; font-weight: 600; color: var(--texto); margin-bottom: 14px; }
+.opts { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.opts li label {
+  display: flex; align-items: flex-start; gap: 12px;
+  cursor: pointer; padding: 10px 16px;
+  border: 1px solid var(--ucm-azul-xl); border-radius: var(--r);
+  width: 100%; transition: background .15s, border-color .15s;
+  font-size: .92rem; color: var(--texto-2);
+}
+.opts li label:hover { background: var(--ucm-azul-bg); border-color: var(--ucm-azul-l); }
+.opts li input[type=radio] { accent-color: var(--ucm-azul); flex-shrink: 0; margin-top: 2px; }
+.opt-ok  label { background: var(--verde-l)!important; border-color: var(--verde)!important; color: var(--verde)!important; }
+.opt-err label { background: var(--rojo-l)!important;  border-color: var(--rojo)!important;  }
+.quiz-result {
+  background: var(--ucm-azul); color: var(--blanco);
+  border-radius: var(--rg); padding: 32px 36px;
+  text-align: center; margin-top: 24px; display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result .score-num {
+  font-family: 'Playfair Display', serif; font-size: 3.8rem; font-weight: 900;
+  color: var(--dorado); line-height: 1; display: block; margin: 10px 0;
+}
+.quiz-result .score-msg { font-size: 1.05rem; color: rgba(255,255,255,.88); margin-bottom: 10px; }
+.quiz-result .score-det {
+  font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+  letter-spacing: .08em; color: rgba(255,255,255,.55);
+}
+.bprog { width: 100%; background: rgba(255,255,255,.15); border-radius: 99px; height: 8px; margin: 14px 0 20px; overflow: hidden; }
+.bfill { height: 100%; background: var(--dorado); border-radius: 99px; transition: width .7s ease; width: 0; }
+#btn-quiz {
+  background: var(--dorado); color: var(--blanco); border: none;
+  padding: 13px 36px; border-radius: var(--r); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 500; transition: background .2s; display: block; margin: 14px auto 0;
+}
+#btn-quiz:hover { background: #a07820; }
+#btn-quiz:disabled { opacity: .45; cursor: not-allowed; }
+#btn-retry {
+  background: rgba(255,255,255,.14); color: var(--blanco);
+  border: 1px solid rgba(255,255,255,.3); padding: 10px 28px;
+  border-radius: var(--r); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 14px; transition: background .2s;
+}
+#btn-retry:hover { background: rgba(255,255,255,.25); }
+
+/* ===========================
+   MATERIALES EXTERNOS
+   =========================== */
+.recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 18px; }
+.recurso-item {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--r); padding: 18px 20px;
+  border-top: 3px solid var(--ucm-azul-l);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.recurso-item .r-tipo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ucm-azul-l);
+}
+.recurso-item .r-titulo { font-weight: 600; font-size: .93rem; color: var(--texto); }
+.recurso-item .r-autor { font-size: .83rem; color: var(--texto-3); font-style: italic; }
+.recurso-item .r-link {
+  font-family: 'JetBrains Mono', monospace; font-size: .68rem;
+  color: var(--ucm-azul-m); text-decoration: none; letter-spacing: .06em;
+  padding: 6px 12px; border: 1px solid var(--ucm-azul-l); border-radius: var(--r);
+  align-self: flex-start; transition: background .15s;
+  margin-top: auto;
+}
+.recurso-item .r-link:hover { background: var(--ucm-azul-bg); }
+
+/* ===========================
+   REFLEXION
+   =========================== */
+.ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.ref-item {
+  background: var(--blanco); border: 1px solid var(--ucm-azul-xl);
+  border-radius: var(--r); padding: 18px 20px;
+  border-top: 3px solid var(--ucm-azul-m);
+}
+.ref-item label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ucm-azul-l); display: block; margin-bottom: 8px;
+}
+.ref-item textarea {
+  width: 100%; border: 1px solid var(--ucm-azul-xl); border-radius: 4px;
+  padding: 10px; font-family: 'Inter', sans-serif; font-size: .88rem;
+  background: var(--ucm-azul-bg); resize: vertical; min-height: 90px; color: var(--texto);
+}
+.ref-item textarea:focus { outline: none; border-color: var(--ucm-azul-m); background: var(--blanco); }
+.plan-prev { background: var(--blanco); border: 2px solid var(--ucm-azul); border-radius: var(--rg); padding: 24px 28px; margin-top: 20px; display: none; }
+.plan-prev.show { display: block; }
+.plan-prev h4 { color: var(--ucm-azul); margin-bottom: 14px; }
+
+/* ===========================
+   GLOSARIO
+   =========================== */
+.glos dt { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ucm-azul); margin-bottom: 4px; }
+.glos dd { font-size: .9rem; color: var(--texto-2); padding-left: 16px; margin-bottom: 16px; }
+.glos dd:last-child { margin-bottom: 0; }
+
+/* ===========================
+   DIVIDER
+   =========================== */
+hr.div { border: none; border-top: 1px solid var(--ucm-azul-xl); margin: 32px 0; }
+
+/* ===========================
+   MSG
+   =========================== */
+.msg { padding: 12px 18px; border-radius: var(--r); font-size: .88rem; margin-top: 12px; display: none; }
+.msg.show { display: block; }
+.msg-ok  { background: var(--verde-l); color: var(--verde); border: 1px solid var(--verde-b); }
+
+/* ===========================
+   QUOTE
+   =========================== */
+.quote-block {
+  border-left: 4px solid var(--dorado); background: var(--dorado-xl);
+  padding: 18px 22px; border-radius: 0 var(--r) var(--r) 0;
+  margin: 20px 0; font-style: italic; font-size: .97rem; color: var(--texto-2);
+}
+.quote-block cite { display: block; margin-top: 8px; font-style: normal; font-size: .8rem; color: var(--texto-3); font-family: 'JetBrains Mono', monospace; }
+
+/* ===========================
+   COMPARATIVO VISUAL
+   =========================== */
+.tri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+.tri-card {
+  border-radius: var(--r); padding: 20px 18px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.tri-card .tri-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  display: block;
+}
+.tri-card h4 { margin: 0; font-size: 1.05rem; }
+.tri-card ul { list-style: none; padding: 0; }
+.tri-card ul li { font-size: .88rem; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,.06); color: var(--texto-2); }
+.tri-card ul li:last-child { border-bottom: none; }
+.tc-grupo  { background: var(--ucm-azul-bg); border: 1px solid #b6c4e8; }
+.tc-equipo { background: var(--verde-l); border: 1px solid var(--verde-b); }
+.tc-masa   { background: var(--naranja-l); border: 1px solid #f0b06a; }
+.tc-grupo .tri-label  { color: var(--ucm-azul-m); }
+.tc-equipo .tri-label { color: var(--verde); }
+.tc-masa .tri-label   { color: var(--naranja); }
+.tc-grupo h4  { color: var(--ucm-azul); }
+.tc-equipo h4 { color: var(--verde); }
+.tc-masa h4   { color: var(--naranja); }
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+  background: var(--ucm-azul); color: rgba(255,255,255,.6);
+  padding: 36px 40px;
+  font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+.footer-inner .fi-name { font-size: .75rem; color: rgba(255,255,255,.9); font-weight: 500; margin-bottom: 3px; display: block; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media(max-width:720px){
+  .header-inner { grid-template-columns: 1fr; text-align: center; }
+  .logo-card { width: 120px; margin: 0 auto; }
+  main { padding: 36px 20px 60px; }
+  .ref-grid { grid-template-columns: 1fr; }
+  .tri-grid { grid-template-columns: 1fr; }
+  .org-grid { grid-template-columns: 1fr 1fr; }
+  nav a { padding: 12px 10px; font-size: .58rem; }
+  h2 { font-size: 1.5rem; }
+  .topbar { font-size: .55rem; padding: 6px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progreso"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span><strong>Universidad de la Cienega</strong> &mdash; Licenciatura en Pedagogia</span>
+  <span>Tecnicas de Conduccion de Grupos &mdash; Ciclo 2024&ndash;2025</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-card">
+      <img src="LOGO_SRC" alt="Logo Universidad de la Cienega">
+    </div>
+    <div class="header-meta">
+      <span class="breadcrumb">Pedagogia &nbsp;|&nbsp; Tecnicas de Conduccion de Grupos &nbsp;|&nbsp; Unidad I &nbsp;|&nbsp; Tema 1</span>
+      <h1>El Concepto de Grupo</h1>
+      <p class="subtitulo">1.1 Equipo, Grupo y Masa: distinciones fundamentales para la practica pedagogica</p>
+      <div class="chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogia Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">Nivel Licenciatura</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#introduccion">Introduccion</a>
+    <a href="#conocimiento-previo">Conocimiento Previo</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 - Foro</a>
+    <a href="#act2">Act. 2 - Organizador</a>
+    <a href="#act3">Act. 3 - Caso</a>
+    <a href="#act4">Act. 4 - Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ==========================
+     INTRODUCCION
+     ========================== -->
+<section id="introduccion">
+  <span class="label-sec">Seccion 01</span>
+  <h2>Introduccion al Tema</h2>
+
+  <div class="objetivo">
+    <span class="etiqueta">Objetivo de Aprendizaje</span>
+    <p>El estudiante comprendera y diferenciara con precision los conceptos de grupo, equipo y masa en contextos educativos y sociales, identificando sus caracteristicas constitutivas, y aplicara esta distincion para analizar critica y reflexivamente las colectividades humanas de las que forma parte en su vida universitaria y futura practica profesional.</p>
+  </div>
+
+  <p>En la vida cotidiana utilizamos con frecuencia las palabras "grupo", "equipo" y "masa" de manera intercambiable, como si designaran la misma realidad. Sin embargo, desde la perspectiva de la psicologia social, la sociologia y la pedagogia, estos terminos describen fenomenos colectivos cualitativamente distintos, con dinamicas, estructuras y propositos diferentes.</p>
+
+  <p>Esta distincion no es un mero ejercicio academico: comprender la diferencia entre un grupo, un equipo y una masa es una competencia fundamental para cualquier pedagogo o docente, pues de ella depende la capacidad de diagnosticar correctamente la naturaleza de las colectividades que se trabajan en el aula y de seleccionar, en consecuencia, las tecnicas de conduccion mas adecuadas.</p>
+
+  <div class="quote-block">
+    "Un grupo no es simplemente la suma de sus miembros; es una totalidad cualitativa nueva, con propiedades que no pertenecen a ninguno de sus componentes tomados individualmente."
+    <cite>&mdash; Kurt Lewin (1948). Resolving Social Conflicts. Harper &amp; Row.</cite>
+  </div>
+
+  <p>Esta guia esta estructurada bajo tres enfoques pedagogicos que orientan tanto los contenidos como las actividades propuestas.</p>
+
+  <div class="acordeon">
+    <button class="acord-btn" onclick="tog(this)">Constructivismo: conocimiento que se construye, no se recibe<span class="ic">+</span></button>
+    <div class="acord-body"><p>Desde Vygotsky y Ausubel, el aprendizaje genuino ocurre cuando el estudiante conecta activamente el nuevo conocimiento con sus estructuras cognitivas previas. En esta guia, los conceptos teoricos no se presentan como definiciones cerradas: cada uno se articula con situaciones reales de la vida universitaria para facilitar la asimilacion significativa.</p></div>
+  </div>
+  <div class="acordeon">
+    <button class="acord-btn" onclick="tog(this)">Aprendizaje Basado en Problemas (ABP)<span class="ic">+</span></button>
+    <div class="acord-body"><p>El ABP parte de situaciones problematicas autenticas para motivar la busqueda de conocimiento. Las actividades de esta guia plantean escenarios reales del contexto universitario mexicano donde la distincion entre grupo, equipo y masa es relevante para tomar decisiones pedagogicas informadas.</p></div>
+  </div>
+  <div class="acordeon">
+    <button class="acord-btn" onclick="tog(this)">Pedagogia Activa: el estudiante como agente de su aprendizaje<span class="ic">+</span></button>
+    <div class="acord-body"><p>La pedagogia activa propone que aprender implica hacer, reflexionar y aplicar. Esta guia incluye actividades de reflexion individual, debate entre pares, analisis de casos, construccion de organizadores graficos y autoevaluacion interactiva, garantizando que cada momento de aprendizaje suponga una accion cognitiva concreta.</p></div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-item">
+      <span class="tipo">Competencia Conceptual</span>
+      <p>Definir con precision grupo, equipo y masa, y distinguirlos mediante sus caracteristicas constitutivas esenciales.</p>
+    </div>
+    <div class="comp-item">
+      <span class="tipo">Competencia Analitica</span>
+      <p>Clasificar correctamente colectividades humanas reales, argumentando la clasificacion con criterios teoricos verificables.</p>
+    </div>
+    <div class="comp-item">
+      <span class="tipo">Competencia Aplicada</span>
+      <p>Seleccionar tecnicas de conduccion adecuadas a cada tipo de colectividad en contextos educativos concretos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     CONOCIMIENTO PREVIO
+     ========================== -->
+<section id="conocimiento-previo">
+  <span class="label-sec">Seccion 02</span>
+  <h2>Activacion de Conocimiento Previo</h2>
+
+  <p>Antes de estudiar los conceptos formales, es importante identificar lo que ya sabe o intuye sobre el tema. El constructivismo senala que el aprendizaje significativo ocurre cuando el nuevo conocimiento se enlaza con estructuras cognitivas previas. Responda con sinceridad: no existe una respuesta incorrecta en esta etapa.</p>
+
+  <div class="previo-box">
+    <span class="pq-label">Pregunta de Conocimiento Previo</span>
+    <p class="pq-text">"Piense en tres situaciones de su vida universitaria actual: (1) su grupo-clase, (2) un equipo de trabajo para un proyecto academico, y (3) el publico en una conferencia magistral o evento escolar masivo. En su opinion, son estos tres casos el mismo tipo de colectividad? En que se parecen y en que se diferencian? Que criterios utilizaria usted para distinguirlos?"</p>
+    <textarea class="pq-input" id="previo-resp" placeholder="Escriba aqui su respuesta antes de continuar leyendo el contenido. No hay respuestas incorrectas: lo que se busca es activar su reflexion previa..."></textarea>
+    <br>
+    <button class="btn-gold" onclick="mostrarRespuestaPrevio()">Ver orientacion conceptual</button>
+    <div class="pq-respuesta" id="previo-fb">
+      <strong style="color:var(--dorado);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:8px;">Orientacion (no es la respuesta definitiva, es un punto de partida)</strong>
+      <p style="margin:0;color:rgba(255,255,255,.88);">Las tres situaciones que describio son colectividades distintas. Su grupo-clase constituye un <strong>grupo</strong> si existe interaccion regular, normas compartidas y objetivos comunes. El equipo de trabajo se aproxima a un <strong>equipo</strong> cuando los miembros tienen roles complementarios, metas especificas y responsabilidad colectiva por los resultados. El publico en un evento masivo es una <strong>masa</strong>: una agregacion de personas sin estructura interna definida, con interaccion minima y ausencia de normas formales. Conforme avance en el contenido, podra precisar y matizar estas intuiciones iniciales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     CONTENIDO TEMATICO
+     ========================== -->
+<section id="contenido">
+  <span class="label-sec">Seccion 03</span>
+  <h2>Contenido Tematico</h2>
+
+  <!-- 1. El concepto de grupo -->
+  <h3>1. El Concepto de Grupo</h3>
+
+  <div class="defblock">
+    <p><strong>Definicion:</strong> Un grupo es un conjunto de dos o mas personas que interactuan entre si de manera regular y estructurada, que comparten objetivos comunes, que se reconocen mutuamente como miembros y que desarrollan normas, roles y patrones de comunicacion que regulan su comportamiento colectivo, generando un sentido de identidad y pertenencia.</p>
+    <span class="fuente">Ref: Shaw, M. E. (1981). <em>Group Dynamics: The Psychology of Small Group Behavior</em> (3a ed.). McGraw-Hill. / Lewin, K. (1948). <em>Resolving Social Conflicts</em>. Harper &amp; Row.</span>
+  </div>
+
+  <p>Esta definicion contiene seis elementos constitutivos que es necesario analizar por separado, pues todos deben estar presentes para que podamos hablar de un grupo en sentido estricto.</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Elemento</th><th>Descripcion</th><th>Ejemplo universitario</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Interaccion regular</strong></td><td>Los miembros se comunican e influyen mutuamente de forma continua y recurrente, no solo en un evento aislado.</td><td>Equipo de seminario que se reune semanalmente para discutir lecturas.</td></tr>
+        <tr><td><strong>Objetivo comun</strong></td><td>Existe una o varias metas compartidas que orientan y dan sentido a la actividad colectiva.</td><td>Grupo-clase que trabaja hacia la acreditacion de la materia.</td></tr>
+        <tr><td><strong>Reconocimiento mutuo</strong></td><td>Los miembros se perciben a si mismos y entre si como parte de la misma unidad social.</td><td>"Somos el equipo 3 de Didactica General."</td></tr>
+        <tr><td><strong>Normas compartidas</strong></td><td>Reglas explicitas e implicitas que regulan el comportamiento interno: que esta permitido, que se espera, que se sanciona.</td><td>Se acuerda que todos entregan avances los jueves antes de las 22:00 hrs.</td></tr>
+        <tr><td><strong>Estructura de roles</strong></td><td>Distribucion diferenciada de funciones entre los miembros: quien lidera, quien registra, quien coordina, quien evalua.</td><td>Moderador, secretario, relator, observador.</td></tr>
+        <tr><td><strong>Sentido de pertenencia</strong></td><td>Los miembros experimentan cohesion afectiva e identidad colectiva; el grupo importa como tal, no solo como medio para un fin.</td><td>"En este equipo trabajamos mejor que solos."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Clasificacion de los grupos segun su origen y estructura</h4>
+  <div class="card card-blue">
+    <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;">
+      <li style="padding:12px 16px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--ucm-azul);"><strong>Grupo primario:</strong><br><span style="font-size:.88rem;color:var(--texto-2);">Relaciones cara a cara, intimas y duraderas; alta cohesion afectiva. Ej: familia, grupo de amigos cercanos.</span></li>
+      <li style="padding:12px 16px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--ucm-azul-l);"><strong>Grupo secundario:</strong><br><span style="font-size:.88rem;color:var(--texto-2);">Relaciones funcionales, orientadas a fines especificos; menor vinculo afectivo. Ej: grupo-clase, comision escolar.</span></li>
+      <li style="padding:12px 16px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--dorado);"><strong>Grupo formal:</strong><br><span style="font-size:.88rem;color:var(--texto-2);">Constituido por una institucion con estructura y roles definidos externamente. Ej: grupo inscrito a una materia.</span></li>
+      <li style="padding:12px 16px;background:var(--blanco);border-radius:var(--r);border-left:3px solid #888;"><strong>Grupo informal:</strong><br><span style="font-size:.88rem;color:var(--texto-2);">Surge espontaneamente de afinidades personales. Ej: estudiantes que se juntan a estudiar voluntariamente.</span></li>
+    </ul>
+  </div>
+
+  <!-- 1.1 Equipo grupo masa -->
+  <h3>1.1 Equipo, Grupo y Masa: Distinciones Fundamentales</h3>
+
+  <p>La distincion entre grupo, equipo y masa no es solo taxonomica: tiene consecuencias directas para la practica pedagogica y la conduccion de colectividades. Cada tipo requiere estrategias de intervencion diferenciadas.</p>
+
+  <div class="tri-grid">
+    <div class="tri-card tc-grupo">
+      <span class="tri-label">Concepto 1</span>
+      <h4>Grupo</h4>
+      <ul>
+        <li>2 o mas personas</li>
+        <li>Interaccion regular</li>
+        <li>Objetivos comunes</li>
+        <li>Normas internas</li>
+        <li>Roles diferenciados</li>
+        <li>Sentido de pertenencia</li>
+        <li>Identidad colectiva</li>
+      </ul>
+    </div>
+    <div class="tri-card tc-equipo">
+      <span class="tri-label">Concepto 2</span>
+      <h4>Equipo</h4>
+      <ul>
+        <li>Subconjunto del grupo</li>
+        <li>Roles complementarios</li>
+        <li>Meta especifica y compartida</li>
+        <li>Alta interdependencia</li>
+        <li>Responsabilidad colectiva</li>
+        <li>Coordinacion activa</li>
+        <li>Alto grado de cohesion</li>
+      </ul>
+    </div>
+    <div class="tri-card tc-masa">
+      <span class="tri-label">Concepto 3</span>
+      <h4>Masa</h4>
+      <ul>
+        <li>Gran numero de personas</li>
+        <li>Interaccion minima</li>
+        <li>Sin estructura interna</li>
+        <li>Anonimato predominante</li>
+        <li>Sin roles definidos</li>
+        <li>Objetivos difusos</li>
+        <li>Alta sugestionabilidad</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>El Grupo</h4>
+  <p>Un grupo, en sentido pedagogico, es una unidad social con estructura interna, normas propias y cohesion suficiente para funcionar como totalidad. No toda reunion de personas es un grupo: la copresencia fisica es una condicion necesaria pero no suficiente. Lo que convierte a una agregacion de personas en grupo es la interaccion estructurada, la conciencia de pertenecer a una unidad comun y la existencia de metas colectivas.</p>
+
+  <div class="quote-block">
+    "Para que exista un grupo no basta con que varias personas se encuentren en un mismo lugar al mismo tiempo. Es necesario que entre ellas se establezca una red de interacciones que les confiera una identidad colectiva."
+    <cite>&mdash; Anzieu, D. y Martin, J.Y. (2004). <em>La dinamica de los grupos pequenos</em>. Biblioteca Nueva.</cite>
+  </div>
+
+  <h4>El Equipo</h4>
+  <p>El equipo es un tipo especial de grupo caracterizado por un nivel superior de interdependencia, especializacion de roles y orientacion hacia resultados concretos y evaluables. Todo equipo es un grupo, pero no todo grupo es un equipo. La diferencia no radica en el numero de integrantes, sino en el grado de complementariedad funcional y en la responsabilidad colectiva por los resultados.</p>
+
+  <div class="defblock">
+    <p>Un equipo se distingue de un grupo ordinario por tres rasgos definitivos: <strong>(1) roles altamente complementarios</strong> &mdash;cada miembro aporta una competencia que los demas no tienen&mdash;, <strong>(2) responsabilidad mutua</strong> &mdash;el exito o fracaso es de todos, no de cada uno por separado&mdash;, y <strong>(3) interdependencia operativa</strong> &mdash;el trabajo de cada miembro es condicion para el trabajo de los demas.</p>
+    <span class="fuente">Ref: Katzenbach, J. R. y Smith, D. K. (1993). <em>The Wisdom of Teams</em>. Harvard Business School Press.</span>
+  </div>
+
+  <p>En el contexto universitario, es frecuente que los docentes asignen "trabajo en equipo" cuando en realidad estan formando grupos de trabajo: los estudiantes se dividen tareas individuales que luego se ensamblan, sin interdependencia real ni responsabilidad colectiva genuina. Esta confusion tiene consecuencias pedagogicas importantes: no se desarrollan las competencias colaborativas que se pretenden.</p>
+
+  <h4>La Masa</h4>
+  <p>La masa o multitud es una colectividad de gran tamano caracterizada por la ausencia de estructura interna formal, el anonimato de sus miembros y una alta susceptibilidad a la influencia de factores emocionales y contextuales. El estudio cientifico de la masa fue iniciado por Gustave Le Bon (1895), quien identifico en la multitud fenomenos como la sugestionabilidad colectiva, el contagio emocional y la despersonalizacion.</p>
+
+  <div class="defblock">
+    <p>Desde una perspectiva pedagogica, la masa es relevante porque representa el tipo de colectividad para el que las tecnicas de conduccion de grupos resultan menos aplicables en su forma convencional. Los eventos universitarios masivos &mdash;conferencias, inauguraciones, actos civicos&mdash; requieren estrategias de comunicacion de masas, distintas de las tecnicas de dinamica grupal.</p>
+    <span class="fuente">Ref: Le Bon, G. (1895/2005). <em>Psicologia de las masas</em>. Alianza Editorial.</span>
+  </div>
+
+  <h4>Tabla comparativa: Grupo, Equipo y Masa</h4>
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Grupo</th><th>Equipo</th><th>Masa</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tamano</strong></td><td>2 a 50 personas (tipico)</td><td>3 a 15 personas (optimo)</td><td>Decenas a millones</td></tr>
+        <tr><td><strong>Estructura</strong></td><td>Roles definidos con cierta flexibilidad</td><td>Roles altamente especializados y complementarios</td><td>Sin estructura interna formal</td></tr>
+        <tr><td><strong>Interaccion</strong></td><td>Regular y bidireccional</td><td>Intensa, coordinada y constante</td><td>Minima o unidireccional</td></tr>
+        <tr><td><strong>Objetivo</strong></td><td>Comun, puede ser difuso</td><td>Especifico, medible y urgente</td><td>Difuso o inexistente</td></tr>
+        <tr><td><strong>Cohesion</strong></td><td>Media a alta</td><td>Alta a muy alta</td><td>Baja; basada en emocion inmediata</td></tr>
+        <tr><td><strong>Identidad</strong></td><td>Presente; "nosotros" claro</td><td>Fuerte; identidad de equipo definida</td><td>Anonimato; "yo" se disuelve en el colectivo</td></tr>
+        <tr><td><strong>Normas</strong></td><td>Explicitas e implicitas, compartidas</td><td>Explicitas, consensuadas y exigidas</td><td>Ausentes o impuestas externamente</td></tr>
+        <tr><td><strong>Ejemplo universitario</strong></td><td>Grupo-clase de Pedagogia 2do semestre</td><td>Equipo de tesis o proyecto de investigacion</td><td>Publico en una conferencia inaugural</td></tr>
+        <tr><td><strong>Tecnica pedagogica recomendada</strong></td><td>Discusion guiada, Philips 66, estudio de casos</td><td>Role playing, proyectos colaborativos, ABP</td><td>Conferencia, simposio, medios de comunicacion masiva</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card-green">
+    <h4>Implicacion Pedagogica Central</h4>
+    <p>Un pedagogo o docente que no distingue entre grupo, equipo y masa corre el riesgo de aplicar tecnicas inadecuadas: usar dinamicas de grupo pequeno con una masa, o pretender resultados de equipo de alto rendimiento con un grupo apenas constituido. El diagnostico correcto del tipo de colectividad es el primer paso de toda intervencion pedagogica eficaz.</p>
+  </div>
+</section>
+
+<!-- ==========================
+     MATERIALES EXTERNOS
+     ========================== -->
+<section id="materiales">
+  <span class="label-sec">Seccion 04</span>
+  <h2>Materiales Externos de Consulta</h2>
+  <p>Los siguientes recursos han sido seleccionados por su rigor academico y pertinencia para profundizar en los conceptos trabajados en esta unidad. Se recomienda consultarlos antes de realizar las actividades practicas.</p>
+
+  <div class="recursos-grid">
+    <div class="recurso-item">
+      <span class="r-tipo">Libro Clasico</span>
+      <div class="r-titulo">Psicologia de las masas</div>
+      <div class="r-autor">Le Bon, G. (1895/2005). Alianza Editorial.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Texto fundacional para la comprension de la colectividad masiva y la psicologia social de los grupos.</p>
+      <a class="r-link" href="https://archive.org/details/psicologiadelasm00lebo" target="_blank" rel="noopener">Acceder en Archive.org</a>
+    </div>
+    <div class="recurso-item">
+      <span class="r-tipo">Libro Referencia</span>
+      <div class="r-titulo">La dinamica de los grupos pequenos</div>
+      <div class="r-autor">Anzieu, D. y Martin, J.Y. (2004). Biblioteca Nueva.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Analisis profundo de la estructura, dinamica y fenomenos de los grupos reducidos en contextos sociales y educativos.</p>
+      <a class="r-link" href="https://www.worldcat.org/title/dinamica-de-los-grupos-pequenos" target="_blank" rel="noopener">Ver en WorldCat</a>
+    </div>
+    <div class="recurso-item">
+      <span class="r-tipo">Articulo Cientifico</span>
+      <div class="r-titulo">Group Dynamics: Theory, Research and Practice</div>
+      <div class="r-autor">Forsyth, D. R. (2006). Thomson Wadsworth. (Journal)</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Publicacion especializada en el estudio empirico y teorico de los procesos grupales. Articulos arbitrados de acceso abierto.</p>
+      <a class="r-link" href="https://psycnet.apa.org/PsycARTICLES/journal/gdp" target="_blank" rel="noopener">Ver en APA PsycNet</a>
+    </div>
+    <div class="recurso-item">
+      <span class="r-tipo">Capitulo en linea</span>
+      <div class="r-titulo">Tecnicas de trabajo grupal en educacion</div>
+      <div class="r-autor">UNAM-DGSCA. Materiales de apoyo docente.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Materiales elaborados por la UNAM sobre tecnicas grupales aplicadas a contextos educativos universitarios en Mexico.</p>
+      <a class="r-link" href="https://www.unam.mx/educacion" target="_blank" rel="noopener">Portal UNAM Educacion</a>
+    </div>
+    <div class="recurso-item">
+      <span class="r-tipo">Video Academico</span>
+      <div class="r-titulo">Kurt Lewin y la dinamica de grupos</div>
+      <div class="r-autor">Canal Universidad Nacional de Educacion a Distancia (UNED)</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Explicacion sistematica de la teoria del campo de Lewin y su aplicacion al estudio de los grupos en contextos educativos.</p>
+      <a class="r-link" href="https://www.youtube.com/@unedtv" target="_blank" rel="noopener">Canal UNED TV YouTube</a>
+    </div>
+    <div class="recurso-item">
+      <span class="r-tipo">Repositorio Institucional</span>
+      <div class="r-titulo">Redalyc: Psicologia social y grupos</div>
+      <div class="r-autor">Red de Revistas Cientificas de America Latina (Redalyc)</div>
+      <p style="font-size:.84rem;margin:0;color:var(--texto-3);">Buscador de articulos arbitrados en espanol sobre psicologia social, grupos y dinamica grupal con acceso abierto.</p>
+      <a class="r-link" href="https://www.redalyc.org" target="_blank" rel="noopener">Acceder a Redalyc</a>
+    </div>
+  </div>
+
+  <div class="card card-gold" style="margin-top:20px;">
+    <h4>Nota sobre el uso de fuentes</h4>
+    <p>Al consultar estos materiales, registre en su libreta o documento de notas los argumentos que refuercen, matizen o contradigan las definiciones presentadas en esta guia. La confrontacion critica de fuentes es una competencia central en la formacion universitaria y un requisito para participar con solidez en las actividades de foro.</p>
+  </div>
+</section>
+
+<!-- ==========================
+     ACTIVIDAD 1: FORO
+     ========================== -->
+<section id="act1">
+  <span class="label-sec">Actividad 01 de 04</span>
+  <h2>Actividad de Foro: Reflexion Critica y Debate</h2>
+
+  <div class="act-wrap">
+    <div class="act-head">
+      <div class="act-num">1</div>
+      <div class="act-head-text">
+        <span class="act-tipo">Modalidad: Foro de Discusion Asincrono en Google Classroom</span>
+        <h3>Grupo, Equipo o Masa: Identificando las Colectividades que Habito</h3>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="card card-gold" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Modalidad</strong><br>Foro asincrono</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Plazo</strong><br>48 a 72 horas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Participaciones</strong><br>1 aportacion + 2 respuestas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Entrega</strong><br>Captura de pantalla en Classroom</div>
+        </div>
+      </div>
+
+      <h3>Pregunta Detonadora</h3>
+      <div style="background:var(--ucm-azul);color:var(--blanco);border-radius:var(--rg);padding:26px 30px;margin:16px 0 22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dorado);display:block;margin-bottom:10px;">Pregunta para el Foro</span>
+        <p style="color:var(--blanco);font-size:1.05rem;font-style:italic;margin:0;line-height:1.85;">"Seleccione una de las colectividades humanas de las que forma parte actualmente como estudiante universitario (su grupo-clase, un equipo de proyecto, el alumnado de la universidad en una asamblea o evento masivo). Con base en los criterios teoricos estudiados &mdash;interaccion, estructura de roles, normas, cohesion e identidad colectiva&mdash;, clasifiquelo fundamentadamente como grupo, equipo o masa. Justifique con evidencia concreta de su experiencia real. Finalmente, argumente: que implicaciones tiene esta clasificacion para la forma en que un pedagogo deberia conducir o intervenir en esa colectividad?"</p>
+      </div>
+
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Acceso al foro:</strong> Ingrese a Google Classroom con su cuenta institucional. Localice la materia "Tecnicas de Conduccion de Grupos" y abra la actividad "Foro Unidad I: Grupo, Equipo y Masa".</p></li>
+        <li><p><strong>Lectura de la pregunta:</strong> Lea la pregunta detonadora con detenimiento. Identifique los tres nucleos que debe atender: (a) identificacion y descripcion de la colectividad, (b) clasificacion teoricamente fundamentada, y (c) implicacion pedagogica.</p></li>
+        <li><p><strong>Redaccion de su aportacion (180 a 280 palabras):</strong> Seleccione una colectividad real y especifica. Aplique al menos tres criterios teoricos del contenido de esta guia para justificar su clasificacion. Cierre con una propuesta concreta sobre como se deberia conducir esa colectividad.</p></li>
+        <li><p><strong>Interaccion con pares:</strong> Lea al menos dos participaciones de companieros y redacte una respuesta sustantiva a cada una. Las respuestas deben aportar nuevos argumentos, senalar matices no considerados o plantear una contra-pregunta que profundice el analisis.</p></li>
+        <li><p><strong>Registro de evidencia:</strong> Tome una captura de pantalla que incluya su aportacion principal y al menos una respuesta a un companiero. Subala como archivo en la tarea correspondiente de Classroom.</p></li>
+      </ol>
+
+      <h3>Ejemplo Orientador</h3>
+      <div class="foro-demo">
+        <div class="foro-head">Foro: Grupo, Equipo o Masa (ejemplo ilustrativo)</div>
+        <div class="foro-post">
+          <span class="autor">Estudiante A &mdash; Lunes 09:44 hrs</span>
+          <p>Para esta actividad analice el equipo de investigacion en el que participo en el semestre actual, integrado por cuatro estudiantes y una asesora. Clasifico esta colectividad como <em>equipo</em>, no simplemente como grupo, por las siguientes razones: en primer lugar, existe una clara complementariedad de roles (yo soy responsable del marco teorico, otra companiera del diseno metodologico, un companiero del trabajo de campo y la cuarta integrante del analisis estadistico), lo que genera interdependencia operativa real: mi avance condiciona el suyo. En segundo lugar, hay responsabilidad colectiva: la evaluacion de la asesora incluye la coherencia del conjunto, no solo la calidad de cada parte. Tercero, la cohesion es alta y sostenida desde hace cuatro meses. La implicacion pedagogica es que este equipo requiere tecnicas de coordinacion y metacomunicacion, no solo de dinamica de integracion: necesita sesiones estructuradas de retroalimentacion cruzada y revision de progreso colectivo.</p>
+        </div>
+        <div class="foro-post rep">
+          <span class="autor">Estudiante B &mdash; responde a Estudiante A &mdash; Martes 11:20 hrs</span>
+          <p>Considero valido tu analisis. Sin embargo, me pregunto si la figura de la asesora no introduce una asimetria de poder que acerca la colectividad a un grupo con liderazgo formal mas que a un equipo horizontal. Segun Katzenbach y Smith (1993), el equipo de alto rendimiento implica tambien corresponsabilidad horizontal. Si la asesora toma las decisiones finales, podria argumentarse que los estudiantes son un grupo orientado a una meta, pero con roles subordinados. Que piensas?</p>
+        </div>
+      </div>
+
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tabla-wrap">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Sustento teorico</td><td>Aplica 3 o mas criterios conceptuales con precision</td><td>Aplica 2 criterios con pertinencia</td><td>Menciona conceptos sin aplicarlos</td></tr>
+            <tr><td>Especificidad de la experiencia</td><td>Describe la colectividad con detalle verificable</td><td>Describe con algunos detalles concretos</td><td>La descripcion es vaga o generica</td></tr>
+            <tr><td>Implicacion pedagogica</td><td>Propuesta fundamentada, especifica y viable</td><td>Propuesta pertinente pero poco desarrollada</td><td>Ausente o muy superficial</td></tr>
+            <tr><td>Interaccion con pares</td><td>2 respuestas con nuevos argumentos o contra-preguntas</td><td>2 respuestas breves pero pertinentes</td><td>Solo 1 respuesta o ausente</td></tr>
+            <tr><td>Redaccion</td><td>Lenguaje academico, claro y sin errores ortograficos</td><td>Apropiado, con errores menores</td><td>Errores que dificultan la comprension</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="cl-badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     ACTIVIDAD 2: ORGANIZADOR
+     ========================== -->
+<section id="act2">
+  <span class="label-sec">Actividad 02 de 04</span>
+  <h2>Actividad de Aprendizaje Significativo</h2>
+
+  <div class="act-wrap">
+    <div class="act-head">
+      <div class="act-num">2</div>
+      <div class="act-head-text">
+        <span class="act-tipo">Modalidad: Organizador Grafico Comparativo + Analisis Aplicado</span>
+        <h3>Mapeo de Colectividades: Analizando las que Vivo como Estudiante</h3>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="card card-gold" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Modalidad</strong><br>Individual</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Duracion estimada</strong><br>60 a 80 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Entrega</strong><br>PDF o imagen en Classroom</div>
+        </div>
+      </div>
+
+      <p>Esta actividad aplica el principio ausubeliano del aprendizaje significativo: la nueva informacion teorica se ancla en experiencias concretas previas del estudiante. Usted analizara tres colectividades reales de su vida universitaria &mdash;una por cada tipo estudiado&mdash; utilizando los criterios teoricos como lentes de analisis.</p>
+
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Identificacion de colectividades:</strong> Escriba el nombre de tres colectividades reales de su vida universitaria actual que correspondan, a su juicio, a los tres tipos estudiados: una que sea un grupo, una que sea un equipo y una que sea una masa.</p></li>
+        <li><p><strong>Completar el organizador:</strong> Para cada colectividad, complete los cuatro campos del organizador interactivo que se presenta a continuacion. Use lenguaje preciso y ejemplos concretos de su experiencia.</p></li>
+        <li><p><strong>Analisis comparativo:</strong> En el campo de cierre, escriba en 3 a 5 oraciones la diferencia mas significativa que observo al analizar las tres colectividades. Pregunte: que elemento distingue mas claramente al equipo del grupo en su experiencia concreta?</p></li>
+        <li><p><strong>Exportacion y entrega:</strong> Tome una captura de pantalla del organizador completado o traslade el contenido a un documento. Nombre el archivo <code style="font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--ucm-azul-bg);padding:2px 6px;border-radius:3px;">Act2_NombreApellido.pdf</code> y subalo en Classroom.</p></li>
+      </ol>
+
+      <h3>Organizador Interactivo</h3>
+      <div class="org-wrap">
+        <div class="org-central">Mis Colectividades Universitarias: Analisis Comparativo</div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ucm-azul-l);display:block;margin-bottom:6px;">Nombre la colectividad que identifico como GRUPO</label>
+          <input type="text" id="ng1" placeholder="Ej: Grupo-clase de Tecnicas de Conduccion de Grupos, 28 integrantes, 3er semestre" style="width:100%;padding:10px 14px;border:1px solid var(--ucm-azul-xl);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--blanco);color:var(--texto);" oninput="document.getElementById('lbl1').textContent=this.value||'GRUPO'">
+        </div>
+        <div class="org-grid">
+          <div class="org-nodo" data-lbl="Interaccion y comunicacion"><textarea id="n1a" placeholder="Como interactuan sus miembros? Con que frecuencia y por que canales?"></textarea></div>
+          <div class="org-nodo" data-lbl="Normas y roles observados"><textarea id="n1b" placeholder="Que reglas existen? Hay roles diferenciados? Son formales o informales?"></textarea></div>
+          <div class="org-nodo" data-lbl="Cohesion e identidad"><textarea id="n1c" placeholder="Hay sentido de pertenencia? Alta, media o baja cohesion? Por que?"></textarea></div>
+        </div>
+        <div style="margin:18px 0 8px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);display:block;margin-bottom:6px;">Nombre la colectividad que identifico como EQUIPO</label>
+          <input type="text" id="ng2" placeholder="Ej: Equipo de proyecto integrador de Didactica, 4 integrantes, roles definidos" style="width:100%;padding:10px 14px;border:1px solid var(--verde-b);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--blanco);color:var(--texto);" oninput="document.getElementById('lbl2').textContent=this.value||'EQUIPO'">
+        </div>
+        <div class="org-grid">
+          <div class="org-nodo" data-lbl="Roles complementarios"><textarea id="n2a" placeholder="Que rol tiene cada integrante? Son complementarios e interdependientes?"></textarea></div>
+          <div class="org-nodo" data-lbl="Responsabilidad colectiva"><textarea id="n2b" placeholder="El exito o fracaso es compartido? Como se toman las decisiones?"></textarea></div>
+          <div class="org-nodo" data-lbl="Meta especifica y medible"><textarea id="n2c" placeholder="Cual es la meta concreta? Como se sabe si el equipo tuvo exito?"></textarea></div>
+        </div>
+        <div style="margin:18px 0 8px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);display:block;margin-bottom:6px;">Nombre la colectividad que identifico como MASA</label>
+          <input type="text" id="ng3" placeholder="Ej: Asistentes a la conferencia inaugural del semestre, aprox. 400 personas" style="width:100%;padding:10px 14px;border:1px solid #f0b06a;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--blanco);color:var(--texto);" oninput="document.getElementById('lbl3').textContent=this.value||'MASA'">
+        </div>
+        <div class="org-grid">
+          <div class="org-nodo" data-lbl="Ausencia de estructura"><textarea id="n3a" placeholder="Habia roles definidos? Quien conducia? Los asistentes se reconocian entre si?"></textarea></div>
+          <div class="org-nodo" data-lbl="Anonimato y dispersion"><textarea id="n3b" placeholder="Cuanto anonimato habia? Se comportaban distinto que en un grupo pequeno?"></textarea></div>
+          <div class="org-nodo" data-lbl="Tecnica pedagogica adecuada"><textarea id="n3c" placeholder="Que tecnica seria mas adecuada para intervenir en esta colectividad y por que?"></textarea></div>
+        </div>
+        <div style="margin-top:20px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ucm-azul-l);display:block;margin-bottom:6px;">Analisis comparativo: que distingue mas claramente las tres colectividades en tu experiencia</label>
+          <textarea id="ncomp" style="width:100%;border:1px solid var(--ucm-azul-xl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:90px;background:var(--blanco);resize:vertical;color:var(--texto);" placeholder="Ej: Lo que mas distingue al equipo del grupo en mi experiencia es la interdependencia real: en el equipo, si un integrante no avanza, los demas se bloquean. En el grupo-clase, cada quien puede continuar sin depender del otro..."></textarea>
+        </div>
+        <div><button class="btn-primary" onclick="guardarOrg()">Guardar Organizador</button><button class="btn-outline" onclick="limpiarOrg()">Reiniciar</button></div>
+        <div id="msg-org" class="msg msg-ok">Organizador guardado. Tome una captura de pantalla para su entrega en Classroom.</div>
+      </div>
+
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tabla-wrap">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Identificacion de las tres colectividades</td><td>Las tres son reales, especificas y correctamente clasificadas</td><td>Dos clasificaciones correctas con justificacion</td><td>Una o ninguna clasificacion correcta</td></tr>
+            <tr><td>Aplicacion de criterios teoricos</td><td>Cada campo aplica criterios del contenido con precision</td><td>Aplica criterios en la mayoria de los campos</td><td>Los campos son descriptivos pero sin sustento teorico</td></tr>
+            <tr><td>Analisis comparativo</td><td>Identifica la diferencia esencial con argumentacion solida</td><td>Identifica diferencias con algun sustento</td><td>Comparacion superficial o ausente</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="cl-badge">Subir evidencia a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     ACTIVIDAD 3: CASO PRACTICO
+     ========================== -->
+<section id="act3">
+  <span class="label-sec">Actividad 03 de 04</span>
+  <h2>Caso Practico: Analisis y Toma de Decisiones</h2>
+
+  <div class="act-wrap">
+    <div class="act-head">
+      <div class="act-num">3</div>
+      <div class="act-head-text">
+        <span class="act-tipo">Modalidad: Analisis de Caso con Preguntas Guiadas</span>
+        <h3>El Caso del Salon 4B: Cuando un Grupo no es un Equipo</h3>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="card card-gold" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Modalidad</strong><br>Individual o en binas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Duracion estimada</strong><br>50 a 70 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Entrega</strong><br>Documento en Classroom</div>
+        </div>
+      </div>
+
+      <div class="caso-box">
+        <span class="caso-label">Caso Practico: Salon 4B</span>
+        <p><strong>Descripcion del caso:</strong></p>
+        <p>La profesora Mariana Rios imparte la materia "Teoria del Curriculo" en tercer semestre de la Licenciatura en Pedagogia. Al inicio del semestre, dividio a sus 24 estudiantes en cuatro equipos de seis personas para elaborar un proyecto curricular integrador que se entregaria al final del periodo. A cada equipo se le asigno un nivel educativo diferente (preescolar, primaria, secundaria y bachillerato).</p>
+        <p>A mitad del semestre, la profesora observa lo siguiente en el "Equipo 2" (nivel primaria):</p>
+        <ul style="list-style:none;margin:12px 0;display:flex;flex-direction:column;gap:8px;">
+          <li style="padding:10px 14px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--naranja);font-size:.92rem;color:var(--texto-2);">Tres integrantes han hecho la mayor parte del trabajo; los otros tres apenas participan en las reuniones virtuales.</li>
+          <li style="padding:10px 14px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--naranja);font-size:.92rem;color:var(--texto-2);">No hay roles claramente definidos: todos "hacen un poco de todo" o nadie asume una funcion especifica.</li>
+          <li style="padding:10px 14px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--naranja);font-size:.92rem;color:var(--texto-2);">Las decisiones las toma informalmente la integrante mas proactiva, pero sin que esto sea reconocido explicitamente por el grupo.</li>
+          <li style="padding:10px 14px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--naranja);font-size:.92rem;color:var(--texto-2);">Cuando se pregunta a cada miembro sobre la meta del proyecto, las respuestas son vagas e inconsistentes entre si.</li>
+          <li style="padding:10px 14px;background:var(--blanco);border-radius:var(--r);border-left:3px solid var(--naranja);font-size:.92rem;color:var(--texto-2);">La cohesion afectiva es baja: varios miembros manifiestan en privado que preferirian trabajar solos o con otros companieros.</li>
+        </ul>
+        <p>La profesora Rios le pide a usted, como estudiante avanzado de la carrera, que analice la situacion y proponga un plan de intervencion pedagogica.</p>
+      </div>
+
+      <h3>Preguntas de Analisis</h3>
+      <p>Responda cada pregunta de forma fundamentada, citando los conceptos y criterios teoricos revisados en esta guia. No existen respuestas unicas: se valora la coherencia argumentativa y el sustento en los conceptos del tema.</p>
+
+      <ol class="caso-preguntas">
+        <li>
+          <p><strong>Clasificacion:</strong> Segun los criterios teoricos estudiados, el "Equipo 2" es un grupo, un equipo o algo intermedio? Justifique su respuesta aplicando al menos cuatro criterios de los elementos constitutivos del grupo y del equipo.</p>
+          <textarea class="caso-resp" id="caso1" placeholder="Escriba su analisis aqui..."></textarea>
+        </li>
+        <li>
+          <p><strong>Diagnostico de la dinamica interna:</strong> Identifique dos o tres problemas especificos en la dinamica interna del Equipo 2 y explique, con base en los conceptos del tema, por que son problemas desde una perspectiva pedagogica.</p>
+          <textarea class="caso-resp" id="caso2" placeholder="Escriba su diagnostico aqui..."></textarea>
+        </li>
+        <li>
+          <p><strong>Intervencion pedagogica:</strong> Si usted fuera la profesora Rios, que tecnica o estrategia de conduccion de grupos aplicaria para intervenir en la situacion del Equipo 2? Explique paso a paso como la implementaria y por que esta tecnica es la mas adecuada para este caso especifico.</p>
+          <textarea class="caso-resp" id="caso3" placeholder="Describa su propuesta de intervencion..."></textarea>
+        </li>
+        <li>
+          <p><strong>Transferencia:</strong> Ha vivido usted, como estudiante, una situacion similar a la del Equipo 2? En que se parecia y en que se diferenciaba? Que habria necesitado el grupo en ese momento para convertirse en un equipo en sentido estricto?</p>
+          <textarea class="caso-resp" id="caso4" placeholder="Conecte el caso con su propia experiencia..."></textarea>
+        </li>
+      </ol>
+
+      <div class="card card-orange" style="margin-top:20px;">
+        <h4>Nota metodologica sobre el analisis de casos</h4>
+        <p>El analisis de casos es una tecnica de ABP que requiere ir mas alla de la descripcion: el objetivo es <em>explicar</em> los fenomenos con conceptos teoricos y <em>proponer</em> intervenciones fundamentadas. Una respuesta de calidad no es simplemente "el equipo no funciona", sino "el equipo carece de interdependencia operativa y de responsabilidad colectiva, lo que segun Katzenbach y Smith (1993) impide que se configure como equipo de alto rendimiento. La intervencion recomendada es..."</p>
+      </div>
+
+      <div style="margin-top:18px;">
+        <button class="btn-primary" onclick="guardarCaso()">Guardar Analisis</button>
+        <button class="btn-outline" onclick="limpiarCaso()">Limpiar</button>
+      </div>
+      <div id="msg-caso" class="msg msg-ok">Analisis guardado. Exporte el documento y subalo a Classroom.</div>
+
+      <span class="cl-badge" style="margin-top:20px;">Subir documento a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     ACTIVIDAD 4: QUIZ
+     ========================== -->
+<section id="act4">
+  <span class="label-sec">Actividad 04 de 04</span>
+  <h2>Quiz de Autoevaluacion</h2>
+
+  <div class="act-wrap">
+    <div class="act-head">
+      <div class="act-num">4</div>
+      <div class="act-head-text">
+        <span class="act-tipo">Modalidad: Quiz Interactivo con Retroalimentacion Inmediata</span>
+        <h3>Evaluacion: El Concepto de Grupo, Equipo y Masa</h3>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="card card-gold" style="margin-bottom:22px;">
+        <h4>Informacion del Quiz</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Preguntas</strong><br>5 reactivos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Formato</strong><br>Opcion multiple</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Puntaje maximo</strong><br>10 puntos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-3);">Entrega</strong><br>Captura de pantalla en Classroom</div>
+        </div>
+      </div>
+      <p>Responda cada pregunta seleccionando la opcion que considere correcta. Al finalizar, presione "Calificar" para obtener su puntaje y retroalimentacion. Tome una captura del resultado y subala a Classroom.</p>
+
+      <div class="quiz-wrap" id="qc">
+
+        <div class="pregunta">
+          <span class="qnum">Pregunta 01 de 05</span>
+          <div class="qtext">Cual de las siguientes opciones describe con mayor precision la diferencia esencial entre un equipo y un grupo ordinario?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="q1" value="a"><span>El equipo tiene mayor numero de integrantes que el grupo y por eso sus objetivos son mas ambiciosos.</span></label></li>
+            <li><label><input type="radio" name="q1" value="b"><span>El equipo se caracteriza por roles complementarios, interdependencia operativa y responsabilidad colectiva por los resultados, elementos que no son necesarios en un grupo ordinario.</span></label></li>
+            <li><label><input type="radio" name="q1" value="c"><span>El equipo es simplemente un grupo con mayor cohesion afectiva entre sus miembros, sin diferencias estructurales significativas.</span></label></li>
+            <li><label><input type="radio" name="q1" value="d"><span>El equipo requiere la presencia de un lider formal designado por la institucion, mientras que el grupo puede funcionar sin liderazgo de ningun tipo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta">
+          <span class="qnum">Pregunta 02 de 05</span>
+          <div class="qtext">Segun los criterios teoricos del tema, el publico que asiste a una conferencia magistral universitaria de 500 personas se clasifica como:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="q2" value="a"><span>Un grupo secundario formal, porque fue convocado por la institucion con un proposito especifico.</span></label></li>
+            <li><label><input type="radio" name="q2" value="b"><span>Un equipo de aprendizaje, porque todos comparten el objetivo de adquirir conocimiento.</span></label></li>
+            <li><label><input type="radio" name="q2" value="c"><span>Una masa, porque carece de estructura interna, roles definidos y normas compartidas entre sus miembros, y predomina el anonimato.</span></label></li>
+            <li><label><input type="radio" name="q2" value="d"><span>Un grupo primario, porque todos los asistentes comparten un vinculo afectivo con la institucion educativa.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta">
+          <span class="qnum">Pregunta 03 de 05</span>
+          <div class="qtext">Cual de los siguientes afirmaciones es correcta respecto a la relacion entre grupo y equipo?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="q3" value="a"><span>Todo equipo es un grupo, pero no todo grupo es un equipo. El equipo es un tipo especial de grupo con mayor especializacion, interdependencia y responsabilidad colectiva.</span></label></li>
+            <li><label><input type="radio" name="q3" value="b"><span>Todo grupo es un equipo, pues ambos conceptos son sinonimos en la literatura de la psicologia social moderna.</span></label></li>
+            <li><label><input type="radio" name="q3" value="c"><span>El equipo y el grupo son categorias completamente independientes sin ninguna relacion de inclusion o subordinacion conceptual.</span></label></li>
+            <li><label><input type="radio" name="q3" value="d"><span>Todo equipo es mas grande que un grupo y por eso requiere tecnicas de conduccion de masas para su gestion pedagogica.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta">
+          <span class="qnum">Pregunta 04 de 05</span>
+          <div class="qtext">Un docente asigna un "trabajo en equipo" en el que cada estudiante elabora individualmente una seccion del documento y al final se unen las partes. Segun los criterios teoricos del tema, esta actividad genera:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="q4" value="a"><span>Un equipo de alto rendimiento, porque todos trabajan hacia el mismo entregable final con un objetivo compartido.</span></label></li>
+            <li><label><input type="radio" name="q4" value="b"><span>Un grupo de trabajo con division de tareas, pero no un equipo en sentido estricto, pues no existe interdependencia operativa ni responsabilidad colectiva real entre los integrantes.</span></label></li>
+            <li><label><input type="radio" name="q4" value="c"><span>Una masa de estudio, porque no hay interaccion entre los miembros durante el proceso de elaboracion.</span></label></li>
+            <li><label><input type="radio" name="q4" value="d"><span>Un grupo primario, porque la actividad genera cohesion afectiva entre los estudiantes al compartir la misma presion academica.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta">
+          <span class="qnum">Pregunta 05 de 05</span>
+          <div class="qtext">Gustave Le Bon identifico en la masa un fenomeno conocido como "sugestionabilidad colectiva". Que implica este concepto en el contexto de la conduccion de grupos?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="q5" value="a"><span>Que las masas son mas inteligentes que los grupos pequenos porque concentran mayor cantidad de conocimiento individual.</span></label></li>
+            <li><label><input type="radio" name="q5" value="b"><span>Que en contextos masivos, los individuos tienden a perder su capacidad critica individual y son mas susceptibles a influencias emocionales y externas, lo que exige del conductor estrategias de comunicacion distintas a las del grupo pequeño.</span></label></li>
+            <li><label><input type="radio" name="q5" value="c"><span>Que las masas solo pueden ser conducidas mediante autoridad coercitiva y no mediante las tecnicas pedagogicas convencionales.</span></label></li>
+            <li><label><input type="radio" name="q5" value="d"><span>Que la sugestionabilidad colectiva es un fenomeno exclusivo de grupos informales y no se presenta en colectividades institucionalmente organizadas.</span></label></li>
+          </ul>
+        </div>
+
+        <button id="btn-quiz" onclick="calificar()">Calificar Quiz</button>
+
+        <div class="quiz-result" id="qr">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado);display:block;margin-bottom:6px;">Resultado Final</span>
+          <span class="score-num" id="snm">0/10</span>
+          <div class="bprog"><div class="bfill" id="bf"></div></div>
+          <p class="score-msg" id="smsg"></p>
+          <p class="score-det" id="sdet"></p>
+          <br><button id="btn-retry" onclick="reiniciar()">Intentar de Nuevo</button>
+        </div>
+      </div>
+
+      <div class="card card-blue" style="margin-top:22px;">
+        <h4>Instruccion de Entrega</h4>
+        <ol style="margin-left:18px;color:var(--texto-2);font-size:.92rem;">
+          <li style="margin-bottom:7px;">Complete el quiz hasta obtener la pantalla de resultados con el puntaje.</li>
+          <li style="margin-bottom:7px;">Tome una captura de pantalla que incluya el puntaje, la barra de progreso y las respuestas seleccionadas.</li>
+          <li style="margin-bottom:7px;">Nombre el archivo: <code style="font-family:'JetBrains Mono',monospace;font-size:.83rem;background:var(--ucm-azul-xl);padding:2px 6px;border-radius:3px;">Quiz_NombreApellido.png</code></li>
+          <li>Subalo en la tarea "Quiz Unidad I" de Google Classroom.</li>
+        </ol>
+      </div>
+      <span class="cl-badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     REFLEXION
+     ========================== -->
+<section id="reflexion">
+  <span class="label-sec">Seccion 09</span>
+  <h2>Reflexion y Plan de Aplicacion</h2>
+  <p>Esta seccion final propone una instancia de metacognicion: reflexionar sobre lo que se aprendio, como se aprendio y para que sirve. No es un resumen de contenidos, sino un ejercicio de pensamiento sobre el propio proceso de aprendizaje y su proyeccion hacia la practica.</p>
+
+  <div class="card card-gold" style="margin-bottom:26px;">
+    <h4>Condicion Previa</h4>
+    <p>Complete primero las cuatro actividades practicas. La calidad de la reflexion sera proporcional a la experiencia concreta acumulada durante el trabajo con el contenido y las actividades.</p>
+  </div>
+
+  <h3>Cuadro de Reflexion Personal</h3>
+  <div class="ref-grid">
+    <div class="ref-item">
+      <label>1. Lo que aprendi hoy (conceptual)</label>
+      <textarea id="r1" placeholder="Que conceptos o distinciones de este tema son nuevos para usted o modificaron una idea previa?"></textarea>
+    </div>
+    <div class="ref-item">
+      <label>2. Lo que me genero tension (metacognicion)</label>
+      <textarea id="r2" placeholder="Que aspecto del tema le resulto dificil, contradictorio o inesperado? Por que?"></textarea>
+    </div>
+    <div class="ref-item">
+      <label>3. Conexion con mi experiencia universitaria</label>
+      <textarea id="r3" placeholder="En que situaciones concretas de su vida universitaria actual identifico ahora los conceptos trabajados?"></textarea>
+    </div>
+    <div class="ref-item">
+      <label>4. Preguntas que me quedan abiertas</label>
+      <textarea id="r4" placeholder="Que preguntas nuevas surgieron? Que le gustaria investigar o profundizar en relacion con este tema?"></textarea>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <h3>Plan de Aplicacion Profesional</h3>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Aplicacion inmediata como estudiante</h4>
+    <p style="margin-bottom:10px;">Identifique una situacion concreta de su vida universitaria actual en la que podria aplicar la distincion grupo-equipo-masa para tomar una decision pedagogica mas informada.</p>
+    <textarea id="p1" style="width:100%;border:1px solid var(--ucm-azul-xl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--ucm-azul-bg);resize:vertical;color:var(--texto);" placeholder="Ej: En el proximo proyecto grupal de Teoria del Curriculo, voy a proponer que el equipo defina roles complementarios desde la primera sesion, en lugar de dividir el trabajo por partes iguales..."></textarea>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Transferencia a mi futura practica docente</h4>
+    <p style="margin-bottom:10px;">Como futuro profesional de la pedagogia, como aplicaria la distincion entre grupo, equipo y masa en su practica docente o en un contexto institucional concreto?</p>
+    <textarea id="p2" style="width:100%;border:1px solid var(--ucm-azul-xl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--ucm-azul-bg);resize:vertical;color:var(--texto);" placeholder="Ej: Cuando trabaje como orientador educativo en bachillerato, utilizare esta distincion para diagnosticar si los grupos de estudiantes son verdaderos equipos antes de asignarles tareas colaborativas complejas..."></textarea>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <h4>Mi compromiso de aprendizaje para las proximas dos semanas</h4>
+    <textarea id="p3" style="width:100%;border:1px solid var(--ucm-azul-xl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:70px;background:var(--ucm-azul-bg);resize:vertical;color:var(--texto);" placeholder="Me comprometo a... (especifique una accion concreta, observable y realizable en las proximas dos semanas)"></textarea>
+  </div>
+
+  <button class="btn-primary" onclick="genPlan()">Generar mi Plan de Aplicacion</button>
+
+  <div class="plan-prev" id="pp">
+    <h4>Mi Plan de Aplicacion &mdash; El Concepto de Grupo</h4>
+    <div id="ppc"></div>
+    <div class="card card-gold" style="margin-top:16px;"><p style="margin:0;font-size:.88rem;">Tome una captura de pantalla de este plan como guia personal para las proximas semanas del curso.</p></div>
+  </div>
+</section>
+
+<!-- ==========================
+     GLOSARIO
+     ========================== -->
+<section id="glosario">
+  <span class="label-sec">Seccion 10</span>
+  <h2>Glosario de Terminos Clave</h2>
+  <div class="card">
+    <dl class="glos">
+      <div><dt>Cohesion grupal</dt><dd>Fuerza psicologica que mantiene unidos a los miembros de un grupo, generando sentido de identidad, pertenencia y compromiso colectivo. Es uno de los principales predictores de la eficacia grupal.</dd></div>
+      <div><dt>Dinamica de grupos</dt><dd>Campo de estudio que analiza las fuerzas, procesos y patrones de interaccion que emergen en el interior de los grupos. Concepto introducido por Kurt Lewin (1890-1947).</dd></div>
+      <div><dt>Equipo</dt><dd>Tipo especial de grupo caracterizado por la complementariedad de roles, la interdependencia operativa y la responsabilidad colectiva por los resultados. No todo grupo es un equipo.</dd></div>
+      <div><dt>Grupo</dt><dd>Conjunto de dos o mas personas que interactuan regularmente, comparten objetivos comunes, se reconocen mutuamente como miembros y desarrollan normas y roles que regulan su comportamiento colectivo.</dd></div>
+      <div><dt>Grupo formal</dt><dd>Grupo creado deliberadamente por una institucion con fines, estructura y normas definidos externamente. Ejemplo: grupo-clase inscrito a una materia universitaria.</dd></div>
+      <div><dt>Grupo informal</dt><dd>Grupo que surge espontaneamente a partir de afinidades personales e intereses compartidos, al margen de la estructura institucional formal.</dd></div>
+      <div><dt>Grupo primario</dt><dd>Grupo caracterizado por relaciones cara a cara, intimas y duraderas con alta cohesion afectiva. Concepto acunado por Charles Cooley (1909). Ejemplo: familia, grupo de amigos cercanos.</dd></div>
+      <div><dt>Grupo secundario</dt><dd>Grupo orientado a fines especificos con relaciones relativamente impersonales y menor vinculo afectivo que el grupo primario. Ejemplo: grupo-clase, comision escolar.</dd></div>
+      <div><dt>Interdependencia operativa</dt><dd>Condicion en la que el trabajo de cada miembro del equipo es condicion o requisito para el avance de los demas. Caracteristica definitoria del equipo frente al grupo ordinario.</dd></div>
+      <div><dt>Masa (o multitud)</dt><dd>Colectividad de gran tamano caracterizada por la ausencia de estructura interna, el anonimato, la interaccion minima entre sus miembros y alta susceptibilidad a influencias emocionales. Estudiada por Le Bon (1895).</dd></div>
+      <div><dt>Normas grupales</dt><dd>Reglas explicitas e implicitas que regulan el comportamiento de los miembros dentro del grupo, estableciendo expectativas sobre lo que es apropiado o inapropiado en ese contexto colectivo.</dd></div>
+      <div><dt>Rol grupal</dt><dd>Funcion diferenciada que desempena un miembro del grupo, ya sea asignada formalmente o emergida de la dinamica interna. Los roles estructuran la division de responsabilidades y la interaccion grupal.</dd></div>
+      <div><dt>Sugestionabilidad colectiva</dt><dd>Fenomeno identificado por Le Bon en las masas: la tendencia de los individuos, al fundirse en una multitud, a perder su capacidad critica individual y volverse mas susceptibles a influencias emocionales compartidas.</dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="fi-name">Universidad de la Cienega &mdash; Plantel Centro</span>
+      <span>Licenciatura en Pedagogia &mdash; Tecnicas de Conduccion de Grupos</span>
+    </div>
+    <div style="text-align:right;">
+      <span>Guia Interactiva Unidad I &mdash; Tema 1 &mdash; Ciclo 2024&ndash;2025</span><br>
+      <span style="color:rgba(255,255,255,.35);margin-top:3px;display:block;">Material de uso educativo &mdash; version web para GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== LOGO =====
+(function(){
+  document.querySelector('.logo-card img').src = 'data:image/png;base64,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';
+})();
+
+// ===== PROGRESS BAR =====
+window.addEventListener('scroll', function(){
+  var s = document.documentElement.scrollTop;
+  var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progreso').style.width = (s/h*100) + '%';
+});
+
+// ===== ACORDEON =====
+function tog(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('show');
+}
+
+// ===== CONOCIMIENTO PREVIO =====
+function mostrarRespuestaPrevio(){
+  var resp = document.getElementById('previo-resp').value.trim();
+  if(!resp){ alert('Por favor escriba su respuesta antes de ver la orientacion conceptual.'); return; }
+  document.getElementById('previo-fb').classList.add('show');
+}
+
+// ===== ORGANIZADOR =====
+function guardarOrg(){
+  var m = document.getElementById('msg-org');
+  m.classList.add('show');
+  setTimeout(function(){ m.classList.remove('show'); }, 4500);
+}
+function limpiarOrg(){
+  if(!confirm('Desea reiniciar todos los campos del organizador?')) return;
+  ['ng1','ng2','ng3','n1a','n1b','n1c','n2a','n2b','n2c','n3a','n3b','n3c','ncomp'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.value = '';
+  });
+  ['lbl1','lbl2','lbl3'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ if(id==='lbl1') el.textContent='GRUPO'; else if(id==='lbl2') el.textContent='EQUIPO'; else el.textContent='MASA'; }
+  });
+}
+
+// ===== CASO PRACTICO =====
+function guardarCaso(){
+  var m = document.getElementById('msg-caso');
+  m.classList.add('show');
+  setTimeout(function(){ m.classList.remove('show'); }, 4500);
+}
+function limpiarCaso(){
+  if(!confirm('Desea limpiar todas las respuestas del caso?')) return;
+  ['caso1','caso2','caso3','caso4'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.value = '';
+  });
+}
+
+// ===== QUIZ =====
+var RC = { q1:'b', q2:'c', q3:'a', q4:'b', q5:'b' };
+var MSJS = [
+  "Es necesario revisar el contenido de la unidad nuevamente. Regrese a la seccion de contenidos tematicos, preste especial atencion a la tabla comparativa y a los ejemplos de cada tipo de colectividad.",
+  "Ha asimilado algunos conceptos. Revise las preguntas incorrectas y los criterios que distinguen grupo, equipo y masa antes de continuar.",
+  "Desempeno aceptable. Domina la mayoria de los conceptos. Revise la retroalimentacion de las preguntas incorrectas para consolidar su aprendizaje.",
+  "Buen desempeno. Revise la unica pregunta incorrecta para alcanzar el dominio completo del tema.",
+  "Excelente. Ha demostrado dominio de todos los conceptos del tema. Puede continuar con confianza a las siguientes unidades del curso."
+];
+
+function calificar(){
+  var ps = ['q1','q2','q3','q4','q5'], ok = 0, todo = true;
+  ps.forEach(function(p){
+    var sel = document.querySelector('input[name="'+p+'"]:checked');
+    if(!sel){ todo = false; return; }
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){
+      r.closest('li').classList.remove('opt-ok','opt-err');
+    });
+    if(sel.value === RC[p]){
+      ok++; sel.closest('li').classList.add('opt-ok');
+    } else {
+      sel.closest('li').classList.add('opt-err');
+      var c = document.querySelector('input[name="'+p+'"][value="'+RC[p]+'"]');
+      if(c) c.closest('li').classList.add('opt-ok');
+    }
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){ r.disabled = true; });
+  });
+  if(!todo){ alert('Por favor responda todas las preguntas antes de calificar.'); return; }
+  var pts = (ok/5)*10;
+  document.getElementById('snm').textContent = pts.toFixed(0) + ' / 10';
+  document.getElementById('bf').style.width = (pts*10) + '%';
+  document.getElementById('smsg').textContent = MSJS[ok];
+  document.getElementById('sdet').textContent = ok + ' de 5 respuestas correctas. Puntaje: ' + pts.toFixed(0) + '/10.';
+  var r = document.getElementById('qr');
+  r.classList.add('show');
+  document.getElementById('btn-quiz').disabled = true;
+  r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function reiniciar(){
+  ['q1','q2','q3','q4','q5'].forEach(function(p){
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){
+      r.checked = false; r.disabled = false;
+      r.closest('li').classList.remove('opt-ok','opt-err');
+    });
+  });
+  document.getElementById('qr').classList.remove('show');
+  document.getElementById('bf').style.width = '0';
+  document.getElementById('btn-quiz').disabled = false;
+  document.getElementById('qc').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===== PLAN =====
+function genPlan(){
+  var p1=document.getElementById('p1').value.trim(),
+      p2=document.getElementById('p2').value.trim(),
+      p3=document.getElementById('p3').value.trim();
+  if(!p1&&!p2&&!p3){ alert('Complete al menos un campo del plan antes de generarlo.'); return; }
+  var h = '';
+  if(p1) h += '<div style="margin-bottom:14px;padding:14px 18px;background:var(--ucm-azul-bg);border-radius:var(--r);border-left:3px solid var(--ucm-azul);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ucm-azul-l);display:block;margin-bottom:5px;">Aplicacion Inmediata</strong><p style="margin:0;font-size:.92rem;color:var(--texto-2);">'+p1+'</p></div>';
+  if(p2) h += '<div style="margin-bottom:14px;padding:14px 18px;background:var(--verde-l);border-radius:var(--r);border-left:3px solid var(--verde);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);display:block;margin-bottom:5px;">Practica Docente Futura</strong><p style="margin:0;font-size:.92rem;color:var(--texto-2);">'+p2+'</p></div>';
+  if(p3) h += '<div style="padding:14px 18px;background:var(--dorado-xl);border-radius:var(--r);border-left:3px solid var(--dorado);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dorado);display:block;margin-bottom:5px;">Mi Compromiso</strong><p style="margin:0;font-size:.92rem;color:var(--texto-2);">'+p3+'</p></div>';
+  document.getElementById('ppc').innerHTML = h;
+  var pp = document.getElementById('pp');
+  pp.classList.add('show');
+  pp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
