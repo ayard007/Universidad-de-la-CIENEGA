@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Problema del Conocimiento — Aspectos Filosóficos | UdC Plantel Centro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════
+   VARIABLES & RESET
+══════════════════════════════════════════════════ */
+:root {
+  --azul:       #253370;
+  --azul-med:   #3d51a0;
+  --azul-pal:   #8fa0d8;
+  --azul-xs:    #eef0f9;
+  --arena:      #f5f1eb;
+  --arena-med:  #e8e0d0;
+  --dorado:     #b8860b;
+  --dorado-cl:  #f0e0a0;
+  --verde:      #1f6b4a;
+  --verde-cl:   #d4ede2;
+  --rojo:       #9b1c1c;
+  --rojo-cl:    #fde8e8;
+  --texto:      #1c1f2e;
+  --texto-2:    #445;
+  --borde:      #d6d0c8;
+  --blanco:     #ffffff;
+  --sombra-s:   0 2px 12px rgba(37,51,112,.09);
+  --sombra-m:   0 6px 32px rgba(37,51,112,.13);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--arena);
+  color:var(--texto);
+  line-height:1.8;
+}
+
+/* ══════════════════════════════════════════════════
+   BARRA SUPERIOR
+══════════════════════════════════════════════════ */
+.topbar{
+  background:var(--azul);
+  padding:10px 0;
+  text-align:center;
+}
+.topbar span{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--azul-pal);
+}
+
+/* ══════════════════════════════════════════════════
+   ENCABEZADO INSTITUCIONAL
+══════════════════════════════════════════════════ */
+.inst-header{
+  background:var(--blanco);
+  border-bottom:1px solid var(--borde);
+  padding:18px 40px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  position:sticky;
+  top:0;
+  z-index:200;
+  box-shadow:var(--sombra-s);
+}
+.inst-logo{height:52px;width:auto;flex-shrink:0}
+.inst-info{flex:1}
+.inst-nombre{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--azul);
+  line-height:1.2;
+}
+.inst-sub{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--azul-pal);
+  margin-top:3px;
+}
+.inst-nav{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.inst-nav a{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--azul);
+  text-decoration:none;
+  padding:5px 11px;
+  border:1px solid var(--azul-pal);
+  border-radius:2px;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.inst-nav a:hover{background:var(--azul);color:var(--blanco);border-color:var(--azul)}
+
+/* ══════════════════════════════════════════════════
+   PORTADA / HERO
+══════════════════════════════════════════════════ */
+.hero{
+  background:var(--azul);
+  position:relative;
+  overflow:hidden;
+  padding:72px 40px 60px;
+}
+.hero-deco{
+  position:absolute;
+  top:0;right:0;
+  width:440px;height:440px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(143,160,216,.14) 0%,transparent 70%);
+  transform:translate(30%,-30%);
+  pointer-events:none;
+}
+.hero-deco2{
+  position:absolute;
+  bottom:-80px;left:-60px;
+  width:320px;height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(184,134,11,.10) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:860px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.hero-tag{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--azul-pal);
+  border:1px solid rgba(143,160,216,.4);
+  padding:5px 14px;
+  border-radius:1px;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,3.4rem);
+  font-weight:700;
+  color:var(--blanco);
+  line-height:1.1;
+  margin-bottom:8px;
+}
+.hero h1 span{
+  color:var(--dorado-cl);
+  font-style:italic;
+}
+.hero-subtema{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;
+  font-weight:400;
+  color:var(--azul-pal);
+  font-style:italic;
+  margin-bottom:24px;
+}
+.hero-fichas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  border-top:1px solid rgba(143,160,216,.3);
+  padding-top:24px;
+  margin-top:24px;
+}
+.hero-ficha .lbl{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--azul-pal);
+  margin-bottom:3px;
+}
+.hero-ficha .val{
+  font-family:'DM Sans',sans-serif;
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--blanco);
+}
+
+/* ══════════════════════════════════════════════════
+   ÍNDICE DE NAVEGACIÓN LATERAL (sticky)
+══════════════════════════════════════════════════ */
+.layout{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  gap:32px;
+  align-items:start;
+}
+.sidebar{
+  position:sticky;
+  top:90px;
+  padding:24px 0 24px;
+}
+.sidebar-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--azul-pal);
+  margin-bottom:12px;
+  padding-left:12px;
+}
+.sidebar-nav{list-style:none}
+.sidebar-nav li{border-left:2px solid var(--borde)}
+.sidebar-nav li.activo{border-left-color:var(--azul)}
+.sidebar-nav a{
+  display:block;
+  padding:7px 12px;
+  font-size:.82rem;
+  color:var(--texto-2);
+  text-decoration:none;
+  transition:color .2s;
+  line-height:1.3;
+}
+.sidebar-nav a:hover,.sidebar-nav li.activo a{color:var(--azul);font-weight:600}
+.sidebar-sep{height:1px;background:var(--borde);margin:10px 0}
+
+.main-content{
+  padding:48px 0 80px;
+}
+
+/* ══════════════════════════════════════════════════
+   TARJETAS DE SECCIÓN
+══════════════════════════════════════════════════ */
+.card{
+  background:var(--blanco);
+  border:1px solid var(--borde);
+  border-radius:4px;
+  margin-bottom:36px;
+  overflow:hidden;
+  box-shadow:var(--sombra-s);
+}
+.card-head{
+  padding:18px 28px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border-bottom:1px solid var(--borde);
+}
+.card-head.azul{background:var(--azul)}
+.card-head.arena{background:var(--arena-med)}
+.card-head.verde{background:var(--verde)}
+.card-head.dorado{background:var(--dorado)}
+.card-head.morado{background:#5c3479}
+.card-head.rojo-osc{background:#7a1a2e}
+
+.card-icono{
+  font-family:'DM Mono',monospace;
+  font-size:1.6rem;
+  font-weight:500;
+  line-height:1;
+  opacity:.22;
+  color:var(--blanco);
+  min-width:40px;
+}
+.card-icono.oscuro{color:var(--texto);opacity:.15}
+.card-head-txt h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--blanco);
+  line-height:1.2;
+}
+.card-head-txt h2.oscuro{color:var(--texto)}
+.card-head-txt .sub{
+  font-family:'DM Mono',monospace;
+  font-size:8.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  margin-top:3px;
+}
+.card-head-txt .sub.oscuro{color:var(--texto-2)}
+
+.card-body{padding:28px 32px}
+
+/* ══════════════════════════════════════════════════
+   TIPOGRAFÍA INTERIOR
+══════════════════════════════════════════════════ */
+h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--azul);
+  margin:26px 0 10px;
+}
+h3:first-child{margin-top:0}
+h4{
+  font-family:'DM Sans',sans-serif;
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--texto);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin:22px 0 8px;
+}
+h4:first-child{margin-top:0}
+p{color:var(--texto-2);margin-bottom:14px;font-size:.96rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--texto);font-weight:600}
+em{font-style:italic}
+
+/* ══════════════════════════════════════════════════
+   CAJAS ESPECIALES
+══════════════════════════════════════════════════ */
+.caja{
+  padding:16px 20px;
+  border-radius:3px;
+  margin:16px 0;
+  font-size:.93rem;
+}
+.caja.azul{background:var(--azul-xs);border-left:3px solid var(--azul)}
+.caja.dorado{background:#fdf8e8;border-left:3px solid var(--dorado)}
+.caja.verde{background:var(--verde-cl);border-left:3px solid var(--verde)}
+.caja.alerta{background:#fff8e1;border:1px solid #f0c030;border-radius:3px}
+.caja.rojo{background:var(--rojo-cl);border-left:3px solid var(--rojo)}
+
+.caja .caja-titulo{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+  color:var(--azul);
+}
+.caja.dorado .caja-titulo{color:var(--dorado)}
+.caja.verde .caja-titulo{color:var(--verde)}
+.caja.rojo .caja-titulo{color:var(--rojo)}
+
+.cita{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--texto);
+  border-left:3px solid var(--dorado);
+  padding:14px 20px;
+  background:#fdf8e8;
+  margin:18px 0;
+  border-radius:0 3px 3px 0;
+}
+.cita cite{
+  display:block;
+  font-style:normal;
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  color:var(--dorado);
+  margin-top:8px;
+  letter-spacing:.1em;
+}
+
+/* ══════════════════════════════════════════════════
+   TABLA
+══════════════════════════════════════════════════ */
+.tabla-wrap{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead tr{background:var(--azul);color:var(--blanco)}
+thead th{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:12px 14px;
+  text-align:left;
+  font-weight:500;
+}
+tbody tr:nth-child(even){background:var(--azul-xs)}
+tbody tr:hover{background:var(--arena-med)}
+td{padding:10px 14px;border-bottom:1px solid var(--borde);color:var(--texto-2);vertical-align:top}
+td strong{color:var(--azul)}
+
+/* ══════════════════════════════════════════════════
+   PASOS NUMERADOS
+══════════════════════════════════════════════════ */
+.pasos{counter-reset:p;list-style:none;margin:14px 0}
+.pasos li{
+  display:flex;gap:14px;margin-bottom:12px;
+  counter-increment:p;align-items:flex-start;
+}
+.pasos li::before{
+  content:counter(p);
+  background:var(--azul);
+  color:var(--blanco);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:.9rem;
+  min-width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:3px;
+}
+.pasos.verde li::before{background:var(--verde)}
+.pasos.dorado li::before{background:var(--dorado)}
+.pasos.morado li::before{background:#5c3479}
+
+.pasos li p{margin:0;font-size:.93rem}
+
+/* ══════════════════════════════════════════════════
+   BOTONES
+══════════════════════════════════════════════════ */
+.btn{
+  display:inline-block;
+  padding:9px 22px;
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  border:none;border-radius:2px;
+  cursor:pointer;transition:all .2s;
+}
+.btn.azul{background:var(--azul);color:var(--blanco)}
+.btn.azul:hover{background:#1a2560}
+.btn.verde{background:var(--verde);color:var(--blanco)}
+.btn.verde:hover{background:#145536}
+.btn.dorado{background:var(--dorado);color:var(--blanco)}
+.btn.dorado:hover{background:#8a6508}
+.btn.morado{background:#5c3479;color:var(--blanco)}
+.btn.morado:hover{background:#3d235e}
+.btn.outline{
+  background:transparent;
+  color:var(--azul);
+  border:1.5px solid var(--azul-pal);
+}
+.btn.outline:hover{background:var(--azul-xs)}
+.btn.rojo-osc{background:#7a1a2e;color:var(--blanco)}
+.btn.rojo-osc:hover{background:#5a1020}
+
+/* Badge Classroom */
+.classroom-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#1a73e8;color:var(--blanco);
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 16px;border-radius:2px;margin:10px 0 16px;
+}
+.classroom-btn::before{content:'▶';font-size:8px}
+
+/* ══════════════════════════════════════════════════
+   RÚBRICA
+══════════════════════════════════════════════════ */
+.rubrica{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.crit{
+  border:1px solid var(--borde);border-radius:3px;
+  padding:13px 16px;background:var(--blanco);
+}
+.crit .cn{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--azul-pal);margin-bottom:4px;
+}
+.crit .cp{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:var(--azul);line-height:1;margin-bottom:6px;
+}
+.crit .cp span{font-size:.9rem;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--texto-2)}
+.crit p{font-size:.84rem;margin:0;color:var(--texto-2)}
+
+/* ══════════════════════════════════════════════════
+   ACTIVIDAD: CONOCIMIENTOS PREVIOS
+══════════════════════════════════════════════════ */
+.previos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;
+}
+.previo-item{
+  border:1.5px solid var(--borde);border-radius:3px;
+  padding:16px;background:var(--arena);
+}
+.previo-item label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-2);display:block;margin-bottom:8px;
+}
+.previo-item textarea,.previo-item select,.previo-item input[type=text]{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;
+  padding:10px 12px;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;
+  color:var(--texto);background:var(--blanco);
+  outline:none;resize:vertical;transition:border-color .2s;
+  min-height:80px;
+}
+.previo-item textarea:focus,.previo-item select:focus{border-color:var(--azul)}
+
+/* ══════════════════════════════════════════════════
+   MATERIALES EXTERNOS
+══════════════════════════════════════════════════ */
+.recursos-list{display:flex;flex-direction:column;gap:12px;margin:14px 0}
+.recurso{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 16px;
+  border:1px solid var(--borde);border-radius:3px;
+  background:var(--blanco);
+  text-decoration:none;color:inherit;
+  transition:box-shadow .2s,border-color .2s;
+}
+.recurso:hover{border-color:var(--azul-pal);box-shadow:var(--sombra-s)}
+.recurso-tipo{
+  font-family:'DM Mono',monospace;font-size:8.5px;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 10px;border-radius:2px;white-space:nowrap;
+  flex-shrink:0;margin-top:2px;
+}
+.recurso-tipo.pdf{background:#fde8e8;color:#7a1a2e}
+.recurso-tipo.video{background:#e8f0fe;color:#1a56c4}
+.recurso-tipo.libro{background:var(--verde-cl);color:var(--verde)}
+.recurso-tipo.web{background:var(--dorado-cl);color:#6b4e00}
+.recurso-info .recurso-titulo{font-weight:600;font-size:.92rem;color:var(--azul);margin-bottom:3px}
+.recurso-info .recurso-desc{font-size:.84rem;color:var(--texto-2)}
+.recurso-info .recurso-autor{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.08em;color:var(--azul-pal);margin-top:4px;
+}
+
+/* ══════════════════════════════════════════════════
+   FORO ACTIVIDAD 1
+══════════════════════════════════════════════════ */
+.foro-box{
+  border:1.5px solid var(--borde);border-radius:4px;
+  overflow:hidden;margin:16px 0;
+}
+.foro-tit{
+  background:var(--azul-xs);padding:12px 20px;
+  border-bottom:1px solid var(--borde);
+  display:flex;align-items:center;gap:10px;
+}
+.foro-tit span{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--azul);font-weight:500;
+}
+.foro-pregunta-txt{
+  padding:20px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.08rem;font-style:italic;
+  color:var(--texto);line-height:1.65;
+  background:var(--blanco);border-bottom:1px solid var(--borde);
+}
+.foro-input-area{padding:16px 20px}
+.foro-input-area label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-2);display:block;margin-bottom:8px;
+}
+.foro-input-area textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:3px;
+  padding:12px;font-family:'DM Sans',sans-serif;font-size:.92rem;
+  color:var(--texto);resize:vertical;min-height:110px;
+  background:var(--arena);outline:none;transition:border-color .2s;
+}
+.foro-input-area textarea:focus{border-color:var(--azul);background:var(--blanco)}
+
+.ej-box{
+  margin-top:12px;padding:14px 16px;
+  background:var(--azul-xs);border-radius:3px;
+  border-left:3px solid var(--azul-pal);
+  font-size:.88rem;color:var(--texto-2);
+  display:none;
+}
+.ej-box.vis{display:block}
+
+/* ══════════════════════════════════════════════════
+   CASO PRÁCTICO (Actividad 3)
+══════════════════════════════════════════════════ */
+.caso-narrativa{
+  background:var(--arena);border-left:4px solid var(--dorado);
+  padding:20px 24px;border-radius:0 4px 4px 0;margin:16px 0;
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;
+  line-height:1.8;color:var(--texto);
+}
+.caso-narrativa em{color:var(--dorado);font-style:normal;font-weight:600}
+
+.caso-preguntas{margin:18px 0}
+.caso-q{
+  border:1px solid var(--borde);border-radius:3px;
+  overflow:hidden;margin-bottom:12px;
+}
+.caso-q-head{
+  background:var(--arena-med);padding:10px 16px;
+  display:flex;align-items:center;gap:10px;
+  font-weight:600;font-size:.9rem;color:var(--texto);
+}
+.caso-q-num{
+  background:var(--dorado);color:var(--blanco);
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:.9rem;min-width:24px;height:24px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.caso-q-body{padding:12px 16px}
+.caso-q-body textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:3px;
+  padding:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;
+  color:var(--texto);resize:vertical;min-height:80px;
+  background:var(--blanco);outline:none;transition:border-color .2s;
+}
+.caso-q-body textarea:focus{border-color:var(--dorado)}
+
+/* ══════════════════════════════════════════════════
+   QUIZ (Actividad 4)
+══════════════════════════════════════════════════ */
+.quiz-barra-wrap{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;background:var(--azul-xs);
+  border-radius:3px;margin-bottom:18px;
+}
+.quiz-barra-track{flex:1;height:5px;background:var(--borde);border-radius:3px;overflow:hidden}
+.quiz-barra-fill{height:100%;background:var(--azul);transition:width .4s;border-radius:3px}
+.quiz-barra-lbl{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;color:var(--texto-2);white-space:nowrap;
+}
+
+.qcard{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;display:none}
+.qcard.on{display:block}
+.qnum{background:#5c3479;color:var(--blanco);padding:9px 18px;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+.qtexto{padding:20px 22px 12px;font-size:.97rem;font-weight:600;color:var(--texto);line-height:1.5}
+.qopts{padding:0 22px 16px}
+.qopt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 13px;margin-bottom:7px;
+  border:1.5px solid var(--borde);border-radius:3px;
+  cursor:pointer;transition:all .2s;
+  font-size:.9rem;color:var(--texto-2);user-select:none;
+}
+.qopt:hover:not(.lock){border-color:var(--azul-pal);background:var(--azul-xs);color:var(--azul)}
+.qopt.ok{background:var(--verde-cl);border-color:var(--verde);color:var(--verde)}
+.qopt.err{background:var(--rojo-cl);border-color:var(--rojo);color:var(--rojo)}
+.qopt.lock{cursor:default}
+.qletra{
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:.88rem;min-width:22px;height:22px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1.5px solid currentColor;flex-shrink:0;margin-top:1px;
+}
+.qfb{
+  margin:6px 22px 14px;padding:11px 15px;border-radius:3px;
+  font-size:.88rem;display:none;
+}
+.qfb.vis{display:block}
+.qfb.ok{background:var(--verde-cl);color:#0f4a30;border-left:3px solid var(--verde)}
+.qfb.err{background:var(--rojo-cl);color:#6a0f0f;border-left:3px solid var(--rojo)}
+.qnav{padding:0 22px 18px;display:flex;justify-content:flex-end}
+
+/* Resultado */
+.quiz-res{
+  display:none;text-align:center;
+  padding:48px 32px;border:1.5px solid var(--borde);border-radius:4px;
+}
+.quiz-res.vis{display:block}
+.res-pct{
+  font-family:'Cormorant Garamond',serif;font-size:5rem;
+  font-weight:700;line-height:1;margin-bottom:6px;
+}
+.res-pct.ex{color:var(--verde)}.res-pct.bn{color:var(--azul)}
+.res-pct.rg{color:var(--dorado)}.res-pct.bj{color:var(--rojo)}
+.res-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;
+}
+.res-msg{font-size:.95rem;color:var(--texto-2);max-width:480px;margin:0 auto 24px}
+.res-stats{display:flex;justify-content:center;gap:28px;margin-bottom:24px}
+.res-stat .n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700}
+.res-stat .n.v{color:var(--verde)}.res-stat .n.r{color:var(--rojo)}
+.res-stat .l{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-2)}
+
+/* ══════════════════════════════════════════════════
+   REFLEXIÓN FINAL
+══════════════════════════════════════════════════ */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.ref-campo label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-2);display:block;margin-bottom:7px;
+}
+.ref-campo textarea,.ref-campo input{
+  width:100%;border:1.5px solid var(--borde);border-radius:3px;
+  padding:11px 13px;font-family:'DM Sans',sans-serif;
+  font-size:.9rem;color:var(--texto);background:var(--arena);
+  outline:none;resize:vertical;min-height:90px;
+  transition:border-color .2s;
+}
+.ref-campo textarea:focus,.ref-campo input:focus{border-color:var(--dorado);background:var(--blanco)}
+
+/* ══════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════ */
+footer{
+  background:var(--azul);color:rgba(255,255,255,.5);
+  text-align:center;padding:28px 20px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;line-height:2.2;
+}
+footer strong{color:rgba(255,255,255,.9)}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;padding:16px 0 0}
+  .inst-header{padding:14px 20px}
+  .inst-nav{display:none}
+  .hero{padding:48px 20px 40px}
+  .previos-grid,.ref-grid{grid-template-columns:1fr}
+  .card-body{padding:20px}
+}
+@media(max-width:560px){
+  .hero h1{font-size:1.8rem}
+  .rubrica{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ BARRA SUPERIOR ═══════ -->
+<div class="topbar">
+  <span>Universidad de la Ciénega · Plantel Centro · Licenciatura en Pedagogía · Ciclo Escolar 2025–2026</span>
+</div>
+
+<!-- ═══════ ENCABEZADO INSTITUCIONAL ═══════ -->
+<header class="inst-header">
+  <img class="inst-logo" alt="Universidad de la Ciénega"
+    src="data:image/jpeg;base64,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">
+  <div class="inst-info">
+    <div class="inst-nombre">Universidad de la Ciénega · Plantel Centro</div>
+    <div class="inst-sub">Licenciatura en Pedagogía · Teorías del Aprendizaje</div>
+  </div>
+  <nav class="inst-nav">
+    <a href="#introduccion">Introducción</a>
+    <a href="#previos">Conocimientos previos</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#actividades">Actividades</a>
+    <a href="#reflexion">Reflexión</a>
+  </nav>
+</header>
+
+<!-- ═══════ PORTADA ═══════ -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Tema 1 · Unidad I · Guía de Aprendizaje Activo</div>
+    <h1>El Problema del <span>Conocimiento</span></h1>
+    <div class="hero-subtema">1.1 Aspectos filosóficos</div>
+    <p style="color:rgba(255,255,255,.65);font-size:.95rem;max-width:620px;margin-bottom:28px">
+      Esta guía te acompaña en la exploración filosófica de una de las preguntas más antiguas y fundamentales del pensamiento humano: ¿qué es el conocimiento, de dónde surge y cuáles son sus límites? Comprender este problema es indispensable para tu formación como pedagogo.
+    </p>
+    <div class="hero-fichas">
+      <div class="hero-ficha"><div class="lbl">Programa</div><div class="val">Lic. en Pedagogía</div></div>
+      <div class="hero-ficha"><div class="lbl">Materia</div><div class="val">Teorías del Aprendizaje</div></div>
+      <div class="hero-ficha"><div class="lbl">Metodología</div><div class="val">Constructivista · ABP</div></div>
+      <div class="hero-ficha"><div class="lbl">Actividades</div><div class="val">4 entregables</div></div>
+      <div class="hero-ficha"><div class="lbl">Nivel</div><div class="val">Licenciatura</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LAYOUT PRINCIPAL ═══════ -->
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Contenido de la guía</div>
+    <ul class="sidebar-nav">
+      <li><a href="#introduccion">Introducción al tema</a></li>
+      <li><a href="#previos">Activación de conocimientos previos</a></li>
+      <div class="sidebar-sep"></div>
+      <li><a href="#contenido">Contenido temático</a></li>
+      <li><a href="#materiales">Materiales de consulta</a></li>
+      <div class="sidebar-sep"></div>
+      <li><a href="#act1">Actividad 1 · Foro</a></li>
+      <li><a href="#act2">Actividad 2 · Aprendizaje significativo</a></li>
+      <li><a href="#act3">Actividad 3 · Caso práctico</a></li>
+      <li><a href="#act4">Actividad 4 · Quiz</a></li>
+      <div class="sidebar-sep"></div>
+      <li><a href="#reflexion">Reflexión y aplicación</a></li>
+    </ul>
+  </aside>
+
+  <!-- ── CONTENIDO PRINCIPAL ── -->
+  <div class="main-content">
+
+    <!-- ════ INTRODUCCIÓN ════ -->
+    <div class="card" id="introduccion">
+      <div class="card-head azul">
+        <div class="card-icono">I</div>
+        <div class="card-head-txt">
+          <h2>Introducción al tema</h2>
+          <div class="sub">El punto de partida · Por qué importa este problema · Conexión con la pedagogía</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Desde la antigüedad, los seres humanos se han preguntado cómo es posible conocer el mundo que los rodea. Esta pregunta, aparentemente simple, dio origen a una de las ramas más ricas y complejas de la filosofía: la <strong>epistemología</strong>, o teoría del conocimiento. El problema del conocimiento no consiste únicamente en preguntarnos qué sabemos, sino en interrogarnos sobre <em>cómo</em> llegamos a saber, <em>qué tan confiable</em> es ese saber y cuáles son los <em>límites</em> de nuestra capacidad cognitiva.</p>
+
+        <div class="cita">
+          "El asombro es el comienzo de la filosofía."
+          <cite>— Platón, Teeteto (aprox. 369 a.C.)</cite>
+        </div>
+
+        <p>Para quienes se forman como pedagogos, este problema adquiere una dimensión adicional y urgente: <strong>la manera en que concebimos el conocimiento determina directamente la manera en que enseñamos</strong>. Si creemos que el conocimiento es un conjunto de verdades fijas que deben transmitirse, adoptaremos un modelo de enseñanza expositiva. Si creemos que el conocimiento se construye activamente, diseñaremos experiencias donde el estudiante sea el protagonista. Si reconocemos que el conocimiento es social e histórico, abriremos espacio al diálogo, la pluralidad de perspectivas y la revisión crítica.</p>
+
+        <div class="caja azul">
+          <div class="caja-titulo">Pregunta orientadora de la unidad</div>
+          <p style="margin:0;font-size:.97rem;color:var(--texto)"><em>¿De qué manera la postura filosófica de un docente sobre la naturaleza del conocimiento se refleja —consciente o inconscientemente— en sus prácticas de enseñanza?</em></p>
+        </div>
+
+        <h3>¿Qué aprenderás en esta guía?</h3>
+        <p>A lo largo de esta guía explorarás los principales planteamientos filosóficos sobre el problema del conocimiento, identificarás sus implicaciones para la educación y, a través de cuatro actividades prácticas, construirás tu propia postura epistemológica como docente en formación. Las actividades están diseñadas para que el conocimiento no se acumule de forma pasiva, sino que se construya a partir de tu experiencia real como estudiante universitario.</p>
+
+        <div class="caja verde">
+          <div class="caja-titulo">Competencias a desarrollar</div>
+          <ul class="pasos verde" style="margin-top:10px">
+            <li><p>Identificar y distinguir las principales corrientes epistemológicas y sus representantes clave.</p></li>
+            <li><p>Analizar críticamente cómo diferentes concepciones del conocimiento se traducen en distintos modelos pedagógicos.</p></li>
+            <li><p>Relacionar los supuestos filosóficos con teorías contemporáneas del aprendizaje (Piaget, Vygotsky, Ausubel).</p></li>
+            <li><p>Construir y comunicar una postura epistemológica personal fundamentada.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ CONOCIMIENTOS PREVIOS ════ -->
+    <div class="card" id="previos">
+      <div class="card-head" style="background:var(--arena-med)">
+        <div class="card-icono oscuro">?</div>
+        <div class="card-head-txt">
+          <h2 class="oscuro">Activación de conocimientos previos</h2>
+          <div class="sub oscuro">Reflexión inicial · Construir desde lo que ya sabes</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Antes de explorar el contenido, es fundamental que identifiques qué ideas ya tienes sobre el conocimiento. El aprendizaje significativo (Ausubel) ocurre cuando el nuevo contenido se ancla en estructuras cognitivas preexistentes. Responde las siguientes preguntas con honestidad, sin buscar respuestas "correctas": lo que importa es tu pensamiento genuino en este momento.</p>
+
+        <div class="caja alerta">
+          <strong>Instrucción:</strong> Responde cada pregunta con tus propias palabras. No hay respuestas incorrectas en esta etapa. Esta activación es para ti — no se entrega en Classroom, pero sí forma parte de tu proceso de aprendizaje.
+        </div>
+
+        <div class="previos-grid">
+          <div class="previo-item">
+            <label>1. En tu vida cotidiana, ¿qué significa para ti "saber algo"? ¿Cuándo consideras que realmente conoces un tema?</label>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+          </div>
+          <div class="previo-item">
+            <label>2. Piensa en algo que aprendiste significativamente en la universidad. ¿Cómo ocurrió ese aprendizaje? ¿Qué lo hizo diferente?</label>
+            <textarea placeholder="Describe esa experiencia concreta..."></textarea>
+          </div>
+          <div class="previo-item">
+            <label>3. ¿Crees que existe un "conocimiento verdadero" independiente de quien lo conoce, o el conocimiento siempre depende del punto de vista de cada persona?</label>
+            <textarea placeholder="Expresa tu postura inicial..."></textarea>
+          </div>
+          <div class="previo-item">
+            <label>4. Antes de esta guía, ¿habías escuchado el término "epistemología"? Si es así, ¿qué entendías por él?</label>
+            <textarea placeholder="Tu respuesta..."></textarea>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:6px">
+          <button class="btn azul" onclick="guardarPrevios()">Registrar mis respuestas (esta sesión)</button>
+        </div>
+        <div id="previos-ok" style="display:none;text-align:center;margin-top:10px;color:var(--verde);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase">Respuestas registradas correctamente</div>
+      </div>
+    </div>
+
+    <!-- ════ CONTENIDO TEMÁTICO ════ -->
+    <div class="card" id="contenido">
+      <div class="card-head azul">
+        <div class="card-icono">II</div>
+        <div class="card-head-txt">
+          <h2>Contenido Temático</h2>
+          <div class="sub">El Problema del Conocimiento · 1.1 Aspectos filosóficos</div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <h3>1. La epistemología: el estudio del conocimiento</h3>
+        <p>La <strong>epistemología</strong> (del griego <em>episteme</em>: conocimiento; <em>logos</em>: estudio) es la rama de la filosofía que investiga la naturaleza, el origen, los alcances y los límites del conocimiento humano. Su pregunta central es: <strong>¿cómo sabemos lo que creemos saber?</strong></p>
+        <p>Esta disciplina estudia la relación entre el <em>sujeto cognoscente</em> (quien conoce) y el <em>objeto cognoscible</em> (lo que se conoce). Diferentes tradiciones filosóficas han respondido de maneras distintas a esta relación, dando lugar a posiciones que, si bien se desarrollaron siglos atrás, siguen siendo relevantes para comprender los modelos educativos actuales.</p>
+
+        <h3>2. El problema central: ¿qué es el conocimiento?</h3>
+        <p>La filosofía clásica, desde Platón, definió el conocimiento como <em>creencia verdadera justificada</em>: para conocer algo, debemos (a) creerlo, (b) que sea verdadero, y (c) tener razones suficientes para creerlo. Esta definición, si bien fue cuestionada siglos después (Edmund Gettier, 1963), sigue siendo un punto de referencia en los debates epistemológicos.</p>
+
+        <div class="cita">
+          "El conocimiento es la creencia verdadera justificada."
+          <cite>— Platón, Menón y Teeteto</cite>
+        </div>
+
+        <p>El problema del conocimiento se articula en tres dimensiones fundamentales que se interrelacionan constantemente:</p>
+
+        <div class="caja azul" style="margin-bottom:10px">
+          <div class="caja-titulo">Dimensión ontológica</div>
+          <p style="margin:0;font-size:.92rem"><strong>¿Existe una realidad independiente de quien la conoce?</strong> El <em>realismo</em> responde que sí; el <em>idealismo</em> sostiene que la realidad es, al menos parcialmente, construida por la mente del sujeto.</p>
+        </div>
+        <div class="caja verde" style="margin-bottom:10px">
+          <div class="caja-titulo">Dimensión gnoseológica</div>
+          <p style="margin:0;font-size:.92rem"><strong>¿Es posible el conocimiento objetivo y verdadero?</strong> El <em>escepticismo</em> lo duda; el <em>dogmatismo</em> lo afirma sin restricciones; el <em>criticismo</em> kantiano establece sus condiciones y límites.</p>
+        </div>
+        <div class="caja dorado">
+          <div class="caja-titulo">Dimensión metodológica</div>
+          <p style="margin:0;font-size:.92rem"><strong>¿Cómo llegamos a conocer?</strong> Esta dimensión conecta la epistemología con los métodos científicos y, directamente, con el diseño de estrategias de enseñanza-aprendizaje.</p>
+        </div>
+
+        <h3>3. Las grandes corrientes epistemológicas</h3>
+        <p>A lo largo de la historia de la filosofía occidental, se han desarrollado distintas tradiciones que responden de manera diferente al problema del conocimiento. A continuación se presentan las más relevantes para la comprensión de las teorías del aprendizaje:</p>
+
+        <div class="tabla-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Corriente</th>
+                <th>Período / Representantes</th>
+                <th>Origen del conocimiento</th>
+                <th>Aplicación pedagógica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Racionalismo</strong></td>
+                <td>Siglos XVII–XVIII<br>Descartes, Leibniz, Spinoza</td>
+                <td>La razón y las ideas innatas. El conocimiento verdadero se obtiene por deducción lógica, no por la experiencia sensorial.</td>
+                <td>El docente guía al estudiante a descubrir verdades mediante la razón; énfasis en el razonamiento abstracto y deductivo.</td>
+              </tr>
+              <tr>
+                <td><strong>Empirismo</strong></td>
+                <td>Siglos XVII–XVIII<br>Locke, Hume, Berkeley</td>
+                <td>La experiencia sensorial. La mente es una "tabula rasa" que se llena a través de los sentidos.</td>
+                <td>El aprendizaje ocurre mediante la experiencia concreta; el docente provee estímulos y situaciones observables.</td>
+              </tr>
+              <tr>
+                <td><strong>Criticismo trascendental</strong></td>
+                <td>Siglo XVIII<br>Immanuel Kant</td>
+                <td>Síntesis de razón y experiencia. Las categorías del entendimiento organizan los datos empíricos.</td>
+                <td>El aprendizaje requiere tanto estructura cognitiva preexistente como experiencia nueva; anticipa el constructivismo.</td>
+              </tr>
+              <tr>
+                <td><strong>Constructivismo epistemológico</strong></td>
+                <td>Siglo XX<br>Piaget, Vygotsky, Von Glasersfeld</td>
+                <td>El conocimiento se construye activamente por el sujeto en interacción con el entorno físico y social.</td>
+                <td>El estudiante es constructor de su propio aprendizaje; el docente facilita, andamia y media el proceso.</td>
+              </tr>
+              <tr>
+                <td><strong>Fenomenología</strong></td>
+                <td>Siglos XIX–XX<br>Husserl, Heidegger, Merleau-Ponty</td>
+                <td>La conciencia intencional: conocemos a través de la vivencia directa y corporal de los fenómenos.</td>
+                <td>El aprendizaje es situado y experiencial; la vivencia subjetiva del estudiante tiene valor cognitivo propio.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4. El problema del conocimiento y las teorías del aprendizaje</h3>
+        <p>Las teorías del aprendizaje que estudiarás a lo largo del semestre son, en gran medida, <strong>traducciones pedagógicas de posiciones epistemológicas</strong>. Entender los fundamentos filosóficos te permite leer estas teorías con mayor profundidad y sentido crítico:</p>
+
+        <ul class="pasos">
+          <li><p>El <strong>conductismo</strong> (Watson, Skinner) parte de supuestos empiristas: el conocimiento llega desde el exterior mediante estímulos y refuerzos; la mente no participa activamente.</p></li>
+          <li><p>El <strong>cognitivismo</strong> (Bruner, Ausubel) integra el rol activo de las estructuras mentales, aproximándose al racionalismo y al criticismo kantiano.</p></li>
+          <li><p>El <strong>constructivismo piagetiano</strong> propone que el sujeto construye el conocimiento a través de procesos de asimilación y acomodación de esquemas cognitivos.</p></li>
+          <li><p>El <strong>constructivismo sociocultural</strong> de Vygotsky destaca el papel central del lenguaje, la cultura y la interacción social en la construcción del conocimiento.</p></li>
+          <li><p>El <strong>aprendizaje situado</strong> (Lave y Wenger) recupera la dimensión fenomenológica: el conocimiento siempre está contextualizado en prácticas sociales concretas.</p></li>
+        </ul>
+
+        <div class="caja dorado">
+          <div class="caja-titulo">Conexión esencial para el pedagogo</div>
+          <p style="margin:0;font-size:.93rem">Cada vez que un docente decide cómo presentar un tema, qué preguntas formular, cómo evaluar o qué rol asignar al estudiante, está tomando decisiones que reflejan —de manera explícita o implícita— una posición filosófica sobre qué es el conocimiento y cómo se aprende.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ MATERIALES EXTERNOS ════ -->
+    <div class="card" id="materiales">
+      <div class="card-head" style="background:#3d4f7a">
+        <div class="card-icono">III</div>
+        <div class="card-head-txt">
+          <h2>Materiales de consulta formales</h2>
+          <div class="sub">Fuentes académicas recomendadas · Profundización autónoma</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Se presentan a continuación fuentes académicas seleccionadas para profundizar en los aspectos filosóficos del problema del conocimiento. Se recomienda consultar al menos dos de estas fuentes antes de realizar las actividades prácticas.</p>
+
+        <div class="recursos-list">
+          <div class="recurso">
+            <span class="recurso-tipo libro">Libro</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">Diccionario de Filosofía — Entradas "Conocimiento" y "Epistemología"</div>
+              <div class="recurso-desc">Referencia filosófica fundamental en español para la consulta precisa de conceptos epistemológicos.</div>
+              <div class="recurso-autor">Ferrater Mora, J. (2009). Ariel. Barcelona.</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo libro">Libro</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">Crítica de la Razón Pura — Introducción y Analítica Trascendental</div>
+              <div class="recurso-desc">Texto fundamental de Kant donde propone su síntesis entre racionalismo y empirismo. Se recomienda una edición comentada para uso universitario.</div>
+              <div class="recurso-autor">Kant, I. (2009). Taurus. Madrid. (Obra original publicada en 1781).</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo libro">Libro</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">La epistemología genética — Capítulos I y II</div>
+              <div class="recurso-desc">Piaget expone las bases de su teoría constructivista sobre el origen y desarrollo del conocimiento en el sujeto.</div>
+              <div class="recurso-autor">Piaget, J. (1971). Redondo Editor. Barcelona.</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo libro">Libro</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">Los siete saberes necesarios para la educación del futuro — Capítulo I</div>
+              <div class="recurso-desc">"Las cegueras del conocimiento": Morin aborda los errores e ilusiones del conocimiento que toda educación debería tratar.</div>
+              <div class="recurso-autor">Morin, E. (1999). UNESCO. París. Disponible en línea en el repositorio de UNESCO.</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo pdf">PDF</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">El problema del conocimiento en la formación del educador — Artículo arbitrado</div>
+              <div class="recurso-desc">Artículo de revisión que vincula las corrientes epistemológicas con los modelos de formación docente en América Latina.</div>
+              <div class="recurso-autor">Disponible en Redalyc y Latindex. Buscar en bases de datos académicas institucionales.</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo video">Video</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">Epistemología para educadores — Colección de conferencias académicas</div>
+              <div class="recurso-desc">Serie de videoconferencias universitarias sobre los fundamentos filosóficos del conocimiento y su relación con la pedagogía. Buscar en la plataforma YouTube con filtro "Conferencias académicas – epistemología educación".</div>
+              <div class="recurso-autor">Canal académico recomendado: UNAM · Universidad de Chile · Facultad Latinoamericana de Ciencias Sociales (FLACSO).</div>
+            </div>
+          </div>
+          <div class="recurso">
+            <span class="recurso-tipo web">Web</span>
+            <div class="recurso-info">
+              <div class="recurso-titulo">Stanford Encyclopedia of Philosophy — "Epistemology"</div>
+              <div class="recurso-desc">Enciclopedia filosófica de referencia global con artículos revisados por pares. Disponible en inglés; útil para estudiantes con conocimiento del idioma o como fuente de contraste.</div>
+              <div class="recurso-autor">plato.stanford.edu — Acceso libre y gratuito.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="caja alerta" style="margin-top:18px">
+          <strong>Nota sobre uso responsable de fuentes:</strong> Al citar cualquiera de estos materiales en tus actividades, utiliza el formato APA 7.a edición. La guía no proporciona hipervínculos externos para garantizar la permanencia del recurso; consulta las bases de datos institucionales o el catálogo de la biblioteca universitaria.
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ ACTIVIDADES ════ -->
+    <div id="actividades">
+
+    <!-- ─── ACTIVIDAD 1: FORO ─── -->
+    <div class="card" id="act1">
+      <div class="card-head azul">
+        <div class="card-icono">A1</div>
+        <div class="card-head-txt">
+          <h2>Actividad 1 · Foro de Mediación</h2>
+          <div class="sub">Reflexión crítica · Intercambio de ideas · Construcción colaborativa</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="classroom-btn">Entregable en Google Classroom · Foro de discusión</div>
+
+        <h4>Propósito</h4>
+        <p>Esta actividad busca que, a través del diálogo argumentado con tus compañeros, construyas colectivamente una comprensión más profunda del problema del conocimiento. El foro no es un espacio de opinión libre: es un espacio de argumentación filosófica informada.</p>
+
+        <h4>Instrucciones paso a paso</h4>
+        <ol class="pasos">
+          <li><p>Ingresa a Google Classroom y localiza el foro titulado <strong>"El Conocimiento en el Aula: ¿construido o transmitido?"</strong>.</p></li>
+          <li><p>Lee con atención la pregunta detonadora que se presenta a continuación. Dedica al menos 15 minutos a reflexionar antes de escribir. Puedes utilizar el espacio de práctica de esta guía.</p></li>
+          <li><p>Redacta tu participación inicial con un mínimo de <strong>220 palabras</strong>. Debe incluir: (a) una postura filosófica clara, (b) referencia explícita a al menos una corriente epistemológica estudiada, y (c) conexión con al menos una experiencia concreta como estudiante universitario.</p></li>
+          <li><p>Lee las aportaciones de al menos <strong>dos compañeros</strong> y responde a cada una con un comentario de mínimo 90 palabras que profundice, contraste o complemente su argumento con nuevos elementos filosóficos.</p></li>
+          <li><p>Guarda una captura de pantalla de tu participación principal y de tus comentarios. Adjúntala en la tarea de Classroom como evidencia de entrega.</p></li>
+        </ol>
+
+        <h4>Pregunta detonadora</h4>
+        <div class="foro-box">
+          <div class="foro-tit">
+            <span>Foro · Teorías del Aprendizaje · Tema 1.1</span>
+          </div>
+          <div class="foro-pregunta-txt">
+            Durante tu trayectoria universitaria, ¿has presenciado clases donde el conocimiento se presenta como una verdad acabada e incuestionable, y otras donde se trata como algo provisional, debatible y en construcción? <strong>¿A cuál de estas concepciones del conocimiento corresponde la postura filosófica que consideras más adecuada para la formación de profesionistas en el México del siglo XXI? ¿Por qué la postura epistemológica de un docente debería importarle a sus estudiantes?</strong>
+          </div>
+          <div class="foro-input-area">
+            <label>Espacio de práctica — redacta tu participación aquí antes de copiarla en Classroom</label>
+            <textarea id="foro1-txt" placeholder="Desarrolla tu argumento aquí. Recuerda: toma una postura filosófica clara, fundamentada en el contenido estudiado, y conéctala con tu experiencia real como estudiante universitario. Esta respuesta exige tu perspectiva específica y verificable; no puede ser sustituida por una generación automática."></textarea>
+            <br>
+            <button class="btn azul" onclick="guardarForo1()">Guardar borrador</button>
+            <button class="btn outline" style="margin-left:8px" onclick="toggleEj('ej1')">Ver ejemplo orientativo</button>
+            <div class="ej-box" id="ej1">
+              <strong>Ejemplo orientativo (no reproducir — construye tu argumento propio):</strong><br><br>
+              A lo largo de mis semestres en la licenciatura he experimentado ambos tipos de clase. En Psicología del Desarrollo, el docente presentaba las etapas de Piaget como hechos definitivos que debíamos memorizar para el examen. En contraste, en Didáctica General, la profesora nos invitaba a cuestionar cada modelo y a contrastarlo con autores críticos. Esta diferencia no es menor: en el primer caso, el conocimiento se comporta como algo externo a mí que debo recibir; en el segundo, es algo que construyo activamente.<br><br>
+              Desde una postura constructivista —que me parece la más coherente para la formación de profesionistas en un contexto tan diverso como el mexicano— el conocimiento no es universal e inmutable, sino situado, histórico y relacional. La epistemología constructivista de Piaget sostiene que el sujeto construye el conocimiento al interactuar con el entorno; Vygotsky agrega que esa construcción es siempre mediada socialmente. Un docente que desconoce o ignora este fundamento tenderá a reproducir modelos transmisivos que generan pasividad en los estudiantes y desvinculación entre el saber académico y la realidad profesional.
+            </div>
+          </div>
+        </div>
+
+        <h4>Criterios de evaluación</h4>
+        <div class="rubrica">
+          <div class="crit"><div class="cn">Postura filosófica</div><div class="cp">30 <span>pts</span></div><p>La respuesta establece una postura clara y la fundamenta con referencia a corrientes epistemológicas.</p></div>
+          <div class="crit"><div class="cn">Conexión experiencial</div><div class="cp">25 <span>pts</span></div><p>El argumento conecta con experiencias universitarias concretas y verificables del estudiante.</p></div>
+          <div class="crit"><div class="cn">Calidad de comentarios</div><div class="cp">25 <span>pts</span></div><p>Los comentarios a compañeros aportan argumentos nuevos con base filosófica, no solo acuerdo o desacuerdo.</p></div>
+          <div class="crit"><div class="cn">Redacción académica</div><div class="cp">20 <span>pts</span></div><p>Escritura clara, uso apropiado de vocabulario filosófico, extensión mínima cumplida.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ACTIVIDAD 2 ─── -->
+    <div class="card" id="act2">
+      <div class="card-head verde">
+        <div class="card-icono">A2</div>
+        <div class="card-head-txt">
+          <h2>Actividad 2 · Mapa Epistemológico Personal</h2>
+          <div class="sub">Aprendizaje significativo · Construcción personal del conocimiento · Aplicación a la práctica docente</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="classroom-btn" style="background:var(--verde)">Entregable en Google Classroom · Documento escrito</div>
+
+        <h4>Propósito</h4>
+        <p>Esta actividad te lleva del plano teórico al plano aplicado: elaborarás un <strong>mapa epistemológico personal</strong>, es decir, un documento reflexivo donde identificas qué concepción del conocimiento subyace en tu propia historia de aprendizaje y la conectas con tus futuras prácticas docentes. Este ejercicio genera un aprendizaje significativo porque parte de tu experiencia real y llega a un compromiso formativo concreto.</p>
+
+        <h4>Instrucciones paso a paso</h4>
+        <ol class="pasos verde">
+          <li><p><strong>Sección A — Mi historia epistemológica.</strong> Describe tres momentos clave de tu formación escolar (desde bachillerato hasta la universidad) en los que puedas identificar, en retrospectiva, qué concepción del conocimiento estaba operando. Para cada momento: describe brevemente la situación, identifica la corriente epistemológica que refleja y explica qué efecto tuvo en tu aprendizaje.</p></li>
+          <li><p><strong>Sección B — Diagnóstico de mi postura actual.</strong> Con base en el contenido de esta guía, identifica con cuál o cuáles corrientes epistemológicas te sientes más alineado en este momento. Argumenta por qué, citando al menos un autor o texto revisado en la guía.</p></li>
+          <li><p><strong>Sección C — Implicaciones para mi práctica docente.</strong> Escribe al menos tres compromisos pedagógicos concretos que deriven de tu postura epistemológica. Por ejemplo: ¿qué tipo de preguntas harás en clase? ¿Cómo presentarás el conocimiento a tus futuros estudiantes? ¿Qué papel tendrá el error en tu aula?</p></li>
+          <li><p><strong>Redacción final.</strong> El documento debe tener entre 700 y 1000 palabras, estructurado claramente en las tres secciones. Entrega en Classroom en formato PDF o Word.</p></li>
+        </ol>
+
+        <div class="caja verde">
+          <div class="caja-titulo">Ejemplo de estructura para la Sección A</div>
+          <p style="font-size:.9rem;margin:0"><strong>Momento 1:</strong> En preparatoria, mi maestro de historia dictaba las fechas y nombres que debíamos memorizar. Esto refleja una postura empirista-conductista: el conocimiento llegaba desde afuera como información a retener. El efecto fue que memoricé fechas que olvidé semanas después del examen; nunca comprendí por qué esos eventos importaban.<br><br>
+          <strong>Momento 2:</strong> En primer semestre de la licenciatura, en la materia de Metodología, la maestra nos pidió diseñar un pequeño proyecto de investigación sobre algo que nos preocupara. Esto refleja constructivismo: tuve que construir conocimiento activamente a partir de un problema real. El efecto fue que recuerdo ese aprendizaje hasta hoy.</p>
+        </div>
+
+        <div class="caja alerta">
+          <strong>Sobre el pensamiento genuino:</strong> Esta actividad requiere que narres experiencias propias, con nombres de materias, semestres, docentes y situaciones precisas. Esa especificidad hace que el aprendizaje sea tuyo y no pueda ser reemplazado por un proceso externo de generación de texto.
+        </div>
+
+        <h4>Criterios de evaluación</h4>
+        <div class="rubrica">
+          <div class="crit"><div class="cn">Historia epistemológica</div><div class="cp">30 <span>pts</span></div><p>Tres momentos identificados correctamente con corrientes epistemológicas y efectos sobre el aprendizaje.</p></div>
+          <div class="crit"><div class="cn">Postura argumentada</div><div class="cp">30 <span>pts</span></div><p>La postura personal se fundamenta filosóficamente con citas o referencias al contenido revisado.</p></div>
+          <div class="crit"><div class="cn">Compromisos pedagógicos</div><div class="cp">25 <span>pts</span></div><p>Al menos tres compromisos concretos, específicos y coherentes con la postura epistemológica declarada.</p></div>
+          <div class="crit"><div class="cn">Redacción y estructura</div><div class="cp">15 <span>pts</span></div><p>Escritura académica clara, secciones bien delimitadas, extensión cumplida.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ACTIVIDAD 3: CASO PRÁCTICO ─── -->
+    <div class="card" id="act3">
+      <div class="card-head dorado">
+        <div class="card-icono">A3</div>
+        <div class="card-head-txt">
+          <h2>Actividad 3 · Análisis de Caso Práctico</h2>
+          <div class="sub">Aprendizaje basado en problemas · Pensamiento crítico · Resolución filosófica</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="classroom-btn" style="background:var(--dorado)">Entregable en Google Classroom · Análisis escrito</div>
+
+        <h4>Presentación del caso</h4>
+        <p>Lee con atención el siguiente caso. Está basado en situaciones reales que ocurren frecuentemente en contextos universitarios mexicanos. Tu tarea es analizarlo filosóficamente y proponer una respuesta fundamentada.</p>
+
+        <div class="caso-narrativa">
+          <p><em>La profesora Verónica</em> imparte la materia de Bioquímica en una universidad pública de Jalisco. Es una docente con 18 años de experiencia y reconocida trayectoria de investigación en su campo. Al inicio del semestre, declara a sus estudiantes: <em>"En esta materia no hay debate ni interpretación: la bioquímica funciona como funciona. Ustedes aprenden los procesos tal como los describe la ciencia; no hay espacio para opiniones ni versiones alternativas."</em></p>
+          <p>Midway a través del semestre, un estudiante llamado <em>Rodrigo</em> presenta en clase información de un artículo científico reciente que contradice parcialmente un modelo presentado por la profesora. La profesora responde que ese artículo "no es representativo del consenso" y continúa con el tema sin abrir discusión.</p>
+          <p>Al final del semestre, la mayoría de los estudiantes tiene calificaciones aprobatorias pero reporta en la evaluación docente que "aprendieron la materia pero no entienden para qué sirve ni cómo se relaciona con problemas reales".</p>
+        </div>
+
+        <h4>Preguntas para el análisis</h4>
+        <p>Responde cada pregunta en el espacio de práctica. Posteriormente, redacta tu análisis completo en Classroom.</p>
+
+        <div class="caso-preguntas">
+          <div class="caso-q">
+            <div class="caso-q-head"><span class="caso-q-num">1</span>¿Qué postura epistemológica refleja la declaración inicial de la profesora Verónica? Identifica la corriente, señala sus características y cita al menos un autor asociado a ella.</div>
+            <div class="caso-q-body"><textarea placeholder="Tu análisis filosófico..."></textarea></div>
+          </div>
+          <div class="caso-q">
+            <div class="caso-q-head"><span class="caso-q-num">2</span>¿De qué manera la respuesta de la profesora al artículo de Rodrigo ilustra la tensión entre el dogmatismo y el criticismo epistemológico? ¿Qué habría hecho diferente un docente con una postura constructivista?</div>
+            <div class="caso-q-body"><textarea placeholder="Tu análisis filosófico..."></textarea></div>
+          </div>
+          <div class="caso-q">
+            <div class="caso-q-head"><span class="caso-q-num">3</span>El resultado reportado por los estudiantes (aprueban pero no comprenden la aplicabilidad del conocimiento) ¿a qué problema epistemológico clásico se vincula? ¿Cómo lo explicarían Ausubel y Vygotsky?</div>
+            <div class="caso-q-body"><textarea placeholder="Tu análisis filosófico..."></textarea></div>
+          </div>
+          <div class="caso-q">
+            <div class="caso-q-head"><span class="caso-q-num">4</span>Si fueras el coordinador pedagógico de esa universidad, ¿qué recomendación concreta harías a la profesora Verónica? Fundamenta tu recomendación en una corriente epistemológica específica y explica por qué sería más adecuada para el objetivo formativo universitario.</div>
+            <div class="caso-q-body"><textarea placeholder="Tu propuesta fundamentada..."></textarea></div>
+          </div>
+        </div>
+
+        <div class="caja dorado" style="margin-top:16px">
+          <div class="caja-titulo">Instrucción de entrega</div>
+          <p style="margin:0;font-size:.92rem">Redacta tu análisis completo en un documento de entre 500 y 750 palabras, respondiendo las cuatro preguntas de forma integrada (no como respuestas separadas). El documento debe leerse como un análisis coherente del caso, no como un cuestionario. Entrega en Classroom en formato PDF o Word.</p>
+        </div>
+
+        <h4>Criterios de evaluación</h4>
+        <div class="rubrica">
+          <div class="crit"><div class="cn">Diagnóstico filosófico</div><div class="cp">25 <span>pts</span></div><p>Identifica correctamente la corriente epistemológica con argumentos precisos y referencia a autores.</p></div>
+          <div class="crit"><div class="cn">Análisis de la tensión</div><div class="cp">25 <span>pts</span></div><p>Explica con profundidad la tensión dogmatismo-criticismo y la alternativa constructivista.</p></div>
+          <div class="crit"><div class="cn">Conexión con teorías</div><div class="cp">25 <span>pts</span></div><p>Vincula correctamente el resultado del caso con Ausubel y/o Vygotsky.</p></div>
+          <div class="crit"><div class="cn">Propuesta pedagógica</div><div class="cp">25 <span>pts</span></div><p>La recomendación es concreta, aplicable y filosóficamente fundamentada.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ACTIVIDAD 4: QUIZ ─── -->
+    <div class="card" id="act4">
+      <div class="card-head morado">
+        <div class="card-icono">A4</div>
+        <div class="card-head-txt">
+          <h2>Actividad 4 · Quiz de Comprensión</h2>
+          <div class="sub">5 preguntas · Retroalimentación inmediata · Puntaje final visible</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="classroom-btn" style="background:#5c3479">Entregable en Google Classroom · Captura de pantalla del resultado final</div>
+
+        <p>Responde las cinco preguntas. Al terminar, se mostrará tu puntaje. Toma una captura de pantalla del resultado y súbela a Classroom. Puedes reiniciar si deseas practicar antes de tu captura definitiva.</p>
+
+        <div id="quiz-wrap">
+          <div class="quiz-barra-wrap">
+            <span class="quiz-barra-lbl" id="qlbl">Pregunta 1 de 5</span>
+            <div class="quiz-barra-track"><div class="quiz-barra-fill" id="qbar" style="width:20%"></div></div>
+            <span class="quiz-barra-lbl" id="qscore">0 correctas</span>
+          </div>
+
+          <!-- Q1 -->
+          <div class="qcard on" id="q1">
+            <div class="qnum">Pregunta 1 de 5</div>
+            <div class="qtexto">La definición clásica del conocimiento como "creencia verdadera justificada" es atribuida a:</div>
+            <div class="qopts">
+              <div class="qopt" onclick="resp(this,false,'q1','fb1')"><span class="qletra">A</span>René Descartes, en el Discurso del Método (1637).</div>
+              <div class="qopt" onclick="resp(this,true,'q1','fb1')"><span class="qletra">B</span>Platón, en los diálogos Menón y Teeteto (aprox. 369 a.C.).</div>
+              <div class="qopt" onclick="resp(this,false,'q1','fb1')"><span class="qletra">C</span>John Locke, en el Ensayo sobre el entendimiento humano (1689).</div>
+              <div class="qopt" onclick="resp(this,false,'q1','fb1')"><span class="qletra">D</span>Edmund Husserl, en las Investigaciones Lógicas (1900).</div>
+            </div>
+            <div class="qfb" id="fb1"></div>
+            <div class="qnav"><button class="btn morado" id="n1" style="display:none" onclick="nxt(2)">Siguiente &rarr;</button></div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="qcard" id="q2">
+            <div class="qnum">Pregunta 2 de 5</div>
+            <div class="qtexto">Según el empirismo de John Locke, la mente humana al nacer es:</div>
+            <div class="qopts">
+              <div class="qopt" onclick="resp(this,false,'q2','fb2')"><span class="qletra">A</span>Un conjunto de ideas innatas que la razón debe desarrollar mediante la deducción.</div>
+              <div class="qopt" onclick="resp(this,false,'q2','fb2')"><span class="qletra">B</span>Una estructura de categorías trascendentales que organiza la experiencia sensible.</div>
+              <div class="qopt" onclick="resp(this,true,'q2','fb2')"><span class="qletra">C</span>Una tabula rasa (pizarra en blanco) que se llena exclusivamente a través de la experiencia sensorial.</div>
+              <div class="qopt" onclick="resp(this,false,'q2','fb2')"><span class="qletra">D</span>Una conciencia intencional que se dirige activamente hacia los fenómenos del mundo.</div>
+            </div>
+            <div class="qfb" id="fb2"></div>
+            <div class="qnav"><button class="btn morado" id="n2" style="display:none" onclick="nxt(3)">Siguiente &rarr;</button></div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="qcard" id="q3">
+            <div class="qnum">Pregunta 3 de 5</div>
+            <div class="qtexto">La Zona de Desarrollo Próximo (ZDP) de Vygotsky refleja principalmente cuál de las siguientes posturas epistemológicas:</div>
+            <div class="qopts">
+              <div class="qopt" onclick="resp(this,false,'q3','fb3')"><span class="qletra">A</span>Empirismo: el conocimiento se adquiere pasivamente a través de la experiencia sensorial repetida.</div>
+              <div class="qopt" onclick="resp(this,false,'q3','fb3')"><span class="qletra">B</span>Racionalismo: el conocimiento emerge de las estructuras racionales innatas del sujeto.</div>
+              <div class="qopt" onclick="resp(this,false,'q3','fb3')"><span class="qletra">C</span>Fenomenología: el conocimiento surge de la vivencia intencional y corporal del individuo.</div>
+              <div class="qopt" onclick="resp(this,true,'q3','fb3')"><span class="qletra">D</span>Constructivismo sociocultural: el conocimiento se construye en la interacción social mediada culturalmente.</div>
+            </div>
+            <div class="qfb" id="fb3"></div>
+            <div class="qnav"><button class="btn morado" id="n3" style="display:none" onclick="nxt(4)">Siguiente &rarr;</button></div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="qcard" id="q4">
+            <div class="qnum">Pregunta 4 de 5</div>
+            <div class="qtexto">El conductismo pedagógico (Watson, Skinner) se corresponde epistemológicamente con:</div>
+            <div class="qopts">
+              <div class="qopt" onclick="resp(this,false,'q4','fb4')"><span class="qletra">A</span>El constructivismo: el estudiante construye su propio conocimiento mediante la acción.</div>
+              <div class="qopt" onclick="resp(this,true,'q4','fb4')"><span class="qletra">B</span>El empirismo: el conocimiento llega desde el exterior a través de estímulos y refuerzos observables.</div>
+              <div class="qopt" onclick="resp(this,false,'q4','fb4')"><span class="qletra">C</span>El racionalismo: el aprendizaje activa estructuras racionales innatas del sujeto.</div>
+              <div class="qopt" onclick="resp(this,false,'q4','fb4')"><span class="qletra">D</span>La fenomenología: el aprendizaje emerge de la vivencia subjetiva del fenómeno educativo.</div>
+            </div>
+            <div class="qfb" id="fb4"></div>
+            <div class="qnav"><button class="btn morado" id="n4" style="display:none" onclick="nxt(5)">Siguiente &rarr;</button></div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="qcard" id="q5">
+            <div class="qnum">Pregunta 5 de 5</div>
+            <div class="qtexto">Un docente que presenta el conocimiento como algo provisional, históricamente situado y sujeto a revisión crítica refleja principalmente una postura:</div>
+            <div class="qopts">
+              <div class="qopt" onclick="resp(this,false,'q5','fb5')"><span class="qletra">A</span>Dogmática: afirma que el conocimiento es alcanzable de forma plena y sin restricciones.</div>
+              <div class="qopt" onclick="resp(this,false,'q5','fb5')"><span class="qletra">B</span>Empirista: el conocimiento depende exclusivamente de los datos sensoriales acumulados.</div>
+              <div class="qopt" onclick="resp(this,true,'q5','fb5')"><span class="qletra">C</span>Constructivista-crítica: el conocimiento es una construcción social, histórica y revisable.</div>
+              <div class="qopt" onclick="resp(this,false,'q5','fb5')"><span class="qletra">D</span>Racionalista: el conocimiento verdadero es inmutable porque se deriva de la razón pura.</div>
+            </div>
+            <div class="qfb" id="fb5"></div>
+            <div class="qnav"><button class="btn morado" id="n5" style="display:none" onclick="showRes()">Ver resultado &rarr;</button></div>
+          </div>
+
+          <!-- Resultado -->
+          <div class="quiz-res" id="qres">
+            <div class="res-pct" id="rpct"></div>
+            <div class="res-label" id="rlbl"></div>
+            <div class="res-msg" id="rmsg"></div>
+            <div class="res-stats">
+              <div class="res-stat"><div class="n v" id="rcorr"></div><div class="l">Correctas</div></div>
+              <div class="res-stat"><div class="n r" id="rincorr"></div><div class="l">Incorrectas</div></div>
+              <div class="res-stat"><div class="n" style="color:var(--azul)">5</div><div class="l">Total</div></div>
+            </div>
+            <div class="caja alerta" style="text-align:left;max-width:480px;margin:0 auto 20px">
+              <strong>Para Classroom:</strong> Toma captura de pantalla de esta pantalla de resultados (con fecha visible en tu dispositivo) y súbela como evidencia en la tarea correspondiente.
+            </div>
+            <button class="btn morado" onclick="reiniciar()">Reiniciar quiz</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    </div><!-- fin #actividades -->
+
+    <!-- ════ REFLEXIÓN FINAL ════ -->
+    <div class="card" id="reflexion">
+      <div class="card-head rojo-osc">
+        <div class="card-icono">R</div>
+        <div class="card-head-txt">
+          <h2>Reflexión Final y Plan de Aplicación</h2>
+          <div class="sub">Metacognición · Transferencia · Compromiso pedagógico</div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <h3>¿Por qué cerrar con una reflexión?</h3>
+        <p>La metacognición —la capacidad de pensar sobre el propio proceso de aprendizaje— es en sí misma un acto epistemológico. Al reflexionar sobre cómo aprendiste, qué supuestos tenías antes y cómo se han transformado, te conviertes en sujeto y objeto de tu propio conocimiento. Esta capacidad es fundamental en la formación docente: el pedagogo que no examina sus propias epistemologías implícitas las reproduce sin cuestionamiento en el aula.</p>
+
+        <div class="cita">
+          "El profesional reflexivo no aplica mecánicamente reglas técnicas; delibera sobre la acción y aprende de su propia experiencia."
+          <cite>— Donald Schön, El profesional reflexivo (1983)</cite>
+        </div>
+
+        <h4>Completa tu plan de aplicación</h4>
+        <p>Responde cada campo con honestidad y precisión. Este plan puede integrarse a tu portafolio de evidencias de formación docente.</p>
+
+        <div class="ref-grid">
+          <div class="ref-campo" style="grid-column:1/-1">
+            <label>1. ¿Qué concepción del conocimiento tenías antes de esta unidad, aunque no la llamaras "epistemología"? ¿Cómo la describes ahora en retrospectiva?</label>
+            <textarea placeholder="Compara tu postura inicial (antes de la guía) con lo que ahora puedes articular sobre ella..."></textarea>
+          </div>
+          <div class="ref-campo">
+            <label>2. ¿Cuál corriente epistemológica describe mejor tu postura actual como futuro docente? ¿Por qué?</label>
+            <textarea placeholder="Nombra la corriente y argumenta con elementos del contenido revisado..."></textarea>
+          </div>
+          <div class="ref-campo">
+            <label>3. ¿Qué tensión o contradicción filosófica encuentras más difícil de resolver? ¿Por qué te parece un dilema legítimo?</label>
+            <textarea placeholder="Por ejemplo: ¿cómo equilibrar el rigor disciplinar con la apertura al cuestionamiento?"></textarea>
+          </div>
+          <div class="ref-campo">
+            <label>4. ¿Qué cambio concreto incorporarás en tu práctica docente futura como resultado de lo aprendido en esta unidad?</label>
+            <textarea placeholder="Describe al menos una acción pedagógica específica y realizable, con fundamento filosófico..."></textarea>
+          </div>
+          <div class="ref-campo" style="grid-column:1/-1">
+            <label>5. ¿En qué otras materias del plan de estudios de tu licenciatura vuelve a aparecer, con otro nombre, el problema del conocimiento?</label>
+            <textarea placeholder="Identifica al menos dos materias o temas donde estas preguntas filosóficas reaparecen..."></textarea>
+          </div>
+          <div class="ref-campo" style="grid-column:1/-1">
+            <label>6. Plan de acción: ¿qué harás concretamente en los próximos 30 días para profundizar en este tema? (material a leer, conversación a sostener, pregunta a investigar)</label>
+            <textarea placeholder="Sé específico: nombre del texto, fecha aproximada, con quién hablarás..."></textarea>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:8px">
+          <button class="btn" style="background:var(--rojo);color:#fff" onclick="guardarRef()">Guardar reflexión (esta sesión)</button>
+        </div>
+        <div id="ref-ok" style="display:none;text-align:center;margin-top:10px;color:var(--verde);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase">Reflexión guardada en esta sesión</div>
+
+        <div style="height:20px"></div>
+
+        <div class="caja azul">
+          <div class="caja-titulo">Lecturas de cierre recomendadas</div>
+          <ul style="margin:8px 0 0;padding-left:16px;font-size:.9rem;color:var(--texto-2)">
+            <li style="margin-bottom:6px">Schön, D. (1992). <em>La formación de profesionales reflexivos</em>. Paidós. — Capítulo 1.</li>
+            <li style="margin-bottom:6px">Morin, E. (1999). <em>Los siete saberes necesarios para la educación del futuro</em>. UNESCO. — Capítulo I.</li>
+            <li style="margin-bottom:6px">Piaget, J. (1971). <em>La epistemología genética</em>. Redondo Editor. — Capítulo I.</li>
+            <li>Ferrater Mora, J. (2009). <em>Diccionario de Filosofía</em>. Ariel. — Entradas "Conocimiento", "Epistemología".</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- fin main-content -->
+</div><!-- fin layout -->
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Licenciatura en Pedagogía · Teorías del Aprendizaje<br>
+  Guía de Aprendizaje Activo — Tema 1: El Problema del Conocimiento · 1.1 Aspectos filosóficos<br>
+  Diseño pedagógico: Constructivismo · Pedagogía Activa · Aprendizaje Basado en Problemas
+</footer>
+
+<!-- ═══════ JAVASCRIPT ═══════ -->
+<script>
+/* ─── PREVIOS ─── */
+function guardarPrevios(){
+  const campos=document.querySelectorAll('#previos textarea');
+  let vacios=0;
+  campos.forEach(c=>{if(!c.value.trim())vacios++});
+  if(vacios>0){alert('Por favor responde todas las preguntas antes de guardar.');return}
+  document.getElementById('previos-ok').style.display='block';
+}
+
+/* ─── FORO ─── */
+function guardarForo1(){
+  const t=document.getElementById('foro1-txt').value.trim();
+  if(!t){alert('Escribe tu borrador antes de guardar.');return}
+  const b=event.target;
+  b.textContent='Borrador guardado';b.style.background='var(--verde)';b.disabled=true;
+}
+function toggleEj(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('vis');
+  event.target.textContent=el.classList.contains('vis')?'Ocultar ejemplo':'Ver ejemplo orientativo';
+}
+
+/* ─── QUIZ ─── */
+let score=0,cur=1;
+const fbs={
+  fb1:{ok:'Correcto. Platón formuló esta definición en Menón y Teeteto. Aunque fue cuestionada posteriormente por Edmund Gettier (1963), sigue siendo el punto de partida canónico en epistemología.',err:'Incorrecto. La definición de "creencia verdadera justificada" es de Platón (Menón y Teeteto). Descartes, Locke y Husserl desarrollaron posturas importantes, pero ninguno formuló esta definición específica.'},
+  fb2:{ok:'Correcto. Para Locke, la mente nace como una "tabula rasa" (pizarra en blanco): el conocimiento proviene exclusivamente de la experiencia sensorial, no de ideas innatas ni de categorías previas.',err:'Incorrecto. La tabula rasa es la metáfora central del empirismo de Locke. Las otras opciones describen el racionalismo (innatas), el criticismo kantiano (categorías) y la fenomenología (conciencia intencional).'},
+  fb3:{ok:'Correcto. La ZDP de Vygotsky se inscribe en el constructivismo sociocultural: el conocimiento surge de la interacción entre el sujeto y otros más capaces, mediada por el lenguaje y la cultura. El docente actúa como andamio en esa zona.',err:'Incorrecto. La ZDP es un concepto del constructivismo sociocultural de Vygotsky, que enfatiza la interacción social y cultural. El empirismo, racionalismo y fenomenología no contemplan esta dinámica de mediación social.'},
+  fb4:{ok:'Correcto. El conductismo parte de supuestos empiristas: el conocimiento se forma a través de la exposición a estímulos externos y del refuerzo de respuestas observables. La mente no interviene activamente.',err:'Incorrecto. El conductismo corresponde al empirismo: el conocimiento llega desde el exterior mediante estímulos y refuerzos. No involucra construcción activa (constructivismo), ideas innatas (racionalismo) ni vivencia subjetiva (fenomenología).'},
+  fb5:{ok:'Correcto. Un docente que presenta el conocimiento como provisional, histórico y revisable adopta una postura constructivista-crítica, coherente con autores como Vygotsky, Freire y la tradición del pensamiento crítico en educación.',err:'Incorrecto. Presentar el conocimiento como provisional, histórico y revisable es una postura constructivista-crítica, no dogmática (niega la provisionalidad), ni empirista estricta, ni racionalista (ambas tienden a postular verdades más estables).'}
+};
+
+function resp(el,corr,qid,fbid){
+  document.getElementById(qid).querySelectorAll('.qopt').forEach(o=>{o.classList.add('lock');o.onclick=null});
+  const fb=document.getElementById(fbid);
+  fb.classList.add('vis');
+  if(corr){el.classList.add('ok');fb.classList.add('ok');fb.innerHTML='<strong>Correcto.</strong> '+fbs[fbid].ok;score++}
+  else{el.classList.add('err');fb.classList.add('err');fb.innerHTML='<strong>Incorrecto.</strong> '+fbs[fbid].err}
+  const num=parseInt(qid.replace('q',''));
+  document.getElementById('n'+num).style.display='inline-block';
+  document.getElementById('qscore').textContent=score+' correcta'+(score!==1?'s':'');
+}
+function nxt(n){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q'+n).classList.add('on');
+  cur=n;
+  document.getElementById('qbar').style.width=(n*20)+'%';
+  document.getElementById('qlbl').textContent='Pregunta '+n+' de 5';
+}
+function showRes(){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  const r=document.getElementById('qres');r.classList.add('vis');
+  const pct=Math.round(score/5*100);
+  const rp=document.getElementById('rpct');rp.textContent=pct+'%';
+  document.getElementById('rcorr').textContent=score;
+  document.getElementById('rincorr').textContent=5-score;
+  let cls,lbl,msg;
+  if(score===5){cls='ex';lbl='Desempeño sobresaliente';msg='Dominas los conceptos epistemológicos fundamentales y su relación con las teorías del aprendizaje. Estás listo para aplicar estos fundamentos en el análisis pedagógico.'}
+  else if(score>=4){cls='bn';lbl='Buen desempeño';msg='Tienes una comprensión sólida del contenido. Revisa las preguntas donde tuviste dificultad y consulta los materiales de referencia antes de subir tu evidencia.'}
+  else if(score>=3){cls='rg';lbl='Desempeño en proceso';msg='Tienes comprensión parcial. Se recomienda releer el contenido temático y los materiales de consulta antes de reintentar el quiz.'}
+  else{cls='bj';lbl='Requiere reforzamiento';msg='Es necesario revisar el contenido con mayor detenimiento. Regresa a la Sección II, consulta al menos dos de las fuentes recomendadas y reinicia el quiz.'}
+  rp.className='res-pct '+cls;
+  document.getElementById('rlbl').textContent=lbl;
+  document.getElementById('rmsg').textContent=msg;
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qlbl').textContent='Quiz completado';
+}
+function reiniciar(){
+  score=0;cur=1;
+  document.getElementById('qres').classList.remove('vis');
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qlbl').textContent='Pregunta 1 de 5';
+  document.getElementById('qscore').textContent='0 correctas';
+  for(let i=1;i<=5;i++){
+    const q=document.getElementById('q'+i);
+    q.querySelectorAll('.qopt').forEach(o=>{o.classList.remove('ok','err','lock')});
+    const fb=document.getElementById('fb'+i);fb.classList.remove('vis','ok','err');fb.innerHTML='';
+    const n=document.getElementById('n'+i);if(n)n.style.display='none';
+  }
+  reattach();
+}
+function reattach(){
+  const defs=[
+    {id:'q1',fb:'fb1',ans:[false,true,false,false]},
+    {id:'q2',fb:'fb2',ans:[false,false,true,false]},
+    {id:'q3',fb:'fb3',ans:[false,false,false,true]},
+    {id:'q4',fb:'fb4',ans:[false,true,false,false]},
+    {id:'q5',fb:'fb5',ans:[false,false,true,false]}
+  ];
+  defs.forEach(d=>{
+    document.getElementById(d.id).querySelectorAll('.qopt').forEach((o,i)=>{
+      const corr=d.ans[i];const qid=d.id;const fbid=d.fb;
+      o.onclick=function(){resp(this,corr,qid,fbid)};
+    });
+  });
+}
+
+/* ─── REFLEXIÓN ─── */
+function guardarRef(){
+  const campos=document.querySelectorAll('#reflexion textarea');
+  let vacios=0;
+  campos.forEach(c=>{if(!c.value.trim())vacios++});
+  if(vacios>0){alert('Por favor completa todos los campos antes de guardar.');return}
+  const b=event.target;
+  b.textContent='Reflexión guardada';b.style.background='var(--verde)';b.disabled=true;
+  document.getElementById('ref-ok').style.display='block';
+}
+</script>
+
+</body>
+</html>
