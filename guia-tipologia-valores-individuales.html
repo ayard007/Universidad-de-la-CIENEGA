@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Tipologia de Valores · Valores Individuales | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tierra: #3d2b1f;
+  --cafe: #6b4226;
+  --ocre: #c97d2e;
+  --ocre-suave: #f5ebe0;
+  --arena: #f9f3ec;
+  --verde-oliva: #4a5e3a;
+  --verde-suave: #eef2ea;
+  --azul-pizarra: #2c3e50;
+  --azul-suave: #eaf0f6;
+  --gris: #6b6b6b;
+  --gris-claro: #f4f4f2;
+  --blanco: #ffffff;
+  --borde: #e0d8cf;
+  --rojo-terracota: #8b3a2a;
+  --rojo-suave: #f7eeec;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "DM Sans", sans-serif; color: var(--tierra); background: var(--arena); font-size: 16px; line-height: 1.75; }
+header { background: var(--tierra); position: relative; overflow: hidden; }
+header::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.018) 40px, rgba(255,255,255,0.018) 41px); }
+.header-inner { max-width: 980px; margin: 0 auto; padding: 36px 32px 44px; position: relative; z-index: 1; }
+.header-brand { display: flex; align-items: center; gap: 20px; padding-bottom: 28px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.12); flex-wrap: wrap; }
+.logo-circle { width: 80px; height: 80px; border-radius: 50%; background: var(--blanco); display: flex; align-items: center; justify-content: center; padding: 8px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.logo-circle img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.brand-text { flex: 1; }
+.brand-text .univ { font-family: "DM Serif Display", serif; font-size: 1.15rem; color: rgba(255,255,255,0.92); }
+.brand-text .dept { font-size: 0.78rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; }
+.chip { border: 1px solid rgba(201,125,46,0.5); background: rgba(201,125,46,0.12); color: #e8a55a; padding: 5px 14px; border-radius: 20px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+.header-tema { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.header-tema h1 { font-family: "DM Serif Display", serif; font-size: 2.5rem; line-height: 1.15; color: var(--blanco); max-width: 580px; }
+.header-tema h1 em { font-style: italic; color: #e8a55a; }
+.header-meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.meta-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 4px 12px; border-radius: 14px; font-size: 0.76rem; white-space: nowrap; }
+nav.sticky { background: var(--blanco); border-bottom: 2px solid var(--borde); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(61,43,31,0.06); }
+.nav-inner { max-width: 980px; margin: 0 auto; padding: 0 32px; display: flex; overflow-x: auto; gap: 0; }
+.nav-inner a { color: var(--gris); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 13px 14px; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.nav-inner a:hover { color: var(--ocre); border-bottom-color: var(--ocre); background: var(--ocre-suave); }
+main { max-width: 980px; margin: 0 auto; padding: 44px 32px 72px; }
+.bloque { background: var(--blanco); border: 1px solid var(--borde); border-radius: 12px; padding: 44px; margin-bottom: 28px; position: relative; overflow: hidden; animation: fadeUp 0.4s ease both; }
+.bloque::before { content: ""; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--ocre); border-radius: 12px 0 0 12px; }
+.bloque.verde::before { background: var(--verde-oliva); }
+.bloque.pizarra::before { background: var(--azul-pizarra); }
+.bloque.terracota::before { background: var(--rojo-terracota); }
+.bloque.neutro::before { background: var(--gris); }
+.bloque-encabezado { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 30px; padding-bottom: 24px; border-bottom: 1px solid var(--borde); }
+.bloque-icono { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; font-weight: 800; font-family: "DM Serif Display", serif; flex-shrink: 0; margin-top: 2px; background: var(--ocre); color: var(--blanco); }
+.bloque.verde .bloque-icono { background: var(--verde-oliva); }
+.bloque.pizarra .bloque-icono { background: var(--azul-pizarra); }
+.bloque.terracota .bloque-icono { background: var(--rojo-terracota); }
+.bloque.neutro .bloque-icono { background: var(--gris); }
+.bloque-titulo h2 { font-family: "DM Serif Display", serif; font-size: 1.45rem; color: var(--tierra); margin-bottom: 3px; line-height: 1.2; }
+.bloque-titulo .subtag { font-size: 0.73rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gris); }
+h3 { font-family: "DM Serif Display", serif; font-size: 1.12rem; color: var(--tierra); margin: 26px 0 10px; }
+h3:first-child { margin-top: 0; }
+p { margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--cafe); font-weight: 600; }
+em { font-style: italic; color: var(--cafe); }
+.nota { border-radius: 8px; padding: 18px 22px; margin: 18px 0; border-left: 4px solid; }
+.nota.info { background: var(--azul-suave); border-color: var(--azul-pizarra); }
+.nota.objetivo { background: var(--ocre-suave); border-color: var(--ocre); }
+.nota.ejemplo { background: var(--verde-suave); border-color: var(--verde-oliva); }
+.nota.alerta { background: var(--rojo-suave); border-color: var(--rojo-terracota); }
+.nota-label { font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 7px; }
+.nota.info .nota-label { color: var(--azul-pizarra); }
+.nota.objetivo .nota-label { color: #7a5010; }
+.nota.ejemplo .nota-label { color: var(--verde-oliva); }
+.nota.alerta .nota-label { color: var(--rojo-terracota); }
+table.t { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 16px 0; }
+table.t th { background: var(--tierra); color: var(--blanco); padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+table.t td { padding: 10px 14px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+table.t tr:nth-child(even) td { background: var(--arena); }
+ul.l, ol.l { list-style: none; padding: 0; }
+ul.l li { padding: 9px 0 9px 28px; position: relative; border-bottom: 1px solid var(--gris-claro); }
+ul.l li:last-child { border-bottom: none; }
+ul.l li::before { content: ""; position: absolute; left: 8px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--ocre); }
+ol.l { counter-reset: cnt; }
+ol.l li { padding: 10px 0 10px 40px; position: relative; border-bottom: 1px solid var(--gris-claro); counter-increment: cnt; }
+ol.l li:last-child { border-bottom: none; }
+ol.l li::before { content: counter(cnt); position: absolute; left: 0; top: 9px; background: var(--cafe); color: var(--blanco); width: 26px; height: 26px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.tipos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
+.tipo-card { background: var(--arena); border: 1px solid var(--borde); border-radius: 10px; padding: 20px; border-top: 4px solid var(--ocre); transition: transform 0.2s, box-shadow 0.2s; }
+.tipo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(61,43,31,0.1); }
+.tipo-card:nth-child(2) { border-top-color: var(--verde-oliva); }
+.tipo-card:nth-child(3) { border-top-color: var(--azul-pizarra); }
+.tipo-card:nth-child(4) { border-top-color: var(--rojo-terracota); }
+.tipo-card:nth-child(5) { border-top-color: #7a4f8a; }
+.tipo-card:nth-child(6) { border-top-color: #2a7a6a; }
+.tipo-card .tipo-nombre { font-family: "DM Serif Display", serif; font-size: 1.02rem; color: var(--tierra); margin-bottom: 8px; }
+.tipo-card .tipo-desc { font-size: 0.83rem; color: var(--gris); line-height: 1.55; }
+.pregunta-previa { background: linear-gradient(135deg, var(--tierra) 0%, var(--cafe) 100%); color: var(--blanco); border-radius: 12px; padding: 32px; position: relative; overflow: hidden; }
+.pregunta-previa::after { content: "?"; position: absolute; right: 30px; bottom: -20px; font-family: "DM Serif Display", serif; font-size: 140px; color: rgba(255,255,255,0.05); line-height: 1; }
+.pregunta-previa h3 { color: #e8a55a; margin-bottom: 14px; }
+.pregunta-previa p { color: rgba(255,255,255,0.85); font-size: 1.04rem; font-style: italic; margin-bottom: 22px; position: relative; z-index: 1; }
+.opciones-previas { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.op-previa { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); padding: 12px 18px; border-radius: 8px; cursor: pointer; font-family: "DM Sans", sans-serif; font-size: 0.9rem; text-align: left; transition: all 0.2s; }
+.op-previa:hover:not(:disabled) { background: rgba(255,255,255,0.18); border-color: #e8a55a; }
+.op-previa.correcta-ok { background: rgba(74,94,58,0.5); border-color: #8fba72; color: #c8f0a8; }
+.op-previa.errada { background: rgba(139,58,42,0.4); border-color: #e88a72; color: #f7c0b0; }
+.feedback-previo { display: none; margin-top: 16px; padding: 14px 18px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 0.9rem; color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+.feedback-previo.show { display: block; }
+.recurso-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--borde); }
+.recurso-item:last-child { border-bottom: none; }
+.recurso-tipo { background: var(--azul-pizarra); color: var(--blanco); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 12px; white-space: nowrap; margin-top: 3px; flex-shrink: 0; }
+.recurso-tipo.libro { background: var(--verde-oliva); }
+.recurso-tipo.video { background: var(--rojo-terracota); }
+.recurso-tipo.web { background: #7a4f8a; }
+.rec-titulo { font-weight: 600; color: var(--tierra); margin-bottom: 2px; font-size: 0.92rem; }
+.rec-autor { font-size: 0.81rem; color: var(--gris); }
+.act-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 22px; color: var(--blanco); }
+.act-badge.foro { background: var(--verde-oliva); }
+.act-badge.indiv { background: var(--azul-pizarra); }
+.act-badge.caso { background: var(--rojo-terracota); }
+.act-badge.quiz-b { background: var(--cafe); }
+.cita-det { background: var(--tierra); color: var(--blanco); border-radius: 10px; padding: 28px 32px; position: relative; margin: 20px 0; }
+.cita-det::before { content: "\201C"; position: absolute; top: 8px; left: 18px; font-family: "DM Serif Display", serif; font-size: 5rem; color: rgba(255,255,255,0.08); line-height: 1; }
+.cita-det p { color: rgba(255,255,255,0.9); font-size: 1.04rem; font-style: italic; position: relative; z-index: 1; margin-bottom: 0; }
+.paso-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--gris-claro); align-items: flex-start; }
+.paso-item:last-child { border-bottom: none; }
+.paso-n { background: var(--ocre-suave); border: 1px solid var(--borde); color: var(--cafe); font-weight: 700; font-size: 0.82rem; min-width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.rubrica-row { display: grid; grid-template-columns: 1fr 80px; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--gris-claro); align-items: center; }
+.rubrica-row:last-child { border-bottom: none; }
+.pts { background: var(--tierra); color: var(--blanco); text-align: center; border-radius: 6px; padding: 6px 10px; font-weight: 700; font-size: 0.88rem; }
+.caso-escenario { background: var(--azul-suave); border: 1px solid #c0d0e0; border-radius: 10px; padding: 24px; margin: 18px 0; }
+.caso-tag { font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--azul-pizarra); margin-bottom: 10px; }
+.quiz-wrap { background: var(--gris-claro); border-radius: 12px; padding: 28px; }
+.q-progreso { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.q-barra-cont { flex: 1; height: 5px; background: var(--borde); border-radius: 3px; overflow: hidden; }
+.q-barra-fill { height: 100%; background: var(--ocre); border-radius: 3px; transition: width 0.4s ease; }
+.q-txt { font-size: 0.8rem; color: var(--gris); font-weight: 500; white-space: nowrap; }
+.q-bloque { display: none; }
+.q-bloque.activo { display: block; }
+.q-bloque h4 { font-family: "DM Sans", sans-serif; font-size: 0.97rem; font-weight: 600; color: var(--tierra); margin-bottom: 18px; line-height: 1.5; }
+.q-opts { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.q-opt { display: flex; align-items: flex-start; gap: 12px; padding: 12px 15px; background: var(--blanco); border: 2px solid var(--borde); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.q-opt:hover { border-color: var(--ocre); background: var(--ocre-suave); }
+.q-opt.sel { border-color: var(--cafe); background: var(--ocre-suave); }
+.q-opt.ok { border-color: var(--verde-oliva); background: var(--verde-suave); }
+.q-opt.fail { border-color: var(--rojo-terracota); background: var(--rojo-suave); }
+.q-letra { width: 26px; height: 26px; border-radius: 50%; background: var(--borde); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
+.q-opt.sel .q-letra { background: var(--cafe); color: var(--blanco); }
+.q-opt.ok .q-letra { background: var(--verde-oliva); color: var(--blanco); }
+.q-opt.fail .q-letra { background: var(--rojo-terracota); color: var(--blanco); }
+.q-opt-txt { font-size: 0.91rem; line-height: 1.5; }
+.q-retro { display: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 14px; font-size: 0.89rem; line-height: 1.5; }
+.q-retro.ok { background: var(--verde-suave); border: 1px solid var(--verde-oliva); color: var(--verde-oliva); }
+.q-retro.fail { background: var(--rojo-suave); border: 1px solid var(--rojo-terracota); color: var(--rojo-terracota); }
+.q-retro.show { display: block; }
+.btn { padding: 11px 22px; border-radius: 7px; font-family: "DM Sans", sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+.btn-main { background: var(--cafe); color: var(--blanco); }
+.btn-main:hover { background: var(--tierra); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(61,43,31,0.25); }
+.btn-main:disabled { background: var(--borde); color: var(--gris); cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-sec { background: transparent; color: var(--cafe); border: 2px solid var(--cafe); }
+.btn-sec:hover { background: var(--ocre-suave); }
+.q-resultado { display: none; text-align: center; padding: 36px 20px; }
+.q-resultado.show { display: block; }
+.q-score { font-family: "DM Serif Display", serif; font-size: 5rem; color: var(--tierra); line-height: 1; margin-bottom: 8px; }
+.q-score span { font-size: 2rem; color: var(--gris); }
+.q-nivel { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+.q-msg { color: var(--gris); font-size: 0.92rem; max-width: 440px; margin: 0 auto 24px; }
+.refl-card { background: var(--arena); border: 1px solid var(--borde); border-radius: 8px; padding: 20px; margin-bottom: 14px; }
+.refl-card label { display: block; font-weight: 600; font-size: 0.88rem; color: var(--tierra); margin-bottom: 10px; }
+.refl-card textarea { width: 100%; min-height: 78px; padding: 11px; border: 1.5px solid var(--borde); border-radius: 6px; font-family: "DM Sans", sans-serif; font-size: 0.9rem; line-height: 1.6; resize: vertical; background: var(--blanco); color: var(--tierra); transition: border-color 0.2s; }
+.refl-card textarea:focus { outline: none; border-color: var(--ocre); }
+.classroom-cta { display: flex; align-items: center; gap: 14px; background: #1a7340; color: var(--blanco); padding: 15px 20px; border-radius: 8px; margin-top: 22px; font-size: 0.9rem; font-weight: 500; }
+footer { background: var(--tierra); color: rgba(255,255,255,0.55); text-align: center; padding: 28px 32px; font-size: 0.8rem; line-height: 1.8; }
+footer strong { color: rgba(255,255,255,0.85); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.bloque:nth-child(1) { animation-delay: 0.04s; }
+.bloque:nth-child(2) { animation-delay: 0.08s; }
+.bloque:nth-child(3) { animation-delay: 0.12s; }
+.bloque:nth-child(4) { animation-delay: 0.16s; }
+.bloque:nth-child(5) { animation-delay: 0.20s; }
+.bloque:nth-child(6) { animation-delay: 0.24s; }
+.bloque:nth-child(7) { animation-delay: 0.28s; }
+.bloque:nth-child(8) { animation-delay: 0.32s; }
+.bloque:nth-child(9) { animation-delay: 0.36s; }
+.bloque:nth-child(10) { animation-delay: 0.40s; }
+@media (max-width: 680px) {
+  .header-inner { padding: 24px 18px 30px; }
+  .header-tema h1 { font-size: 1.85rem; }
+  main { padding: 24px 16px 52px; }
+  .bloque { padding: 22px 16px; }
+  .tipos-grid { grid-template-columns: 1fr 1fr; }
+  .nav-inner { padding: 0 14px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="logo-circle">
+        <img src="data:image/jpeg;base64,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" alt="Universidad de la Cienega">
+      </div>
+      <div class="brand-text">
+        <div class="univ">Universidad de la Cienega</div>
+        <div class="dept">Licenciatura en Pedagogia &middot; Ciencias de la Educacion</div>
+      </div>
+      <div class="chip">Valores y Educacion</div>
+    </div>
+    <div class="header-tema">
+      <h1>Tipologia de los Valores:<br><em>Valores Individuales</em></h1>
+      <div class="header-meta">
+        <span class="meta-pill">Tema 2 &middot; Subtema 2.1</span>
+        <span class="meta-pill">Constructivismo &middot; ABP</span>
+        <span class="meta-pill">4 Actividades</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="nav-inner">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Act. 3 Caso</a>
+    <a href="#act4">Act. 4 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="bloque" id="intro">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">I</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Punto de partida &middot; Tema 2, Subtema 2.1</div>
+      <h2>Introduccion al Tema</h2>
+    </div>
+  </div>
+  <p>El estudio de los valores no puede limitarse a comprender su definicion o su fundamento filosofico: resulta igualmente indispensable conocer <strong>como se clasifican y en que dimensiones operan</strong> dentro de la experiencia humana. La tipologia de los valores es precisamente la disciplina que se encarga de organizar y categorizar los valores segun criterios coherentes, con el proposito de facilitar su comprension, su analisis y su aplicacion en contextos educativos y sociales.</p>
+  <p>Esta guia se centra en una de las clasificaciones fundamentales dentro de la axiologia: la distincion entre los valores segun su dimension de realizacion. En particular, abordaremos la categoria de los <strong>valores individuales</strong>, es decir, aquellos que se manifiestan y se realizan en la persona singular, en su vida interior, en sus decisiones y en su desarrollo como ser humano.</p>
+  <div class="nota objetivo">
+    <div class="nota-label">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> identificar y explicar las principales categorias de la tipologia axiologica; <strong>(2)</strong> caracterizar los valores individuales y diferenciarlos de otras dimensiones valorativas; <strong>(3)</strong> analizar criticamente la presencia de valores individuales en situaciones educativas reales; y <strong>(4)</strong> proponer estrategias pedagogicas para el fomento de valores individuales en el nivel universitario.</p>
+  </div>
+  <div class="nota info">
+    <div class="nota-label">Metodologia de trabajo</div>
+    <p>Esta guia combina tres enfoques: el <strong>constructivismo</strong> (aprendizaje como construccion activa del conocimiento a partir de la experiencia), la <strong>pedagogia activa</strong> (el estudiante como protagonista) y el <strong>aprendizaje basado en problemas</strong> (ABP), donde la comprension teorica surge de la necesidad de resolver situaciones problematicas concretas y significativas.</p>
+  </div>
+</section>
+
+<section class="bloque verde" id="previo">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">?</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Antes de adentrarse en el contenido tematico, es fundamental activar los conocimientos previos que usted ya posee. Responda la siguiente pregunta de manera honesta, sin consultar fuentes externas. El objetivo es identificar desde donde parte su comprension para construir sobre ella.</p>
+  <div class="pregunta-previa">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Cuando hablamos de "valores individuales" en el ambito de la filosofia y la educacion, a que nos referimos principalmente?</p>
+    <div class="opciones-previas">
+      <button class="op-previa" onclick="responderPrevio(this, false)">A) A los valores que cada persona inventa de manera subjetiva y que son exclusivamente personales, sin ninguna base objetiva ni social.</button>
+      <button class="op-previa" onclick="responderPrevio(this, false)">B) A los valores relacionados con el rendimiento academico individual, como el esfuerzo y la perseverancia en el estudio.</button>
+      <button class="op-previa" onclick="responderPrevio(this, true)">C) A los valores que se realizan y se manifiestan en la persona singular: virtudes, actitudes y cualidades que definen el desarrollo moral e integro del individuo como ser humano.</button>
+      <button class="op-previa" onclick="responderPrevio(this, false)">D) A los valores que distinguen a las personas de alto rendimiento o liderazgo dentro de una comunidad o institucion.</button>
+    </div>
+    <div class="feedback-previo" id="fb-previo"></div>
+  </div>
+</section>
+
+<section class="bloque pizarra" id="contenido">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">II</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Marco teorico &middot; Tema 2 y 2.1</div>
+      <h2>Contenido Tematico: Tipologia de los Valores y Valores Individuales</h2>
+    </div>
+  </div>
+  <h3>1. Que es la tipologia de los valores?</h3>
+  <p>La <strong>tipologia axiologica</strong> es el estudio sistematico de las distintas clases de valores, su naturaleza, sus caracteristicas y las relaciones que guardan entre si. Mas que una simple lista, la tipologia pretende construir un mapa conceptual coherente que permita al educador y al filosofo comprender la estructura interna del mundo valorativo.</p>
+  <p>Distintos autores han propuesto criterios de clasificacion: algunos ordenan los valores segun su <em>contenido</em> (morales, esteticos, vitales, religiosos); otros segun su <em>alcance</em> (individuales, sociales, universales); y otros segun su <em>rango jerarquico</em> (superiores o inferiores en la escala de lo humano). En esta guia adoptamos principalmente el criterio del <strong>alcance o dimension de realizacion</strong>, que distingue entre aquellos valores que se expresan en la persona singular y los que requieren necesariamente de la comunidad para realizarse.</p>
+  <h3>2. Principales categorias en la tipologia axiologica</h3>
+  <div class="tipos-grid">
+    <div class="tipo-card"><div class="tipo-nombre">Valores individuales</div><div class="tipo-desc">Se realizan en la persona singular. Virtudes, actitudes y cualidades que definen el desarrollo moral del individuo: honestidad, responsabilidad, valentía, humildad.</div></div>
+    <div class="tipo-card"><div class="tipo-nombre">Valores sociales</div><div class="tipo-desc">Requieren la relacion con otros para realizarse plenamente: justicia, solidaridad, respeto, ciudadania, equidad, cooperacion.</div></div>
+    <div class="tipo-card"><div class="tipo-nombre">Valores vitales</div><div class="tipo-desc">Vinculados a la vida biologica y el bienestar fisico: salud, fuerza, vitalidad, placer, equilibrio corporal.</div></div>
+    <div class="tipo-card"><div class="tipo-nombre">Valores esteticos</div><div class="tipo-desc">Relacionados con la apreciacion de la belleza y la armonia: lo bello, lo sublime, lo elegante, la creatividad artistica.</div></div>
+    <div class="tipo-card"><div class="tipo-nombre">Valores intelectuales</div><div class="tipo-desc">Ligados al conocimiento y la razon: la verdad, el rigor, el pensamiento critico, la curiosidad intelectual.</div></div>
+    <div class="tipo-card"><div class="tipo-nombre">Valores trascendentes</div><div class="tipo-desc">Relativos a la dimension espiritual o religiosa: la fe, la santidad, lo sagrado (varian segun los sistemas de creencias).</div></div>
+  </div>
+  <div class="nota info">
+    <div class="nota-label">Nota metodologica</div>
+    <p>Esta clasificacion no implica que los valores sean compartimentos estancos. En la experiencia real, un mismo valor puede operar en varias dimensiones simultaneamente. La honestidad, por ejemplo, es un valor individual (define al caracter de la persona) pero tambien tiene una dimension social (construye confianza en la comunidad) e intelectual (es condicion de la busqueda de la verdad).</p>
+  </div>
+  <h3>3. Los valores individuales: definicion y naturaleza</h3>
+  <p>Los <strong>valores individuales</strong> son aquellas cualidades, disposiciones o virtudes que se realizan y se manifiestan en la persona como unidad singular. Son los que constituyen el caracter moral del individuo: definen quien es esa persona, como actua cuando nadie la observa, que decisiones toma ante situaciones de conflicto moral y como se relaciona consigo misma.</p>
+  <p>A diferencia de los valores sociales, que requieren necesariamente la relacion con otros para existir, los valores individuales pueden operar incluso en la intimidad del sujeto. Una persona es honesta no solo cuando no miente a otros, sino cuando no se miente a si misma. Una persona es valiente no solo ante los demas, sino cuando enfrenta sus propios miedos en la soledad.</p>
+  <table class="t">
+    <thead><tr><th>Valor individual</th><th>Definicion axiologica</th><th>Expresion en el contexto universitario</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Honestidad</strong></td><td>Disposicion a actuar con veracidad y coherencia entre pensamiento, palabra y accion.</td><td>Entregar trabajos propios, citar fuentes, reconocer los limites del propio conocimiento.</td></tr>
+      <tr><td><strong>Responsabilidad</strong></td><td>Capacidad de asumir las consecuencias de los propios actos y compromisos adquiridos.</td><td>Cumplir plazos, preparar las clases, responder ante los propios errores academicos.</td></tr>
+      <tr><td><strong>Autodisciplina</strong></td><td>Capacidad de regular la conducta propia en funcion de metas y principios, sin necesidad de supervision externa.</td><td>Gestionar el tiempo de estudio, mantenerse constante ante las dificultades del aprendizaje.</td></tr>
+      <tr><td><strong>Integridad</strong></td><td>Coherencia entre los valores declarados y la conducta efectiva; unidad moral de la persona.</td><td>Actuar del mismo modo en presencia y en ausencia del docente; sostener posiciones argumentadas.</td></tr>
+      <tr><td><strong>Humildad intelectual</strong></td><td>Reconocimiento de los propios limites del saber y apertura a aprender de la experiencia y de otros.</td><td>Aceptar la retroalimentacion, reconocer errores en argumentos, estar dispuesto a modificar ideas.</td></tr>
+      <tr><td><strong>Valentia moral</strong></td><td>Disposicion a actuar conforme a los propios principios incluso cuando eso implica un costo personal o social.</td><td>Disentir respetuosamente en clase, denunciar la deshonestidad, defender una posicion argumentada.</td></tr>
+      <tr><td><strong>Perseverancia</strong></td><td>Continuidad en el esfuerzo hacia metas significativas, a pesar de los obstaculos y los fracasos parciales.</td><td>Sostener el proceso de formacion ante materias dificiles, no abandonar ante la primera dificultad.</td></tr>
+    </tbody>
+  </table>
+  <h3>4. Caracteristicas especificas de los valores individuales</h3>
+  <ul class="l">
+    <li><strong>Inmanencia:</strong> Se realizan desde la interioridad del sujeto. No dependen de que otros los reconozcan o validen para existir en la persona.</li>
+    <li><strong>Constitutividad del caracter:</strong> Son los que definen el ethos personal, es decir, el modo de ser habitual de la persona en sus decisiones cotidianas.</li>
+    <li><strong>Educabilidad:</strong> Aunque tienen una dimension natural, pueden ser cultivados, fortalecidos y desarrollados mediante la practica, la reflexion y la educacion.</li>
+    <li><strong>Expresion comportamental:</strong> Se manifiestan no en discursos sino en comportamientos concretos y verificables en situaciones de eleccion real.</li>
+    <li><strong>Relacion con la virtud:</strong> En la tradicion aristotelica, los valores individuales se corresponden con las virtudes eticas: habitos que se adquieren mediante la practica constante y que posibilitan el florecimiento humano (eudaimonia).</li>
+    <li><strong>Tension con la presion social:</strong> Son precisamente los valores individuales los que permiten al sujeto resistir la presion del grupo cuando esta presion va en contra de sus principios.</li>
+  </ul>
+  <h3>5. Los valores individuales en la formacion del pedagogo</h3>
+  <p>Como futuro pedagogo, usted no solo debera conocer y analizar los valores individuales desde una perspectiva teorica: debera encarnarlos en su propia practica profesional. El docente que ejerce la honestidad intelectual, que asume responsabilidad ante sus errores, que muestra humildad para seguir aprendiendo y valentia moral para actuar con integridad, educa por presencia y por testimonio: lo que algunos autores denominan el <strong>curriculo viviente</strong> del educador.</p>
+  <div class="nota alerta">
+    <div class="nota-label">Punto de problematizacion (ABP)</div>
+    <p>Puede un docente ensenar valores individuales sin practicarlos el mismo? Que ocurre en el aula cuando existe una brecha entre los valores que el educador declara y los que efectivamente manifiesta en su comportamiento cotidiano? Esta tension es el nodo central del aprendizaje por problemas en esta guia, y reaparecera en el caso practico de la Actividad 3.</p>
+  </div>
+</section>
+
+<section class="bloque neutro" id="materiales">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">M</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Para profundizar en los contenidos de esta guia, se recomiendan los siguientes materiales academicos, organizados por tipo de recurso. Se priorizan fuentes de acceso libre o ampliamente disponibles en bibliotecas universitarias.</p>
+  <div class="recurso-item"><div class="recurso-tipo libro">Libro</div><div><div class="rec-titulo">Etica: nuevo ensayo de fundamentacion de un personalismo etico</div><div class="rec-autor">Scheler, M. (2001). Caparros Editores. Fuente fundamental para entender la jerarquia y tipologia de los valores desde el objetivismo axiologico fenomenologico.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo libro">Libro</div><div><div class="rec-titulo">Etica a Nicomaco</div><div class="rec-autor">Aristoteles (trad. 2014). Alianza Editorial. Base para comprender los valores individuales como virtudes eticas y el concepto de caracter moral.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo libro">Libro</div><div><div class="rec-titulo">Educacion en valores: propuesta y experiencias</div><div class="rec-autor">Escamez, J. y Gil, R. (2001). Paidos. Analisis aplicado de los valores individuales en el contexto escolar y universitario hispanohablante.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo libro">Libro</div><div><div class="rec-titulo">La construccion de la personalidad moral</div><div class="rec-autor">Puig, J.M. (1996). Paidos. Propuesta constructivista para la formacion en valores morales individuales desde la practica educativa.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo web">Web</div><div><div class="rec-titulo">Philosophia. Revista academica de filosofia (UNAM)</div><div class="rec-autor">Disponible en: www.filosoficas.unam.mx. Ofrece articulos arbitrados sobre axiologia, tipologia de valores y etica educativa en acceso libre.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo video">Video</div><div><div class="rec-titulo">Los valores y su clasificacion en el pensamiento contemporaneo</div><div class="rec-autor">Canal Academico UNAM en YouTube. Busqueda recomendada: "UNAM axiologia clasificacion valores". Material audiovisual con rigor academico.</div></div></div>
+  <div class="recurso-item"><div class="recurso-tipo libro">Articulo</div><div><div class="rec-titulo">Virtud, caracter y educacion moral: una perspectiva aristotelico-contemporanea</div><div class="rec-autor">Carr, D. (2008). Revista Espanola de Pedagogia, 66(241), 439-454. Disponible en Dialnet y JSTOR.</div></div></div>
+</section>
+
+<section class="bloque" id="act1">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">1</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge foro">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="nota objetivo">
+    <div class="nota-label">Proposito</div>
+    <p>Generar un espacio de intercambio reflexivo y argumentado donde los estudiantes confronten sus experiencias con los marcos teoricos de la tipologia axiologica, identificando la presencia o ausencia de valores individuales en su trayectoria universitaria concreta.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita-det">
+    <p>En su experiencia como estudiante universitario, ha vivido alguna situacion en la que tuvo que poner en practica, o noto la ausencia de, algun valor individual concreto (honestidad, responsabilidad, valentia moral, integridad, humildad intelectual) dentro del ambito academico? Describa la situacion con detalle, identifique el valor o contravalor presente, y analice: que factores del entorno universitario facilitan o dificultan el ejercicio de ese valor? Como podria el pedagogo intervenir para fortalecer dicho valor desde su practica docente?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso-item"><div class="paso-n">1</div><div><strong>Ingrese al foro habilitado en Google Classroom</strong> con el titulo "Foro 1: Valores Individuales en la Experiencia Universitaria". Acceda mediante el enlace proporcionado por el docente.</div></div>
+  <div class="paso-item"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Dedique al menos 10 minutos a recordar una situacion universitaria concreta y real donde vivio o presencio la presencia o ausencia de un valor individual especifico. Evite afirmaciones genericas o situaciones inventadas.</div></div>
+  <div class="paso-item"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial.</strong> Debe incluir: (a) descripcion de la situacion concreta; (b) identificacion explicita del valor o contravalor con referencia al contenido teorico de esta guia; (c) analisis de los factores contextuales que influyen; (d) propuesta pedagogica fundamentada. Extension: entre 220 y 360 palabras en registro formal.</div></div>
+  <div class="paso-item"><div class="paso-n">4</div><div><strong>Lea las participaciones de al menos dos companeros</strong> antes de responder. Identifique convergencias, divergencias o dimensiones no consideradas en sus propias respuestas.</div></div>
+  <div class="paso-item"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> a participaciones de companeros distintos. Cada replica debe aportar un argumento nuevo, plantear una pregunta de profundizacion o complementar la propuesta pedagogica. Extension por replica: 80-120 palabras.</div></div>
+  <div class="paso-item"><div class="paso-n">6</div><div><strong>Suba evidencia a Classroom.</strong> Capture en imagen o exporte en PDF su participacion inicial y las dos replicas, y subala en la tarea correspondiente antes de la fecha limite indicada.</div></div>
+  <div class="nota ejemplo">
+    <div class="nota-label">Ejemplo orientador de participacion (extracto)</div>
+    <p>"Durante el tercer semestre, en Didactica, el docente solicito un analisis de clase que yo no habia realizado a tiempo. Opte por inventar observaciones que no existian. Logre entregar el trabajo y obtuve una calificacion aprobatoria. Sin embargo, esa decision evidencio la ausencia de un valor individual central: la <em>integridad</em>. La situacion me revelo que el ambiente academico en ese curso favorecia la apariencia del aprendizaje sobre su ejercicio real. Desde la perspectiva pedagogica, un docente podria disenar actividades no replicables, basadas en observaciones directas e identificables, que hicieran inviable la falsificacion sin sancion. Esto no solo controla la deshonestidad: crea condiciones para que la honestidad sea posible y valorada..."</p>
+  </div>
+  <div class="nota alerta">
+    <div class="nota-label">Criterio anti-IA: por que su participacion debe ser autentica</div>
+    <p>La pregunta detonadora solicita una situacion <strong>real, concreta y verificable</strong> de su propia trayectoria universitaria. Ningun sistema de inteligencia artificial puede conocer esos datos. Su docente podra solicitar que precise cualquier detalle de la experiencia narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubrica-row"><div><strong>Autenticidad y especificidad de la situacion narrada</strong><br>La experiencia es concreta, identificable y propia del estudiante.</div><div class="pts">25 pts</div></div>
+  <div class="rubrica-row"><div><strong>Uso pertinente del marco teorico</strong><br>Se identifica y cita correctamente el valor o contravalor con base en los contenidos de la guia.</div><div class="pts">25 pts</div></div>
+  <div class="rubrica-row"><div><strong>Calidad del analisis contextual</strong><br>Se identifican factores del entorno universitario que facilitan u obstaculizan el valor.</div><div class="pts">20 pts</div></div>
+  <div class="rubrica-row"><div><strong>Participacion dialogica (dos replicas)</strong><br>Las respuestas aportan perspectivas nuevas y son respetuosas y argumentadas.</div><div class="pts">20 pts</div></div>
+  <div class="rubrica-row"><div><strong>Forma, extension y registro</strong><br>Lenguaje formal, extension adecuada, ausencia de errores graves.</div><div class="pts">10 pts</div></div>
+  <div class="classroom-cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<section class="bloque verde" id="act2">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">2</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Inventario Personal de Valores Individuales</h2>
+    </div>
+  </div>
+  <div class="act-badge indiv">Actividad individual &middot; Aprendizaje significativo aplicado</div>
+  <div class="nota objetivo">
+    <div class="nota-label">Proposito</div>
+    <p>Desarrollar la capacidad de autoconocimiento axiologico mediante la construccion de un inventario personal de valores individuales, que permita al estudiante identificar que valores ya practica de manera consistente, cuales estan en proceso de desarrollo y cuales reconoce como ausentes o debiles en su vida universitaria actual.</p>
+  </div>
+  <h3>Situacion problematica de base (ABP)</h3>
+  <div class="caso-escenario">
+    <div class="caso-tag">Contexto del problema</div>
+    <p>La Coordinacion de Pedagogia de su programa le pide que elabore un <strong>informe de autodiagnostico axiologico</strong> como parte de un proyecto institucional de seguimiento del perfil de egresado. El objetivo es identificar, con honestidad y rigor metodologico, el estado actual de sus valores individuales, con miras a disenar un plan personal de formacion en valores que oriente el resto de su trayectoria universitaria.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso-item"><div class="paso-n">1</div><div><strong>Seleccione seis valores individuales</strong> de la tabla presentada en el contenido tematico. Anote el nombre de cada uno.</div></div>
+  <div class="paso-item"><div class="paso-n">2</div><div><strong>Para cada valor, complete las tres columnas del inventario:</strong> (a) definicion con sus propias palabras, no copiada; (b) ejemplo concreto de su vida universitaria actual donde ese valor esta presente o ausente; (c) autoevaluacion honesta de su nivel de practica (alta / media / en desarrollo / ausente), con justificacion.</div></div>
+  <div class="paso-item"><div class="paso-n">3</div><div><strong>Redacte un analisis interpretativo</strong> de entre 350 y 450 palabras. Responda: que patrones observa en su inventario?, cuales son sus valores mas consolidados y cuales requieren mayor trabajo?, que relacion encuentra entre sus valores mas debiles y las dificultades que enfrenta en su vida academica?</div></div>
+  <div class="paso-item"><div class="paso-n">4</div><div><strong>Disene un Plan Personal de Formacion en Valores</strong> con al menos tres acciones concretas y realizables durante los proximos 30 dias. Cada accion debe: indicar el valor que fortalecera, describir la practica especifica, seNalar el contexto universitario donde se aplicara y mencionar como sabra si ha avanzado.</div></div>
+  <div class="paso-item"><div class="paso-n">5</div><div><strong>Prepare el documento final</strong> con portada (nombre, matricula, materia, semestre, fecha, nombre del docente), el inventario en tabla, el analisis interpretativo y el plan de formacion.</div></div>
+  <div class="paso-item"><div class="paso-n">6</div><div><strong>Suba el documento a Classroom</strong> en la tarea "Actividad 2: Inventario de Valores Individuales" antes de la fecha indicada.</div></div>
+  <div class="nota ejemplo">
+    <div class="nota-label">Modelo orientador de inventario (extracto de una fila)</div>
+    <table class="t">
+      <thead><tr><th>Valor individual</th><th>Definicion propia</th><th>Ejemplo de mi vida universitaria</th><th>Nivel de practica actual</th></tr></thead>
+      <tbody><tr><td>Humildad intelectual</td><td>Reconocer que mi conocimiento siempre es parcial y que puedo aprender de cualquier fuente, incluyendo de mis propios errores.</td><td>En el seminario de investigacion, tuve dificultad para aceptar la retroalimentacion del docente. Me defendi en lugar de escuchar.</td><td>En desarrollo. Reconozco el valor, pero la reaccion defensiva aparece con frecuencia ante la critica.</td></tr></tbody>
+    </table>
+  </div>
+  <div class="nota alerta">
+    <div class="nota-label">Criterio anti-IA: por que esta actividad exige autenticidad</div>
+    <p>El inventario solicita ejemplos <strong>especificos y actuales</strong> de su vida universitaria en este semestre. La autoevaluacion y el plan de formacion deben reflejar su situacion real. El docente podra verificar la coherencia entre los ejemplos narrados y los registros academicos disponibles.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubrica-row"><div><strong>Completitud del inventario</strong><br>Seis valores con los tres campos completos y ejemplos autenticos y especificos.</div><div class="pts">20 pts</div></div>
+  <div class="rubrica-row"><div><strong>Calidad del analisis interpretativo</strong><br>Identifica patrones, conecta valores con dificultades academicas, usa lenguaje reflexivo y fundamentado.</div><div class="pts">30 pts</div></div>
+  <div class="rubrica-row"><div><strong>Pertinencia del plan de formacion</strong><br>Tres acciones concretas, viables, con valor identificado, practica descrita y criterio de avance.</div><div class="pts">25 pts</div></div>
+  <div class="rubrica-row"><div><strong>Estructura y formato del documento</strong><br>Portada completa, organizacion clara, extension adecuada.</div><div class="pts">15 pts</div></div>
+  <div class="rubrica-row"><div><strong>Registro academico y calidad del lenguaje</strong><br>Vocabulario pertinente, lenguaje formal, ausencia de errores graves.</div><div class="pts">10 pts</div></div>
+  <div class="classroom-cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento completo en la tarea "Actividad 2: Inventario de Valores Individuales".</div>
+</section>
+
+<section class="bloque terracota" id="act3">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">3</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Analisis de Caso Practico</h2>
+    </div>
+  </div>
+  <div class="act-badge caso">Caso practico &middot; Aprendizaje basado en problemas</div>
+  <div class="nota objetivo">
+    <div class="nota-label">Proposito</div>
+    <p>Desarrollar la capacidad de analisis axiologico aplicado mediante el estudio de una situacion educativa real-ficticia que plantea dilemas concretos en torno a los valores individuales, su formacion y su relacion con la practica docente universitaria.</p>
+  </div>
+  <h3>El caso: "La decision de Mariana"</h3>
+  <div class="caso-escenario">
+    <div class="caso-tag">Descripcion del caso</div>
+    <p>Mariana es estudiante del cuarto semestre de la Licenciatura en Pedagogia en una universidad publica. En su asignatura de Planeacion Educativa, el profesor Aurelio pide a todos los estudiantes que disenyen una secuencia didactica original.</p>
+    <p>Mariana sabe que su companera Andrea ya elaboro una secuencia muy completa el semestre anterior para otra materia. Andrea le ofrece prestarsela para que la entregue con algunas modificaciones. "Nadie se dara cuenta", le dice Andrea. "Ademas, la secuencia es buena y tu ya tienes otros cinco trabajos esta semana."</p>
+    <p>Mariana se enfrenta a la decision: en terminos practicos, seria conveniente aceptar. Tiene presion de tiempo y la calificacion importa. Pero por otro lado, siente incomodidad. Finalmente, decide elaborar su propia secuencia, aunque menos elaborada que la de Andrea.</p>
+    <p>Cuando el profesor Aurelio devuelve los trabajos, califica a Mariana con 80 puntos, una nota inferior a la que le habria dado la secuencia de Andrea, que otro companero si copio y obtuvo 95 puntos. Mariana lo sabe. No dice nada al profesor.</p>
+  </div>
+  <h3>Preguntas de analisis</h3>
+  <p>Responda cada una de las siguientes preguntas de manera fundamentada, con referencia explicita al contenido teorico de esta guia. Extension total: entre 500 y 650 palabras.</p>
+  <ol class="l">
+    <li><strong>Identificacion axiologica:</strong> Que valores individuales estan presentes en la decision de Mariana? Cuales son los contravalores que operan en el comportamiento de Andrea y del companero que copio? Utilice la terminologia del contenido tematico.</li>
+    <li><strong>Analisis de la tension moral:</strong> El caso plantea una tension real entre el "costo" inmediato de actuar con integridad (menor calificacion) y el "beneficio" de haber sostenido un valor individual. Como explicaria esta tension desde la perspectiva axiologica? Por que los valores individuales a veces implican una desventaja visible a corto plazo?</li>
+    <li><strong>Analisis del silencio de Mariana:</strong> Mariana decide no informar al docente sobre la copia de su companero. Considera que este silencio es coherente o incoherente con los valores individuales que demostro al elaborar su propio trabajo? Argumente desde al menos dos perspectivas diferentes.</li>
+    <li><strong>Implicacion pedagogica:</strong> Si usted fuera el profesor Aurelio y tuviera evidencia del plagio, que estrategia pedagogica implementaria, orientada no solo a sancionar la deshonestidad sino a fortalecer activamente los valores individuales en el grupo? Fundamente su propuesta con referentes teoricos o principios pedagogicos estudiados.</li>
+  </ol>
+  <h3>Instrucciones para la entrega</h3>
+  <div class="paso-item"><div class="paso-n">1</div><div>Lea el caso con detenimiento, al menos dos veces. Tome notas sobre los momentos de tension axiologica que identifica antes de comenzar a responder.</div></div>
+  <div class="paso-item"><div class="paso-n">2</div><div>Responda las cuatro preguntas en orden, en un documento con portada (nombre, matricula, materia, fecha, nombre del docente).</div></div>
+  <div class="paso-item"><div class="paso-n">3</div><div>En cada respuesta, incluya al menos una referencia explicita al contenido teorico de esta guia (puede ser una definicion, una caracteristica de los valores individuales, o una categoria axiologica).</div></div>
+  <div class="paso-item"><div class="paso-n">4</div><div>Suba el documento en la tarea "Actividad 3: Caso Practico: La decision de Mariana" en Google Classroom antes de la fecha indicada.</div></div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubrica-row"><div><strong>Identificacion axiologica precisa (Pregunta 1)</strong><br>Nombra correctamente valores y contravalores con base en el marco teorico.</div><div class="pts">20 pts</div></div>
+  <div class="rubrica-row"><div><strong>Profundidad del analisis de la tension moral (Pregunta 2)</strong><br>Explica la tension de manera fundamentada, va mas alla de lo evidente.</div><div class="pts">25 pts</div></div>
+  <div class="rubrica-row"><div><strong>Argumentacion sobre el silencio (Pregunta 3)</strong><br>Presenta al menos dos perspectivas diferentes y bien argumentadas.</div><div class="pts">25 pts</div></div>
+  <div class="rubrica-row"><div><strong>Propuesta pedagogica fundamentada (Pregunta 4)</strong><br>La estrategia es concreta, viable y se apoya en referentes teoricos.</div><div class="pts">20 pts</div></div>
+  <div class="rubrica-row"><div><strong>Forma, extension y registro</strong><br>Estructura clara, lenguaje formal, extension dentro del rango indicado.</div><div class="pts">10 pts</div></div>
+  <div class="classroom-cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento de analisis en la tarea "Actividad 3: Caso Practico".</div>
+</section>
+
+<section class="bloque" id="act4">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">4</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Para entregar en Google Classroom</div>
+      <h2>Actividad 4: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge quiz-b">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="nota objetivo">
+    <div class="nota-label">Proposito</div>
+    <p>Verificar y consolidar la comprension conceptual de los fundamentos de la tipologia axiologica y los valores individuales mediante un instrumento de autoevaluacion interactivo con retroalimentacion inmediata.</p>
+  </div>
+  <div class="nota info">
+    <div class="nota-label">Instrucciones</div>
+    <p>Responda las cinco preguntas seleccionando la opcion que considere correcta. Recibira retroalimentacion inmediata tras cada respuesta. Al finalizar, capture una imagen de su puntaje final y subala a Google Classroom como evidencia.</p>
+  </div>
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-progreso">
+      <span class="q-txt" id="q-prog-txt">Pregunta 1 de 5</span>
+      <div class="q-barra-cont"><div class="q-barra-fill" id="q-fill" style="width:20%"></div></div>
+      <span class="q-txt" id="q-score-txt">0 / 5</span>
+    </div>
+    <div class="q-bloque activo" id="q1">
+      <h4>1. La tipologia axiologica puede definirse como:</h4>
+      <div class="q-opts">
+        <div class="q-opt" onclick="qSel(this,'q1',false)"><div class="q-letra">A</div><div class="q-opt-txt">El conjunto de normas morales que regulan el comportamiento de los individuos en sociedad, establecidas por consenso cultural.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q1',false)"><div class="q-letra">B</div><div class="q-opt-txt">La disciplina pedagogica que se ocupa de transmitir valores a los estudiantes mediante la instruccion directa y el modelado del docente.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q1',true)"><div class="q-letra">C</div><div class="q-opt-txt">El estudio sistematico de las distintas clases de valores, su naturaleza, sus caracteristicas y las relaciones que guardan entre si, con el proposito de organizarlos de manera coherente.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q1',false)"><div class="q-letra">D</div><div class="q-opt-txt">La clasificacion de las conductas humanas segun su grado de conformidad con las normas socialmente aceptadas en un contexto determinado.</div></div>
+      </div>
+      <div class="q-retro ok" id="r1ok">Correcto. La tipologia axiologica es precisamente el estudio sistematico que organiza y clasifica los valores segun criterios coherentes (contenido, alcance, jerarquia), con el fin de facilitar su comprension y aplicacion en contextos filosoficos y educativos.</div>
+      <div class="q-retro fail" id="r1fail">Incorrecto. La respuesta correcta es C. La tipologia axiologica es el estudio sistematico de las clases de valores y sus relaciones, no se reduce a normas de conducta social, instruccion pedagogica ni clasificacion de comportamientos.</div>
+      <button class="btn btn-main" id="btn-q1" onclick="qSig('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+    <div class="q-bloque" id="q2">
+      <h4>2. Una de las caracteristicas especificas de los valores individuales es su inmanencia. Esto significa que:</h4>
+      <div class="q-opts">
+        <div class="q-opt" onclick="qSel(this,'q2',false)"><div class="q-letra">A</div><div class="q-opt-txt">Solo se manifiestan cuando la persona recibe el reconocimiento externo de la comunidad o de la institucion educativa a la que pertenece.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q2',true)"><div class="q-letra">B</div><div class="q-opt-txt">Se realizan desde la interioridad del sujeto y no dependen de la validacion externa para existir como valores en la persona.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q2',false)"><div class="q-letra">C</div><div class="q-opt-txt">Son permanentes e inmutables a lo largo de toda la vida del individuo, sin posibilidad de modificarse por la educacion o la experiencia.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q2',false)"><div class="q-letra">D</div><div class="q-opt-txt">Pertenecen exclusivamente a la dimension privada de la persona y no tienen ninguna relacion con sus comportamientos publicos o sociales.</div></div>
+      </div>
+      <div class="q-retro ok" id="r2ok">Correcto. La inmanencia refiere a que los valores individuales se realizan desde adentro del sujeto. Una persona honesta lo es no porque otros la observen, sino porque esa disposicion pertenece a su modo de ser interior, independientemente del reconocimiento externo.</div>
+      <div class="q-retro fail" id="r2fail">Incorrecto. La respuesta correcta es B. Inmanencia significa que los valores individuales se originan y se realizan desde la interioridad del sujeto, sin depender de la validacion externa.</div>
+      <button class="btn btn-main" id="btn-q2" onclick="qSig('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+    <div class="q-bloque" id="q3">
+      <h4>3. Desde la perspectiva aristotelica, los valores individuales se corresponden con el concepto de:</h4>
+      <div class="q-opts">
+        <div class="q-opt" onclick="qSel(this,'q3',false)"><div class="q-letra">A</div><div class="q-opt-txt">Norma, entendida como regla externa de conducta impuesta por la autoridad social o religiosa para regular el comportamiento colectivo.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q3',false)"><div class="q-letra">B</div><div class="q-opt-txt">Deber, en el sentido kantiano de obligacion moral derivada de la razon universal y valida para todos los seres racionales.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q3',false)"><div class="q-letra">C</div><div class="q-opt-txt">Utilidad, en tanto que los valores que el individuo practica son aquellos que le reportan mayor beneficio personal en sus interacciones sociales.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q3',true)"><div class="q-letra">D</div><div class="q-opt-txt">Virtud etica, entendida como un habito adquirido mediante la practica constante que posibilita el florecimiento humano o eudaimonia.</div></div>
+      </div>
+      <div class="q-retro ok" id="r3ok">Correcto. Aristoteles concibio las virtudes eticas como habitos que se adquieren mediante la practica y que posibilitan el florecimiento humano (eudaimonia). Esta concepcion es la base de la comprension de los valores individuales como disposiciones del caracter que se cultivan a traves de la experiencia y la educacion.</div>
+      <div class="q-retro fail" id="r3fail">Incorrecto. La respuesta correcta es D. Aristoteles vinculo los valores del caracter con el concepto de virtud etica: un habito que se adquiere por la practica y que orienta al florecimiento humano. No se trata de norma externa, deber kantiano ni utilidad pragmatica.</div>
+      <button class="btn btn-main" id="btn-q3" onclick="qSig('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+    <div class="q-bloque" id="q4">
+      <h4>4. La valentia moral como valor individual se distingue de la valentia fisica principalmente porque:</h4>
+      <div class="q-opts">
+        <div class="q-opt" onclick="qSel(this,'q4',false)"><div class="q-letra">A</div><div class="q-opt-txt">Solo puede ejercerse en contextos de conflicto violento o de riesgo fisico directo para la integridad corporal del sujeto.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q4',false)"><div class="q-letra">B</div><div class="q-opt-txt">Es una virtud que se adquiere desde la infancia y no puede modificarse mediante la formacion ni la experiencia adulta.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q4',true)"><div class="q-letra">C</div><div class="q-opt-txt">Implica actuar conforme a los propios principios eticos incluso cuando eso supone un costo social, relacional o academico para el individuo.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q4',false)"><div class="q-letra">D</div><div class="q-opt-txt">Se expresa unicamente en situaciones publicas y visibles donde la conducta del individuo puede ser observada y reconocida por otros.</div></div>
+      </div>
+      <div class="q-retro ok" id="r4ok">Correcto. La valentia moral consiste en sostener los propios principios eticos aunque ello implique un costo: ser rechazado por el grupo, perder una calificacion, disentir de una posicion mayoritaria. En el caso de Mariana (Actividad 3), su decision de elaborar su propia secuencia didactica, aun sabiendo que seria peor calificada, es un ejemplo de valentia moral.</div>
+      <div class="q-retro fail" id="r4fail">Incorrecto. La respuesta correcta es C. La valentia moral refiere a actuar conforme a los principios propios aun cuando ello implique un costo personal. No requiere riesgo fisico, no es inmutable, y puede ejercerse en privado sin necesidad de ser observada.</div>
+      <button class="btn btn-main" id="btn-q4" onclick="qSig('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+    <div class="q-bloque" id="q5">
+      <h4>5. El concepto de "curriculo viviente del educador", mencionado en el contenido de esta guia, se refiere a que:</h4>
+      <div class="q-opts">
+        <div class="q-opt" onclick="qSel(this,'q5',false)"><div class="q-letra">A</div><div class="q-opt-txt">El docente debe elaborar un plan curricular explicito donde se especifiquen los valores individuales que pretende desarrollar en cada unidad de aprendizaje.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q5',true)"><div class="q-letra">B</div><div class="q-opt-txt">El educador educa en valores individuales no solo mediante sus discursos o contenidos, sino principalmente a traves de su propio comportamiento, caracter y modo de ser en el aula.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q5',false)"><div class="q-letra">C</div><div class="q-opt-txt">El plan de estudios de una licenciatura en pedagogia debe incluir materias especificas sobre valores individuales en todos los semestres de la carrera.</div></div>
+        <div class="q-opt" onclick="qSel(this,'q5',false)"><div class="q-letra">D</div><div class="q-opt-txt">La vida personal del docente fuera del aula es irrelevante para su labor formativa, siempre que dentro del aula actue con profesionalismo y competencia tecnica.</div></div>
+      </div>
+      <div class="q-retro ok" id="r5ok">Correcto. El "curriculo viviente" es la idea de que el educador constituye en si mismo un mensaje formativo: lo que ensena con su presencia, su conducta y su caracter tiene un impacto formativo que ningun programa explicito puede reemplazar.</div>
+      <div class="q-retro fail" id="r5fail">Incorrecto. La respuesta correcta es B. El "curriculo viviente del educador" no se refiere a planificaciones curriculares explicitas ni a materias especificas. Tampoco es valida la idea de que la vida personal del docente es irrelevante: la coherencia entre vida y discurso es precisamente el nucleo de este concepto.</div>
+      <button class="btn btn-main" id="btn-q5" onclick="qMostrarResultado()" disabled>Ver resultado final</button>
+    </div>
+    <div class="q-resultado" id="q-resultado">
+      <div class="q-score" id="q-score-disp">0<span>/5</span></div>
+      <div class="q-nivel" id="q-nivel"></div>
+      <div class="q-msg" id="q-msg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+        <button class="btn btn-sec" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-main" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--ocre-suave);border-radius:8px;font-size:0.88rem;color:var(--cafe);border:1px solid var(--borde);">
+        Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia de la Actividad 4.
+      </div>
+    </div>
+  </div>
+  <div class="classroom-cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura de pantalla de su resultado final en la tarea "Actividad 4: Quiz: Tipologia de Valores Individuales".</div>
+</section>
+
+<section class="bloque verde" id="reflexion">
+  <div class="bloque-encabezado">
+    <div class="bloque-icono">R</div>
+    <div class="bloque-titulo">
+      <div class="subtag">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>El proceso formativo no concluye con la entrega de las actividades. Esta seccion le invita a un ejercicio de metacognicion y de proyeccion: imaginar y planificar de que modo integrara estos aprendizajes en su practica cotidiana como estudiante y, en el futuro, como pedagogo.</p>
+  <div class="refl-card"><label>1. Cual fue el aprendizaje mas significativo sobre la tipologia de los valores y los valores individuales en esta guia? Que fue lo mas novedoso o desafiante para usted?</label><textarea placeholder="Reflexione con honestidad sobre lo que genuinamente le resulto nuevo o retador en este tema..."></textarea></div>
+  <div class="refl-card"><label>2. A partir del caso de Mariana (Actividad 3), que reflexion le genero sobre sus propios valores individuales? Se identifico con algun personaje del caso y por que?</label><textarea placeholder="Conecte la situacion del caso con su propia experiencia y sus valores actuales..."></textarea></div>
+  <div class="refl-card"><label>3. Cual es el valor individual que considera mas importante para desarrollar a lo largo de su formacion como pedagogo? Fundamente por que y plantee una estrategia especifica para cultivarlo.</label><textarea placeholder="Elija un valor concreto, argumente su relevancia para la practica docente y proponga una estrategia realista..."></textarea></div>
+  <div class="refl-card"><label>4. Planifique una accion concreta y realizable que llevara a cabo en los proximos 15 dias como resultado de lo aprendido. Describa que hara, en que contexto universitario, que valor estara poniendo en practica y como reconocera que ha avanzado.</label><textarea placeholder="Sea especifico: no 'sere mas honesto', sino 'la proxima vez que entregue un trabajo citare todas las fuentes aunque el docente no lo verifique, porque...'"></textarea></div>
+  <div class="nota objetivo">
+    <div class="nota-label">Instrucciones para la entrega de la reflexion</div>
+    <p>Las respuestas de esta seccion deberan entregarse como parte de un documento independiente en Google Classroom, bajo la tarea "Reflexion Final: Tipologia y Valores Individuales". Extension minima: 120 palabras por respuesta. Se evaluaran la profundidad reflexiva, la autenticidad del analisis personal y la coherencia entre los contenidos teoricos y la proyeccion practica concreta.</p>
+  </div>
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Aristoteles. (2014). <em>Etica a Nicomaco</em> (trad. J. L. Calvo Martinez). Alianza Editorial.</li>
+    <li>Carr, D. (2008). Virtud, caracter y educacion moral: una perspectiva aristotelico-contemporanea. <em>Revista Espanola de Pedagogia, 66</em>(241), 439-454.</li>
+    <li>Escamez, J., y Gil, R. (2001). <em>La educacion en la responsabilidad</em>. Paidos.</li>
+    <li>Puig, J. M. (1996). <em>La construccion de la personalidad moral</em>. Paidos.</li>
+    <li>Scheler, M. (2001). <em>Etica: nuevo ensayo de fundamentacion de un personalismo etico</em>. Caparros Editores. (Trabajo original publicado en 1916).</li>
+    <li>Yarce, J. (2004). <em>Valor para vivir los valores</em>. Norma.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 2: Tipologia de los Valores &middot; Subtema 2.1: Valores Individuales<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages
+</footer>
+
+<script>
+function responderPrevio(btn, esCorrecta) {
+  document.querySelectorAll(".op-previa").forEach(b => { b.disabled = true; b.style.cursor = "default"; });
+  btn.classList.add(esCorrecta ? "correcta-ok" : "errada");
+  var fb = document.getElementById("fb-previo");
+  fb.classList.add("show");
+  if (esCorrecta) {
+    fb.innerHTML = "<strong>Respuesta acertada.</strong> Efectivamente, los valores individuales son aquellas virtudes, actitudes y disposiciones que se realizan en la persona singular y definen su caracter moral. Este es el punto de partida conceptual que desarrollaremos a lo largo de la guia.";
+  } else {
+    fb.innerHTML = "<strong>La respuesta correcta es C.</strong> Los valores individuales no son invenciones subjetivas arbitrarias (A), ni se limitan al rendimiento academico (B), ni son exclusivos de personas con liderazgo (D). Se realizan en la persona como unidad singular y definen su caracter moral integro.";
+  }
+}
+var qEstado = { puntaje: 0, respondidas: {} };
+function qSel(elem, qid, esCorrecta) {
+  if (qEstado.respondidas[qid] !== undefined) return;
+  qEstado.respondidas[qid] = esCorrecta;
+  var opts = elem.parentElement.querySelectorAll(".q-opt");
+  opts.forEach(function(o) { o.onclick = null; o.style.cursor = "default"; });
+  elem.classList.add("sel");
+  if (esCorrecta) { elem.classList.add("ok"); qEstado.puntaje++; }
+  else { elem.classList.add("fail"); }
+  var num = qid.replace("q","");
+  var rid = esCorrecta ? "r" + num + "ok" : "r" + num + "fail";
+  document.getElementById(rid).classList.add("show");
+  document.getElementById("btn-" + qid).disabled = false;
+  var c = Object.values(qEstado.respondidas).filter(function(v) { return v; }).length;
+  document.getElementById("q-score-txt").textContent = c + " / " + Object.keys(qEstado.respondidas).length;
+}
+function qSig(actual, siguiente, num) {
+  document.getElementById(actual).classList.remove("activo");
+  document.getElementById(siguiente).classList.add("activo");
+  document.getElementById("q-prog-txt").textContent = "Pregunta " + (num + 1) + " de 5";
+  document.getElementById("q-fill").style.width = ((num + 1) * 20) + "%";
+  window.scrollTo({ top: document.getElementById("act4").offsetTop - 70, behavior: "smooth" });
+}
+function qMostrarResultado() {
+  document.getElementById("q5").classList.remove("activo");
+  var res = document.getElementById("q-resultado");
+  res.classList.add("show");
+  var p = qEstado.puntaje;
+  document.getElementById("q-score-disp").innerHTML = p + "<span>/5</span>";
+  document.getElementById("q-prog-txt").textContent = "Completado";
+  document.getElementById("q-fill").style.width = "100%";
+  document.getElementById("q-score-txt").textContent = p + " / 5";
+  var nivel, msg, color;
+  if (p === 5) { nivel = "Dominio sobresaliente"; msg = "Ha demostrado una comprension solida y completa de la tipologia de valores y los valores individuales. Esta en condiciones de aplicar este marco conceptual en su analisis de situaciones educativas reales."; color = "var(--verde-oliva)"; }
+  else if (p === 4) { nivel = "Dominio satisfactorio"; msg = "Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos en los que obtuvo retroalimentacion de mejora para completar su comprension."; color = "var(--azul-pizarra)"; }
+  else if (p === 3) { nivel = "Dominio en proceso"; msg = "Ha comprendido los conceptos centrales, pero algunos aspectos requieren estudio adicional. Se recomienda releer las secciones teoricas vinculadas a las preguntas no respondidas correctamente."; color = "var(--ocre)"; }
+  else { nivel = "Requiere refuerzo"; msg = "Algunos conceptos fundamentales necesitan un trabajo mas sistematico. Revise el contenido teorico completo, consulte los materiales de referencia y retome el quiz despues del repaso."; color = "var(--rojo-terracota)"; }
+  var niv = document.getElementById("q-nivel");
+  niv.textContent = nivel;
+  niv.style.color = color;
+  document.getElementById("q-msg").textContent = msg;
+  window.scrollTo({ top: document.getElementById("act4").offsetTop - 70, behavior: "smooth" });
+}
+document.querySelectorAll("nav a").forEach(function(a) {
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    var t = document.querySelector(this.getAttribute("href"));
+    if (t) window.scrollTo({ top: t.offsetTop - 56, behavior: "smooth" });
+  });
+});
+</script>
+</body>
+</html>
