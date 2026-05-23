@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materiales con Fines Educativos | Tecnología y Educación II | Universidad de la Ciénega</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:        #1c1917;
+  --ink-mid:    #3c3836;
+  --ink-soft:   #6b6560;
+  --slate:      #3d5a7a;
+  --slate-mid:  #4e728f;
+  --slate-lite: #d6e4f0;
+  --bone:       #f5f0e8;
+  --ivory:      #faf8f3;
+  --parchment:  #f0ebe0;
+  --rust:       #8b4a2b;
+  --rust-lite:  #f5e6df;
+  --sage:       #3a6351;
+  --sage-lite:  #e0ede8;
+  --border:     #ddd8cc;
+  --shadow-sm:  0 2px 12px rgba(28,25,23,.07);
+  --shadow-md:  0 6px 28px rgba(28,25,23,.11);
+  --shadow-lg:  0 16px 56px rgba(28,25,23,.15);
+  --r:          10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.page-header {
+  background: var(--slate);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,.025) 40px,
+      rgba(255,255,255,.025) 41px
+    );
+  pointer-events: none;
+}
+.header-band {
+  height: 5px;
+  background: linear-gradient(90deg, var(--rust) 0%, #c07842 50%, var(--rust) 100%);
+}
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 44px 52px 52px;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 44px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.logo-cell {
+  background: white;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+  text-align: center;
+}
+.logo-cell img { display: block; width: 120px; height: auto; margin: 0 auto; }
+.logo-cell small {
+  display: block;
+  margin-top: 8px;
+  font-size: 9.5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  line-height: 1.4;
+}
+.header-text { color: white; }
+.header-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 12px;
+}
+.header-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.8vw, 44px);
+  font-weight: 600;
+  line-height: 1.18;
+  margin-bottom: 14px;
+}
+.header-h1 em { font-style: italic; color: #c9dbed; }
+.header-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.75);
+  font-weight: 300;
+  line-height: 1.55;
+  max-width: 600px;
+}
+.header-chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+.chip {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 100px;
+  padding: 5px 15px;
+  font-size: 11.5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.88);
+}
+
+/* ═══════════════════════════════════════════
+   STICKY NAV
+══════════════════════════════════════════ */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--ink);
+  border-bottom: 3px solid var(--rust);
+}
+.nav-scroller {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 52px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-scroller::-webkit-scrollbar { display: none; }
+.nav-tab {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 15px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: color .2s, border-color .2s;
+}
+.nav-tab:hover { color: rgba(255,255,255,.88); }
+.nav-tab.active {
+  color: white;
+  border-bottom-color: #e08050;
+}
+
+/* Progress indicator */
+.progress-stripe {
+  height: 3px;
+  background: var(--border);
+  position: sticky;
+  top: 51px;
+  z-index: 199;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rust) 0%, #d4905a 100%);
+  width: 0%;
+  transition: width .4s ease;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════ */
+.page-body {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 52px 100px;
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS
+══════════════════════════════════════════ */
+.sec { display: none; }
+.sec.visible { display: block; animation: reveal .35s ease; }
+@keyframes reveal { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* Section heading */
+.sec-head {
+  padding: 52px 0 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.sec-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.22;
+}
+.sec-title em { font-style: italic; color: var(--slate); }
+.sec-lead {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 680px;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   PROSE
+══════════════════════════════════════════ */
+.prose { color: var(--ink-mid); }
+.prose h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--slate);
+  margin: 36px 0 14px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--slate-lite);
+}
+.prose h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 24px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-family: 'DM Mono', monospace;
+}
+.prose p { margin-bottom: 18px; line-height: 1.82; }
+.prose ul, .prose ol { margin: 0 0 18px 22px; }
+.prose li { margin-bottom: 7px; line-height: 1.7; }
+.prose strong { font-weight: 600; color: var(--ink); }
+.prose em { font-style: italic; }
+
+/* ═══════════════════════════════════════════
+   CARDS
+══════════════════════════════════════════ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 28px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 28px 0; }
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.card-icon {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: var(--slate-lite);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.card-icon svg { width: 20px; height: 20px; }
+.card-t {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.card p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+.card.rust-accent { border-top: 3px solid var(--rust); }
+.card.slate-accent { border-top: 3px solid var(--slate); }
+.card.sage-accent { border-top: 3px solid var(--sage); }
+
+/* ═══════════════════════════════════════════
+   CALLOUT BOXES
+══════════════════════════════════════════ */
+.callout {
+  border-radius: var(--r);
+  padding: 22px 26px;
+  margin: 24px 0;
+}
+.callout-rust {
+  background: var(--rust-lite);
+  border-left: 4px solid var(--rust);
+}
+.callout-slate {
+  background: var(--slate-lite);
+  border-left: 4px solid var(--slate);
+}
+.callout-sage {
+  background: var(--sage-lite);
+  border-left: 4px solid var(--sage);
+}
+.callout-bone {
+  background: var(--parchment);
+  border-left: 4px solid #c07842;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.callout p { margin: 0; font-size: 15px; color: var(--ink-mid); line-height: 1.75; }
+.callout p + p { margin-top: 10px; }
+
+/* ═══════════════════════════════════════════
+   TABLE
+══════════════════════════════════════════ */
+.tbl-wrap { overflow-x: auto; margin: 26px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; background: white; font-size: 14px; }
+thead tr { background: var(--slate); color: white; }
+th { padding: 13px 18px; text-align: left; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .08em; font-weight: 500; }
+td { padding: 12px 18px; border-bottom: 1px solid var(--border); color: var(--ink-mid); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bone); }
+.badge {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-family: 'DM Mono', monospace;
+}
+.badge-slate { background: var(--slate-lite); color: var(--slate); }
+.badge-rust  { background: var(--rust-lite);  color: var(--rust); }
+.badge-sage  { background: var(--sage-lite);  color: var(--sage); }
+
+/* ═══════════════════════════════════════════
+   EXTERNAL RESOURCES
+══════════════════════════════════════════ */
+.resource-list { list-style: none; margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
+.resource-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s;
+}
+.resource-item:hover { box-shadow: var(--shadow-md); }
+.res-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--slate);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.res-body { flex: 1; }
+.res-title { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.res-author { font-size: 13px; color: var(--ink-soft); font-style: italic; margin-bottom: 4px; }
+.res-url { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--slate); word-break: break-all; }
+.res-type {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  background: var(--bone);
+  color: var(--ink-soft);
+  align-self: flex-start;
+}
+
+/* ═══════════════════════════════════════════
+   CONOCIMIENTO PREVIO
+══════════════════════════════════════════ */
+.kp-wrap {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin: 28px 0;
+}
+.kp-header {
+  background: linear-gradient(135deg, var(--rust) 0%, #a35e38 100%);
+  padding: 26px 32px;
+  color: white;
+}
+.kp-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.kp-header p { font-size: 14px; opacity: .85; }
+.kp-body { padding: 32px; }
+.kp-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.55;
+  background: var(--bone);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--rust);
+}
+.kp-body textarea {
+  width: 100%;
+  min-height: 130px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  transition: border-color .2s;
+  background: white;
+}
+.kp-body textarea:focus { border-color: var(--rust); }
+.kp-body textarea::placeholder { color: var(--ink-soft); font-style: italic; }
+.btn-row { margin-top: 12px; display: flex; gap: 10px; align-items: center; }
+.btn {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-ink { background: var(--ink); color: white; }
+.btn-ink:hover { background: var(--ink-mid); transform: translateY(-1px); }
+.btn-rust { background: var(--rust); color: white; }
+.btn-rust:hover { background: #7a3d22; }
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--ink-soft);
+}
+.btn-outline:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+/* ═══════════════════════════════════════════
+   ACTIVITY WRAPPER
+══════════════════════════════════════════ */
+.act-block {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 36px 0;
+  box-shadow: var(--shadow-md);
+}
+.act-head {
+  padding: 30px 38px;
+}
+.act-head.rust  { background: linear-gradient(135deg, var(--rust)  0%, #a35e38 100%); color: white; }
+.act-head.slate { background: linear-gradient(135deg, var(--slate) 0%, #2a4d6a 100%); color: white; }
+.act-head.sage  { background: linear-gradient(135deg, var(--sage)  0%, #284d3d 100%); color: white; }
+.act-head.ink   { background: linear-gradient(135deg, var(--ink)   0%, #3c3836 100%); color: white; }
+.act-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  opacity: .7;
+  margin-bottom: 8px;
+}
+.act-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.28;
+  margin-bottom: 8px;
+}
+.act-sub { font-size: 14px; opacity: .82; font-style: italic; }
+.act-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.act-chip {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 11.5px;
+  font-family: 'DM Mono', monospace;
+}
+.act-body { padding: 38px; }
+
+/* STEPS */
+.steps { list-style: none; }
+.step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 22px;
+  align-items: flex-start;
+}
+.step-n {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--slate);
+  color: white;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.step.rust .step-n { background: var(--rust); }
+.step.sage .step-n { background: var(--sage); }
+.step.ink  .step-n { background: var(--ink); }
+.step-c { flex: 1; }
+.step-t { font-weight: 600; color: var(--ink); margin-bottom: 5px; font-size: 15px; }
+.step-d { color: var(--ink-soft); font-size: 14px; line-height: 1.68; }
+
+/* EXAMPLE */
+.example {
+  border-left: 3px solid #c07842;
+  background: var(--parchment);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 18px 0;
+  font-size: 14px;
+  color: var(--ink-mid);
+}
+.example strong { color: var(--rust); font-style: normal; }
+.example-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+/* CLASSROOM BOX */
+.classroom-box {
+  background: #1a73e8;
+  color: white;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 24px 0;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.cl-icon { font-size: 32px; flex-shrink: 0; }
+.cl-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+.cl-text p { font-size: 13.5px; opacity: .9; margin: 0; line-height: 1.5; }
+
+/* RUBRIC */
+.rubric-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin: 26px 0 12px;
+}
+
+/* FORUM SIM */
+.forum-shell {
+  background: #f8f9fb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 22px 0;
+}
+.forum-topbar {
+  background: var(--slate);
+  color: white;
+  padding: 10px 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .07em;
+}
+.forum-q {
+  background: white;
+  border: 2px solid var(--rust);
+  border-radius: 8px;
+  margin: 14px;
+  padding: 18px 22px;
+}
+.forum-q p {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.forum-input { margin: 0 14px 14px; }
+.forum-input textarea {
+  width: 100%;
+  min-height: 105px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 13px 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  background: white;
+  transition: border-color .2s;
+}
+.forum-input textarea:focus { border-color: var(--slate); }
+.forum-input textarea::placeholder { color: var(--ink-soft); font-style: italic; }
+.forum-input .btn-row { margin-top: 10px; }
+
+/* QUIZ */
+.quiz-q {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .3s;
+}
+.quiz-q.ok   { border-color: var(--sage); background: var(--sage-lite); }
+.quiz-q.fail { border-color: var(--rust); background: var(--rust-lite); }
+.q-seq { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .15em; color: var(--ink-soft); margin-bottom: 8px; }
+.q-stem { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 18px; line-height: 1.5; }
+.q-opts { display: flex; flex-direction: column; gap: 9px; }
+.q-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-mid);
+  background: white;
+  transition: all .2s;
+  text-align: left;
+}
+.q-opt:hover:not(.locked) { border-color: var(--slate); background: var(--slate-lite); }
+.q-opt.sel  { border-color: var(--slate); background: var(--slate-lite); color: var(--slate); }
+.q-opt.corr { border-color: var(--sage);  background: var(--sage-lite);  color: var(--sage); }
+.q-opt.incr { border-color: var(--rust);  background: var(--rust-lite);  color: var(--rust); }
+.q-opt.locked { pointer-events: none; }
+.q-bullet {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  transition: all .2s;
+  margin-top: 1px;
+}
+.q-fb {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: none;
+  line-height: 1.6;
+}
+.q-fb.show { display: block; }
+.q-fb.ok   { background: var(--sage-lite); color: var(--sage); border: 1px solid #a5c9b5; }
+.q-fb.fail { background: var(--rust-lite); color: var(--rust); border: 1px solid #d4a090; }
+
+/* Score */
+.score-panel {
+  background: linear-gradient(135deg, var(--slate) 0%, #2a4d6a 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 44px;
+  text-align: center;
+  display: none;
+  margin-top: 28px;
+}
+.score-panel.show { display: block; animation: reveal .5s ease; }
+.score-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.score-of { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 18px; }
+.score-msg { font-size: 18px; font-style: italic; font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,.9); margin-bottom: 28px; line-height: 1.5; }
+.score-detail { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 24px; }
+
+/* CASO PRACTICO */
+.caso-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin: 22px 0;
+  box-shadow: var(--shadow-sm);
+}
+.caso-top {
+  background: var(--bone);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.caso-top-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.caso-body { padding: 26px 28px; }
+.caso-narrative {
+  background: var(--parchment);
+  border-left: 3px solid #c07842;
+  padding: 18px 22px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: var(--ink-mid);
+  line-height: 1.78;
+}
+.caso-q { margin-bottom: 16px; }
+.caso-q-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.caso-q textarea {
+  width: 100%;
+  min-height: 90px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  background: white;
+  transition: border-color .2s;
+}
+.caso-q textarea:focus { border-color: var(--sage); }
+.caso-q textarea::placeholder { color: var(--ink-soft); font-style: italic; }
+
+/* REFLEXION */
+.rfx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 28px 0; }
+.rfx-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+}
+.rfx-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.rfx-card p { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; }
+.rfx-card textarea {
+  width: 100%;
+  min-height: 115px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  background: white;
+  transition: border-color .2s;
+}
+.rfx-card textarea:focus { border-color: var(--rust); }
+.rfx-card textarea::placeholder { color: var(--ink-soft); font-style: italic; }
+
+/* DIVIDER */
+.rule { height: 1px; background: var(--border); margin: 40px 0; }
+
+/* FOOTER */
+.page-footer {
+  background: var(--ink);
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  padding: 32px 52px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.page-footer strong { color: white; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 36px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--rust), var(--slate));
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -28px; top: 5px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 2.5px solid var(--rust);
+  box-shadow: 0 0 0 2px var(--rust-lite);
+}
+.tl-t { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.tl-d { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  .header-inner { grid-template-columns: 1fr; padding: 28px 24px 36px; gap: 22px; }
+  .logo-cell { width: fit-content; }
+  .page-body { padding: 0 24px 80px; }
+  .nav-scroller { padding: 0 16px; }
+  .act-body { padding: 24px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .rfx-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header-band"></div>
+<header class="page-header">
+  <div class="header-inner">
+    <div class="logo-cell">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Universidad de la Ciénega"
+      >
+      <small>Plantel Centro<br>Guadalajara, Jalisco </small>
+    </div>
+    <div class="header-text">
+      <div class="header-eyebrow">Tecnología y Educación II &mdash; Licenciatura en Pedagogía</div>
+      <h1 class="header-h1">Materiales con <em>fines educativos</em><br>incluyendo los digitales</h1>
+      <p class="header-sub">Guía interactiva de aprendizaje activo para estudiantes universitarios. Tema 1.2 — Nuevos Materiales Didácticos.</p>
+      <div class="header-chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogía Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">Quiz incluido</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="sticky-nav">
+  <div class="nav-scroller">
+    <button class="nav-tab active" onclick="showSec('intro')">Introducción</button>
+    <button class="nav-tab" onclick="showSec('contenido')">Contenido Temático</button>
+    <button class="nav-tab" onclick="showSec('recursos')">Recursos Externos</button>
+    <button class="nav-tab" onclick="showSec('previo')">Conocimiento Previo</button>
+    <button class="nav-tab" onclick="showSec('act1')">Act. 1 &mdash; Foro</button>
+    <button class="nav-tab" onclick="showSec('act2')">Act. 2 &mdash; Aplicación</button>
+    <button class="nav-tab" onclick="showSec('act3')">Act. 3 &mdash; Caso</button>
+    <button class="nav-tab" onclick="showSec('act4')">Act. 4 &mdash; Quiz</button>
+    <button class="nav-tab" onclick="showSec('reflexion')">Reflexión Final</button>
+  </div>
+</nav>
+<div class="progress-stripe"><div class="progress-fill" id="progress-fill"></div></div>
+
+<!-- ═══════════ BODY ═══════════ -->
+<div class="page-body">
+
+  <!-- ══════ INTRODUCCIÓN ══════ -->
+  <section id="intro" class="sec visible">
+    <div class="sec-head">
+      <div class="sec-label">Punto de partida</div>
+      <h2 class="sec-title">Introducción al tema:<br><em>Materiales con fines educativos</em></h2>
+      <p class="sec-lead">Una mirada constructivista a los recursos que median el aprendizaje en la universidad contemporánea.</p>
+    </div>
+
+    <div class="prose">
+      <p>La pregunta que abre este tema no es tecnológica sino pedagógica: <strong>¿qué hace que un recurso —impreso, audiovisual o digital— se convierta en un verdadero instrumento de aprendizaje?</strong> La respuesta no está en el soporte ni en el formato, sino en la intencionalidad con que se diseña, selecciona y usa dentro de un proceso educativo.</p>
+      <p>Los materiales con fines educativos son aquellos recursos —físicos o digitales— que han sido elaborados o seleccionados <em>con propósito pedagógico explícito</em>: responden a objetivos de aprendizaje, consideran las características del estudiante y favorecen la construcción activa del conocimiento. Se distinguen de los materiales informativos generales en que no solo informan, sino que <strong>orientan, estructuran y provocan</strong> procesos cognitivos.</p>
+      <p>Esta guía le invita a analizar, evaluar y producir materiales educativos desde la perspectiva del estudiante universitario y del futuro docente. Cada sección articula la teoría con la práctica para que el aprendizaje ocurra en el proceso mismo de hacer la guía.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card rust-accent">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8b4a2b" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="card-t">Propósito</div>
+        <p>Analizar los materiales con fines educativos —incluyendo los digitales— como mediadores del aprendizaje significativo en la educación superior.</p>
+      </div>
+      <div class="card slate-accent">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a7a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="card-t">Competencias</div>
+        <p>Seleccionar, evaluar y diseñar materiales educativos digitales y tradicionales con criterios pedagógicos fundamentados en el constructivismo.</p>
+      </div>
+      <div class="card sage-accent">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a6351" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="card-t">Metodología</div>
+        <p>Aprendizaje Basado en Problemas, pedagogía activa y construcción colaborativa del conocimiento a través de cuatro actividades prácticas.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-bone">
+      <div class="callout-label">Pregunta orientadora de la guía</div>
+      <p><em>"Si cualquier estudiante puede acceder en segundos a miles de videos, artículos y tutoriales, ¿qué distingue a un material educativo de un material simplemente informativo, y cómo puede el futuro pedagogo tomar decisiones fundamentadas al respecto?"</em></p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Contenido Temático</div>
+        <div class="tl-d">Marcos conceptuales, clasificaciones y criterios de evaluación de los materiales con fines educativos.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Recursos Externos</div>
+        <div class="tl-d">Fuentes formales recomendadas: textos académicos, repositorios y plataformas de referencia.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Conocimiento Previo</div>
+        <div class="tl-d">Activación de saberes previos mediante una pregunta diagnóstica antes de las actividades.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Actividad 1 — Foro de Mediación</div>
+        <div class="tl-d">Pregunta detonadora para el análisis crítico colectivo. Entrega en Google Classroom.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Actividad 2 — Aplicación Práctica</div>
+        <div class="tl-d">Diseño de un material educativo digital propio para una materia real. Entrega en Classroom.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Actividad 3 — Caso Práctico</div>
+        <div class="tl-d">Análisis de un caso real de uso de materiales didácticos en educación superior. Entrega en Classroom.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Actividad 4 — Quiz</div>
+        <div class="tl-d">Autoevaluación de 5 preguntas con retroalimentación inmediata y puntaje final. Entrega en Classroom.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-t">Reflexión Final</div>
+        <div class="tl-d">Plan personal de aplicación de los aprendizajes en la vida académica y profesional.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CONTENIDO TEMÁTICO ══════ -->
+  <section id="contenido" class="sec">
+    <div class="sec-head">
+      <div class="sec-label">Tema 1.2</div>
+      <h2 class="sec-title">Contenido Temático:<br><em>Materiales con fines educativos</em></h2>
+      <p class="sec-lead">Fundamentos, clasificaciones y criterios pedagógicos para el siglo XXI.</p>
+    </div>
+
+    <div class="prose">
+      <h3>1. Definición y función pedagógica</h3>
+      <p>Un <strong>material con fines educativos</strong> es cualquier recurso —objeto, texto, imagen, audio, video, software o experiencia estructurada— que ha sido diseñado o seleccionado con la intención deliberada de apoyar un proceso de enseñanza-aprendizaje. Su carácter educativo no proviene del soporte sino de su <em>uso pedagógico intencional</em>.</p>
+      <p>Desde el enfoque constructivista, los materiales no transmiten conocimiento: <strong>crean condiciones para que el estudiante lo construya</strong>. Ausubel señala que el aprendizaje significativo ocurre cuando el nuevo material se conecta de manera sustantiva con lo que el estudiante ya sabe; Vigotsky, por su parte, establece que los mejores materiales operan dentro de la Zona de Desarrollo Próximo (ZDP), apoyando al aprendiz en lo que aún no puede hacer solo.</p>
+
+      <h3>2. Distinción conceptual fundamental</h3>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Dimensión</th><th>Material informativo</th><th>Material con fines educativos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Propósito</strong></td><td>Proveer datos o contenido</td><td>Apoyar la construcción de conocimiento con un objetivo de aprendizaje explícito</td></tr>
+          <tr><td><strong>Diseño</strong></td><td>Orientado a la eficiencia comunicativa</td><td>Orientado a la activación cognitiva del estudiante</td></tr>
+          <tr><td><strong>Interacción</strong></td><td>Pasiva: el receptor consume</td><td>Activa: el estudiante hace, reflexiona, produce</td></tr>
+          <tr><td><strong>Evaluación</strong></td><td>No se evalúa su impacto en el aprendizaje</td><td>Se mide su efectividad en función del logro de competencias</td></tr>
+          <tr><td><strong>Ejemplo</strong></td><td>Artículo enciclopédico, noticiero</td><td>OVA, guía de estudio con preguntas, simulador con retroalimentación</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <h3>3. Clasificación de los materiales con fines educativos</h3>
+      <p>La literatura pedagógica ofrece diversas taxonomías. Para efectos prácticos, se adopta una clasificación tridimensional basada en soporte, función pedagógica y nivel de interactividad:</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card rust-accent">
+        <div class="card-t">Materiales impresos y visuales tradicionales</div>
+        <p>Libros de texto, manuales, guías de estudio, fichas de trabajo, láminas, mapas conceptuales en papel, carteles didácticos. Son el soporte más consolidado de la historia educativa. Su efectividad no reside en el papel, sino en la calidad del diseño pedagógico que los estructura.</p>
+      </div>
+      <div class="card slate-accent">
+        <div class="card-t">Materiales audiovisuales</div>
+        <p>Videos educativos, documentales con guía de observación, grabaciones de experimentos, presentaciones con narración, podcasts pedagógicos. Combinan canal auditivo y visual para favorecer el aprendizaje multimodal.</p>
+      </div>
+      <div class="card sage-accent">
+        <div class="card-t">Materiales educativos digitales interactivos</div>
+        <p>Objetos Virtuales de Aprendizaje (OVA), simuladores, laboratorios virtuales, juegos serios, hipertextos educativos, actividades gamificadas, Recursos Educativos Abiertos (REA). Permiten retroalimentación inmediata y aprendizaje adaptativo.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid #c07842;">
+        <div class="card-t">Materiales de entorno virtual (LMS)</div>
+        <p>Módulos en Moodle, Google Classroom, Canvas o Blackboard que integran contenido, actividades y evaluación en un solo entorno. No son materiales per se, sino ecosistemas que organizan la experiencia de aprendizaje digital.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>4. Los materiales educativos digitales: características específicas</h3>
+      <p>Los <strong>materiales educativos digitales (MED)</strong> comparten las características generales de los materiales con fines educativos, pero incorporan atributos propios de lo digital que amplían las posibilidades pedagógicas:</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-t" style="font-size:15px;">Interactividad</div>
+        <p>El estudiante no solo recibe: responde, elige, construye. El material reacciona a las decisiones del usuario.</p>
+      </div>
+      <div class="card">
+        <div class="card-t" style="font-size:15px;">Adaptabilidad</div>
+        <p>Puede ajustar su nivel de dificultad, idioma, ritmo o modalidad según el perfil del estudiante.</p>
+      </div>
+      <div class="card">
+        <div class="card-t" style="font-size:15px;">Hipertextualidad</div>
+        <p>Conecta con otras fuentes, recursos y contextos mediante enlaces, ampliando el universo de aprendizaje.</p>
+      </div>
+      <div class="card">
+        <div class="card-t" style="font-size:15px;">Reusabilidad</div>
+        <p>Un OVA bien diseñado puede integrarse en distintos cursos, plataformas y contextos sin perder su efectividad.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>5. Criterios para evaluar un material con fines educativos</h3>
+      <p>No todo recurso etiquetado como "educativo" cumple esa función. El docente reflexivo evalúa los materiales antes de incorporarlos a su práctica:</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Criterio</th><th>Pregunta de evaluación</th><th>Indicadores de calidad</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-slate">Alineación curricular</span></td>
+            <td>¿Responde al objetivo de aprendizaje establecido?</td>
+            <td>El material menciona explícitamente qué aprenderá el estudiante; el contenido corresponde al nivel del programa.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-rust">Rigor académico</span></td>
+            <td>¿La información es veraz, actualizada y bien sustentada?</td>
+            <td>Autoría identificable; fuentes citadas; sin errores conceptuales o información desactualizada.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-sage">Interactividad</span></td>
+            <td>¿Promueve la participación activa del estudiante?</td>
+            <td>Incluye actividades, preguntas, ejercicios o retos; ofrece retroalimentación.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-slate">Accesibilidad</span></td>
+            <td>¿Todos los estudiantes pueden acceder y utilizarlo?</td>
+            <td>Acceso sin pago o con licencia institucional; compatible con dispositivos móviles; sin barreras de idioma injustificadas.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-rust">Pertinencia cultural</span></td>
+            <td>¿Respeta y representa el contexto del estudiante?</td>
+            <td>Lenguaje incluyente; ejemplos contextualizados; representación diversa.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-sage">Usabilidad</span></td>
+            <td>¿El estudiante puede usarlo de forma autónoma?</td>
+            <td>Instrucciones claras; navegación intuitiva; no requiere instalación compleja.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-slate">
+      <div class="callout-label">Perspectiva constructivista</div>
+      <p>Desde Vigotsky, el material educativo eficaz no es el que contiene más información, sino el que <strong>crea el andamiaje adecuado</strong> para que el estudiante avance desde lo que ya sabe hacia lo que puede aprender con apoyo. El material debe ser suficientemente desafiante para generar conflicto cognitivo y suficientemente accesible para no frustrar al aprendiz.</p>
+    </div>
+  </section>
+
+  <!-- ══════ RECURSOS EXTERNOS ══════ -->
+  <section id="recursos" class="sec">
+    <div class="sec-head">
+      <div class="sec-label">Fuentes de consulta</div>
+      <h2 class="sec-title">Materiales externos<br><em>de consulta formal</em></h2>
+      <p class="sec-lead">Fuentes académicas y repositorios seleccionados con criterios de rigor, acceso abierto y pertinencia para el nivel universitario.</p>
+    </div>
+
+    <div class="callout callout-rust">
+      <div class="callout-label">Indicación de uso</div>
+      <p>Se recomienda consultar al menos dos de estas fuentes antes de realizar las actividades de la guía. Tome notas de los conceptos que amplifican o cuestionan lo leído en el contenido temático. La consulta de fuentes primarias es un hábito universitario irrenunciable.</p>
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--slate);margin:28px 0 16px;padding-bottom:7px;border-bottom:1px solid var(--slate-lite);">Textos y artículos académicos</h3>
+
+    <ul class="resource-list">
+      <li class="resource-item">
+        <span class="res-num">1</span>
+        <div class="res-body">
+          <div class="res-title">Introducción a la Tecnología Educativa</div>
+          <div class="res-author">Area Moreira, Manuel (2009). Universidad de La Laguna, España.</div>
+          <div class="res-url">https://manarea.webs.ull.es/wp-content/uploads/2010/06/ebookte.pdf</div>
+        </div>
+        <span class="res-type">PDF libre</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">2</span>
+        <div class="res-body">
+          <div class="res-title">Los medios y materiales didácticos en el siglo XXI</div>
+          <div class="res-author">Marquès Graells, Pere (2011). Departamento de Pedagogía Aplicada, UAB, España.</div>
+          <div class="res-url">http://peremarques.net/medios.htm</div>
+        </div>
+        <span class="res-type">Web académica</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">3</span>
+        <div class="res-body">
+          <div class="res-title">Psicología Educativa: un punto de vista cognoscitivo</div>
+          <div class="res-author">Ausubel, D., Novak, J. y Hanesian, H. (1983). Editorial Trillas, México. Cap. 1 y 2.</div>
+          <div class="res-url">Disponible en biblioteca universitaria física y digital (solicitar al acervo de la Universidad de la Ciénega)</div>
+        </div>
+        <span class="res-type">Libro</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">4</span>
+        <div class="res-body">
+          <div class="res-title">Tecnología educativa: diseño e implementación de entornos de aprendizaje digital</div>
+          <div class="res-author">Cabero Almenara, Julio y Martínez Gimeno, Amparo (2019). Ediciones Pirámide, Madrid.</div>
+          <div class="res-url">Disponible en Google Académico y catálogos de biblioteca BUAP, UAM y UDG con acceso institucional</div>
+        </div>
+        <span class="res-type">Libro</span>
+      </li>
+    </ul>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--slate);margin:28px 0 16px;padding-bottom:7px;border-bottom:1px solid var(--slate-lite);">Repositorios de Recursos Educativos Abiertos</h3>
+
+    <ul class="resource-list">
+      <li class="resource-item">
+        <span class="res-num">5</span>
+        <div class="res-body">
+          <div class="res-title">OER Commons — Repositorio internacional de REA</div>
+          <div class="res-author">Institute for the Study of Knowledge Management in Education (ISKME). Acceso gratuito.</div>
+          <div class="res-url">https://www.oercommons.org</div>
+        </div>
+        <span class="res-type">Repositorio</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">6</span>
+        <div class="res-body">
+          <div class="res-title">MERLOT — Multimedia Educational Resource for Learning and Online Teaching</div>
+          <div class="res-author">California State University System. Materiales evaluados por pares académicos.</div>
+          <div class="res-url">https://www.merlot.org</div>
+        </div>
+        <span class="res-type">Repositorio</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">7</span>
+        <div class="res-body">
+          <div class="res-title">Procomún — Red de Recursos Educativos Abiertos</div>
+          <div class="res-author">Instituto Nacional de Tecnologías Educativas y Formación del Profesorado (INTEF), España. En español.</div>
+          <div class="res-url">https://procomun.intef.es</div>
+        </div>
+        <span class="res-type">Repositorio</span>
+      </li>
+      <li class="resource-item">
+        <span class="res-num">8</span>
+        <div class="res-body">
+          <div class="res-title">MIT OpenCourseWare</div>
+          <div class="res-author">Massachusetts Institute of Technology. Materiales de cursos universitarios en acceso abierto.</div>
+          <div class="res-url">https://ocw.mit.edu</div>
+        </div>
+        <span class="res-type">Repositorio</span>
+      </li>
+    </ul>
+
+    <div class="callout callout-sage">
+      <div class="callout-label">Criterio para evaluar fuentes digitales</div>
+      <p>Al consultar recursos en línea, aplique el criterio <strong>CRAAP</strong> (adaptado): Currency (actualidad), Relevance (relevancia), Authority (autoridad del autor o institución), Accuracy (precisión y sustento de la información), Purpose (propósito: ¿informar, persuadir, vender?). Un recurso educativo de calidad supera este análisis con claridad.</p>
+    </div>
+  </section>
+
+  <!-- ══════ CONOCIMIENTO PREVIO ══════ -->
+  <section id="previo" class="sec">
+    <div class="sec-head">
+      <div class="sec-label">Diagnóstico inicial</div>
+      <h2 class="sec-title">Activación de<br><em>conocimiento previo</em></h2>
+      <p class="sec-lead">Antes de iniciar las actividades, reflexione sobre lo que ya sabe. El aprendizaje significativo comienza conectando con la experiencia propia.</p>
+    </div>
+
+    <div class="prose">
+      <p>El siguiente ejercicio no es una evaluación con nota. Su propósito es que usted identifique <strong>qué ideas, conceptos y experiencias previas</strong> trae consigo sobre los materiales didácticos antes de profundizar en el tema. Las respuestas honestas —aunque sean inciertas o incompletas— son las más valiosas para el proceso de aprendizaje.</p>
+      <p>Responda con base en su experiencia real como estudiante universitario. No busque en internet; escriba lo que genuinamente piensa y recuerda. Este espacio de práctica le ayudará a preparar sus respuestas antes de ingresarlas en Classroom.</p>
+    </div>
+
+    <div class="kp-wrap">
+      <div class="kp-header">
+        <h3>Pregunta de conocimiento previo</h3>
+        <p>Reflexione con base en su trayectoria universitaria hasta el momento.</p>
+      </div>
+      <div class="kp-body">
+        <div class="kp-question">
+          "A lo largo de su formación universitaria, ¿qué materiales didácticos —tanto tradicionales como digitales— han favorecido de manera genuina su aprendizaje, y cuáles han resultado ser simples recursos de entretenimiento disfrazados de educación? ¿Qué diferencia identifica entre ambos tipos?"
+        </div>
+        <p style="font-size:13px;color:var(--ink-soft);font-family:'DM Mono',monospace;letter-spacing:.04em;margin-bottom:8px;">ESPACIO DE PRÁCTICA — REDACTE SU BORRADOR ANTES DE PUBLICAR EN CLASSROOM</p>
+        <textarea id="kp-text" placeholder="Escriba aquí su respuesta. Intente mencionar al menos dos materiales concretos (con nombre de la materia y del recurso) y explique por qué uno favoreció su aprendizaje y el otro no..."></textarea>
+        <div class="btn-row">
+          <button class="btn btn-rust" onclick="saveKP()">Guardar borrador</button>
+          <button class="btn btn-outline" onclick="clearKP()">Limpiar</button>
+          <span id="kp-msg" style="font-size:13px;color:var(--sage);display:none;">Borrador guardado correctamente.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-slate" style="margin-top:28px;">
+      <div class="callout-label">Entrega en Google Classroom</div>
+      <p>Cuando haya reflexionado y redactado su respuesta, publíquela en la tarea "Conocimiento Previo — Tema 1.2" dentro de Google Classroom. Su docente utilizará estas respuestas como punto de partida para ajustar la profundidad y ejemplos del tema en clase.</p>
+    </div>
+  </section>
+
+  <!-- ══════ ACTIVIDAD 1 — FORO ══════ -->
+  <section id="act1" class="sec">
+    <div class="act-block">
+      <div class="act-head rust">
+        <div class="act-num">Actividad 01 de 04</div>
+        <div class="act-title">Foro de Mediación: Reflexión Crítica Colaborativa</div>
+        <div class="act-sub">Construcción colectiva del conocimiento a través del diálogo argumentado.</div>
+        <div class="act-chips">
+          <span class="act-chip">Foro de discusión</span>
+          <span class="act-chip">Participación individual + interacción</span>
+          <span class="act-chip">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="callout callout-bone">
+          <div class="callout-label">Fundamento pedagógico</div>
+          <p>El foro de discusión en el marco constructivista social es un espacio donde cada participante aporta su perspectiva y, al confrontarla con la de sus pares, avanza más allá de lo que lograría en solitario. La pregunta detonadora no tiene una respuesta única ni correcta: su función es provocar pensamiento crítico, no confirmar información.</p>
+        </div>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--slate);margin:28px 0 16px;border-bottom:1px solid var(--slate-lite);padding-bottom:7px;">Pregunta detonadora del Foro</h3>
+
+        <div class="forum-shell">
+          <div class="forum-topbar">SIMULADOR DE FORO — TECNOLOGÍA Y EDUCACIÓN II — PLANTEL CENTRO</div>
+          <div class="forum-q">
+            <p>"En la práctica universitaria cotidiana, ¿cuándo un material digital —un video, un podcast, una infografía— deja de ser un simple recurso informativo y se convierte en un verdadero material con fines educativos? ¿Quién determina ese tránsito: el diseñador del recurso, el docente que lo incorpora o el estudiante que lo usa? Argumente su postura con un ejemplo concreto de su experiencia universitaria actual en la Universidad de la Ciénega."</p>
+          </div>
+          <div class="forum-input">
+            <p style="font-size:12px;color:var(--ink-soft);font-family:'DM Mono',monospace;letter-spacing:.04em;margin-bottom:8px;">BORRADOR — LA RESPUESTA DEFINITIVA SE PUBLICA EN GOOGLE CLASSROOM</p>
+            <textarea id="foro-draft" placeholder="Redacte aquí su borrador. Recuerde: debe basarse en su experiencia real en la Universidad de la Ciénega, no en definiciones encontradas en internet. Esa especificidad es lo que hace imposible responder con una búsqueda web."></textarea>
+            <div class="btn-row">
+              <button class="btn btn-ink" onclick="saveForo()">Guardar borrador</button>
+              <button class="btn btn-outline" onclick="clearForo()">Limpiar</button>
+              <span id="foro-msg" style="font-size:13px;color:var(--sage);display:none;">Borrador guardado.</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--slate);margin:28px 0 16px;border-bottom:1px solid var(--slate-lite);padding-bottom:7px;">Instrucciones paso a paso</h3>
+
+        <ul class="steps">
+          <li class="step rust">
+            <div class="step-n">1</div>
+            <div class="step-c">
+              <div class="step-t">Leer la pregunta y reflexionar (sin buscar en internet)</div>
+              <div class="step-d">Dedique entre 10 y 15 minutos a pensar en su experiencia real como estudiante universitario antes de escribir. El valor de este foro está en la autenticidad de su vivencia, no en la cantidad de información que pueda copiar de otras fuentes.</div>
+            </div>
+          </li>
+          <li class="step rust">
+            <div class="step-n">2</div>
+            <div class="step-c">
+              <div class="step-t">Redactar una respuesta argumentada (250-400 palabras)</div>
+              <div class="step-d">Su respuesta debe contener: (a) una postura clara frente a la pregunta, (b) dos argumentos que la sostengan, y (c) un ejemplo concreto donde mencione la materia, el recurso específico y lo que ocurrió con su aprendizaje. Puede usar el borrador de arriba.</div>
+            </div>
+          </li>
+          <li class="step rust">
+            <div class="step-n">3</div>
+            <div class="step-c">
+              <div class="step-t">Publicar en Google Classroom</div>
+              <div class="step-d">Acceda a la tarea "Foro 1 — Materiales con fines educativos" en Classroom y publique su respuesta como comentario de clase. No copie texto de búsquedas; el foro se discute en clase y las respuestas genéricas son fácilmente identificables.</div>
+            </div>
+          </li>
+          <li class="step rust">
+            <div class="step-n">4</div>
+            <div class="step-c">
+              <div class="step-t">Interactuar con al menos dos compañeros</div>
+              <div class="step-d">Lea las respuestas de dos compañeros y responda cada una con un comentario sustantivo: señale un punto de acuerdo o desacuerdo específico y agregue un argumento nuevo. "Estoy de acuerdo" sin desarrollo no cuenta como interacción válida.</div>
+            </div>
+          </li>
+          <li class="step rust">
+            <div class="step-n">5</div>
+            <div class="step-c">
+              <div class="step-t">Captura de pantalla como evidencia</div>
+              <div class="step-d">Tome una captura que muestre su publicación original y sus dos respuestas a compañeros. Adjúntela en la tarea de Classroom como archivo de evidencia.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="example">
+          <div class="example-label">Ejemplo de respuesta bien estructurada (fragmento)</div>
+          <p>"...En mi materia de Psicología del Aprendizaje, la docente nos asignó un video de YouTube sobre la teoría de Vigotsky. La primera vez que lo vi fue interesante pero no modificó nada en mi comprensión del tema. Sin embargo, cuando la misma docente lo acompañó de una guía de observación con preguntas específicas y organizó una discusión grupal posterior, ese mismo video se convirtió en un material educativo genuino. Esto me lleva a argumentar que el tránsito de recurso informativo a material educativo no lo decide quien lo produce ni el formato digital, sino <strong>el docente que lo encuadra pedagógicamente y el propósito con que el estudiante lo aborda</strong>..."</p>
+        </div>
+
+        <div class="rubric-label">Rúbrica de evaluación — Foro de Mediación</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En desarrollo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Postura y argumentación</strong></td><td>Postura clara con argumentos sólidos y ejemplo real específico</td><td>Postura identificable con argumentos parciales</td><td>Postura vaga; sin argumentos sustentados</td></tr>
+              <tr><td><strong>Originalidad</strong></td><td>Basada en vivencia real; no reproducible mediante búsqueda web</td><td>Mezcla de experiencia y contenido general</td><td>Respuesta genérica sin experiencia personal</td></tr>
+              <tr><td><strong>Interacción</strong></td><td>Dos respuestas sustantivas que avanzan el debate</td><td>Dos respuestas con contenido pero sin profundidad</td><td>Una sola respuesta o sin interacción</td></tr>
+              <tr><td><strong>Calidad académica</strong></td><td>Vocabulario pedagógico adecuado; redacción formal</td><td>Vocabulario aceptable con errores menores</td><td>Registro informal; errores frecuentes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="classroom-box">
+          <div class="cl-icon">&#128197;</div>
+          <div class="cl-text">
+            <h4>Entrega en Google Classroom</h4>
+            <p>Publicación original + 2 respuestas a compañeros + captura de pantalla como evidencia. Use su cuenta institucional. Fecha límite: la indicada por su docente en la plataforma.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ACTIVIDAD 2 — APLICACIÓN ══════ -->
+  <section id="act2" class="sec">
+    <div class="act-block">
+      <div class="act-head slate">
+        <div class="act-num">Actividad 02 de 04</div>
+        <div class="act-title">Diseño de un material educativo digital para mi materia</div>
+        <div class="act-sub">Aprendizaje Basado en Problemas: del análisis a la producción.</div>
+        <div class="act-chips">
+          <span class="act-chip">Producción individual</span>
+          <span class="act-chip">Aplicación práctica</span>
+          <span class="act-chip">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="callout callout-bone">
+          <div class="callout-label">Situación problema (ABP)</div>
+          <p>Usted es estudiante de Pedagogía y en dos años ejercerá como docente o profesional de la educación. Actualmente cursa materias donde percibe que los recursos didácticos utilizados podrían mejorarse. El problema es concreto: <strong>diseñe un material educativo digital que usted mismo utilizaría si fuera docente de una de sus materias actuales</strong>, aplicando los criterios pedagógicos estudiados y demostrando que comprende la diferencia entre un recurso informativo y un material con fines educativos.</p>
+        </div>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--slate);margin:24px 0 16px;border-bottom:1px solid var(--slate-lite);padding-bottom:7px;">Instrucciones paso a paso</h3>
+
+        <ul class="steps">
+          <li class="step">
+            <div class="step-n">1</div>
+            <div class="step-c">
+              <div class="step-t">Seleccionar materia, tema y objetivo</div>
+              <div class="step-d">Elija una materia que curse actualmente en la Licenciatura en Pedagogía de la Universidad de la Ciénega. Defina un tema específico y redacte un objetivo de aprendizaje claro: ¿qué debe ser capaz de hacer el estudiante al terminar de usar su material?</div>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-n">2</div>
+            <div class="step-c">
+              <div class="step-t">Elegir el tipo de material digital y la herramienta</div>
+              <div class="step-d">Decida qué tipo de material creará: infografía interactiva, mapa conceptual digital, video educativo breve (3-5 min.), presentación pedagógica con preguntas intercaladas, o un OVA básico. Herramientas sugeridas: Canva (infografía/presentación), Genially (interactivo), MindMeister (mapa conceptual), Loom o Screencast-O-Matic (video), Padlet (tablero colaborativo).</div>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-n">3</div>
+            <div class="step-c">
+              <div class="step-t">Diseñar el material aplicando criterios pedagógicos</div>
+              <div class="step-d">El material DEBE incluir: (a) objetivo de aprendizaje visible, (b) contenido riguroso con referencias, (c) al menos una actividad que exija participación activa del estudiante (pregunta, ejercicio, reto o reflexión), y (d) una forma de autoevaluación o retroalimentación. Recuerde: sin estos elementos, es un recurso informativo, no un material educativo.</div>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-n">4</div>
+            <div class="step-c">
+              <div class="step-t">Completar la ficha pedagógica del material</div>
+              <div class="step-d">En un documento adjunto (Google Docs o Word), complete: Nombre del material, tipo de material, herramienta utilizada, objetivo de aprendizaje, descripción del contenido, descripción de la actividad activa incluida, criterios pedagógicos que cumple (de la tabla de criterios) y justificación pedagógica de su diseño (por qué tomó las decisiones que tomó).</div>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-n">5</div>
+            <div class="step-c">
+              <div class="step-t">Compartir el material y la ficha en Classroom</div>
+              <div class="step-d">Suba el enlace al material digital (Canva, Genially, etc.) y el documento de ficha pedagógica en la tarea "Actividad 2 — Mi Material Educativo Digital" en Classroom. Asegúrese de que el enlace esté configurado como "cualquier persona con el enlace puede ver".</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="example">
+          <div class="example-label">Ejemplo de material bien diseñado</div>
+          <p><strong>Materia:</strong> Teorías del Aprendizaje | <strong>Tema:</strong> Aprendizaje significativo de Ausubel | <strong>Tipo:</strong> Infografía interactiva en Genially<br><br>
+          La infografía incluye: (a) objetivo visible al inicio: "Al terminar de explorar esta infografía, el estudiante distinguirá el aprendizaje significativo del memorístico en ejemplos de su vida universitaria"; (b) contenido con referencias a Ausubel (1983) y Novak (2010); (c) actividad activa: tres preguntas de reflexión intercaladas que el estudiante debe responder antes de avanzar; (d) autoevaluación final: lista de cotejo con los criterios del aprendizaje significativo para que el estudiante evalúe un recurso de otra materia.</p>
+        </div>
+
+        <div class="rubric-label">Rúbrica de evaluación — Material Educativo Digital</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En desarrollo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Objetivo de aprendizaje</strong></td><td>Claro, medible y visible en el material</td><td>Presente pero poco específico</td><td>Ausente o muy vago</td></tr>
+              <tr><td><strong>Rigor del contenido</strong></td><td>Información correcta, actualizada y con referencias</td><td>Información correcta sin referencias</td><td>Errores conceptuales o información sin respaldo</td></tr>
+              <tr><td><strong>Actividad activa</strong></td><td>Al menos una actividad que exige participación real del estudiante</td><td>Actividad presente pero poco significativa</td><td>Sin actividad; solo presenta información</td></tr>
+              <tr><td><strong>Ficha pedagógica</strong></td><td>Completa, justificación pedagógica sólida</td><td>Completa con justificación parcial</td><td>Incompleta o sin justificación</td></tr>
+              <tr><td><strong>Diseño y usabilidad</strong></td><td>Visual claro, navegación intuitiva, sin errores de ortografía</td><td>Aceptable con algunas inconsistencias</td><td>Difícil de leer o navegar</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="classroom-box">
+          <div class="cl-icon">&#128197;</div>
+          <div class="cl-text">
+            <h4>Entrega en Google Classroom</h4>
+            <p>Enlace al material digital + documento de ficha pedagógica en Google Docs o Word. Incluya su nombre completo en el título de ambos archivos.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ACTIVIDAD 3 — CASO PRÁCTICO ══════ -->
+  <section id="act3" class="sec">
+    <div class="act-block">
+      <div class="act-head sage">
+        <div class="act-num">Actividad 03 de 04</div>
+        <div class="act-title">Caso práctico: "El dilema de la pantalla"</div>
+        <div class="act-sub">Análisis pedagógico de una situación real en educación superior universitaria.</div>
+        <div class="act-chips">
+          <span class="act-chip">Análisis de caso</span>
+          <span class="act-chip">Reflexión crítica</span>
+          <span class="act-chip">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="callout callout-bone">
+          <div class="callout-label">Fundamento de la actividad</div>
+          <p>El análisis de casos es una estrategia central en el ABP: permite aplicar los marcos conceptuales a situaciones reales o realistas, ejercitar el juicio pedagógico y desarrollar la capacidad de argumentar decisiones profesionales. No existe una única respuesta correcta; la calidad de la respuesta depende de la solidez de la argumentación.</p>
+        </div>
+
+        <div class="caso-box">
+          <div class="caso-top">
+            <span class="res-num">C1</span>
+            <div>
+              <div class="caso-top-label">Caso práctico para análisis pedagógico</div>
+              <div style="font-size:13px;color:var(--ink-soft);margin-top:2px;">Nivel: Licenciatura en Pedagogía, educación superior universitaria</div>
+            </div>
+          </div>
+          <div class="caso-body">
+            <div class="caso-narrative">
+              <strong>Contexto:</strong> La profesora Alejandra imparte la materia de Didáctica General en el tercer semestre de la Licenciatura en Pedagogía de una universidad pública en México. Al inicio del semestre revisó el programa y decidió "modernizar" sus clases incorporando materiales digitales. Para ello, sustituyó el libro de texto obligatorio por una lista de 15 videos de YouTube sobre didáctica (entre 8 y 45 minutos cada uno), tres podcasts de divulgación educativa y varias infografías de Pinterest.
+              <br><br>
+              <strong>Desarrollo:</strong> A mitad del semestre, la profesora Alejandra nota que sus estudiantes participan activamente en clase pero que, al aplicar los conceptos en ejercicios prácticos, cometen errores conceptuales frecuentes: confunden enfoques teóricos, citan fuentes de dudosa calidad académica y tienen dificultades para articular los conceptos entre sí. Cuando les pregunta, varios estudiantes le dicen que "los videos eran muy entretenidos" pero que "cada uno decía algo diferente" y que "no sabían con cuál quedarse".
+              <br><br>
+              <strong>Dilema:</strong> La profesora Alejandra está convencida de que los materiales digitales son superiores a los libros de texto porque los estudiantes los usan más. Sin embargo, los resultados de aprendizaje no mejoraron respecto al semestre anterior, cuando usaba el libro de texto con actividades de análisis.
+            </div>
+
+            <div class="caso-q">
+              <div class="caso-q-label">Pregunta 1. Diagnóstico pedagógico: ¿Cuál es el problema central del caso?</div>
+              <textarea placeholder="Identifique el problema pedagógico principal. ¿Es un problema de selección de materiales, de diseño pedagógico, de evaluación o de otro tipo? Fundamente con conceptos del contenido temático..."></textarea>
+            </div>
+            <div class="caso-q">
+              <div class="caso-q-label">Pregunta 2. Análisis desde el constructivismo: ¿Por qué los materiales digitales usados por la profesora Alejandra no funcionaron como materiales educativos?</div>
+              <textarea placeholder="Aplique al menos dos conceptos teóricos del tema (aprendizaje significativo, ZDP, criterios de los materiales educativos, etc.) para explicar por qué los recursos digitales seleccionados no lograron los aprendizajes esperados..."></textarea>
+            </div>
+            <div class="caso-q">
+              <div class="caso-q-label">Pregunta 3. Propuesta de intervención: ¿Cómo rediseñaría la estrategia de la profesora Alejandra?</div>
+              <textarea placeholder="Diseñe una propuesta concreta de mejora. No descarte los materiales digitales: proponga cómo integrarlos pedagógicamente junto con otros recursos para que se conviertan en materiales con fines educativos reales. Sea específico..."></textarea>
+            </div>
+            <div class="caso-q">
+              <div class="caso-q-label">Pregunta 4. Conexión con su propia experiencia: ¿Ha vivido una situación similar como estudiante?</div>
+              <textarea placeholder="Relate brevemente una experiencia propia en la que un docente utilizó un recurso digital que no funcionó como material educativo (o que sí funcionó). ¿Qué lo hizo diferente?"></textarea>
+            </div>
+
+            <div class="btn-row" style="margin-top:18px;">
+              <button class="btn btn-ink" onclick="saveCaso()">Guardar respuestas del caso</button>
+              <span id="caso-msg" style="font-size:13px;color:var(--sage);display:none;">Respuestas guardadas localmente.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-slate" style="margin-top:8px;">
+          <div class="callout-label">Indicación para la entrega</div>
+          <p>Copie sus respuestas en un documento de Google Docs. El documento debe tener encabezado con su nombre completo, materia y fecha. Las respuestas deben estar numeradas y tener una extensión mínima de 100 palabras cada una. Comparta el enlace en la tarea "Actividad 3 — Caso Práctico" de Classroom.</p>
+        </div>
+
+        <div class="classroom-box">
+          <div class="cl-icon">&#128197;</div>
+          <div class="cl-text">
+            <h4>Entrega en Google Classroom</h4>
+            <p>Documento de Google Docs con las cuatro respuestas al caso, con encabezado institucional. Mínimo 100 palabras por respuesta. Enlace con permisos de visualización para el docente.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ACTIVIDAD 4 — QUIZ ══════ -->
+  <section id="act4" class="sec">
+    <div class="act-block">
+      <div class="act-head ink">
+        <div class="act-num">Actividad 04 de 04</div>
+        <div class="act-title">Quiz de autoevaluación</div>
+        <div class="act-sub">Cinco preguntas de opción múltiple con retroalimentación inmediata y puntaje final.</div>
+        <div class="act-chips">
+          <span class="act-chip">5 preguntas</span>
+          <span class="act-chip">20 puntos c/u</span>
+          <span class="act-chip">Retroalimentación inmediata</span>
+          <span class="act-chip">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="callout callout-bone">
+          <div class="callout-label">Instrucciones</div>
+          <p>Responda cada pregunta seleccionando la opción que considere correcta. Inmediatamente después de seleccionar, recibirá retroalimentación. Al completar las cinco preguntas, aparecerá su puntaje total. Para entregar en Classroom, tome una captura de pantalla del panel de resultados finales.</p>
+        </div>
+
+        <div id="quiz">
+
+          <!-- Q1 -->
+          <div class="quiz-q" id="q1">
+            <div class="q-seq">PREGUNTA 01 / 05</div>
+            <div class="q-stem">¿Qué característica distingue fundamentalmente a un material <em>con fines educativos</em> de un material simplemente informativo?</div>
+            <div class="q-opts">
+              <button class="q-opt" onclick="ans('q1','a','c')"><span class="q-bullet">A</span><span>Su formato digital y su accesibilidad en internet.</span></button>
+              <button class="q-opt" onclick="ans('q1','b','c')"><span class="q-bullet">B</span><span>La cantidad de información que contiene y su extensión.</span></button>
+              <button class="q-opt" onclick="ans('q1','c','c')"><span class="q-bullet">C</span><span>Su diseño o uso intencional orientado a lograr objetivos de aprendizaje específicos.</span></button>
+              <button class="q-opt" onclick="ans('q1','d','c')"><span class="q-bullet">D</span><span>El hecho de haber sido producido por una institución educativa reconocida.</span></button>
+            </div>
+            <div class="q-fb" id="q1-fb"></div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="quiz-q" id="q2">
+            <div class="q-seq">PREGUNTA 02 / 05</div>
+            <div class="q-stem">Según el enfoque constructivista de Vigotsky, ¿cuál es el material educativo más eficaz?</div>
+            <div class="q-opts">
+              <button class="q-opt" onclick="ans('q2','a','b')"><span class="q-bullet">A</span><span>El que contiene la mayor cantidad de información posible en el menor tiempo.</span></button>
+              <button class="q-opt" onclick="ans('q2','b','b')"><span class="q-bullet">B</span><span>El que crea andamiaje adecuado para que el estudiante avance dentro de su Zona de Desarrollo Próximo.</span></button>
+              <button class="q-opt" onclick="ans('q2','c','b')"><span class="q-bullet">C</span><span>El que resulta más entretenido y mantiene la atención del estudiante por más tiempo.</span></button>
+              <button class="q-opt" onclick="ans('q2','d','b')"><span class="q-bullet">D</span><span>El producido por el propio docente sin intervención de plataformas digitales.</span></button>
+            </div>
+            <div class="q-fb" id="q2-fb"></div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="quiz-q" id="q3">
+            <div class="q-seq">PREGUNTA 03 / 05</div>
+            <div class="q-stem">Un estudiante de Pedagogía busca un repositorio donde encontrar materiales educativos digitales evaluados por pares académicos y con licencia que permite adaptarlos. ¿Cuál de los siguientes recursos es más adecuado para ese propósito?</div>
+            <div class="q-opts">
+              <button class="q-opt" onclick="ans('q3','a','d')"><span class="q-bullet">A</span><span>Pinterest, por su amplia colección de infografías educativas.</span></button>
+              <button class="q-opt" onclick="ans('q3','b','d')"><span class="q-bullet">B</span><span>YouTube, por la variedad y accesibilidad de sus videos.</span></button>
+              <button class="q-opt" onclick="ans('q3','c','d')"><span class="q-bullet">C</span><span>Wikipedia, por ser una fuente de acceso abierto y colaborativo.</span></button>
+              <button class="q-opt" onclick="ans('q3','d','d')"><span class="q-bullet">D</span><span>MERLOT, por ofrecer recursos educativos evaluados por pares con criterios académicos y licencias abiertas.</span></button>
+            </div>
+            <div class="q-fb" id="q3-fb"></div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="quiz-q" id="q4">
+            <div class="q-seq">PREGUNTA 04 / 05</div>
+            <div class="q-stem">La profesora Alejandra del caso práctico comete principalmente un error de:</div>
+            <div class="q-opts">
+              <button class="q-opt" onclick="ans('q4','a','b')"><span class="q-bullet">A</span><span>Tecnología, porque usa herramientas digitales sin saber cómo funcionan.</span></button>
+              <button class="q-opt" onclick="ans('q4','b','b')"><span class="q-bullet">B</span><span>Diseño pedagógico, porque selecciona recursos informativos sin incorporar estructura de aprendizaje, actividad activa ni evaluación.</span></button>
+              <button class="q-opt" onclick="ans('q4','c','b')"><span class="q-bullet">C</span><span>Autoridad, porque no tiene el perfil para usar materiales digitales en el aula.</span></button>
+              <button class="q-opt" onclick="ans('q4','d','b')"><span class="q-bullet">D</span><span>Cantidad, porque 15 videos y 3 podcasts son demasiados materiales para un semestre.</span></button>
+            </div>
+            <div class="q-fb" id="q4-fb"></div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="quiz-q" id="q5">
+            <div class="q-seq">PREGUNTA 05 / 05</div>
+            <div class="q-stem">Al evaluar un material educativo digital con el criterio de <em>interactividad</em>, ¿qué debe verificar el docente?</div>
+            <div class="q-opts">
+              <button class="q-opt" onclick="ans('q5','a','c')"><span class="q-bullet">A</span><span>Que el material tenga un diseño visual atractivo con animaciones y colores llamativos.</span></button>
+              <button class="q-opt" onclick="ans('q5','b','c')"><span class="q-bullet">B</span><span>Que el material sea gratuito y accesible desde cualquier dispositivo.</span></button>
+              <button class="q-opt" onclick="ans('q5','c','c')"><span class="q-bullet">C</span><span>Que el material exija una respuesta activa del estudiante (responder, elegir, construir, reflexionar) y ofrezca retroalimentación a esa respuesta.</span></button>
+              <button class="q-opt" onclick="ans('q5','d','c')"><span class="q-bullet">D</span><span>Que el material haya sido producido por una institución pública reconocida.</span></button>
+            </div>
+            <div class="q-fb" id="q5-fb"></div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center;margin-top:16px;">
+          <button id="show-score-btn" class="btn btn-ink" style="display:none;padding:13px 38px;font-size:15px;" onclick="showScore()">Ver puntaje final</button>
+        </div>
+
+        <div class="score-panel" id="score-panel">
+          <div class="score-big" id="score-num">—</div>
+          <div class="score-of">puntos de 100</div>
+          <div class="score-msg" id="score-msg"></div>
+          <div class="score-detail" id="score-detail"></div>
+          <div style="margin-top:24px;">
+            <button class="btn" style="background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);" onclick="retakeQuiz()">Intentar nuevamente</button>
+          </div>
+        </div>
+
+        <div style="margin-top:30px;">
+          <div class="classroom-box">
+            <div class="cl-icon">&#128197;</div>
+            <div class="cl-text">
+              <h4>Entrega en Google Classroom</h4>
+              <p>Tome una captura de pantalla del panel de puntaje final (con su resultado visible). Adjúntela en la tarea "Actividad 4 — Quiz de Autoevaluación". Opcionalmente, en el comentario de entrega anote cuál pregunta le resultó más difícil y por qué.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ REFLEXIÓN FINAL ══════ -->
+  <section id="reflexion" class="sec">
+    <div class="sec-head">
+      <div class="sec-label">Cierre del aprendizaje</div>
+      <h2 class="sec-title">Reflexión y plan<br><em>de aplicación</em></h2>
+      <p class="sec-lead">El aprendizaje universitario se consolida cuando se proyecta hacia la acción. Planifique cómo integrará lo aprendido en su vida académica y profesional.</p>
+    </div>
+
+    <div class="prose">
+      <p>La reflexión metacognitiva es una competencia central de la formación pedagógica. El profesional de la educación no solo aplica estrategias: comprende <em>por qué</em> las aplica, <em>cuándo</em> son pertinentes y <em>cómo</em> puede mejorarlas. Esta sección le invita a consolidar los aprendizajes del tema proyectándolos hacia su práctica como estudiante universitario actual y como futuro profesional de la pedagogía.</p>
+    </div>
+
+    <div class="rfx-grid">
+      <div class="rfx-card">
+        <h4>1. Lo que cambió en mi forma de pensar</h4>
+        <p>¿Qué concepto o perspectiva de este tema transformó su visión sobre los materiales didácticos? ¿Qué pensaba antes y qué piensa ahora?</p>
+        <textarea placeholder="Escriba aquí su reflexión..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>2. Mi práctica como estudiante</h4>
+        <p>¿Cómo utilizará lo aprendido para aprovechar mejor los materiales que sus docentes emplean actualmente en la Universidad de la Ciénega?</p>
+        <textarea placeholder="Describa acciones concretas que implementará..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>3. Mi futura práctica docente</h4>
+        <p>Como futuro egresado de Pedagogía, ¿qué tres criterios priorizará siempre al seleccionar o diseñar materiales educativos? ¿Por qué esos tres?</p>
+        <textarea placeholder="Liste y justifique sus tres criterios prioritarios..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>4. Una brecha que identifico</h4>
+        <p>¿Qué aspecto de los materiales educativos digitales le generó mayor incertidumbre o dificultad durante esta guía? ¿Cómo planea resolverlo?</p>
+        <textarea placeholder="Identifique la brecha y su plan de acción..."></textarea>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:20px;">Plan de acción para los próximos 30 días</h3>
+
+    <div class="grid-3">
+      <div class="card rust-accent">
+        <div class="card-t">Semana 1-2: Observación documentada</div>
+        <p>Lleve una bitácora donde registre y clasifique todos los materiales que sus docentes usen esta semana. Evalúe uno por semana con la tabla de criterios estudiada.</p>
+      </div>
+      <div class="card slate-accent">
+        <div class="card-t">Semana 2-3: Exploración de repositorios</div>
+        <p>Explore OER Commons, MERLOT y Procomún. Identifique tres materiales relevantes para sus materias actuales y evalúe su calidad con los criterios del tema.</p>
+      </div>
+      <div class="card sage-accent">
+        <div class="card-t">Semana 3-4: Producción y mejora</div>
+        <p>Tome el material que diseñó en la Actividad 2, recíbalo con los comentarios de su docente y mejórelo. La iteración es parte esencial del diseño pedagógico profesional.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-bone" style="margin-top:36px;">
+      <div class="callout-label">Cierre integrador — Opcional pero recomendado</div>
+      <p>Redacte en su cuaderno o en un documento personal una <strong>carta pedagógica</strong> dirigida a su "yo docente en cinco años". En ella explique qué tipo de materiales utilizará con sus estudiantes, qué promesas se hace a sí mismo respecto a la calidad y pertinencia de sus recursos, y cómo el enfoque constructivista orientará sus decisiones. No tiene entrega en Classroom: es un compromiso con su propia formación.</p>
+    </div>
+  </section>
+
+</div><!-- /page-body -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="page-footer">
+  <p><strong>Universidad de la Ciénega — Plantel Centro</strong></p>
+  <p>Licenciatura en Pedagogía &mdash; Tecnología y Educación II</p>
+  <p>Tema 1.2: Materiales con fines educativos incluyendo los digitales</p>
+  <p style="margin-top:8px;font-size:11px;opacity:.55;">Guía diseñada con metodología constructivista, pedagogía activa y Aprendizaje Basado en Problemas. Jalisco, México &mdash; 2026.</p>
+</footer>
+
+<script>
+// ══ NAVIGATION
+const SECS = ['intro','contenido','recursos','previo','act1','act2','act3','act4','reflexion'];
+function showSec(id) {
+  SECS.forEach(s => document.getElementById(s).classList.remove('visible'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  const idx = SECS.indexOf(id);
+  document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Progress
+  const pct = Math.round(((idx + 1) / SECS.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// ══ DRAFT SAVES
+function save(key, id, msgId) {
+  const v = document.getElementById(id).value.trim();
+  if (v) { localStorage.setItem(key, v); flash(msgId); }
+}
+function clear(key, id) { document.getElementById(id).value = ''; localStorage.removeItem(key); }
+function flash(id) {
+  const el = document.getElementById(id);
+  el.style.display = 'inline';
+  setTimeout(() => el.style.display = 'none', 3500);
+}
+function saveKP()   { save('kp-draft','kp-text','kp-msg'); }
+function clearKP()  { clear('kp-draft','kp-text'); }
+function saveForo() { save('foro-draft','foro-draft','foro-msg'); }
+function clearForo(){ clear('foro-draft','foro-draft'); }
+function saveCaso() {
+  const txts = document.querySelectorAll('.caso-q textarea');
+  let data = [];
+  txts.forEach(t => data.push(t.value));
+  localStorage.setItem('caso-answers', JSON.stringify(data));
+  flash('caso-msg');
+}
+
+// Restore drafts on load
+window.addEventListener('load', () => {
+  ['kp-draft','foro-draft'].forEach(k => {
+    const v = localStorage.getItem(k);
+    const el = document.getElementById(k);
+    if (v && el) el.value = v;
+  });
+  const casoData = localStorage.getItem('caso-answers');
+  if (casoData) {
+    const arr = JSON.parse(casoData);
+    document.querySelectorAll('.caso-q textarea').forEach((t, i) => {
+      if (arr[i]) t.value = arr[i];
+    });
+  }
+});
+
+// ══ QUIZ
+const qState = {};
+const feedbacks = {
+  q1: {
+    c: 'Correcto. La característica definitoria de un material con fines educativos es su intencionalidad pedagógica: ha sido diseñado o seleccionado para apoyar el logro de objetivos de aprendizaje específicos, independientemente de su soporte.',
+    w: 'Incorrecto. El soporte digital, la cantidad de información o la institución que lo produce no determinan el carácter educativo de un material. Lo que lo define es su diseño o uso con intencionalidad pedagógica explícita orientada a objetivos de aprendizaje.'
+  },
+  q2: {
+    c: 'Correcto. Para Vigotsky, el material educativo más eficaz es el que opera dentro de la Zona de Desarrollo Próximo del estudiante: suficientemente desafiante para generar conflicto cognitivo, pero con el andamiaje adecuado para que el aprendiz avance con apoyo.',
+    w: 'Incorrecto. Vigotsky no define la eficacia de un material por la cantidad de información que contiene, su carácter entretenido o su origen. El criterio central es el andamiaje que ofrece al estudiante para avanzar dentro de su Zona de Desarrollo Próximo.'
+  },
+  q3: {
+    c: 'Correcto. MERLOT es un repositorio especializado en educación superior donde los materiales son evaluados por pares académicos y se ofrecen bajo condiciones que permiten su uso y adaptación. Es el recurso más pertinente para el propósito descrito.',
+    w: 'Incorrecto. Pinterest, YouTube y Wikipedia son recursos informativos valiosos, pero ninguno garantiza evaluación por pares académicos ni licencias que permitan la adaptación de los materiales con criterios pedagógicos establecidos. MERLOT fue diseñado específicamente para ese propósito en educación superior.'
+  },
+  q4: {
+    c: 'Correcto. El problema central de la profesora Alejandra no es tecnológico ni de volumen: es un error de diseño pedagógico. Sustituyó materiales por recursos sin garantizar que tuvieran estructura didáctica, objetivo de aprendizaje visible, actividad activa ni mecanismo de evaluación.',
+    w: 'Incorrecto. El dominio tecnológico, la autoridad docente o la cantidad de materiales no son el problema central. La profesora Alejandra comete un error de diseño pedagógico: seleccionó recursos informativos y los usó como si fueran materiales educativos sin incorporar los elementos que los convierten en tales.'
+  },
+  q5: {
+    c: 'Correcto. El criterio de interactividad evalúa si el material exige una respuesta activa del estudiante —responder, elegir, construir, reflexionar— y si ofrece retroalimentación a esa respuesta. Sin estos elementos, el material es receptivo, no interactivo.',
+    w: 'Incorrecto. El diseño visual atractivo, el acceso gratuito y la institución productora son criterios de accesibilidad y usabilidad, no de interactividad. Este criterio específicamente evalúa si el material exige participación activa del estudiante y le ofrece retroalimentación.'
+  }
+};
+
+let qDone = 0;
+let score = 0;
+
+function ans(qid, chosen, correct) {
+  if (qState[qid]) return;
+  qState[qid] = { chosen, correct };
+  qDone++;
+
+  const qEl = document.getElementById(qid);
+  const opts = qEl.querySelectorAll('.q-opt');
+  const isOk = chosen === correct;
+  const letters = ['a','b','c','d'];
+
+  opts.forEach((o, i) => {
+    const l = letters[i];
+    o.classList.add('locked');
+    if (l === correct) o.classList.add('corr');
+    else if (l === chosen && !isOk) o.classList.add('incr');
+  });
+
+  const fb = document.getElementById(qid + '-fb');
+  fb.classList.add('show');
+  if (isOk) {
+    fb.classList.add('ok');
+    fb.textContent = feedbacks[qid].c;
+    score += 20;
+    qEl.classList.add('ok');
+  } else {
+    fb.classList.add('fail');
+    fb.textContent = feedbacks[qid].w;
+    qEl.classList.add('fail');
+  }
+
+  if (qDone === 5) document.getElementById('show-score-btn').style.display = 'inline-block';
+}
+
+function showScore() {
+  const panel = document.getElementById('score-panel');
+  panel.classList.add('show');
+  document.getElementById('score-num').textContent = score;
+  const correct = score / 20;
+  document.getElementById('score-detail').textContent = 'Respondió correctamente ' + correct + ' de 5 preguntas.';
+  let msg = '';
+  if (score === 100) msg = 'Desempeño sobresaliente. Domina los conceptos fundamentales del tema. Continúe profundizando en la aplicación práctica.';
+  else if (score >= 80) msg = 'Muy buen desempeño. Comprende los conceptos clave. Revise las preguntas incorrectas consultando el contenido temático.';
+  else if (score >= 60) msg = 'Desempeño satisfactorio. Se recomienda releer la sección de contenido temático y consultar las fuentes externas antes de continuar.';
+  else msg = 'Se recomienda revisar el contenido temático completo, consultar al menos dos fuentes externas recomendadas y volver a intentar el quiz.';
+  document.getElementById('score-msg').textContent = msg;
+  panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('show-score-btn').style.display = 'none';
+}
+
+function retakeQuiz() {
+  Object.keys(qState).forEach(k => delete qState[k]);
+  score = 0;
+  qDone = 0;
+
+  SECS.forEach((_, i) => {}); // dummy
+  ['q1','q2','q3','q4','q5'].forEach(qid => {
+    const qEl = document.getElementById(qid);
+    qEl.className = 'quiz-q';
+    qEl.querySelectorAll('.q-opt').forEach(o => {
+      o.className = 'q-opt';
+    });
+    const fb = document.getElementById(qid + '-fb');
+    fb.className = 'q-fb';
+    fb.textContent = '';
+  });
+
+  document.getElementById('score-panel').classList.remove('show');
+  document.getElementById('show-score-btn').style.display = 'none';
+  window.scrollTo({ top: document.getElementById('act4').offsetTop - 100, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
