@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini en Google Classroom — Guía Docente · Universidad de la Ciénega</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#0d0e14;--bg-surface:#13151f;--bg-raised:#1a1d2e;--bg-card:#1f2235;--bg-hover:#252840;--gem-1:#8ab4f8;--gem-2:#c084fc;--gem-3:#67e8f9;--gem-mid:#a78bfa;--text-primary:#e8eaf0;--text-secondary:#9da3b8;--text-muted:#5e6480;--text-accent:#8ab4f8;--border-subtle:rgba(139,164,248,0.12);--border-mid:rgba(139,164,248,0.22);--border-strong:rgba(139,164,248,0.4);--classroom-blue:#4285f4;--gemini-violet:#9c5ef7;--success:#34d399;--warn:#fbbf24;--radius-sm:4px;--radius-md:8px;--radius-lg:14px;--font-display:"DM Serif Display",Georgia,serif;--font-body:"DM Sans",system-ui,sans-serif;--font-mono:"Space Mono",monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);font-size:1rem;font-weight:300;line-height:1.75;color:var(--text-primary);background:var(--bg-deep);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-surface)}::-webkit-scrollbar-thumb{background:var(--border-mid);border-radius:2px}
+.gem-text{background:linear-gradient(90deg,var(--gem-1) 0%,var(--gem-2) 55%,var(--gem-3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.inst-band{background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);padding:.6rem 2rem;display:flex;align-items:center;gap:1.25rem}
+.inst-logo{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--border-mid);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--bg-raised);font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--text-accent);letter-spacing:.05em;overflow:hidden}
+.inst-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.inst-name{font-family:var(--font-body);font-size:.88rem;font-weight:500;color:var(--text-primary)}
+.inst-dept{font-size:.75rem;color:var(--text-muted);font-style:italic}
+.hero{position:relative;padding:5rem 2rem 4.5rem;text-align:center;overflow:hidden;background:var(--bg-deep)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(138,180,248,.08) 0%,transparent 70%),radial-gradient(ellipse 40% 30% at 20% 80%,rgba(192,132,252,.06) 0%,transparent 60%),radial-gradient(ellipse 30% 40% at 80% 60%,rgba(103,232,249,.05) 0%,transparent 60%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(139,164,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,164,248,.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;position:relative;display:inline-flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";display:inline-block;width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--border-mid))}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--border-mid),transparent)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;font-weight:400;margin-bottom:.5rem;position:relative}
+.hero h1 em{font-style:italic;display:block}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--text-secondary);max-width:520px;margin:1.25rem auto 2.5rem;line-height:1.7;position:relative}
+.hero-chips{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:3rem}
+.chip{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;padding:.3rem .85rem;border:1px solid var(--border-subtle);border-radius:100px;color:var(--text-muted);background:var(--bg-surface)}
+.hero-divider{position:relative;width:100%;max-width:180px;height:1px;background:linear-gradient(90deg,transparent,var(--border-mid),transparent);margin:0 auto}
+.sticky-nav{position:sticky;top:0;z-index:100;background:rgba(13,14,20,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle)}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 1rem}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-inner a{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:.8rem 1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+.nav-inner a:hover{color:var(--text-accent);border-color:var(--border-mid)}
+.nav-inner a.anav{color:var(--gem-1);border-color:var(--gem-1)}
+.page{max-width:860px;margin:0 auto;padding:0 1.5rem}
+section{padding:4.5rem 0}
+section+section{border-top:1px solid var(--border-subtle)}
+.s-header{margin-bottom:3rem}
+.s-eyebrow{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.s-eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:var(--border-mid)}
+.s-header h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;line-height:1.2;color:var(--text-primary)}
+.s-header p{margin-top:.75rem;font-size:1rem;font-weight:300;color:var(--text-secondary);max-width:600px;line-height:1.7}
+h3{font-family:var(--font-display);font-size:1.35rem;font-weight:400;color:var(--text-primary);margin:3rem 0 1rem;line-height:1.25}
+h4{font-family:var(--font-body);font-size:.95rem;font-weight:600;color:var(--text-primary);margin:1.75rem 0 .6rem;letter-spacing:.01em}
+p{margin-bottom:1rem;color:var(--text-secondary)}
+p:last-child{margin-bottom:0}
+a{color:var(--text-accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;border:1px solid;margin-bottom:1rem}
+.pill-gemini{border-color:rgba(192,132,252,.35);color:#c084fc;background:rgba(192,132,252,.08)}
+.pill-classroom{border-color:rgba(66,133,244,.35);color:#7eb4ff;background:rgba(66,133,244,.08)}
+.pill-activity{border-color:rgba(251,191,36,.35);color:#fbbf24;background:rgba(251,191,36,.08)}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;margin:2rem 0}
+.info-cell{background:var(--bg-raised);padding:1.5rem;position:relative}
+.info-cell::before{content:"";position:absolute;top:0;left:0;right:0;height:2px}
+.info-cell.ic-blue::before{background:linear-gradient(90deg,var(--classroom-blue),transparent)}
+.info-cell.ic-violet::before{background:linear-gradient(90deg,var(--gem-mid),transparent)}
+.info-cell.ic-cyan::before{background:linear-gradient(90deg,var(--gem-3),transparent)}
+.info-cell.ic-green::before{background:linear-gradient(90deg,var(--success),transparent)}
+.info-num{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;color:var(--text-muted);margin-bottom:.6rem}
+.info-cell h4{margin:0 0 .5rem;font-size:.95rem}
+.info-cell p{font-size:.85rem;color:var(--text-muted);margin:0;line-height:1.55}
+.step-list{list-style:none;margin:1.75rem 0}
+.step-item{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--border-subtle)}
+.step-item:last-child{border-bottom:none}
+.step-n{font-family:var(--font-mono);font-size:.7rem;font-weight:700;color:var(--gem-1);width:32px;height:32px;border:1px solid var(--border-mid);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;background:rgba(138,180,248,.06)}
+.step-body strong{display:block;font-size:.95rem;font-weight:600;color:var(--text-primary);margin-bottom:.3rem}
+.step-body span{font-size:.88rem;color:var(--text-muted);line-height:1.65}
+.step-body .step-note{display:inline-block;margin-top:.5rem;font-family:var(--font-mono);font-size:.72rem;color:var(--gem-1);background:rgba(138,180,248,.07);border:1px solid rgba(138,180,248,.15);border-radius:var(--radius-sm);padding:.2rem .6rem}
+.callout{border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin:2rem 0;border-left:3px solid}
+.callout-tip{background:rgba(52,211,153,.05);border-color:rgba(52,211,153,.4)}
+.callout-tip .call-lbl{color:var(--success)}
+.callout-note{background:rgba(138,180,248,.05);border-color:rgba(138,180,248,.35)}
+.callout-note .call-lbl{color:var(--gem-1)}
+.callout-warn{background:rgba(251,191,36,.05);border-color:rgba(251,191,36,.35)}
+.callout-warn .call-lbl{color:var(--warn)}
+.callout-crit{background:rgba(192,132,252,.05);border-color:rgba(192,132,252,.35)}
+.callout-crit .call-lbl{color:var(--gem-2)}
+.call-lbl{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.callout p{font-size:.9rem;margin:0;line-height:1.7;color:var(--text-secondary)}
+.prompt-wrap{margin:1.5rem 0}
+.prompt-header{display:flex;align-items:center;justify-content:space-between;background:var(--bg-raised);border:1px solid var(--border-subtle);border-bottom:none;border-radius:var(--radius-md) var(--radius-md) 0 0;padding:.5rem 1rem}
+.prompt-header-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.copy-btn{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;background:none;border:1px solid var(--border-subtle);color:var(--text-muted);border-radius:3px;padding:.15rem .6rem;cursor:pointer;transition:all .2s}
+.copy-btn:hover{border-color:var(--gem-1);color:var(--gem-1)}
+.prompt-code{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:0 0 var(--radius-md) var(--radius-md);padding:1.1rem 1.25rem;font-family:var(--font-mono);font-size:.8rem;line-height:1.7;color:var(--text-secondary);word-break:break-word}
+.prompt-code .ph{color:var(--gem-2);font-style:italic}
+.prompt-code .hl{color:var(--gem-1)}
+.tabs-wrap{margin:2rem 0}
+.tab-row{display:flex;border-bottom:1px solid var(--border-subtle);overflow-x:auto;scrollbar-width:none}
+.tab-row::-webkit-scrollbar{display:none}
+.tab-btn{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);padding:.75rem 1.25rem;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s}
+.tab-btn:hover{color:var(--text-accent)}
+.tab-btn.on{color:var(--gem-1);border-color:var(--gem-1)}
+.tab-pane { display: none !important; padding: 2rem 0 .5rem; }
+.tab-pane.on { display: block !important; }
+.acc{margin:1.5rem 0}
+.acc-item{border:1px solid var(--border-subtle);border-radius:var(--radius-md);margin-bottom:.5rem;overflow:hidden}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;background:var(--bg-raised);border:none;cursor:pointer;font-family:var(--font-body);font-size:.92rem;font-weight:500;color:var(--text-primary);text-align:left;transition:background .15s}
+.acc-btn:hover{background:var(--bg-hover)}
+.acc-arrow{font-size:1rem;color:var(--text-muted);transition:transform .25s;flex-shrink:0}
+.acc-item.open .acc-arrow{transform:rotate(45deg)}
+.acc-body { display: none !important; padding:1rem 1.25rem 1.5rem;background:var(--bg-card);border-top:1px solid var(--border-subtle);font-size:.88rem;color:var(--text-muted);line-height:1.75}
+.acc-item.open .acc-body { display: block !important; }
+.acc-body p{color:var(--text-muted);margin-bottom:.6rem;font-size:.88rem}
+.acc-body strong{color:var(--text-secondary)}
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0}
+.use-card{background:var(--bg-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.5rem;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.use-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px}
+.use-card.uc-a::after{background:linear-gradient(90deg,var(--gem-1),transparent 60%)}
+.use-card.uc-b::after{background:linear-gradient(90deg,var(--gem-2),transparent 60%)}
+.use-card.uc-c::after{background:linear-gradient(90deg,var(--gem-3),transparent 60%)}
+.use-card.uc-d::after{background:linear-gradient(90deg,var(--success),transparent 60%)}
+.use-card:hover{border-color:var(--border-mid);background:var(--bg-card)}
+.use-icon{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;margin-bottom:.9rem;line-height:1}
+.uc-a .use-icon{color:var(--gem-1)}.uc-b .use-icon{color:var(--gem-2)}.uc-c .use-icon{color:var(--gem-3)}.uc-d .use-icon{color:var(--success)}
+.use-card h4{margin:0 0 .5rem;font-size:.95rem;color:var(--text-primary)}
+.use-card p{font-size:.83rem;color:var(--text-muted);margin:0;line-height:1.6}
+.cmp-table{width:100%;border-collapse:collapse;margin:1.75rem 0;font-size:.85rem}
+.cmp-table th{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:.7rem 1rem;border-bottom:1px solid var(--border-subtle);background:var(--bg-raised)}
+.cmp-table td{padding:.8rem 1rem;border-bottom:1px solid rgba(139,164,248,.07);color:var(--text-muted);vertical-align:top;line-height:1.6}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table td:first-child{color:var(--text-primary);font-weight:500}
+.td-yes{color:var(--success)!important;font-family:var(--font-mono);font-size:.8rem}
+.td-no{color:#f87171!important;font-family:var(--font-mono);font-size:.8rem}
+.td-partial{color:var(--warn)!important;font-family:var(--font-mono);font-size:.8rem}
+.act-card{background:var(--bg-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);margin:2.5rem 0;overflow:hidden;position:relative}
+.act-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gem-1),var(--gem-2),var(--gem-3))}
+.act-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border-subtle);display:flex;gap:1.5rem;align-items:flex-start}
+.act-num{font-family:var(--font-display);font-size:3.5rem;line-height:1;font-weight:400;background:linear-gradient(135deg,var(--gem-1),var(--gem-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.3;flex-shrink:0}
+.act-meta{flex:1}
+.act-meta h3{margin:.3rem 0 .75rem;font-size:1.2rem}
+.act-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;padding:.18rem .55rem;border-radius:3px;background:var(--bg-card);border:1px solid var(--border-subtle);color:var(--text-muted)}
+.act-body{padding:1.75rem 2rem}
+.act-body>*+*{margin-top:1.5rem}
+.sec-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem}
+.sec-label::before{content:"";display:inline-block;width:16px;height:1px;background:var(--border-mid)}
+.obj-box{background:rgba(138,180,248,.05);border:1px solid rgba(138,180,248,.2);border-radius:var(--radius-md);padding:1.1rem 1.4rem}
+.obj-box .sec-label{color:var(--gem-1)}
+.obj-box p{font-size:.9rem;margin:0;color:var(--text-secondary)}
+.del-box{background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.2);border-radius:var(--radius-md);padding:1.1rem 1.4rem}
+.del-box .sec-label{color:var(--warn)}
+.del-box p{font-size:.9rem;margin:0;color:var(--text-secondary);line-height:1.7}
+.phases{margin:1.5rem 0;position:relative}
+.phase{display:grid;grid-template-columns:36px 1fr;gap:1rem;position:relative;padding-bottom:2rem}
+.phase:last-child{padding-bottom:0}
+.phase-connector{display:flex;flex-direction:column;align-items:center}
+.phase-dot{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-mid);background:var(--bg-raised);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.65rem;font-weight:700;color:var(--text-muted);flex-shrink:0;z-index:1}
+.phase-dot.lit{border-color:var(--gem-1);background:rgba(138,180,248,.1);color:var(--gem-1)}
+.phase-line{flex:1;width:1px;background:var(--border-subtle);margin-top:4px}
+.phase:last-child .phase-line{display:none}
+.phase-content{padding-top:.25rem}
+.phase-content strong{display:block;font-size:.95rem;font-weight:600;color:var(--text-primary);margin-bottom:.35rem}
+.phase-content p{font-size:.87rem;color:var(--text-muted);margin:0;line-height:1.65}
+.rubric{width:100%;border-collapse:collapse;margin:1.5rem 0;border:1px solid var(--border-subtle);border-radius:var(--radius-md);overflow:hidden;font-size:.83rem}
+.rubric thead th{background:var(--bg-card);color:var(--text-muted);font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.75rem .9rem;text-align:center;font-weight:400;border-bottom:1px solid var(--border-subtle)}
+.rubric thead th:first-child{text-align:left}
+.rubric tbody td{padding:.75rem .9rem;border-bottom:1px solid rgba(139,164,248,.07);color:var(--text-muted);vertical-align:top;line-height:1.55}
+.rubric tbody tr:last-child td{border-bottom:none}
+.rubric tbody td:first-child{color:var(--text-primary);font-weight:600;background:rgba(138,180,248,.03)}
+.rubric .rpts{text-align:center;font-family:var(--font-mono);font-weight:700;color:var(--gem-1)}
+.tracker{background:var(--bg-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.75rem;margin:2rem 0}
+.tracker-title{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}
+.track-items{display:flex;flex-direction:column;gap:.6rem}
+.track-item{display:flex;align-items:center;gap:.9rem;padding:.5rem .75rem;border-radius:var(--radius-md);cursor:pointer;transition:background .15s;user-select:none}
+.track-item:hover{background:var(--bg-hover)}
+.track-box{width:20px;height:20px;border:1.5px solid var(--border-mid);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:.72rem;color:transparent}
+.track-item.done .track-box{background:var(--success);border-color:var(--success);color:#fff}
+.track-item .track-lbl{font-size:.87rem;color:var(--text-muted);transition:color .2s}
+.track-item.done .track-lbl{color:var(--text-muted);text-decoration:line-through;opacity:.5}
+.track-bar-row{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border-subtle);display:flex;align-items:center;gap:1rem}
+.track-bar-bg{flex:1;height:3px;background:var(--border-subtle);border-radius:2px;overflow:hidden}
+.track-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gem-1),var(--gem-2));border-radius:2px;transition:width .4s ease}
+.track-pct{font-family:var(--font-mono);font-size:.75rem;font-weight:700;background:linear-gradient(90deg,var(--gem-1),var(--gem-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;min-width:3rem;text-align:right}
+.rf{margin:2rem 0;display:flex;flex-direction:column;gap:1.5rem}
+.rf-field label{display:block;font-size:.88rem;font-weight:600;color:var(--text-primary);margin-bottom:.4rem}
+.rf-field .hint{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-bottom:.5rem;display:block}
+.rf-field textarea,.rf-field input[type=text]{width:100%;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.75rem 1rem;font-family:var(--font-body);font-size:.88rem;color:var(--text-primary);resize:vertical;line-height:1.7;transition:border-color .2s}
+.rf-field textarea::placeholder,.rf-field input[type=text]::placeholder{color:var(--text-muted)}
+.rf-field textarea:focus,.rf-field input[type=text]:focus{outline:none;border-color:var(--gem-1);box-shadow:0 0 0 3px rgba(138,180,248,.1)}
+.rf-field textarea{min-height:88px}
+.rf-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:linear-gradient(90deg,rgba(138,180,248,.15),rgba(192,132,252,.15));border:1px solid var(--border-mid);color:var(--gem-1);border-radius:var(--radius-md);padding:.65rem 1.5rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn-p:hover{border-color:var(--gem-1);background:rgba(138,180,248,.12)}
+.btn-s{background:none;border:1px solid var(--border-subtle);color:var(--text-muted);border-radius:var(--radius-md);padding:.65rem 1.25rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn-s:hover{border-color:var(--border-mid);color:var(--text-secondary)}
+.rf-saved{display:none;background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.25);border-radius:var(--radius-md);padding:.75rem 1.1rem;font-size:.85rem;color:var(--success);font-family:var(--font-mono)}
+.int-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:2rem 0}
+.int-node{background:var(--bg-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.1rem 1.4rem;text-align:center;min-width:130px}
+.int-node .in-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem}
+.int-node .in-name{font-size:.92rem;font-weight:600;color:var(--text-primary)}
+.int-node.in-center{background:rgba(138,180,248,.06);border-color:var(--border-mid)}
+.int-node.in-center .in-name{color:var(--gem-1)}
+.int-arrow{font-size:1rem;color:var(--border-mid);padding:0 .5rem;font-family:var(--font-mono)}
+footer{background:var(--bg-surface);border-top:1px solid var(--border-subtle);text-align:center;padding:3rem 1.5rem}
+footer .f-logo{font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:.5rem}
+footer .f-logo span{font-style:italic}
+footer p{font-size:.78rem;color:var(--text-muted);margin:.25rem 0;line-height:1.6}
+footer .f-legal{margin-top:1.5rem;font-size:.72rem;color:var(--text-muted);opacity:.5;max-width:500px;margin-left:auto;margin-right:auto}
+.fab{position:fixed;bottom:2rem;right:2rem;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--gem-1),var(--gem-2));border:none;cursor:pointer;z-index:300;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(138,180,248,.3);transition:transform .2s,box-shadow .2s;color:var(--bg-deep)}
+.fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 28px rgba(138,180,248,.4)}
+.fab svg{width:20px;height:20px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero h1,.hero-sub,.hero-chips,.hero-eyebrow{animation:fadeUp .7s ease both}
+.hero-eyebrow{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero-sub{animation-delay:.25s}.hero-chips{animation-delay:.35s}
+@media(max-width:600px){.hero{padding:3.5rem 1.25rem 3rem}.act-head{flex-direction:column;gap:.5rem}.act-num{font-size:2rem}.act-body,.act-head{padding:1.25rem}.info-grid{grid-template-columns:1fr}.rf-actions{flex-direction:column}.fab{display:none}.rubric{font-size:.75rem}.rubric thead th,.rubric tbody td{padding:.5rem .6rem}}
+@media print{body{background:#fff!important;color:#111!important}.sticky-nav,.fab{display:none!important}section{padding:2rem 0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="inst-band">
+  <div class="inst-logo" id="logo-wrap"><span id="logo-init">UC</span></div>
+  <div>
+    <div class="inst-name">Universidad de la Ciénega</div>
+    <div class="inst-dept">Dirección Académica · Formación y Desarrollo Docente</div>
+  </div>
+</div>
+<div class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-eyebrow">Guía de Formación Docente · 2025</div>
+  <h1>Gemini<em class="gem-text">en Google Classroom</em></h1>
+  <p class="hero-sub">Guía pedagógica para la integración de inteligencia artificial generativa en la gestión del aula y el enriquecimiento de los procesos de enseñanza-aprendizaje.</p>
+  <div class="hero-chips">
+    <span class="chip">Pedagogía activa</span>
+    <span class="chip">Constructivismo</span>
+    <span class="chip">Tres actividades prácticas</span>
+    <span class="chip">Nivel: Docente universitario</span>
+    <span class="chip">Duración aprox. 6 h</span>
+  </div>
+  <div class="hero-divider" aria-hidden="true"></div>
+</div>
+<nav class="sticky-nav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="#intro">Introducción</a>
+    <a href="#gemini-classroom">Gemini en Classroom</a>
+    <a href="#funciones">Funciones clave</a>
+    <a href="#actividad-1">Actividad I</a>
+    <a href="#actividad-2">Actividad II</a>
+    <a href="#actividad-3">Actividad III</a>
+    <a href="#reflexion">Reflexión</a>
+  </div>
+</nav>
+<main>
+<section id="intro">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">00 — Fundamento pedagógico</div>
+    <h2>Introducción: <em>por qué integrar Gemini en el aula</em></h2>
+    <p>Un marco constructivista para el uso pedagógico intencionado de la inteligencia artificial generativa.</p>
+  </div>
+  <p>La incorporación de herramientas de inteligencia artificial en el aula universitaria no responde a una moda tecnológica: responde a un cambio estructural en la manera en que se produce, accede y valida el conocimiento. Gemini, integrado en el ecosistema de Google Workspace for Education, representa una oportunidad concreta para ampliar las capacidades del docente reflexivo, siempre que su uso esté orientado por propósitos pedagógicos claros.</p>
+  <p>Esta guía adopta una premisa central: la herramienta no enseña. El docente enseña. Gemini es un instrumento que, bien configurado, puede amplificar la retroalimentación, diversificar los recursos de aprendizaje, personalizar los andamiajes cognitivos y liberar tiempo docente para las interacciones de mayor valor pedagógico. Mal utilizado, puede sustituir el pensamiento crítico por la dependencia generativa.</p>
+  <div class="callout callout-note">
+    <div class="call-lbl">Premisa constructivista</div>
+    <p>El aprendizaje significativo ocurre cuando el estudiante conecta el nuevo conocimiento con su experiencia previa en un proceso activo de construcción. El rol de Gemini en este marco no es transmitir información, sino crear condiciones para que el estudiante piense, cuestione, compare y produzca. El docente diseña ese proceso; Gemini lo apoya.</p>
+  </div>
+  <h3>Arquitectura de la integración</h3>
+  <div class="int-flow">
+    <div class="int-node"><div class="in-label">Diseño</div><div class="in-name">Docente</div></div>
+    <div class="int-arrow">→</div>
+    <div class="int-node in-center"><div class="in-label">Mediación IA</div><div class="in-name">Gemini</div></div>
+    <div class="int-arrow">→</div>
+    <div class="int-node"><div class="in-label">Contexto</div><div class="in-name">Classroom</div></div>
+    <div class="int-arrow">→</div>
+    <div class="int-node"><div class="in-label">Actor central</div><div class="in-name">Estudiante</div></div>
+  </div>
+  <div class="info-grid">
+    <div class="info-cell ic-blue"><div class="info-num">01</div><h4>Intencionalidad pedagógica</h4><p>Cada uso de Gemini debe responder a un objetivo de aprendizaje explícito. Si no puede nombrarlo, no incorpore la herramienta.</p></div>
+    <div class="info-cell ic-violet"><div class="info-num">02</div><h4>Supervisión docente activa</h4><p>El docente valida, ajusta y critica todo output de Gemini antes de llevarlo al aula. La IA no es árbitro del conocimiento disciplinar.</p></div>
+    <div class="info-cell ic-cyan"><div class="info-num">03</div><h4>Alfabetización del estudiante</h4><p>Los estudiantes aprenden a usar Gemini críticamente: identifican sus limitaciones, verifican sus afirmaciones y reconocen cuándo no usarla.</p></div>
+    <div class="info-cell ic-green"><div class="info-num">04</div><h4>Evaluación auténtica</h4><p>Las actividades evaluativas deben requerir procesos cognitivos que Gemini no puede sustituir: experiencia vivida, juicio situado, síntesis original.</p></div>
+  </div>
+  <div class="tracker">
+    <div class="tracker-title">Rastreador de avance personal</div>
+    <div class="track-items" id="track-list">
+      <div class="track-item" data-track="item" data-id="t0"><div class="track-box">✓</div><span class="track-lbl">Leí la introducción y el fundamento pedagógico</span></div>
+      <div class="track-item" data-track="item" data-id="t1"><div class="track-box">✓</div><span class="track-lbl">Completé la sección Gemini en Classroom (pasos 1–8)</span></div>
+      <div class="track-item" data-track="item" data-id="t2"><div class="track-box">✓</div><span class="track-lbl">Revisé las funciones clave y las plantillas de prompts</span></div>
+      <div class="track-item" data-track="item" data-id="t3"><div class="track-box">✓</div><span class="track-lbl">Entregué la Actividad I en Classroom</span></div>
+      <div class="track-item" data-track="item" data-id="t4"><div class="track-box">✓</div><span class="track-lbl">Entregué la Actividad II en Classroom</span></div>
+      <div class="track-item" data-track="item" data-id="t5"><div class="track-box">✓</div><span class="track-lbl">Entregué la Actividad III en Classroom</span></div>
+      <div class="track-item" data-track="item" data-id="t6"><div class="track-box">✓</div><span class="track-lbl">Completé el Plan de Reflexión y Aplicación</span></div>
+    </div>
+    <div class="track-bar-row">
+      <div class="track-bar-bg"><div class="track-bar-fill" id="bar-fill"></div></div>
+      <div class="track-pct" id="bar-pct">0%</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="gemini-classroom">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">01 — Configuración y acceso</div>
+    <h2>Gemini <em>en Google Classroom</em></h2>
+    <p>Instrucciones paso a paso para activar, configurar y comenzar a usar Gemini dentro del flujo de trabajo de Classroom.</p>
+  </div>
+  <span class="pill pill-gemini"><span class="pill-dot"></span>Google Gemini</span>
+  <span class="pill pill-classroom" style="margin-left:.5rem"><span class="pill-dot"></span>Google Classroom</span>
+  <p>Gemini está integrado en Google Workspace for Education de dos maneras principales: como asistente en la barra lateral de las aplicaciones de Google (Docs, Slides, Sheets, Gmail) y como herramienta independiente accesible desde gemini.google.com. Ambas modalidades son aplicables en el contexto de Classroom. Esta sección cubre la configuración necesaria para utilizar ambas rutas.</p>
+  <h3>Requisitos previos</h3>
+  <ul class="step-list">
+    <li class="step-item"><div class="step-n">R1</div><div class="step-body"><strong>Cuenta de Google Workspace for Education activa</strong><span>Verifique que su institución cuente con una licencia de Google Workspace for Education Plus o Teaching and Learning Upgrade, ya que estas incluyen el acceso a Gemini para docentes. Las cuentas personales de Gmail tienen acceso limitado. Contacte al área de TI para confirmar el tipo de licencia institucional.</span></div></li>
+    <li class="step-item"><div class="step-n">R2</div><div class="step-body"><strong>Habilitación por parte del administrador de dominio</strong><span>El administrador de Google Workspace de su institución debe habilitar Gemini para los usuarios docentes desde la Consola de Administración. Si Gemini no aparece en sus herramientas, solicite su activación al área de soporte tecnológico antes de continuar.</span><span class="step-note">Ruta: Consola Admin → Apps → Google Workspace → Gemini</span></div></li>
+    <li class="step-item"><div class="step-n">R3</div><div class="step-body"><strong>Clase activa en Google Classroom</strong><span>Esta guía asume que usted ya cuenta con al menos una clase creada en Classroom con estudiantes inscritos. Si aún no tiene una clase, cree una de práctica para uso exclusivo de esta formación docente.</span></div></li>
+  </ul>
+  <h3>Acceso a Gemini desde Google Classroom</h3>
+  <ul class="step-list">
+    <li class="step-item"><div class="step-n">1</div><div class="step-body"><strong>Ingresar a Classroom con cuenta institucional</strong><span>Acceda a classroom.google.com. Verifique que está usando su cuenta institucional, no una cuenta personal. El ícono de cuenta aparece en la esquina superior derecha; al hacer clic puede cambiar entre cuentas si tiene varias.</span></div></li>
+    <li class="step-item"><div class="step-n">2</div><div class="step-body"><strong>Identificar el ícono de Gemini en la interfaz</strong><span>En las versiones más recientes de Classroom con Gemini habilitado, encontrará un ícono de estrella o una opción "Gemini" en la barra lateral derecha o en el menú de herramientas al crear una tarea. La ubicación exacta varía según la versión del servicio habilitada.</span><span class="step-note">Si no ve el ícono, Gemini no está habilitado en su dominio</span></div></li>
+    <li class="step-item"><div class="step-n">3</div><div class="step-body"><strong>Acceder a Gemini como herramienta paralela</strong><span>Si la integración directa en Classroom no está disponible, abra gemini.google.com en una pestaña paralela. Asegúrese de iniciar sesión con su cuenta institucional para que Gemini respete las políticas de privacidad de la institución.</span></div></li>
+    <li class="step-item"><div class="step-n">4</div><div class="step-body"><strong>Activar Gemini en Google Docs (barra lateral)</strong><span>Abra cualquier Google Doc desde Drive. En la barra de herramientas, haga clic en el ícono de estrella (Gemini) en la esquina superior derecha. Se desplegará una barra lateral para interactuar con Gemini en el contexto del documento abierto.</span><span class="step-note">Atajo: Menú Herramientas → Gemini para Docs</span></div></li>
+    <li class="step-item"><div class="step-n">5</div><div class="step-body"><strong>Conectar Gemini con Google Drive</strong><span>Desde gemini.google.com, haga clic en el ícono de "Extensiones" o "Conectar apps". Active la extensión "Google Drive". Esto permite que Gemini acceda a sus documentos y los use como contexto en las consultas, respetando los permisos de acceso definidos.</span></div></li>
+    <li class="step-item"><div class="step-n">6</div><div class="step-body"><strong>Definir el contexto disciplinar en la primera consulta</strong><span>Gemini no tiene memoria entre sesiones por defecto. Al inicio de cada sesión de trabajo pedagógico, proporcione el contexto relevante: nombre de la asignatura, nivel educativo, tema de la unidad y perfil del estudiante. Esto mejora sustancialmente la pertinencia de las respuestas generadas.</span></div></li>
+    <li class="step-item"><div class="step-n">7</div><div class="step-body"><strong>Explorar Gems (asistentes personalizados)</strong><span>Desde el panel izquierdo en gemini.google.com, localice la sección "Gem Manager". Los Gems son versiones de Gemini configuradas con instrucciones específicas que persisten entre sesiones. Puede crear un Gem con el perfil de su asignatura para no repetir el contexto en cada uso.</span><span class="step-note">Requiere Gemini Advanced o Google One AI Premium</span></div></li>
+    <li class="step-item"><div class="step-n">8</div><div class="step-body"><strong>Verificar la política de privacidad institucional</strong><span>Antes de introducir datos de estudiantes en Gemini, verifique con su institución qué tipo de datos está permitido procesar en herramientas de IA externas. En caso de duda, use datos anonimizados o ejemplos hipotéticos.</span></div></li>
+  </ul>
+  <div class="callout callout-warn">
+    <div class="call-lbl">Consideración de privacidad</div>
+    <p>Nunca introduzca información personal identificable de estudiantes (nombre completo, matrícula, calificaciones vinculadas a un alumno específico) en consultas a Gemini que no estén dentro del entorno protegido de su institución. Trabaje siempre con datos anonimizados o ejemplos ficticios al usar Gemini como herramienta de diseño pedagógico.</p>
+  </div>
+</div>
+</section>
+
+<section id="funciones">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">02 — Aplicaciones pedagógicas</div>
+    <h2>Funciones clave de Gemini <em>para docentes</em></h2>
+    <p>Usos específicos de Gemini en el flujo de trabajo docente, con ejemplos y plantillas de prompts para cada función.</p>
+  </div>
+  <div class="use-grid">
+    <div class="use-card uc-a"><div class="use-icon">01</div><h4>Generación de materiales</h4><p>Borradores de rúbricas, casos de estudio, ejercicios, resúmenes de lectura y guías de estudio adaptadas al nivel y la disciplina.</p></div>
+    <div class="use-card uc-b"><div class="use-icon">02</div><h4>Retroalimentación formativa</h4><p>Análisis de producciones estudiantiles para generar retroalimentación estructurada y orientada al proceso, no solo al producto.</p></div>
+    <div class="use-card uc-c"><div class="use-icon">03</div><h4>Diferenciación pedagógica</h4><p>Adaptación de explicaciones, ejemplos y actividades a distintos niveles de comprensión dentro del mismo grupo.</p></div>
+    <div class="use-card uc-d"><div class="use-icon">04</div><h4>Diseño de evaluaciones</h4><p>Generación de bancos de preguntas, reactivos de opción múltiple con distractores fundamentados y situaciones problema auténticas.</p></div>
+  </div>
+  <h3>Plantillas de prompts por función</h3>
+  <div class="tabs-wrap">
+    <div class="tab-row">
+      <button class="tab-btn on" data-tab="tp-mat">Materiales</button>
+      <button class="tab-btn" data-tab="tp-fb">Retroalimentación</button>
+      <button class="tab-btn" data-tab="tp-dif">Diferenciación</button>
+      <button class="tab-btn" data-tab="tp-eval">Evaluaciones</button>
+    </div>
+    <div class="tab-pane on" id="tp-mat">
+      <p>Use esta plantilla para generar materiales de apoyo. Reemplace los campos en cursiva con los datos de su asignatura.</p>
+      <div class="prompt-wrap">
+        <div class="prompt-header"><span class="prompt-header-label">Plantilla — Generación de materiales</span><button class="copy-btn" data-copy="prompt">Copiar</button></div>
+        <div class="prompt-code">Soy docente universitario de <span class="ph">[nombre de la asignatura]</span> en el nivel de <span class="ph">[licenciatura/posgrado]</span>. Mis estudiantes están en <span class="ph">[semestre]</span> y tienen conocimientos previos de <span class="ph">[temas anteriores]</span>.<br>
+<br>
+Necesito que generes un <span class="ph">[tipo de material: caso de estudio / guía de estudio / resumen / ejercicio]</span> sobre el tema <span class="ph">[nombre del tema]</span>.<br>
+<br>
+El material debe:<br>
+<span style="color:var(--text-muted)">— </span>Ser adecuado para el nivel <span class="ph">[básico/intermedio/avanzado]</span><br>
+<span style="color:var(--text-muted)">— </span>Tener una extensión de <span class="ph">[número de palabras o páginas]</span><br>
+<span style="color:var(--text-muted)">— </span>Incluir <span class="ph">[características específicas: preguntas reflexivas, datos reales, ejemplos mexicanos, etc.]</span><br>
+<span style="color:var(--text-muted)">— </span><span class="hl">NO incluir la respuesta</span>; solo el planteamiento o el contenido expositivo<br>
+<br>
+Contexto disciplinar adicional: <span class="ph">[cualquier detalle que ayude a calibrar el nivel y enfoque]</span></div>
+      </div>
+      <div class="callout callout-tip"><div class="call-lbl">Buena práctica</div><p>Nunca publique directamente el material generado por Gemini. Úselo como borrador de trabajo: revise la precisión factual, adapte el nivel de lenguaje a su grupo específico y añada referencias verificadas de su disciplina.</p></div>
+    </div>
+    <div class="tab-pane" id="tp-fb">
+      <p>Esta plantilla genera retroalimentación formativa estructurada sobre producciones escritas de los estudiantes. Anonimice el texto antes de introducirlo.</p>
+      <div class="prompt-wrap">
+        <div class="prompt-header"><span class="prompt-header-label">Plantilla — Retroalimentación formativa</span><button class="copy-btn" data-copy="prompt">Copiar</button></div>
+        <div class="prompt-code">Analiza el siguiente texto académico de un estudiante universitario de <span class="ph">[asignatura]</span>, nivel <span class="ph">[semestre]</span>. La tarea era: <span class="ph">[descripción de la tarea en 2-3 oraciones]</span>.<br>
+<br>
+Los criterios de evaluación son:<br>
+1. <span class="ph">[Criterio 1]</span><br>
+2. <span class="ph">[Criterio 2]</span><br>
+3. <span class="ph">[Criterio 3]</span><br>
+<br>
+Genera retroalimentación formativa con las siguientes secciones:<br>
+<span style="color:var(--text-muted)">— </span><span class="hl">Fortalezas</span>: identifica 2-3 aspectos bien logrados con citas textuales<br>
+<span style="color:var(--text-muted)">— </span><span class="hl">Áreas de mejora</span>: señala 2-3 aspectos específicos con sugerencias concretas<br>
+<span style="color:var(--text-muted)">— </span><span class="hl">Pregunta de profundización</span>: una sola pregunta abierta que invite al estudiante a reflexionar más<br>
+<br>
+<span class="hl">No asignes calificación numérica.</span> Usa un tono constructivo y académico.<br>
+<br>
+TEXTO DEL ESTUDIANTE:<br>
+<span class="ph">[Pegar aquí el texto anonimizado]</span></div>
+      </div>
+    </div>
+    <div class="tab-pane" id="tp-dif">
+      <p>Para crear explicaciones diferenciadas de un mismo concepto para distintos perfiles de estudiantes dentro de un mismo grupo.</p>
+      <div class="prompt-wrap">
+        <div class="prompt-header"><span class="prompt-header-label">Plantilla — Diferenciación pedagógica</span><button class="copy-btn" data-copy="prompt">Copiar</button></div>
+        <div class="prompt-code">Necesito explicar el concepto de <span class="ph">[nombre del concepto]</span> de la asignatura <span class="ph">[asignatura]</span> de tres maneras diferentes:<br>
+<br>
+<span class="hl">Versión 1 — Básica</span>: Para un estudiante que acaba de encontrar este concepto por primera vez. Usa una analogía cotidiana. Máximo 100 palabras.<br>
+<br>
+<span class="hl">Versión 2 — Intermedia</span>: Para un estudiante que comprende el concepto superficialmente pero no sus implicaciones. Incluye un ejemplo aplicado al contexto de <span class="ph">[área o industria]</span>. Máximo 150 palabras.<br>
+<br>
+<span class="hl">Versión 3 — Avanzada</span>: Para un estudiante que domina el concepto y necesita ser desafiado. Relaciona el concepto con <span class="ph">[concepto más complejo del mismo campo]</span> y señala una tensión o limitación del concepto. Máximo 150 palabras.<br>
+<br>
+Mantén la precisión disciplinar en las tres versiones. No simplifiques al punto de distorsionar.</div>
+      </div>
+    </div>
+    <div class="tab-pane" id="tp-eval">
+      <p>Para generar instrumentos de evaluación alineados con los objetivos de aprendizaje y adecuados para el nivel cognitivo esperado.</p>
+      <div class="prompt-wrap">
+        <div class="prompt-header"><span class="prompt-header-label">Plantilla — Diseño de evaluaciones</span><button class="copy-btn" data-copy="prompt">Copiar</button></div>
+        <div class="prompt-code">Diseña un instrumento de evaluación para <span class="ph">[asignatura]</span>, unidad <span class="ph">[nombre]</span>, nivel <span class="ph">[semestre]</span>.<br>
+<br>
+Objetivo de aprendizaje: <span class="ph">[el estudiante será capaz de...]</span><br>
+<br>
+Genera:<br>
+<span style="color:var(--text-muted)">— </span><span class="hl">3 reactivos de opción múltiple</span> de nivel cognitivo análisis (Bloom), con 4 opciones y justificación de cada distractor<br>
+<span style="color:var(--text-muted)">— </span><span class="hl">1 situación-problema</span> auténtica de 150-200 palabras en un contexto real de <span class="ph">[profesión o campo]</span><br>
+<span style="color:var(--text-muted)">— </span><span class="hl">1 pregunta de ensayo corto</span> que no pueda responderse con una búsqueda rápida en internet<br>
+<br>
+<span class="hl">No incluyas las respuestas en este documento.</span><br>
+Nivel de dificultad: <span class="ph">[básico / intermedio / desafiante]</span></div>
+      </div>
+    </div>
+  </div>
+  <h3>Comparativa de modalidades de uso de Gemini en Classroom</h3>
+  <table class="cmp-table">
+    <thead><tr><th>Modalidad</th><th>Contexto persistente</th><th>Acceso a Drive</th><th>Compartible con estudiantes</th><th>Ideal para</th></tr></thead>
+    <tbody>
+      <tr><td>gemini.google.com</td><td class="td-no">No</td><td class="td-partial">Con extensión</td><td class="td-partial">Enlace</td><td>Generación de materiales, diseño de actividades</td></tr>
+      <tr><td>Gemini Gems</td><td class="td-yes">Sí</td><td class="td-partial">Con extensión</td><td class="td-yes">Sí, con límites</td><td>Tutores persistentes, asistentes de escritura configurados</td></tr>
+      <tr><td>Gemini en Docs (barra lateral)</td><td class="td-partial">Por sesión</td><td class="td-yes">Sí, nativo</td><td class="td-no">No</td><td>Retroalimentación sobre documentos, redacción colaborativa</td></tr>
+      <tr><td>Gemini en Gmail</td><td class="td-no">No</td><td class="td-partial">Parcial</td><td class="td-no">No</td><td>Comunicaciones con familias, resúmenes de hilos</td></tr>
+    </tbody>
+  </table>
+  <div class="acc">
+    <div class="acc-item"><button class="acc-btn" data-acc="toggle">Limitaciones técnicas y pedagógicas de Gemini<span class="acc-arrow">+</span></button><div class="acc-body"><p><strong>Alucinaciones:</strong> Gemini puede presentar información falsa con apariencia de precisión, especialmente en temas especializados, datos estadísticos recientes o referencias bibliográficas. Nunca use una cita bibliográfica generada por Gemini sin verificarla en la fuente original.</p><p><strong>Sesgo de entrenamiento:</strong> Los modelos de lenguaje reflejan los sesgos presentes en sus datos de entrenamiento. En disciplinas humanísticas y sociales, valide que los enfoques generados sean pertinentes al contexto mexicano y latinoamericano.</p><p><strong>Desactualización:</strong> Gemini tiene una fecha de corte de conocimiento. Para temas que evolucionan rápidamente, complemente siempre con fuentes actualizadas y verificadas.</p></div></div>
+    <div class="acc-item"><button class="acc-btn" data-acc="toggle">Gemini y la integridad académica<span class="acc-arrow">+</span></button><div class="acc-body"><p><strong>Postura institucional recomendada:</strong> En lugar de prohibir el uso de Gemini sin matices, establezca explícitamente en cada tarea qué usos son permitidos y cuáles no. Por ejemplo: "Se permite usar Gemini para generar un borrador inicial, el cual debe ser revisado, modificado y referenciado como tal en el entregable final."</p><p><strong>Diseño a prueba de delegación:</strong> Diseñe actividades que requieran conocimiento situado, experiencia personal o interacción con el entorno físico para responderse correctamente. Preguntas que describan observaciones de laboratorio propias no pueden responderse con Gemini.</p><p><strong>Transparencia como competencia:</strong> Enseñe a los estudiantes a documentar cómo usaron Gemini: qué preguntaron, qué obtuvieron, cómo lo evaluaron y qué modificaron.</p></div></div>
+    <div class="acc-item"><button class="acc-btn" data-acc="toggle">Gemini en el ciclo de retroalimentación formativa<span class="acc-arrow">+</span></button><div class="acc-body"><p>Una estrategia efectiva es usar Gemini como primer nivel de retroalimentación: el estudiante recibe feedback generado a partir de una rúbrica configurada, revisa su trabajo y entrega una versión mejorada. El docente evalúa la versión final con atención particular a qué cambios realizó el estudiante y con base en qué criterio.</p><p>Este ciclo libera tiempo docente para dedicar más atención a los aspectos de la evaluación que requieren juicio experto y que la IA no puede replicar: la coherencia argumentativa profunda, la pertinencia disciplinar y la originalidad del análisis.</p></div></div>
+  </div>
+</div>
+</section>
+
+
+<section id="actividad-1">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">Actividad I — Entrega en Classroom</div>
+    <h2>Evaluación y diseño con <em>Gemini for Education</em></h2>
+    <p>Uso de las herramientas "Crear una rúbrica", "Generar un cuestionario" y "Abordar ideas erróneas comunes" para diseñar instrumentos de evaluación aplicados a una asignatura real.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-head">
+      <div class="act-num">I</div>
+      <div class="act-meta">
+        <span class="pill pill-activity"><span class="pill-dot"></span>Entrega en Classroom</span>
+        <h3>Del diagnóstico al instrumento: rúbricas, cuestionarios y corrección de concepciones erróneas</h3>
+        <div class="act-tags"><span class="tag">Crear una rúbrica</span><span class="tag">Generar un cuestionario</span><span class="tag">Abordar ideas erróneas comunes</span><span class="tag">90 min.</span></div>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="obj-box"><div class="sec-label">Aprendizaje esperado</div><p>El docente utiliza las herramientas de evaluación de Gemini for Education dentro de Google Classroom para generar, revisar críticamente y adaptar instrumentos de evaluación (rúbrica y cuestionario) y un mapa de concepciones erróneas frecuentes, aplicados a una unidad concreta de su asignatura.</p></div>
+
+      <div><div class="sec-label">Herramientas que se utilizan en esta actividad</div>
+        <div class="info-grid" style="margin-top:0.75rem">
+          <div class="info-cell ic-violet"><div class="info-num">T1</div><h4>Crear una rúbrica</h4><p>Genera criterios de evaluación estructurados a partir del tema, nivel y tipo de tarea que usted especifique.</p></div>
+          <div class="info-cell ic-blue"><div class="info-num">T2</div><h4>Generar un cuestionario</h4><p>Produce reactivos de distintos tipos (opción múltiple, respuesta corta, verdadero/falso) para un tema y nivel dados.</p></div>
+          <div class="info-cell ic-cyan"><div class="info-num">T3</div><h4>Abordar ideas erróneas comunes</h4><p>Identifica las concepciones previas incorrectas más frecuentes en los estudiantes sobre un tema disciplinar específico.</p></div>
+        </div>
+      </div>
+
+      <div class="callout callout-note"><div class="call-lbl">Cómo acceder a estas herramientas</div><p>En Google Classroom, haga clic en <strong>Gemini</strong> en el panel izquierdo. Verá la pantalla "Crea contenido y recursos con la ayuda de Gemini". Las tres herramientas de esta actividad se encuentran bajo las categorías <strong>Evaluaciones</strong> y <strong>Materiales de instrucciones</strong>. También aparecen en la vista "Todo".</p></div>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">A</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase A — Preparación del contexto disciplinar (10 min.)</strong>
+            <p>Antes de abrir cualquier herramienta, defina por escrito en un documento lo siguiente: nombre de la asignatura, número y nombre de la unidad temática, objetivo de aprendizaje específico que desea evaluar, nivel educativo y tipo de tarea (ensayo, práctica, proyecto, examen, etc.). Este contexto lo usará como insumo en cada herramienta de Gemini; entre más específico sea, más pertinente será el output generado.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">B</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase B — Generar y evaluar la rúbrica (25 min.)</strong>
+            <p>En Classroom → Gemini, haga clic en <strong>"Crear una rúbrica"</strong>. Complete los campos que solicita la herramienta: tema o tarea, nivel del curso y cualquier criterio que desee incluir. Gemini generará una rúbrica con criterios y niveles de desempeño. Descargue o copie el resultado. Ahora revíselo críticamente con estas preguntas: ¿Los criterios reflejan los procesos de pensamiento que usted realmente valora, o solo los productos? ¿Los descriptores distinguen con claridad los niveles? ¿Hay algún criterio disciplinar propio de su área que Gemini no incluyó? Documente sus observaciones y modifique la rúbrica hasta que sea usable en su clase real.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">C</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase C — Generar y depurar el cuestionario (25 min.)</strong>
+            <p>En la misma pantalla de Gemini en Classroom, haga clic en <strong>"Generar un cuestionario"</strong>. Ingrese el mismo tema de la Fase A. Gemini producirá un conjunto de reactivos. Revise cada reactivo con los siguientes criterios: (1) ¿La pregunta evalúa comprensión real o solo memorización? (2) ¿Los distractores en las preguntas de opción múltiple son plausibles y están fundamentados en errores conceptuales reales? (3) ¿Hay alguna pregunta que un estudiante podría responder correctamente sin entender el concepto? Elimine, modifique o sustituya los reactivos que no superen esta revisión. El objetivo es conservar únicamente los reactivos que no puedan responderse con una búsqueda rápida en internet.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">D</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase D — Mapear ideas erróneas comunes (20 min.)</strong>
+            <p>Haga clic en <strong>"Abordar ideas erróneas comunes"</strong>. Ingrese el tema de su unidad. Gemini generará una lista de concepciones previas incorrectas frecuentes entre los estudiantes. Lea el resultado y responda por escrito: (1) ¿Cuáles de estas ideas erróneas ha observado usted en sus propios estudiantes? (2) ¿Cuáles son nuevas para usted como docente? (3) ¿Cómo modificaría el orden de los contenidos de su unidad si priorizara abordar primero las tres concepciones erróneas más frecuentes? Este análisis constituye la base para el rediseño instruccional de la Actividad III.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot">E</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase E — Reflexión integradora (10 min.)</strong>
+            <p>Responda en un párrafo por herramienta utilizada: ¿qué aportó Gemini que usted no habría producido fácilmente por su cuenta?, ¿qué tuvo que corregir o completar?, ¿en qué condiciones usaría esta herramienta de manera rutinaria con sus grupos reales? Sea honesto sobre las limitaciones que encontró.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="del-box"><div class="sec-label">Productos a entregar en Classroom</div><p>
+        1. Rúbrica final revisada y anotada (con comentarios sobre los cambios realizados respecto al output original de Gemini).<br>
+        2. Cuestionario depurado con justificación de las modificaciones realizadas.<br>
+        3. Análisis del mapa de ideas erróneas (preguntas 1–3 de la Fase D respondidas por escrito).<br>
+        4. Párrafo de reflexión integradora de la Fase E.<br>
+        <strong>Formato:</strong> Google Docs o PDF. Se recomienda incluir capturas de pantalla de los outputs originales de Gemini para evidenciar el proceso de revisión crítica.
+      </p></div>
+
+      <div><div class="sec-label">Rúbrica de evaluación de la actividad</div>
+        <table class="rubric">
+          <thead><tr><th>Criterio</th><th>Logrado (100%)</th><th>En proceso (60%)</th><th>Pts.</th></tr></thead>
+          <tbody>
+            <tr><td>Uso documentado de las tres herramientas</td><td>Se evidencia el output original de Gemini y las modificaciones realizadas en cada una de las tres herramientas.</td><td>Se usa solo una o dos herramientas, o los cambios no están documentados.</td><td class="rpts">20</td></tr>
+            <tr><td>Calidad de la revisión crítica</td><td>Las modificaciones a la rúbrica y el cuestionario responden a criterios pedagógicos explícitos y fundados en la disciplina.</td><td>Las modificaciones son menores o no justificadas desde el punto de vista disciplinar.</td><td class="rpts">35</td></tr>
+            <tr><td>Análisis de ideas erróneas</td><td>El análisis conecta las concepciones erróneas identificadas por Gemini con observaciones reales de la práctica docente propia.</td><td>El análisis es descriptivo y no relaciona los hallazgos con la experiencia en el aula.</td><td class="rpts">25</td></tr>
+            <tr><td>Reflexión integradora</td><td>La reflexión valora diferenciadamente cada herramienta y señala condiciones específicas de uso con rigor y honestidad.</td><td>La reflexión es genérica o describe las herramientas sin evaluarlas críticamente.</td><td class="rpts">20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="actividad-2">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">Actividad II — Entrega en Classroom</div>
+    <h2>Diseño de materiales de instrucción <em>con Gemini</em></h2>
+    <p>Uso de las herramientas "Redactar un texto informativo", "Crear una lista de vocabulario" y "Explorar ideas para proyectos" para construir recursos de aprendizaje aplicados a una unidad real.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-head">
+      <div class="act-num">II</div>
+      <div class="act-meta">
+        <span class="pill pill-activity"><span class="pill-dot"></span>Entrega en Classroom</span>
+        <h3>Construcción colaborativa de materiales instruccionales con las herramientas de contenido de Gemini</h3>
+        <div class="act-tags"><span class="tag">Redactar un texto informativo</span><span class="tag">Crear una lista de vocabulario</span><span class="tag">Explorar ideas para proyectos</span><span class="tag">90 min.</span></div>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="obj-box"><div class="sec-label">Aprendizaje esperado</div><p>El docente genera, evalúa y adapta materiales instruccionales completos (texto expositivo, glosario disciplinar y banco de ideas de proyectos) para una unidad de su asignatura, usando las herramientas de contenido de Gemini for Education en Classroom, e incorpora el punto de vista crítico de un par para mejorar los productos.</p></div>
+
+      <div><div class="sec-label">Herramientas que se utilizan en esta actividad</div>
+        <div class="info-grid" style="margin-top:0.75rem">
+          <div class="info-cell ic-blue"><div class="info-num">T4</div><h4>Redactar un texto informativo</h4><p>Genera un texto expositivo estructurado sobre un tema, nivel y longitud especificados por el docente.</p></div>
+          <div class="info-cell ic-cyan"><div class="info-num">T5</div><h4>Crear una lista de vocabulario</h4><p>Produce un glosario de términos disciplinares clave con definiciones adaptadas al nivel del curso.</p></div>
+          <div class="info-cell ic-green"><div class="info-num">T6</div><h4>Explorar ideas para proyectos</h4><p>Sugiere propuestas de proyectos de aprendizaje situado a partir de un tema, contexto y nivel dados.</p></div>
+        </div>
+      </div>
+
+      <div class="callout callout-note"><div class="call-lbl">Cómo acceder a estas herramientas</div><p>En Google Classroom → <strong>Gemini</strong> (panel izquierdo). Las herramientas <strong>"Redactar un texto informativo"</strong> y <strong>"Explorar ideas para proyectos"</strong> se encuentran bajo la categoría <strong>Materiales de instrucciones</strong>. <strong>"Crear una lista de vocabulario"</strong> también está en esa categoría. Puede filtrar por categoría usando los botones en la parte superior de la pantalla de Gemini para localizarlas más rápidamente.</p></div>
+
+      <div><div class="sec-label">Descripción</div>
+        <p style="color:var(--text-secondary)">Esta actividad se desarrolla en tríadas (grupos de tres docentes). Cada docente trabaja con la misma unidad temática que eligió en la Actividad I, lo que permite acumular un conjunto coherente de materiales para esa unidad a lo largo de la formación. Al finalizar esta actividad, cada docente contará con tres recursos instruccionales revisados que podrá publicar directamente en su Google Classroom real.</p>
+      </div>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">A</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase A — Texto informativo de introducción a la unidad (25 min.)</strong>
+            <p>En Classroom → Gemini, haga clic en <strong>"Redactar un texto informativo"</strong>. Especifique el tema central de su unidad, el nivel educativo y la extensión deseada (se recomienda 300–400 palabras para uso en clase). Gemini generará un borrador. Léalo completo antes de modificarlo y responda: ¿Es factualmente correcto según su criterio disciplinar? ¿El nivel de lenguaje es adecuado para sus estudiantes? ¿El texto asume conocimientos previos que sus estudiantes aún no tienen? ¿Falta alguna perspectiva o enfoque propio de su campo? Reescriba o ajuste los párrafos que requieran corrección. El texto final debe poder entregarse a sus estudiantes sin necesidad de disculparse por su contenido.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">B</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase B — Lista de vocabulario disciplinar (20 min.)</strong>
+            <p>Haga clic en <strong>"Crear una lista de vocabulario"</strong>. Ingrese el tema de la unidad y especifique el nivel. Gemini generará un glosario con términos y definiciones. Revíselo con ojo disciplinar: ¿Las definiciones son precisas o están simplificadas al punto de ser imprecisas? ¿Falta algún término clave que sus estudiantes necesitan dominar? ¿Hay términos incluidos que corresponden a unidades posteriores y podrían confundir en este momento? Agregue los términos faltantes con sus propias definiciones, corrija las que estén imprecisas y elimine las que no correspondan a esta unidad. El glosario final será un recurso de referencia que los estudiantes podrán usar durante toda la unidad.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">C</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase C — Banco de ideas para proyectos (20 min.)</strong>
+            <p>Haga clic en <strong>"Explorar ideas para proyectos"</strong>. Ingrese el tema, el nivel y, si la herramienta lo permite, el contexto institucional o profesional de sus estudiantes (por ejemplo: "estudiantes de licenciatura en ingeniería industrial en una ciudad de tamaño medio en México"). Gemini generará propuestas de proyectos. Evalúe cada propuesta según estos criterios: (1) viabilidad en términos de tiempo, recursos y acceso a información real; (2) potencial para generar aprendizaje significativo y transferible; (3) pertinencia para el perfil de egreso de su programa. Seleccione las dos ideas más prometedoras, especifique qué ajustes necesitarían para ser implementadas, y descarte el resto con justificación breve.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">D</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase D — Revisión cruzada en tríada (15 min.)</strong>
+            <p>Comparta sus tres materiales con los dos compañeros de su tríada. Cada compañero lee el texto informativo y señala una imprecisión factual (si la encuentra) y una fortaleza genuina. El grupo discute brevemente si las ideas de proyectos seleccionadas son implementables en el contexto institucional real de cada docente. Documente la retroalimentación recibida por escrito: qué le señalaron, si está de acuerdo y qué modificará como resultado.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot">E</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase E — Publicación en Classroom (10 min.)</strong>
+            <p>Publique al menos uno de los tres recursos finales (texto informativo, glosario o banco de proyectos) en su Google Classroom real, en la clase correspondiente a la unidad trabajada. Puede publicarlo como material, como anuncio o como instrucción dentro de una tarea. Capture o registre el enlace de publicación como evidencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="del-box"><div class="sec-label">Productos a entregar en Classroom</div><p>
+        1. Texto informativo final con anotaciones sobre los cambios realizados al output original de Gemini (Fase A).<br>
+        2. Glosario disciplinar final con indicación de los términos añadidos, corregidos o eliminados respecto al output original (Fase B).<br>
+        3. Banco de dos ideas de proyectos seleccionadas, con ajustes especificados y justificación del descarte de las demás (Fase C).<br>
+        4. Registro escrito de la retroalimentación recibida en la tríada y de las modificaciones realizadas (Fase D).<br>
+        5. Captura de pantalla o enlace al recurso publicado en Classroom real (Fase E).
+      </p></div>
+
+      <div><div class="sec-label">Rúbrica de evaluación de la actividad</div>
+        <table class="rubric">
+          <thead><tr><th>Criterio</th><th>Logrado (100%)</th><th>En proceso (60%)</th><th>Pts.</th></tr></thead>
+          <tbody>
+            <tr><td>Rigor en la revisión disciplinar</td><td>Los tres materiales muestran correcciones sustanciales fundamentadas en el conocimiento disciplinar del docente.</td><td>Los materiales se publican con cambios mínimos o sin justificación de los ajustes realizados.</td><td class="rpts">30</td></tr>
+            <tr><td>Pertinencia contextual de los proyectos</td><td>Las dos ideas de proyectos seleccionadas son viables en el contexto real de la institución y del grupo.</td><td>Las ideas seleccionadas son genéricas o inviables sin cambios sustanciales.</td><td class="rpts">25</td></tr>
+            <tr><td>Integración de la retroalimentación de la tríada</td><td>El registro documenta la retroalimentación recibida y los materiales finales evidencian cambios derivados de ella.</td><td>La retroalimentación está registrada pero no se refleja en los materiales finales.</td><td class="rpts">25</td></tr>
+            <tr><td>Evidencia de publicación real</td><td>Se presenta captura o enlace verificable de al menos un recurso publicado en Classroom.</td><td>No se presenta evidencia de publicación o el recurso publicado no corresponde a los materiales trabajados.</td><td class="rpts">20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="actividad-3">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">Actividad III — Entrega en Classroom</div>
+    <h2>Planificación activa y <em>ayuda a los alumnos</em></h2>
+    <p>Uso de las herramientas "Crear una tabla de opciones", "Crea preguntas de debate interesantes", "Haz una lluvia de ideas de ejemplos prácticos" y "Evalúa la profundidad de los conocimientos" para diseñar una secuencia de aprendizaje activo completa.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-head">
+      <div class="act-num">III</div>
+      <div class="act-meta">
+        <span class="pill pill-activity"><span class="pill-dot"></span>Entrega en Classroom</span>
+        <h3>Secuencia de aprendizaje activo: de la activación al cierre con las herramientas de planificación y ayuda de Gemini</h3>
+        <div class="act-tags"><span class="tag">Tabla de opciones</span><span class="tag">Preguntas de debate</span><span class="tag">Lluvia de ejemplos prácticos</span><span class="tag">Evalúa la profundidad</span><span class="tag">120 min.</span></div>
+      </div>
+    </div>
+    <div class="act-body">
+      <div class="obj-box"><div class="sec-label">Aprendizaje esperado</div><p>El docente diseña una secuencia de aprendizaje activo completa para una sesión de su asignatura, utilizando cuatro herramientas de Gemini for Education en Classroom de manera articulada: preguntas de debate para la activación de conocimientos previos, lluvia de ejemplos prácticos para el desarrollo conceptual, tabla de opciones para la diferenciación, y evaluación de profundidad para el cierre formativo.</p></div>
+
+      <div><div class="sec-label">Herramientas que se utilizan en esta actividad</div>
+        <div class="info-grid" style="margin-top:0.75rem">
+          <div class="info-cell ic-violet"><div class="info-num">T7</div><h4>Crea preguntas de debate interesantes</h4><p>Genera preguntas abiertas y provocadoras para activar el pensamiento crítico y el conocimiento previo sobre un tema.</p></div>
+          <div class="info-cell ic-blue"><div class="info-num">T8</div><h4>Haz una lluvia de ideas de ejemplos prácticos</h4><p>Produce ejemplos contextualizados de aplicación de un concepto, adaptados al nivel y área de conocimiento indicados.</p></div>
+          <div class="info-cell ic-cyan"><div class="info-num">T9</div><h4>Crear una tabla de opciones</h4><p>Genera una tabla con opciones de actividades diferenciadas para que los estudiantes elijan según su nivel, estilo o interés.</p></div>
+          <div class="info-cell ic-green"><div class="info-num">T10</div><h4>Evalúa la profundidad de los conocimientos</h4><p>Produce preguntas o criterios para que el docente o el propio estudiante valore el nivel de comprensión alcanzado sobre un tema.</p></div>
+        </div>
+      </div>
+
+      <div class="callout callout-note"><div class="call-lbl">Cómo acceder a estas herramientas</div><p><strong>"Crea preguntas de debate interesantes"</strong> y <strong>"Evalúa la profundidad de los conocimientos"</strong> se encuentran en la sección <strong>Ayuda a los alumnos</strong> (parte inferior de la pantalla de Gemini en Classroom). <strong>"Haz una lluvia de ideas de ejemplos prácticos"</strong> también está en esa sección. <strong>"Crear una tabla de opciones"</strong> está bajo <strong>Planificación</strong>. Use el filtro por categoría en la barra superior para localizarlas con rapidez.</p></div>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">A</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase A — Preguntas de apertura y activación de saberes previos (20 min.)</strong>
+            <p>En Classroom → Gemini, haga clic en <strong>"Crea preguntas de debate interesantes"</strong>. Ingrese el tema central de la sesión que diseñará. Gemini generará un conjunto de preguntas abiertas. Seleccione las dos preguntas más adecuadas para iniciar una sesión con sus estudiantes reales considerando: (1) que la pregunta no tenga una respuesta única y obvia; (2) que active conocimiento previo o experiencia personal del estudiante, no solo conocimiento declarativo; (3) que sea alcanzable en términos de vocabulario y contexto para el nivel de su grupo. Descarte el resto con una justificación breve por cada pregunta eliminada. Luego escriba, por su cuenta, una tercera pregunta de apertura que Gemini no generó pero que usted considera más pertinente para su grupo específico. Compare las tres (las dos de Gemini y la suya) y explique qué hace diferente a la pregunta que usted diseñó.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">B</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase B — Ejemplos prácticos para el desarrollo conceptual (20 min.)</strong>
+            <p>Haga clic en <strong>"Haz una lluvia de ideas de ejemplos prácticos"</strong>. Ingrese el concepto principal de la sesión y especifique el contexto profesional o cotidiano de sus estudiantes (ej.: "estudiantes de tercer semestre de psicología en una universidad pública en México"). Gemini generará una lista de ejemplos. Clasifique cada ejemplo en una de estas tres categorías: (a) Usable tal como está, (b) Usable con adaptación (indique cuál), (c) No pertinente para mi grupo (indique por qué). Al menos dos ejemplos deben quedar listos para usarse en la sesión real. Para cada ejemplo que adapte, documente el cambio realizado y por qué lo hizo.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">C</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase C — Tabla de opciones para diferenciación intragrupal (25 min.)</strong>
+            <p>Haga clic en <strong>"Crear una tabla de opciones"</strong>. Ingrese el tema y el nivel. Gemini generará una tabla con opciones de actividades diferenciadas para que los estudiantes elijan. Revise la tabla y ajústela para que: (1) incluya al menos una opción que requiera trabajo físico, visual o manipulativo (no solo escritura); (2) todas las opciones conduzcan al mismo aprendizaje esperado aunque por caminos distintos; (3) ninguna opción sea objetivamente "más fácil" que las demás — la diferenciación es de modalidad, no de exigencia cognitiva. Publique la tabla de opciones final en su Google Classroom real como material de la unidad.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot lit">D</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase D — Evaluación de la profundidad del conocimiento para el cierre (20 min.)</strong>
+            <p>Haga clic en <strong>"Evalúa la profundidad de los conocimientos"</strong>. Ingrese el tema de la sesión. Gemini generará preguntas o criterios para valorar el nivel de comprensión alcanzado. Seleccione o adapte tres preguntas de cierre que utilizará al final de la sesión diseñada, asegurándose de que cada una corresponda a un nivel cognitivo distinto (por ejemplo: una de comprensión, una de aplicación y una de análisis o síntesis según la taxonomía de Bloom). Explique, para cada pregunta seleccionada, a qué nivel cognitivo corresponde y por qué la eligió para el cierre de esta sesión específica.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-connector"><div class="phase-dot">E</div><div class="phase-line"></div></div>
+          <div class="phase-content">
+            <strong>Fase E — Integración: plan de sesión completo (35 min.)</strong>
+            <p>Con todos los materiales generados y revisados en las Fases A–D, elabore un plan de sesión de una página que articule: (1) apertura con las preguntas de debate seleccionadas, incluyendo cómo gestionará la discusión y qué espera escuchar; (2) desarrollo con los ejemplos prácticos seleccionados y la secuencia de presentación; (3) práctica diferenciada con la tabla de opciones publicada; (4) cierre con las tres preguntas de evaluación de profundidad. Para cada momento del plan, indique la duración estimada. El plan debe ser implementable en una sesión real de la duración estándar de su asignatura.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-crit"><div class="call-lbl">Principio pedagógico integrador</div><p>Esta actividad demuestra que Gemini for Education no es una colección de herramientas aisladas: es un conjunto articulable para diseñar secuencias de aprendizaje completas. La coherencia entre el momento de apertura, el desarrollo conceptual, la diferenciación y el cierre evaluativo es responsabilidad del docente; Gemini provee los insumos, el docente provee el diseño.</p></div>
+
+      <div class="del-box"><div class="sec-label">Productos a entregar en Classroom</div><p>
+        1. Preguntas de apertura: las dos seleccionadas de Gemini más la pregunta propia, con la comparación y análisis de diferencias (Fase A).<br>
+        2. Clasificación anotada de los ejemplos prácticos generados por Gemini, con los dos ejemplos listos para uso en clase (Fase B).<br>
+        3. Tabla de opciones final ajustada, más captura o enlace de su publicación en Classroom real (Fase C).<br>
+        4. Tres preguntas de cierre seleccionadas, con su nivel cognitivo identificado y justificación de la selección (Fase D).<br>
+        5. Plan de sesión integrado de una página (Fase E).<br>
+        <strong>Entrega individual.</strong> Extensión orientativa del plan de sesión: 400–600 palabras.
+      </p></div>
+
+      <div><div class="sec-label">Rúbrica de evaluación de la actividad</div>
+        <table class="rubric">
+          <thead><tr><th>Criterio</th><th>Logrado (100%)</th><th>En proceso (60%)</th><th>Pts.</th></tr></thead>
+          <tbody>
+            <tr><td>Uso articulado de las cuatro herramientas</td><td>Los cuatro outputs de Gemini se integran coherentemente en el plan de sesión, con un propósito claro en cada momento.</td><td>Las herramientas se usan de manera aislada y el plan de sesión no refleja articulación entre ellas.</td><td class="rpts">25</td></tr>
+            <tr><td>Revisión crítica de los outputs</td><td>Cada output de Gemini fue evaluado, clasificado o modificado con criterio pedagógico y disciplinar documentado.</td><td>Los outputs se incorporan sin revisión crítica evidente o los ajustes no están justificados.</td><td class="rpts">30</td></tr>
+            <tr><td>Diferenciación sin reducción de exigencia</td><td>La tabla de opciones ofrece modalidades distintas de aprendizaje sin reducir el nivel cognitivo en ninguna de ellas.</td><td>La diferenciación implica diferentes niveles de exigencia, lo que puede crear desigualdad en el aprendizaje.</td><td class="rpts">25</td></tr>
+            <tr><td>Coherencia del plan de sesión</td><td>El plan articula apertura, desarrollo, práctica y cierre con tiempos realistas y transiciones explícitas entre momentos.</td><td>El plan enumera actividades pero no especifica tiempos ni cómo se conectan los momentos entre sí.</td><td class="rpts">20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="reflexion">
+<div class="page">
+  <div class="s-header">
+    <div class="s-eyebrow">04 — Cierre y aplicación</div>
+    <h2>Reflexión final y <em>plan de acción</em></h2>
+    <p>Consolidación del aprendizaje mediante la planificación concreta de la incorporación de Gemini en las asignaturas asignadas.</p>
+  </div>
+  <p>Esta sección final tiene un doble propósito: consolidar los aprendizajes de la guía a través de la reflexión metacognitiva, y producir un plan de acción documentado que funcione como punto de partida para la implementación real en el siguiente período escolar.</p>
+  <p>La reflexión que se solicita no es retórica. Requiere honestidad sobre las brechas entre lo aprendido aquí y las condiciones reales de su contexto: infraestructura tecnológica, perfil de sus estudiantes, tiempo disponible y su propia curva de aprendizaje con estas herramientas.</p>
+  <div class="callout callout-note"><div class="call-lbl">Sobre el plan de acción</div><p>Un plan de acción pedagógico es un documento vivo, no un contrato inmutable. Lo más valioso no es el plan en sí, sino el proceso de pensar con rigor qué cambiar, por qué, para quién y cómo verificar que funcionó. Revíselo al final del primer mes de implementación.</p></div>
+  <h3>Formulario de reflexión y planificación</h3>
+  <div class="rf" id="rf-form">
+    <div class="rf-field"><label>1. Síntesis del aprendizaje personal</label><span class="hint">¿Cuál fue el aprendizaje más significativo de esta guía? No el más útil ni el más sorprendente: el que genuinamente cambió algo en su comprensión de cómo enseñar.</span><textarea id="rf1" placeholder="El aprendizaje más significativo fue..."></textarea></div>
+    <div class="rf-field"><label>2. Asignatura(s) y primera intervención concreta</label><span class="hint">¿En qué asignatura incorporará Gemini primero? ¿Cuál será la intervención específica? Sea lo más concreto posible: nombre la unidad, la tarea y el momento.</span><textarea id="rf2" placeholder="En la asignatura [nombre], durante la Unidad [número/nombre], en la actividad [descripción], usaré Gemini para..."></textarea></div>
+    <div class="rf-field"><label>3. Primera acción en los próximos 7 días</label><span class="hint">Una sola acción, pequeña y verificable, que realizará esta semana y que constituirá el primer paso real de implementación.</span><input type="text" id="rf3" placeholder="Ejemplo: Diseñar y probar el prompt para el caso de estudio de la Unidad 3 antes del viernes..."></div>
+    <div class="rf-field"><label>4. Condición institucional o contextual que requiere atención</label><span class="hint">¿Qué condición de su contexto podría dificultar la implementación? ¿Qué acción tomará para atenderla?</span><textarea id="rf4" placeholder="La condición que podría dificultar la implementación es... La acción que tomaré para atenderla es..."></textarea></div>
+    <div class="rf-field"><label>5. Postura ética personal sobre el uso de Gemini con mis estudiantes</label><span class="hint">¿Cuáles son los dos límites éticos no negociables que establecerá? Fundaméntelos desde su práctica docente, no desde una norma externa.</span><textarea id="rf5" placeholder="Los dos límites que estableceré son: (1)... porque... (2)... porque..."></textarea></div>
+    <div class="rf-field"><label>6. Indicador observable de impacto</label><span class="hint">¿Cómo reconocerá, al final del siguiente período escolar, que la integración de Gemini tuvo un impacto positivo? Defina algo que pueda observar, no solo sentir.</span><textarea id="rf6" placeholder="Sabré que tuvo impacto cuando observe que mis estudiantes..."></textarea></div>
+    <div class="rf-actions">
+      <button class="btn-p" onclick="saveRF()">Guardar localmente</button>
+      <button class="btn-s" onclick="exportRF()">Exportar como .txt</button>
+      <button class="btn-s" onclick="clearRF()">Limpiar campos</button>
+    </div>
+    <div class="rf-saved" id="rf-saved-msg">Respuestas guardadas en este navegador. Exporte el texto y súbalo a Google Classroom.</div>
+  </div>
+  <h3>Consideraciones finales</h3>
+  <p>La integración de Gemini en el aula universitaria es una apuesta por ampliar lo que es posible en el proceso de enseñanza-aprendizaje, no por reemplazar lo que ya funciona. El docente que use Gemini con intencionalidad pedagógica, criterio disciplinar y conciencia ética estará en condiciones de ofrecer a sus estudiantes experiencias de aprendizaje más ricas, más personalizadas y más preparatorias para el mundo profesional al que se dirigen.</p>
+  <div class="callout callout-tip"><div class="call-lbl">Próximos pasos institucionales</div><p>Esta guía es un punto de partida. La Universidad de la Ciénega continuará ofreciendo espacios de formación, comunidades de práctica entre docentes y actualizaciones periódicas de estos materiales conforme evolucionen las herramientas y se acumule evidencia sobre su impacto pedagógico.</p></div>
+  <h3>Recursos de referencia</h3>
+  <table class="cmp-table">
+    <thead><tr><th>Recurso</th><th>Institución</th><th>Pertinencia</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://teachercenter.withgoogle.com" target="_blank" rel="noopener">Google Teacher Center</a></td><td>Google for Education</td><td>Certificaciones gratuitas en herramientas Google y IA para docentes</td></tr>
+      <tr><td><a href="https://ai.google/responsibility/responsible-ai-practices/" target="_blank" rel="noopener">Responsible AI Practices</a></td><td>Google</td><td>Marco para el uso responsable de IA en contextos profesionales</td></tr>
+      <tr><td>Recomendación sobre la Ética de la IA (2021)</td><td>UNESCO</td><td>Estándares internacionales para el uso ético de sistemas de IA</td></tr>
+      <tr><td>Visible Learning Meta-Analysis</td><td>Hattie, J. (2009)</td><td>Base empírica sobre el impacto de la retroalimentación formativa</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+</main>
+
+<footer>
+  <div class="f-logo">Universidad de la <span>Ciénega</span></div>
+  <p>Dirección Académica · Formación y Desarrollo Docente</p>
+  <p>Guía Docente: Gemini en Google Classroom · Versión 1.0 · 2025</p>
+  <p class="f-legal">Este documento ha sido diseñado para uso en programas de formación docente interna. Su reproducción con fines distintos a los establecidos institucionalmente requiere autorización expresa de la Dirección Académica de la Universidad de la Ciénega.</p>
+</footer>
+
+<button class="fab" onclick="fabPrint()" title="Imprimir guía" aria-label="Imprimir esta guía">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ── TABS ──
+  document.querySelectorAll('[data-tab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = btn.getAttribute('data-tab');
+      var wrap = btn.closest('.tabs-wrap');
+      wrap.querySelectorAll('[data-tab]').forEach(function(b) { b.classList.remove('on'); });
+      wrap.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('on'); });
+      btn.classList.add('on');
+      document.getElementById(id).classList.add('on');
+    });
+  });
+
+  // ── ACCORDION ──
+  document.querySelectorAll('[data-acc]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.acc-item');
+      var isOpen = item.classList.contains('open');
+      item.closest('.acc').querySelectorAll('.acc-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) { item.classList.add('open'); }
+    });
+  });
+
+  // ── COPY PROMPT ──
+  document.querySelectorAll('[data-copy]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var code = btn.closest('.prompt-wrap').querySelector('.prompt-code');
+      navigator.clipboard.writeText(code.innerText).then(function() {
+        btn.textContent = 'Copiado';
+        setTimeout(function() { btn.textContent = 'Copiar'; }, 2000);
+      }).catch(function() {
+        btn.textContent = 'Error';
+        setTimeout(function() { btn.textContent = 'Copiar'; }, 2000);
+      });
+    });
+  });
+
+  // ── TRACKER ──
+  document.querySelectorAll('[data-track]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      el.classList.toggle('done');
+      updateBar();
+      saveTrack();
+    });
+  });
+  function updateBar() {
+    var total = document.querySelectorAll('[data-track]').length;
+    var done = document.querySelectorAll('[data-track].done').length;
+    var pct = Math.round((done / total) * 100);
+    var fill = document.getElementById('bar-fill');
+    var label = document.getElementById('bar-pct');
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = pct + '%';
+  }
+  function saveTrack() {
+    try {
+      var s = Array.from(document.querySelectorAll('[data-track]'))
+        .map(function(el) { return el.classList.contains('done') ? '1' : '0'; }).join(',');
+      localStorage.setItem('gc2_track', s);
+    } catch(e) {}
+  }
+  function loadTrack() {
+    try {
+      var s = localStorage.getItem('gc2_track');
+      if (s) {
+        var parts = s.split(',');
+        var items = document.querySelectorAll('[data-track]');
+        parts.forEach(function(v, i) {
+          if (items[i] && v === '1') items[i].classList.add('done');
+        });
+        updateBar();
+      }
+    } catch(e) {}
+  }
+
+  // ── REFLECTION FORM ──
+  var rfIds = ['rf1','rf2','rf3','rf4','rf5','rf6'];
+  function saveRF() {
+    var d = {};
+    rfIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) d[id] = el.value;
+    });
+    try {
+      localStorage.setItem('gc2_rf', JSON.stringify(d));
+      var msg = document.getElementById('rf-saved-msg');
+      if (msg) { msg.style.display = 'block'; setTimeout(function() { msg.style.display = 'none'; }, 4000); }
+    } catch(e) {}
+  }
+  function loadRF() {
+    try {
+      var s = localStorage.getItem('gc2_rf');
+      if (s) {
+        var d = JSON.parse(s);
+        rfIds.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el && d[id]) el.value = d[id];
+        });
+      }
+    } catch(e) {}
+  }
+  function exportRF() {
+    var labels = [
+      '1. Síntesis del aprendizaje personal',
+      '2. Asignatura(s) y primera intervención concreta',
+      '3. Primera acción en los próximos 7 días',
+      '4. Condición institucional que requiere atención',
+      '5. Postura ética personal',
+      '6. Indicador observable de impacto'
+    ];
+    var t = 'PLAN DE REFLEXIÓN Y ACCIÓN — GUÍA GEMINI EN CLASSROOM\nUniversidad de la Ciénega · Formación Docente 2025\n' + '─'.repeat(60) + '\n\n';
+    rfIds.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      t += labels[i] + '\n\n' + (el && el.value ? el.value : '[Sin respuesta]') + '\n\n' + '─'.repeat(60) + '\n\n';
+    });
+    var blob = new Blob([t], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'reflexion-gemini-classroom.txt'; a.click();
+    URL.revokeObjectURL(url);
+  }
+  function clearRF() {
+    if (!confirm('¿Desea eliminar todas las respuestas? Esta acción no se puede deshacer.')) return;
+    rfIds.forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+    try { localStorage.removeItem('gc2_rf'); } catch(e) {}
+  }
+
+  // Expose form functions to buttons
+  window.saveRF = saveRF;
+  window.exportRF = exportRF;
+  window.clearRF = clearRF;
+
+  // ── NAV HIGHLIGHT ──
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-inner a');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function(a) {
+            a.classList.toggle('anav', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(function(s) { obs.observe(s); });
+  }
+
+  // ── LOGO HOOK ──
+  // Para integrar el logo oficial descomente las siguientes líneas:
+  // var img = new Image();
+  // img.src = 'logo-ucienega.png';
+  // img.alt = 'Logo Universidad de la Ciénega';
+  // img.style.cssText = 'width:100%;height:100%;object-fit:contain;border-radius:50%';
+  // var init = document.getElementById('logo-init');
+  // if (init) init.style.display = 'none';
+  // document.getElementById('logo-wrap').appendChild(img);
+
+  // ── INIT ──
+  loadTrack();
+  loadRF();
+
+});
+
+// FAB print (keep global)
+function fabPrint() { window.print(); }
+</script>
+</body>
+</html>
