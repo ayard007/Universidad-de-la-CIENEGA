@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | El Grupo Escolar | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --az:#2b3a7a;--azm:#3d52a0;--azl:#6b80c4;--azxl:#dce3f5;--azbg:#f0f3fb;
+  --do:#c49a28;--dol:#f6eccc;--doxl:#fdf8ec;
+  --cr:#faf9f6;--bl:#ffffff;--tx:#18192a;--tx2:#444460;--tx3:#757590;
+  --ve:#1f7a4f;--vel:#e6f5ee;--veb:#9ecdb4;
+  --ro:#b82a2a;--rol:#fdecea;
+  --na:#d4730a;--nal:#fef0e0;
+  --sh:0 1px 8px rgba(43,58,122,.08);--shm:0 3px 18px rgba(43,58,122,.11);
+  --r:6px;--rg:14px;--max:980px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cr);color:var(--tx);line-height:1.78;}
+
+/* PROGRESS */
+#pgbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--do),var(--azl));z-index:9999;transition:width .1s linear;}
+
+/* TOPBAR */
+.topbar{background:var(--az);color:rgba(255,255,255,.7);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;}
+.topbar strong{color:rgba(255,255,255,.92);}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#1a2860 0%,var(--az) 55%,#2e468c 100%);position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 50%,rgba(107,128,196,.18) 0%,transparent 60%),repeating-linear-gradient(90deg,transparent,transparent 100px,rgba(255,255,255,.014) 100px,rgba(255,255,255,.014) 101px);pointer-events:none;}
+.hdr{max-width:var(--max);margin:0 auto;padding:42px 40px 54px;display:grid;grid-template-columns:160px 1fr;gap:36px;align-items:center;position:relative;}
+.logo-wrap{background:var(--bl);border-radius:var(--rg);padding:16px 18px;box-shadow:0 0 0 3px rgba(196,154,40,.45),var(--shm);display:flex;align-items:center;justify-content:center;}
+.logo-wrap img{width:100%;height:auto;display:block;}
+.hdr-meta .bc{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);margin-bottom:10px;display:block;}
+.hdr-meta h1{font-family:'Playfair Display',serif;font-size:2.15rem;font-weight:900;color:var(--bl);line-height:1.15;margin-bottom:6px;}
+.hdr-meta .sub{font-size:1rem;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:22px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:4px 12px;border-radius:99px;}
+
+/* NAV */
+nav{background:var(--azm);position:sticky;top:0;z-index:200;box-shadow:0 2px 14px rgba(0,0,0,.22);}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-i::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.76);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:13px 15px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;display:block;}
+nav a:hover{color:var(--bl);border-bottom-color:var(--do);}
+
+/* MAIN */
+main{max-width:var(--max);margin:0 auto;padding:56px 40px 100px;}
+section{margin-bottom:72px;scroll-margin-top:56px;}
+
+/* HEADINGS */
+.slbl{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:4px;padding-left:20px;}
+h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--az);margin-bottom:22px;padding-left:20px;position:relative;line-height:1.2;}
+h2::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--do);border-radius:2px;}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--azm);margin:30px 0 12px;}
+h4{font-size:.88rem;font-weight:600;color:var(--tx);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 8px;}
+p{margin-bottom:14px;color:var(--tx2);font-size:.97rem;}
+strong{color:var(--tx);}
+code{font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--azbg);padding:2px 7px;border-radius:4px;}
+
+/* CARDS */
+.card{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:26px 30px;margin-bottom:20px;box-shadow:var(--sh);}
+.card-b{background:var(--azbg);border-color:#b6c4e8;}
+.card-g{background:var(--doxl);border-color:var(--do);border-left:5px solid var(--do);}
+.card-v{background:var(--vel);border-color:var(--veb);border-left:5px solid var(--ve);}
+.card-o{background:var(--nal);border-color:#f0b06a;border-left:5px solid var(--na);}
+
+/* OBJETIVO */
+.obj{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:30px 36px;margin-bottom:32px;position:relative;overflow:hidden;}
+.obj::after{content:'OBJETIVO';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.04);pointer-events:none;white-space:nowrap;}
+.obj .elbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:8px;}
+.obj p{color:rgba(255,255,255,.88);font-size:1rem;margin:0;}
+
+/* COMPETENCIAS */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px;}
+.citem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.citem .ctipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.citem p{font-size:.88rem;margin:0;color:var(--tx2);}
+
+/* DEF BLOCK */
+.def{border-left:4px solid var(--azm);background:var(--azbg);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--azl);margin-top:8px;display:block;}
+
+/* TABLA */
+.tw{overflow-x:auto;margin:20px 0;border-radius:var(--r);box-shadow:var(--sh);}
+table{width:100%;border-collapse:collapse;font-size:.9rem;}
+thead th{background:var(--az);color:var(--bl);padding:12px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;}
+tbody td{padding:11px 16px;border-bottom:1px solid var(--azxl);color:var(--tx2);}
+tbody tr:nth-child(even) td{background:var(--azbg);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--doxl);}
+
+/* STEPS */
+.steps{list-style:none;counter-reset:sc;margin:16px 0;}
+.steps li{counter-increment:sc;display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;padding:16px 20px;background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);box-shadow:var(--sh);}
+.steps li::before{content:counter(sc);background:var(--az);color:var(--bl);min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;flex-shrink:0;margin-top:1px;}
+.steps li p{margin:0;font-size:.92rem;}
+
+/* ACORDEON */
+.acd{border:1px solid var(--azxl);border-radius:var(--r);margin:14px 0;overflow:hidden;}
+.acdbtn{width:100%;background:var(--azbg);border:none;padding:14px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--az);transition:background .2s;}
+.acdbtn:hover{background:#d0d9f0;}
+.acdbtn .ic{font-style:normal;transition:transform .28s;font-size:1.1rem;}
+.acdbtn.open .ic{transform:rotate(45deg);}
+.acdbody{display:none;padding:18px 22px;background:var(--bl);border-top:1px solid var(--azxl);font-size:.93rem;color:var(--tx2);}
+.acdbody.show{display:block;}
+
+/* ACTIVIDAD HEADER */
+.awrap{margin-bottom:40px;}
+.ahead{background:var(--az);border-radius:var(--rg) var(--rg) 0 0;padding:20px 28px;display:flex;align-items:center;gap:18px;}
+.anum{background:var(--do);color:var(--bl);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ahtxt .atipo{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:2px;}
+.ahtxt h3{color:var(--bl);margin:0;font-size:1.08rem;}
+.abody{background:var(--bl);border:1px solid var(--azxl);border-top:none;border-radius:0 0 var(--rg) var(--rg);padding:28px 30px;box-shadow:var(--sh);}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ve);color:var(--bl);padding:8px 18px;border-radius:var(--r);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-top:22px;}
+
+/* FORO DEMO */
+.fdemo{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);overflow:hidden;margin:18px 0;}
+.fhdr{background:var(--az);color:var(--bl);padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;}
+.fpost{padding:14px 18px;border-bottom:1px solid #b6c4e8;font-size:.9rem;}
+.fpost:last-child{border-bottom:none;}
+.fpost .fautor{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--azm);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;display:block;}
+.fpost.frep{margin-left:28px;background:var(--bl);}
+
+/* CONOCIMIENTO PREVIO */
+.prevbox{background:var(--doxl);border:2px solid var(--do);border-radius:var(--rg);padding:28px 32px;margin:22px 0;}
+.prevbox .plbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;}
+.prevbox .ptxt{font-size:1.05rem;font-style:italic;color:var(--tx);margin-bottom:14px;}
+.pinput{width:100%;border:1px solid #d4b86a;border-radius:var(--r);padding:12px 16px;font-family:'Inter',sans-serif;font-size:.93rem;background:var(--bl);color:var(--tx);resize:vertical;min-height:80px;}
+.pinput:focus{outline:2px solid var(--do);border-color:var(--do);}
+.btn-g{background:var(--do);color:var(--bl);border:none;padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:12px;transition:background .2s;}
+.btn-g:hover{background:#a07820;}
+.pfb{display:none;margin-top:14px;background:var(--az);color:var(--bl);border-radius:var(--r);padding:16px 20px;font-size:.92rem;}
+.pfb.show{display:block;}
+
+/* ORGANIZADOR */
+.owrap{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);padding:24px;margin:18px 0;}
+.ocent{background:var(--az);color:var(--bl);padding:14px 24px;border-radius:var(--r);font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;text-align:center;margin-bottom:18px;}
+.ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.onodo{background:var(--bl);border:2px solid var(--azl);border-radius:var(--r);padding:12px;}
+.onodo::before{content:attr(data-l);font-family:'JetBrains Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;}
+.onodo textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:8px;font-family:'Inter',sans-serif;font-size:.85rem;background:var(--azbg);resize:vertical;min-height:62px;color:var(--tx);}
+.onodo textarea:focus{outline:2px solid var(--azm);background:var(--bl);}
+.btnp{background:var(--az);color:var(--bl);border:none;padding:11px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;transition:background .2s;}
+.btnp:hover{background:var(--azm);}
+.btno{background:transparent;color:var(--az);border:2px solid var(--az);padding:10px 24px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;margin-left:10px;transition:background .2s;}
+.btno:hover{background:var(--azbg);}
+
+/* CASO */
+.casobox{background:var(--nal);border:1px solid #f0b06a;border-left:5px solid var(--na);border-radius:var(--r);padding:24px 28px;margin:18px 0;}
+.casobox .clbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--na);display:block;margin-bottom:10px;}
+.cpqs{list-style:none;counter-reset:cp;margin-top:16px;}
+.cpqs li{counter-increment:cp;display:flex;gap:12px;padding:12px 16px;margin-bottom:10px;background:var(--bl);border-radius:var(--r);border:1px solid #f0b06a;flex-direction:column;}
+.cpqs li::before{content:counter(cp);background:var(--na);color:var(--bl);min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;flex-shrink:0;width:24px;}
+.cpqs li .cq{font-size:.92rem;color:var(--tx2);font-weight:500;}
+.cresp{width:100%;border:1px solid #f0b06a;border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--bl);resize:vertical;min-height:70px;color:var(--tx);margin-top:8px;}
+.cresp:focus{outline:2px solid var(--na);}
+
+/* QUIZ */
+.qwrap{margin-top:8px;}
+.preg{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:22px 26px;margin-bottom:16px;box-shadow:var(--sh);}
+.preg .qn{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.preg .qt{font-size:.98rem;font-weight:600;color:var(--tx);margin-bottom:14px;}
+.opts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.opts li label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:10px 16px;border:1px solid var(--azxl);border-radius:var(--r);width:100%;transition:background .15s,border-color .15s;font-size:.92rem;color:var(--tx2);}
+.opts li label:hover{background:var(--azbg);border-color:var(--azl);}
+.opts li input[type=radio]{accent-color:var(--az);flex-shrink:0;margin-top:2px;}
+.ok label{background:var(--vel)!important;border-color:var(--ve)!important;color:var(--ve)!important;}
+.err label{background:var(--rol)!important;border-color:var(--ro)!important;}
+.qres{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:32px 36px;text-align:center;margin-top:24px;display:none;}
+.qres.show{display:block;}
+.qres .sn{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--do);line-height:1;display:block;margin:10px 0;}
+.qres .sm{font-size:1.05rem;color:rgba(255,255,255,.88);margin-bottom:10px;}
+.qres .sd{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:rgba(255,255,255,.55);}
+.bprog{width:100%;background:rgba(255,255,255,.15);border-radius:99px;height:8px;margin:14px 0 20px;overflow:hidden;}
+.bfill{height:100%;background:var(--do);border-radius:99px;transition:width .7s ease;width:0;}
+#btnq{background:var(--do);color:var(--bl);border:none;padding:13px 36px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:background .2s;display:block;margin:14px auto 0;}
+#btnq:hover{background:#a07820;}
+#btnq:disabled{opacity:.45;cursor:not-allowed;}
+#btnr{background:rgba(255,255,255,.14);color:var(--bl);border:1px solid rgba(255,255,255,.3);padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-top:14px;transition:background .2s;}
+#btnr:hover{background:rgba(255,255,255,.25);}
+
+/* MATERIALES */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px;}
+.ritem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azl);display:flex;flex-direction:column;gap:8px;}
+.ritem .rtipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);}
+.ritem .rtit{font-weight:600;font-size:.93rem;color:var(--tx);}
+.ritem .raut{font-size:.83rem;color:var(--tx3);font-style:italic;}
+.ritem .rlink{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--azm);text-decoration:none;letter-spacing:.06em;padding:6px 12px;border:1px solid var(--azl);border-radius:var(--r);align-self:flex-start;transition:background .15s;margin-top:auto;}
+.ritem .rlink:hover{background:var(--azbg);}
+
+/* REFLEXION */
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.refitem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.refitem label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:8px;}
+.refitem textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--azbg);resize:vertical;min-height:90px;color:var(--tx);}
+.refitem textarea:focus{outline:none;border-color:var(--azm);background:var(--bl);}
+.planprev{background:var(--bl);border:2px solid var(--az);border-radius:var(--rg);padding:24px 28px;margin-top:20px;display:none;}
+.planprev.show{display:block;}
+.planprev h4{color:var(--az);margin-bottom:14px;}
+
+/* QUOTE */
+.quote{border-left:4px solid var(--do);background:var(--doxl);padding:18px 22px;border-radius:0 var(--r) var(--r) 0;margin:20px 0;font-style:italic;font-size:.97rem;color:var(--tx2);}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:.8rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
+
+/* INFOGRAFIA FASES */
+.fases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin:22px 0;border-radius:var(--rg);overflow:hidden;box-shadow:var(--sh);}
+.fase-item{padding:22px 18px;display:flex;flex-direction:column;gap:8px;position:relative;}
+.fase-item::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.15);}
+.fase-item:last-child::after{display:none;}
+.fase-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;line-height:1;opacity:.25;}
+.fase-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+.fase-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;}
+.fase-desc{font-size:.83rem;opacity:.85;line-height:1.6;}
+.f1{background:#1a2860;color:var(--bl);}
+.f2{background:#2b3a7a;color:var(--bl);}
+.f3{background:#3d52a0;color:var(--bl);}
+.f4{background:#5468b8;color:var(--bl);}
+.f5{background:#6b80c4;color:var(--bl);}
+
+/* CARACTERISTICAS GRID */
+.car-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px;}
+.car-item{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:20px;border-left:4px solid var(--azm);}
+.car-item .cicon{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--azxl);line-height:1;margin-bottom:8px;}
+.car-item h4{margin:0 0 6px;font-size:.88rem;}
+.car-item p{margin:0;font-size:.86rem;}
+
+/* MSG */
+.msg{padding:12px 18px;border-radius:var(--r);font-size:.88rem;margin-top:12px;display:none;}
+.msg.show{display:block;}
+.msg-ok{background:var(--vel);color:var(--ve);border:1px solid var(--veb);}
+
+/* HR */
+hr.div{border:none;border-top:1px solid var(--azxl);margin:32px 0;}
+
+/* GLOSARIO */
+.glos dt{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--az);margin-bottom:4px;}
+.glos dd{font-size:.9rem;color:var(--tx2);padding-left:16px;margin-bottom:16px;}
+
+/* FOOTER */
+footer{background:var(--az);color:rgba(255,255,255,.6);padding:36px 40px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
+.fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.fi .fn{font-size:.75rem;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:3px;display:block;}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  .hdr{grid-template-columns:1fr;text-align:center;}
+  .logo-wrap{width:120px;margin:0 auto;}
+  main{padding:36px 20px 60px;}
+  .refgrid{grid-template-columns:1fr;}
+  .ogrid{grid-template-columns:1fr 1fr;}
+  nav a{padding:12px 10px;font-size:.58rem;}
+  h2{font-size:1.5rem;}
+  .topbar{font-size:.55rem;padding:6px 16px;}
+  .fases-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="pgbar"></div>
+
+<div class="topbar">
+  <span><strong>Universidad de la Cienega</strong> &mdash; Licenciatura en Pedagogia</span>
+  <span>Tecnicas de Conduccion de Grupos &mdash; Ciclo 2024&ndash;2025</span>
+</div>
+
+<header>
+  <div class="hdr">
+    <div class="logo-wrap">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Logo Universidad de la Cienega">
+    </div>
+    <div class="hdr-meta">
+      <span class="bc">Pedagogia &nbsp;|&nbsp; Tecnicas de Conduccion de Grupos &nbsp;|&nbsp; Unidad I &nbsp;|&nbsp; Tema 1.2</span>
+      <h1>El Grupo Escolar</h1>
+      <p class="sub">1.2 Caracteristicas, fases de desarrollo y dinamica del grupo en el contexto educativo universitario</p>
+      <div class="chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogia Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">Nivel Licenciatura</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-i">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento Previo</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 - Foro</a>
+    <a href="#act2">Act. 2 - Organizador</a>
+    <a href="#act3">Act. 3 - Caso</a>
+    <a href="#act4">Act. 4 - Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRODUCCION -->
+<section id="intro">
+  <span class="slbl">Seccion 01</span>
+  <h2>Introduccion al Tema</h2>
+
+  <div class="obj">
+    <span class="elbl">Objetivo de Aprendizaje</span>
+    <p>El estudiante identificara y analizara las caracteristicas constitutivas del grupo escolar, comprendera sus fases de desarrollo y la dinamica interna que lo distingue de otras colectividades educativas, y aplicara este conocimiento para intervenir pedagogicamente en los grupos escolares de los que forma parte como estudiante universitario y como futuro profesional de la pedagogia.</p>
+  </div>
+
+  <p>Dentro del universo de los grupos humanos, el <strong>grupo escolar</strong> ocupa un lugar singular: es la colectividad donde transcurre la mayor parte de la vida formativa de los individuos, el espacio donde se construyen saberes, se negocian identidades, se establecen vinculos y se generan dinamicas que pueden facilitar o dificultar el aprendizaje.</p>
+
+  <p>Comprender que es el grupo escolar, como se forma, como evoluciona y que fuerzas operan en su interior no es solo conocimiento teorico: es una competencia practica esencial para cualquier pedagogo. Quien conoce la dinamica del grupo escolar puede intervenir de manera informada, facilitando procesos de aprendizaje mas eficaces, equitativos y significativos.</p>
+
+  <div class="quote">
+    "El grupo escolar no es simplemente una suma de alumnos reunidos en un aula: es un sistema social vivo, con su propia historia, sus tensiones internas, sus liderazgos informales y su cultura particular, que el docente debe aprender a leer antes de intentar conducirlo."
+    <cite>&mdash; Fernandez, J. M. (2006). <em>Matriz de identidad y grupo escolar</em>. Miño y Davila Editores.</cite>
+  </div>
+
+  <p>Esta guia aborda el grupo escolar desde tres perspectivas complementarias: su definicion y caracteristicas especificas, sus fases de desarrollo a lo largo del tiempo, y los principales fenomenos dinamicos que lo constituyen como unidad social de aprendizaje.</p>
+
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Enfoque Constructivista: el grupo como zona de desarrollo proximo colectivo<span class="ic">+</span></button>
+    <div class="acdbody"><p>Para Vygotsky, el aprendizaje es fundamentalmente social: se produce primero en el plano intersubjetivo (entre personas) y luego se internaliza. El grupo escolar es, desde esta perspectiva, una zona de desarrollo proximo colectiva donde los aprendices se potencian mutuamente. Esta guia aplica este principio invitando al estudiante a conectar continuamente los conceptos teoricos con sus experiencias concretas en grupos escolares reales.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Aprendizaje Basado en Problemas: el grupo como objeto de intervencion<span class="ic">+</span></button>
+    <div class="acdbody"><p>El ABP situa al estudiante ante problemas reales que requieren la movilizacion de conocimientos. En esta guia, el grupo escolar no es un concepto abstracto sino un problema vivo: el estudiante analiza su propio grupo-clase, diagnostica su fase de desarrollo y propone intervenciones pedagogicas fundamentadas. El conocimiento se construye en el proceso de resolver, no antes.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Pedagogia Activa: observar, analizar, proponer e intervenir<span class="ic">+</span></button>
+    <div class="acdbody"><p>Esta guia propone que el estudiante no solo lea sobre el grupo escolar, sino que lo observe activamente en su vida universitaria cotidiana, que lo analice con las herramientas conceptuales del tema y que proponga intervenciones concretas. Cada actividad esta disenada para que el aprendizaje ocurra en la accion, no en la recepcion pasiva de informacion.</p></div>
+  </div>
+
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Competencia Conceptual</span><p>Definir el grupo escolar y distinguirlo de otras colectividades educativas mediante sus caracteristicas constitutivas propias.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Analitica</span><p>Identificar la fase de desarrollo de un grupo escolar real y los fenomenos dinamicos que operan en su interior.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Aplicada</span><p>Proponer estrategias de conduccion y facilitacion pedagogica congruentes con el estado de desarrollo del grupo escolar analizado.</p></div>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section id="previo">
+  <span class="slbl">Seccion 02</span>
+  <h2>Activacion de Conocimiento Previo</h2>
+
+  <p>Antes de abordar el contenido formal del tema, reflexione sobre su propia experiencia como miembro de grupos escolares. El constructivismo sostiene que el aprendizaje significativo requiere anclar el conocimiento nuevo en estructuras cognitivas previas. Su reflexion honesta en este momento potenciara la calidad de su aprendizaje durante el resto de la guia.</p>
+
+  <div class="prevbox">
+    <span class="plbl">Pregunta de Conocimiento Previo</span>
+    <p class="ptxt">"Piense en el grupo escolar del que forma parte actualmente (su grupo-clase de este semestre). Cuantos meses lleva ese grupo reuniendose? Considera que el grupo al inicio del semestre era el mismo que ahora, en terminos de su funcionamiento, confianza y dinamica de trabajo? Que cambios concretos ha observado con el tiempo? A que atribuye esos cambios?"</p>
+    <textarea class="pinput" id="prevresp" placeholder="Escriba aqui su reflexion antes de continuar con el contenido. No hay respuestas incorrectas: se busca activar su experiencia previa como miembro de grupos escolares..."></textarea>
+    <br>
+    <button class="btn-g" onclick="verPrevio()">Ver orientacion conceptual</button>
+    <div class="pfb" id="prevfb">
+      <strong style="color:var(--do);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:8px;">Orientacion (punto de partida, no respuesta definitiva)</strong>
+      <p style="margin:0;color:rgba(255,255,255,.88);">Los cambios que usted ha observado en su grupo-clase a lo largo del tiempo no son casuales: corresponden a las <strong>fases de desarrollo grupal</strong> que todo grupo escolar atraviesa de manera previsible. Los grupos no nacen maduros ni cohesionados: la confianza, los roles, las normas y la capacidad de trabajo colaborativo se construyen gradualmente a traves de experiencias compartidas, conflictos resueltos y logros colectivos. Conforme avance en el contenido, identificara en que fase se encuentra su grupo y por que funciona como funciona.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<section id="contenido">
+  <span class="slbl">Seccion 03</span>
+  <h2>Contenido Tematico</h2>
+
+  <h3>1. Definicion del Grupo Escolar</h3>
+
+  <div class="def">
+    <p><strong>Grupo escolar:</strong> Colectividad de estudiantes que comparten un espacio y tiempo de aprendizaje institucionalizado, que interactuan de manera regular bajo la orientacion de uno o mas docentes, que desarrollan una identidad colectiva propia y normas de funcionamiento especificas, y cuya finalidad central es la construccion compartida del conocimiento y el desarrollo de competencias dentro de un curriculo institucional.</p>
+    <span class="fte">Ref: Coll, C. y Colomina, R. (1990). Interaccion entre alumnos y aprendizaje escolar. En C. Coll, J. Palacios y A. Marchesi (Comps.), <em>Desarrollo psicologico y educacion II</em>. Alianza.</span>
+  </div>
+
+  <p>El grupo escolar no es simplemente el grupo-clase como unidad administrativa (la lista de estudiantes inscritos a una materia). Es una realidad social compleja que trasciende la designacion institucional: puede haber un grupo inscrito que nunca se convierte en grupo escolar genuino (si no hay interaccion significativa ni identidad colectiva), y puede haber subgrupos espontaneos dentro de un grupo-clase que funcionan con mayor cohesion que el grupo formal.</p>
+
+  <h3>2. Caracteristicas Especificas del Grupo Escolar</h3>
+  <p>El grupo escolar comparte los elementos constitutivos de todo grupo (interaccion, normas, roles, cohesion, objetivos comunes), pero posee caracteristicas propias que lo distinguen de otros tipos de grupos:</p>
+
+  <div class="car-grid">
+    <div class="car-item">
+      <div class="cicon">01</div>
+      <h4>Naturaleza institucional</h4>
+      <p>Es creado y regulado por una institucion educativa, lo que implica que sus objetivos, su duracion, sus condiciones de participacion y su evaluacion estan determinados externamente.</p>
+    </div>
+    <div class="car-item">
+      <div class="cicon">02</div>
+      <h4>Heterocronia</h4>
+      <p>Sus integrantes pueden estar en diferentes momentos de desarrollo cognitivo, emocional y social, lo que genera tanto tensiones como oportunidades de aprendizaje entre iguales.</p>
+    </div>
+    <div class="car-item">
+      <div class="cicon">03</div>
+      <h4>Asimetria pedagogica</h4>
+      <p>Existe una relacion asimetrica estructural entre el docente (conductor, facilitador) y los estudiantes (aprendices), que coexiste con relaciones simetricas entre pares.</p>
+    </div>
+    <div class="car-item">
+      <div class="cicon">04</div>
+      <h4>Doble dimension</h4>
+      <p>Opera simultaneamente en dos dimensiones: la <em>tarea</em> (aprender, construir conocimiento) y la <em>socioafectiva</em> (vinculos, emociones, identidad). Ambas influyen mutuamente.</p>
+    </div>
+    <div class="car-item">
+      <div class="cicon">05</div>
+      <h4>Temporalidad definida</h4>
+      <p>Tiene un inicio y un fin previstos (el semestre, el ciclo escolar), lo que genera dinamicas especificas de apertura, desarrollo y cierre que son pedagogicamente relevantes.</p>
+    </div>
+    <div class="car-item">
+      <div class="cicon">06</div>
+      <h4>Curriculum como mediador</h4>
+      <p>El contenido curricular actua como mediador de las interacciones grupales: no es solo lo que se aprende, sino tambien el pretexto a traves del cual el grupo se construye como colectividad.</p>
+    </div>
+  </div>
+
+  <h3>3. Fases de Desarrollo del Grupo Escolar</h3>
+  <p>Uno de los hallazgos mas consistentes de la investigacion sobre grupos es que estos no permanecen estaticos: atraviesan fases de desarrollo que siguen una secuencia reconocible. El modelo mas referenciado en el ambito educativo es el de <strong>Bruce Tuckman</strong> (1965), que describe cinco etapas:</p>
+
+  <div class="fases-grid">
+    <div class="fase-item f1">
+      <div class="fase-num">1</div>
+      <div class="fase-label">Fase I</div>
+      <div class="fase-title">Formacion</div>
+      <div class="fase-desc">Los miembros se conocen, exploran el contexto y establecen dependencia del lider formal. Alta ansiedad, conductas exploradoras y necesidad de orientacion.</div>
+    </div>
+    <div class="fase-item f2">
+      <div class="fase-num">2</div>
+      <div class="fase-label">Fase II</div>
+      <div class="fase-title">Conflicto</div>
+      <div class="fase-desc">Emergen tensiones entre los miembros y resistencia a la estructura. Se negocian roles, se cuestionan normas y se disputa el liderazgo informal.</div>
+    </div>
+    <div class="fase-item f3">
+      <div class="fase-num">3</div>
+      <div class="fase-label">Fase III</div>
+      <div class="fase-title">Normalizacion</div>
+      <div class="fase-desc">El grupo establece acuerdos, define normas propias y desarrolla cohesion. Aumenta la confianza y la disposicion al trabajo colaborativo.</div>
+    </div>
+    <div class="fase-item f4">
+      <div class="fase-num">4</div>
+      <div class="fase-label">Fase IV</div>
+      <div class="fase-title">Desempeno</div>
+      <div class="fase-desc">El grupo funciona con eficacia y autonomia. Los roles son flexibles, la comunicacion es fluida y la energia se orienta plenamente hacia la tarea.</div>
+    </div>
+    <div class="fase-item f5">
+      <div class="fase-num">5</div>
+      <div class="fase-label">Fase V</div>
+      <div class="fase-title">Disolucion</div>
+      <div class="fase-desc">El grupo se acerca a su fin natural. Pueden surgir nostalgia, resistencia al cierre o evaluacion retrospectiva del proceso vivido.</div>
+    </div>
+  </div>
+
+  <div class="card card-g" style="margin-top:20px;">
+    <h4>Implicacion Pedagogica de las Fases</h4>
+    <p>Conocer la fase en que se encuentra un grupo escolar es prerequisito para seleccionar las tecnicas de conduccion adecuadas. Aplicar una tecnica de alto rendimiento colaborativo (Fase IV) a un grupo que aun esta en la fase de conflicto (Fase II) producira frustracion y resultados pobres. El conductor eficaz diagnostica la fase y adapta su intervencion.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Fase</th><th>Clima emocional tipico</th><th>Necesidad del grupo</th><th>Rol del conductor</th><th>Tecnicas adecuadas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formacion</strong></td><td>Ansiedad, exploracion, dependencia</td><td>Orientacion, claridad, bienvenida</td><td>Directivo, estructurador</td><td>Tecnicas de presentacion, encuadre, establecimiento de acuerdos</td></tr>
+        <tr><td><strong>Conflicto</strong></td><td>Tension, resistencia, competencia</td><td>Mediacion, escucha, legitimacion</td><td>Mediador, facilitador del dialogo</td><td>Debate estructurado, negociacion de normas, circulo de dialogo</td></tr>
+        <tr><td><strong>Normalizacion</strong></td><td>Cohesion, confianza, cooperacion</td><td>Consolidacion de normas y roles</td><td>Acompanante, reforzador</td><td>Discusion guiada, trabajo en equipos, proyectos colaborativos</td></tr>
+        <tr><td><strong>Desempeno</strong></td><td>Fluidez, autonomia, motivacion alta</td><td>Retos y espacio para la creatividad</td><td>Facilitador, consultor</td><td>ABP, estudio de casos, role playing, proyectos complejos</td></tr>
+        <tr><td><strong>Disolucion</strong></td><td>Nostalgia, evaluacion, cierre emocional</td><td>Reconocimiento y rituales de cierre</td><td>Celebrador, evaluador del proceso</td><td>Evaluacion participativa, narrativa grupal, rituales de cierre</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4. Dinamica Interna del Grupo Escolar</h3>
+  <p>La <strong>dinamica interna</strong> del grupo escolar refiere al conjunto de fuerzas, procesos y patrones de interaccion que se generan entre sus miembros y que determinan el clima, la productividad y el bienestar del grupo. Los principales fenomenos dinamicos que el pedagogo debe conocer son:</p>
+
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Liderazgo grupal: formal e informal<span class="ic">+</span></button>
+    <div class="acdbody"><p>En todo grupo escolar coexisten dos tipos de liderazgo: el <strong>liderazgo formal</strong> (el docente, el coordinador del equipo), asignado institucionalmente, y el <strong>liderazgo informal</strong>, que emerge espontaneamente de la dinamica interna y recae en quien el grupo reconoce como referente en funcion de su carisma, conocimiento o capacidad de influencia. El conductor eficaz trabaja con ambos tipos de liderazgo, no solo con el formal.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Comunicacion grupal: redes y patrones<span class="ic">+</span></button>
+    <div class="acdbody"><p>La comunicacion en el grupo escolar puede seguir diferentes patrones: en <strong>rueda</strong> (todo pasa por el docente), en <strong>cadena</strong> (comunicacion secuencial) o en <strong>red</strong> (comunicacion multidireccional entre todos). Los grupos con redes de comunicacion multidireccionales tienden a ser mas creativos, mas cohesionados y mas satisfechos con su proceso de trabajo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Normas grupales: explicitas e implicitas<span class="ic">+</span></button>
+    <div class="acdbody"><p>Las normas del grupo escolar regulan el comportamiento de sus miembros. Las <strong>normas explicitas</strong> son las establecidas formalmente (reglamento, acuerdos de grupo); las <strong>normas implicitas</strong> son las que operan sin ser nombradas ("en este grupo nadie pregunta en clase", "aqui siempre llegan 10 minutos tarde"). Las normas implicitas frecuentemente son mas influyentes que las explicitas.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Roles grupales: tipologia y consecuencias<span class="ic">+</span></button>
+    <div class="acdbody"><p>En el grupo escolar emergen roles funcionales (quien organiza, quien registra, quien media), roles relacionales (quien anima, quien cuida el clima) y roles disfuncionales (quien bloquea, quien monopoliza, quien se ausenta emocionalmente). Conocer la tipologia de roles permite al conductor intervenir para diversificarlos y evitar que los roles disfuncionales paralicen al grupo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Conflicto grupal: fuente de desarrollo o de ruptura<span class="ic">+</span></button>
+    <div class="acdbody"><p>El conflicto en el grupo escolar no es intrinsecamente negativo: cuando se gestiona adecuadamente, es un motor de desarrollo grupal (permite renegociar normas, replantear roles, profundizar el dialogo). El problema no es el conflicto en si, sino la ausencia de competencias y estrategias para gestionarlo de forma constructiva. El conductor de grupos debe distinguir el conflicto productivo del conflicto destructivo y tener herramientas para intervenir en ambos casos.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Clima grupal: condicion del aprendizaje<span class="ic">+</span></button>
+    <div class="acdbody"><p>El <strong>clima grupal</strong> es la percepcion compartida que tienen los miembros sobre la calidad de las relaciones, la seguridad psicologica y el ambiente emocional del grupo. Un clima grupal positivo (caracterizado por confianza, respeto y apertura al error) es condicion necesaria aunque no suficiente para el aprendizaje significativo. El conductor puede intervenir activamente en la construccion de un clima favorable.</p></div>
+  </div>
+
+  <h3>5. El Grupo Escolar Universitario: Especificidades</h3>
+  <p>El grupo escolar universitario presenta particularidades que lo distinguen de los grupos en otros niveles educativos:</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Dimension</th><th>Especificidad universitaria</th><th>Implicacion para el conductor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Autonomia</strong></td><td>Mayor autonomia y autorregulacion esperada de los estudiantes</td><td>El conductor adopta un rol mas facilitador que directivo</td></tr>
+        <tr><td><strong>Heterogeneidad</strong></td><td>Mayor diversidad de origenes, edades, trayectorias y proyectos de vida</td><td>Requiere tecnicas que integren la diversidad como recurso</td></tr>
+        <tr><td><strong>Motivacion</strong></td><td>Motivacion predominantemente intrinseca o vocacional</td><td>Las tecnicas activas y colaborativas son especialmente eficaces</td></tr>
+        <tr><td><strong>Temporalidad</strong></td><td>Grupos que se disuelven y reconstituyen por semestre</td><td>Las fases de formacion y conflicto se repiten ciclicamente</td></tr>
+        <tr><td><strong>Evaluacion</strong></td><td>La evaluacion individual coexiste con la logica del aprendizaje colaborativo</td><td>Necesidad de estructurar la interdependencia positiva</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card-v">
+    <h4>Sintesis: Lo que distingue al grupo escolar como objeto de intervencion pedagogica</h4>
+    <p>El grupo escolar es una unidad social de aprendizaje con naturaleza institucional, doble dimension (tarea y socioafectiva), fases de desarrollo previsibles y una dinamica interna compleja que el pedagogo debe diagnosticar, comprender e intervenir. Ignorar la dinamica del grupo escolar es renunciar a uno de los recursos pedagogicos mas potentes disponibles en el aula: el grupo mismo.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section id="materiales">
+  <span class="slbl">Seccion 04</span>
+  <h2>Materiales Externos de Consulta</h2>
+  <p>Los siguientes recursos han sido seleccionados por su rigor academico y su pertinencia directa para profundizar en los contenidos de este tema. Se recomienda consultarlos antes de realizar las actividades practicas, especialmente antes del foro y del caso practico.</p>
+
+  <div class="rgrid">
+    <div class="ritem">
+      <span class="rtipo">Articulo Clasico</span>
+      <div class="rtit">Developmental Sequence in Small Groups</div>
+      <div class="raut">Tuckman, B. W. (1965). Psychological Bulletin, 63(6), 384-399.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Articulo original donde Tuckman propone el modelo de cinco fases (forming, storming, norming, performing, adjourning) que es referencia fundamental en el estudio del desarrollo grupal.</p>
+      <a class="rlink" href="https://doi.org/10.1037/h0022100" target="_blank" rel="noopener">Acceder via DOI</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Libro de Referencia</span>
+      <div class="rtit">Desarrollo psicologico y educacion II</div>
+      <div class="raut">Coll, C. y Colomina, R. (1990). Alianza Editorial.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Capitulo clasico sobre interaccion entre alumnos y aprendizaje escolar desde la perspectiva constructivista. Referencia central para el grupo escolar en contextos hispanohablantes.</p>
+      <a class="rlink" href="https://www.worldcat.org/title/desarrollo-psicologico-y-educacion" target="_blank" rel="noopener">Ver en WorldCat</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Libro Especializado</span>
+      <div class="rtit">La dinamica de los grupos pequenos</div>
+      <div class="raut">Anzieu, D. y Martin, J.Y. (2004). Biblioteca Nueva, Madrid.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Analisis exhaustivo de la estructura, dinamica y fenomenos de los grupos reducidos, con aplicaciones directas al contexto educativo y al rol del conductor.</p>
+      <a class="rlink" href="https://www.worldcat.org/title/dinamica-de-los-grupos-pequenos" target="_blank" rel="noopener">Ver en WorldCat</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Revista Cientifica</span>
+      <div class="rtit">Revista de Educacion (Ministerio de Educacion, Espana)</div>
+      <div class="raut">Ministerio de Educacion, Cultura y Deporte de Espana.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Publicacion arbitrada con articulos sobre dinamica grupal, aprendizaje cooperativo y conduccion de grupos en contextos educativos. Acceso abierto a numeros anteriores.</p>
+      <a class="rlink" href="https://www.educacionyfp.gob.es/revista-de-educacion" target="_blank" rel="noopener">Acceder a la Revista</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Repositorio Digital</span>
+      <div class="rtit">Redalyc: Grupos escolares y dinamica de aula</div>
+      <div class="raut">Red de Revistas Cientificas de America Latina.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Buscador de articulos arbitrados en espanol sobre grupos escolares, clima de aula, aprendizaje colaborativo y conduccion grupal en educacion superior latinoamericana.</p>
+      <a class="rlink" href="https://www.redalyc.org" target="_blank" rel="noopener">Acceder a Redalyc</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Recurso Audiovisual</span>
+      <div class="rtit">Aprendizaje Cooperativo y Grupos Escolares</div>
+      <div class="raut">Canal UNED TV (Universidad Nacional de Educacion a Distancia, Espana).</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Videos academicos sobre tecnicas de aprendizaje cooperativo, dinamica grupal y conduccion de grupos escolares universitarios. Material complementario de alta calidad.</p>
+      <a class="rlink" href="https://www.youtube.com/@unedtv" target="_blank" rel="noopener">Canal UNED TV</a>
+    </div>
+  </div>
+
+  <div class="card card-g" style="margin-top:20px;">
+    <h4>Orientacion para el uso de fuentes</h4>
+    <p>Al consultar estos materiales, registre los argumentos que enriquezcan, matizen o cuestionen los conceptos de esta guia. La confrontacion critica de fuentes es una competencia central en la formacion universitaria y un requisito para participar con solidez en el foro de debate.</p>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section id="act1">
+  <span class="slbl">Actividad 01 de 04</span>
+  <h2>Actividad de Foro: Reflexion Critica y Debate</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">1</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Foro de Discusion Asincrono en Google Classroom</span>
+        <h3>El Grupo Escolar que Soy: Diagnostico Critico desde Adentro</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Foro asincrono</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Plazo</strong><br>48 a 72 horas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Participaciones</strong><br>1 aportacion + 2 respuestas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+
+      <h3>Pregunta Detonadora</h3>
+      <div style="background:var(--az);color:var(--bl);border-radius:var(--rg);padding:26px 30px;margin:16px 0 22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;">Pregunta para el Foro</span>
+        <p style="color:var(--bl);font-size:1.05rem;font-style:italic;margin:0;line-height:1.85;">"Analice su grupo-clase actual (el de esta materia u otro en el que este inscrito este semestre) e identifique en cual de las cinco fases del modelo de Tuckman se encuentra en este momento. Sustente su respuesta con al menos tres evidencias concretas observables (situaciones, conductas, interacciones) que haya vivido o presenciado en ese grupo. Finalmente, argumente: que responsabilidad tiene el docente de esa materia en que el grupo este en esa fase, y que podria hacer para facilitar su avance a la siguiente fase de desarrollo?"</p>
+      </div>
+
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Acceso al foro:</strong> Ingrese a Google Classroom con su cuenta institucional. Localice la materia "Tecnicas de Conduccion de Grupos" y abra la actividad "Foro Unidad I: El Grupo Escolar".</p></li>
+        <li><p><strong>Preparacion:</strong> Antes de escribir, revise la tabla de fases del contenido de esta guia. Identifique la fase de su grupo y seleccione tres situaciones concretas y especificas que la evidencien.</p></li>
+        <li><p><strong>Redaccion de su aportacion (180 a 280 palabras):</strong> Estructure su texto en tres partes: (a) identificacion de la fase con justificacion teorica, (b) tres evidencias concretas observadas, y (c) analisis del rol del docente y propuesta de intervencion.</p></li>
+        <li><p><strong>Interaccion con pares:</strong> Lea al menos dos participaciones de companieros. Redacte respuestas que complementen, cuestionen o enriquezcan sus analisis. Evite respuestas de validacion superficial.</p></li>
+        <li><p><strong>Entrega:</strong> Tome una captura de pantalla de su aportacion principal y al menos una respuesta. Subala en la tarea correspondiente de Classroom.</p></li>
+      </ol>
+
+      <h3>Ejemplo Orientador</h3>
+      <div class="fdemo">
+        <div class="fhdr">Foro: El Grupo Escolar que Soy (ejemplo ilustrativo)</div>
+        <div class="fpost">
+          <span class="fautor">Estudiante A &mdash; Martes, 18:34 hrs</span>
+          <p>Analizo mi grupo-clase de "Teoria del Curriculo", tercer semestre, 22 integrantes. Considero que nos encontramos en la <em>fase de normalizacion</em>, con algunos rasgos residuales de la fase de conflicto. Las evidencias que sustenten esta clasificacion son: (1) A inicios del semestre discutiamos con frecuencia sobre como distribuir el trabajo en los equipos y varios companieros expresaban abiertamente su disconformidad con ciertos integrantes; esas tensiones han disminuido notablemente desde que acordamos un protocolo de trabajo colaborativo en la quinta sesion. (2) Ya existe un clima de confianza suficiente para que los estudiantes hagan preguntas en clase sin temor a la burla, lo que no ocurria en las primeras semanas. (3) Los roles informales del grupo se han estabilizado: hay dos companieros que asumen espontaneamente la coordinacion de los equipos y esto ya no genera resistencia. Respecto al rol de la docente, creo que fue determinante en facilitar nuestra transicion del conflicto a la normalizacion: dedico dos sesiones a negociar normas de convivencia con el grupo en lugar de imponerlas, lo que genero mayor apropiacion. Para avanzar hacia la fase de desempeno, podria proponer proyectos con mayor autonomia del grupo y menor supervision directa.</p>
+        </div>
+        <div class="fpost frep">
+          <span class="fautor">Estudiante B &mdash; responde a Estudiante A &mdash; Miercoles, 10:12 hrs</span>
+          <p>Tu analisis me parece solido. Sin embargo, me pregunto si la estabilizacion de los roles informales que describes es siempre una senial de normalizacion o puede tambien indicar que ciertos roles disfuncionales (como el monopolio de la coordinacion por dos personas) se estan cristalizando. Segun lo que estudiamos sobre dinamica de roles, la rigidez de los roles puede ser un obstaculo en lugar de un avance. Que opinas? Como distinguirias entre un rol estabilizado productivamente y uno que se ha vuelto rigido?</p>
+        </div>
+      </div>
+
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Identificacion de la fase</td><td>Fase correctamente identificada con sustento en el modelo de Tuckman</td><td>Fase identificada con sustento parcial</td><td>Fase mencionada sin sustento teorico</td></tr>
+            <tr><td>Evidencias concretas</td><td>3 o mas situaciones especificas y verificables del grupo real</td><td>2 situaciones pertinentes</td><td>1 situacion o descripcion vaga</td></tr>
+            <tr><td>Analisis del rol docente</td><td>Analisis critico y propuesta de intervencion fundamentada</td><td>Mencion del rol docente con propuesta basica</td><td>Sin analisis del rol docente</td></tr>
+            <tr><td>Interaccion con pares</td><td>2 respuestas con argumentos nuevos o contra-preguntas</td><td>2 respuestas breves pero pertinentes</td><td>1 respuesta o ausente</td></tr>
+            <tr><td>Redaccion</td><td>Lenguaje academico, claro, sin errores</td><td>Apropiado con errores menores</td><td>Errores que dificultan la comprension</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 2: ORGANIZADOR -->
+<section id="act2">
+  <span class="slbl">Actividad 02 de 04</span>
+  <h2>Actividad de Aprendizaje Significativo</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">2</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Organizador Grafico + Diagnostico Grupal Aplicado</span>
+        <h3>Perfil de mi Grupo Escolar: Un Diagnostico desde Adentro</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>60 a 80 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>PDF o imagen en Classroom</div>
+        </div>
+      </div>
+
+      <p>Esta actividad aplica el principio del aprendizaje significativo: usted analizara su propio grupo-clase con las herramientas conceptuales del tema, construyendo un diagnostico fundamentado que le permitira tanto profundizar en los conceptos como comprender mejor la colectividad de la que forma parte.</p>
+
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Seleccion del grupo:</strong> Elija el grupo-clase que analizara. Puede ser este mismo grupo o cualquier otro del que forme parte este semestre. Escriba sus datos generales en el campo correspondiente del organizador.</p></li>
+        <li><p><strong>Completar el organizador:</strong> Complete los seis nodos del organizador interactivo. Use lenguaje preciso y ejemplos concretos de situaciones reales que haya observado o vivido en ese grupo.</p></li>
+        <li><p><strong>Diagnostico integrado:</strong> En el campo de sintesis, redacte un parrafo de 4 a 6 oraciones que integre su analisis: cual es el estado actual del grupo, que lo explica y que intervencion pedagogica recomendaria.</p></li>
+        <li><p><strong>Entrega:</strong> Tome una captura o exporte a documento. Nombre el archivo <code>Act2_GrupoEscolar_NombreApellido.pdf</code> y subalo en Classroom.</p></li>
+      </ol>
+
+      <h3>Organizador Interactivo: Perfil del Grupo Escolar</h3>
+      <div class="owrap">
+        <div class="ocent">Mi Grupo Escolar: Diagnostico Pedagogico &mdash; <span id="grpnm">_______________</span></div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Datos del grupo analizado</label>
+          <input type="text" id="grpinp" placeholder="Ej: Grupo-clase de Teoria del Curriculo, 3er semestre Pedagogia, 22 integrantes, Prof. Garcia" style="width:100%;padding:10px 14px;border:1px solid var(--azxl);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--bl);color:var(--tx);" oninput="document.getElementById('grpnm').textContent=this.value||'_______________'">
+        </div>
+        <div class="ogrid">
+          <div class="onodo" data-l="1. Fase de desarrollo actual"><textarea id="n1" placeholder="En que fase del modelo de Tuckman se encuentra? Que evidencias concretas sustentan tu clasificacion?"></textarea></div>
+          <div class="onodo" data-l="2. Clima grupal observado"><textarea id="n2" placeholder="Como describirias el clima emocional del grupo? Hay confianza, tension, indiferencia? Que situaciones concretas lo evidencian?"></textarea></div>
+          <div class="onodo" data-l="3. Roles identificados"><textarea id="n3" placeholder="Que roles formales e informales existen? Hay roles disfuncionales que afecten el aprendizaje? Quien lidera informalmente?"></textarea></div>
+          <div class="onodo" data-l="4. Normas del grupo"><textarea id="n4" placeholder="Que normas explicitas e implicitas regulan el grupo? Cuales facilitan el aprendizaje y cuales lo obstaculizan?"></textarea></div>
+          <div class="onodo" data-l="5. Comunicacion grupal"><textarea id="n5" placeholder="Como fluye la comunicacion? Es en rueda (todo por el docente), en cadena o en red? Quien suele hablar y quien suele callar?"></textarea></div>
+          <div class="onodo" data-l="6. Cohesion e identidad"><textarea id="n6" placeholder="Hay sentido de pertenencia? Los integrantes se reconocen como miembros de un mismo grupo? En que situaciones se expresa esa identidad?"></textarea></div>
+        </div>
+        <div style="margin-top:20px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Diagnostico integrado y recomendacion pedagogica</label>
+          <textarea id="ndiag" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:100px;background:var(--bl);resize:vertical;color:var(--tx);" placeholder="Integre su analisis: estado actual del grupo, factores que lo explican y que intervencion pedagogica recomendaria al conductor de este grupo para facilitar su desarrollo..."></textarea>
+        </div>
+        <div><button class="btnp" onclick="guardarOrg()">Guardar Organizador</button><button class="btno" onclick="limpiarOrg()">Reiniciar</button></div>
+        <div id="msgorg" class="msg msg-ok">Organizador guardado. Tome una captura de pantalla para entregar en Classroom.</div>
+      </div>
+
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Grupo seleccionado</td><td>Real, especifico, con datos suficientes</td><td>Real con pocos datos</td><td>Vago o hipotetico</td></tr>
+            <tr><td>Aplicacion de conceptos</td><td>Los 6 nodos aplican conceptos del tema con precision y evidencia</td><td>4 a 5 nodos con pertinencia conceptual</td><td>Menos de 4 o sin sustento teorico</td></tr>
+            <tr><td>Diagnostico integrado</td><td>Sintesis coherente con recomendacion fundamentada</td><td>Sintesis pertinente sin recomendacion clara</td><td>Descripcion sin analisis ni recomendacion</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir evidencia a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 3: CASO -->
+<section id="act3">
+  <span class="slbl">Actividad 03 de 04</span>
+  <h2>Caso Practico: Analisis y Toma de Decisiones Pedagogicas</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">3</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Analisis de Caso con Preguntas Guiadas</span>
+        <h3>El Caso del Grupo 301: Un Grupo que No Logra Avanzar</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual o binas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>50 a 70 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Documento en Classroom</div>
+        </div>
+      </div>
+
+      <div class="casobox">
+        <span class="clbl">Caso Practico: El Grupo 301</span>
+        <p><strong>Descripcion del caso:</strong></p>
+        <p>El profesor Roberto Vargas lleva doce semanas impartiendo la materia "Introduccion a la Investigacion Educativa" al grupo 301 de la Licenciatura en Pedagogia. El grupo esta integrado por 26 estudiantes. El profesor Vargas es reconocido en la facultad por su vasto conocimiento disciplinar y su experiencia investigadora, pero esta es su primera vez impartiendo clase a nivel licenciatura.</p>
+        <p>Doce semanas despues de iniciado el semestre, el grupo 301 presenta las siguientes caracteristicas:</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:14px 0;">
+          <li style="padding:10px 14px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);">El profesor Vargas sigue estructurando cada sesion como exposicion magistral, sin actividades en equipo ni participacion del grupo mas alla de preguntas al final de la clase.</li>
+          <li style="padding:10px 14px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);">Los estudiantes practicamente no se conocen entre si mas alla de los subgrupos de amistad previos al semestre. Nunca se han realizado actividades que impliquen interaccion entre subgrupos diferentes.</li>
+          <li style="padding:10px 14px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);">Cuando el profesor asigna trabajos en equipo, los estudiantes se agrupan siempre con los mismos companieros y reportan tension con los grupos "desconocidos" de la clase.</li>
+          <li style="padding:10px 14px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);">El clima del grupo es descrito por varios estudiantes como "frio" e "impersonal". La asistencia ha bajado del 95% en las primeras semanas al 72% en las ultimas cuatro sesiones.</li>
+          <li style="padding:10px 14px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);">Tres estudiantes han acudido a la coordinacion para solicitar cambio de grupo, argumentando que "no aprenden nada" y que el ambiente es poco motivante.</li>
+        </ul>
+        <p>El coordinador de la carrera le pide a usted, como estudiante avanzado de la Licenciatura en Pedagogia, que elabore un analisis tecnico de la situacion y una propuesta de intervencion concreta.</p>
+      </div>
+
+      <h3>Preguntas de Analisis</h3>
+      <p>Responda cada pregunta de forma fundamentada, citando los conceptos del tema. Se valora la coherencia argumentativa y el uso preciso de los conceptos estudiados.</p>
+
+      <ol class="cpqs">
+        <li>
+          <div class="cq"><strong>Diagnostico de fase:</strong> Despues de doce semanas, en que fase del modelo de Tuckman se encuentra el grupo 301 segun su analisis? Justifique su respuesta identificando al menos cuatro indicadores concretos del caso que sustentan esa clasificacion. Que le parece anormal o llamativo de que el grupo este en esa fase despues de doce semanas?</div>
+          <textarea class="cresp" id="c1" placeholder="Escriba aqui su diagnostico de fase..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>Analisis de la dinamica interna:</strong> Identifique dos o tres factores de la dinamica interna del grupo 301 que, segun los conceptos del tema, explican la situacion actual. Considere: el clima grupal, las redes de comunicacion, los roles, la cohesion y la relacion con el docente como conductor.</div>
+          <textarea class="cresp" id="c2" placeholder="Analice los factores de la dinamica interna..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>Responsabilidad del conductor:</strong> En que medida la conducta pedagogica del profesor Vargas ha contribuido a que el grupo este en la situacion actual? Fundamente su respuesta en los conceptos sobre el rol del conductor en las diferentes fases de desarrollo grupal. No se trata de "culpar" al docente, sino de analizar su intervencion con criterios pedagogicos.</div>
+          <textarea class="cresp" id="c3" placeholder="Analice el rol del conductor pedagogico..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>Plan de intervencion:</strong> Proponga un plan de intervencion concreto de tres a cinco sesiones para el profesor Vargas. Para cada sesion, especifique: objetivo especifico, tecnica o actividad a implementar y razon pedagogica de su eleccion en relacion con la fase de desarrollo del grupo.</div>
+          <textarea class="cresp" id="c4" placeholder="Detalle el plan de intervencion sesion por sesion..."></textarea>
+        </li>
+      </ol>
+
+      <div class="card card-o" style="margin-top:20px;">
+        <h4>Nota metodologica</h4>
+        <p>El analisis de casos requiere ir mas alla de la descripcion: el objetivo es <em>explicar</em> los fenomenos con conceptos teoricos precisos y <em>proponer</em> intervenciones fundamentadas. Una respuesta de calidad no es "el grupo tiene mal ambiente", sino "el grupo 301 presenta un clima grupal negativo derivado de la ausencia de actividades que promuevan la interaccion horizontal, lo que ha mantenido al grupo en la fase de formacion tras doce semanas de trabajo. La intervencion recomendada para transitar a la fase de normalizacion es..."</p>
+      </div>
+
+      <div style="margin-top:18px;">
+        <button class="btnp" onclick="guardarCaso()">Guardar Analisis</button>
+        <button class="btno" onclick="limpiarCaso()">Limpiar</button>
+      </div>
+      <div id="msgcaso" class="msg msg-ok">Analisis guardado. Exporte el documento y subalo a Classroom.</div>
+      <span class="badge" style="margin-top:20px;">Subir documento a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 4: QUIZ -->
+<section id="act4">
+  <span class="slbl">Actividad 04 de 04</span>
+  <h2>Quiz de Autoevaluacion</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">4</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Quiz Interactivo con Retroalimentacion Inmediata</span>
+        <h3>Evaluacion: El Grupo Escolar, Fases y Dinamica</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion del Quiz</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Preguntas</strong><br>5 reactivos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Formato</strong><br>Opcion multiple</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Puntaje maximo</strong><br>10 puntos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <p>Responda cada pregunta seleccionando la opcion que considere correcta. Al finalizar, presione "Calificar" para conocer su puntaje y retroalimentacion inmediata. Tome una captura del resultado y subala a Classroom.</p>
+
+      <div class="qwrap" id="qc">
+
+        <div class="preg">
+          <span class="qn">Pregunta 01 de 05</span>
+          <div class="qt">Cual de las siguientes caracteristicas distingue especificamente al grupo escolar de otros tipos de grupos humanos?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p1" value="a"><span>El grupo escolar es siempre un grupo primario con relaciones cara a cara intensas y alta cohesion afectiva entre todos sus miembros.</span></label></li>
+            <li><label><input type="radio" name="p1" value="b"><span>El grupo escolar tiene naturaleza institucional, doble dimension (tarea y socioafectiva), temporalidad definida y el curriculo como mediador de sus interacciones.</span></label></li>
+            <li><label><input type="radio" name="p1" value="c"><span>El grupo escolar se distingue por ser siempre un equipo de alto rendimiento donde todos los miembros tienen roles complementarios y responsabilidad colectiva.</span></label></li>
+            <li><label><input type="radio" name="p1" value="d"><span>El grupo escolar es aquel en que la interaccion se produce exclusivamente entre estudiantes, sin la participacion de ningun agente institucional externo como el docente.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 02 de 05</span>
+          <div class="qt">Un docente observa que en su grupo-clase las tensiones por el liderazgo informal son frecuentes, los estudiantes cuestionan abiertamente las normas establecidas y la atmosfera es de competencia mas que de colaboracion. Segun el modelo de Tuckman, en que fase se encuentra este grupo?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p2" value="a"><span>Fase de formacion, porque el grupo aun no ha establecido normas ni roles definitivos.</span></label></li>
+            <li><label><input type="radio" name="p2" value="b"><span>Fase de conflicto (storming), porque emergen tensiones, se negocian roles y se cuestiona la estructura, lo que es caracteristico de esta etapa del desarrollo grupal.</span></label></li>
+            <li><label><input type="radio" name="p2" value="c"><span>Fase de disolucion, porque las tensiones indican que el grupo esta proxximo a su fin natural.</span></label></li>
+            <li><label><input type="radio" name="p2" value="d"><span>Fase de desempeno, porque la autonomia para cuestionar las normas indica un grupo maduro y autoregulado.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 03 de 05</span>
+          <div class="qt">Que tipo de liderazgo emerge espontaneamente de la dinamica interna del grupo escolar y recae en quien el grupo reconoce como referente por su carisma, conocimiento o capacidad de influencia?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p3" value="a"><span>Liderazgo formal, porque todo liderazgo en el grupo escolar es asignado institucionalmente por la autoridad educativa.</span></label></li>
+            <li><label><input type="radio" name="p3" value="b"><span>Liderazgo estructural, porque surge de la estructura curricular establecida por la institucion para ese grupo.</span></label></li>
+            <li><label><input type="radio" name="p3" value="c"><span>Liderazgo informal, porque emerge de la dinamica interna del grupo sin ser asignado por ninguna autoridad externa, coexistiendo con el liderazgo formal del docente.</span></label></li>
+            <li><label><input type="radio" name="p3" value="d"><span>Liderazgo democratico, porque es el tipo de liderazgo que todos los miembros del grupo reconocen como legitimo por votacion colectiva.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 04 de 05</span>
+          <div class="qt">En la fase de normalizacion del modelo de Tuckman, cual es la necesidad central del grupo escolar y que rol debe adoptar el conductor para responder a esa necesidad?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p4" value="a"><span>Orientacion y claridad; el conductor debe ser altamente directivo e imponer normas claras al grupo para reducir la ansiedad inicial de sus miembros.</span></label></li>
+            <li><label><input type="radio" name="p4" value="b"><span>Mediacion del conflicto; el conductor debe actuar como arbitro externo que impone sanciones a quienes violan los acuerdos del grupo.</span></label></li>
+            <li><label><input type="radio" name="p4" value="c"><span>Consolidacion de normas y roles; el conductor debe acompañar y reforzar los acuerdos emergentes, facilitando que el grupo construya su propia identidad y estructura de funcionamiento.</span></label></li>
+            <li><label><input type="radio" name="p4" value="d"><span>Disolucion ordenada; el conductor debe preparar al grupo para su fin natural y evitar que desarrolle una identidad colectiva demasiado fuerte que dificulte la evaluacion individual.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 05 de 05</span>
+          <div class="qt">Las normas implicitas de un grupo escolar son aquellas que:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p5" value="a"><span>Estan escritas en el reglamento institucional y son conocidas por todos los miembros del grupo desde el primer dia de clases.</span></label></li>
+            <li><label><input type="radio" name="p5" value="b"><span>Operan sin ser nombradas ni acordadas formalmente, regulan el comportamiento del grupo de manera no consciente y frecuentemente son mas influyentes que las normas explicitas.</span></label></li>
+            <li><label><input type="radio" name="p5" value="c"><span>Son fijadas unilateralmente por el docente al inicio del semestre y aceptadas sin cuestionamiento por los estudiantes a partir de la primera sesion.</span></label></li>
+            <li><label><input type="radio" name="p5" value="d"><span>Solo existen en grupos informales y nunca se presentan en grupos escolares institucionales con reglamentos y normas de convivencia explicitamente establecidas.</span></label></li>
+          </ul>
+        </div>
+
+        <button id="btnq" onclick="calificar()">Calificar Quiz</button>
+
+        <div class="qres" id="qr">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:6px;">Resultado Final</span>
+          <span class="sn" id="snm">0/10</span>
+          <div class="bprog"><div class="bfill" id="bf"></div></div>
+          <p class="sm" id="smsg"></p>
+          <p class="sd" id="sdet"></p>
+          <br><button id="btnr" onclick="reiniciar()">Intentar de Nuevo</button>
+        </div>
+      </div>
+
+      <div class="card card-b" style="margin-top:22px;">
+        <h4>Instruccion de Entrega</h4>
+        <ol style="margin-left:18px;color:var(--tx2);font-size:.92rem;">
+          <li style="margin-bottom:7px;">Complete el quiz hasta obtener la pantalla de resultados.</li>
+          <li style="margin-bottom:7px;">Tome una captura de pantalla que incluya el puntaje, la barra de progreso y las respuestas marcadas con su retroalimentacion.</li>
+          <li style="margin-bottom:7px;">Nombre el archivo: <code>Quiz_GrupoEscolar_NombreApellido.png</code></li>
+          <li>Subalo en la tarea "Quiz Unidad I - Grupo Escolar" de Google Classroom.</li>
+        </ol>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- REFLEXION -->
+<section id="reflexion">
+  <span class="slbl">Seccion 09</span>
+  <h2>Reflexion y Plan de Aplicacion</h2>
+  <p>Esta seccion cierra el ciclo de aprendizaje propuesto por esta guia. La reflexion metacognitiva &mdash;pensar sobre lo que se aprendio, como se aprendio y para que sirve&mdash; es condicion para que el aprendizaje sea duradero y transferible a nuevos contextos.</p>
+
+  <div class="card card-g" style="margin-bottom:26px;">
+    <h4>Condicion Previa</h4>
+    <p>Esta seccion tiene mayor valor cuando se completa despues de haber realizado las cuatro actividades practicas. La experiencia concreta acumulada en las actividades sera el insumo principal de su reflexion.</p>
+  </div>
+
+  <h3>Cuadro de Reflexion Personal</h3>
+  <div class="refgrid">
+    <div class="refitem"><label>1. Concepto que mas me impacto</label><textarea id="r1" placeholder="Cual de los conceptos del tema cambio o matizo una idea previa que tenia sobre el grupo escolar? Por que?"></textarea></div>
+    <div class="refitem"><label>2. Lo que observe en mi propio grupo</label><textarea id="r2" placeholder="Que rasgo de su grupo-clase actual comprende ahora diferente gracias a los conceptos trabajados?"></textarea></div>
+    <div class="refitem"><label>3. Tension o dificultad conceptual</label><textarea id="r3" placeholder="Que aspecto del tema le resulto mas dificil de comprender o le genero mayor tension intelectual? Por que?"></textarea></div>
+    <div class="refitem"><label>4. Preguntas que me quedan abiertas</label><textarea id="r4" placeholder="Que preguntas nuevas surgieron de este tema que le gustaria explorar en las proximas unidades?"></textarea></div>
+  </div>
+
+  <hr class="div">
+  <h3>Plan de Aplicacion Profesional</h3>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como aplicare este conocimiento en mi vida universitaria inmediata</h4>
+    <textarea id="p1" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: A partir de esta guia, voy a observar sistematicamente en que fase se encuentra mi grupo-clase de Filosofia de la Educacion y voy a compartir mi diagnostico con el docente como sugerencia de intervencion..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como transferire este conocimiento a mi futura practica docente o pedagogica</h4>
+    <textarea id="p2" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: Cuando sea docente en nivel secundaria, aplicare el modelo de Tuckman para diagnosticar la fase de cada grupo al inicio del semestre y seleccionare las tecnicas de conduccion en funcion de esa fase..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h4>Mi compromiso de aprendizaje para las proximas dos semanas</h4>
+    <textarea id="p3" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:70px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Me comprometo a... (accion concreta, observable y realizable en las proximas dos semanas)"></textarea>
+  </div>
+  <button class="btnp" onclick="genPlan()">Generar mi Plan de Aplicacion</button>
+
+  <div class="planprev" id="planp">
+    <h4>Mi Plan de Aplicacion &mdash; El Grupo Escolar</h4>
+    <div id="planpc"></div>
+    <div class="card card-g" style="margin-top:16px;"><p style="margin:0;font-size:.88rem;">Tome una captura de pantalla de este plan como referencia personal para las proximas semanas del curso.</p></div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <span class="slbl">Seccion 10</span>
+  <h2>Glosario de Terminos Clave</h2>
+  <div class="card">
+    <dl class="glos">
+      <div><dt>Asimetria pedagogica</dt><dd>Relacion estructural de desigualdad entre el docente (conductor) y los estudiantes (aprendices) en el grupo escolar, que coexiste con relaciones simetricas entre pares y tiene implicaciones en la dinamica de poder y participacion del grupo.</dd></div>
+      <div><dt>Clima grupal</dt><dd>Percepcion compartida de los miembros sobre la calidad de las relaciones, la seguridad psicologica y el ambiente emocional del grupo. Un clima positivo es condicion necesaria para el aprendizaje significativo.</dd></div>
+      <div><dt>Conflicto grupal productivo</dt><dd>Tension interna del grupo que, cuando se gestiona adecuadamente, actua como motor de desarrollo: permite renegociar normas, replantear roles y profundizar el dialogo. Se distingue del conflicto destructivo por su resolucion constructiva.</dd></div>
+      <div><dt>Doble dimension del grupo escolar</dt><dd>Operacion simultanea del grupo en dos planos: la dimension de la tarea (aprender, construir conocimiento) y la dimension socioafectiva (vinculos, emociones, identidad). Ambas se influyen mutuamente.</dd></div>
+      <div><dt>Fase de conflicto (storming)</dt><dd>Segunda fase del modelo de Tuckman en que emergen tensiones entre los miembros, se cuestionan las normas establecidas y se disputa el liderazgo informal. Es una fase natural e inevitable del desarrollo grupal.</dd></div>
+      <div><dt>Fase de desempeno (performing)</dt><dd>Cuarta fase del modelo de Tuckman caracterizada por el funcionamiento autonomo y eficaz del grupo: roles flexibles, comunicacion fluida y orientacion plena hacia la tarea de aprendizaje.</dd></div>
+      <div><dt>Fase de formacion (forming)</dt><dd>Primera fase del modelo de Tuckman en que los miembros se conocen, exploran el contexto y establecen dependencia del lider formal. Predominan la ansiedad, la educacion y la busqueda de orientacion.</dd></div>
+      <div><dt>Fase de normalizacion (norming)</dt><dd>Tercera fase del modelo de Tuckman en que el grupo establece acuerdos, define normas propias y desarrolla cohesion. Aumentan la confianza y la disposicion al trabajo colaborativo.</dd></div>
+      <div><dt>Grupo escolar</dt><dd>Colectividad de estudiantes que comparte un espacio y tiempo de aprendizaje institucionalizado, interactua regularmente bajo la orientacion docente, desarrolla identidad colectiva propia y tiene como finalidad la construccion compartida del conocimiento dentro de un curriculo institucional.</dd></div>
+      <div><dt>Heterocronia</dt><dd>Condicion del grupo escolar en que sus integrantes pueden estar en diferentes momentos de desarrollo cognitivo, emocional y social, generando tanto tensiones como oportunidades de aprendizaje entre iguales.</dd></div>
+      <div><dt>Liderazgo informal</dt><dd>Tipo de liderazgo que emerge espontaneamente de la dinamica interna del grupo escolar, sin ser asignado institucionalmente, y recae en quien el grupo reconoce como referente por su carisma, conocimiento o capacidad de influencia.</dd></div>
+      <div><dt>Normas implicitas</dt><dd>Reglas no explicitadas ni acordadas formalmente que operan en el grupo escolar regulando el comportamiento de sus miembros de manera no consciente. Frecuentemente son mas influyentes que las normas explicitas.</dd></div>
+      <div><dt>Red de comunicacion multidireccional</dt><dd>Patron de comunicacion grupal en que la informacion fluye entre todos los miembros del grupo sin necesidad de pasar obligatoriamente por el conductor. Se asocia con mayor creatividad, cohesion y satisfaccion grupal.</dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="fi">
+    <div>
+      <span class="fn">Universidad de la Cienega &mdash; Plantel Centro</span>
+      <span>Licenciatura en Pedagogia &mdash; Tecnicas de Conduccion de Grupos</span>
+    </div>
+    <div style="text-align:right;">
+      <span>Guia Interactiva Unidad I &mdash; Tema 1.2 &mdash; Ciclo 2024&ndash;2025</span><br>
+      <span style="color:rgba(255,255,255,.35);margin-top:3px;display:block;">Material de uso educativo &mdash; version web para GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// PROGRESS BAR
+window.addEventListener('scroll',function(){
+  var s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('pgbar').style.width=(s/h*100)+'%';
+});
+// ACORDEON
+function tog(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('show');}
+// PREVIO
+function verPrevio(){
+  var v=document.getElementById('prevresp').value.trim();
+  if(!v){alert('Por favor escriba su reflexion antes de ver la orientacion conceptual.');return;}
+  document.getElementById('prevfb').classList.add('show');
+}
+// ORGANIZADOR
+function guardarOrg(){
+  var m=document.getElementById('msgorg');m.classList.add('show');
+  setTimeout(function(){m.classList.remove('show');},4500);
+}
+function limpiarOrg(){
+  if(!confirm('Desea reiniciar todos los campos del organizador?'))return;
+  ['grpinp','n1','n2','n3','n4','n5','n6','ndiag'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('grpnm').textContent='_______________';
+}
+// CASO
+function guardarCaso(){
+  var m=document.getElementById('msgcaso');m.classList.add('show');
+  setTimeout(function(){m.classList.remove('show');},4500);
+}
+function limpiarCaso(){
+  if(!confirm('Desea limpiar todas las respuestas del caso?'))return;
+  ['c1','c2','c3','c4'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+}
+// QUIZ
+var RC={p1:'b',p2:'b',p3:'c',p4:'c',p5:'b'};
+var MS=[
+  "Es necesario revisar nuevamente el contenido de la guia, especialmente las secciones sobre las caracteristicas del grupo escolar, las fases del modelo de Tuckman y los fenomenos de la dinamica interna.",
+  "Ha comprendido algunos conceptos, aunque hay areas por reforzar. Revise las preguntas incorrectas y los apartados correspondientes del contenido antes de continuar.",
+  "Desempeno aceptable. Domina la mayoria de los conceptos. Revise la retroalimentacion de las preguntas incorrectas para consolidar su aprendizaje.",
+  "Buen desempeno. Revise la pregunta incorrecta para alcanzar el dominio completo del tema.",
+  "Excelente. Dominio completo de todos los conceptos del tema. Puede avanzar con confianza a las siguientes unidades."
+];
+function calificar(){
+  var ps=['p1','p2','p3','p4','p5'],ok=0,todo=true;
+  ps.forEach(function(p){
+    var sel=document.querySelector('input[name="'+p+'"]:checked');
+    if(!sel){todo=false;return;}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.closest('li').classList.remove('ok','err');});
+    if(sel.value===RC[p]){ok++;sel.closest('li').classList.add('ok');}
+    else{sel.closest('li').classList.add('err');var c=document.querySelector('input[name="'+p+'"][value="'+RC[p]+'"]');if(c)c.closest('li').classList.add('ok');}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.disabled=true;});
+  });
+  if(!todo){alert('Por favor responda todas las preguntas antes de calificar.');return;}
+  var pts=(ok/5)*10;
+  document.getElementById('snm').textContent=pts.toFixed(0)+' / 10';
+  document.getElementById('bf').style.width=(pts*10)+'%';
+  document.getElementById('smsg').textContent=MS[ok];
+  document.getElementById('sdet').textContent=ok+' de 5 respuestas correctas. Puntaje: '+pts.toFixed(0)+'/10.';
+  var r=document.getElementById('qr');r.classList.add('show');
+  document.getElementById('btnq').disabled=true;
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function reiniciar(){
+  ['p1','p2','p3','p4','p5'].forEach(function(p){
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.checked=false;r.disabled=false;r.closest('li').classList.remove('ok','err');});
+  });
+  document.getElementById('qr').classList.remove('show');
+  document.getElementById('bf').style.width='0';
+  document.getElementById('btnq').disabled=false;
+  document.getElementById('qc').scrollIntoView({behavior:'smooth'});
+}
+// PLAN
+function genPlan(){
+  var p1=document.getElementById('p1').value.trim(),p2=document.getElementById('p2').value.trim(),p3=document.getElementById('p3').value.trim();
+  if(!p1&&!p2&&!p3){alert('Complete al menos un campo del plan antes de generarlo.');return;}
+  var h='';
+  if(p1)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--azbg);border-radius:var(--r);border-left:3px solid var(--az);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;">Aplicacion Inmediata</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p1+'</p></div>';
+  if(p2)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--vel);border-radius:var(--r);border-left:3px solid var(--ve);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ve);display:block;margin-bottom:5px;">Practica Docente Futura</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p2+'</p></div>';
+  if(p3)h+='<div style="padding:14px 18px;background:var(--doxl);border-radius:var(--r);border-left:3px solid var(--do);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:5px;">Mi Compromiso</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p3+'</p></div>';
+  document.getElementById('planpc').innerHTML=h;
+  var pp=document.getElementById('planp');pp.classList.add('show');
+  pp.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
