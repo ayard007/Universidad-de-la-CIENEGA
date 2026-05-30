@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Valores Sociales y Trascendentes | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-noche: #1a1f3c;
+  --azul-medio: #2d3a6e;
+  --azul-uc: #4a5fa8;
+  --lavanda: #8a9fd4;
+  --lavanda-suave: #eef0f9;
+  --dorado: #b8962e;
+  --dorado-suave: #fdf8ee;
+  --gris-oscuro: #2a2a2a;
+  --gris: #606060;
+  --gris-claro: #f5f5f5;
+  --borde: #dde2f0;
+  --blanco: #ffffff;
+  --verde-sage: #4a6b5a;
+  --verde-suave: #eef4f0;
+  --rojo-vino: #7a2a3a;
+  --rojo-suave: #f8f0f2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", sans-serif; color: var(--gris-oscuro); background: #f8f9fc; font-size: 15.5px; line-height: 1.78; }
+
+/* ── HEADER ── */
+header { background: var(--azul-noche); position: relative; overflow: hidden; }
+header::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--azul-uc), var(--dorado), var(--azul-uc)); }
+header::before { content: ""; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(74,95,168,0.18) 0%, transparent 70%); }
+.header-inner { max-width: 1000px; margin: 0 auto; padding: 40px 36px 48px; position: relative; z-index: 1; }
+.header-top { display: flex; align-items: center; gap: 22px; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+.logo-wrap { background: var(--blanco); border-radius: 12px; padding: 10px; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+.logo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.brand { flex: 1; }
+.brand .univ { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: var(--blanco); font-weight: 600; letter-spacing: 0.02em; }
+.brand .dept { font-size: 0.76rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+.header-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { padding: 5px 14px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.tag.azul { background: rgba(74,95,168,0.3); border: 1px solid rgba(74,95,168,0.5); color: #aab8e8; }
+.tag.dorado { background: rgba(184,150,46,0.25); border: 1px solid rgba(184,150,46,0.5); color: #e0c46a; }
+.header-body { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.header-body h1 { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; line-height: 1.12; color: var(--blanco); font-weight: 700; max-width: 620px; }
+.header-body h1 em { color: #aab8e8; font-style: italic; }
+.header-pills { display: flex; flex-direction: column; gap: 7px; align-items: flex-end; }
+.hpill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.65); padding: 5px 13px; border-radius: 14px; font-size: 0.74rem; white-space: nowrap; }
+
+/* ── NAV ── */
+nav.sticky { background: var(--blanco); border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(26,31,60,0.07); }
+.nav-scroll { max-width: 1000px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; scrollbar-width: none; }
+.nav-scroll::-webkit-scrollbar { display: none; }
+.nav-scroll a { color: var(--gris); text-decoration: none; font-size: 0.79rem; font-weight: 500; padding: 13px 14px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; letter-spacing: 0.01em; }
+.nav-scroll a:hover { color: var(--azul-uc); border-bottom-color: var(--azul-uc); }
+
+/* ── MAIN ── */
+main { max-width: 1000px; margin: 0 auto; padding: 44px 36px 80px; }
+
+/* ── BLOQUES ── */
+.bloque { background: var(--blanco); border: 1px solid var(--borde); border-radius: 14px; padding: 44px; margin-bottom: 26px; position: relative; overflow: hidden; animation: fadeUp 0.45s ease both; }
+.bloque-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
+.b-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.b-icon.azul { background: var(--lavanda-suave); color: var(--azul-medio); }
+.b-icon.dorado { background: var(--dorado-suave); color: #7a6010; }
+.b-icon.sage { background: var(--verde-suave); color: var(--verde-sage); }
+.b-icon.vino { background: var(--rojo-suave); color: var(--rojo-vino); }
+.b-icon.gris { background: var(--gris-claro); color: var(--gris); }
+.b-titulo { flex: 1; }
+.b-titulo .sup { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gris); margin-bottom: 5px; }
+.b-titulo h2 { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 700; color: var(--azul-noche); line-height: 1.2; }
+
+/* ── TIPOGRAFIA ── */
+h3 { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 700; color: var(--azul-noche); margin: 28px 0 10px; }
+h3:first-child { margin-top: 0; }
+p { margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--azul-medio); font-weight: 600; }
+em { color: var(--gris); font-style: italic; }
+
+/* ── CAJAS ── */
+.caja { border-radius: 8px; padding: 18px 22px; margin: 18px 0; border-left: 4px solid; }
+.caja.info { background: var(--lavanda-suave); border-color: var(--azul-uc); }
+.caja.meta { background: var(--dorado-suave); border-color: var(--dorado); }
+.caja.ejemplo { background: var(--verde-suave); border-color: var(--verde-sage); }
+.caja.alerta { background: var(--rojo-suave); border-color: var(--rojo-vino); }
+.caja-label { font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.caja.info .caja-label { color: var(--azul-medio); }
+.caja.meta .caja-label { color: #7a6010; }
+.caja.ejemplo .caja-label { color: var(--verde-sage); }
+.caja.alerta .caja-label { color: var(--rojo-vino); }
+
+/* ── TABLAS ── */
+table.t { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin: 16px 0; }
+table.t th { background: var(--azul-noche); color: var(--blanco); padding: 11px 14px; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+table.t td { padding: 10px 14px; border-bottom: 1px solid var(--borde); vertical-align: top; line-height: 1.55; }
+table.t tr:nth-child(even) td { background: #fafbff; }
+
+/* ── LISTAS ── */
+ul.l, ol.l { list-style: none; padding: 0; }
+ul.l li { padding: 9px 0 9px 28px; position: relative; border-bottom: 1px solid var(--gris-claro); font-size: 0.94rem; }
+ul.l li:last-child { border-bottom: none; }
+ul.l li::before { content: ""; position: absolute; left: 8px; top: 18px; width: 6px; height: 6px; border-radius: 50%; background: var(--azul-uc); }
+ol.l { counter-reset: cnt; }
+ol.l li { padding: 10px 0 10px 42px; position: relative; border-bottom: 1px solid var(--gris-claro); counter-increment: cnt; font-size: 0.94rem; }
+ol.l li:last-child { border-bottom: none; }
+ol.l li::before { content: counter(cnt); position: absolute; left: 0; top: 10px; background: var(--azul-medio); color: var(--blanco); width: 26px; height: 26px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+/* ── CARDS VALORES ── */
+.val-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin: 22px 0; }
+.val-card { border-radius: 10px; padding: 22px; border-top: 4px solid var(--azul-uc); background: #fafbff; border: 1px solid var(--borde); border-top-width: 4px; transition: transform 0.2s, box-shadow 0.2s; }
+.val-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,31,60,0.1); }
+.val-card .vn { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; font-weight: 700; color: var(--azul-noche); margin-bottom: 8px; }
+.val-card .vd { font-size: 0.82rem; color: var(--gris); line-height: 1.55; }
+.val-card.s2 { border-top-color: var(--verde-sage); }
+.val-card.s3 { border-top-color: var(--dorado); }
+.val-card.s4 { border-top-color: var(--rojo-vino); }
+.val-card.s5 { border-top-color: #7a4f8a; }
+.val-card.s6 { border-top-color: #2a6e6a; }
+
+/* ── CONOCIMIENTO PREVIO ── */
+.kprev { background: linear-gradient(135deg, var(--azul-noche) 0%, var(--azul-medio) 100%); border-radius: 12px; padding: 34px; position: relative; overflow: hidden; }
+.kprev::after { content: "?"; position: absolute; right: 24px; bottom: -28px; font-family: "Cormorant Garamond", serif; font-size: 160px; color: rgba(255,255,255,0.04); line-height: 1; }
+.kprev h3 { color: #aab8e8; margin-bottom: 12px; }
+.kprev p { color: rgba(255,255,255,0.82); font-size: 1.04rem; font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; }
+.kp-opts { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.kp-btn { background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.88); padding: 12px 18px; border-radius: 8px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 0.89rem; text-align: left; transition: all 0.2s; }
+.kp-btn:hover:not(:disabled) { background: rgba(255,255,255,0.16); border-color: #aab8e8; }
+.kp-btn.ok { background: rgba(74,107,90,0.45); border-color: #8fba72; color: #c8f0a8; }
+.kp-btn.no { background: rgba(122,42,58,0.38); border-color: #e88a72; color: #f7c0b0; }
+.kp-fb { display: none; margin-top: 16px; padding: 14px 18px; background: rgba(255,255,255,0.08); border-radius: 8px; font-size: 0.89rem; color: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.18); }
+.kp-fb.show { display: block; }
+
+/* ── RECURSOS ── */
+.rec-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--borde); }
+.rec-item:last-child { border-bottom: none; }
+.rec-tipo { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 12px; white-space: nowrap; margin-top: 2px; flex-shrink: 0; color: var(--blanco); }
+.rt-libro { background: var(--verde-sage); }
+.rt-art { background: var(--azul-medio); }
+.rt-web { background: #7a4f8a; }
+.rt-vid { background: var(--rojo-vino); }
+.rec-titulo { font-weight: 600; color: var(--azul-noche); margin-bottom: 2px; font-size: 0.92rem; }
+.rec-autor { font-size: 0.8rem; color: var(--gris); line-height: 1.5; }
+
+/* ── ACTIVIDADES ── */
+.act-badge { display: inline-flex; align-items: center; padding: 6px 16px; border-radius: 20px; font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 22px; color: var(--blanco); }
+.ab-foro { background: var(--verde-sage); }
+.ab-indiv { background: var(--azul-medio); }
+.ab-caso { background: var(--rojo-vino); }
+.ab-quiz { background: var(--dorado); }
+
+.cita { background: var(--azul-noche); color: var(--blanco); border-radius: 10px; padding: 28px 32px; position: relative; margin: 20px 0; }
+.cita::before { content: "\201C"; position: absolute; top: 6px; left: 18px; font-family: "Cormorant Garamond", serif; font-size: 5.5rem; color: rgba(255,255,255,0.07); line-height: 1; }
+.cita p { color: rgba(255,255,255,0.88); font-size: 1.04rem; font-style: italic; position: relative; z-index: 1; margin-bottom: 0; line-height: 1.7; }
+
+.paso { display: flex; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--gris-claro); align-items: flex-start; font-size: 0.93rem; }
+.paso:last-child { border-bottom: none; }
+.paso-n { background: var(--lavanda-suave); border: 1px solid var(--borde); color: var(--azul-medio); font-weight: 700; font-size: 0.8rem; min-width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+.rubr { display: grid; grid-template-columns: 1fr 76px; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--gris-claro); align-items: center; font-size: 0.9rem; }
+.rubr:last-child { border-bottom: none; }
+.pts { background: var(--azul-noche); color: var(--blanco); text-align: center; border-radius: 6px; padding: 6px 8px; font-weight: 700; font-size: 0.86rem; }
+
+.escenario { background: var(--lavanda-suave); border: 1px solid #c0ccec; border-radius: 10px; padding: 24px; margin: 18px 0; }
+.esc-tag { font-size: 0.71rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--azul-medio); margin-bottom: 10px; }
+
+.cta { display: flex; align-items: center; gap: 14px; background: #1a7340; color: var(--blanco); padding: 15px 20px; border-radius: 8px; margin-top: 22px; font-size: 0.89rem; font-weight: 500; }
+
+/* ── QUIZ ── */
+.quiz-wrap { background: var(--gris-claro); border-radius: 12px; padding: 28px; }
+.q-prog { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.q-bar-c { flex: 1; height: 4px; background: var(--borde); border-radius: 3px; overflow: hidden; }
+.q-bar-f { height: 100%; background: var(--azul-uc); border-radius: 3px; transition: width 0.4s; }
+.qt { font-size: 0.78rem; color: var(--gris); font-weight: 500; white-space: nowrap; }
+.qb { display: none; }
+.qb.act { display: block; }
+.qb h4 { font-family: "Inter", sans-serif; font-size: 0.96rem; font-weight: 600; color: var(--azul-noche); margin-bottom: 18px; line-height: 1.55; }
+.q-opts { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
+.qo { display: flex; align-items: flex-start; gap: 12px; padding: 12px 15px; background: var(--blanco); border: 2px solid var(--borde); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.qo:hover { border-color: var(--azul-uc); background: var(--lavanda-suave); }
+.qo.sel { border-color: var(--azul-medio); background: var(--lavanda-suave); }
+.qo.ok { border-color: var(--verde-sage); background: var(--verde-suave); }
+.qo.fail { border-color: var(--rojo-vino); background: var(--rojo-suave); }
+.ql { width: 26px; height: 26px; border-radius: 50%; background: var(--borde); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.76rem; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
+.qo.sel .ql { background: var(--azul-medio); color: var(--blanco); }
+.qo.ok .ql { background: var(--verde-sage); color: var(--blanco); }
+.qo.fail .ql { background: var(--rojo-vino); color: var(--blanco); }
+.qot { font-size: 0.9rem; line-height: 1.5; }
+.qr { display: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 14px; font-size: 0.87rem; line-height: 1.5; }
+.qr.ok { background: var(--verde-suave); border: 1px solid var(--verde-sage); color: var(--verde-sage); }
+.qr.fail { background: var(--rojo-suave); border: 1px solid var(--rojo-vino); color: var(--rojo-vino); }
+.qr.show { display: block; }
+.q-res { display: none; text-align: center; padding: 36px 20px; }
+.q-res.show { display: block; }
+.q-sc { font-family: "Cormorant Garamond", serif; font-size: 5.5rem; color: var(--azul-noche); line-height: 1; margin-bottom: 8px; }
+.q-sc span { font-size: 2.2rem; color: var(--gris); }
+.q-niv { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+.q-msg { color: var(--gris); font-size: 0.91rem; max-width: 440px; margin: 0 auto 24px; }
+
+/* ── BOTONES ── */
+.btn { padding: 11px 22px; border-radius: 7px; font-family: "Inter", sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; letter-spacing: 0.01em; }
+.btn-p { background: var(--azul-medio); color: var(--blanco); }
+.btn-p:hover { background: var(--azul-noche); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,31,60,0.25); }
+.btn-p:disabled { background: var(--borde); color: var(--gris); cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-s { background: transparent; color: var(--azul-medio); border: 2px solid var(--azul-medio); }
+.btn-s:hover { background: var(--lavanda-suave); }
+
+/* ── REFLEXION ── */
+.refl { background: #fafbff; border: 1px solid var(--borde); border-radius: 8px; padding: 20px; margin-bottom: 14px; }
+.refl label { display: block; font-weight: 600; font-size: 0.87rem; color: var(--azul-noche); margin-bottom: 10px; }
+.refl textarea { width: 100%; min-height: 80px; padding: 11px; border: 1.5px solid var(--borde); border-radius: 6px; font-family: "Inter", sans-serif; font-size: 0.89rem; line-height: 1.6; resize: vertical; background: var(--blanco); color: var(--gris-oscuro); transition: border-color 0.2s; }
+.refl textarea:focus { outline: none; border-color: var(--azul-uc); }
+
+/* ── FOOTER ── */
+footer { background: var(--azul-noche); color: rgba(255,255,255,0.45); text-align: center; padding: 30px 36px; font-size: 0.78rem; line-height: 1.9; }
+footer strong { color: rgba(255,255,255,0.8); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.bloque:nth-child(1){animation-delay:0.04s}.bloque:nth-child(2){animation-delay:0.08s}.bloque:nth-child(3){animation-delay:0.12s}.bloque:nth-child(4){animation-delay:0.16s}.bloque:nth-child(5){animation-delay:0.20s}.bloque:nth-child(6){animation-delay:0.24s}.bloque:nth-child(7){animation-delay:0.28s}.bloque:nth-child(8){animation-delay:0.32s}.bloque:nth-child(9){animation-delay:0.36s}.bloque:nth-child(10){animation-delay:0.40s}
+
+@media(max-width:680px){
+  .header-inner{padding:24px 18px 30px}
+  .header-body h1{font-size:2rem}
+  main{padding:24px 16px 56px}
+  .bloque{padding:22px 16px}
+  .val-grid{grid-template-columns:1fr 1fr}
+  .nav-scroll{padding:0 14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo-wrap">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="brand">
+        <div class="univ">Universidad de la Cienega</div>
+        <div class="dept">Licenciatura en Pedagogia &middot; Ciencias de la Educacion</div>
+      </div>
+      <div class="header-tags">
+        <span class="tag azul">Valores y Educacion</span>
+        <span class="tag dorado">Tema 2 &middot; Subtemas 2.2 y 2.3</span>
+      </div>
+    </div>
+    <div class="header-body">
+      <h1>Tipologia de los Valores:<br><em>Valores Sociales</em> y<br><em>Valores Trascendentes</em></h1>
+      <div class="header-pills">
+        <span class="hpill">Subtemas 2.2 y 2.3</span>
+        <span class="hpill">Constructivismo &middot; ABP</span>
+        <span class="hpill">4 Actividades interactivas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="nav-scroll">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#sociales">Valores sociales</a>
+    <a href="#trascendentes">Valores trascendentes</a>
+    <a href="#comparativa">Comparativa</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Act. 3 Caso</a>
+    <a href="#act4">Act. 4 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRODUCCION -->
+<section class="bloque" id="intro">
+  <div class="bloque-header">
+    <div class="b-icon azul">I</div>
+    <div class="b-titulo">
+      <div class="sup">Punto de partida &middot; Tema 2, Subtemas 2.2 y 2.3</div>
+      <h2>Introduccion al Tema</h2>
+    </div>
+  </div>
+  <p>En la guia anterior se estudio la dimension <strong>individual</strong> de los valores: aquellas virtudes y disposiciones que se realizan en la persona como unidad singular. En esta guia se avanza hacia las dimensiones que trascienden al individuo y que requieren del vinculo con los otros y con lo que existe mas alla de lo inmediato y material.</p>
+  <p>Los <strong>valores sociales</strong> son los que se manifiestan y se realizan en la convivencia humana: en las relaciones interpersonales, en las instituciones, en la vida comunitaria. Sin comunidad, sin el encuentro con el otro, estos valores simplemente no pueden existir ni expresarse. La justicia, por ejemplo, carece de sentido fuera de un contexto de relacion humana; lo mismo ocurre con la solidaridad, el respeto o la ciudadania.</p>
+  <p>Los <strong>valores trascendentes</strong>, por su parte, pertenecen a la dimension que el ser humano ha denominado a lo largo de la historia como lo sagrado, lo absoluto, lo que supera el orden de lo visible y lo temporal. Sea cual sea la perspectiva filosofica o religiosa desde la que se aborden, estos valores plantean preguntas fundamentales sobre el sentido de la existencia, la relacion con lo divino y el lugar del ser humano en el universo.</p>
+  <div class="caja meta">
+    <div class="caja-label">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> identificar y caracterizar los valores sociales y sus condiciones de realizacion en la vida universitaria; <strong>(2)</strong> explicar la naturaleza y las principales categorias de los valores trascendentes desde una perspectiva axiologica pluralista; <strong>(3)</strong> analizar la interrelacion entre valores individuales, sociales y trascendentes en situaciones educativas concretas; y <strong>(4)</strong> diseniar estrategias pedagogicas para el fomento de valores sociales y trascendentes en el nivel licenciatura.</p>
+  </div>
+  <div class="caja info">
+    <div class="caja-label">Metodologia de trabajo</div>
+    <p>Esta guia aplica <strong>constructivismo</strong> (construccion activa del conocimiento a partir de la experiencia), <strong>pedagogia activa</strong> (el estudiante como protagonista del aprendizaje) y <strong>aprendizaje basado en problemas</strong> (ABP), donde la comprension teorica surge de la necesidad de resolver situaciones problematicas significativas vinculadas a la vida universitaria real.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque" id="previo" style="border-color: var(--borde);">
+  <div class="bloque-header">
+    <div class="b-icon dorado">?</div>
+    <div class="b-titulo">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Antes de estudiar el contenido de esta guia, responda la siguiente pregunta con base en su comprension actual. No hay penalizacion: el objetivo es identificar desde donde parte su comprension para construir sobre ella.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>La principal diferencia entre los valores sociales y los valores individuales radica en que los valores sociales:</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpResp(this,false)">A) Son superiores en jerarquia a los valores individuales porque benefician a un mayor numero de personas dentro de la comunidad.</button>
+      <button class="kp-btn" onclick="kpResp(this,true)">B) Requieren necesariamente la relacion con otros para poder realizarse, ya que su existencia y su sentido dependen del vinculo intersubjetivo y comunitario.</button>
+      <button class="kp-btn" onclick="kpResp(this,false)">C) Son impuestos por la sociedad al individuo desde el exterior, de modo que este no tiene libertad de eleccion respecto a practicarlos o no.</button>
+      <button class="kp-btn" onclick="kpResp(this,false)">D) Se refieren exclusivamente a las normas juridicas y civiles que regulan la convivencia en un Estado democratico de derecho.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- VALORES SOCIALES -->
+<section class="bloque" id="sociales">
+  <div class="bloque-header">
+    <div class="b-icon azul">2.2</div>
+    <div class="b-titulo">
+      <div class="sup">Contenido tematico &middot; Subtema 2.2</div>
+      <h2>Los Valores Sociales</h2>
+    </div>
+  </div>
+  <h3>1. Definicion y naturaleza</h3>
+  <p>Los <strong>valores sociales</strong> son aquellas cualidades, disposiciones y orientaciones que solo pueden realizarse plenamente en la relacion entre personas: en el encuentro, en la comunidad, en las instituciones y en la vida colectiva. No son simplemente valores que "se comparten" (lo que ocurre con cualquier valor cuando es asumido por varias personas), sino valores cuya realizacion es <em>constitutivamente intersubjetiva</em>: no pueden existir fuera de la relacion.</p>
+  <p>La <strong>justicia</strong>, por ejemplo, es imposible como experiencia solitaria: no se es justo o injusto en el aislamiento total, sino siempre en relacion a otro que tiene derechos, necesidades o merecimientos. La <strong>solidaridad</strong> presupone que existe alguien con quien solidarizarse. El <strong>respeto</strong> implica necesariamente un sujeto que es reconocido en su dignidad por otro.</p>
+  <h3>2. Principales valores sociales y su expresion universitaria</h3>
+  <table class="t">
+    <thead><tr><th>Valor social</th><th>Definicion axiologica</th><th>Expresion en el contexto universitario</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Justicia</strong></td><td>Disposicion a dar a cada quien lo que le corresponde segun su dignidad, sus merecimientos y sus derechos.</td><td>Evaluaciones equitativas, acceso igualitario a oportunidades, reconocimiento del trabajo academico de todos.</td></tr>
+      <tr><td><strong>Solidaridad</strong></td><td>Disposicion activa a asumir como propias las necesidades, los problemas y los proyectos de los demas.</td><td>Apoyo a companieros en dificultades academicas, participacion en proyectos de servicio comunitario universitario.</td></tr>
+      <tr><td><strong>Respeto</strong></td><td>Reconocimiento de la dignidad intransferible de cada persona, independientemente de sus diferencias.</td><td>Escucha activa en debates, reconocimiento de perspectivas diversas, trato digno en todos los contextos del campus.</td></tr>
+      <tr><td><strong>Tolerancia</strong></td><td>Capacidad de convivir con la diferencia sin suprimirla, aun cuando no se comparte ni se aprueba.</td><td>Apertura ante la diversidad cultural, religiosa, de pensamiento y de orientacion en el ambiente universitario.</td></tr>
+      <tr><td><strong>Ciudadania</strong></td><td>Conciencia y ejercicio activo de los derechos y responsabilidades que corresponden a la vida en una comunidad politica.</td><td>Participacion en organos colegiados, ejercicio del voto universitario, responsabilidad ante las normas institucionales.</td></tr>
+      <tr><td><strong>Bien comun</strong></td><td>Orientacion de las decisiones personales hacia el beneficio de la colectividad, no solo del interes individual.</td><td>Cuidado de los espacios universitarios compartidos, propuestas que benefician al grupo, no solo al individuo.</td></tr>
+      <tr><td><strong>Participacion</strong></td><td>Disposicion a involucrarse activa y responsablemente en los procesos colectivos de decision y construccion.</td><td>Contribucion activa en proyectos grupales, asistencia y aportacion en asambleas o espacios institucionales.</td></tr>
+    </tbody>
+  </table>
+  <h3>3. Condiciones de realizacion de los valores sociales</h3>
+  <p>Para que los valores sociales puedan desarrollarse plenamente, se requieren ciertas condiciones estructurales y relacionales que el contexto universitario puede promover o dificultar:</p>
+  <ul class="l">
+    <li><strong>Confianza institucional:</strong> Los valores sociales florecen en entornos donde las personas sienten que las normas se aplican con equidad y que los acuerdos se cumplen.</li>
+    <li><strong>Espacios de encuentro y dialogo:</strong> La convivencia real, no solo la proximidad fisica, es condicion del desarrollo de la solidaridad, el respeto y la ciudadania.</li>
+    <li><strong>Reconocimiento de la diversidad:</strong> La tolerancia y el respeto solo se ejercen genuinamente cuando existe contacto con la diferencia y disposicion a comprenderla.</li>
+    <li><strong>Corresponsabilidad:</strong> Los valores sociales no pueden ser promovidos solo desde la autoridad institucional; requieren que cada miembro de la comunidad asuma su parte.</li>
+  </ul>
+  <h3>4. El pedagogo ante los valores sociales</h3>
+  <p>El pedagogo universitario tiene una responsabilidad especifica en la construccion de entornos que posibiliten la realizacion de valores sociales. Esto no se limita a hablar de ellos en clase: implica diseniar experiencias de aprendizaje colaborativo que genuinamente ejerciten la solidaridad, la justicia evaluativa y la participacion; implica crear un clima de aula donde el respeto sea la norma vivida y no solo enunciada; implica asumir corresponsabilidad ante la vida institucional de la comunidad universitaria.</p>
+  <div class="caja alerta">
+    <div class="caja-label">Punto de problematizacion ABP</div>
+    <p>En una sesion grupal donde un pequeinio grupo de estudiantes monopoliza la participacion y los demas permanecen en silencio, que valores sociales estan en juego? Quien es responsable de la situacion: el docente, los estudiantes activos, los silenciosos o la estructura misma de la actividad? Este dilema sera el eje del caso practico de la Actividad 3.</p>
+  </div>
+</section>
+
+<!-- VALORES TRASCENDENTES -->
+<section class="bloque" id="trascendentes" style="--color-acento: var(--dorado);">
+  <div class="bloque-header">
+    <div class="b-icon dorado">2.3</div>
+    <div class="b-titulo">
+      <div class="sup">Contenido tematico &middot; Subtema 2.3</div>
+      <h2>Los Valores Trascendentes</h2>
+    </div>
+  </div>
+  <h3>1. Definicion y naturaleza</h3>
+  <p>Los <strong>valores trascendentes</strong> son aquellos que apuntan a una dimension de la realidad y de la experiencia humana que supera el orden de lo inmanente, lo temporal y lo materialmente verificable. Son los valores que se articulan en torno a las preguntas fundamentales de la existencia: el sentido de la vida, la relacion con lo absoluto, la muerte, el mas alla, lo sagrado y lo divino.</p>
+  <p>A diferencia de los valores individuales (que se realizan en la persona) y de los sociales (que se realizan en la comunidad), los valores trascendentes apuntan a una <em>relacion con lo que esta mas alla del ser humano</em>: con Dios, con el Ser absoluto, con la naturaleza entendida como totalidad sagrada, o con el horizonte de sentido ultimo que da fundamento a la vida humana.</p>
+  <div class="caja info">
+    <div class="caja-label">Perspectiva axiologica pluralista</div>
+    <p>En esta guia se abordan los valores trascendentes desde una perspectiva filosofica y axiologica, no desde una tradicion religiosa particular. Se reconoce que distintas tradiciones espirituales, filosofias de vida y marcos culturales articulan de manera diferente esta dimension, y que el pedagogo universitario debe ser capaz de tratarla con rigor intelectual, apertura y respeto por la pluralidad de creencias.</p>
+  </div>
+  <h3>2. Principales valores trascendentes</h3>
+  <div class="val-grid">
+    <div class="val-card"><div class="vn">Lo sagrado</div><div class="vd">La experiencia de lo que se revela como absolutamente otro, que convoca reverencia y no puede ser reducido a categoria alguna. Presente en todas las tradiciones religiosas conocidas.</div></div>
+    <div class="val-card s2"><div class="vn">Fe</div><div class="vd">Adhesion confiada a una realidad o verdad que no puede ser demostrada empiricamente, pero que orienta la vida y da sentido a la existencia del creyente.</div></div>
+    <div class="val-card s3"><div class="vn">Esperanza</div><div class="vd">Orientacion de la existencia hacia un bien futuro trascendente que da sentido al presente y sostiene el esfuerzo humano ante el sufrimiento y la limitacion.</div></div>
+    <div class="val-card s4"><div class="vn">Sentido de la vida</div><div class="vd">Comprension del para que de la propia existencia que va mas alla de los logros inmediatos, vinculandose a una mision, vocacion o pertenencia a algo mayor.</div></div>
+    <div class="val-card s5"><div class="vn">Lo eterno</div><div class="vd">La orientacion del ser humano hacia aquello que permanece mas alla del tiempo y del cambio; valor que sustenta la busqueda de lo imperecedero en lo perecedero.</div></div>
+    <div class="val-card s6"><div class="vn">Reverencia</div><div class="vd">Actitud de profundo reconocimiento y respeto ante lo que se percibe como sagrado, misterioso o absolutamente valioso, que trasciende el calculo y la instrumentalizacion.</div></div>
+  </div>
+  <h3>3. La dimension trascendente en el contexto universitario</h3>
+  <p>La universidad publica, laica y pluralista no niega ni excluye la dimension trascendente de la persona; la reconoce como parte de la integridad humana que el pedagogo debe respetar y saber acompanier. Un estudiante universitario puede llevar consigo una profunda vida espiritual o religiosa que orienta sus decisiones, sus relaciones y su vocacion profesional. Ignorar esta dimension o tratarla con condescendencia es una forma de no reconocer la persona completa.</p>
+  <p>Al mismo tiempo, la formacion universitaria invita a una reflexion critica sobre los propios marcos de sentido: no para destruirlos, sino para comprenderlos con mayor profundidad, relacionarlos con otros marcos culturales y hacer de ellos una fuente de orientacion mas consciente y libre.</p>
+  <h3>4. Relacion entre lo trascendente y lo educativo</h3>
+  <ul class="l">
+    <li><strong>Vocacion profesional:</strong> Muchos educadores vinculan su compromiso docente con un sentido de llamado o mision que tiene componentes trascendentes: no es solo un trabajo, es un servicio con sentido ultimo.</li>
+    <li><strong>Etica del cuidado:</strong> La actitud de reverencia ante la dignidad de cada estudiante tiene raices que muchos pedagogos ubican en su comprension de lo sagrado de la persona humana.</li>
+    <li><strong>Sentido del sufrimiento y del fracaso:</strong> El modo en que un pedagogo acompania a un estudiante en situaciones de crisis vital tiene relacion con su propia comprension del sentido del sufrimiento y de la adversidad.</li>
+    <li><strong>Pluralismo activo:</strong> El pedagogo que ha reflexionado sobre su propia dimension trascendente esta mejor equipado para respetar y acompaniar la de sus estudiantes sin imposicion ni indiferencia.</li>
+  </ul>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="bloque" id="comparativa">
+  <div class="bloque-header">
+    <div class="b-icon sage">III</div>
+    <div class="b-titulo">
+      <div class="sup">Sintesis conceptual</div>
+      <h2>Comparativa: Valores Individuales, Sociales y Trascendentes</h2>
+    </div>
+  </div>
+  <p>Para completar la comprension de la tipologia axiologica, es util establecer con claridad las semejanzas y diferencias entre las tres categorias estudiadas en los subtemas 2.1, 2.2 y 2.3.</p>
+  <table class="t">
+    <thead><tr><th>Dimension</th><th>Valores individuales (2.1)</th><th>Valores sociales (2.2)</th><th>Valores trascendentes (2.3)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Donde se realizan</strong></td><td>En la persona singular; en su interioridad y su caracter.</td><td>En la relacion entre personas; en la comunidad e instituciones.</td><td>En la relacion del ser humano con lo absoluto, sagrado o sentido ultimo.</td></tr>
+      <tr><td><strong>Condicion de existencia</strong></td><td>El individuo; pueden existir incluso en el aislamiento.</td><td>El otro; sin relacion interpersonal no pueden realizarse.</td><td>La apertura a lo trascendente; varian segun el marco cultural y espiritual.</td></tr>
+      <tr><td><strong>Ejemplos centrales</strong></td><td>Honestidad, integridad, responsabilidad, valentia moral.</td><td>Justicia, solidaridad, respeto, ciudadania, bien comun.</td><td>Fe, esperanza, sentido de la vida, reverencia, lo sagrado.</td></tr>
+      <tr><td><strong>Relacion con la educacion</strong></td><td>Forman el caracter moral del estudiante y del docente.</td><td>Construyen el clima y la cultura de la comunidad educativa.</td><td>Orientan la vocacion docente y el acompaniamiento integral.</td></tr>
+      <tr><td><strong>Riesgo pedagogico</strong></td><td>Reducirlos a discurso sin practica efectiva.</td><td>Imponerlos como norma externa sin generar apropiacion genuina.</td><td>Ignorarlos o tratarlos con condescendencia o imposicion.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja meta">
+    <div class="caja-label">Nota integradora</div>
+    <p>Las tres dimensiones no son categorias separadas en la vida real: en una sola persona y en un solo acto pueden converger valores individuales (integridad al actuar), sociales (justicia hacia otro) y trascendentes (sentido de mision en lo que se hace). La tipologia es una herramienta analitica, no una descripcion de esferas hermeticamente separadas de la experiencia humana.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque" id="materiales">
+  <div class="bloque-header">
+    <div class="b-icon gris">M</div>
+    <div class="b-titulo">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes academicas de acceso libre o ampliamente disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-libro">Libro</div><div><div class="rec-titulo">Etica: nuevo ensayo de fundamentacion de un personalismo etico</div><div class="rec-autor">Scheler, M. (2001). Caparros Editores. Obra de referencia para la clasificacion jerarquica de los valores, incluidos los vitales, sociales y religiosos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-libro">Libro</div><div><div class="rec-titulo">Teoria de la justicia</div><div class="rec-autor">Rawls, J. (2006). Fondo de Cultura Economica. Fundamento teorico para comprender la justicia como valor social central en las sociedades democraticas.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-libro">Libro</div><div><div class="rec-titulo">Lo sagrado y lo profano</div><div class="rec-autor">Eliade, M. (2014). Paidos. Analisis clasico de la experiencia de lo sagrado como categoria antropologica universal y fundamento de los valores trascendentes.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-art">Articulo</div><div><div class="rec-titulo">Solidaridad, justicia y bien comun en la educacion superior</div><div class="rec-autor">Tenti Fanfani, E. (2007). Revista Iberoamericana de Educacion, 43(2), 15-38. Disponible en la base de datos OEI (www.rieoei.org).</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-libro">Libro</div><div><div class="rec-titulo">El hombre en busca de sentido</div><div class="rec-autor">Frankl, V. (2015). Herder. Aproximacion desde la psicologia existencial al valor del sentido de la vida como orientacion trascendente.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-web">Web</div><div><div class="rec-titulo">Banco de recursos UNAM: Etica y valores en educacion superior</div><div class="rec-autor">Portal de recursos educativos abiertos. Acceso en: www.eticaacademica.unam.mx. Materiales sobre valores sociales y convivencia universitaria.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-vid">Video</div><div><div class="rec-titulo">Conferencia: Valores sociales y ciudadania en la universidad del siglo XXI</div><div class="rec-autor">Canal UNESCO en YouTube. Busqueda sugerida: "UNESCO educacion ciudadania valores sociales". Perspectiva internacional sobre la funcion social de la universidad.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-art">Articulo</div><div><div class="rec-titulo">Educacion, espiritualidad y pluralismo: el lugar de lo trascendente en la escuela publica</div><div class="rec-autor">Mardones, J.M. (2003). Revista de Educacion, num. 330, 11-28. Disponible en el repositorio del Ministerio de Educacion de Espania.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque" id="act1">
+  <div class="bloque-header">
+    <div class="b-icon sage">1</div>
+    <div class="b-titulo">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-foro">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja meta">
+    <div class="caja-label">Proposito</div>
+    <p>Generar un espacio de dialogo reflexivo donde los estudiantes confronten sus concepciones previas sobre los valores sociales y trascendentes con los marcos teoricos estudiados, identificando tensiones, convergencias y aplicaciones en el contexto universitario real.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>En el contexto de la vida universitaria, los valores sociales como la justicia, la solidaridad y el respeto parecen universalmente valorados en el discurso, pero con frecuencia enfrentan obstaculos en la practica cotidiana. Por otro lado, los valores trascendentes, vinculados al sentido de la vida y a lo sagrado, suelen mantenerse en la esfera privada y raramente se abordan en la formacion universitaria. En su opinion: que impide que los valores sociales se practiquen con mas coherencia en el ambiente universitario? Y cual deberia ser el papel de la universidad ante la dimension trascendente de sus estudiantes y docentes?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro habilitado en Google Classroom</strong> con el titulo "Foro 2: Valores Sociales y Trascendentes en la Universidad". Acceda mediante el enlace indicado por el docente en la plataforma.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione de manera personal antes de escribir.</strong> Dedique al menos 10 minutos a pensar en situaciones concretas de su vida universitaria donde haya observado la presencia o ausencia de los valores sociales enunciados, y en como ha vivido o percibido la dimension trascendente en su formacion universitaria.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial.</strong> Debe incluir: (a) posicion argumentada respecto a la primera pregunta (obstaculos para los valores sociales), con al menos un ejemplo concreto y verificable; (b) posicion respecto a la segunda pregunta (papel de la universidad ante lo trascendente), con fundamentacion en el contenido tematico de la guia; (c) conexion explicita con al menos dos conceptos del marco teorico estudiado. Extension: 220-380 palabras en registro academico formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea las participaciones de al menos dos companeros</strong> antes de formular sus replicas. Identifique en ellas argumentos que no habia considerado, posiciones diferentes a la suya y oportunidades de enriquecimiento mutuo.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> a participaciones de companeros distintos. Cada replica debe: aportar un argumento o perspectiva nueva, plantear una pregunta de profundizacion o cuestionamiento respetuoso, o vincular la participacion del companero con el marco teorico estudiado. Extension por replica: 90-130 palabras.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y suba la evidencia a Classroom.</strong> Capture en imagen o PDF su participacion inicial y las dos replicas, y subala en la tarea "Actividad 1: Foro" antes de la fecha limite indicada.</div></div>
+  <div class="caja ejemplo">
+    <div class="caja-label">Ejemplo orientador de participacion (extracto)</div>
+    <p>"En mi experiencia en el segundo semestre, observe que durante el trabajo en equipo para el proyecto de investigacion, los integrantes con mayor dominio del tema tomaban todas las decisiones sin consultar al resto. Esto muestra una tension entre el valor declarado de la <em>participacion</em> y la dinamica real del grupo, donde el bien comun del proyecto terminaba siendo sustituido por los intereses de los mas capaces. Respecto al papel de la universidad ante lo trascendente, considero que el espacio universitario no deberia tratar la dimension espiritual como irrelevante: muchos estudiantes toman decisiones de vida, incluyendo la eleccion de carrera, a partir de marcos de sentido que tienen componentes trascendentes. Ignorar esto equivale a tratar a la persona de manera parcial y fragmentada..."</p>
+  </div>
+  <div class="caja alerta">
+    <div class="caja-label">Criterio anti-IA: por que su participacion debe ser autentica</div>
+    <p>La pregunta detonadora solicita <strong>situaciones reales y verificables</strong> de su experiencia universitaria: semestre, tipo de actividad, contexto especifico. Ningun sistema de inteligencia artificial puede conocer esos detalles. El docente podra solicitar precision adicional sobre cualquier experiencia narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad y especificidad del ejemplo narrado</strong><br>La situacion es concreta, identificable y corresponde a la experiencia del estudiante.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Argumentacion fundamentada en el marco teorico</strong><br>Se citan o referencian explicitamente al menos dos conceptos del contenido tematico.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Calidad de las replicas dialogicas</strong><br>Aportan perspectivas nuevas, son argumentadas, respetuosas y contribuyen al intercambio.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad de la reflexion sobre lo trascendente</strong><br>La posicion sobre el papel de la universidad ante lo trascendente es matizada y fundamentada.</div><div class="pts">15 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong><br>Lenguaje formal, extension adecuada, ausencia de errores graves.</div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada por el docente.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque" id="act2">
+  <div class="bloque-header">
+    <div class="b-icon azul">2</div>
+    <div class="b-titulo">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Mapeo Axiologico de la Comunidad Universitaria</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-indiv">Actividad individual &middot; Aprendizaje significativo aplicado</div>
+  <div class="caja meta">
+    <div class="caja-label">Proposito</div>
+    <p>Desarrollar la capacidad de analisis axiologico aplicado mediante la identificacion, descripcion y evaluacion critica de los valores sociales y trascendentes presentes o ausentes en la comunidad universitaria real del estudiante, como punto de partida para el diseno de propuestas pedagogicas situadas.</p>
+  </div>
+  <h3>Situacion problematica de base (ABP)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Contexto del problema</div>
+    <p>El Departamento de Gestion Escolar de su universidad te ha encargado elaborar un <strong>Mapeo Axiologico Participativo</strong> de la comunidad universitaria, como insumo para el rediseno del programa institucional de formacion en valores. Se te pide que identifiques, con fundamento teorico y evidencia observacional, en que medida los valores sociales y trascendentes del perfil de egresado se estan realizando efectivamente en la vida cotidiana de la institucion, y que proponga al menos una estrategia pedagogica para fortalecer el valor social y el valor trascendente que consideras mas debiles o menos presentes.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Observacion sistematica:</strong> Durante los tres dias previos a la entrega, observe conscientemente la vida universitaria (clases, pasillos, cafeteria, actividades extracurriculares, plataformas digitales) y registre situaciones concretas donde identifique la presencia o ausencia de valores sociales especificos (justicia, solidaridad, respeto, participacion, bien comun). No invente situaciones: registre lo que efectivamente observe.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Elabore la tabla de mapeo:</strong> Construya una tabla con tres columnas: (a) valor social observado o ausente; (b) situacion concreta y verificable en la que se manifesto; (c) interpretacion axiologica breve de lo observado, con referencia al contenido de la guia. Incluya al menos 5 valores sociales distintos.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Analice la dimension trascendente:</strong> Reflexione sobre la siguiente cuestion: en el programa educativo que usted cursa, en que espacios formales o informales se aborda, reconoce o acompania la dimension trascendente de los estudiantes? Redacte un analisis de 200-250 palabras respondiendo esta pregunta con ejemplos concretos de su carrera.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Identifique los dos valores mas debiles:</strong> A partir de su mapeo y su analisis, seleccione el valor social y el valor trascendente que considera menos presentes o mas vulnerados en su comunidad universitaria. Fundamente la seleccion con al menos dos argumentos y una referencia al marco teorico.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Proponga dos estrategias pedagogicas:</strong> Disenye una estrategia concreta y aplicable por semestre para fortalecer cada uno de los dos valores identificados en el paso anterior. Cada estrategia debe describir: (a) el valor que busca fortalecer; (b) la actividad o dinamica especifica; (c) el nivel y contexto donde se aplicaria; (d) como se evaluaria su impacto.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Prepare el documento final</strong> con portada (nombre, matricula, materia, semestre, fecha, docente), tabla de mapeo, analisis de la dimension trascendente, identificacion de valores debiles con fundamento, y dos propuestas pedagogicas. Suba en Classroom.</div></div>
+  <div class="caja alerta">
+    <div class="caja-label">Criterio anti-IA: por que esta actividad exige observacion real</div>
+    <p>El mapeo axiologico requiere <strong>observaciones propias, especificas y situadas</strong> en su universidad, en sus clases y en su semestre actual. Los datos del contexto (nombre del programa, descripcion de situaciones concretas, evaluacion de la cultura institucional de su plantel especifico) son inaccesibles para cualquier sistema de inteligencia artificial. El docente podra verificar la coherencia de las observaciones con la realidad institucional conocida.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Calidad y autenticidad del mapeo axiologico</strong><br>5 valores con situaciones concretas, observadas, interpretadas con fundamento teorico.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad del analisis de la dimension trascendente</strong><br>Analisis matizado con ejemplos concretos del propio programa educativo.</div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Fundamentacion de la seleccion de valores debiles</strong><br>Argumentacion solida con referencias al marco teorico.</div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Pertinencia y viabilidad de las propuestas pedagogicas</strong><br>Estrategias concretas, aplicables, con los cuatro elementos requeridos.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Estructura, forma y registro academico</strong><br>Portada completa, organizacion logica, lenguaje formal, extension adecuada.</div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Mapeo Axiologico" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 3: CASO PRACTICO -->
+<section class="bloque" id="act3">
+  <div class="bloque-header">
+    <div class="b-icon vino">3</div>
+    <div class="b-titulo">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Analisis de Caso Practico</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-caso">Caso practico &middot; ABP</div>
+  <div class="caja meta">
+    <div class="caja-label">Proposito</div>
+    <p>Desarrollar la capacidad de analisis axiologico aplicado a situaciones educativas complejas, donde convergen valores sociales y trascendentes en tension, exigiendo del pedagogo en formacion una respuesta argumentada, matizada y pedagogicamente responsable.</p>
+  </div>
+  <h3>El caso: "El silencio de la sala 4"</h3>
+  <div class="escenario">
+    <div class="esc-tag">Descripcion del caso</div>
+    <p>La profesora Claudia imparte la materia de Teoria Pedagogica en quinto semestre de Pedagogia. Es una docente comprometida, reconocida por su dominio del tema y su trato respetuoso. En la cuarta sesion del semestre, abre un espacio de discusion grupal sobre la funcion social de la educacion.</p>
+    <p>En la sala hay 28 estudiantes. Desde los primeros minutos, cuatro de ellos, los mas extrovertidos y con mejor promedio de la generacion, dominan completamente la conversacion. Los otros 24 permanecen en silencio: algunos asienten, otros miran el movil, otros escriben en su cuaderno. La profesora Claudia, satisfecha con la calidad de las intervenciones de los cuatro estudiantes participantes, cierra la sesion valorando positivamente "la buena participacion del grupo".</p>
+    <p>Dos semanas despues, un estudiante del grupo, Rodrigo, levanta la mano al final de la clase y le dice: "Maestra, en las discusiones siempre hablan los mismos. Yo tengo ideas pero cuando quiero hablar ya se adelantaron o ya se cerro el tema. Siento que mi perspectiva no tiene espacio aqui." La profesora Claudia le responde: "Rodrigo, el espacio esta abierto para todos. Si no participas es porque no te animas. La proxima vez levanta la mano."</p>
+    <p>Rodrigo sale de la clase sin decir mas. No participa en las dos sesiones siguientes. Al final del semestre, en el cuestionario anonimo de evaluacion docente, escribe: "El ambiente de la clase no es justo para todos. Solo algunos estudiantes tienen voz real."</p>
+  </div>
+  <h3>Preguntas de analisis</h3>
+  <p>Responda las siguientes preguntas de manera argumentada, con referencia explicita al contenido tematico de esta guia. Extension total: entre 550 y 720 palabras.</p>
+  <ol class="l">
+    <li><strong>Identificacion axiologica:</strong> Que valores sociales estan presentes, ausentes o vulnerados en esta situacion? Identifique al menos tres, mencionando a que sujeto (docente, estudiantes activos, Rodrigo, grupo) corresponde cada manifestacion o vulneracion. Utilice la terminologia del contenido tematico.</li>
+    <li><strong>Analisis de la respuesta de la profesora Claudia:</strong> La profesora interpreta la falta de participacion de Rodrigo como un problema de valentia individual ("no te animas"). Desde la perspectiva de los valores sociales estudiados, que falla analitica comete Claudia? Que factores del contexto social del aula estaba ignorando en su respuesta?</li>
+    <li><strong>Dimension trascendente del caso:</strong> Rodrigo no solo se siente excluido de la discusion: siente que "su perspectiva no tiene espacio". Desde la perspectiva de los valores trascendentes (sentido de la vida, vocacion, dignidad de la persona), que implicaciones tiene para la formacion del pedagogo el hecho de que un estudiante sienta que su voz y su manera de ver el mundo carecen de valor en el espacio educativo?</li>
+    <li><strong>Propuesta pedagogica:</strong> Si usted fuera la profesora Claudia en la siguiente sesion, que estrategias concretas implementaria para: (a) reparar el daniio relacional con Rodrigo y el grupo; (b) restructurar las dinamicas de participacion de manera que los valores de justicia, participacion y bien comun sean efectivamente vividos, no solo enunciados? Fundamente cada estrategia con al menos un referente teorico o principio pedagogico.</li>
+  </ol>
+  <h3>Instrucciones para la entrega</h3>
+  <div class="paso"><div class="paso-n">1</div><div>Lea el caso al menos dos veces, identificando los momentos de tension axiologica antes de comenzar a redactar las respuestas.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div>Responda las cuatro preguntas en orden, en un documento con portada (nombre, matricula, materia, fecha, docente).</div></div>
+  <div class="paso"><div class="paso-n">3</div><div>En cada respuesta incluya al menos una referencia explicita al contenido tematico de la guia (definicion, caracteristica o categoria especifica).</div></div>
+  <div class="paso"><div class="paso-n">4</div><div>Suba el documento en la tarea "Actividad 3: Caso Practico: El silencio de la sala 4" en Classroom antes de la fecha indicada.</div></div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Identificacion axiologica precisa y fundamentada (Preg. 1)</strong><br>Identifica al menos tres valores con su sujeto correspondiente y terminologia correcta.</div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Analisis critico de la respuesta docente (Preg. 2)</strong><br>Identifica la falla analitica y los factores ignorados con fundamento teorico solido.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Vinculacion con valores trascendentes (Preg. 3)</strong><br>Conecta la exclusion de la voz de Rodrigo con la dimension de sentido y dignidad con profundidad.</div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Propuesta pedagogica concreta y fundamentada (Preg. 4)</strong><br>Dos estrategias: reparacion relacional y reestructuracion de la participacion, con fundamentos.</div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro</strong><br>Estructura clara, lenguaje formal, extension dentro del rango indicado.</div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 3: Caso Practico" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 4: QUIZ -->
+<section class="bloque" id="act4">
+  <div class="bloque-header">
+    <div class="b-icon dorado">4</div>
+    <div class="b-titulo">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 4: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-quiz">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja info">
+    <div class="caja-label">Instrucciones</div>
+    <p>Responda las cinco preguntas seleccionando la opcion que considere correcta. Recibira retroalimentacion inmediata tras cada respuesta. Al finalizar, capture una imagen de su resultado y subala a Google Classroom como evidencia.</p>
+  </div>
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bar-c"><div class="q-bar-f" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+    <!-- P1 -->
+    <div class="qb act" id="q1">
+      <h4>1. Los valores sociales son definidos como constitutivamente intersubjetivos porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">Son valores que cualquier persona puede practicar de manera completamente individual, sin necesidad de relacionarse con otros sujetos.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">Su realizacion depende necesariamente de la relacion entre personas: sin el vinculo con el otro no pueden existir ni expresarse en su sentido pleno.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">Son impuestos externamente por la sociedad al individuo a traves de normas juridicas y sanciones institucionales.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">Su realizacion es exclusiva de las personas que ocupan posiciones de autoridad o liderazgo dentro de la comunidad.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. Los valores sociales son constitutivamente intersubjetivos porque su existencia y su sentido dependen del vinculo con el otro. La justicia, por ejemplo, carece de sentido en el aislamiento total: requiere necesariamente de otro sujeto que tiene derechos y necesidades.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. Los valores sociales no pueden realizarse en el aislamiento (A), no son imposicion externa obligatoria (C), ni son exclusivos de quienes tienen autoridad (D). Su caracter esencial es que requieren del vinculo interpersonal para existir.</div>
+      <button class="btn btn-p" id="btn-q1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+    <!-- P2 -->
+    <div class="qb" id="q2">
+      <h4>2. Segun el contenido tematico de esta guia, una de las condiciones estructurales necesarias para el florecimiento de los valores sociales es:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">La existencia de un sistema de premios y castigos claros que incentive externamente los comportamientos valorados por la comunidad.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">B</div><div class="qot">Que todos los miembros de la comunidad compartan exactamente las mismas creencias, valores y tradiciones culturales.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">C</div><div class="qot">La confianza institucional: un entorno donde las normas se aplican con equidad y los acuerdos se cumplen, lo cual permite que los valores florezcan genuinamente.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">La presencia de un lider moral fuerte que encarne y transmita los valores a los demas miembros del grupo de manera vertical.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. La confianza institucional es una de las condiciones estructurales fundamentales para el florecimiento de los valores sociales. Cuando las normas no se aplican con equidad, o cuando los acuerdos no se cumplen, los valores como la justicia y la participacion se deterioran aunque sean discursivamente valorados.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es C. Los valores sociales no florecen por sistemas de premio-castigo (A, que generan conformidad exterior pero no apropiacion genuina), ni por homogeneidad cultural (B), ni por liderazgo vertical (D). Requieren confianza institucional real.</div>
+      <button class="btn btn-p" id="btn-q2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+    <!-- P3 -->
+    <div class="qb" id="q3">
+      <h4>3. Los valores trascendentes se distinguen de los valores individuales y sociales principalmente porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">Son los valores de mayor rango en la jerarquia axiologica y por ello deben tener prioridad sobre todos los demas en cualquier decision etica.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">B</div><div class="qot">Solo pueden ser vividos por personas que pertenecen a una religion instituida y que participan regularmente en practicas rituales comunitarias.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">C</div><div class="qot">Apuntan a una relacion del ser humano con lo que esta mas alla de lo inmanente y temporal: lo sagrado, el sentido ultimo de la vida o lo absoluto, con independencia de la tradicion espiritual especifica.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">Son valores que pertenecen exclusivamente al ambito privado del individuo y por tanto no tienen ningun efecto observable sobre su conducta social o profesional.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. Los valores trascendentes se caracterizan por orientar al ser humano hacia una relacion con lo que supera lo inmediato, temporal y materialmente verificable. Esta orientacion puede darse desde distintas tradiciones espirituales y filosofias de vida, sin limitarse a ninguna religion particular.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es C. Los valores trascendentes no implican jerarquia automatica sobre los demas (A), no se reducen a la pertenencia religiosa institucional (B), y tienen efectos concretos sobre la conducta y la vocacion profesional (D). Su caracter definitorio es la orientacion hacia lo que esta mas alla de lo inmanente.</div>
+      <button class="btn btn-p" id="btn-q3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+    <!-- P4 -->
+    <div class="qb" id="q4">
+      <h4>4. En el caso "El silencio de la sala 4", la respuesta de la profesora Claudia ("si no participas es porque no te animas") comete una falla axiologica central porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">Demuestra que la docente no tiene suficiente dominio del contenido de la materia para guiar una discusion de calidad con el grupo.</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">B</div><div class="qot">Reduce un problema de valores sociales estructurales (dinamicas de exclusion en el grupo) a un problema de valor individual del estudiante, ignorando las condiciones del contexto colectivo.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">C</div><div class="qot">Evidencia que la docente carece de empatia como valor individual, lo que la incapacita para ejercer la docencia universitaria de manera efectiva.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">Muestra que la docente prioriza los valores trascendentes sobre los sociales, lo que genera un desequilibrio en su comprension de la vida universitaria.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. La falla de la profesora Claudia es precisamente axiologica: interpreta la falta de participacion de Rodrigo como un deficit de valor individual (valentia, confianza en si mismo), cuando en realidad corresponde a un problema de valores sociales del grupo: la dinamica de exclusion que impide que todos tengan voz real en la discusion.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es B. El caso no cuestiona el dominio del contenido de Claudia (A), ni simplemente su empatia personal (C), ni su relacion con valores trascendentes (D). La falla central es confundir un problema social-estructural del grupo con un problema individual de Rodrigo.</div>
+      <button class="btn btn-p" id="btn-q4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+    <!-- P5 -->
+    <div class="qb" id="q5">
+      <h4>5. Segun la guia, la relacion entre los valores trascendentes y la vocacion docente se expresa principalmente en que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">El docente universitario debe profesar una religion especifica para poder acompaniar adecuadamente la dimension espiritual de sus estudiantes.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">Los valores trascendentes solo son relevantes en la educacion basica y en la ensenanza religiosa, pero no tienen lugar en la formacion universitaria laica.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">Muchos educadores vinculan su compromiso docente con un sentido de llamado o mision que tiene componentes trascendentes, y quien ha reflexionado sobre ello esta mejor equipado para acompaniar la dimension de sentido de sus estudiantes.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">La dimension trascendente del docente es irrelevante para su labor profesional, siempre que mantenga una postura de neutralidad total frente a las creencias de sus estudiantes.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La guia senala que la vocacion docente con frecuencia tiene componentes trascendentes: el compromiso con la educacion como mision, la reverencia ante la dignidad de cada estudiante, el sentido de lo que se hace. Quien ha reflexionado sobre su propia dimension trascendente esta mejor equipado para acompaniar, con respeto y profundidad, la de sus estudiantes.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. La pertenencia religiosa especifica no es condicion para acompaniar lo trascendente (A). Los valores trascendentes si son relevantes en la universidad (B). La neutralidad total tampoco es la postura propuesta: se trata de reflexion critica y acompaniamiento respetuoso, no de indiferencia (D).</div>
+      <button class="btn btn-p" id="btn-q5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+    <!-- RESULTADO -->
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--lavanda-suave);border-radius:8px;font-size:0.87rem;color:var(--azul-medio);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia de la Actividad 4.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura del resultado en la tarea "Actividad 4: Quiz".</div>
+</section>
+
+<!-- REFLEXION FINAL -->
+<section class="bloque" id="reflexion">
+  <div class="bloque-header">
+    <div class="b-icon sage">R</div>
+    <div class="b-titulo">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>El proceso formativo no concluye con la entrega de las actividades. Esta seccion le invita a un ejercicio de metacognicion sobre lo aprendido y a planificar como integrara estos aprendizajes en su vida academica y en su futura practica como pedagogo.</p>
+  <div class="refl"><label>1. De los valores sociales estudiados (justicia, solidaridad, respeto, tolerancia, ciudadania, bien comun, participacion), cual considera el mas urgente de fortalecer en la cultura universitaria actual? Argumente con al menos dos razones y un ejemplo concreto de su experiencia.</label><textarea placeholder="Identifique el valor, argumente por que es urgente y ejemplifique con una situacion real que haya observado..."></textarea></div>
+  <div class="refl"><label>2. El caso "El silencio de la sala 4" le genero alguna identificacion personal, ya sea con Rodrigo, con la profesora Claudia o con alguno de los estudiantes del grupo? Que reflexion le suscito respecto a su propio rol como futuro pedagogo?</label><textarea placeholder="Reflexione con honestidad sobre la identificacion personal y las implicaciones para su formacion docente..."></textarea></div>
+  <div class="refl"><label>3. La guia propone que la universidad deberia reconocer, sin imponer ni ignorar, la dimension trascendente de sus estudiantes y docentes. En la practica, como implementaria usted este principio en su futura aula universitaria? Sea especifico respecto a dos situaciones concretas.</label><textarea placeholder="Proponga dos situaciones concretas donde aplicaria este principio en su futura practica docente..."></textarea></div>
+  <div class="refl"><label>4. Planifique una accion concreta que llevara a cabo en los proximos 15 dias como resultado del aprendizaje de esta guia. Indique: que valor social o trascendente fortalecera, en que contexto universitario especifico lo hara, y como reconocera que ha tenido un impacto real.</label><textarea placeholder="Sea preciso: no 'sere mas solidario', sino 'en el proximo trabajo grupal de la materia X, propondre la siguiente dinamica para incluir a los companieros que no suelen participar, porque...'"></textarea></div>
+  <div class="caja meta">
+    <div class="caja-label">Instrucciones para la entrega</div>
+    <p>Las cuatro respuestas de esta seccion se entregaran como documento independiente en Google Classroom, en la tarea "Reflexion Final: Valores Sociales y Trascendentes". Extension minima por respuesta: 120 palabras. Se evaluaran la profundidad reflexiva, la autenticidad del analisis y la coherencia con los contenidos teoricos.</p>
+  </div>
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Eliade, M. (2014). <em>Lo sagrado y lo profano</em>. Paidos. (Obra original publicada en 1957).</li>
+    <li>Frankl, V. (2015). <em>El hombre en busca de sentido</em>. Herder. (Obra original publicada en 1946).</li>
+    <li>Mardones, J. M. (2003). Educacion, espiritualidad y pluralismo: el lugar de lo trascendente en la escuela publica. <em>Revista de Educacion</em>, (330), 11-28.</li>
+    <li>Rawls, J. (2006). <em>Teoria de la justicia</em>. Fondo de Cultura Economica. (Obra original publicada en 1971).</li>
+    <li>Scheler, M. (2001). <em>Etica: nuevo ensayo de fundamentacion de un personalismo etico</em>. Caparros Editores. (Obra original publicada en 1916).</li>
+    <li>Tenti Fanfani, E. (2007). Solidaridad, justicia y bien comun en la educacion superior. <em>Revista Iberoamericana de Educacion, 43</em>(2), 15-38.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 2: Tipologia de los Valores<br>
+  Subtema 2.2: Valores Sociales &middot; Subtema 2.3: Valores Trascendentes<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpResp(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Efectivamente, la caracteristica definitoria de los valores sociales es su caracter constitutivamente intersubjetivo: su realizacion depende de manera esencial de la relacion con otros. Sin el vinculo con otro sujeto, valores como la justicia, la solidaridad o el respeto simplemente no pueden existir ni expresarse."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es B.</strong> Los valores sociales no son superiores jerarquicamente por default (A), no son imposicion externa obligatoria (C), y no se limitan a normas juridicas (D). Su caracter definitorio es que requieren del vinculo interpersonal para realizarse plenamente."; }
+}
+var qE = { pts: 0, resp: {} };
+function qS(el, qid, ok) {
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  el.parentElement.querySelectorAll(".qo").forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){ el.classList.add("ok"); qE.pts++; }
+  else { el.classList.add("fail"); }
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn-"+qid).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur, next, num) {
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+function qRes() {
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida y completa de los valores sociales y trascendentes. Esta preparado para aplicar estos marcos conceptuales en el analisis y diseno de practicas educativas reales.";col="var(--verde-sage)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos asociados a las preguntas donde recibio retroalimentacion de mejora.";col="var(--azul-uc)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren estudio adicional. Se recomienda releer las secciones tematicas correspondientes a las preguntas no respondidas correctamente.";col="var(--dorado)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido tematico completo, consulte los materiales de referencia y retome el quiz tras el repaso.";col="var(--rojo-vino)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>
