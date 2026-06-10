@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estímulo – Respuesta | Enfoques Psicológicos | UdC Plantel Centro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS ══════════════════════════════════════════════ */
+:root{
+  --slate:      #1e2d3d;
+  --slate-m:    #2e4a63;
+  --slate-cl:   #d6e4f0;
+  --slate-xs:   #edf4fa;
+  --amber:      #c47c10;
+  --amber-m:    #e09420;
+  --amber-cl:   #fdf0d0;
+  --teal:       #0f6b5c;
+  --teal-cl:    #d4ede9;
+  --rust:       #a13020;
+  --rust-cl:    #fae3de;
+  --papel:      #f6f3ee;
+  --papel-m:    #ece8df;
+  --papel-d:    #ddd8cc;
+  --carbon:     #0d1520;
+  --texto:      #1a2535;
+  --texto-2:    #3d5068;
+  --texto-3:    #657a92;
+  --borde:      #c8cdd8;
+  --blanco:     #ffffff;
+  --sombra-s:   0 2px 14px rgba(14,20,30,.08);
+  --sombra-m:   0 6px 36px rgba(14,20,30,.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--papel);
+  color:var(--texto);
+  line-height:1.75;
+  font-size:15.5px;
+}
+
+/* ═══ BARRA INSTITUCIONAL ═══════════════════════════════ */
+.inst-bar{
+  background:var(--carbon);
+  padding:8px 32px;
+  display:flex;align-items:center;gap:14px;
+}
+.inst-bar img{height:40px;width:auto}
+.inst-bar-txt{flex:1}
+.inst-bar-txt .nom{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85);
+}
+.inst-bar-txt .sub{
+  font-family:'Space Mono',monospace;
+  font-size:8px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+}
+.inst-nav{
+  display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;
+}
+.inst-nav a{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);text-decoration:none;
+  padding:4px 10px;border:1px solid rgba(255,255,255,.15);
+  border-radius:1px;transition:all .2s;white-space:nowrap;
+}
+.inst-nav a:hover{color:var(--blanco);border-color:rgba(255,255,255,.4)}
+
+/* ═══ HERO ═══════════════════════════════════════════════ */
+.hero{
+  background:var(--slate);
+  position:relative;overflow:hidden;
+  padding:0;
+}
+/* Diagrama E→R de fondo */
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  opacity:.07;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.3) 39px, rgba(255,255,255,.3) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.3) 39px, rgba(255,255,255,.3) 40px);
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:40px;
+  padding:56px 40px 48px;
+  position:relative;z-index:1;
+}
+.hero-tag{
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber-m);margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Crimson Pro',serif;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:700;color:var(--blanco);
+  line-height:1.05;margin-bottom:10px;
+}
+.hero h1 em{color:var(--amber-m);font-style:italic}
+.hero-sub{
+  font-family:'Crimson Pro',serif;
+  font-size:1.15rem;color:rgba(255,255,255,.55);
+  font-style:italic;margin-bottom:24px;
+}
+.hero-desc{
+  font-size:.9rem;color:rgba(255,255,255,.5);
+  max-width:520px;line-height:1.7;margin-bottom:28px;
+}
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.chip{
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;border-radius:1px;
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.65);
+}
+.chip.amber{border-color:var(--amber-m);color:var(--amber-m)}
+
+/* Diagrama E→R decorativo */
+.er-diagram{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;padding:24px 20px;
+  text-align:center;flex-shrink:0;
+}
+.er-row{
+  display:flex;align-items:center;gap:8px;
+  justify-content:center;margin-bottom:10px;
+}
+.er-row:last-child{margin-bottom:0}
+.er-box{
+  background:var(--amber);color:var(--blanco);
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 14px;border-radius:2px;white-space:nowrap;
+}
+.er-box.teal{background:var(--teal)}
+.er-box.slate{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.er-arrow{
+  color:rgba(255,255,255,.4);font-size:1.1rem;
+  font-family:'Space Mono',monospace;
+}
+.er-label{
+  font-family:'Space Mono',monospace;font-size:7px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  text-align:center;margin-top:14px;
+}
+
+/* ═══ LAYOUT PRINCIPAL ═══════════════════════════════════ */
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.grid{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:28px;align-items:start;
+  padding:44px 0 80px;
+}
+.sidebar{position:sticky;top:84px}
+.side-label{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:10px;padding-left:10px;
+}
+.side-nav{list-style:none}
+.side-nav li{border-left:2px solid var(--borde);transition:border-color .2s}
+.side-nav li.on{border-left-color:var(--amber)}
+.side-nav a{
+  display:block;padding:6px 10px;
+  font-size:.8rem;color:var(--texto-2);
+  text-decoration:none;line-height:1.3;transition:color .2s;
+}
+.side-nav a:hover,.side-nav li.on a{color:var(--amber);font-weight:600}
+.side-sep{height:1px;background:var(--borde);margin:7px 0}
+
+/* ═══ CARDS ══════════════════════════════════════════════ */
+.card{
+  background:var(--blanco);border:1px solid var(--borde);
+  border-radius:4px;margin-bottom:30px;
+  overflow:hidden;box-shadow:var(--sombra-s);
+}
+.card-head{
+  padding:16px 26px;
+  display:flex;align-items:center;gap:12px;
+}
+.card-head.slate{background:var(--slate)}
+.card-head.amber{background:var(--amber)}
+.card-head.teal{background:var(--teal)}
+.card-head.rust{background:var(--rust)}
+.card-head.mid{background:#3a2060}
+.card-head.crema{background:var(--papel-m)}
+
+.ch-ico{
+  font-family:'Crimson Pro',serif;font-size:1.7rem;
+  font-weight:700;color:rgba(255,255,255,.18);
+  line-height:1;min-width:36px;
+}
+.ch-ico.dark{color:rgba(0,0,0,.12)}
+.ch-txt h2{
+  font-family:'Crimson Pro',serif;font-size:1.15rem;
+  font-weight:700;color:var(--blanco);line-height:1.2;
+}
+.ch-txt h2.dark{color:var(--carbon)}
+.ch-txt .sub{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:2px;
+}
+.ch-txt .sub.dark{color:var(--texto-3)}
+
+.card-body{padding:28px 32px}
+
+/* ═══ TIPOGRAFÍA INTERNA ══════════════════════════════════ */
+h3{
+  font-family:'Crimson Pro',serif;font-size:1.12rem;
+  font-weight:700;color:var(--slate);
+  margin:26px 0 10px;
+}
+h3:first-child{margin-top:0}
+h4{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.82rem;font-weight:600;
+  color:var(--texto);text-transform:uppercase;
+  letter-spacing:.07em;margin:20px 0 8px;
+}
+h4:first-child{margin-top:0}
+p{color:var(--texto-2);margin-bottom:12px;font-size:.94rem;line-height:1.75}
+p:last-child{margin-bottom:0}
+strong{color:var(--texto);font-weight:600}
+em{font-style:italic}
+
+/* ═══ CAJAS ESPECIALES ════════════════════════════════════ */
+.caja{padding:14px 18px;border-radius:3px;margin:14px 0;font-size:.91rem}
+.caja.slate{background:var(--slate-xs);border-left:3px solid var(--slate-m)}
+.caja.amber{background:var(--amber-cl);border-left:3px solid var(--amber)}
+.caja.teal{background:var(--teal-cl);border-left:3px solid var(--teal)}
+.caja.rust{background:var(--rust-cl);border-left:3px solid var(--rust)}
+.caja.warn{background:#fffbe6;border:1px solid #e0c020;border-radius:3px}
+.caja-tit{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.caja.slate .caja-tit{color:var(--slate-m)}
+.caja.amber .caja-tit{color:var(--amber)}
+.caja.teal .caja-tit{color:var(--teal)}
+.caja.rust .caja-tit{color:var(--rust)}
+
+.cita{
+  font-family:'Crimson Pro',serif;font-size:1.08rem;
+  font-style:italic;color:var(--texto);
+  border-left:3px solid var(--amber);
+  padding:12px 18px;background:var(--amber-cl);
+  border-radius:0 3px 3px 0;margin:16px 0;
+}
+.cita cite{
+  display:block;font-style:normal;
+  font-family:'Space Mono',monospace;font-size:8.5px;
+  color:var(--amber);margin-top:6px;letter-spacing:.08em;
+}
+
+/* ═══ TABLA ══════════════════════════════════════════════ */
+.tw{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+thead tr{background:var(--slate);color:var(--blanco)}
+thead th{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.11em;text-transform:uppercase;
+  padding:10px 14px;text-align:left;font-weight:400;
+}
+tbody tr:nth-child(even){background:var(--slate-xs)}
+tbody tr:hover{background:var(--amber-cl)}
+td{padding:9px 14px;border-bottom:1px solid var(--borde);
+  color:var(--texto-2);vertical-align:top;font-size:.87rem}
+td strong{color:var(--slate)}
+
+/* ═══ PASOS ══════════════════════════════════════════════ */
+.pasos{counter-reset:p;list-style:none;margin:12px 0}
+.pasos li{
+  display:flex;gap:12px;margin-bottom:10px;
+  counter-increment:p;align-items:flex-start;
+}
+.pasos li::before{
+  content:counter(p);
+  background:var(--slate);color:var(--blanco);
+  font-family:'Crimson Pro',serif;font-weight:700;font-size:.88rem;
+  min-width:25px;height:25px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;
+}
+.pasos.amber li::before{background:var(--amber)}
+.pasos.teal li::before{background:var(--teal)}
+.pasos.mid li::before{background:#3a2060}
+.pasos li p{margin:0;font-size:.91rem}
+
+/* ═══ BOTONES ════════════════════════════════════════════ */
+.btn{
+  display:inline-block;padding:8px 20px;
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer;transition:all .2s;
+}
+.btn.slate{background:var(--slate);color:var(--blanco)}
+.btn.slate:hover{background:var(--carbon)}
+.btn.amber{background:var(--amber);color:var(--blanco)}
+.btn.amber:hover{background:#9a6008}
+.btn.teal{background:var(--teal);color:var(--blanco)}
+.btn.teal:hover{background:#0a4d42}
+.btn.rust{background:var(--rust);color:var(--blanco)}
+.btn.rust:hover{background:#7a2015}
+.btn.mid{background:#3a2060;color:var(--blanco)}
+.btn.mid:hover{background:#261548}
+.btn.out{
+  background:transparent;color:var(--slate);
+  border:1.5px solid var(--borde);
+}
+.btn.out:hover{background:var(--slate-xs);border-color:var(--slate)}
+
+.classroom-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#1a73e8;color:var(--blanco);
+  font-family:'Space Mono',monospace;font-size:8.5px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 14px;border-radius:2px;margin:10px 0 14px;
+}
+.classroom-tag::before{content:'▶';font-size:7px}
+
+/* ═══ RÚBRICA ════════════════════════════════════════════ */
+.rubrica{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+  gap:10px;margin:14px 0;
+}
+.crit{
+  border:1px solid var(--borde);border-radius:3px;
+  padding:12px 14px;background:var(--blanco);
+}
+.crit .cn{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--texto-3);margin-bottom:4px;
+}
+.crit .cp{
+  font-family:'Crimson Pro',serif;font-size:1.8rem;
+  font-weight:700;color:var(--slate);line-height:1;margin-bottom:5px;
+}
+.crit .cp span{font-size:.88rem;font-weight:300;font-family:'Space Grotesk',sans-serif;color:var(--texto-3)}
+.crit p{font-size:.82rem;margin:0;color:var(--texto-2)}
+
+/* ═══ PREVIOS ════════════════════════════════════════════ */
+.prev-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.prev-item{border:1.5px solid var(--borde);border-radius:3px;padding:13px;background:var(--papel)}
+.prev-item label{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.prev-item textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;
+  padding:9px 11px;font-family:'Space Grotesk',sans-serif;font-size:.88rem;
+  color:var(--texto);background:var(--blanco);
+  outline:none;resize:vertical;min-height:80px;transition:border-color .2s;
+}
+.prev-item textarea:focus{border-color:var(--amber);background:var(--blanco)}
+
+/* ═══ RECURSOS ═══════════════════════════════════════════ */
+.recursos{display:flex;flex-direction:column;gap:10px;margin:13px 0}
+.recurso{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 15px;border:1px solid var(--borde);
+  border-radius:3px;background:var(--blanco);
+  transition:box-shadow .2s,border-color .2s;
+}
+.recurso:hover{border-color:var(--amber);box-shadow:var(--sombra-s)}
+.rec-tipo{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:1px;white-space:nowrap;flex-shrink:0;margin-top:2px;
+}
+.rec-tipo.libro{background:var(--teal-cl);color:var(--teal)}
+.rec-tipo.pdf{background:var(--rust-cl);color:var(--rust)}
+.rec-tipo.video{background:var(--slate-cl);color:var(--slate-m)}
+.rec-tipo.web{background:var(--amber-cl);color:var(--amber)}
+.rec-info .rec-tit{font-weight:600;font-size:.9rem;color:var(--slate);margin-bottom:2px}
+.rec-info .rec-desc{font-size:.83rem;color:var(--texto-2)}
+.rec-info .rec-autor{
+  font-family:'Space Mono',monospace;font-size:8px;
+  color:var(--texto-3);margin-top:3px;letter-spacing:.07em;
+}
+
+/* ═══ FORO ════════════════════════════════════════════════ */
+.foro{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;margin:14px 0}
+.foro-head{
+  background:var(--papel-m);padding:11px 18px;
+  border-bottom:1px solid var(--borde);
+}
+.foro-head span{
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate);font-weight:400;
+}
+.foro-pq{
+  padding:18px 20px;
+  font-family:'Crimson Pro',serif;font-size:1.04rem;
+  font-style:italic;color:var(--texto);line-height:1.65;
+  background:var(--blanco);border-bottom:1px solid var(--borde);
+}
+.foro-input{padding:14px 18px}
+.foro-input label{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.foro-input textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;
+  padding:11px;font-family:'Space Grotesk',sans-serif;font-size:.9rem;
+  color:var(--texto);resize:vertical;min-height:106px;
+  background:var(--papel);outline:none;transition:border-color .2s;
+}
+.foro-input textarea:focus{border-color:var(--slate);background:var(--blanco)}
+
+.ej{
+  margin-top:11px;padding:12px 15px;
+  background:var(--slate-xs);border-radius:3px;
+  border-left:3px solid var(--slate-m);
+  font-size:.86rem;color:var(--texto-2);display:none;
+  line-height:1.6;
+}
+.ej.vis{display:block}
+
+/* ═══ CASO ════════════════════════════════════════════════ */
+.caso-texto{
+  background:var(--papel);border-left:4px solid var(--amber);
+  padding:18px 22px;border-radius:0 3px 3px 0;margin:14px 0;
+  font-family:'Crimson Pro',serif;font-size:1.02rem;
+  line-height:1.8;color:var(--texto);
+}
+.caso-texto em{color:var(--amber);font-style:normal;font-weight:600}
+
+.caso-qs{margin:14px 0}
+.caso-q{
+  border:1px solid var(--borde);border-radius:3px;
+  overflow:hidden;margin-bottom:10px;
+}
+.cq-head{
+  background:var(--papel-m);padding:9px 14px;
+  display:flex;align-items:center;gap:9px;
+  font-weight:600;font-size:.88rem;color:var(--texto);
+}
+.cq-num{
+  background:var(--amber);color:var(--blanco);
+  font-family:'Crimson Pro',serif;font-weight:700;font-size:.88rem;
+  min-width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cq-body{padding:11px 14px}
+.cq-body textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;
+  padding:9px;font-family:'Space Grotesk',sans-serif;font-size:.87rem;
+  color:var(--texto);resize:vertical;min-height:76px;
+  background:var(--blanco);outline:none;transition:border-color .2s;
+}
+.cq-body textarea:focus{border-color:var(--amber)}
+
+/* ═══ QUIZ ════════════════════════════════════════════════ */
+.quiz-bar-wrap{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;background:var(--papel-m);
+  border-radius:3px;margin-bottom:14px;
+}
+.qbt{flex:1;height:4px;background:var(--borde);border-radius:2px;overflow:hidden}
+.qbf{height:100%;background:var(--slate);transition:width .4s;border-radius:2px}
+.qbl{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.1em;color:var(--texto-3);white-space:nowrap;
+}
+
+.qcard{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;display:none}
+.qcard.on{display:block}
+.qn{background:#3a2060;color:var(--blanco);padding:8px 16px;
+  font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase}
+.qt{padding:16px 20px 10px;font-size:.95rem;font-weight:600;color:var(--texto);line-height:1.5}
+.qopts{padding:0 20px 14px}
+.qopt{
+  display:flex;align-items:flex-start;gap:11px;
+  padding:9px 12px;margin-bottom:6px;
+  border:1.5px solid var(--borde);border-radius:2px;
+  cursor:pointer;transition:all .2s;
+  font-size:.87rem;color:var(--texto-2);user-select:none;
+}
+.qopt:hover:not(.lock){border-color:var(--slate-m);background:var(--slate-xs);color:var(--slate)}
+.qopt.ok{background:var(--teal-cl);border-color:var(--teal);color:var(--teal)}
+.qopt.err{background:var(--rust-cl);border-color:var(--rust);color:var(--rust)}
+.qopt.lock{cursor:default}
+.qletra{
+  font-family:'Crimson Pro',serif;font-weight:700;font-size:.88rem;
+  min-width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid currentColor;flex-shrink:0;margin-top:1px;
+}
+.qfb{
+  margin:4px 20px 12px;padding:10px 14px;border-radius:2px;
+  font-size:.86rem;display:none;
+}
+.qfb.vis{display:block}
+.qfb.ok{background:var(--teal-cl);color:#0a4a38;border-left:3px solid var(--teal)}
+.qfb.err{background:var(--rust-cl);color:#6a1510;border-left:3px solid var(--rust)}
+.qnav{padding:0 20px 14px;display:flex;justify-content:flex-end}
+
+.qres{display:none;text-align:center;padding:44px 28px;border:1.5px solid var(--borde);border-radius:4px}
+.qres.vis{display:block}
+.rpct{font-family:'Crimson Pro',serif;font-size:5rem;font-weight:700;line-height:1;margin-bottom:6px}
+.rpct.ex{color:var(--teal)}.rpct.bn{color:var(--slate-m)}
+.rpct.rg{color:var(--amber)}.rpct.bj{color:var(--rust)}
+.rlbl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.rmsg{font-size:.93rem;color:var(--texto-2);max-width:460px;margin:0 auto 20px}
+.rstats{display:flex;justify-content:center;gap:28px;margin-bottom:20px}
+.rstat .n{font-family:'Crimson Pro',serif;font-size:2.2rem;font-weight:700}
+.rstat .n.v{color:var(--teal)}.rstat .n.r{color:var(--rust)}
+.rstat .l{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-3)}
+
+/* ═══ REFLEXIÓN ══════════════════════════════════════════ */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.ref-campo label{
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-3);display:block;margin-bottom:6px;
+}
+.ref-campo textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;
+  padding:10px 12px;font-family:'Space Grotesk',sans-serif;
+  font-size:.88rem;color:var(--texto);background:var(--papel);
+  outline:none;resize:vertical;min-height:86px;transition:border-color .2s;
+}
+.ref-campo textarea:focus{border-color:var(--amber);background:var(--blanco)}
+
+/* ═══ FOOTER ══════════════════════════════════════════════ */
+footer{
+  background:var(--carbon);color:rgba(255,255,255,.3);
+  text-align:center;padding:24px;
+  font-family:'Space Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;line-height:2.2;
+}
+footer strong{color:rgba(255,255,255,.7)}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .inst-nav{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .er-diagram{display:none}
+  .card-body{padding:20px 18px}
+  .prev-grid,.ref-grid{grid-template-columns:1fr}
+  .rubrica{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA INSTITUCIONAL -->
+<header class="inst-bar">
+  <img alt="Universidad de la Ciénega"
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooriPiHql1pPhW6ubJikrbYww4Kh2AJHvjpVRi5NJAbd34l8P2DmK8v7eJx1RpFDD8M5qoPGnhQkD+07bn/AKaL/jXG+GPht4aOkW91qVubmeeNZXZ3YAFxnAAIGBmuh/4V34Oxj+z0/Bm/+KrS1NOzuDZynjOeK48YeGZoHWSNpSVZTkH5l6EcV6xcXVtZxGe7lSGMdWdgoH4mvBNY8N23hrxzokGnlxaTzK6RMxYI28BguecHipNWfS/E3j+5tPEt4tvp2nrtjjaQRhmGARkkckkkkc4GK1dNSSttYR643jLwopwdUtfwlU/1qzaeJvD9/KILO/t5XPRUlUn8s5rhRpHwiHBksD9bn/7OsPxBoPwxl0ud9Lu7SC6jRniaO4DEsoyBgscg1CpwbtqB7lmsHxV/yLOqf9ek3/oBrB+G+rXWr+FoJb1zJLCzQsx5JC/dz77SK3fFf/Isap/16Tf+gGsuXlnZjOb+F3/ImWv+9L/6Ga6W58U+HLOUw3WoW0bqcFTIuR9RmvO/C1nqN78L/smlSrBPL5iiRyVCgyHdyASPlzWfo+g/DPT9Pit9ZubS4u8ZlcTEjd7YIwPwraVNNtsD01fGfhRmCjVLXJ9ZVH9a6CC4guohPbSLLG3KshDA/QjivJRpfwhmPlB7QE+szL+u4VS8KwJ4a8fXHhzT5mewuIPNjUtuw2AwI/DI9xUukmny3+YHtteB6tZf8Jp8SpNGvnY2VjHnYGxkKF3fiWbBPXAr3uvEfDP/ACVbV/8ArnJ/6FHRQ+0+yEd/H4E8IRLtXTYce4J/U81J/wAIR4T/AOgbB/3zXVUVm60+47niXxD8E6LpuitrujRfZbi1dG/dk4ILBemeCM5BFdWLbQ9ct9A1TxDMsd8I45YFMgQvKdjHCnr8wHFeh1498Qv+Rt8L/wDXz/7UjrWE3O0W9e4Hrs00VvE00zqiKMlmOAPqTXnHivWtH1uzXSrbXLS1glbFw4kBcx91XBxz35/rXL+Op7bWPGll4c1a7Ftp0UfmS5cICxBPJOB0AA9MmtlNG+EcUe0SWR9zcZP6vTjTUUpO9/IVzpfDl74K0uBNJ0K8teSOBIpd29Sc5JP/AOqurvL+y0+IT388dvGTt3SsEGfTJxzxXkGp6D8K7qykjtLq0gm2kxulwMhu3BYgj2xXE3+r3Wp/C2AXj+ZJbagsIY9SojYjP0zj6Ch0eb3kFz6NvNY0rTgp1C6ht94yvmOq5+mTzWdH4w8LSnamp2ufeVR/M1zWnfD3RrqFL/xAHvr2ZQ8ju7AZI6KqkAAdBV2f4aeDZkKiy8s44ZHcEe/XH6VHLTWjbGdzHIsqCRCGVuQQcgis++1nStMwNSuobYsMgSOq5+mTXlPgG5n0O48QaG7tLb6YxeLcew3Z+m7AP/165zwhZeFdmin17xrewyXk8jYjlm2FVHcgMDz2HQDGKfsUm77CbPZf+Ez8Kf8AQTtv+/grWsNW0zVFL6dcxXAHUxOHx9cGvOTpHwjP8dh/4Ef/AGdcVr58M+F9X0/WvBt3Hnzds8MMokBTjOeWIBGQfwqo0YvSNwufQtxc29pEZ7qRIox1Z2CgfieK59vGnhRTj+07Y/SRT/I15xrVmfGHxDPh+/kb7DYQiQxqcBiQCfxO4DPoK7cfDrwYBj+z0P1Zyf51HJGKXOM3LLxJoGpSCGxvreaQ8hFkUt+Wc1es9QsdRiM1hPHcIDtLROHAPpkd64i/+G3hlrZ264tJ1G5J42YMjjoeTj8jXN/Cj7Q3hG+FqQszTyCMnoH8tAuT9aXs4uLlFge53viHQtOcxX17BDIOqM4z+WailguRBZ2VtfRLZJCrxrLg7yw5O3+ZqxRWYMSgAAZPAAooooGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFcJ45uQlpBaj/lqxJ+i4/qa7uvKvHDltTij7LEB+ZP+FbYVXmiZuyOWsh5mozrzt3Ej6da+ga8L0j/kKWx/6ar/OvdKvHbxGjnfF/8AyK2p/wDXrL/6Ca+MK+z/ABf/AMirqf8A16y/+gmvjCunAfAy2feIoopaK8sQUUUUAfPXxW0eXSvEcWr25K273mJiO0qDn8xx+Ir07wL8SNI1rSIItQnS31IKqSq/yu2AOVOcHPGQfxrxTxH4K8TeFJGl1O3Jh/hmj+aM/VugPsefatvwT4G1/wAWfNYwiKBCfNmk4C/h1Y+wFejOlCrR5YbkX1Pp9HWRBIhDKwBBHQin1BaW8VpaRWkH+rhjWNPZVGBU9eTLdmYNBRRRSAp6lqVhpNvHc6lMlvHLNHAjOcAu7BVH4kiry14d8UrlvGWm+H5TtjuwY2bptU7mGfwBzVCHwJpsdnJpiSTi0mbdLtbBI9AeoBzzWsaOHk6V9gkz2WXxj4UiJX+1LUkf9NB/jWTqXi/w7ptobmXVIGAPCo25j9AKzW+Fvh1Ii9v9minYDLBWB/8ARi/0p6fCXwpEQTHIR7yv/wDFVCVFO3Mxpzf2TjtK8TyeOfiVpqQ/tFoipJLj5UABIH19a9gvdV0/TWjW+mSAyjKBzgkd+a818E+GtO8I3Gp30TyyXsVwEijcZ2KApJGO5YD8qxfG+tvrmuyyKcwwHyo/Qj+I/j/SumEYRXPe7/IjUi1T4h3FprMtlaaWlzDbMFaXztuSDg4GOnFa1r8TNEuFDSJcQk9Q0ef5Ennj0q14Q8HaFd6RbeIHiluJ7mNZMMxyuRkD2I/SqOs/C7QJ7KS70cSWl2oLAAkqW9DnkGudyi1zaWLlzXSPQoZo7iJJoWDo4ypHcVJXgHhLxzqPhW4MFyHurQnDQseV/3Cen07V6np3jTw7qNkt0mqW6FlB2u4VgfQ5qKlJx2Ey3e6lp+nFBfXEdv5hwvmMFz9M1mSeK/CMKFpNUsQBz/rVJ/LNcb4iv7i+8WwXkkzFYEjIAOAAxBP6101/4e0W30qe7m061SOGFpHxGvIUZPbvS9lBJPmFc5TRbm0sPiNe3+nyLBb6lGFmVepACjd+aNn6Cuub4f8AhR/+YXGPoW/xr5/tBf6z4kks52bMKmMhx93I4/x/MV7v8PPLGgTxxyu7R3ThQ7E4XavoeeM//Xo+sJ24S0Jfhv8A8iVp3+4//obV2tFFZP4mUgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==">
+  <div class="inst-bar-txt">
+    <div class="nom">Universidad de la Ciénega · Plantel Centro</div>
+    <div class="sub">Licenciatura en Pedagogía · Teorías del Aprendizaje · Tema 2.1</div>
+  </div>
+  <nav class="inst-nav">
+    <a href="#intro">Intro</a>
+    <a href="#previos">Previos</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Foro</a>
+    <a href="#act2">Act.2</a>
+    <a href="#act3">Caso</a>
+    <a href="#act4">Quiz</a>
+    <a href="#reflexion">Reflexión</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Tema 2 · Subtema 2.1 · Guía de Aprendizaje Activo</div>
+      <h1>Enfoques Psicológicos<br>acerca del Conocimiento<br><em>Estímulo – Respuesta</em></h1>
+      <div class="hero-sub">2.1 El modelo conductista y sus fundamentos</div>
+      <p class="hero-desc">El conductismo fue la primera gran teoría psicológica que propuso una explicación sistemática y científica del aprendizaje, fundamentada en la relación observable entre estímulos ambientales y respuestas conductuales. Comprender sus principios es indispensable para entender el origen de los modelos educativos actuales y sus limitaciones.</p>
+      <div class="hero-chips">
+        <span class="chip">Lic. en Pedagogía</span>
+        <span class="chip">Teorías del Aprendizaje</span>
+        <span class="chip amber">Metodología Constructivista</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">ABP</span>
+      </div>
+    </div>
+    <div class="er-diagram">
+      <div class="er-row">
+        <div class="er-box">Estímulo (E)</div>
+        <div class="er-arrow">→</div>
+        <div class="er-box teal">Respuesta (R)</div>
+      </div>
+      <div class="er-row">
+        <div class="er-box slate" style="font-size:8px">Condicionamiento</div>
+        <div class="er-arrow">+</div>
+        <div class="er-box slate" style="font-size:8px">Reforzamiento</div>
+      </div>
+      <div class="er-row">
+        <div class="er-box amber" style="width:100%;text-align:center">Conducta Modificada</div>
+      </div>
+      <div class="er-label">Modelo básico del conductismo</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="page-wrap">
+<div class="grid">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="side-label">Índice</div>
+    <ul class="side-nav">
+      <li><a href="#intro">Introducción</a></li>
+      <li><a href="#previos">Conocimientos previos</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#contenido">Contenido temático</a></li>
+      <li><a href="#materiales">Materiales de consulta</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#act1">Actividad 1 · Foro</a></li>
+      <li><a href="#act2">Actividad 2 · Aprendizaje</a></li>
+      <li><a href="#act3">Actividad 3 · Caso</a></li>
+      <li><a href="#act4">Actividad 4 · Quiz</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#reflexion">Reflexión final</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+  <!-- ══ INTRODUCCIÓN ══ -->
+  <div class="card" id="intro">
+    <div class="card-head slate">
+      <div class="ch-ico">I</div>
+      <div class="ch-txt">
+        <h2>Introducción al tema</h2>
+        <div class="sub">Punto de partida · Relevancia pedagógica · Conexión con la unidad anterior</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>En la Unidad I exploraste el problema del conocimiento desde sus dimensiones filosófica y psicológica general. Ahora la mirada se afina: la Unidad II examina los grandes <strong>enfoques psicológicos específicos</strong> que, a lo largo del siglo XX, propusieron explicaciones sistemáticas sobre cómo los seres humanos adquieren, modifican y retienen el conocimiento. El primer enfoque que estudiarás es el <strong>conductismo</strong>, cuyo modelo central es la relación Estímulo–Respuesta (E→R).</p>
+
+      <div class="cita">
+        "Dadme una docena de niños sanos, bien formados, y mi propio mundo específico para criarlos, y garantizo tomar a cualquiera al azar y entrenarlo para convertirlo en cualquier tipo de especialista que yo seleccione: médico, abogado, artista, empresario y, sí, incluso mendigo y ladrón."
+        <cite>— John B. Watson, El conductismo (1930)</cite>
+      </div>
+
+      <p>Esta afirmación, provocadora y hoy ampliamente cuestionada, sintetiza la ambición del conductismo clásico: el aprendizaje humano puede ser controlado, predecido y modificado a través de la manipulación de estímulos ambientales. Aunque el conductismo ya no domina la psicología educativa, sus principios siguen presentes de maneras a veces imperceptibles en prácticas universitarias cotidianas.</p>
+
+      <div class="caja slate">
+        <div class="caja-tit">Pregunta orientadora de la unidad</div>
+        <p style="margin:0;font-size:.95rem;color:var(--texto)"><em>¿En qué medida las prácticas de enseñanza universitaria que has experimentado como estudiante reflejan supuestos conductistas sobre el aprendizaje — aunque nadie los haya nombrado explícitamente?</em></p>
+      </div>
+
+      <h3>¿Por qué estudiar el conductismo en pedagogía?</h3>
+      <p>Comprender el conductismo desde la pedagogía no significa adoptarlo como modelo único, sino entender su lógica interna, sus aportaciones históricas y sus limitaciones reconocidas, para poder:</p>
+      <ol class="pasos">
+        <li><p>Identificar cuándo una práctica docente se fundamenta en supuestos conductistas y evaluar críticamente sus implicaciones para el aprendizaje de los estudiantes.</p></li>
+        <li><p>Articular el conductismo con los enfoques cognitivos y constructivistas que estudiaste en la Unidad I, reconociendo la progresión histórica del pensamiento psicológico sobre el conocimiento.</p></li>
+        <li><p>Aplicar de manera crítica y selectiva los principios del reforzamiento y la modificación de conducta en contextos educativos específicos, con plena conciencia de sus alcances y sus límites.</p></li>
+        <li><p>Fundamentar tu propia postura pedagógica en una comprensión profunda de los paradigmas en tensión dentro de la psicología del aprendizaje.</p></li>
+      </ol>
+
+      <div class="caja teal">
+        <div class="caja-tit">Conexión con la Unidad I</div>
+        <p style="margin:0;font-size:.91rem">En el tema 1.2 estudiaste que el conductismo se asocia epistemológicamente al empirismo: el conocimiento llega desde el exterior a través de estímulos observables, y la mente es considerada irrelevante o inaccesible para la ciencia. Esta continuidad filosófico-psicológica es fundamental para comprender por qué el conductismo adopta la metodología que adopta.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONOCIMIENTOS PREVIOS ══ -->
+  <div class="card" id="previos">
+    <div class="card-head crema">
+      <div class="ch-ico dark">?</div>
+      <div class="ch-txt">
+        <h2 class="dark">Activación de conocimientos previos</h2>
+        <div class="sub dark">Reflexión inicial · Ancla ausubeliana · Sin respuestas incorrectas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Antes de explorar el contenido, reflexiona sobre lo que ya sabes o has experimentado. Según Ausubel, el aprendizaje significativo requiere anclar la nueva información en estructuras cognitivas preexistentes. Estas preguntas activan ese anclaje.</p>
+      <div class="caja warn">
+        <strong>Instrucción:</strong> Responde con sinceridad y desde tu experiencia real. No hay respuestas correctas o incorrectas en esta etapa. Esta activación es personal — no se entrega en Classroom, pero es fundamental para que el aprendizaje que sigue sea genuino y propio.
+      </div>
+      <div class="prev-grid">
+        <div class="prev-item">
+          <label>1. En tu vida escolar, ¿recuerdas alguna práctica de recompensa o castigo usada por un docente? ¿Qué efecto tuvo en tu conducta y en tu aprendizaje real?</label>
+          <textarea placeholder="Describe una situación concreta y específica..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>2. ¿Qué entiendes por "condicionamiento"? ¿Puedes identificar algún ejemplo en tu vida cotidiana?</label>
+          <textarea placeholder="Tu respuesta inicial, sin buscar definición formal..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>3. ¿Crees que el comportamiento humano puede explicarse completamente como respuestas a estímulos externos? ¿Por qué sí o por qué no?</label>
+          <textarea placeholder="Expresa tu postura antes de estudiar el contenido..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>4. ¿Conoces los nombres Watson, Pavlov o Skinner? ¿Qué sabes de ellos antes de esta guía?</label>
+          <textarea placeholder="Todo lo que sepas, aunque sea vago o parcial..."></textarea>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:6px">
+        <button class="btn slate" onclick="guardarPrevios()">Registrar respuestas (esta sesión)</button>
+      </div>
+      <div id="pok" style="display:none;text-align:center;margin-top:10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)">Respuestas registradas correctamente</div>
+    </div>
+  </div>
+
+  <!-- ══ CONTENIDO TEMÁTICO ══ -->
+  <div class="card" id="contenido">
+    <div class="card-head amber">
+      <div class="ch-ico">II</div>
+      <div class="ch-txt">
+        <h2>Contenido Temático</h2>
+        <div class="sub">Tema 2 · Subtema 2.1 · Estímulo – Respuesta · Conductismo</div>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <h3>1. El conductismo como enfoque psicológico del conocimiento</h3>
+      <p>El <strong>conductismo</strong> (del inglés <em>behaviorism</em>) es una corriente psicológica que surge a principios del siglo XX como reacción al mentalismo y la introspección. Su premisa fundamental es que la psicología debe ser una ciencia objetiva, y que solo son científicamente válidos los fenómenos <strong>observables y medibles</strong>: la conducta. Los procesos internos de la mente (pensamientos, emociones, intenciones) quedan excluidos del análisis científico.</p>
+      <p>Desde esta perspectiva, el aprendizaje se define como un <strong>cambio relativamente permanente en la conducta observable</strong>, producido por la experiencia. El conocimiento, en consecuencia, no es una construcción interna del sujeto sino el resultado de asociaciones entre estímulos del ambiente y respuestas conductuales del organismo.</p>
+
+      <h3>2. Los fundadores: de Pavlov a Skinner</h3>
+
+      <h4>2.1 Ivan Pavlov y el condicionamiento clásico</h4>
+      <p>El fisiólogo ruso <strong>Ivan Pavlov</strong> (1849–1936) descubrió accidentalmente, mientras estudiaba la digestión en perros, el principio del <strong>condicionamiento clásico</strong>. Observó que los perros comenzaban a salivar no solo ante la comida (estímulo incondicionado), sino también ante estímulos neutros (como un sonido de campana) que habían sido presentados repetidamente junto a la comida.</p>
+
+      <div class="caja amber">
+        <div class="caja-tit">Esquema del condicionamiento clásico (Pavlov)</div>
+        <p style="margin:0;font-size:.9rem">
+          <strong>Antes del condicionamiento:</strong><br>
+          Estímulo Incondicionado (EI: comida) → Respuesta Incondicionada (RI: salivación)<br>
+          Estímulo Neutro (EN: campana) → Sin respuesta<br><br>
+          <strong>Durante el condicionamiento:</strong><br>
+          Estímulo Neutro (EN) + Estímulo Incondicionado (EI) → Respuesta Incondicionada (RI)<br><br>
+          <strong>Después del condicionamiento:</strong><br>
+          Estímulo Condicionado (EC: campana) → Respuesta Condicionada (RC: salivación)
+        </p>
+      </div>
+
+      <p>El condicionamiento clásico explica la adquisición de respuestas emocionales y fisiológicas ante estímulos que, por sí solos, originalmente no las producían. En educación, tiene implicaciones en la comprensión del miedo ante las evaluaciones, la motivación asociada a determinadas materias o docentes, y la formación de actitudes hacia el aprendizaje.</p>
+
+      <h4>2.2 John B. Watson y el conductismo metodológico</h4>
+      <p><strong>John B. Watson</strong> (1878–1958) fue el fundador formal del conductismo como escuela psicológica. En su artículo "Psychology as the Behaviorist Views It" (1913) declaró que la psicología debe abandonar el estudio de la conciencia y enfocarse exclusivamente en la conducta observable y sus relaciones con el ambiente.</p>
+      <p>Watson extendió los principios del condicionamiento clásico al comportamiento humano, argumentando que prácticamente toda conducta —incluyendo las emociones, los hábitos y las habilidades— puede ser explicada como el resultado de condicionamiento. Su famoso experimento con el "pequeño Albert" demostró que las respuestas emocionales de miedo pueden ser condicionadas en seres humanos.</p>
+
+      <div class="caja rust">
+        <div class="caja-tit">Implicación pedagógica crítica</div>
+        <p style="margin:0;font-size:.9rem">Watson concebía al estudiante como un organismo esencialmente pasivo, moldeable por el ambiente educativo. Esta visión mecanicista del aprendizaje fue objeto de severas críticas filosóficas y éticas, dado que reduce la complejidad del ser humano y de los procesos cognitivos a simples cadenas de asociaciones estímulo-respuesta.</p>
+      </div>
+
+      <h4>2.3 B. F. Skinner y el condicionamiento operante</h4>
+      <p><strong>Burrhus Frederic Skinner</strong> (1904–1990) fue el conductista más influyente en el campo educativo. Desarrolló el <strong>condicionamiento operante</strong>, que a diferencia del condicionamiento clásico no parte de reflejos innatos sino de conductas voluntarias emitidas por el organismo.</p>
+
+      <div class="caja teal">
+        <div class="caja-tit">Principios fundamentales del condicionamiento operante (Skinner)</div>
+        <p style="font-size:.9rem;margin-bottom:6px"><strong>Reforzamiento positivo:</strong> presentar un estímulo agradable tras una conducta para aumentar su probabilidad de repetición. Ej.: elogiar a un estudiante que participa en clase.</p>
+        <p style="font-size:.9rem;margin-bottom:6px"><strong>Reforzamiento negativo:</strong> retirar un estímulo aversivo tras una conducta para aumentar su probabilidad. Ej.: eximir de un ejercicio al estudiante que entrega a tiempo.</p>
+        <p style="font-size:.9rem;margin-bottom:6px"><strong>Castigo positivo:</strong> presentar un estímulo aversivo tras una conducta para disminuir su probabilidad. Ej.: restar puntos por tardanza.</p>
+        <p style="font-size:.9rem;margin:0"><strong>Extinción:</strong> no reforzar una conducta para que disminuya gradualmente. Ej.: ignorar sistemáticamente la conducta disruptiva de un estudiante.</p>
+      </div>
+
+      <p>Skinner aplicó estos principios al diseño de la <strong>instrucción programada</strong>: materiales educativos estructurados en pequeños pasos secuenciales, donde cada respuesta correcta recibe reforzamiento inmediato. Este modelo es el antecedente directo de muchos sistemas de e-learning, plataformas de gamificación y evaluaciones de opción múltiple con retroalimentación instantánea.</p>
+
+      <h4>2.4 Edward Thorndike y la ley del efecto</h4>
+      <p><strong>Edward Thorndike</strong> (1874–1949) formuló la <strong>ley del efecto</strong>: una conducta seguida de consecuencias satisfactorias tiende a repetirse; una conducta seguida de consecuencias insatisfactorias tiende a extinguirse. Esta ley es el fundamento de todos los sistemas de recompensa y sanción en educación.</p>
+
+      <h3>3. El modelo Estímulo–Respuesta: características y limitaciones</h3>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Descripción</th>
+              <th>Implicación en el aula</th>
+              <th>Limitación reconocida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Objetivismo metodológico</strong></td>
+              <td>Solo son válidos los datos observables y medibles.</td>
+              <td>El docente evalúa conductas observables, no procesos internos.</td>
+              <td>Ignora variables cognitivas y afectivas que mediatizan el aprendizaje.</td>
+            </tr>
+            <tr>
+              <td><strong>Aprendizaje como asociación</strong></td>
+              <td>Aprender = establecer asociaciones E→R mediante repetición y reforzamiento.</td>
+              <td>Énfasis en la práctica repetida, los drills y la memorización.</td>
+              <td>No explica el aprendizaje por insight, por comprensión ni la transferencia creativa.</td>
+            </tr>
+            <tr>
+              <td><strong>Rol pasivo del estudiante</strong></td>
+              <td>El ambiente moldea la conducta; el sujeto es receptor.</td>
+              <td>Clases expositivas donde el docente controla los estímulos.</td>
+              <td>Contradice la evidencia sobre el papel activo del sujeto en la construcción del conocimiento.</td>
+            </tr>
+            <tr>
+              <td><strong>Reforzamiento como motor</strong></td>
+              <td>La conducta se controla mediante consecuencias (premios/castigos).</td>
+              <td>Sistemas de puntos, calificaciones, premiaciones, sanciones.</td>
+              <td>Puede generar motivación extrínseca y dependencia del refuerzo; disminuye la motivación intrínseca.</td>
+            </tr>
+            <tr>
+              <td><strong>Énfasis en el producto</strong></td>
+              <td>Lo importante es la conducta final observable, no el proceso.</td>
+              <td>Evaluación centrada en resultados medibles (exámenes, productos).</td>
+              <td>Pierde de vista el proceso de aprendizaje y el desarrollo metacognitivo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4. El conductismo en la educación universitaria contemporánea</h3>
+      <p>Aunque el conductismo fue superado teóricamente por el cognitivismo y el constructivismo desde la década de 1960, sus principios persisten en muchas prácticas universitarias actuales, a menudo de manera no declarada:</p>
+      <ol class="pasos amber">
+        <li><p>Sistemas de calificación basados exclusivamente en exámenes de opción múltiple con una sola respuesta correcta.</p></li>
+        <li><p>Control de asistencia vinculado a puntos de calificación (reforzamiento positivo / castigo negativo).</p></li>
+        <li><p>Políticas de "tolerancia cero" ante conductas académicas no deseadas (castigo positivo).</p></li>
+        <li><p>Plataformas de aprendizaje adaptativo que otorgan puntos, insignias y niveles según el avance del estudiante (gamificación conductista).</p></li>
+        <li><p>Clases magistrales donde el docente expone y el estudiante registra, sin espacios para la construcción activa del conocimiento.</p></li>
+      </ol>
+
+      <div class="caja amber">
+        <div class="caja-tit">Reflexión crítica esencial para el pedagogo</div>
+        <p style="margin:0;font-size:.93rem">El problema no es que estas prácticas existan, sino que se apliquen de manera irreflexiva, sin conciencia de los supuestos teóricos que las sostienen ni de sus consecuencias para el tipo de aprendizaje que generan. Un pedagogo formado puede identificarlas, evaluarlas críticamente y decidir cuándo, cómo y para qué objetivos específicos tienen sentido pedagógico.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MATERIALES ══ -->
+  <div class="card" id="materiales">
+    <div class="card-head slate">
+      <div class="ch-ico">III</div>
+      <div class="ch-txt">
+        <h2>Materiales de Consulta Formales</h2>
+        <div class="sub">Fuentes académicas · Consultar antes de las actividades</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Se presentan fuentes académicas seleccionadas para profundizar en el conductismo y el modelo E→R. Se recomienda revisar al menos dos antes de realizar las actividades prácticas.</p>
+      <div class="recursos">
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Psicología educativa — Capítulos 6 y 7: Conductismo y aprendizaje</div>
+            <div class="rec-desc">Exposición detallada del condicionamiento clásico y operante aplicado a la educación, con ejemplos concretos de aula universitaria y evaluación crítica de cada principio.</div>
+            <div class="rec-autor">Woolfolk, A. (2014). Psicología educativa (12.ª ed.). Pearson. México.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Tecnología de la enseñanza — Capítulos 1–3</div>
+            <div class="rec-desc">Skinner aplica directamente los principios del condicionamiento operante al diseño de la instrucción programada y a la arquitectura del aprendizaje. Lectura primaria indispensable.</div>
+            <div class="rec-autor">Skinner, B. F. (1970). Tecnología de la enseñanza. Labor. Barcelona. (Obra original 1968).</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">El conductismo — Parte II: El condicionamiento de las emociones y los hábitos</div>
+            <div class="rec-desc">Texto primario donde Watson expone los fundamentos de su programa conductista y sus aplicaciones al control del comportamiento humano. Perspectiva histórica esencial.</div>
+            <div class="rec-autor">Watson, J. B. (1930). Behaviorism. University of Chicago Press. (Versiones en español disponibles en repositorios académicos).</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo pdf">Artículo</span>
+          <div class="rec-info">
+            <div class="rec-tit">Conductismo, cognitivismo y constructivismo: revisión comparativa</div>
+            <div class="rec-desc">Artículo de revisión que compara los tres grandes paradigmas del aprendizaje en educación superior, con énfasis en sus implicaciones para el diseño instruccional universitario.</div>
+            <div class="rec-autor">Disponible en Redalyc · Latindex · ERIC. Buscar: "conductismo cognitivismo constructivismo educación superior" en bases de datos institucionales UdC.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo video">Video</span>
+          <div class="rec-info">
+            <div class="rec-tit">El condicionamiento clásico y operante — Conferencias académicas universitarias</div>
+            <div class="rec-desc">Series de conferencias que explican los principios del condicionamiento de forma rigorosa y aplicada. Buscar en canales académicos de YouTube: UNAM Psicología, Universidad Complutense, Universidad de Chile.</div>
+            <div class="rec-autor">Plataforma YouTube · Filtro: "condicionamiento operante educación conferencia académica".</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo web">Web</span>
+          <div class="rec-info">
+            <div class="rec-tit">Stanford Encyclopedia of Philosophy — "Behaviorism"</div>
+            <div class="rec-desc">Artículo enciclopédico de referencia global sobre el conductismo filosófico y metodológico, sus variantes, sus críticas y su legado en la psicología y la filosofía de la mente.</div>
+            <div class="rec-autor">plato.stanford.edu — Acceso libre y gratuito en inglés.</div>
+          </div>
+        </div>
+      </div>
+      <div class="caja warn" style="margin-top:12px">
+        <strong>Nota de citación:</strong> Al referenciar estas fuentes en tus actividades, utiliza el formato APA 7.ª edición. Consulta las bases de datos y el catálogo de la biblioteca universitaria para el acceso a los textos impresos.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 1: FORO ══ -->
+  <div class="card" id="act1">
+    <div class="card-head slate">
+      <div class="ch-ico">A1</div>
+      <div class="ch-txt">
+        <h2>Actividad 1 · Foro de Mediación</h2>
+        <div class="sub">Reflexión crítica · Intercambio argumentado · Construcción colaborativa</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag">Entregable en Google Classroom · Foro de discusión</div>
+
+      <h4>Propósito</h4>
+      <p>Esta actividad busca que, a través del diálogo argumentado con tus compañeros, construyas una comprensión más profunda y crítica del conductismo y sus implicaciones pedagógicas reales. El foro no es un espacio de opinión libre: requiere argumentación fundamentada en el contenido estudiado y anclada en experiencias universitarias concretas.</p>
+
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos">
+        <li><p>Ingresa a Google Classroom y localiza el foro titulado <strong>"Conductismo en el aula: ¿vigencia o superación?"</strong></p></li>
+        <li><p>Lee con atención la pregunta detonadora. Dedica al menos 15 minutos a reflexionar antes de escribir. Utiliza el espacio de práctica de esta guía para elaborar tu borrador.</p></li>
+        <li><p>Redacta tu participación inicial con un mínimo de <strong>220 palabras</strong>, incluyendo: (a) una postura clara sobre el problema planteado, (b) referencia explícita a al menos un autor o concepto conductista estudiado, y (c) conexión con una experiencia concreta y verificable como estudiante universitario.</p></li>
+        <li><p>Lee las aportaciones de al menos <strong>dos compañeros</strong> y responde a cada uno con un comentario de mínimo 90 palabras que amplíe, contraste o cuestione el argumento con nuevos elementos del contenido.</p></li>
+        <li><p>Guarda capturas de pantalla de tu participación principal y tus comentarios. Adjúntalas en Classroom como evidencia de entrega.</p></li>
+      </ol>
+
+      <h4>Pregunta detonadora</h4>
+      <div class="foro">
+        <div class="foro-head">
+          <span>Foro · Teorías del Aprendizaje · Tema 2.1 · Estímulo – Respuesta</span>
+        </div>
+        <div class="foro-pq">
+          En muchas universidades mexicanas, los sistemas de calificación se basan en exámenes con respuestas correctas únicas, listas de asistencia con puntos, y reglamentos que sancionan comportamientos no deseados con reducción de calificación. <strong>¿Estos sistemas producen aprendizaje genuino o solo moldean conductas convenientes para la institución? ¿Puede un docente universitario del siglo XXI rechazar completamente el conductismo, o existen principios conductistas que siguen siendo pedagógicamente válidos y necesarios en ciertos contextos? Fundamenta tu postura con referencia al contenido estudiado y a tu experiencia como estudiante.</strong>
+        </div>
+        <div class="foro-input">
+          <label>Espacio de práctica — elabora tu borrador antes de publicar en Classroom</label>
+          <textarea id="f1" placeholder="Desarrolla tu postura aquí. Toma partido claramente: ¿los sistemas conductistas producen aprendizaje genuino? ¿Hay principios conductistas que salvarías? Fundamenta con autores y conecta con experiencias universitarias propias y específicas. Esta reflexión requiere tu perspectiva personal — no puede ser generada de manera externa."></textarea>
+          <br>
+          <button class="btn slate" onclick="guardarForo()">Guardar borrador</button>
+          <button class="btn out" style="margin-left:8px" onclick="toggleEj('ej1')">Ver ejemplo orientativo</button>
+          <div class="ej" id="ej1">
+            <strong>Ejemplo orientativo (no reproducir — construye tu propio argumento):</strong><br><br>
+            En mi experiencia universitaria, el sistema de control de asistencia con puntos de calificación es claramente conductista: produce la conducta deseada (asistir) mediante reforzamiento positivo (puntos). Pero el aprendizaje que genera es superficial: asisto, pero no necesariamente aprendo. Skinner llamaría a esto un caso de reforzamiento efectivo; Ausubel lo diagnosticaría como aprendizaje memorístico sin significado.<br><br>
+            Creo que no podemos rechazar el conductismo en su totalidad. Existen contextos donde el condicionamiento operante es pedagógicamente legítimo: en el desarrollo de habilidades procedimentales básicas (como el uso de software, protocolos de laboratorio o técnicas quirúrgicas) la práctica repetida con retroalimentación inmediata — que es conductismo aplicado — produce resultados reales. El problema surge cuando se aplica a objetivos cognitivos de orden superior, donde la comprensión, el análisis crítico y la transferencia son las metas. Allí, el modelo E→R es claramente insuficiente.<br><br>
+            Mi postura es que el conductismo tiene un nicho pedagógico legítimo pero acotado. El error histórico fue absolutizarlo como modelo único del aprendizaje humano.
+          </div>
+        </div>
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Postura fundamentada</div><div class="cp">30 <span>pts</span></div><p>Postura clara respaldada con referencia a autores o conceptos conductistas del contenido.</p></div>
+        <div class="crit"><div class="cn">Conexión experiencial</div><div class="cp">25 <span>pts</span></div><p>Argumento anclado en experiencias universitarias concretas y verificables del estudiante.</p></div>
+        <div class="crit"><div class="cn">Calidad de comentarios</div><div class="cp">25 <span>pts</span></div><p>Comentarios a pares que amplían el debate con nuevos elementos fundamentados; no solo acuerdo.</p></div>
+        <div class="crit"><div class="cn">Redacción académica</div><div class="cp">20 <span>pts</span></div><p>Escritura clara, vocabulario psicológico-pedagógico apropiado, extensión mínima cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 2 ══ -->
+  <div class="card" id="act2">
+    <div class="card-head teal">
+      <div class="ch-ico">A2</div>
+      <div class="ch-txt">
+        <h2>Actividad 2 · Auditoría Conductista del Syllabus</h2>
+        <div class="sub">Aprendizaje significativo · Análisis aplicado · Producción académica original</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:var(--teal)">Entregable en Google Classroom · Documento de análisis</div>
+
+      <h4>Propósito</h4>
+      <p>Esta actividad genera un aprendizaje significativo al llevar el conductismo del plano teórico al plano aplicado inmediato: analizarás el programa o plan de estudios (syllabus) de una de tus materias actuales para identificar los supuestos conductistas que operan en su diseño, frecuentemente de manera implícita y no declarada.</p>
+
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos teal">
+        <li><p><strong>Selecciona un syllabus.</strong> Elige el programa de cualquier materia que estés cursando actualmente. Necesitarás tener acceso a su descripción de criterios de evaluación, sistema de calificación, reglas de entrega y descripción de actividades.</p></li>
+        <li><p><strong>Sección A — Inventario conductista.</strong> Identifica y lista todos los elementos del syllabus que reflejan principios conductistas: sistemas de puntos, porcentajes por asistencia, penalizaciones por tardanza, exámenes de opción múltiple, rúbricas con criterios binarios (cumple/no cumple), premiaciones por participación, etc. Para cada elemento: cita el texto exacto del syllabus y señala qué principio conductista refleja (reforzamiento positivo/negativo, castigo, extinción, ley del efecto).</p></li>
+        <li><p><strong>Sección B — Análisis crítico.</strong> Reflexiona: ¿qué tipo de conductas produce ese diseño en los estudiantes? ¿Promueve aprendizaje genuino o solo cumplimiento de conductas requeridas? ¿Qué consecuencias tiene sobre la motivación intrínseca, la autonomía y el pensamiento crítico?</p></li>
+        <li><p><strong>Sección C — Propuesta de rediseño selectivo.</strong> Propone al menos dos modificaciones al syllabus que, sin eliminar la estructura evaluativa, incorporen principios de aprendizaje significativo o constructivista. Explica para cada propuesta: qué principio conductista sustituye o complementa y por qué ese cambio produciría aprendizaje de mayor calidad.</p></li>
+        <li><p><strong>Entrega.</strong> Redacta tu análisis en 700–1,000 palabras, con las tres secciones claramente delimitadas. Entrega en Classroom en formato PDF o Word.</p></li>
+      </ol>
+
+      <div class="caja teal">
+        <div class="caja-tit">Ejemplo de análisis en la Sección A</div>
+        <p style="font-size:.88rem;margin:0">
+          <strong>Elemento encontrado:</strong> "La inasistencia a más del 20% de las sesiones implica la pérdida automática del derecho a calificación final." (Programa de Estadística Aplicada, semestre en curso).<br><br>
+          <strong>Principio conductista:</strong> Castigo positivo — la presentación de una consecuencia aversiva (pérdida del derecho a examen) tras una conducta no deseada (inasistencia) busca disminuir la probabilidad de esa conducta.<br><br>
+          <strong>Reflexión:</strong> La política controla la conducta de asistencia, pero no garantiza que quien asiste esté aprendiendo. Un estudiante puede cumplir perfectamente el umbral de asistencia sin construir aprendizaje significativo alguno.
+        </p>
+      </div>
+
+      <div class="caja warn">
+        <strong>Sobre el pensamiento crítico genuino:</strong> Esta actividad requiere que cites textualmente elementos del syllabus real de una materia que estés cursando. La especificidad de esas citas hace que el análisis sea irrepetible y propio; no puede ser sustituido por generalidades abstractas sobre "los cursos universitarios en general".
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Inventario fundamentado</div><div class="cp">30 <span>pts</span></div><p>Al menos tres elementos del syllabus identificados con cita textual y principio conductista correcto.</p></div>
+        <div class="crit"><div class="cn">Profundidad del análisis</div><div class="cp">30 <span>pts</span></div><p>El análisis va más allá de la descripción e identifica consecuencias sobre la motivación y el aprendizaje.</p></div>
+        <div class="crit"><div class="cn">Propuestas de rediseño</div><div class="cp">25 <span>pts</span></div><p>Dos propuestas concretas y realizables con fundamento psicológico explícito.</p></div>
+        <div class="crit"><div class="cn">Redacción y estructura</div><div class="cp">15 <span>pts</span></div><p>Secciones delimitadas, escritura académica, extensión cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 3: CASO ══ -->
+  <div class="card" id="act3">
+    <div class="card-head amber">
+      <div class="ch-ico">A3</div>
+      <div class="ch-txt">
+        <h2>Actividad 3 · Caso Práctico: "El Laboratorio del Profesor Torres"</h2>
+        <div class="sub">Aprendizaje Basado en Problemas · Análisis crítico · Propuesta pedagógica</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:var(--amber)">Entregable en Google Classroom · Análisis integrado</div>
+
+      <h4>Presentación del caso</h4>
+      <p>Lee con atención el siguiente caso. Está basado en situaciones documentadas en contextos universitarios reales. Tu tarea es analizarlo desde los principios del conductismo y proponer intervenciones pedagógicas fundamentadas.</p>
+
+      <div class="caso-texto">
+        <p>El <em>profesor Torres</em> imparte Química Orgánica en el tercer semestre de una carrera de ingeniería. Tiene fama de ser un docente "exigente pero justo": su grupo presenta los índices de reprobación más bajos de la facultad. Su metodología es la siguiente:</p>
+        <p>Al inicio del semestre distribuye un reglamento de 12 puntos. Los estudiantes que llegan tarde pierden 0.5 puntos de calificación por cada 10 minutos de retraso. Quienes participan espontáneamente con respuestas correctas reciben "puntos de participación" que se suman al parcial. Los ejercicios de laboratorio se califican de manera inmediata: si el procedimiento es correcto, el estudiante recibe retroalimentación positiva en el momento; si hay error, se le indica de inmediato y puede corregir.</p>
+        <p>En las evaluaciones, el profesor utiliza exámenes de opción múltiple donde cada respuesta correcta suma y cada incorrecta no penaliza. Los resultados se devuelven en la siguiente sesión, con la respuesta correcta señalada pero sin explicación del razonamiento.</p>
+        <p><em>Mariana</em>, estudiante del grupo, aprueba todos los parciales con calificaciones de 8 a 9. Sin embargo, cuando en su práctica de verano le piden diseñar un procedimiento de síntesis diferente a los practicados en clase, no sabe por dónde empezar. Cuando su supervisor le pregunta "¿por qué este reactivo y no este otro?", Mariana responde: "porque así lo vimos en clase". No puede justificar el razonamiento subyacente.</p>
+      </div>
+
+      <h4>Preguntas de análisis</h4>
+      <div class="caso-qs">
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">1</span>Identifica y clasifica al menos cuatro elementos de la metodología del profesor Torres según los principios del condicionamiento operante (reforzamiento positivo, negativo, castigo, extinción). Cita el texto del caso para cada uno.</div>
+          <div class="cq-body"><textarea placeholder="Análisis conductista detallado con citas del caso..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">2</span>El sistema del profesor Torres produce calificaciones altas y asistencia regular. Sin embargo, Mariana no puede transferir su aprendizaje a situaciones nuevas. ¿Cómo explican este resultado Ausubel (aprendizaje significativo) y la distinción conductismo/cognitivismo?</div>
+          <div class="cq-body"><textarea placeholder="Articulación de conductismo con teorías del conocimiento estudiadas en la Unidad I y 1.2..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">3</span>¿Cuál es la limitación fundamental del sistema de retroalimentación del profesor Torres? Según Skinner, ¿qué requisitos debe cumplir el reforzamiento para que sea efectivo? ¿El sistema descrito los cumple? ¿Por qué la retroalimentación de los exámenes es insuficiente para generar comprensión profunda?</div>
+          <div class="cq-body"><textarea placeholder="Análisis desde la propia lógica conductista y sus limitaciones internas..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">4</span>Como pedagogo asesor del profesor Torres, propone tres modificaciones concretas a su metodología. Para cada una: (a) describe la acción específica, (b) señala qué principio conductista mantiene o qué principio cognitivo/constructivista incorpora, y (c) explica por qué mejoraría la capacidad de Mariana de transferir el conocimiento a situaciones nuevas.</div>
+          <div class="cq-body"><textarea placeholder="Propuesta pedagógica fundamentada en los principios del conductismo, cognitivismo y aprendizaje significativo..."></textarea></div>
+        </div>
+      </div>
+
+      <div class="caja amber" style="margin-top:14px">
+        <div class="caja-tit">Instrucción de entrega</div>
+        <p style="margin:0;font-size:.91rem">Redacta tu análisis como un texto integrado de 550–800 palabras que responda coherentemente las cuatro preguntas. No es un cuestionario separado, sino un dictamen pedagógico articulado. Entrega en Classroom en formato PDF o Word.</p>
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Diagnóstico conductista</div><div class="cp">25 <span>pts</span></div><p>Cuatro elementos identificados y clasificados correctamente con cita textual.</p></div>
+        <div class="crit"><div class="cn">Articulación teórica</div><div class="cp">25 <span>pts</span></div><p>Explica el problema de transferencia articulando conductismo con aprendizaje significativo.</p></div>
+        <div class="crit"><div class="cn">Análisis del reforzamiento</div><div class="cp">25 <span>pts</span></div><p>Identifica las limitaciones del sistema desde la propia lógica conductista y la explica correctamente.</p></div>
+        <div class="crit"><div class="cn">Propuesta pedagógica</div><div class="cp">25 <span>pts</span></div><p>Tres propuestas específicas, realizables y con fundamento psicológico explícito.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 4: QUIZ ══ -->
+  <div class="card" id="act4">
+    <div class="card-head mid">
+      <div class="ch-ico">A4</div>
+      <div class="ch-txt">
+        <h2>Actividad 4 · Quiz de Comprensión</h2>
+        <div class="sub">5 preguntas · Retroalimentación inmediata · Puntaje final visible</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:#3a2060">Entregable en Google Classroom · Captura de pantalla del resultado</div>
+
+      <p>Responde las cinco preguntas. Recibirás retroalimentación inmediata. Al finalizar, toma captura de pantalla del resultado y súbela a Classroom. Puedes reiniciar para practicar antes de tu captura definitiva.</p>
+
+      <div id="quiz-wrap">
+        <div class="quiz-bar-wrap">
+          <span class="qbl" id="qlbl">Pregunta 1 de 5</span>
+          <div class="qbt"><div class="qbf" id="qbar" style="width:20%"></div></div>
+          <span class="qbl" id="qscore">0 correctas</span>
+        </div>
+
+        <!-- Q1 -->
+        <div class="qcard on" id="q1">
+          <div class="qn">Pregunta 1 de 5</div>
+          <div class="qt">Ivan Pavlov descubrió el condicionamiento clásico al observar que los perros salivaban ante una campana que había sido repetidamente asociada con la comida. En términos del modelo E→R, la campana (después del condicionamiento) se denomina:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">A</span>Estímulo Incondicionado, porque produce la respuesta de salivación de manera natural.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">B</span>Estímulo Neutro, porque por sí solo no produce ninguna respuesta en el organismo.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',true)"><span class="qletra">C</span>Estímulo Condicionado, porque produce la respuesta de salivación tras haber sido asociado repetidamente con la comida.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">D</span>Reforzador positivo, porque aumenta la probabilidad de repetición de la respuesta de salivación.</div>
+          </div>
+          <div class="qfb" id="fb1"></div>
+          <div class="qnav"><button class="btn mid" id="n1" style="display:none" onclick="nxt(2)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qcard" id="q2">
+          <div class="qn">Pregunta 2 de 5</div>
+          <div class="qt">Un docente exime a los estudiantes de presentar el examen final si obtienen promedio de 9 o más en los parciales. Esta práctica corresponde al principio de:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">A</span>Reforzamiento positivo: se presenta un estímulo agradable para aumentar la probabilidad de una conducta.</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',true)"><span class="qletra">B</span>Reforzamiento negativo: se retira un estímulo aversivo (el examen final) para aumentar la probabilidad de la conducta deseada (obtener altas calificaciones).</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">C</span>Castigo negativo: se retira un estímulo agradable para disminuir una conducta no deseada.</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">D</span>Extinción: se elimina el reforzamiento previo para disminuir gradualmente una conducta.</div>
+          </div>
+          <div class="qfb" id="fb2"></div>
+          <div class="qnav"><button class="btn mid" id="n2" style="display:none" onclick="nxt(3)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qcard" id="q3">
+          <div class="qn">Pregunta 3 de 5</div>
+          <div class="qt">¿Cuál es la diferencia fundamental entre el condicionamiento clásico de Pavlov y el condicionamiento operante de Skinner?</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">A</span>El condicionamiento clásico se aplica a animales y el operante exclusivamente a seres humanos.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">B</span>El condicionamiento clásico usa reforzadores positivos y el operante usa castigos.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',true)"><span class="qletra">C</span>El condicionamiento clásico asocia estímulos para producir respuestas reflejas o emocionales; el operante modifica conductas voluntarias mediante las consecuencias que siguen a esas conductas.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">D</span>El condicionamiento clásico es más efectivo que el operante para producir aprendizajes complejos y de larga duración.</div>
+          </div>
+          <div class="qfb" id="fb3"></div>
+          <div class="qnav"><button class="btn mid" id="n3" style="display:none" onclick="nxt(4)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="qcard" id="q4">
+          <div class="qn">Pregunta 4 de 5</div>
+          <div class="qt">La principal crítica pedagógica al conductismo como modelo educativo es que:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">A</span>No produce ningún tipo de cambio observable en la conducta de los estudiantes.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">B</span>Sus principios son demasiado complejos para aplicarlos en el diseño de clases universitarias reales.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',true)"><span class="qletra">C</span>Puede generar conductas de cumplimiento externo sin producir comprensión profunda, pensamiento crítico ni aprendizaje transferible a nuevos contextos.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">D</span>Requiere que los estudiantes posean conocimientos previos muy desarrollados para poder funcionar.</div>
+          </div>
+          <div class="qfb" id="fb4"></div>
+          <div class="qnav"><button class="btn mid" id="n4" style="display:none" onclick="nxt(5)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="qcard" id="q5">
+          <div class="qn">Pregunta 5 de 5</div>
+          <div class="qt">La instrucción programada de Skinner — materiales educativos estructurados en pequeños pasos con retroalimentación inmediata — se basa principalmente en el principio de:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">A</span>Desequilibrio cognitivo de Piaget: la instrucción genera conflictos cognitivos que el estudiante debe resolver.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">B</span>Zona de Desarrollo Próximo de Vygotsky: los materiales llevan al estudiante a operar en el límite de su capacidad.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">C</span>Aprendizaje significativo de Ausubel: cada paso conecta el nuevo contenido con los conocimientos previos del alumno.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',true)"><span class="qletra">D</span>Reforzamiento inmediato de Skinner: cada respuesta correcta es reforzada de inmediato, aumentando la probabilidad de que la conducta (respuesta correcta) se repita.</div>
+          </div>
+          <div class="qfb" id="fb5"></div>
+          <div class="qnav"><button class="btn mid" id="n5" style="display:none" onclick="mostrarRes()">Ver resultado &rarr;</button></div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="qres" id="qres">
+          <div class="rpct" id="rpct"></div>
+          <div class="rlbl" id="rlbl"></div>
+          <div class="rmsg" id="rmsg"></div>
+          <div class="rstats">
+            <div class="rstat"><div class="n v" id="rcorr"></div><div class="l">Correctas</div></div>
+            <div class="rstat"><div class="n r" id="rincorr"></div><div class="l">Incorrectas</div></div>
+            <div class="rstat"><div class="n" style="color:var(--slate-m)">5</div><div class="l">Total</div></div>
+          </div>
+          <div class="caja warn" style="text-align:left;max-width:460px;margin:0 auto 18px">
+            <strong>Para Classroom:</strong> Toma captura de pantalla de esta pantalla con la fecha visible en tu dispositivo y súbela como evidencia en la tarea correspondiente.
+          </div>
+          <button class="btn mid" onclick="reiniciar()">Reiniciar quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REFLEXIÓN FINAL ══ -->
+  <div class="card" id="reflexion">
+    <div class="card-head rust">
+      <div class="ch-ico">R</div>
+      <div class="ch-txt">
+        <h2>Reflexión Final y Plan de Aplicación</h2>
+        <div class="sub">Metacognición · Transferencia · Compromiso pedagógico</div>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <h3>El valor de la reflexión crítica sobre el conductismo</h3>
+      <p>Haber estudiado el conductismo desde una perspectiva crítica y constructivista no significa haberlo rechazado por completo, sino haber desarrollado una comprensión más matizada que te permita usarlo donde tiene sentido y cuestionarlo donde no lo tiene. Esta capacidad de análisis es exactamente lo que distingue a un pedagogo reflexivo de un docente rutinario.</p>
+
+      <div class="cita">
+        "El educador que conoce profundamente las teorías del aprendizaje — incluyendo aquellas que critica — tiene más herramientas para tomar decisiones pedagógicas informadas que el que solo conoce la que practica."
+        <cite>— Paráfrasis de Donald Schön, El profesional reflexivo (1983)</cite>
+      </div>
+
+      <h4>Completa tu plan de aplicación</h4>
+      <p>Responde cada campo con honestidad y precisión. Este plan puede integrarse a tu portafolio de formación docente.</p>
+
+      <div class="ref-grid">
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>1. Antes de esta guía, ¿aplicabas inconscientemente algún principio conductista en tu vida académica? ¿Cuál y en qué situación? ¿Cómo lo describes ahora con los conceptos aprendidos?</label>
+          <textarea placeholder="Describe la situación con precisión, nómbrala con el concepto correcto (reforzamiento, condicionamiento, etc.) y reflexiona sobre qué cambió en tu comprensión..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>2. ¿En qué contextos educativos concretos consideras que los principios conductistas siguen siendo pedagógicamente válidos? ¿Por qué?</label>
+          <textarea placeholder="Sé específico: tipos de habilidades, niveles educativos, objetivos de aprendizaje donde el E→R tiene sentido real..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>3. ¿En qué contextos el conductismo es claramente insuficiente? ¿Qué enfoque alternativo sería más adecuado y por qué?</label>
+          <textarea placeholder="Conecta con los enfoques cognitivos y constructivistas estudiados en la Unidad I..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>4. Como futuro docente, ¿qué principio conductista usarías de manera deliberada y consciente? ¿Cómo lo implementarías y qué limitaciones le pondrías?</label>
+          <textarea placeholder="Describe una estrategia pedagógica concreta con fundamento conductista y sus límites explícitos..."></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>5. ¿Cómo articulas el conductismo (tema 2.1) con los aspectos filosóficos (1.1) y psicológicos generales (1.2) estudiados anteriormente? ¿Cuál es tu comprensión integrada del problema del conocimiento hasta este punto?</label>
+          <textarea placeholder="Construye tu síntesis propia: ¿cómo se relacionan el empirismo filosófico, el conductismo psicológico y las limitaciones que ambos comparten?"></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>6. Plan de acción: ¿qué harás en los próximos 30 días para profundizar en este tema? (lectura, observación, conversación, experimento pedagógico)</label>
+          <textarea placeholder="Sé específico: nombre del texto, fecha aproximada, qué observarás o con quién hablarás..."></textarea>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:8px">
+        <button class="btn amber" onclick="guardarRef()">Guardar reflexión (esta sesión)</button>
+      </div>
+      <div id="rok" style="display:none;text-align:center;margin-top:10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)">Reflexión guardada correctamente</div>
+
+      <div style="height:16px"></div>
+      <div class="caja slate">
+        <div class="caja-tit">Lecturas de cierre recomendadas</div>
+        <ul style="margin:8px 0 0;padding-left:16px;font-size:.88rem;color:var(--texto-2)">
+          <li style="margin-bottom:5px">Skinner, B. F. (1970). <em>Tecnología de la enseñanza</em>. Labor. — Capítulos 1 y 2.</li>
+          <li style="margin-bottom:5px">Woolfolk, A. (2014). <em>Psicología educativa</em> (12.ª ed.). Pearson. — Capítulos 6 y 7.</li>
+          <li style="margin-bottom:5px">Chomsky, N. (1959). <em>Reseña de "Verbal Behavior" de B. F. Skinner</em>. Language, 35(1), 26–58. (Crítica clásica al conductismo radical).</li>
+          <li>Ausubel, D. P. (2002). <em>Adquisición y retención del conocimiento</em>. Paidós. — Capítulo 1: Diferencias entre aprendizaje por recepción y aprendizaje significativo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Licenciatura en Pedagogía · Teorías del Aprendizaje<br>
+  Guía de Aprendizaje Activo — Tema 2: Enfoques Psicológicos · 2.1 Estímulo – Respuesta<br>
+  Metodología: Constructivismo · Pedagogía Activa · Aprendizaje Basado en Problemas
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* ── PREVIOS ── */
+function guardarPrevios(){
+  const cc=document.querySelectorAll('#previos textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor responde todas las preguntas antes de guardar.');return}
+  document.getElementById('pok').style.display='block';
+}
+
+/* ── FORO ── */
+function guardarForo(){
+  const t=document.getElementById('f1').value.trim();
+  if(!t){alert('Escribe tu borrador antes de guardar.');return}
+  const b=event.target;b.textContent='Borrador guardado';
+  b.style.background='var(--teal)';b.disabled=true;
+}
+function toggleEj(id){
+  const el=document.getElementById(id);el.classList.toggle('vis');
+  event.target.textContent=el.classList.contains('vis')?'Ocultar ejemplo':'Ver ejemplo orientativo';
+}
+
+/* ── QUIZ ── */
+let sc=0;
+const FBS={
+  fb1:{
+    ok:'Correcto. Después del condicionamiento, la campana se convierte en Estímulo Condicionado (EC): por sí sola produce la respuesta de salivación (Respuesta Condicionada) gracias a su asociación repetida con la comida (Estímulo Incondicionado). Este es el mecanismo central del condicionamiento clásico de Pavlov.',
+    err:'Incorrecto. Después del condicionamiento, la campana es el Estímulo Condicionado (EC): produce la salivación gracias a haber sido asociada repetidamente con la comida. No es incondicionado (ese sería la comida), ni neutro (ya no lo es), ni es un reforzador en el sentido de Skinner.'
+  },
+  fb2:{
+    ok:'Correcto. El reforzamiento negativo implica retirar un estímulo aversivo (el examen final, que los estudiantes quieren evitar) cuando se presenta la conducta deseada (calificaciones altas). Esto aumenta la probabilidad de que los estudiantes mantengan esas calificaciones. No confundir con castigo: el reforzamiento negativo siempre aumenta la conducta.',
+    err:'Incorrecto. Esta práctica es reforzamiento negativo: se retira el examen final (estímulo aversivo) cuando se obtienen buenas calificaciones. El reforzamiento negativo siempre aumenta la conducta. No es reforzamiento positivo (que añadiría algo agradable) ni castigo (que disminuiría la conducta).'
+  },
+  fb3:{
+    ok:'Correcto. La distinción fundamental: el condicionamiento clásico (Pavlov) asocia estímulos para producir respuestas que el organismo ya tiene de forma refleja (salivación, miedo, respuestas emocionales). El condicionamiento operante (Skinner) trabaja con conductas voluntarias emitidas por el organismo, modificando su frecuencia mediante las consecuencias (reforzamiento o castigo).',
+    err:'Incorrecto. La diferencia clave no es animal/humano ni positivo/negativo. El condicionamiento clásico asocia estímulos para producir respuestas reflejas o emocionales; el operante modifica conductas voluntarias mediante las consecuencias. Ambos funcionan en animales y humanos.'
+  },
+  fb4:{
+    ok:'Correcto. La crítica pedagógica central al conductismo es que puede producir cumplimiento externo de conductas (asistir, aprobar exámenes, entregar tareas) sin generar comprensión profunda, pensamiento crítico ni capacidad de transferir el conocimiento a situaciones nuevas o complejas.',
+    err:'Incorrecto. El conductismo sí produce cambios conductuales observables (esa es precisamente su fortaleza). La crítica es que puede generar cumplimiento externo sin comprensión profunda ni aprendizaje transferible. No requiere conocimientos previos complejos — esa sería más bien una condición del aprendizaje significativo de Ausubel.'
+  },
+  fb5:{
+    ok:'Correcto. La instrucción programada de Skinner aplica directamente el principio del reforzamiento inmediato: cada paso correcto es reforzado de manera inmediata, lo que — según Skinner — aumenta la probabilidad de que el estudiante repita esa conducta. Los pequeños pasos minimizan el error y maximizan el reforzamiento positivo.',
+    err:'Incorrecto. La instrucción programada se basa en el reforzamiento inmediato de Skinner: cada respuesta correcta es reforzada de manera inmediata. Piaget, Vygotsky y Ausubel son constructivistas; su lógica es opuesta al diseño instruccional conductista de Skinner.'
+  }
+};
+
+function resp(el,qid,fbid,corr){
+  document.getElementById(qid).querySelectorAll('.qopt').forEach(o=>{o.classList.add('lock');o.onclick=null});
+  const fb=document.getElementById(fbid);fb.classList.add('vis');
+  if(corr){el.classList.add('ok');fb.classList.add('ok');fb.innerHTML='<strong>Correcto.</strong> '+FBS[fbid].ok;sc++}
+  else{el.classList.add('err');fb.classList.add('err');fb.innerHTML='<strong>Incorrecto.</strong> '+FBS[fbid].err}
+  const n=parseInt(qid.replace('q',''));
+  document.getElementById('n'+n).style.display='inline-block';
+  document.getElementById('qscore').textContent=sc+' correcta'+(sc!==1?'s':'');
+}
+function nxt(n){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q'+n).classList.add('on');
+  document.getElementById('qbar').style.width=(n*20)+'%';
+  document.getElementById('qlbl').textContent='Pregunta '+n+' de 5';
+}
+function mostrarRes(){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  const r=document.getElementById('qres');r.classList.add('vis');
+  const pct=Math.round(sc/5*100);
+  const rp=document.getElementById('rpct');rp.textContent=pct+'%';
+  document.getElementById('rcorr').textContent=sc;
+  document.getElementById('rincorr').textContent=5-sc;
+  let cls,lbl,msg;
+  if(sc===5){cls='ex';lbl='Desempeño sobresaliente';msg='Dominas los conceptos del condicionamiento clásico, operante y sus implicaciones pedagógicas. Estás preparado para analizar críticamente las prácticas conductistas en cualquier contexto educativo.'}
+  else if(sc>=4){cls='bn';lbl='Buen desempeño';msg='Comprensión sólida del contenido. Revisa las preguntas donde tuviste dificultad antes de subir tu evidencia a Classroom.'}
+  else if(sc>=3){cls='rg';lbl='Desempeño suficiente';msg='Comprensión parcial. Se recomienda releer las secciones 2 y 3 del contenido temático y consultar los materiales de referencia.'}
+  else{cls='bj';lbl='Requiere reforzamiento';msg='Necesitas revisar el contenido con mayor detenimiento. Regresa al tema, consulta las fuentes bibliográficas y reinicia el quiz.'}
+  rp.className='rpct '+cls;
+  document.getElementById('rlbl').textContent=lbl;
+  document.getElementById('rmsg').textContent=msg;
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qlbl').textContent='Quiz completado';
+}
+function reiniciar(){
+  sc=0;
+  document.getElementById('qres').classList.remove('vis');
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qlbl').textContent='Pregunta 1 de 5';
+  document.getElementById('qscore').textContent='0 correctas';
+  for(let i=1;i<=5;i++){
+    const q=document.getElementById('q'+i);
+    q.querySelectorAll('.qopt').forEach(o=>o.classList.remove('ok','err','lock'));
+    const fb=document.getElementById('fb'+i);fb.classList.remove('vis','ok','err');fb.innerHTML='';
+    const n=document.getElementById('n'+i);if(n)n.style.display='none';
+  }
+  reattach();
+}
+function reattach(){
+  const d=[
+    {id:'q1',fb:'fb1',a:[false,false,true,false]},
+    {id:'q2',fb:'fb2',a:[false,true,false,false]},
+    {id:'q3',fb:'fb3',a:[false,false,true,false]},
+    {id:'q4',fb:'fb4',a:[false,false,true,false]},
+    {id:'q5',fb:'fb5',a:[false,false,false,true]}
+  ];
+  d.forEach(x=>{
+    document.getElementById(x.id).querySelectorAll('.qopt').forEach((o,i)=>{
+      const c=x.a[i];const q=x.id;const f=x.fb;
+      o.onclick=function(){resp(this,c,q,f)};
+    });
+  });
+}
+
+/* ── REFLEXIÓN ── */
+function guardarRef(){
+  const cc=document.querySelectorAll('#reflexion textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor completa todos los campos antes de guardar.');return}
+  const b=event.target;b.textContent='Reflexión guardada';
+  b.style.background='var(--teal)';b.style.color='var(--blanco)';b.disabled=true;
+  document.getElementById('rok').style.display='block';
+}
+</script>
+</body>
+</html>

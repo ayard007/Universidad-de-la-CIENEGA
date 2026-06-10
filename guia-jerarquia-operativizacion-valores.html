@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Jerarquia de Valores y Operativizacion | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde-b:#0d3d2e;
+  --verde-m:#1a6647;
+  --verde-ac:#2d9e6b;
+  --verde-s:#e8f5ee;
+  --esmeralda:#e0f4eb;
+  --arena:#f8f7f2;
+  --dorado:#c4962a;
+  --dorado-s:#fdf8ee;
+  --purpura:#4a2d6e;
+  --purpura-s:#f2eef9;
+  --coral:#b8402a;
+  --coral-s:#fdf0ed;
+  --gris:#5a5a5a;
+  --gc:#f4f5f0;
+  --borde:#d8dfd4;
+  --blanco:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Source Sans 3",sans-serif;background:var(--arena);color:#1a2010;font-size:15.5px;line-height:1.78}
+
+/* HEADER */
+header{background:var(--verde-b);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent,transparent 60px,rgba(255,255,255,0.012) 60px,rgba(255,255,255,0.012) 61px)}
+header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--verde-ac),var(--dorado),var(--verde-ac))}
+.hi{max-width:1000px;margin:0 auto;padding:38px 34px 50px;position:relative;z-index:1}
+.htop{display:flex;align-items:center;gap:22px;padding-bottom:28px;margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.logo-b{background:var(--blanco);border-radius:12px;padding:10px;width:88px;height:88px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 24px rgba(0,0,0,0.35)}
+.logo-b img{width:100%;height:100%;object-fit:contain;display:block}
+.hbrand .uni{font-family:"Playfair Display",serif;font-size:1.22rem;color:rgba(255,255,255,0.94);font-weight:700}
+.hbrand .dep{font-size:0.74rem;color:rgba(255,255,255,0.42);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.htags{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.htag{padding:4px 13px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.htag.vd{background:rgba(45,158,107,0.25);border:1px solid rgba(45,158,107,0.5);color:#7ee8b0}
+.htag.do{background:rgba(196,150,42,0.22);border:1px solid rgba(196,150,42,0.48);color:#e8c96a}
+.hbody h1{font-family:"Playfair Display",serif;font-size:2.6rem;color:var(--blanco);font-weight:700;line-height:1.12;margin-bottom:14px}
+.hbody h1 em{color:#7ee8b0;font-style:italic}
+.hpills{display:flex;gap:9px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.62);padding:5px 14px;border-radius:14px;font-size:0.73rem;white-space:nowrap}
+
+/* NAV */
+nav.nav-s{background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(13,61,46,0.08)}
+.nav-w{max-width:1000px;margin:0 auto;padding:0 34px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-w::-webkit-scrollbar{display:none}
+.nav-w a{color:var(--gris);text-decoration:none;font-size:0.79rem;font-weight:600;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;letter-spacing:0.01em}
+.nav-w a:hover{color:var(--verde-m);border-bottom-color:var(--verde-ac)}
+
+/* MAIN */
+main{max-width:1000px;margin:0 auto;padding:44px 34px 80px}
+
+/* BLOQUES */
+.bloque{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:44px;margin-bottom:26px;position:relative;overflow:hidden;animation:up 0.4s ease both}
+.bloque::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;border-radius:14px 0 0 14px}
+.bloque.vd::before{background:linear-gradient(to bottom,var(--verde-m),var(--verde-ac))}
+.bloque.do::before{background:linear-gradient(to bottom,var(--dorado),#e8c96a)}
+.bloque.pu::before{background:linear-gradient(to bottom,var(--purpura),#7a5aaa)}
+.bloque.co::before{background:linear-gradient(to bottom,var(--coral),#e07060)}
+.bloque.gr::before{background:linear-gradient(to bottom,#888,#bbb)}
+.bh{display:flex;align-items:flex-start;gap:18px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--borde)}
+.bicon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:700;flex-shrink:0}
+.bicon.vd{background:var(--verde-s);color:var(--verde-m)}
+.bicon.do{background:var(--dorado-s);color:#7a6010}
+.bicon.pu{background:var(--purpura-s);color:var(--purpura)}
+.bicon.co{background:var(--coral-s);color:var(--coral)}
+.bicon.gr{background:var(--gc);color:var(--gris)}
+.btit .sup{font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gris);margin-bottom:4px}
+.btit h2{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--verde-b);line-height:1.2}
+
+/* TIPOGRAFIA */
+h3{font-family:"Playfair Display",serif;font-size:1.14rem;font-weight:700;color:var(--verde-b);margin:26px 0 10px}
+h3:first-child{margin-top:0}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--verde-m);font-weight:700}
+em{color:var(--gris);font-style:italic}
+
+/* CAJAS */
+.caja{border-radius:8px;padding:17px 22px;margin:17px 0;border-left:4px solid}
+.caja.vd{background:var(--verde-s);border-color:var(--verde-ac)}
+.caja.do{background:var(--dorado-s);border-color:var(--dorado)}
+.caja.pu{background:var(--purpura-s);border-color:var(--purpura)}
+.caja.co{background:var(--coral-s);border-color:var(--coral)}
+.caja.gr{background:var(--gc);border-color:#aaa}
+.caja-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px}
+.caja.vd .caja-tag{color:var(--verde-m)}
+.caja.do .caja-tag{color:#7a6010}
+.caja.pu .caja-tag{color:var(--purpura)}
+.caja.co .caja-tag{color:var(--coral)}
+.caja.gr .caja-tag{color:#777}
+
+/* TABLA */
+table.t{width:100%;border-collapse:collapse;font-size:0.87rem;margin:16px 0}
+table.t th{background:var(--verde-b);color:var(--blanco);padding:11px 14px;text-align:left;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--borde);vertical-align:top;line-height:1.55}
+table.t tr:nth-child(even) td{background:#f8faf8}
+
+/* LISTAS */
+ul.l,ol.l{list-style:none;padding:0}
+ul.l li{padding:9px 0 9px 28px;position:relative;border-bottom:1px solid var(--gc);font-size:0.93rem}
+ul.l li:last-child{border-bottom:none}
+ul.l li::before{content:"";position:absolute;left:8px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--verde-ac)}
+ol.l{counter-reset:cnt}
+ol.l li{padding:10px 0 10px 42px;position:relative;border-bottom:1px solid var(--gc);counter-increment:cnt;font-size:0.93rem}
+ol.l li:last-child{border-bottom:none}
+ol.l li::before{content:counter(cnt);position:absolute;left:0;top:10px;background:var(--verde-m);color:var(--blanco);width:26px;height:26px;border-radius:6px;font-size:0.76rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* JERARQUIA VISUAL */
+.jerarquia{display:flex;flex-direction:column;gap:10px;margin:22px 0}
+.jer-nivel{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:10px;border:1px solid var(--borde);transition:transform 0.2s,box-shadow 0.2s;cursor:default}
+.jer-nivel:hover{transform:translateX(6px);box-shadow:0 4px 18px rgba(13,61,46,0.1)}
+.jer-num{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;min-width:48px;text-align:center;line-height:1}
+.jer-info{flex:1}
+.jer-tit{font-weight:700;font-size:0.98rem;margin-bottom:3px}
+.jer-desc{font-size:0.82rem;color:var(--gris);line-height:1.5}
+.jer-ej{font-size:0.78rem;font-style:italic;margin-top:4px}
+.n1{background:#fdf8ee;border-left:4px solid var(--dorado)}
+.n1 .jer-num{color:var(--dorado)}
+.n2{background:#f2eef9;border-left:4px solid var(--purpura)}
+.n2 .jer-num{color:var(--purpura)}
+.n3{background:var(--verde-s);border-left:4px solid var(--verde-m)}
+.n3 .jer-num{color:var(--verde-m)}
+.n4{background:var(--coral-s);border-left:4px solid var(--coral)}
+.n4 .jer-num{color:var(--coral)}
+.n5{background:var(--gc);border-left:4px solid #888}
+.n5 .jer-num{color:#888}
+
+/* FLECHA JERARQUIA */
+.jer-flecha{text-align:center;color:var(--borde);font-size:1.4rem;margin:-4px 0;line-height:1}
+
+/* CADENA VAC */
+.vac-grid{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;gap:0;margin:22px 0;align-items:center}
+.vac-card{background:var(--gc);border:1px solid var(--borde);border-radius:10px;padding:22px 18px;text-align:center;border-top:4px solid var(--verde-ac)}
+.vac-card:nth-child(3){border-top-color:var(--dorado)}
+.vac-card:nth-child(5){border-top-color:var(--coral)}
+.vac-tit{font-family:"Playfair Display",serif;font-size:1.05rem;font-weight:700;color:var(--verde-b);margin-bottom:8px}
+.vac-desc{font-size:0.8rem;color:var(--gris);line-height:1.5}
+.vac-arrow{text-align:center;font-size:1.6rem;color:var(--verde-ac);font-weight:700}
+
+/* CONOCIMIENTO PREVIO */
+.kprev{background:linear-gradient(135deg,var(--verde-b) 0%,var(--verde-m) 100%);border-radius:12px;padding:34px;position:relative;overflow:hidden}
+.kprev::after{content:"?";position:absolute;right:24px;bottom:-28px;font-family:"Playfair Display",serif;font-size:160px;color:rgba(255,255,255,0.04);line-height:1}
+.kprev h3{color:#7ee8b0;margin-bottom:12px}
+.kprev p{color:rgba(255,255,255,0.84);font-size:1.04rem;font-style:italic;margin-bottom:20px;position:relative;z-index:1}
+.kp-opts{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.kp-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.88);padding:12px 18px;border-radius:8px;cursor:pointer;font-family:"Source Sans 3",sans-serif;font-size:0.89rem;text-align:left;transition:all 0.2s}
+.kp-btn:hover:not(:disabled){background:rgba(255,255,255,0.15);border-color:#7ee8b0}
+.kp-btn.ok{background:rgba(45,158,107,0.4);border-color:#7ee8b0;color:#c8f0d8}
+.kp-btn.no{background:rgba(184,64,42,0.35);border-color:#e88a72;color:#f7c0b0}
+.kp-fb{display:none;margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.89rem;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18)}
+.kp-fb.show{display:block}
+
+/* RECURSOS */
+.rec-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde)}
+.rec-item:last-child{border-bottom:none}
+.rec-tipo{font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:12px;white-space:nowrap;margin-top:2px;flex-shrink:0;color:var(--blanco)}
+.rt-l{background:var(--verde-m)}
+.rt-a{background:var(--purpura)}
+.rt-w{background:var(--coral)}
+.rt-v{background:var(--dorado)}
+.rec-tit{font-weight:700;color:var(--verde-b);margin-bottom:2px;font-size:0.92rem}
+.rec-aut{font-size:0.8rem;color:var(--gris);line-height:1.5}
+
+/* ACTIVIDADES */
+.act-badge{display:inline-flex;align-items:center;padding:6px 16px;border-radius:20px;font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:22px;color:var(--blanco)}
+.ab-foro{background:var(--verde-m)}
+.ab-indiv{background:var(--purpura)}
+.ab-caso{background:var(--coral)}
+.ab-quiz{background:var(--dorado)}
+.cita{background:var(--verde-b);color:var(--blanco);border-radius:10px;padding:28px 32px;position:relative;margin:20px 0}
+.cita::before{content:"\201C";position:absolute;top:4px;left:18px;font-family:"Playfair Display",serif;font-size:5.5rem;color:rgba(255,255,255,0.07);line-height:1}
+.cita p{color:rgba(255,255,255,0.88);font-size:1.03rem;font-style:italic;position:relative;z-index:1;margin-bottom:0;line-height:1.7}
+.paso{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--gc);align-items:flex-start;font-size:0.93rem}
+.paso:last-child{border-bottom:none}
+.paso-n{background:var(--verde-s);border:1px solid var(--borde);color:var(--verde-m);font-weight:700;font-size:0.8rem;min-width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rubr{display:grid;grid-template-columns:1fr 76px;gap:10px;padding:11px 0;border-bottom:1px solid var(--gc);align-items:center;font-size:0.9rem}
+.rubr:last-child{border-bottom:none}
+.pts{background:var(--verde-b);color:var(--blanco);text-align:center;border-radius:6px;padding:6px 8px;font-weight:700;font-size:0.86rem}
+.escenario{background:var(--verde-s);border:1px solid #b8d4c4;border-radius:10px;padding:24px;margin:18px 0}
+.esc-tag{font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--verde-m);margin-bottom:10px}
+.cta{display:flex;align-items:center;gap:14px;background:#1a6647;color:var(--blanco);padding:15px 20px;border-radius:8px;margin-top:22px;font-size:0.89rem;font-weight:600}
+
+/* QUIZ */
+.quiz-wrap{background:var(--gc);border-radius:12px;padding:28px}
+.q-prog{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.q-bc{flex:1;height:4px;background:var(--borde);border-radius:3px;overflow:hidden}
+.q-bf{height:100%;background:var(--verde-ac);border-radius:3px;transition:width 0.4s}
+.qt{font-size:0.78rem;color:var(--gris);font-weight:600;white-space:nowrap}
+.qb{display:none}
+.qb.act{display:block}
+.qb h4{font-family:"Source Sans 3",sans-serif;font-size:0.96rem;font-weight:700;color:var(--verde-b);margin-bottom:18px;line-height:1.55}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.qo{display:flex;align-items:flex-start;gap:12px;padding:12px 15px;background:var(--blanco);border:2px solid var(--borde);border-radius:8px;cursor:pointer;transition:all 0.2s;text-align:left}
+.qo:hover{border-color:var(--verde-ac);background:var(--verde-s)}
+.qo.sel{border-color:var(--verde-m);background:var(--verde-s)}
+.qo.ok{border-color:var(--verde-m);background:var(--esmeralda);cursor:default}
+.qo.fail{border-color:var(--coral);background:var(--coral-s);cursor:default}
+.qo.show-ok{border-color:var(--verde-m);background:var(--esmeralda);cursor:default}
+.ql{width:26px;height:26px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.76rem;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.qo.sel .ql{background:var(--verde-m);color:var(--blanco)}
+.qo.ok .ql{background:var(--verde-m);color:var(--blanco)}
+.qo.fail .ql{background:var(--coral);color:var(--blanco)}
+.qo.show-ok .ql{background:var(--verde-m);color:var(--blanco)}
+.qot{font-size:0.9rem;line-height:1.5}
+.qr{display:none;padding:12px 16px;border-radius:8px;margin-bottom:14px;font-size:0.87rem;line-height:1.5}
+.qr.ok{background:var(--esmeralda);border:1px solid var(--verde-m);color:var(--verde-m)}
+.qr.fail{background:var(--coral-s);border:1px solid var(--coral);color:var(--coral)}
+.qr.show{display:block}
+.q-res{display:none;text-align:center;padding:36px 20px}
+.q-res.show{display:block}
+.q-sc{font-family:"Playfair Display",serif;font-size:5.5rem;color:var(--verde-b);line-height:1;margin-bottom:6px}
+.q-sc span{font-size:2.2rem;color:var(--gris)}
+.q-niv{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.q-msg{color:var(--gris);font-size:0.91rem;max-width:440px;margin:0 auto 24px}
+
+/* BOTONES */
+.btn{padding:11px 22px;border-radius:7px;font-family:"Source Sans 3",sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.btn-p{background:var(--verde-m);color:var(--blanco)}
+.btn-p:hover{background:var(--verde-b);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,61,46,0.25)}
+.btn-p:disabled{background:var(--borde);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:transparent;color:var(--verde-m);border:2px solid var(--verde-m)}
+.btn-s:hover{background:var(--verde-s)}
+
+/* REFLEXION */
+.refl{background:#fafbf8;border:1px solid var(--borde);border-radius:8px;padding:20px;margin-bottom:14px}
+.refl label{display:block;font-weight:700;font-size:0.87rem;color:var(--verde-b);margin-bottom:10px}
+.refl textarea{width:100%;min-height:80px;padding:11px;border:1.5px solid var(--borde);border-radius:6px;font-family:"Source Sans 3",sans-serif;font-size:0.89rem;line-height:1.6;resize:vertical;background:var(--blanco);color:#1a2010;transition:border-color 0.2s}
+.refl textarea:focus{outline:none;border-color:var(--verde-ac)}
+
+/* FOOTER */
+footer{background:var(--verde-b);color:rgba(255,255,255,0.44);text-align:center;padding:30px 34px;font-size:0.77rem;line-height:1.9}
+footer strong{color:rgba(255,255,255,0.82)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.bloque:nth-child(1){animation-delay:.04s}.bloque:nth-child(2){animation-delay:.08s}.bloque:nth-child(3){animation-delay:.12s}.bloque:nth-child(4){animation-delay:.16s}.bloque:nth-child(5){animation-delay:.2s}.bloque:nth-child(6){animation-delay:.24s}.bloque:nth-child(7){animation-delay:.28s}.bloque:nth-child(8){animation-delay:.32s}.bloque:nth-child(9){animation-delay:.36s}.bloque:nth-child(10){animation-delay:.4s}
+@media(max-width:680px){
+  .hi{padding:22px 16px 28px}
+  .hbody h1{font-size:1.85rem}
+  main{padding:24px 14px 56px}
+  .bloque{padding:22px 16px}
+  .nav-w{padding:0 14px}
+  .vac-grid{grid-template-columns:1fr;gap:10px}
+  .vac-arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="htop">
+      <div class="logo-b">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="hbrand">
+        <div class="uni">Universidad de la Cienega</div>
+        <div class="dep">Licenciatura en Pedagogia &middot; Ciencias de la Educacion</div>
+      </div>
+      <div class="htags">
+        <span class="htag vd">Valores y Educacion</span>
+        <span class="htag do">Temas 2.4 y 3.1</span>
+      </div>
+    </div>
+    <div class="hbody">
+      <h1><em>Jerarquia de Valores</em><br>y Operativizacion:<br>Valores, Actitud y Conducta</h1>
+      <div class="hpills">
+        <span class="hpill">Subtemas 2.4 y 3.1</span>
+        <span class="hpill">Constructivismo &middot; ABP</span>
+        <span class="hpill">4 Actividades interactivas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-s">
+  <div class="nav-w">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#jerarquia">Jerarquia</a>
+    <a href="#operativ">Operativizacion</a>
+    <a href="#cadena">Cadena V-A-C</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Act. 3 Caso</a>
+    <a href="#act4">Act. 4 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRO -->
+<section class="bloque vd" id="intro">
+  <div class="bh">
+    <div class="bicon vd">I</div>
+    <div class="btit">
+      <div class="sup">Punto de partida &middot; Temas 2.4 y 3.1</div>
+      <h2>Introduccion al Tema</h2>
+    </div>
+  </div>
+  <p>Las guias anteriores permitieron comprender <strong>que tipos de valores existen</strong> y en que dimensiones de la experiencia humana se realizan: en la persona (individuales), en la comunidad (sociales) y en la relacion con lo que trasciende lo inmediato (trascendentes). Esta guia da un paso adelante en dos direcciones complementarias.</p>
+  <p>La primera direction es <strong>axiologica</strong>: la pregunta por la <em>jerarquia</em> de los valores. Reconocer que los valores se clasifican en tipos no resuelve un problema practico fundamental: cuando dos o mas valores entran en conflicto en una situacion concreta, ¿cual debe prevalecer? ¿Son todos los valores equivalentes? ¿Existe alguna base racional para ordenarlos y darle prioridad a unos sobre otros?</p>
+  <p>La segunda direccion es <strong>practica y pedagogica</strong>: la pregunta por la <em>operativizacion</em> de los valores. Tener claridad teorica sobre que son los valores y como se jerarquizan no es suficiente para la formacion moral. El pedagogo necesita comprender como los valores se convierten en accion real: como pasan de ser convicciones internas a actitudes observables y de ahi a conductas concretas. Esta cadena <strong>valor &rarr; actitud &rarr; conducta</strong> es el corazon de la formacion axiologica aplicada.</p>
+  <div class="caja do">
+    <div class="caja-tag">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> explicar los principales criterios y modelos de jerarquizacion axiologica; <strong>(2)</strong> aplicar la jerarquia de valores al analisis de dilemas eticos reales; <strong>(3)</strong> describir el proceso de operativizacion de los valores a traves de la cadena valor-actitud-conducta; y <strong>(4)</strong> diseniar estrategias pedagogicas que promuevan la formacion en valores desde el nivel de la conducta observable.</p>
+  </div>
+  <div class="caja vd">
+    <div class="caja-tag">Metodologia de trabajo</div>
+    <p>Esta guia integra <strong>constructivismo</strong> (construccion activa del conocimiento), <strong>pedagogia activa</strong> (el estudiante como protagonista) y <strong>aprendizaje basado en problemas</strong> (ABP), donde la comprension teorica emerge de la necesidad de resolver situaciones problematicas concretas y significativas vinculadas a la vida universitaria real.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque do" id="previo">
+  <div class="bh">
+    <div class="bicon do">?</div>
+    <div class="btit">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Responda la siguiente pregunta con base en su comprension actual, sin consultar fuentes. El objetivo es identificar el punto de partida de su comprension para construir sobre ella.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Cuando decimos que una persona "tiene valores" pero no los "practica en su vida cotidiana", estamos senialando principalmente una ruptura en:</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpR(this,false)">A) La jerarquia axiologica de la persona, porque sus valores no estan ordenados de manera correcta segun algun criterio racional establecido.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">B) La tipologia de sus valores, porque los valores que declara no pertenecen a las categorias correctas de la clasificacion axiologica.</button>
+      <button class="kp-btn" onclick="kpR(this,true)">C) El proceso de operativizacion de los valores: la cadena que convierte una conviccion interna (valor) en una disposicion estable (actitud) y esta en un comportamiento observable y verificable (conducta).</button>
+      <button class="kp-btn" onclick="kpR(this,false)">D) La dimension trascendente de sus valores, porque sin una orientacion espiritual solida los valores no pueden convertirse en acciones concretas en la vida cotidiana.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- JERARQUIA DE VALORES -->
+<section class="bloque vd" id="jerarquia">
+  <div class="bh">
+    <div class="bicon vd">2.4</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico &middot; Subtema 2.4</div>
+      <h2>Jerarquia de Valores</h2>
+    </div>
+  </div>
+
+  <h3>1. Por que necesitamos una jerarquia axiologica?</h3>
+  <p>Si todos los valores tuviesen el mismo peso y la misma prioridad, la vida moral seria imposible en situaciones de conflicto. La realidad, sin embargo, nos coloca constantemente ante situaciones en las que dos valores validos entran en tension: la <em>libertad</em> frente a la <em>justicia</em>, la <em>lealtad</em> frente a la <em>honestidad</em>, el <em>bien comun</em> frente a los <em>derechos individuales</em>. La jerarquia axiologica es la herramienta conceptual que permite orientar esas decisiones de manera racional y fundamentada.</p>
+  <p>Jerarquizar los valores no significa que los valores "inferiores" en la escala carezcan de importancia: significa que, en situaciones de tension, los valores de mayor rango tienen prioridad. Un ser humano necesita salud (valor vital), pero la salud no justifica la mentira (valor etico); un pedagogo necesita condiciones laborales (valor vital-social), pero estas no justifican comprometer la formacion integral de sus estudiantes (valor superior).</p>
+
+  <h3>2. El modelo de jerarquia de Max Scheler</h3>
+  <p><strong>Max Scheler</strong> (1874-1928) propuso la jerarquia axiologica mas influyente en la tradicion fenomenologica. Argumento que los valores no son iguales: tienen una <em>altura</em> intrinseca que la persona puede captar intuitivamente a traves del sentimiento intencional. Los criterios para determinar esa altura son: durabilidad (cuanto mas permanente, mas elevado), divisibilidad (cuanto menos divisible y mas participable sin agotarse, mas elevado), fundamentacion (el valor que fundamenta a otros es mas alto), profundidad de satisfaccion y relatividad al portador (si es independiente o dependiente de un sujeto particular).</p>
+
+  <div class="jerarquia">
+    <div class="jer-nivel n1">
+      <div class="jer-num">1</div>
+      <div class="jer-info">
+        <div class="jer-tit">Valores religiosos o santos (el nivel mas elevado)</div>
+        <div class="jer-desc">Son los mas duraderos, menos divisibles y mas independientes de cualquier portador particular. Representan la relacion con lo absolutamente sagrado.</div>
+        <div class="jer-ej">Ejemplos: lo santo, lo profano, la beatitud, lo sagrado.</div>
+      </div>
+    </div>
+    <div class="jer-flecha">&#8595;</div>
+    <div class="jer-nivel n2">
+      <div class="jer-num">2</div>
+      <div class="jer-info">
+        <div class="jer-tit">Valores espirituales</div>
+        <div class="jer-desc">Vinculados al conocimiento, la estetica y la justicia. Son participables sin agotarse y no dependen de la satisfaccion sensible.</div>
+        <div class="jer-ej">Ejemplos: lo bello, lo verdadero, lo justo, el conocimiento.</div>
+      </div>
+    </div>
+    <div class="jer-flecha">&#8595;</div>
+    <div class="jer-nivel n3">
+      <div class="jer-num">3</div>
+      <div class="jer-info">
+        <div class="jer-tit">Valores vitales</div>
+        <div class="jer-desc">Relativos a la vida biologica y el bienestar del organismo. Son mas duraderos que los sensibles pero condicionados por el cuerpo.</div>
+        <div class="jer-ej">Ejemplos: la salud, la fuerza, la vitalidad, el bienestar fisico.</div>
+      </div>
+    </div>
+    <div class="jer-flecha">&#8595;</div>
+    <div class="jer-nivel n4">
+      <div class="jer-num">4</div>
+      <div class="jer-info">
+        <div class="jer-tit">Valores de lo agradable y desagradable</div>
+        <div class="jer-desc">Los mas bajos en la jerarquia. Vinculados al placer y el dolor sensibles. Son los mas efimeros y los mas dependientes del portador individual.</div>
+        <div class="jer-ej">Ejemplos: el placer sensorial, el confort, el disfrute inmediato.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>3. Otros modelos de jerarquia axiologica</h3>
+  <p>Ademas de Scheler, otros autores han propuesto criterios de jerarquizacion relevantes para la pedagogia:</p>
+  <table class="t">
+    <thead><tr><th>Autor</th><th>Criterio de jerarquizacion</th><th>Valor mas elevado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Aristoteles</strong></td><td>El grado en que el valor contribuye al florecimiento humano integral (eudaimonia). Cuanto mas contribuye a la vida plena, mas alto.</td><td>La virtud moral y la contemplacion (vida teorica).</td></tr>
+      <tr><td><strong>Kant</strong></td><td>La universalizabilidad racional: un valor es superior si la maxima que lo sustenta puede convertirse en ley universal sin contradiccion.</td><td>El deber moral (imperativo categorico); la dignidad de la persona.</td></tr>
+      <tr><td><strong>Maslow</strong> (psicologico)</td><td>La urgencia biologica y el orden de necesidades: primero las mas basicas, luego las superiores. La jerarquia es funcional, no ontologica.</td><td>La autorrealizacion; los valores de crecimiento y trascendencia.</td></tr>
+      <tr><td><strong>Kohlberg</strong></td><td>El desarrollo moral: los valores se jerarquizan segun el nivel de razonamiento moral del sujeto (convencional vs. posconvencional).</td><td>Los principios universales de justicia y dignidad humana.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. La jerarquia en la practica pedagogica</h3>
+  <p>Para el pedagogo, la jerarquia axiologica no es una especulacion filosofica abstracta: es una herramienta practica para tomar decisiones y acompanar a los estudiantes en situaciones de conflicto moral real. Tres aplicaciones concretas:</p>
+  <ul class="l">
+    <li><strong>Disenio curricular:</strong> La jerarquia permite decidir que valores tienen prioridad en el curriculo y que nivel de profundidad se les dedica segun el nivel educativo.</li>
+    <li><strong>Gestion de conflictos:</strong> Cuando dos normas o valores del reglamento institucional entran en tension, la jerarquia ofrece un criterio para la resolucion fundamentada.</li>
+    <li><strong>Acompaniamiento moral:</strong> Cuando un estudiante enfrenta un dilema etico (lealtad vs. honestidad, obediencia vs. justicia), el pedagogo puede usar la jerarquia como herramienta de reflexion, no de imposicion.</li>
+  </ul>
+
+  <div class="caja co">
+    <div class="caja-tag">Punto de problematizacion (ABP)</div>
+    <p>Un estudiante de Pedagogia descubre que su mejor amigo copio el trabajo final de otro companiero. Tiene la posibilidad de denunciarlo o de quedarse en silencio. ¿Que valores estan en tension en este dilema? ¿Como ayudaria la jerarquia axiologica a orientar la decision? ¿Existe una respuesta "correcta" o depende del nivel de desarrollo moral del sujeto? Esta problematizacion sera retomada en las actividades.</p>
+  </div>
+</section>
+
+<!-- OPERATIVIZACION -->
+<section class="bloque pu" id="operativ">
+  <div class="bh">
+    <div class="bicon pu">3.1</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico &middot; Tema 3, Subtema 3.1</div>
+      <h2>Operativizacion de los Valores: Valores, Actitud y Conducta</h2>
+    </div>
+  </div>
+
+  <h3>1. El problema de la operativizacion</h3>
+  <p>Uno de los fenomenos mas comunes en la vida universitaria es la <strong>brecha entre valores declarados y conductas reales</strong>: estudiantes que afirman valorar la honestidad pero copian examenes; docentes que declaran defender la justicia pero aplican criterios de evaluacion inconsistentes; instituciones que establecen valores en sus documentos fundacionales pero no los practican en su gestion cotidiana.</p>
+  <p>Este fenomeno no se explica por mala voluntad necesariamente: se explica, en muchos casos, porque los valores no han completado el proceso de <em>operativizacion</em>: no se han convertido en actitudes estables ni en conductas habituales. Conocer un valor no equivale a practicarlo; declarlo no equivale a vivirlo.</p>
+
+  <h3>2. Que es la operativizacion de los valores?</h3>
+  <p>La <strong>operativizacion</strong> es el proceso mediante el cual un valor abstracto se convierte en realidad observable y verificable en el comportamiento de una persona. No es un evento puntual sino un proceso continuo que atraviesa tres momentos articulados:</p>
+
+  <div class="vac-grid" id="cadena">
+    <div class="vac-card">
+      <div class="vac-tit">VALOR</div>
+      <div class="vac-desc">Conviccion interna profunda sobre lo que es bueno, importante o deseable. Opera en el plano cognitivo-afectivo. No es directamente observable: se infiere a partir de actitudes y conductas.</div>
+    </div>
+    <div class="vac-arrow">&rarr;</div>
+    <div class="vac-card">
+      <div class="vac-tit">ACTITUD</div>
+      <div class="vac-desc">Disposicion estable y aprendida a responder de manera consistente ante personas, situaciones u objetos especificos. Es el puente entre el valor abstracto y la conducta concreta.</div>
+    </div>
+    <div class="vac-arrow">&rarr;</div>
+    <div class="vac-card">
+      <div class="vac-tit">CONDUCTA</div>
+      <div class="vac-desc">Comportamiento observable, verificable y medible que expresa en la practica el valor y la actitud subyacentes. Es el nivel en que los valores se vuelven reales para los demas.</div>
+    </div>
+  </div>
+
+  <h3>3. El valor como nucleo</h3>
+  <p>El <strong>valor</strong> es la conviccion mas profunda: lo que la persona considera genuinamente importante, bueno o deseable, independientemente de lo que otros piensen. Es el motor interno de la accion moral. Sin una conviccion valorativa real, las actitudes y conductas son solo conformismo social o adaptacion estrategica.</p>
+  <p>Los valores operativos tienen tres componentes: <em>cognitivo</em> (la persona comprende que es el valor y por que es importante), <em>afectivo</em> (la persona siente que ese valor importa: hay emocion, apreciacion, compromieso) y <em>volitivo</em> (la persona quiere actuar conforme a ese valor, incluso cuando es costoso).</p>
+
+  <h3>4. La actitud como puente</h3>
+  <p>La <strong>actitud</strong> es la disposicion psicologica estable que media entre el valor y la conducta. Es lo que permite que ante situaciones similares la persona responda de manera consistente: una persona con una actitud de respeto no solo actua respetuosamente cuando "tiene ganas" sino de manera habitual, ante distintas personas y contextos.</p>
+  <p>Las actitudes tienen tres componentes clasicos (modelo tridimensional ABC):</p>
+  <table class="t">
+    <thead><tr><th>Componente</th><th>Descripcion</th><th>Ejemplo (actitud de respeto)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Afectivo (A)</strong></td><td>Los sentimientos, emociones o evaluaciones que la persona asocia con el objeto de la actitud.</td><td>Sentir aprecio genuino por la dignidad de cada persona, independientemente de sus diferencias.</td></tr>
+      <tr><td><strong>Conductual (B)</strong></td><td>La predisposicion a actuar de una cierta manera ante el objeto de la actitud.</td><td>Tendencia a escuchar activamente, a no interrumpir, a considerar los puntos de vista ajenos.</td></tr>
+      <tr><td><strong>Cognitivo (C)</strong></td><td>Las creencias, pensamientos o evaluaciones sobre el objeto de la actitud.</td><td>Creer que toda persona merece ser tratada con dignidad, independientemente de su rendimiento academico.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. La conducta como expresion visible</h3>
+  <p>La <strong>conducta</strong> es el nivel en que los valores y las actitudes se vuelven reales y observables: es donde la formacion axiologica se verifica o se falsifica. Una persona puede declarar cualquier valor, pero son sus conductas las que demuestran que valores opera realmente en su vida.</p>
+  <p>Desde la perspectiva pedagogica, la conducta es el nivel de mayor relevancia formativa porque: (a) es observable y por tanto evaluable; (b) es modificable a traves de la experiencia, el modelado y la reflexion; (c) tiene consecuencias reales sobre otras personas y sobre el entorno; y (d) cuando se practica de manera habitual, genera actitudes y refuerza valores, cerrando el ciclo formativo.</p>
+
+  <h3>6. El ciclo de formacion axiologica</h3>
+  <p>La relacion entre valor, actitud y conducta no es unidireccional: es ciclica y recursiva. Las conductas practicadas habitualmente consolidan actitudes; las actitudes arraigadas fortalecen y clarifican los valores; los valores solidos generan nuevas actitudes y conductas. El pedagogo puede intervenir en cualquier punto de este ciclo:</p>
+  <ul class="l">
+    <li><strong>Nivel del valor:</strong> A traves de la reflexion critica, el dialogo filosofico, la lectura y el encuentro con modelos eticos que desafian los propios marcos de sentido.</li>
+    <li><strong>Nivel de la actitud:</strong> A traves del analisis de las propias disposiciones, la identificacion de incoherencias entre lo que se cree y lo que se siente, y el trabajo sobre el componente afectivo.</li>
+    <li><strong>Nivel de la conducta:</strong> A traves del ejercicio practico deliberado, el modelado, los compromisos concretos y la evaluacion del propio comportamiento.</li>
+  </ul>
+
+  <div class="caja vd">
+    <div class="caja-tag">Implicacion para el pedagogo</div>
+    <p>La formacion en valores no es equivalente a la ensenanza de valores. Enseniiar es transmitir informacion. Formar es acompaniar el proceso por el que una conviccion se convierte en actitud estable y en conducta habitual. Esto exige que el pedagogo disenye experiencias que movilicen los tres componentes (cognitivo, afectivo, volitivo) del valor, y que cree condiciones para que los estudiantes practiquen las conductas que expresan los valores que se busca formar.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque gr" id="materiales">
+  <div class="bh">
+    <div class="bicon gr">M</div>
+    <div class="btit">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes academicas de acceso libre o disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Etica: nuevo ensayo de fundamentacion de un personalismo etico</div><div class="rec-aut">Scheler, M. (2001). Caparros Editores. Fuente primaria para comprender la jerarquia axiologica fenomenologica y los criterios de altura de los valores.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Psicologia de las actitudes y cognicion social</div><div class="rec-aut">Petty, R. y Cacioppo, J. (1996). McGraw-Hill. Fundamento psicologico del modelo tridimensional de actitudes (ABC) y su relacion con el comportamiento.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El desarrollo moral: de Piaget a Kohlberg</div><div class="rec-aut">Hersh, R., Reimer, J. y Paolitto, D. (1998). Narcea. Perspectiva evolutiva sobre la jerarquia de valores y el desarrollo del juicio moral en el contexto educativo.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">Formacion en valores: mas alla de la instruccion moral</div><div class="rec-aut">Bolivar, A. (2005). Revista de Educacion, num. 336, 91-111. Disponible en Dialnet. Perspectiva critica sobre la brecha entre valores declarados y conductas reales en la educacion.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Etica a Nicomaco</div><div class="rec-aut">Aristoteles (trad. 2014). Alianza Editorial. Fundamento para comprender la jerarquia aristotelica de bienes y la relacion entre virtud, actitud y conducta habitual.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-w">Web</div><div><div class="rec-tit">Educacion en valores: recursos y orientaciones (OEI)</div><div class="rec-aut">Organizacion de Estados Iberoamericanos. Disponible en: www.oei.es/valores. Articulos y guias practicas sobre operativizacion de valores en contextos educativos latinoamericanos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-v">Video</div><div><div class="rec-tit">Conferencia: De los valores a la conducta etica en la educacion superior</div><div class="rec-aut">Canal ITESM en YouTube. Busqueda sugerida: "ITESM formacion valores conducta universitaria". Perspectiva aplicada sobre la cadena valor-actitud-conducta en el aula.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">Jerarquia de valores y dilemas eticos en la formacion docente</div><div class="rec-aut">Buxarrais, M.R. (2008). Revista Iberoamericana de Educacion, 46(2), 1-15. Disponible en rieoei.org. Aplicacion de los modelos de jerarquia axiologica a situaciones de formacion del profesorado.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque vd" id="act1">
+  <div class="bh">
+    <div class="bicon vd">1</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-foro">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja do">
+    <div class="caja-tag">Proposito</div>
+    <p>Generar un espacio de dialogo argumentado donde los estudiantes confronten su comprension de la jerarquia de valores con situaciones reales de dilema moral universitario, y reflexionen sobre la brecha entre los valores que declaran y las conductas que efectivamente practican en su vida academica.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>En la vida universitaria es frecuente encontrar situaciones donde dos valores entran en tension: la lealtad a un amigo frente a la honestidad academica; el bien comun del grupo frente al interes individual; la obediencia a una norma institucional frente a la conviccion de que esa norma es injusta. Desde su experiencia como estudiante universitario: ¿ha vivido una situacion donde dos valores que usted considera importantes hayan entrado en conflicto? ¿Como resolvio ese dilema? ¿Que criterio uso para decidir cual valor priorizar? Y en retrospectiva, ¿considera que ese criterio fue consistente con algun modelo de jerarquia axiologica o fue una decision puramente intuitiva o situacional?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro en Google Classroom</strong> bajo el titulo "Foro 3: Jerarquia de Valores y Dilemas Morales en la Universidad". Acceda mediante el enlace indicado por el docente.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Dedique al menos 10 minutos a recordar una situacion universitaria real donde vivio un conflicto entre valores. No use situaciones hipoteticas ni genericas: debe ser una experiencia propia, concreta y verificable.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial</strong> incluyendo: (a) descripcion concreta de la situacion y los valores en tension; (b) descripcion del criterio o proceso que uso para resolver el dilema; (c) analisis retrospectivo vinculando su decision con el contenido teorico de la guia (al menos un modelo de jerarquia axiologica); (d) reflexion sobre si actuaria diferente hoy con este marco teorico. Extension: 230-380 palabras, registro academico formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea al menos dos participaciones de companeros</strong> antes de responder. Identifique diferencias en los criterios de jerarquizacion que usaron y convergencias en los tipos de dilemas enfrentados.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> (90-130 palabras cada una): compare el criterio de jerarquizacion de su companiero con el suyo, o con algun modelo teorico, o plantee una pregunta de profundizacion sobre su caso.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y entregue en Classroom:</strong> captura o PDF de su participacion y las dos replicas en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div></div>
+  <div class="caja vd">
+    <div class="caja-tag">Ejemplo orientador (extracto)</div>
+    <p>"En cuarto semestre, un companiero cercano me pidio que le prestara mi trabajo de investigacion 'para guiarse'. Yo sabia que iba a entregarlo como suyo. Entre en tension entre la lealtad hacia el (un valor social que aprecio mucho) y la honestidad academica (un valor individual fundamental para mi). Finalmente no le preste el trabajo. En retrospectiva, si lo analizo desde el modelo de Scheler, actue priorizando un valor espiritual-etico (la verdad/honestidad) sobre un valor social (la lealtad), lo que seria coherente con su jerarquia. Pero en el momento no fue un razonamiento consciente sino una incomodidad profunda ante la posibilidad de ser complice de algo que consideraba incorrecto. Esto me hace pensar que la jerarquia axiologica puede operar intuitivamente antes de que la racionalicemos..."</p>
+  </div>
+  <div class="caja co">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La pregunta detonadora requiere una situacion <strong>real, personal y verificable</strong> de su propia trayectoria universitaria. Ningun sistema de inteligencia artificial conoce esos detalles. El docente podra solicitar que precise cualquier elemento de la situacion narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad y especificidad de la situacion de dilema narrada</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Vinculacion explicita con algun modelo de jerarquia axiologica</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad de la reflexion retrospectiva (habria actuado diferente?)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad argumentativa de las dos replicas dialogicas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque pu" id="act2">
+  <div class="bh">
+    <div class="bicon pu">2</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Auditoria Personal de Operativizacion de Valores</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-indiv">Actividad individual &middot; Aprendizaje significativo aplicado</div>
+  <div class="caja do">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de autoevaluacion axiologica aplicada mediante el analisis critico de la cadena valor-actitud-conducta en la propia vida universitaria, identificando los puntos de ruptura o coherencia en el proceso de operativizacion de los propios valores.</p>
+  </div>
+  <h3>Situacion problematica de base (ABP)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Contexto del problema</div>
+    <p>La Coordinacion Academica de su programa le solicita que elabore un <strong>Informe de Auditoria Personal Axiologica</strong> como parte de un proyecto piloto de evaluacion del perfil de egresado. El informe tiene un doble proposito: identificar la coherencia (o brecha) entre los valores que usted declara y las conductas que efectivamente practica; y proponer un Plan de Ajuste que permita fortalecer los puntos de ruptura identificados en su cadena valor-actitud-conducta.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Seleccione cuatro valores</strong> que considere centrales en su perfil axiologico actual (pueden ser individuales, sociales o ambos). Escriba el nombre de cada uno.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Para cada valor, complete la cadena VAC:</strong> (a) Defina el valor con sus propias palabras; (b) describa la actitud que ese valor deberia generar en usted (componentes afectivo, cognitivo y conductual); (c) describa tres conductas concretas y observables en las que ese valor se deberia manifestar en su vida universitaria actual.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Autoevalue la coherencia:</strong> Para cada valor, califique en una escala del 1 al 5 (1=ruptura total, 5=coherencia plena) el grado en que sus conductas reales corresponden con el valor declarado. Justifique cada calificacion con un ejemplo concreto de su semestre actual.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Identifique el punto de ruptura mas importante</strong> en su cadena VAC: ¿la ruptura esta en el nivel del valor (conviccion poco arraigada), en el de la actitud (disposicion inconsistente) o en el de la conducta (practica no habitual)? Fundamente su analisis con referencia al contenido de la guia.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Elabore un Plan de Ajuste</strong> con tres acciones concretas y realizables en los proximos 21 dias para fortalecer la coherencia en el punto de ruptura identificado. Cada accion debe especificar: valor que fortalece, nivel VAC en que interviene (valor/actitud/conducta), descripcion de la accion, contexto universitario donde se aplicara y criterio de avance.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Elabore el documento final</strong> con portada (nombre, matricula, materia, semestre, fecha, docente), tablas VAC, autoevaluacion con ejemplos, analisis del punto de ruptura y Plan de Ajuste. Suba en Classroom.</div></div>
+  <div class="caja co">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La auditoria requiere autoevaluacion con ejemplos <strong>especificos y actuales</strong> de su vida universitaria en este semestre: situaciones concretas, materias, contextos identificables. El docente podra verificar la coherencia de los ejemplos con la realidad academica conocida.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Completitud de las cadenas VAC (4 valores, 3 componentes cada uno)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Autoevaluacion con ejemplos concretos y autenticos</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad del analisis del punto de ruptura con fundamento teorico</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Pertinencia y viabilidad del Plan de Ajuste (3 acciones con los 5 elementos)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, estructura, portada y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Auditoria Personal Axiologica".</div>
+</section>
+
+<!-- ACTIVIDAD 3: CASO -->
+<section class="bloque co" id="act3">
+  <div class="bh">
+    <div class="bicon co">3</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Analisis de Caso Practico</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-caso">Caso practico &middot; ABP</div>
+  <div class="caja do">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de analisis axiologico integrado mediante el estudio de un caso que plantea dilemas de jerarquia valorativa y ruptura en la cadena valor-actitud-conducta, exigiendo una respuesta argumentada y pedagogicamente fundamentada.</p>
+  </div>
+
+  <h3>El caso: "Las dos promesas de la profesora Adriana"</h3>
+  <div class="escenario">
+    <div class="esc-tag">Descripcion del caso</div>
+    <p>La profesora <strong>Adriana Vega</strong> imparte Filosofia de la Educacion en cuarto semestre de Pedagogia. Es una docente comprometida que en la primera sesion del semestre declaro ante el grupo: "En esta clase aplico dos principios que nunca negocio: la justicia en la evaluacion (nadie obtiene una nota que no merece) y el respeto a la diversidad de pensamiento (cualquier posicion fundamentada es valida aqui, aunque no coincida con la mia)."</p>
+    <p>A mitad del semestre ocurren dos situaciones que ponen a prueba esas declaraciones:</p>
+    <p><strong>Situacion 1.</strong> La profesora recibe un mensaje del director academico pidiendole que apruebe a Diego, un estudiante con promedio reprobatorio cuyo padre es un benefactor importante de la universidad. El director argumenta: "A veces el bien de la institucion requiere flexibilidad." Adriana se enfrenta a un dilema entre la lealtad institucional (no entrar en conflicto con sus superiores) y la justicia evaluativa que prometio al grupo.</p>
+    <p><strong>Situacion 2.</strong> Durante un debate sobre etica educativa, el estudiante Marcos defiende una posicion muy critica del laicismo educativo desde sus convicciones religiosas. La profesora Adriana, que tiene posiciones laicistas arraigadas, le interrumpe varias veces y al final le dice: "Esas ideas pertenecen al ambito privado y no son pertinentes en un debate academico." El grupo observa en silencio.</p>
+    <p>Al finalizar el semestre, Adriana reflexiona sobre lo ocurrido y escribe en su diario: "Sostuve mis principios en el caso de Diego. Pero con Marcos actue diferente a lo que declare. ¿Por que fue mas facil mantener la justicia ante la presion institucional que mantener el respeto ante una posicion que me incomoda?"</p>
+  </div>
+
+  <h3>Preguntas de analisis</h3>
+  <p>Responda de manera fundamentada con referencia al contenido de la guia. Extension total: 580-740 palabras.</p>
+  <ol class="l">
+    <li><strong>Jerarquia en la Situacion 1:</strong> Identifique los valores en tension en la peticion del director. ¿Que criterio de jerarquizacion axiologica (Scheler, Aristoteles, Kant u otro) podria fundamentar la decision de Adriana de sostener la justicia evaluativa? ¿Considera que esa fue la decision correcta desde la perspectiva axiologica estudiada? Argumente.</li>
+    <li><strong>Ruptura en la cadena VAC (Situacion 2):</strong> Adriana declara el valor del respeto a la diversidad pero su conducta con Marcos no lo expresa. ¿En que nivel de la cadena valor-actitud-conducta se produjo la ruptura? ¿Fue en el nivel del valor (conviccion poco arraigada), en el de la actitud (disposicion inconsistente segun el tema) o en el de la conducta (impulsividad momentanea)? Fundamente con referencia al modelo VAC.</li>
+    <li><strong>La pregunta de Adriana en su diario:</strong> Adriana se pregunta por que le resulto mas facil mantener la justicia (Situacion 1) que el respeto (Situacion 2). Desde la perspectiva de la jerarquia axiologica y de la operativizacion, ¿como explicaria usted esta asimetria? ¿Que dice esto sobre el proceso de formacion axiologica del docente?</li>
+    <li><strong>Propuesta pedagogica:</strong> Si usted fuera coordinador academico y quisiera apoyar a Adriana en su proceso de formacion axiologica como docente (no sancionarla sino formarla), ¿que estrategia concreta implementaria? ¿En que nivel de la cadena VAC intervendria y por que? Fundamente con al menos un referente teorico de los materiales de la guia.</li>
+  </ol>
+  <div class="paso"><div class="paso-n">1</div><div>Lea el caso dos veces. Tome notas identificando los valores, las actitudes y las conductas presentes antes de comenzar a redactar.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div>Responda las cuatro preguntas en orden, en un documento con portada (nombre, matricula, materia, fecha, docente).</div></div>
+  <div class="paso"><div class="paso-n">3</div><div>Incluya en cada respuesta al menos una referencia explicita al contenido tematico de la guia (modelo de jerarquia, cadena VAC, componentes de la actitud, etc.).</div></div>
+  <div class="paso"><div class="paso-n">4</div><div>Suba el documento en la tarea "Actividad 3: Caso Las dos promesas" en Classroom antes de la fecha indicada.</div></div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Analisis de jerarquia con modelo teorico explicito (Preg. 1)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Identificacion precisa del nivel de ruptura VAC (Preg. 2)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Explicacion de la asimetria con fundamento axiologico (Preg. 3)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Propuesta pedagogica concreta con nivel VAC y referente teorico (Preg. 4)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 3: Caso Practico" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 4: QUIZ -->
+<section class="bloque do" id="act4">
+  <div class="bh">
+    <div class="bicon do">4</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 4: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-quiz">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja vd">
+    <div class="caja-tag">Instrucciones</div>
+    <p>Responda las cinco preguntas seleccionando la opcion correcta. Recibira retroalimentacion inmediata. Al finalizar, capture su resultado y subalo a Google Classroom.</p>
+  </div>
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bc"><div class="q-bf" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="qb act" id="q1">
+      <h4>1. Segun el modelo de jerarquia axiologica de Max Scheler, el criterio que determina la "altura" de un valor es principalmente:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">La utilidad practica que el valor tiene para la mayoria de las personas en una sociedad determinada en un momento historico especifico.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">La durabilidad, la no divisibilidad, el grado de independencia respecto al portador y la profundidad de la satisfaccion que genera; cualidades captadas por intuicion emocional.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">El consenso social amplio: son mas elevados los valores que mas personas aceptan y practican en una comunidad democratica determinada.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">La antiguedad del valor: cuanto mas tiempo lleva siendo reconocido por la humanidad, mayor es su rango en la jerarquia axiologica.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. Para Scheler, la altura de un valor se capta intuitivamente a traves del sentimiento intencional, y se fundamenta en criterios como su durabilidad, su divisibilidad (puede compartirse sin agotarse), su independencia respecto al portador y la profundidad de la satisfaccion que genera. No es una cuestion de consenso social ni de utilidad pragmatica.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. Scheler no basa la jerarquia en utilidad (A), consenso social (C) ni antiguedad (D). Los criterios son fenomenologicos y emocionales: durabilidad, no divisibilidad, independencia del portador y profundidad de la satisfaccion, captados a traves del sentimiento intencional.</div>
+      <button class="btn btn-p" id="btn1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qb" id="q2">
+      <h4>2. La jerarquia axiologica de Scheler coloca en el nivel MAS ELEVADO los valores:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">Vitales, porque la vida biologica es la condicion de posibilidad de todos los demas valores y sin ella ninguno puede realizarse.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">B</div><div class="qot">Espirituales (lo bello, lo verdadero, lo justo), porque son los que la razon humana puede comprender y comunicar universalmente.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">C</div><div class="qot">Religiosos o santos, porque son los mas duraderos, menos divisibles y mas independientes de cualquier portador particular, representando la relacion con lo absolutamente sagrado.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">De lo agradable, porque son los que el ser humano experimenta con mayor frecuencia e intensidad en su vida cotidiana.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. En la jerarquia de Scheler, el nivel mas elevado es el de los valores religiosos o santos. Por encima estan los espirituales, luego los vitales y en el nivel mas bajo los valores de lo agradable/desagradable. La altura no se basa en frecuencia ni en utilidad, sino en durabilidad, independencia y profundidad de la experiencia.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es C. En la jerarquia de Scheler: nivel 1 (mas alto) = valores religiosos/santos; nivel 2 = espirituales; nivel 3 = vitales; nivel 4 (mas bajo) = valores de lo agradable. Los valores vitales (A) son el tercer nivel, no el primero. Los espirituales (B) son el segundo. Los de lo agradable (D) son los mas bajos.</div>
+      <button class="btn btn-p" id="btn2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qb" id="q3">
+      <h4>3. En la cadena valor-actitud-conducta (VAC), la actitud es definida principalmente como:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">Un comportamiento puntual observable que expresa directamente el valor de la persona en una situacion especifica de eleccion moral.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">B</div><div class="qot">Una conviccion profunda sobre lo que es bueno o deseable, que opera en el plano cognitivo-afectivo y no es directamente observable desde el exterior.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">C</div><div class="qot">Una disposicion estable y aprendida a responder de manera consistente ante personas, situaciones u objetos especificos; funciona como puente entre el valor abstracto y la conducta concreta.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">Un juicio racional consciente que la persona realiza en cada situacion para determinar cual es la conducta mas adecuada segun sus valores.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. La actitud es una disposicion estable y aprendida, no un comportamiento puntual (A) ni el valor mismo (B) ni un juicio situacional consciente (D). Su funcion especifica en la cadena VAC es ser el puente: convierte el valor abstracto en una predisposicion que hace posible la respuesta conductual consistente.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es C. Un comportamiento puntual observable (A) es la conducta, no la actitud. Una conviccion profunda no directamente observable (B) es el valor, no la actitud. Un juicio racional situacional (D) tampoco corresponde a la actitud, que es una disposicion previa y estable, no un calculo situacional.</div>
+      <button class="btn btn-p" id="btn3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qb" id="q4">
+      <h4>4. En el caso de la profesora Adriana, la ruptura entre su declaracion de respeto a la diversidad y su conducta con Marcos durante el debate se ubicaria en que nivel de la cadena VAC segun el analisis del caso?</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">En el nivel del valor: Adriana en realidad no valora la diversidad de pensamiento; simplemente lo declaro por convencion social sin que sea una conviccion real.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">B</div><div class="qot">En el nivel de la conducta exclusivamente: Adriana tiene buena actitud pero fallo en el control de impulsos en una situacion especifica de alta carga emocional.</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">C</div><div class="qot">Posiblemente en el nivel de la actitud: su disposicion al respeto es inconsistente segun el contenido del pensamiento que debe respetar; el valor es genuino pero la actitud no esta suficientemente arraigada para operar con independencia de la comodidad personal.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">No hay ruptura real: Adriana tenia el derecho pedagogico de delimitar los contenidos pertinentes en un debate academico universitario.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. La ruptura mas probable es en el nivel de la actitud. El hecho de que Adriana logro sostener la justicia en la Situacion 1 (presion institucional) pero no el respeto en la Situacion 2 (incomodidad personal) sugiere que el valor del respeto a la diversidad esta arraigado de manera desigual: funciona cuando no implica incomodidad pero falla cuando el contenido especifico del pensamiento a respetar le genera tension personal.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es C. No hay evidencia suficiente para decir que el valor es inexistente (A): Adriana misma reconoce la brecha en su diario. Reducirlo a un fallo puntual de autocontrol (B) no explica la asimetria con la Situacion 1. Y si hubo ruptura: interrumpir y descalificar una posicion fundamentada no es una delimitacion pedagogica legitima (D).</div>
+      <button class="btn btn-p" id="btn4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qb" id="q5">
+      <h4>5. Segun la guia, la diferencia entre "enseniiar valores" y "formar en valores" radica principalmente en que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">Enseniiar valores requiere conocimientos filosoficos especializados, mientras que formar en valores es una actividad cotidiana que cualquier docente puede hacer de manera espontanea.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">Enseniiar valores es propio de la educacion basica, mientras que formar en valores corresponde exclusivamente a la educacion superior y la formacion profesional.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">Enseniiar es transmitir informacion sobre los valores; formar es acompaniar el proceso por el que una conviccion se convierte en actitud estable y en conducta habitual, movilizando los componentes cognitivo, afectivo y volitivo del valor.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">Enseniiar valores genera resultados a corto plazo medibles por examenes; formar en valores solo genera resultados a largo plazo que no pueden ser evaluados dentro del ciclo escolar.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La guia establece explicitamente esta distincion: enseniiar equivale a transmitir informacion; formar implica acompaniar el proceso completo de operativizacion, donde una conviccion se convierte en actitud estable y en conducta habitual. Esto requiere movilizar los tres componentes del valor (cognitivo, afectivo y volitivo) y crear condiciones para la practica real.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. La distincion no es de nivel de conocimiento especializado (A), ni de nivel educativo (B), ni de temporalidad de los resultados (D). Es una distincion sobre la naturaleza de la intervencion: informacion vs. acompaniamiento del proceso completo de operativizacion que incluye el nivel cognitivo, afectivo y volitivo del valor.</div>
+      <button class="btn btn-p" id="btn5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--verde-s);border-radius:8px;font-size:0.87rem;color:var(--verde-m);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura del resultado en la tarea "Actividad 4: Quiz Jerarquia y Operativizacion".</div>
+</section>
+
+<!-- REFLEXION -->
+<section class="bloque vd" id="reflexion">
+  <div class="bh">
+    <div class="bicon vd">R</div>
+    <div class="btit">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>Esta seccion invita a integrar los aprendizajes de la guia mediante un ejercicio de metacognicion y de proyeccion profesional: ¿que impacto tendran estos contenidos en la forma en que usted se comporta como estudiante hoy y en la forma en que formara en valores como pedagogo maniana?</p>
+
+  <div class="refl"><label>1. ¿Cual es el modelo de jerarquia axiologica (Scheler, Aristoteles, Kant, Kohlberg) que mas resuena con su propia manera de tomar decisiones morales? Argumente por que y describa un ejemplo de su vida universitaria donde haya aplicado, consciente o inconscientemente, ese criterio de jerarquizacion.</label><textarea placeholder="Identifique el modelo, argumente la afinidad y ejemplifique con una situacion real de su trayectoria universitaria..."></textarea></div>
+
+  <div class="refl"><label>2. Al reflexionar sobre su propia cadena VAC, ¿en que nivel identifica su principal vulnerabilidad axiologica: en el valor (conviccion poco arraigada), en la actitud (disposicion inconsistente) o en la conducta (practica no habitual)? Describa un ejemplo concreto y su posible explicacion.</label><textarea placeholder="Identifique el nivel de mayor vulnerabilidad, ejemplifique con una situacion real y explique por que cree que la ruptura ocurre ahi..."></textarea></div>
+
+  <div class="refl"><label>3. La guia plantea que la formacion en valores exige movilizar los componentes cognitivo, afectivo y volitivo del valor. Como futuro pedagogo, ¿como disenaria una actividad de aula que movilice los tres componentes simultineamente para el valor de la justicia? Descriva la actividad con suficiente detalle.</label><textarea placeholder="Describa una actividad concreta que active el componente cognitivo (comprension), afectivo (sentimiento) y volitivo (voluntad de actuar) del valor de la justicia..."></textarea></div>
+
+  <div class="refl"><label>4. Plantee una accion concreta que realizara en los proximos 15 dias como resultado de lo aprendido en esta guia. Especifique: que nivel VAC fortalecera, en que contexto universitario especifico, que hara exactamente y como reconocera que tuvo un impacto real.</label><textarea placeholder="Sea muy especifico: en que clase, con quien, que hara diferente, que valor fortalece, como sabra que avanzo..."></textarea></div>
+
+  <div class="caja do">
+    <div class="caja-tag">Instrucciones para la entrega</div>
+    <p>Las respuestas de esta seccion se entregaran como documento independiente en la tarea "Reflexion Final: Jerarquia y Operativizacion de Valores" en Google Classroom. Extension minima por respuesta: 120 palabras. Se evaluaran la profundidad reflexiva, la autenticidad del analisis y la coherencia con los contenidos teoricos.</p>
+  </div>
+
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Aristoteles. (2014). <em>Etica a Nicomaco</em> (trad. J. L. Calvo Martinez). Alianza Editorial.</li>
+    <li>Bolivar, A. (2005). El lugar de la etica profesional en la formacion universitaria. <em>Revista de Educacion</em>, (336), 91-111.</li>
+    <li>Buxarrais, M. R. (2008). Jerarquia de valores y dilemas eticos en la formacion docente. <em>Revista Iberoamericana de Educacion, 46</em>(2), 1-15.</li>
+    <li>Hersh, R., Reimer, J. y Paolitto, D. (1998). <em>El crecimiento moral: de Piaget a Kohlberg</em>. Narcea.</li>
+    <li>Petty, R. E., y Cacioppo, J. T. (1996). <em>Attitudes and persuasion: Classic and contemporary approaches</em>. Westview Press.</li>
+    <li>Scheler, M. (2001). <em>Etica: nuevo ensayo de fundamentacion de un personalismo etico</em>. Caparros Editores. (Obra original publicada en 1916).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 2.4: Jerarquia de Valores &middot; Tema 3.1: Valores, Actitud y Conducta<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpR(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Exactamente: cuando alguien dice tener valores pero no los practica, la ruptura esta en la cadena de operativizacion: el valor (conviccion interna) no se ha convertido en actitud estable ni en conducta habitual. Comprender este proceso es el objeto central del Tema 3.1 que exploraremos en esta guia."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es C.</strong> La ruptura no es de tipologia (B) ni de jerarquia (A) ni exclusivamente de dimension trascendente (D). Es una ruptura en el proceso de operativizacion: la cadena que convierte el valor en actitud y la actitud en conducta habitual y observable. Este es el corazon del Tema 3.1."; }
+}
+var qE = { pts: 0, resp: {} };
+function qS(el, qid, ok) {
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  el.parentElement.querySelectorAll(".qo").forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){ el.classList.add("ok"); qE.pts++; }
+  else {
+    el.classList.add("fail");
+    el.parentElement.querySelectorAll(".qo").forEach(function(o){
+      if(o._ok) o.classList.add("show-ok");
+    });
+  }
+  el._ok = ok;
+  // Mark correct
+  el.parentElement.querySelectorAll(".qo").forEach(function(o,i){ o._ok = (i=== [].indexOf.call(el.parentElement.querySelectorAll(".qo"),el) && ok); });
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn-"+qid).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur,next,num){
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+function qRes(){
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida e integrada de la jerarquia axiologica y del proceso de operativizacion de los valores. Esta en condiciones de aplicar estos marcos en su analisis y practica pedagogica.";col="var(--verde-m)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos asociados a las preguntas donde recibio retroalimentacion de mejora.";col="var(--purpura)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren estudio adicional. Se recomienda releer las secciones teoricas vinculadas a los errores.";col="var(--dorado)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido completo de la guia y retome el quiz tras el repaso.";col="var(--coral)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>
