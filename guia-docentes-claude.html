@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Docente: Inteligencia Artificial para el Aula Universitaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #2e2e4a;
+    --paper: #f7f6f2;
+    --paper-warm: #edeae2;
+    --accent: #1b4f8a;
+    --accent-light: #2563b0;
+    --accent-muted: #dce8f5;
+    --gold: #b8872a;
+    --gold-light: #f5e8c8;
+    --rule: #c8c4b8;
+    --success: #2d6a4f;
+    --success-light: #d8f3dc;
+    --tag-bg: #e8e4dc;
+    --sidebar: #1b2a45;
+
+    --font-display: 'Crimson Pro', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --step-xs: 0.75rem;
+    --step-sm: 0.875rem;
+    --step-base: 1rem;
+    --step-md: 1.125rem;
+    --step-lg: 1.375rem;
+    --step-xl: 1.75rem;
+    --step-2xl: 2.25rem;
+    --step-3xl: 3rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--step-base);
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--sidebar);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    gap: 0;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-size: var(--step-md);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    margin-right: auto;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+  .nav-links a {
+    display: block;
+    padding: 0 1rem;
+    height: 56px;
+    line-height: 56px;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    font-size: var(--step-sm);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.18s, background 0.18s;
+  }
+  .nav-links a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.07);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+
+  /* ── LAYOUT ── */
+  main { margin-top: 56px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--sidebar);
+    color: #fff;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, #e8c46a 50%, var(--gold) 100%);
+  }
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-logo-box {
+    width: 120px;
+    height: 120px;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .hero-logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+  .hero-logo-placeholder {
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: var(--step-xs);
+    font-family: var(--font-mono);
+    line-height: 1.4;
+    padding: 0.5rem;
+  }
+  .hero-eyebrow {
+    font-size: var(--step-sm);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: var(--step-3xl);
+    font-weight: 300;
+    line-height: 1.18;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  .hero h1 strong {
+    font-weight: 700;
+    color: #fff;
+  }
+  .hero-sub {
+    font-size: var(--step-md);
+    color: rgba(255,255,255,0.68);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    font-size: var(--step-sm);
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero-meta strong { color: rgba(255,255,255,0.82); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 4rem 2rem;
+  }
+  section:nth-child(even) {
+    background: var(--paper-warm);
+  }
+  .section-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: var(--step-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: var(--step-2xl);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.22;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-xl);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    margin-top: 2.5rem;
+  }
+  h4 {
+    font-size: var(--step-base);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  p {
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    max-width: 72ch;
+  }
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--ink-soft);
+  }
+  li { margin-bottom: 0.4rem; }
+
+  /* ── INTRO CARDS ── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .intro-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+  .intro-card-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  .intro-card h4 {
+    margin-top: 0;
+    font-size: var(--step-sm);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .intro-card p {
+    font-size: var(--step-sm);
+    margin-bottom: 0;
+  }
+
+  /* ── OBJECTIVES ── */
+  .obj-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .obj-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+  }
+  .obj-num {
+    font-family: var(--font-mono);
+    font-size: var(--step-sm);
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* ── TOOL SECTIONS ── */
+  .tool-header {
+    background: var(--sidebar);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 6px 6px 0 0;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+  .tool-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 2rem; right: 2rem;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .tool-tag {
+    display: inline-block;
+    font-size: var(--step-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(184,135,42,0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .tool-header h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-xl);
+    margin-top: 0;
+    color: #fff;
+  }
+  .tool-header p {
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0;
+    max-width: 60ch;
+    font-size: var(--step-sm);
+  }
+  .tool-body {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 2rem;
+  }
+
+  /* ── STEPS ── */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    margin: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    background: var(--accent-muted);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: var(--step-sm);
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1rem;
+    border-right: 1px solid var(--rule);
+  }
+  .step-content {
+    padding: 0.875rem 1.25rem;
+  }
+  .step-content strong {
+    display: block;
+    font-size: var(--step-sm);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .step-content p {
+    font-size: var(--step-sm);
+    margin-bottom: 0;
+  }
+
+  /* ── CODE / PROMPT BLOCK ── */
+  .prompt-block {
+    background: #0f1623;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  .prompt-label {
+    background: rgba(255,255,255,0.06);
+    padding: 0.4rem 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-xs);
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .prompt-body {
+    padding: 1rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-sm);
+    color: #a8d8a8;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-body .dim { color: rgba(255,255,255,0.35); }
+  .prompt-body .hi { color: #f9e07a; }
+
+  /* ── TIP BOX ── */
+  .tip {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    padding: 0.875rem 1.25rem;
+    border-radius: 0 4px 4px 0;
+    margin: 1.25rem 0;
+    font-size: var(--step-sm);
+  }
+  .tip strong {
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .tip p { margin-bottom: 0; color: var(--ink); }
+
+  .note {
+    background: var(--accent-muted);
+    border-left: 3px solid var(--accent);
+    padding: 0.875rem 1.25rem;
+    border-radius: 0 4px 4px 0;
+    margin: 1.25rem 0;
+    font-size: var(--step-sm);
+  }
+  .note strong {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .note p { margin-bottom: 0; }
+
+  /* ── ACTIVITY CARDS ── */
+  .activity-card {
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  .activity-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .activity-num {
+    font-family: var(--font-mono);
+    font-size: var(--step-2xl);
+    font-weight: 700;
+    opacity: 0.35;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .activity-header-text {}
+  .activity-header h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-xl);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.2rem;
+  }
+  .activity-header p {
+    font-size: var(--step-sm);
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+  }
+  .activity-body {
+    padding: 1.75rem;
+    background: #fff;
+  }
+  .activity-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .meta-pill {
+    font-size: var(--step-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2px;
+    background: var(--tag-bg);
+    color: var(--ink-soft);
+  }
+  .meta-pill.green { background: var(--success-light); color: var(--success); }
+  .meta-pill.blue { background: var(--accent-muted); color: var(--accent); }
+
+  .deliverable-box {
+    background: var(--success-light);
+    border: 1.5px solid var(--success);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .deliverable-box strong {
+    display: block;
+    font-size: var(--step-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--success);
+    margin-bottom: 0.35rem;
+  }
+  .deliverable-box p { margin: 0; font-size: var(--step-sm); }
+
+  /* ── REFLECTION ── */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .reflection-card {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.25rem;
+    background: #fff;
+  }
+  .reflection-card h4 {
+    margin-top: 0;
+    font-size: var(--step-sm);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .reflection-card p {
+    font-size: var(--step-sm);
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ── PLANNING TABLE ── */
+  .planning-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: var(--step-sm);
+  }
+  .planning-table th {
+    background: var(--sidebar);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: var(--step-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .planning-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  .planning-table tr:last-child td { border-bottom: none; }
+  .planning-table tr:hover td { background: var(--paper-warm); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--sidebar);
+    color: rgba(255,255,255,0.55);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: var(--step-sm);
+    border-top: 2px solid var(--gold);
+  }
+  footer strong { color: rgba(255,255,255,0.85); }
+
+  /* ── ACCORDION ── */
+  details {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin: 0.75rem 0;
+    background: #fff;
+    overflow: hidden;
+  }
+  details[open] { border-color: var(--accent); }
+  summary {
+    padding: 0.875rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--step-sm);
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { content: '−'; }
+  .details-body {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    font-size: var(--step-sm);
+    color: var(--ink-soft);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  /* ── ARTIFACT DEMO ── */
+  .artifact-demo {
+    background: #0f1623;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .artifact-demo-bar {
+    background: rgba(255,255,255,0.06);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .artifact-demo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .artifact-demo-dot.r { background: #ff5f57; }
+  .artifact-demo-dot.y { background: #ffbd2e; }
+  .artifact-demo-dot.g { background: #28c840; }
+  .artifact-demo-title {
+    font-family: var(--font-mono);
+    font-size: var(--step-xs);
+    color: rgba(255,255,255,0.4);
+    margin-left: 0.5rem;
+  }
+  .artifact-demo-body {
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-sm);
+    color: #c9d1d9;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .artifact-demo-body .kw { color: #79c0ff; }
+  .artifact-demo-body .str { color: #a5d6ff; }
+  .artifact-demo-body .fn { color: #d2a8ff; }
+  .artifact-demo-body .cm { color: #8b949e; }
+  .artifact-demo-body .val { color: #f0b429; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--sidebar); }
+    .nav-links.open a { height: auto; line-height: 2.5; padding: 0 1.5rem; }
+    .nav-toggle { display: block; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-logo-box { display: none; }
+    .hero h1 { font-size: var(--step-2xl); }
+    h2 { font-size: var(--step-xl); }
+    .steps li { grid-template-columns: 36px 1fr; }
+    .planning-table { font-size: var(--step-xs); }
+    .planning-table th, .planning-table td { padding: 0.5rem 0.6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Guía Docente · IA en el Aula</span>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#introduccion">Introduccion</a></li>
+    <li><a href="#herramienta-1">Claude.ai</a></li>
+    <li><a href="#herramienta-2">Artefactos</a></li>
+    <li><a href="#herramienta-3">Gamificacion</a></li>
+    <li><a href="#actividades">Actividades</a></li>
+    <li><a href="#reflexion">Reflexion</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="hero-logo-box" id="logoBox">
+      <div class="hero-logo-placeholder">
+        <div style="font-size:2rem;opacity:0.3;">&#127979;</div>
+        <div>Logo de la<br>Universidad<br>de la Cienega</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Universidad de la Cienega &mdash; Formacion Docente 2025</p>
+      <h1>Inteligencia Artificial<br><strong>para el Aula Universitaria</strong></h1>
+      <p class="hero-sub">Guia practica para el uso de Claude.ai, creacion de artefactos interactivos y diseno de actividades gamificadas en el nivel licenciatura.</p>
+      <div class="hero-meta">
+        <span><strong>Enfoque:</strong> Pedagogia activa &amp; Constructivismo</span>
+        <span><strong>Modalidad:</strong> Taller docente</span>
+        <span><strong>Duracion estimada:</strong> 4 horas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INTRODUCCION -->
+<section id="introduccion">
+  <div class="section-inner">
+    <p class="section-label">Contexto</p>
+    <h2>Introduccion y Marco Pedagogico</h2>
+    <p>Esta guia esta disenada bajo los principios del <strong>constructivismo</strong> y la <strong>pedagogia activa</strong>, reconociendo que el aprendizaje significativo ocurre cuando el docente construye conocimiento a partir de la experiencia directa, la reflexion critica y la colaboracion con sus pares. No se trata de aprender a usar una herramienta tecnologica de manera instrumental, sino de integrarla de forma critica y creativa en los procesos de ensenanza y aprendizaje de nivel licenciatura.</p>
+    <p>La inteligencia artificial generativa, en particular Claude.ai, representa una oportunidad para enriquecer el diseno didactico, automatizar tareas rutinarias y generar contenidos interactivos que promuevan la participacion activa del estudiante. Este taller propone explorar estas posibilidades de manera practica, reflexiva y aplicada a las asignaturas reales de cada docente participante.</p>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <div class="intro-card-icon">&#9881;</div>
+        <h4>Herramienta 1</h4>
+        <p>Uso de <strong>Claude.ai</strong> para preparacion de clase, diseno de rubricas, elaboracion de material didactico y retroalimentacion formativa.</p>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-icon">&#128196;</div>
+        <h4>Herramienta 2</h4>
+        <p>Creacion de <strong>Artefactos de Claude</strong>: documentos interactivos, simulaciones, quizzes y recursos visuales generados con IA.</p>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-icon">&#127918;</div>
+        <h4>Herramienta 3</h4>
+        <p><strong>Gamificacion e interactividad</strong>: diseno de actividades ludicas, mecanicas de juego y experiencias inmersivas para el aprendizaje universitario.</p>
+      </div>
+    </div>
+
+    <h3>Objetivos de Aprendizaje</h3>
+    <p>Al concluir esta guia y las actividades propuestas, el docente participante sera capaz de:</p>
+    <ol class="obj-list">
+      <li>
+        <span class="obj-num">1</span>
+        <span>Utilizar Claude.ai de forma autonoma para generar, adaptar y mejorar material didactico orientado a sus asignaturas especificas.</span>
+      </li>
+      <li>
+        <span class="obj-num">2</span>
+        <span>Crear artefactos interactivos (HTML, quizzes, simulaciones) mediante Claude.ai y publicarlos en plataformas accesibles para sus estudiantes.</span>
+      </li>
+      <li>
+        <span class="obj-num">3</span>
+        <span>Disenar al menos una actividad gamificada alineada a los resultados de aprendizaje de su asignatura, incorporando principios de motivacion intrinseca y construccion colaborativa del conocimiento.</span>
+      </li>
+      <li>
+        <span class="obj-num">4</span>
+        <span>Reflexionar critica y propositivamente sobre las implicaciones eticas del uso de inteligencia artificial en contextos educativos universitarios.</span>
+      </li>
+      <li>
+        <span class="obj-num">5</span>
+        <span>Elaborar un plan de implementacion concreto para integrar las herramientas trabajadas en al menos una unidad tematica de su asignatura.</span>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <strong>Enfoque constructivista</strong>
+      <p>A lo largo de esta guia encontrara momentos de exploracion individual, discusion entre pares y construccion colaborativa. Cada seccion concluye con una pregunta de reflexion que le invita a vincular lo aprendido con su practica docente real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTA 1: CLAUDE.AI -->
+<section id="herramienta-1">
+  <div class="section-inner">
+    <p class="section-label">Modulo 1</p>
+    <h2>Claude.ai: Su Asistente de Ensenanza</h2>
+    <p>Claude.ai es un asistente de inteligencia artificial desarrollado por Anthropic. A diferencia de un buscador de internet, Claude puede sostener conversaciones complejas, razonar sobre problemas pedagogicos, generar contenido original y adaptar su estilo de comunicacion al contexto que usted le proporcione.</p>
+
+    <div class="tool-header">
+      <span class="tool-tag">Paso a Paso</span>
+      <h3>Acceso y Configuracion Inicial</h3>
+      <p>Siga estas instrucciones para crear su cuenta y familiarizarse con la interfaz de Claude.ai antes de las actividades practicas.</p>
+    </div>
+    <div class="tool-body">
+      <ol class="steps">
+        <li>
+          <div class="step-content">
+            <strong>Acceder a la plataforma</strong>
+            <p>Abra su navegador e ingrese a <code>https://claude.ai</code>. Haga clic en el boton "Registrarse" si es su primera vez, o "Iniciar sesion" si ya cuenta con cuenta.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Crear una cuenta</strong>
+            <p>Puede registrarse con su correo electronico institucional o con una cuenta de Google. Se recomienda usar el correo institucional para mantener separadas las actividades profesionales de las personales.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Explorar la interfaz principal</strong>
+            <p>La pantalla principal muestra un campo de texto para escribir su mensaje. En la parte superior izquierda encontrara el historial de conversaciones. Cada nueva sesion de preguntas se denomina "conversacion" y puede darle un nombre descriptivo.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Iniciar su primera conversacion</strong>
+            <p>Escriba en el campo de texto un saludo y una breve descripcion de la asignatura que imparte. Por ejemplo: "Hola, soy docente universitario de Calculo Diferencial. Me gustaria que me ayudes a disenar material didactico para mis estudiantes de primer semestre."</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Comprender el concepto de "contexto"</strong>
+            <p>Mientras mas informacion proporcione sobre sus estudiantes, el nivel educativo, los temas y sus objetivos, mejores seran las respuestas de Claude. A este conjunto de informacion se le llama "contexto" o "prompt".</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <h3>Aplicaciones Pedagogicas Fundamentales</h3>
+    <p>A continuacion se presentan los usos mas relevantes de Claude.ai para la practica docente universitaria, con ejemplos de prompts (instrucciones) que puede utilizar o adaptar directamente.</p>
+
+    <details>
+      <summary>Diseno de planes de clase estructurados</summary>
+      <div class="details-body">
+        <p>Claude puede generar un plan de clase completo a partir de los elementos esenciales que usted le proporcione: nombre de la asignatura, tema especifico, nivel de los estudiantes, duracion de la sesion y el resultado de aprendizaje esperado.</p>
+        <div class="prompt-block">
+          <div class="prompt-label">Ejemplo de prompt</div>
+          <div class="prompt-body"><span class="hi">Eres un experto en didactica universitaria.</span>
+<span class="dim">Diseña un plan de clase para una sesion de 90 minutos sobre
+el tema "[TEMA]" en la asignatura "[ASIGNATURA]".
+Los estudiantes son de [SEMESTRE] semestre de la carrera de [CARRERA].
+El resultado de aprendizaje es: "[OBJETIVO]".
+El plan debe incluir: momento de apertura, desarrollo, cierre,
+estrategias de evaluacion formativa y materiales necesarios.
+Sigue el modelo de la pedagogia activa.</span></div>
+        </div>
+        <p>Sustituya los campos entre corchetes con la informacion de su asignatura. Claude generara una estructura completa que usted puede revisar, editar y enriquecer con su experiencia profesional.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Elaboracion de rubricas de evaluacion</summary>
+      <div class="details-body">
+        <p>Una rubrica bien disenada orienta al estudiante sobre lo que se espera de su desempeno y facilita una evaluacion objetiva y justa. Claude puede generar rubricas analiticas o holisticas para diferentes tipos de evidencias.</p>
+        <div class="prompt-block">
+          <div class="prompt-label">Ejemplo de prompt</div>
+          <div class="prompt-body"><span class="hi">Crea una rubrica analitica</span> para evaluar [TIPO DE PRODUCTO: ensayo/
+presentacion/proyecto/practica] en la asignatura [NOMBRE].
+<span class="dim">La rubrica debe tener 5 criterios de evaluacion con 4 niveles
+de desempeno cada uno (Excelente, Satisfactorio, En proceso, Insuficiente).
+Incluye descriptores especificos y observables para cada nivel.
+El producto sera desarrollado por estudiantes de licenciatura.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Generacion de preguntas para evaluacion formativa</summary>
+      <div class="details-body">
+        <p>Las preguntas formativas permiten verificar la comprension de los estudiantes durante el proceso de aprendizaje, no solo al final. Claude puede generar preguntas de diferente nivel taxonomico segun la taxonomia de Bloom.</p>
+        <div class="prompt-block">
+          <div class="prompt-label">Ejemplo de prompt</div>
+          <div class="prompt-body"><span class="dim">Genera 10 preguntas de evaluacion formativa sobre el tema </span>
+<span class="hi">"[TEMA]"</span><span class="dim"> para estudiantes de [SEMESTRE] semestre.
+Incluye preguntas en los siguientes niveles de la taxonomia de Bloom:
+- 3 preguntas de comprension y recuerdo
+- 3 preguntas de aplicacion y analisis
+- 2 preguntas de evaluacion critica
+- 2 preguntas de creacion y sintesis
+Incluye las respuestas esperadas para cada pregunta.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Redaccion de retroalimentacion formativa personalizada</summary>
+      <div class="details-body">
+        <p>Claude puede ayudarle a redactar comentarios de retroalimentacion constructivos, especificos y orientados al crecimiento academico del estudiante, tomando como base los trabajos entregados y los criterios de la rubrica.</p>
+        <div class="prompt-block">
+          <div class="prompt-label">Ejemplo de prompt</div>
+          <div class="prompt-body"><span class="dim">Redacta retroalimentacion formativa para un estudiante cuyo trabajo
+sobre "[TEMA]" muestra las siguientes fortalezas: [FORTALEZAS]
+y las siguientes areas de oportunidad: [AREAS].
+La retroalimentacion debe ser constructiva, especifica, respetuosa
+y debe incluir al menos dos sugerencias concretas de mejora.
+Evita el lenguaje evaluativo negativo. Maxima de 150 palabras.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="note">
+      <strong>Reflexion critica</strong>
+      <p>Antes de continuar, tome un momento para reflexionar: ¿En que areas de su practica docente actual le tomaria mas tiempo elaborar materiales? ¿Como podria Claude reducir esa carga sin reemplazar su criterio pedagogico y su conocimiento disciplinar?</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTA 2: ARTEFACTOS -->
+<section id="herramienta-2">
+  <div class="section-inner">
+    <p class="section-label">Modulo 2</p>
+    <h2>Artefactos de Claude: Contenido Interactivo con IA</h2>
+    <p>Los <strong>Artefactos</strong> son archivos que Claude puede generar directamente en la conversacion: paginas web interactivas, documentos estructurados, hojas de calculo, diagramas y aplicaciones simples. A diferencia de un texto ordinario, un artefacto es un producto funcional que usted puede descargar, compartir y publicar para que sus estudiantes lo utilicen.</p>
+
+    <div class="tool-header">
+      <span class="tool-tag">Concepto Clave</span>
+      <h3>¿Que es un Artefacto en Claude?</h3>
+      <p>Cuando Claude genera codigo HTML, una presentacion estructurada o un documento interactivo, lo muestra en un panel lateral que permite previsualizarlo y descargarlo. Ese contenido es el "artefacto".</p>
+    </div>
+    <div class="tool-body">
+      <p>Los tipos de artefactos mas utiles para la practica docente universitaria son:</p>
+      <ul>
+        <li><strong>Paginas web HTML:</strong> materiales de estudio interactivos, quizzes, infografias animadas, lineas de tiempo.</li>
+        <li><strong>Documentos de texto estructurado:</strong> guias de estudio, glosarios, mapas conceptuales en texto.</li>
+        <li><strong>Aplicaciones interactivas:</strong> simulaciones, calculadoras pedagogicas, juegos educativos sencillos.</li>
+        <li><strong>Visualizaciones de datos:</strong> graficas interactivas, tablas comparativas, esquemas de flujo.</li>
+      </ul>
+    </div>
+
+    <div class="tool-header" style="margin-top:2rem;">
+      <span class="tool-tag">Paso a Paso</span>
+      <h3>Como Solicitar y Usar un Artefacto</h3>
+      <p>Siga este proceso para generar su primer artefacto interactivo relacionado con su asignatura.</p>
+    </div>
+    <div class="tool-body">
+      <ol class="steps">
+        <li>
+          <div class="step-content">
+            <strong>Iniciar la conversacion con contexto especifico</strong>
+            <p>Antes de pedir el artefacto, proporcione a Claude el contexto de su asignatura: tema, nivel de los estudiantes y proposito del material.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Solicitar explicitamente un artefacto web</strong>
+            <p>Use frases como: "Crea un artefacto HTML interactivo...", "Genera una pagina web que incluya...", o "Diseña una aplicacion interactiva en HTML y CSS que permita a los estudiantes..."</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Revisar el panel de artefacto</strong>
+            <p>Claude mostrara el codigo y, en el panel derecho, una previsualizacion del resultado. Revise que el contenido sea correcto y este bien presentado.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Solicitar ajustes</strong>
+            <p>Si desea modificar colores, agregar informacion, cambiar la estructura o añadir interactividad, simplemente escriba en la misma conversacion: "Modifica el artefacto para que..."</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Descargar y publicar</strong>
+            <p>Haga clic en el boton de descarga del artefacto para obtener el archivo HTML. Este puede publicarse en Google Sites, subirse a GitHub Pages o adjuntarse directamente en Google Classroom.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <h3>Ejemplos de Artefactos por Disciplina</h3>
+
+    <details>
+      <summary>Ciencias exactas e ingenieria: Simulador de conceptos</summary>
+      <div class="details-body">
+        <div class="prompt-block">
+          <div class="prompt-label">Prompt para ciencias exactas</div>
+          <div class="prompt-body"><span class="hi">Crea un artefacto HTML interactivo</span> que simule el comportamiento
+de un circuito RC (resistencia-capacitor) en serie.
+<span class="dim">El artefacto debe:
+- Permitir al usuario ajustar los valores de R y C con sliders
+- Mostrar la grafica de carga/descarga del capacitor en tiempo real
+- Incluir las ecuaciones involucradas con notacion clara
+- Mostrar una breve explicacion del comportamiento observable
+- Usar un diseno limpio y profesional adecuado para nivel licenciatura</span></div>
+        </div>
+        <p>Este tipo de simulador permite al estudiante experimentar con variables y observar resultados en tiempo real, promoviendo el aprendizaje por descubrimiento.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Ciencias sociales y humanidades: Mapa conceptual interactivo</summary>
+      <div class="details-body">
+        <div class="prompt-block">
+          <div class="prompt-label">Prompt para ciencias sociales</div>
+          <div class="prompt-body"><span class="hi">Crea un artefacto HTML</span> con un mapa conceptual interactivo
+sobre [CONCEPTO CENTRAL: ej. "las teorias del contrato social"].
+<span class="dim">El mapa debe:
+- Mostrar al menos 6 nodos con los autores o conceptos clave
+- Permitir hacer clic en cada nodo para ver una descripcion breve
+- Incluir conexiones visuales que muestren las relaciones entre ideas
+- Tener una paleta de colores que diferencie categorias conceptuales
+- Incluir una pregunta de reflexion al final para el estudiante</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Administracion y negocios: Caso interactivo de analisis</summary>
+      <div class="details-body">
+        <div class="prompt-block">
+          <div class="prompt-label">Prompt para administracion</div>
+          <div class="prompt-body"><span class="hi">Crea un artefacto HTML</span> con un caso de estudio interactivo
+sobre toma de decisiones empresariales en una PYME mexicana.
+<span class="dim">El caso debe:
+- Presentar un escenario realista de 3-4 parrafos
+- Incluir 3 momentos de decision donde el estudiante elige entre opciones
+- Mostrar consecuencias inmediatas de cada decision
+- Registrar las decisiones tomadas y mostrar un resumen al final
+- Incluir preguntas de analisis critico para discusion grupal</span></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="artifact-demo">
+      <div class="artifact-demo-bar">
+        <span class="artifact-demo-dot r"></span>
+        <span class="artifact-demo-dot y"></span>
+        <span class="artifact-demo-dot g"></span>
+        <span class="artifact-demo-title">ejemplo_artefacto.html — Vista previa del codigo generado por Claude</span>
+      </div>
+      <div class="artifact-demo-body"><span class="cm">/* Estructura tipica de un artefacto HTML generado por Claude */</span>
+
+<span class="kw">&lt;!DOCTYPE html&gt;</span>
+<span class="kw">&lt;html</span> <span class="str">lang</span>=<span class="val">"es"</span><span class="kw">&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;title&gt;</span>Simulador Interactivo - [Su Asignatura]<span class="kw">&lt;/title&gt;</span>
+  <span class="cm">&lt;!-- Claude genera automaticamente estilos CSS integrados --&gt;</span>
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body&gt;</span>
+  <span class="cm">&lt;!-- Contenido interactivo con JavaScript incluido --&gt;</span>
+  <span class="kw">&lt;div</span> <span class="str">class</span>=<span class="val">"quiz-container"</span><span class="kw">&gt;</span>
+    <span class="cm">&lt;!-- Preguntas, respuestas y retroalimentacion automatica --&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span>
+
+<span class="cm">→ Este archivo puede descargarse y publicarse directamente</span>
+<span class="cm">  en GitHub Pages, Google Sites o adjuntarse en Classroom.</span></div>
+    </div>
+
+    <div class="tip">
+      <strong>Consejo practico</strong>
+      <p>Comience con artefactos sencillos: un glosario interactivo con terminos de su asignatura, o un quiz de 5 preguntas sobre el tema mas reciente. A medida que gane confianza, podra solicitar simulaciones y aplicaciones mas complejas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTA 3: GAMIFICACION -->
+<section id="herramienta-3">
+  <div class="section-inner">
+    <p class="section-label">Modulo 3</p>
+    <h2>Gamificacion e Interactividad en el Aula Universitaria</h2>
+    <p>La gamificacion no consiste en convertir la clase en un videojuego, sino en incorporar <strong>mecanicas de juego</strong> (desafios, recompensas, narrativas, progresion) al diseno de actividades de aprendizaje para incrementar la motivacion, el compromiso y la retencion del conocimiento. En el nivel licenciatura, la gamificacion debe mantener el rigor academico y orientarse al desarrollo de competencias profesionales.</p>
+
+    <h3>Principios para Gamificar con Proposito</h3>
+    <ul>
+      <li><strong>Objetivos claros:</strong> cada mecanica de juego debe estar alineada a un resultado de aprendizaje especifico.</li>
+      <li><strong>Desafio ajustado:</strong> el nivel de dificultad debe estar en la "zona de desarrollo proximo" del estudiante.</li>
+      <li><strong>Retroalimentacion inmediata:</strong> el estudiante debe saber de inmediato si su respuesta o accion es correcta y por que.</li>
+      <li><strong>Autonomia y agencia:</strong> el diseno debe permitir que el estudiante tome decisiones con consecuencias reales en el juego.</li>
+      <li><strong>Narrativa significativa:</strong> el contexto del juego debe ser relevante para la disciplina o la vida profesional futura.</li>
+    </ul>
+
+    <div class="tool-header" style="margin-top:2rem;">
+      <span class="tool-tag">Paso a Paso</span>
+      <h3>Disenar una Actividad Gamificada con Claude</h3>
+      <p>Proceso completo para convertir una actividad tradicional en una experiencia gamificada utilizando Claude.ai.</p>
+    </div>
+    <div class="tool-body">
+      <ol class="steps">
+        <li>
+          <div class="step-content">
+            <strong>Identificar la actividad de origen</strong>
+            <p>Elija una actividad que ya realice en su asignatura: un cuestionario, una lectura, un debate, una practica de laboratorio. Esta sera la base de la version gamificada.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Definir la mecanica de juego principal</strong>
+            <p>Determine que tipo de mecanica se adapta mejor al contenido: ¿competencia por puntos?, ¿resolucion de un misterio?, ¿construccion progresiva de un producto?, ¿roleplay profesional?</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Solicitar el diseno gamificado a Claude</strong>
+            <p>Proporcione todos los elementos anteriores en su prompt: actividad original, contenido disciplinar, mecanica elegida, nivel de estudiantes y restricciones de tiempo o recursos.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Solicitar el artefacto interactivo correspondiente</strong>
+            <p>Una vez aprobado el diseno conceptual, solicite a Claude el artefacto HTML que permita a los estudiantes vivir la experiencia gamificada digitalmente.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Publicar y comunicar las reglas</strong>
+            <p>Comparta el artefacto en Classroom con instrucciones claras sobre las reglas del juego, los criterios de evaluacion y la relevancia academica de la actividad.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="prompt-block">
+        <div class="prompt-label">Prompt maestro para gamificacion</div>
+        <div class="prompt-body"><span class="hi">Actua como un disenador instruccional especializado en gamificacion
+educativa para nivel universitario.</span>
+
+<span class="dim">Quiero transformar la siguiente actividad academica en una experiencia
+gamificada manteniendo el rigor disciplinar:
+
+ACTIVIDAD ORIGINAL: [descripcion de la actividad]
+ASIGNATURA: [nombre y nivel]
+CONTENIDO: [temas o conceptos involucrados]
+RESULTADO DE APRENDIZAJE: [lo que el estudiante debe demostrar]
+TIEMPO DISPONIBLE: [duracion en minutos]
+MODALIDAD: [presencial / en linea / hibrida]
+
+Diseña:
+1. Narrativa o contexto del juego (50 palabras max)
+2. Mecanicas principales (puntos, niveles, desafios, colaboracion)
+3. Flujo de la actividad paso a paso
+4. Criterios de "victoria" alineados al aprendizaje
+5. Prompt especifico para que yo le pida a Claude el artefacto HTML
+
+Evita mecanicas que generen competencia toxica o exclusion social.</span></div>
+      </div>
+    </div>
+
+    <h3>Tipos de Actividades Gamificadas por Modalidad</h3>
+
+    <details>
+      <summary>Escape room de conocimiento (presencial o digital)</summary>
+      <div class="details-body">
+        <p>Los estudiantes deben resolver una serie de enigmas o problemas disciplinares para "escapar" de un escenario narrativo. Cada enigma resuelto revela la siguiente pista. Esta mecanica promueve el pensamiento critico, la colaboracion y la aplicacion de conceptos bajo presion cognitiva moderada.</p>
+        <p><strong>Ideal para:</strong> evaluacion formativa de unidades completas, repaso antes de examenes, introduccion a temas complejos.</p>
+        <div class="prompt-block">
+          <div class="prompt-label">Prompt especifico</div>
+          <div class="prompt-body"><span class="hi">Crea un artefacto HTML de escape room educativo</span> sobre [TEMA].
+<span class="dim">El escape room debe tener 5 habitaciones o niveles, cada uno con
+un problema o pregunta sobre el tema. Al resolver correctamente,
+se revela una clave para la siguiente etapa. Al final, el estudiante
+ve un mensaje de exito y un resumen de los conceptos aplicados.
+Diseño profesional, tematica relacionada con [DISCIPLINA].</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Simulacion de rol profesional</summary>
+      <div class="details-body">
+        <p>Los estudiantes asumen el rol de un profesionista que debe tomar decisiones en un escenario realista de su campo. Esta mecanica es especialmente poderosa para carreras con componentes eticos, de gestion o de intervencion social.</p>
+        <p><strong>Ideal para:</strong> derecho, medicina, enfermeria, administracion, trabajo social, psicologia, ingenieria.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Construccion colaborativa por equipos (Quest grupal)</summary>
+      <div class="details-body">
+        <p>Cada equipo de estudiantes tiene una mision que solo puede cumplirse si todos los integrantes contribuyen con una pieza de conocimiento diferente. La interdependencia positiva obliga a la colaboracion genuina.</p>
+        <p><strong>Ideal para:</strong> proyectos integradores, investigacion tematica, analisis multidisciplinar.</p>
+      </div>
+    </details>
+
+    <div class="tip">
+      <strong>Consideracion etica</strong>
+      <p>La gamificacion puede generar ansiedad en estudiantes que no se identifican con ambientes competitivos. Diseñe siempre mecanicas colaborativas o de progresion individual como alternativa a los rankings publicos. El proposito es aumentar el compromiso, nunca la exclusion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDADES PRACTICAS -->
+<section id="actividades" style="background: var(--sidebar); color: #fff;">
+  <div class="section-inner">
+    <p class="section-label" style="color: var(--gold);">Actividades Practicas</p>
+    <h2 style="color: #fff;">Actividades para Subir a Google Classroom</h2>
+    <p style="color: rgba(255,255,255,0.7);">Las siguientes tres actividades estan disenadas para que las complete durante el taller y las publique en su espacio de Google Classroom. Cada actividad requiere reflexion critica, aplicacion directa a su asignatura y colaboracion con sus pares docentes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+
+    <!-- ACTIVIDAD 1 -->
+    <div class="activity-card">
+      <div class="activity-header">
+        <span class="activity-num">01</span>
+        <div class="activity-header-text">
+          <h3>Rediseno de un Material con IA: Analisis Critico Comparativo</h3>
+          <p>Aprendizaje significativo: Evaluacion critica del potencial y las limitaciones de Claude.ai en el diseno didactico</p>
+        </div>
+      </div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span class="meta-pill blue">Modulo 1 — Claude.ai</span>
+          <span class="meta-pill green">Individual</span>
+          <span class="meta-pill">60 minutos</span>
+          <span class="meta-pill">Subir a Classroom</span>
+        </div>
+
+        <h4>Descripcion de la Actividad</h4>
+        <p>Esta actividad le invita a tomar un material didactico que usted ya haya elaborado para su asignatura (plan de clase, guia de estudio, evaluacion, presentacion) y a generar una version alternativa utilizando Claude.ai. Posteriormente, realizara un analisis comparativo critico entre ambas versiones.</p>
+
+        <h4>Instrucciones Paso a Paso</h4>
+        <ol>
+          <li>Seleccione un material didactico propio que haya elaborado en los ultimos dos ciclos escolares. Puede ser un plan de clase, una guia de actividades, un examen o una presentacion.</li>
+          <li>Acceda a Claude.ai y diseñe un prompt detallado que incluya: nombre de la asignatura, nivel, tema especifico, resultado de aprendizaje y tipo de material que desea generar.</li>
+          <li>Genere al menos dos versiones del material usando prompts diferentes. Experimente con distintos niveles de detalle en sus instrucciones.</li>
+          <li>Compare las tres versiones (la suya y las dos de Claude) respondiendo las siguientes preguntas en un documento:</li>
+        </ol>
+
+        <div class="prompt-block">
+          <div class="prompt-label">Preguntas de analisis critico</div>
+          <div class="prompt-body"><span class="hi">Eje 1 — Contenido disciplinar</span>
+<span class="dim">¿La version de Claude es disciplinarmente precisa?
+¿Que elementos tuvieron que corregirse o complementarse?
+¿En que aspectos superó o quedo por debajo de su version original?</span>
+
+<span class="hi">Eje 2 — Pertinencia pedagogica</span>
+<span class="dim">¿El material generado es apropiado para el nivel y perfil de sus estudiantes?
+¿Promueve el pensamiento critico o solo la memorizacion?
+¿Como podria mejorarse el prompt para obtener un resultado mas pedagogico?</span>
+
+<span class="hi">Eje 3 — Implicaciones eticas</span>
+<span class="dim">¿Que considera importante que los docentes sepan sobre el uso de IA en el diseno de materiales?
+¿Bajo que condiciones seria inapropiado usar Claude para generar materiales educativos?</span></div>
+        </div>
+
+        <h4>Producto Esperado</h4>
+        <p>Un documento (PDF o Google Doc) que incluya: los prompts utilizados, las tres versiones del material (la suya y las dos de Claude), y su analisis critico respondiendo las preguntas anteriores. Longitud sugerida: 800-1200 palabras.</p>
+
+        <div class="deliverable-box">
+          <strong>Entrega en Classroom</strong>
+          <p>Suba su documento al espacio de Google Classroom del taller con el titulo: <em>"Actividad 1 — [Su nombre] — [Nombre de su asignatura]"</em>. Incluya una reflexion de cierre de no mas de tres oraciones sobre lo que aprendio de este ejercicio comparativo.</p>
+        </div>
+
+        <div class="note" style="margin-top:1rem;">
+          <strong>Conexion constructivista</strong>
+          <p>Esta actividad activa su conocimiento previo sobre diseno didactico y lo contrasta con las capacidades actuales de la IA, generando un aprendizaje por conflicto cognitivo: usted descubrira por si mismo donde la IA ayuda y donde requiere de su criterio profesional.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD 2 -->
+    <div class="activity-card">
+      <div class="activity-header">
+        <span class="activity-num">02</span>
+        <div class="activity-header-text">
+          <h3>Creacion de un Artefacto Interactivo para sus Estudiantes</h3>
+          <p>Aprendizaje significativo: Produccion de recursos digitales interactivos alineados a los resultados de aprendizaje de la asignatura</p>
+        </div>
+      </div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span class="meta-pill blue">Modulo 2 — Artefactos</span>
+          <span class="meta-pill green">Individual con revision por pares</span>
+          <span class="meta-pill">75 minutos</span>
+          <span class="meta-pill">Subir a Classroom</span>
+        </div>
+
+        <h4>Descripcion de la Actividad</h4>
+        <p>En esta actividad creara un artefacto HTML interactivo que pueda utilizar directamente con sus estudiantes en las proximas dos semanas. El artefacto debe ser funcional, disciplinarmente correcto y pedagogicamente intencional: debe promover la reflexion o la practica activa, no solo la recepcion pasiva de informacion.</p>
+
+        <h4>Instrucciones Paso a Paso</h4>
+        <ol>
+          <li>Identifique un tema de su asignatura que suele ser dificil de aprender para sus estudiantes, o una actividad de evaluacion formativa que actualmente realiza en papel o de forma oral.</li>
+          <li>Decida el tipo de artefacto que mejor se adapta: quiz interactivo, glosario con definiciones expandibles, linea de tiempo de un proceso, mapa conceptual clickeable, simulacion de un procedimiento, o caso de estudio con toma de decisiones.</li>
+          <li>Construya su prompt siguiendo esta estructura:</li>
+        </ol>
+
+        <div class="prompt-block">
+          <div class="prompt-label">Estructura de prompt para artefactos</div>
+          <div class="prompt-body"><span class="hi">Crea un artefacto HTML interactivo y autosuficiente</span>
+(sin dependencias externas) con las siguientes caracteristicas:
+
+<span class="dim">PROPOSITO: [Que debe aprender o practicar el estudiante]
+ASIGNATURA: [Nombre] - [Carrera] - [Semestre]
+TEMA: [Concepto o contenido especifico]
+TIPO DE INTERACCION: [Quiz / Simulacion / Mapa / Caso / Otro]
+CONTENIDO A INCLUIR:
+  - [Elemento 1]
+  - [Elemento 2]
+  - [Elemento 3]
+RETROALIMENTACION: Debe mostrar explicaciones inmediatas
+ESTETICA: Diseno profesional, colores institucionales [opcional]
+ACCESIBILIDAD: Texto legible, alto contraste, sin animaciones distorsionadoras</span></div>
+        </div>
+
+        <ol start="4">
+          <li>Descargue el archivo HTML generado y abra lo en su navegador para probarlo. Si algo no funciona o el contenido necesita ajustarse, vuelva a Claude y solicite los cambios necesarios.</li>
+          <li>Comparta el artefacto con al menos un colega docente participante del taller para que lo pruebe y le proporcione retroalimentacion usando estas preguntas:</li>
+        </ol>
+
+        <div class="prompt-block">
+          <div class="prompt-label">Guia de revision por pares</div>
+          <div class="prompt-body"><span class="hi">Como par revisor, evalua el artefacto respondiendo:</span>
+<span class="dim">
+1. ¿El contenido disciplinar es correcto y claro para el nivel indicado?
+2. ¿La interaccion realmente promueve el aprendizaje activo o es solo visual?
+3. ¿La retroalimentacion que da el artefacto es formativa y constructiva?
+4. ¿Que agregarias, quitarias o modificarias para mejorar la experiencia?
+5. ¿Usarias este tipo de recurso con tus propios estudiantes? ¿Por que?</span></div>
+        </div>
+
+        <h4>Producto Esperado</h4>
+        <p>El archivo HTML del artefacto (o el enlace si lo publica en GitHub Pages o Google Sites), mas un breve documento de contexto (300-400 palabras) que explique: el proposito pedagogico del artefacto, como se usara con los estudiantes, y los ajustes que realizo tras la revision por pares.</p>
+
+        <div class="deliverable-box">
+          <strong>Entrega en Classroom</strong>
+          <p>Suba el archivo HTML y el documento de contexto. Adicionalmente, deje un comentario en la tarea respondiendo: ¿Que fue lo mas sorprendente o desafiante del proceso de creacion de este artefacto?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD 3 -->
+    <div class="activity-card">
+      <div class="activity-header">
+        <span class="activity-num">03</span>
+        <div class="activity-header-text">
+          <h3>Diseno Colaborativo de una Experiencia Gamificada</h3>
+          <p>Aprendizaje significativo: Construccion colaborativa de estrategias didacticas innovadoras con sustento pedagogico</p>
+        </div>
+      </div>
+      <div class="activity-body">
+        <div class="activity-meta">
+          <span class="meta-pill blue">Modulo 3 — Gamificacion</span>
+          <span class="meta-pill green">Equipos de 3-4 docentes</span>
+          <span class="meta-pill">90 minutos</span>
+          <span class="meta-pill">Subir a Classroom</span>
+        </div>
+
+        <h4>Descripcion de la Actividad</h4>
+        <p>En esta actividad colaborativa, su equipo diseñara una experiencia gamificada completa para una asignatura universitaria real (la de uno de los integrantes del equipo). El diseno debe incluir: el artefacto HTML interactivo, la guia del docente para facilitar la actividad y una rubrica de evaluacion alineada al aprendizaje, no al desempeno en el juego.</p>
+
+        <h4>Instrucciones Paso a Paso</h4>
+        <ol>
+          <li><strong>Eleccion del caso base (10 min):</strong> El equipo selecciona la asignatura y el tema que se gamificara. El criterio de seleccion debe ser: ¿cual es el tema donde los estudiantes suelen mostrar menor motivacion o mayor dificultad?</li>
+          <li><strong>Mapeo de la mecanica (15 min):</strong> Como equipo, completen la siguiente ficha de diseno antes de solicitar nada a Claude:</li>
+        </ol>
+
+        <div class="prompt-block">
+          <div class="prompt-label">Ficha de diseno gamificado</div>
+          <div class="prompt-body"><span class="hi">FICHA DE DISENO — EXPERIENCIA GAMIFICADA</span>
+
+<span class="dim">Asignatura y tema: ___________________________
+Resultado de aprendizaje objetivo: ___________________________
+Perfil del estudiante (semestre, carrera): ___________________________
+
+MECANICA PRINCIPAL (elegir una):
+[ ] Escape room    [ ] Simulacion de rol    [ ] Quest grupal
+[ ] Trivia competitiva    [ ] Construccion progresiva    [ ] Otra: ___
+
+NARRATIVA (contexto del juego en 2 oraciones):
+_______________________________________________________________
+
+CONDICION DE EXITO (¿que debe hacer el estudiante para "ganar"?):
+_______________________________________________________________
+
+COMPONENTE COLABORATIVO (¿como se requiere trabajo en equipo?):
+_______________________________________________________________
+
+VINCULO CON EL APRENDIZAJE (¿que competencia o conocimiento
+se demuestra al completar el juego?):
+_______________________________________________________________</span></div>
+        </div>
+
+        <ol start="3">
+          <li><strong>Generacion del artefacto con Claude (30 min):</strong> Usando la ficha como base, elaboren el prompt para Claude y generen el artefacto HTML. Hagan al menos dos iteraciones para refinar el resultado.</li>
+          <li><strong>Elaboracion de la guia del docente (15 min):</strong> Redacten un documento de una pagina que explique como facilitar esta actividad: como presentarla, como conformar equipos, que hacer si los estudiantes se atascan, y como cerrar la sesion con una reflexion colectiva.</li>
+          <li><strong>Diseno de la rubrica de aprendizaje (10 min):</strong> Soliciten a Claude una rubrica que evalúe el aprendizaje demostrado durante el juego, no la cantidad de puntos obtenidos. La rubrica debe tener al menos 3 criterios relacionados con el resultado de aprendizaje elegido.</li>
+          <li><strong>Presentacion ante el grupo (10 min):</strong> Cada equipo tendra 5 minutos para demostrar su artefacto ante los demas docentes y recibir preguntas o sugerencias.</li>
+        </ol>
+
+        <h4>Producto Esperado</h4>
+        <p>Un paquete didactico completo que incluye: (1) el artefacto HTML de la experiencia gamificada, (2) la ficha de diseno completada, (3) la guia de facilitacion para el docente, y (4) la rubrica de evaluacion del aprendizaje.</p>
+
+        <div class="deliverable-box">
+          <strong>Entrega en Classroom</strong>
+          <p>El equipo sube el paquete completo a Classroom. Cada integrante, de manera individual, agrega un comentario respondiendo: ¿Que aprendiste del diseno colaborativo que no habrias logrado trabajando solo? ¿Que parte del diseno fue la mas desafiante y por que?</p>
+        </div>
+
+        <div class="note" style="margin-top:1rem;">
+          <strong>Aprendizaje colaborativo</strong>
+          <p>Esta actividad replica el modelo de comunidades de aprendizaje profesional (CAP): docentes que aprenden unos de otros, construyen juntos y se retroalimentan mutuamente. Este es el mismo modelo que se invita a replicar con los estudiantes en el aula.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REFLEXION FINAL -->
+<section id="reflexion">
+  <div class="section-inner">
+    <p class="section-label">Cierre</p>
+    <h2>Reflexion y Plan de Implementacion</h2>
+    <p>El conocimiento adquirido en este taller adquiere verdadero significado cuando se traduce en accion dentro del aula. Esta seccion final le propone un ejercicio de metacognicion y planificacion concreta para que lo aprendido no quede como experiencia aislada, sino que se integre de manera sostenida a su practica docente.</p>
+
+    <h3>Preguntas de Reflexion Final</h3>
+    <p>Tome al menos 10 minutos para responder estas preguntas de forma escrita. No hay respuestas correctas o incorrectas; el objetivo es activar su pensamiento critico y reflexivo como profesional de la educacion.</p>
+
+    <div class="reflection-grid">
+      <div class="reflection-card">
+        <h4>Aprendizaje</h4>
+        <p>¿Cual es el aprendizaje mas significativo que me llevo de este taller? ¿Por que lo considero significativo?</p>
+      </div>
+      <div class="reflection-card">
+        <h4>Tension</h4>
+        <p>¿Que tension o pregunta sin resolver me genera el uso de inteligencia artificial en la educacion? ¿Como la abordo por ahora?</p>
+      </div>
+      <div class="reflection-card">
+        <h4>Transformacion</h4>
+        <p>¿Que cambiaria en mi practica docente actual como resultado de lo que aprendi hoy? ¿Que dejaria igual y por que?</p>
+      </div>
+      <div class="reflection-card">
+        <h4>Etica</h4>
+        <p>¿Que obligaciones eticas tengo como docente al incorporar IA en mi asignatura? ¿Que debo comunicarle explicitamente a mis estudiantes?</p>
+      </div>
+    </div>
+
+    <h3>Plan de Implementacion en mi Asignatura</h3>
+    <p>Complete la siguiente tabla de planificacion. Elija al menos <strong>dos acciones concretas</strong> que implementara en su asignatura en las proximas cuatro semanas. Sea especifico: una intencion vaga raramente se convierte en accion.</p>
+
+    <table class="planning-table">
+      <thead>
+        <tr>
+          <th>Herramienta / Estrategia</th>
+          <th>Asignatura y Tema</th>
+          <th>Accion Concreta</th>
+          <th>Fecha Estimada</th>
+          <th>Criterio de Exito</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude.ai para diseno didactico</td>
+          <td><em>[Su asignatura y tema especifico]</em></td>
+          <td><em>[Describir la accion exacta: generar, mejorar, adaptar que material]</em></td>
+          <td><em>[Semana X]</em></td>
+          <td><em>[¿Como sabra que fue exitoso?]</em></td>
+        </tr>
+        <tr>
+          <td>Artefacto interactivo HTML</td>
+          <td><em>[Su asignatura y tema especifico]</em></td>
+          <td><em>[Tipo de artefacto y como lo usara con los estudiantes]</em></td>
+          <td><em>[Semana X]</em></td>
+          <td><em>[¿Como medira el impacto en el aprendizaje?]</em></td>
+        </tr>
+        <tr>
+          <td>Actividad gamificada</td>
+          <td><em>[Su asignatura y tema especifico]</em></td>
+          <td><em>[Descripcion breve de la experiencia gamificada que implementara]</em></td>
+          <td><em>[Semana X]</em></td>
+          <td><em>[Resultado esperado en los estudiantes]</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip" style="margin-top:2rem;">
+      <strong>Compromiso de implementacion</strong>
+      <p>Comparta su tabla de planificacion con al menos un colega del taller. El compromiso social aumenta significativamente la probabilidad de que las intenciones se conviertan en acciones. Acordar una fecha de seguimiento con su colega es una estrategia efectiva para sostener los cambios en la practica.</p>
+    </div>
+
+    <hr class="divider">
+
+    <h3>Recursos para Continuar Aprendiendo</h3>
+    <ul>
+      <li><strong>Documentacion oficial de Claude:</strong> <code>https://docs.anthropic.com</code> — Guias tecnicas sobre capacidades y buenas practicas.</li>
+      <li><strong>Claude.ai:</strong> <code>https://claude.ai</code> — Acceso directo a la plataforma para su uso educativo.</li>
+      <li><strong>GitHub Pages:</strong> <code>https://pages.github.com</code> — Plataforma gratuita para publicar artefactos HTML generados.</li>
+      <li><strong>Google Classroom:</strong> <code>https://classroom.google.com</code> — Para compartir actividades y recursos con sus estudiantes.</li>
+      <li>Bates, T. (2019). <em>Teaching in a Digital Age</em>. BCcampus. [Acceso abierto] — Marco teorico sobre tecnologia y pedagogia.</li>
+      <li>Deterding, S. et al. (2011). From game design elements to gamefulness: defining gamification. <em>Proceedings of MindTrek</em>. — Fundamento teorico de la gamificacion.</li>
+    </ul>
+
+    <hr class="divider">
+
+    <div class="note">
+      <strong>Nota sobre el uso etico de la IA en educacion</strong>
+      <p>El uso de inteligencia artificial en la practica docente implica responsabilidades eticas especificas: transparencia con los estudiantes sobre el uso de estas herramientas, verificacion critica de los contenidos generados, respeto a la privacidad de datos, y atencion a posibles sesgos en las respuestas de los modelos. La IA no reemplaza el criterio profesional del docente; lo amplifica cuando se usa con conciencia critica y proposito pedagogico claro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Guia Docente: Inteligencia Artificial para el Aula Universitaria</strong></p>
+  <p style="margin-top:0.5rem;">Universidad de la Cienega &mdash; Division de Formacion Docente &mdash; 2025</p>
+  <p style="margin-top:0.5rem; font-size:0.8rem;">Este documento fue elaborado con fines formativos. Los prompts y ejemplos son orientativos y deben adaptarse al contexto especifico de cada asignatura.</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+  // Logo upload (for instructors who want to add the university logo)
+  // To add the logo: replace the placeholder div with an <img> tag
+  // pointing to the logo file in the same directory as this HTML file.
+  // Example: <img src="logo-ucienega.png" alt="Logo Universidad de la Cienega">
+
+  // Smooth active nav link highlight
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.style.color = '#fff';
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
