@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guia Interactiva | Liderazgo | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --az:#2b3a7a; --azm:#3d52a0; --azl:#6b80c4; --azxl:#dce3f5; --azbg:#f0f3fb;
+  --do:#c49a28; --dol:#f6eccc; --doxl:#fdf8ec;
+  --cr:#faf9f6; --bl:#ffffff; --tx:#18192a; --tx2:#444460; --tx3:#757590;
+  --ve:#1f7a4f; --vel:#e6f5ee; --veb:#9ecdb4;
+  --ro:#b82a2a; --rol:#fdecea;
+  --na:#d4730a; --nal:#fef0e0;
+  --mo:#7a3a9a; --mol:#f3e9f7; --mob:#c8a6d6;
+  --sh:0 1px 8px rgba(43,58,122,.08); --shm:0 3px 18px rgba(43,58,122,.11);
+  --r:6px; --rg:14px; --max:980px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cr);color:var(--tx);line-height:1.78;}
+#pgbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--do),var(--azl));z-index:9999;transition:width .1s linear;}
+.topbar{background:var(--az);color:rgba(255,255,255,.7);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;}
+.topbar strong{color:rgba(255,255,255,.92);}
+header{background:linear-gradient(135deg,#1a2860 0%,var(--az) 55%,#2e468c 100%);position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 50%,rgba(107,128,196,.18) 0%,transparent 60%),repeating-linear-gradient(90deg,transparent,transparent 100px,rgba(255,255,255,.014) 100px,rgba(255,255,255,.014) 101px);pointer-events:none;}
+.hdr{max-width:var(--max);margin:0 auto;padding:42px 40px 54px;display:grid;grid-template-columns:160px 1fr;gap:36px;align-items:center;position:relative;}
+.logo-wrap{background:var(--bl);border-radius:var(--rg);padding:16px 18px;box-shadow:0 0 0 3px rgba(196,154,40,.45),var(--shm);display:flex;align-items:center;justify-content:center;}
+.logo-wrap img{width:100%;height:auto;display:block;}
+.hdr-meta .bc{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);margin-bottom:10px;display:block;}
+.hdr-meta h1{font-family:'Playfair Display',serif;font-size:2.15rem;font-weight:900;color:var(--bl);line-height:1.15;margin-bottom:6px;}
+.hdr-meta .sub{font-size:1rem;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:22px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:4px 12px;border-radius:99px;}
+nav{background:var(--azm);position:sticky;top:0;z-index:200;box-shadow:0 2px 14px rgba(0,0,0,.22);}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-i::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.76);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:13px 15px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;display:block;}
+nav a:hover{color:var(--bl);border-bottom-color:var(--do);}
+main{max-width:var(--max);margin:0 auto;padding:56px 40px 100px;}
+section{margin-bottom:72px;scroll-margin-top:56px;}
+.slbl{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:4px;padding-left:20px;}
+h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--az);margin-bottom:22px;padding-left:20px;position:relative;line-height:1.2;}
+h2::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--do);border-radius:2px;}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--azm);margin:30px 0 12px;}
+h4{font-size:.88rem;font-weight:600;color:var(--tx);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 8px;}
+p{margin-bottom:14px;color:var(--tx2);font-size:.97rem;}
+strong{color:var(--tx);}
+code{font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--azbg);padding:2px 7px;border-radius:4px;}
+.card{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:26px 30px;margin-bottom:20px;box-shadow:var(--sh);}
+.card-b{background:var(--azbg);border-color:#b6c4e8;}
+.card-g{background:var(--doxl);border-color:var(--do);border-left:5px solid var(--do);}
+.card-v{background:var(--vel);border-color:var(--veb);border-left:5px solid var(--ve);}
+.card-o{background:var(--nal);border-color:#f0b06a;border-left:5px solid var(--na);}
+.obj{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:30px 36px;margin-bottom:32px;position:relative;overflow:hidden;}
+.obj::after{content:'OBJETIVO';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.04);pointer-events:none;white-space:nowrap;}
+.obj .elbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:8px;}
+.obj p{color:rgba(255,255,255,.88);font-size:1rem;margin:0;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px;}
+.citem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.citem .ctipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.citem p{font-size:.88rem;margin:0;color:var(--tx2);}
+.def{border-left:4px solid var(--azm);background:var(--azbg);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--azl);margin-top:8px;display:block;}
+.tw{overflow-x:auto;margin:20px 0;border-radius:var(--r);box-shadow:var(--sh);}
+table{width:100%;border-collapse:collapse;font-size:.9rem;}
+thead th{background:var(--az);color:var(--bl);padding:12px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;}
+tbody td{padding:11px 16px;border-bottom:1px solid var(--azxl);color:var(--tx2);}
+tbody tr:nth-child(even) td{background:var(--azbg);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--doxl);}
+.steps{list-style:none;counter-reset:sc;margin:16px 0;}
+.steps li{counter-increment:sc;display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;padding:16px 20px;background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);box-shadow:var(--sh);}
+.steps li::before{content:counter(sc);background:var(--az);color:var(--bl);min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;flex-shrink:0;margin-top:1px;}
+.steps li p{margin:0;font-size:.92rem;}
+.acd{border:1px solid var(--azxl);border-radius:var(--r);margin:14px 0;overflow:hidden;}
+.acdbtn{width:100%;background:var(--azbg);border:none;padding:14px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--az);transition:background .2s;}
+.acdbtn:hover{background:#d0d9f0;}
+.acdbtn .ic{font-style:normal;transition:transform .28s;font-size:1.1rem;}
+.acdbtn.open .ic{transform:rotate(45deg);}
+.acdbody{display:none;padding:18px 22px;background:var(--bl);border-top:1px solid var(--azxl);font-size:.93rem;color:var(--tx2);}
+.acdbody.show{display:block;}
+.awrap{margin-bottom:40px;}
+.ahead{background:var(--az);border-radius:var(--rg) var(--rg) 0 0;padding:20px 28px;display:flex;align-items:center;gap:18px;}
+.anum{background:var(--do);color:var(--bl);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ahtxt .atipo{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:2px;}
+.ahtxt h3{color:var(--bl);margin:0;font-size:1.08rem;}
+.abody{background:var(--bl);border:1px solid var(--azxl);border-top:none;border-radius:0 0 var(--rg) var(--rg);padding:28px 30px;box-shadow:var(--sh);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ve);color:var(--bl);padding:8px 18px;border-radius:var(--r);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-top:22px;}
+.fdemo{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);overflow:hidden;margin:18px 0;}
+.fhdr{background:var(--az);color:var(--bl);padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;}
+.fpost{padding:14px 18px;border-bottom:1px solid #b6c4e8;font-size:.9rem;}
+.fpost:last-child{border-bottom:none;}
+.fpost .fautor{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--azm);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;display:block;}
+.fpost.frep{margin-left:28px;background:var(--bl);}
+.prevbox{background:var(--doxl);border:2px solid var(--do);border-radius:var(--rg);padding:28px 32px;margin:22px 0;}
+.prevbox .plbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;}
+.prevbox .ptxt{font-size:1.05rem;font-style:italic;color:var(--tx);margin-bottom:14px;}
+.pinput{width:100%;border:1px solid #d4b86a;border-radius:var(--r);padding:12px 16px;font-family:'Inter',sans-serif;font-size:.93rem;background:var(--bl);color:var(--tx);resize:vertical;min-height:80px;}
+.pinput:focus{outline:2px solid var(--do);border-color:var(--do);}
+.btn-g{background:var(--do);color:var(--bl);border:none;padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:12px;transition:background .2s;}
+.btn-g:hover{background:#a07820;}
+.pfb{display:none;margin-top:14px;background:var(--az);color:var(--bl);border-radius:var(--r);padding:16px 20px;font-size:.92rem;}
+.pfb.show{display:block;}
+.estilos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}
+.estilo-card{border-radius:var(--rg);padding:24px 20px;display:flex;flex-direction:column;gap:10px;border:1px solid;}
+.estilo-card .e-icon{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;line-height:1;}
+.estilo-card .e-lbl{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+.estilo-card h4{margin:0;font-size:1.1rem;}
+.estilo-card ul{list-style:none;padding:0;margin:0;}
+.estilo-card ul li{font-size:.85rem;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+.estilo-card ul li:last-child{border-bottom:none;}
+.ec-auto{background:var(--rol);border-color:#e4a0a0;}
+.ec-perm{background:var(--nal);border-color:#f0b06a;}
+.ec-demo{background:var(--vel);border-color:var(--veb);}
+.ec-auto .e-icon,.ec-auto .e-lbl,.ec-auto h4{color:var(--ro);}
+.ec-perm .e-icon,.ec-perm .e-lbl,.ec-perm h4{color:var(--na);}
+.ec-demo .e-icon,.ec-demo .e-lbl,.ec-demo h4{color:var(--ve);}
+.estilo-card ul li{color:var(--tx2);}
+.owrap{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);padding:24px;margin:18px 0;}
+.ocent{background:var(--az);color:var(--bl);padding:14px 24px;border-radius:var(--r);font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;text-align:center;margin-bottom:18px;}
+.ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.onodo{background:var(--bl);border:2px solid var(--azl);border-radius:var(--r);padding:12px;}
+.onodo::before{content:attr(data-l);font-family:'JetBrains Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;}
+.onodo textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:8px;font-family:'Inter',sans-serif;font-size:.85rem;background:var(--azbg);resize:vertical;min-height:62px;color:var(--tx);}
+.onodo textarea:focus{outline:2px solid var(--azm);background:var(--bl);}
+.btnp{background:var(--az);color:var(--bl);border:none;padding:11px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;transition:background .2s;}
+.btnp:hover{background:var(--azm);}
+.btno{background:transparent;color:var(--az);border:2px solid var(--az);padding:10px 24px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;margin-left:10px;transition:background .2s;}
+.btno:hover{background:var(--azbg);}
+.casobox{background:var(--nal);border:1px solid #f0b06a;border-left:5px solid var(--na);border-radius:var(--r);padding:24px 28px;margin:18px 0;}
+.casobox .clbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--na);display:block;margin-bottom:10px;}
+.cpqs{list-style:none;counter-reset:cp;margin-top:16px;}
+.cpqs li{counter-increment:cp;display:flex;gap:12px;padding:12px 16px;margin-bottom:10px;background:var(--bl);border-radius:var(--r);border:1px solid #f0b06a;flex-direction:column;}
+.cpqs li::before{content:counter(cp);background:var(--na);color:var(--bl);min-width:24px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;flex-shrink:0;}
+.cpqs li .cq{font-size:.92rem;color:var(--tx2);font-weight:500;}
+.cresp{width:100%;border:1px solid #f0b06a;border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--bl);resize:vertical;min-height:72px;color:var(--tx);margin-top:8px;}
+.cresp:focus{outline:2px solid var(--na);}
+.qwrap{margin-top:8px;}
+.preg{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:22px 26px;margin-bottom:16px;box-shadow:var(--sh);}
+.preg .qn{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.preg .qt{font-size:.98rem;font-weight:600;color:var(--tx);margin-bottom:14px;}
+.opts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.opts li label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:10px 16px;border:1px solid var(--azxl);border-radius:var(--r);width:100%;transition:background .15s,border-color .15s;font-size:.92rem;color:var(--tx2);}
+.opts li label:hover{background:var(--azbg);border-color:var(--azl);}
+.opts li input[type=radio]{accent-color:var(--az);flex-shrink:0;margin-top:2px;}
+.ok label{background:var(--vel)!important;border-color:var(--ve)!important;color:var(--ve)!important;}
+.err label{background:var(--rol)!important;border-color:var(--ro)!important;}
+.qres{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:32px 36px;text-align:center;margin-top:24px;display:none;}
+.qres.show{display:block;}
+.qres .sn{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--do);line-height:1;display:block;margin:10px 0;}
+.qres .sm{font-size:1.05rem;color:rgba(255,255,255,.88);margin-bottom:10px;}
+.qres .sd{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:rgba(255,255,255,.55);}
+.bprog{width:100%;background:rgba(255,255,255,.15);border-radius:99px;height:8px;margin:14px 0 20px;overflow:hidden;}
+.bfill{height:100%;background:var(--do);border-radius:99px;transition:width .7s ease;width:0;}
+#btnq{background:var(--do);color:var(--bl);border:none;padding:13px 36px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:background .2s;display:block;margin:14px auto 0;}
+#btnq:hover{background:#a07820;}
+#btnq:disabled{opacity:.45;cursor:not-allowed;}
+#btnr{background:rgba(255,255,255,.14);color:var(--bl);border:1px solid rgba(255,255,255,.3);padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-top:14px;transition:background .2s;}
+#btnr:hover{background:rgba(255,255,255,.25);}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px;}
+.ritem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azl);display:flex;flex-direction:column;gap:8px;}
+.ritem .rtipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);}
+.ritem .rtit{font-weight:600;font-size:.93rem;color:var(--tx);}
+.ritem .raut{font-size:.83rem;color:var(--tx3);font-style:italic;}
+.ritem .rlink{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--azm);text-decoration:none;letter-spacing:.06em;padding:6px 12px;border:1px solid var(--azl);border-radius:var(--r);align-self:flex-start;transition:background .15s;margin-top:auto;}
+.rlink:hover{background:var(--azbg);}
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.refitem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.refitem label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:8px;}
+.refitem textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--azbg);resize:vertical;min-height:90px;color:var(--tx);}
+.refitem textarea:focus{outline:none;border-color:var(--azm);background:var(--bl);}
+.planprev{background:var(--bl);border:2px solid var(--az);border-radius:var(--rg);padding:24px 28px;margin-top:20px;display:none;}
+.planprev.show{display:block;}
+.planprev h4{color:var(--az);margin-bottom:14px;}
+.quote{border-left:4px solid var(--do);background:var(--doxl);padding:18px 22px;border-radius:0 var(--r) var(--r) 0;margin:20px 0;font-style:italic;font-size:.97rem;color:var(--tx2);}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:.8rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
+.msg{padding:12px 18px;border-radius:var(--r);font-size:.88rem;margin-top:12px;display:none;}
+.msg.show{display:block;}
+.msg-ok{background:var(--vel);color:var(--ve);border:1px solid var(--veb);}
+hr.div{border:none;border-top:1px solid var(--azxl);margin:32px 0;}
+.glos dt{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--az);margin-bottom:4px;}
+.glos dd{font-size:.9rem;color:var(--tx2);padding-left:16px;margin-bottom:16px;}
+footer{background:var(--az);color:rgba(255,255,255,.6);padding:36px 40px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
+.fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.fi .fn{font-size:.75rem;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:3px;display:block;}
+@media(max-width:720px){
+  .hdr{grid-template-columns:1fr;text-align:center;}
+  .logo-wrap{width:120px;margin:0 auto;}
+  main{padding:36px 20px 60px;}
+  .refgrid,.ogrid,.estilos-grid{grid-template-columns:1fr;}
+  nav a{padding:12px 10px;font-size:.58rem;}
+  h2{font-size:1.5rem;}
+  .topbar{font-size:.55rem;padding:6px 16px;}
+}
+</style>
+</head>
+<body>
+<div id="pgbar"></div>
+<div class="topbar">
+  <span><strong>Universidad de la Cienega</strong> &mdash; Licenciatura en Pedagogia</span>
+  <span>Tecnicas de Conduccion de Grupos &mdash; Ciclo 2024&ndash;2025</span>
+</div>
+<header>
+  <div class="hdr">
+    <div class="logo-wrap"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Logo Universidad de la Cienega"></div>
+    <div class="hdr-meta">
+      <span class="bc">Pedagogia &nbsp;|&nbsp; Tecnicas de Conduccion de Grupos &nbsp;|&nbsp; Unidad III &nbsp;|&nbsp; Temas 3 y 3.1</span>
+      <h1>El Liderazgo en los Grupos</h1>
+      <p class="sub">3. Liderazgo &nbsp;|&nbsp; 3.1 El Lider Autocratico, Permisivo y Democratico</p>
+      <div class="chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogia Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">Nivel Licenciatura</span>
+      </div>
+    </div>
+  </div>
+</header>
+<nav>
+  <div class="nav-i">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento Previo</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Organizador</a>
+    <a href="#act3">Act. 3 Caso</a>
+    <a href="#act4">Act. 4 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+</nav>
+<main>
+<!-- INTRODUCCION -->
+<section id="intro">
+  <span class="slbl">Seccion 01</span>
+  <h2>Introduccion al Tema</h2>
+  <div class="obj">
+    <span class="elbl">Objetivo de Aprendizaje</span>
+    <p>El estudiante comprendera el concepto de liderazgo y su papel en la dinamica de los grupos, distinguira los estilos de liderazgo autocratico, permisivo y democratico segun el modelo clasico de Kurt Lewin, y analizara criticamente sus efectos sobre el clima, la productividad y el aprendizaje grupal, aplicando este conocimiento para asumir un liderazgo eficaz en sus equipos universitarios y en su futura practica profesional como pedagogo.</p>
+  </div>
+  <p>En todo grupo humano, alguien orienta, motiva e influye en los demas hacia el logro de objetivos comunes. Esa funcion es el <strong>liderazgo</strong>, uno de los fenomenos mas estudiados y mas determinantes de la dinamica grupal. El modo en que se ejerce el liderazgo &mdash;el estilo del lider&mdash; no es un detalle menor: condiciona el clima emocional del grupo, su productividad, su nivel de cohesion y, en el contexto educativo, la calidad misma del aprendizaje.</p>
+  <p>Para el pedagogo, comprender el liderazgo tiene una doble relevancia. Por un lado, el docente ejerce un liderazgo permanente sobre el grupo escolar y debe ser consciente de que estilo adopta y que efectos produce. Por otro lado, el pedagogo debe saber identificar, comprender y, en su caso, reorientar los liderazgos que emergen entre los propios estudiantes, especialmente en el trabajo colaborativo.</p>
+  <div class="quote">
+    "El estilo de liderazgo no solo determina lo que un grupo logra, sino tambien como se siente al lograrlo. Un mismo objetivo puede alcanzarse generando entusiasmo y aprendizaje, o miedo y dependencia."
+    <cite>&mdash; Adaptado de Lewin, K., Lippitt, R. y White, R. (1939). Patterns of Aggressive Behavior in Experimentally Created Social Climates. Journal of Social Psychology.</cite>
+  </div>
+  <p>Esta guia aborda el concepto general de liderazgo y profundiza en los tres estilos clasicos identificados experimentalmente por Lewin y sus colaboradores: el lider autocratico, el lider permisivo (laissez-faire) y el lider democratico, analizando las caracteristicas, ventajas, limitaciones y efectos de cada uno en contextos educativos.</p>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Constructivismo: el liderazgo como construccion relacional<span class="ic">+</span></button>
+    <div class="acdbody"><p>Desde la perspectiva constructivista, el liderazgo no es un rasgo innato ni una posicion fija, sino una construccion que emerge de la interaccion entre el lider, los miembros del grupo y el contexto. Esta guia invita al estudiante a analizar sus propias experiencias de liderazgo &mdash;ejercido o recibido&mdash; para construir un entendimiento situado y critico del fenomeno.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Aprendizaje Basado en Problemas: el estilo de liderazgo como decision<span class="ic">+</span></button>
+    <div class="acdbody"><p>El ABP plantea problemas autenticos. En esta guia, el problema central es: ¿que estilo de liderazgo es mas adecuado en cada situacion grupal y por que? Las actividades situan al estudiante ante dilemas reales del contexto universitario donde la eleccion del estilo de liderazgo tiene consecuencias directas sobre el aprendizaje y el clima del grupo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Pedagogia Activa: del analisis a la practica del liderazgo<span class="ic">+</span></button>
+    <div class="acdbody"><p>Cada actividad de esta guia exige que el estudiante haga algo con el conocimiento: analizar su propio estilo de liderazgo, debatir con pares, resolver un caso y autoevaluarse. El liderazgo no se aprende memorizando definiciones, sino reflexionando sobre la propia practica y proyectando mejoras concretas.</p></div>
+  </div>
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Competencia Conceptual</span><p>Definir el liderazgo y distinguir con precision los tres estilos clasicos: autocratico, permisivo y democratico.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Analitica</span><p>Identificar el estilo de liderazgo en situaciones reales y analizar sus efectos sobre el clima, la productividad y el aprendizaje del grupo.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Aplicada</span><p>Seleccionar y ejercer el estilo de liderazgo mas adecuado segun el contexto, la tarea y el nivel de desarrollo del grupo.</p></div>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section id="previo">
+  <span class="slbl">Seccion 02</span>
+  <h2>Activacion de Conocimiento Previo</h2>
+  <p>Antes de abordar el contenido formal, reflexione sobre su experiencia con el liderazgo. Esta activacion conecta lo que ya sabe por vivencia con los conceptos que estudiara a continuacion.</p>
+  <div class="prevbox">
+    <span class="plbl">Pregunta de Conocimiento Previo</span>
+    <p class="ptxt">"Recuerde a dos personas que hayan ejercido liderazgo sobre usted: una cuya forma de dirigir le resulto motivadora y eficaz, y otra cuya forma de dirigir le resulto desmotivante o contraproducente. Pueden ser docentes, companieros de equipo, entrenadores, jefes. ¿Que hacia diferente cada una? ¿Como tomaban las decisiones, como trataban a los miembros del grupo y como reaccionaba usted ante cada estilo?"</p>
+    <textarea class="pinput" id="prevresp" placeholder="Escriba aqui su reflexion antes de continuar. No hay respuestas incorrectas: se busca activar su experiencia vivida como base del aprendizaje significativo..."></textarea>
+    <br>
+    <button class="btn-g" onclick="verPrevio()">Ver orientacion conceptual</button>
+    <div class="pfb" id="prevfb">
+      <strong style="color:var(--do);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:8px;">Orientacion (punto de partida, no respuesta definitiva)</strong>
+      <p style="margin:0;color:rgba(255,255,255,.88);">Las diferencias que usted percibio entre esas dos personas corresponden, muy probablemente, a <strong>estilos de liderazgo</strong> distintos. La forma en que tomaban decisiones (solos o consultando), como trataban a los miembros (con control o con confianza) y el clima que generaban son exactamente las dimensiones que Kurt Lewin identifico para distinguir los estilos autocratico, permisivo y democratico. Conforme avance, podra nombrar con precision lo que intuyo a partir de su experiencia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<section id="contenido">
+  <span class="slbl">Seccion 03</span>
+  <h2>Contenido Tematico</h2>
+
+  <h3>3. El Concepto de Liderazgo</h3>
+  <div class="def">
+    <p><strong>Liderazgo:</strong> Proceso de influencia social mediante el cual una persona orienta, motiva y coordina las acciones de los miembros de un grupo hacia el logro de objetivos comunes, ejerciendo dicha influencia a traves de la comunicacion, el ejemplo, la toma de decisiones y la gestion de las relaciones interpersonales.</p>
+    <span class="fte">Ref: Yukl, G. (2013). Leadership in Organizations (8a ed.). Pearson. / Lewin, K., Lippitt, R. y White, R. (1939).</span>
+  </div>
+  <p>El liderazgo no debe confundirse con la mera autoridad formal. La autoridad es la posicion que la institucion asigna; el liderazgo es la capacidad real de influir en los demas, que puede o no coincidir con la autoridad formal. Un docente tiene autoridad formal sobre su grupo, pero su liderazgo efectivo depende de su capacidad de influir genuinamente en los estudiantes.</p>
+
+  <h4>Liderazgo formal e informal</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Tipo</th><th>Origen</th><th>Ejemplo en el aula</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Liderazgo formal</strong></td><td>Asignado por la institucion o la estructura del grupo.</td><td>El docente, el coordinador de equipo designado.</td></tr>
+        <tr><td><strong>Liderazgo informal</strong></td><td>Emerge espontaneamente de la dinamica interna del grupo.</td><td>El estudiante que el grupo reconoce como referente sin que nadie lo haya nombrado.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Funciones del liderazgo en el grupo</h4>
+  <p>Independientemente del estilo, todo liderazgo cumple funciones que pueden agruparse en dos grandes dimensiones, identificadas por la investigacion de la Universidad de Ohio:</p>
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Dimension de Tarea</span><p>Funciones orientadas al logro del objetivo: organizar, planificar, distribuir responsabilidades, dar seguimiento, evaluar resultados.</p></div>
+    <div class="citem"><span class="ctipo">Dimension Socioafectiva</span><p>Funciones orientadas al bienestar del grupo: cuidar el clima, mediar conflictos, motivar, reconocer aportaciones, fortalecer la cohesion.</p></div>
+  </div>
+  <p>El equilibrio entre ambas dimensiones es uno de los factores que distingue al liderazgo eficaz. Un lider centrado solo en la tarea puede lograr resultados a costa del clima; uno centrado solo en lo socioafectivo puede generar buen clima sin alcanzar objetivos.</p>
+
+  <h3>3.1 Los Estilos de Liderazgo: El Estudio Clasico de Lewin</h3>
+  <p>En 1939, Kurt Lewin, junto con Ronald Lippitt y Ralph White, realizo un estudio experimental pionero con grupos de ninos para investigar el efecto de diferentes estilos de liderazgo sobre el comportamiento grupal. De ese estudio surgio la clasificacion clasica de tres estilos: autocratico, permisivo (laissez-faire) y democratico. Esta tipologia sigue siendo una referencia fundamental para comprender la conduccion de grupos.</p>
+
+  <div class="estilos-grid">
+    <div class="estilo-card ec-auto">
+      <div class="e-icon">A</div>
+      <span class="e-lbl">Estilo 1</span>
+      <h4>Autocratico</h4>
+      <ul>
+        <li>Decisiones centralizadas en el lider</li>
+        <li>Comunicacion vertical (de arriba a abajo)</li>
+        <li>Control estricto de las actividades</li>
+        <li>Escasa participacion del grupo</li>
+        <li>El lider define metas y metodos</li>
+      </ul>
+    </div>
+    <div class="estilo-card ec-perm">
+      <div class="e-icon">P</div>
+      <span class="e-lbl">Estilo 2</span>
+      <h4>Permisivo</h4>
+      <ul>
+        <li>Minima intervencion del lider</li>
+        <li>Libertad total para el grupo</li>
+        <li>Ausencia de orientacion y seguimiento</li>
+        <li>El lider deja hacer (laissez-faire)</li>
+        <li>Decisiones libradas al azar grupal</li>
+      </ul>
+    </div>
+    <div class="estilo-card ec-demo">
+      <div class="e-icon">D</div>
+      <span class="e-lbl">Estilo 3</span>
+      <h4>Democratico</h4>
+      <ul>
+        <li>Decisiones consensuadas y participativas</li>
+        <li>Comunicacion horizontal y abierta</li>
+        <li>El lider orienta y facilita</li>
+        <li>Alta participacion del grupo</li>
+        <li>Metas y metodos discutidos en conjunto</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>El Lider Autocratico</h4>
+  <div class="def">
+    <p><strong>Liderazgo autocratico:</strong> Estilo en que el lider concentra la toma de decisiones, define unilateralmente los objetivos y los metodos de trabajo, ejerce un control estricto sobre las actividades del grupo y mantiene una comunicacion predominantemente vertical, con escasa o nula participacion de los miembros en las decisiones.</p>
+    <span class="fte">Ref: Lewin, Lippitt y White (1939).</span>
+  </div>
+  <p>El liderazgo autocratico no es intrinsecamente negativo: en situaciones de emergencia, ante grupos muy inmaduros o cuando se requieren decisiones rapidas y la informacion es asimetrica, puede ser eficaz. Sin embargo, el estudio de Lewin mostro que, sostenido en el tiempo, este estilo tiende a generar dependencia del lider, baja iniciativa, clima de tension y, en algunos casos, agresividad o apatia. La productividad puede ser alta mientras el lider esta presente, pero cae drasticamente en su ausencia.</p>
+
+  <h4>El Lider Permisivo (Laissez-faire)</h4>
+  <div class="def">
+    <p><strong>Liderazgo permisivo o laissez-faire:</strong> Estilo en que el lider interviene minimamente, otorga libertad casi total al grupo, no ofrece orientacion ni seguimiento sistematico y deja que los miembros tomen sus propias decisiones sin coordinacion. La expresion francesa laissez-faire significa "dejar hacer".</p>
+    <span class="fte">Ref: Lewin, Lippitt y White (1939).</span>
+  </div>
+  <p>El liderazgo permisivo puede ser adecuado con grupos altamente maduros, autonomos y autorregulados, donde la intervencion del lider resultaria innecesaria o contraproducente. No obstante, el estudio de Lewin mostro que, aplicado a grupos que requieren orientacion, este estilo produce la menor productividad de los tres, desorganizacion, frustracion y falta de direccion. La libertad sin estructura suele derivar en confusion, no en autonomia.</p>
+
+  <h4>El Lider Democratico</h4>
+  <div class="def">
+    <p><strong>Liderazgo democratico:</strong> Estilo en que el lider promueve la participacion del grupo en la toma de decisiones, facilita la discusion, orienta sin imponer, fomenta la comunicacion horizontal y construye los objetivos y metodos de trabajo de manera consensuada con los miembros.</p>
+    <span class="fte">Ref: Lewin, Lippitt y White (1939).</span>
+  </div>
+  <p>El estudio de Lewin concluyo que el liderazgo democratico, aunque podia generar una productividad ligeramente menor que el autocratico en presencia del lider, producia los mejores resultados globales: mayor motivacion, mayor originalidad y creatividad, mejor clima, mayor cohesion y, de manera notable, una productividad que se mantenia incluso en ausencia del lider, porque el grupo habia desarrollado autonomia y compromiso. En contextos educativos, el estilo democratico es el que mas favorece el aprendizaje significativo y el desarrollo de la autonomia de los estudiantes.</p>
+
+  <h4>Tabla comparativa de los tres estilos</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Dimension</th><th>Autocratico</th><th>Permisivo</th><th>Democratico</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Toma de decisiones</strong></td><td>Centralizada en el lider</td><td>Librada al grupo sin guia</td><td>Compartida y consensuada</td></tr>
+        <tr><td><strong>Comunicacion</strong></td><td>Vertical, descendente</td><td>Dispersa, sin estructura</td><td>Horizontal, bidireccional</td></tr>
+        <tr><td><strong>Participacion del grupo</strong></td><td>Minima</td><td>Total pero sin coordinacion</td><td>Alta y orientada</td></tr>
+        <tr><td><strong>Clima grupal tipico</strong></td><td>Tension, dependencia</td><td>Confusion, frustracion</td><td>Confianza, motivacion</td></tr>
+        <tr><td><strong>Productividad con lider presente</strong></td><td>Alta</td><td>Baja</td><td>Alta y sostenida</td></tr>
+        <tr><td><strong>Productividad sin lider</strong></td><td>Cae drasticamente</td><td>Permanece baja</td><td>Se mantiene alta</td></tr>
+        <tr><td><strong>Iniciativa y creatividad</strong></td><td>Baja</td><td>Variable, sin direccion</td><td>Alta</td></tr>
+        <tr><td><strong>Contexto donde es adecuado</strong></td><td>Emergencias, grupos inmaduros, decisiones urgentes</td><td>Grupos muy maduros y autonomos</td><td>La mayoria de los contextos educativos</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card-b">
+    <h4>Mas alla de Lewin: el liderazgo situacional</h4>
+    <p>La investigacion posterior a Lewin matizo la idea de un estilo "mejor" en abstracto. El enfoque del liderazgo situacional (Hersey y Blanchard) sostiene que el estilo mas eficaz depende del nivel de madurez y competencia del grupo: grupos inmaduros pueden requerir mayor direccion (mas cercana al estilo autocratico), mientras que grupos maduros se benefician de mayor autonomia (mas cercana al estilo democratico o incluso delegativo). El lider eficaz no aplica un solo estilo, sino que adapta su conduccion al estado del grupo.</p>
+  </div>
+
+  <div class="card card-v">
+    <h4>Sintesis para el pedagogo</h4>
+    <p>Conocer los estilos de liderazgo permite al pedagogo dos cosas: primero, ser consciente del estilo que el mismo ejerce como conductor del grupo escolar y de sus efectos sobre el aprendizaje; segundo, diagnosticar y orientar los liderazgos que emergen entre los estudiantes en el trabajo colaborativo. En la mayoria de los contextos educativos, el estilo democratico es el que mejor favorece la autonomia, la motivacion y el aprendizaje significativo, aunque la madurez del grupo debe guiar la decision.</p>
+  </div>
+</section>
+<!-- MATERIALES -->
+<section id="materiales">
+  <span class="slbl">Seccion 04</span>
+  <h2>Materiales Externos de Consulta</h2>
+  <p>Los siguientes recursos estan seleccionados por su rigor academico y su pertinencia con los conceptos de esta guia. Se recomienda consultarlos, especialmente el estudio clasico de Lewin, antes de las actividades de foro y caso practico.</p>
+  <div class="rgrid">
+    <div class="ritem">
+      <span class="rtipo">Articulo Fundacional</span>
+      <div class="rtit">Patterns of Aggressive Behavior in Experimentally Created Social Climates</div>
+      <div class="raut">Lewin, K., Lippitt, R. y White, R. (1939). Journal of Social Psychology, 10, 271-299.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Estudio experimental original que dio origen a la clasificacion de los estilos de liderazgo autocratico, democratico y laissez-faire. Referencia fundamental del tema.</p>
+      <a class="rlink" href="https://doi.org/10.1080/00224545.1939.9713366" target="_blank" rel="noopener">Acceder via DOI</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Libro de Referencia</span>
+      <div class="rtit">Leadership in Organizations</div>
+      <div class="raut">Yukl, G. (2013). Pearson (8a edicion).</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Manual completo y actualizado sobre teorias del liderazgo, estilos de direccion y su aplicacion en organizaciones y grupos humanos.</p>
+      <a class="rlink" href="https://www.worldcat.org/title/leadership-in-organizations" target="_blank" rel="noopener">Ver en WorldCat</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Libro Especializado</span>
+      <div class="rtit">Management of Organizational Behavior: Leading Human Resources</div>
+      <div class="raut">Hersey, P. y Blanchard, K. (2012). Pearson.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Obra clasica del liderazgo situacional, que matiza la idea de un estilo unico y propone adaptar la conduccion al nivel de madurez del grupo.</p>
+      <a class="rlink" href="https://www.worldcat.org/title/management-of-organizational-behavior" target="_blank" rel="noopener">Ver en WorldCat</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Revista Cientifica</span>
+      <div class="rtit">The Leadership Quarterly</div>
+      <div class="raut">Elsevier. Publicacion arbitrada internacional.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Revista especializada en investigacion sobre liderazgo en contextos organizacionales, educativos y sociales. Articulos arbitrados de alto impacto.</p>
+      <a class="rlink" href="https://www.sciencedirect.com/journal/the-leadership-quarterly" target="_blank" rel="noopener">Acceder a la revista</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Repositorio Cientifico</span>
+      <div class="rtit">Redalyc: Liderazgo educativo y estilos de direccion</div>
+      <div class="raut">Red de Revistas Cientificas de America Latina.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Buscador de articulos arbitrados en espanol sobre liderazgo educativo, estilos de conduccion y liderazgo docente en educacion superior latinoamericana.</p>
+      <a class="rlink" href="https://www.redalyc.org" target="_blank" rel="noopener">Acceder a Redalyc</a>
+    </div>
+    <div class="ritem">
+      <span class="rtipo">Recurso Audiovisual</span>
+      <div class="rtit">Estilos de liderazgo: Lewin y el liderazgo situacional</div>
+      <div class="raut">Canal UNED TV &mdash; Universidad Nacional de Educacion a Distancia, Espana.</div>
+      <p style="font-size:.84rem;margin:0;color:var(--tx3);">Videos academicos sobre los estilos de liderazgo, el estudio de Lewin y su aplicacion a la conduccion de grupos en contextos educativos.</p>
+      <a class="rlink" href="https://www.youtube.com/@unedtv" target="_blank" rel="noopener">Canal UNED TV</a>
+    </div>
+  </div>
+  <div class="card card-g" style="margin-top:20px;">
+    <h4>Orientacion para el uso de fuentes</h4>
+    <p>Al consultar estos materiales registre los argumentos que enriquezcan, matizen o contradigan los conceptos de esta guia. La confrontacion critica de fuentes es condicion del pensamiento universitario riguroso y un requisito para participar con solidez en el foro de debate.</p>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section id="act1">
+  <span class="slbl">Actividad 01 de 04</span>
+  <h2>Actividad de Foro: Reflexion Critica y Debate</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">1</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Foro de Discusion Asincrono en Google Classroom</span>
+        <h3>El Estilo de Liderazgo que Mejor me Hace Aprender</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Foro asincrono</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Plazo</strong><br>48 a 72 horas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Participaciones</strong><br>1 aportacion + 2 respuestas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <h3>Pregunta Detonadora</h3>
+      <div style="background:var(--az);color:var(--bl);border-radius:var(--rg);padding:26px 30px;margin:16px 0 22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;">Pregunta para el Foro</span>
+        <p style="color:var(--bl);font-size:1.05rem;font-style:italic;margin:0;line-height:1.85;">"Con base en su experiencia universitaria, ¿que estilo de liderazgo &mdash;autocratico, permisivo o democratico&mdash; ha favorecido mas su aprendizaje, y cual lo ha obstaculizado? Describa una situacion concreta con un docente o un companiero lider que ilustre su respuesta. Considerando el estudio de Lewin y el enfoque situacional, ¿cree que existe un estilo universalmente mejor, o el estilo ideal depende del contexto y la madurez del grupo? Fundamente su postura."</p>
+      </div>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Acceso al foro:</strong> Ingrese a Google Classroom con su cuenta institucional. Localice la materia "Tecnicas de Conduccion de Grupos" y abra la actividad "Foro Unidad III: Estilos de Liderazgo".</p></li>
+        <li><p><strong>Preparacion:</strong> Identifique la situacion concreta que analizara. Revise las caracteristicas de los tres estilos en el contenido para clasificar con precision el estilo que describira.</p></li>
+        <li><p><strong>Redaccion de su aportacion (180 a 280 palabras):</strong> Estructure su texto en tres partes: (a) descripcion de la situacion concreta, (b) clasificacion del estilo y analisis de sus efectos sobre su aprendizaje, y (c) postura fundamentada sobre si existe un estilo universalmente mejor.</p></li>
+        <li><p><strong>Interaccion con pares:</strong> Lea al menos dos participaciones de companieros y responda de forma sustantiva a cada una, aportando nuevos argumentos o planteando contra-preguntas. Evite respuestas de validacion superficial.</p></li>
+        <li><p><strong>Entrega:</strong> Tome una captura de pantalla de su aportacion y al menos una respuesta. Subala en la tarea correspondiente de Classroom.</p></li>
+      </ol>
+      <h3>Ejemplo Orientador</h3>
+      <div class="fdemo">
+        <div class="fhdr">Foro: El Estilo de Liderazgo que Mejor me Hace Aprender (ejemplo ilustrativo)</div>
+        <div class="fpost">
+          <span class="fautor">Estudiante A &mdash; Lunes, 19:22 hrs</span>
+          <p>En mi experiencia, el estilo democratico ha favorecido claramente mi aprendizaje. El semestre pasado, una docente de Didactica organizaba cada unidad consultando al grupo sobre los temas que mas nos interesaban y como queriamos abordarlos. Esto generaba un clima de confianza donde nos sentiamos responsables de nuestro propio aprendizaje. En contraste, viví un estilo autocratico con otro profesor que imponia todo: temas, metodos, tiempos, sin admitir cuestionamientos. La productividad parecia alta porque cumpliamos, pero apenas terminaba la clase, nadie recordaba ni aplicaba lo aprendido; trabajabamos por miedo a la sancion, no por interes. Esto coincide con el hallazgo de Lewin de que la productividad autocratica cae cuando el lider no esta presente. Ahora bien, no creo que el estilo democratico sea universalmente mejor en todo momento: cuando ingrese a un grupo nuevo y desorientado, agradecí que el conductor fuera mas directivo al principio. Coincido con el enfoque situacional: el mejor estilo depende de la madurez del grupo.</p>
+        </div>
+        <div class="fpost frep">
+          <span class="fautor">Estudiante B &mdash; responde a Estudiante A &mdash; Martes, 10:48 hrs</span>
+          <p>Tu distincion entre productividad "con lider presente" y "sin lider" me parece clave y muchas veces se ignora. Quiero anadir una tension: ¿no podria un estilo democratico mal aplicado derivar en permisivo? Es decir, un docente que "consulta todo" pero nunca orienta ni cierra las decisiones puede generar la misma confusion que el laissez-faire. ¿Como distinguirias, en tu experiencia con la docente de Didactica, que su estilo era genuinamente democratico y no simplemente permisivo disfrazado de participacion?</p>
+        </div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Sustento teorico</td><td>Aplica los conceptos de los 3 estilos y el enfoque situacional con precision</td><td>Aplica 2 conceptos pertinentes</td><td>Menciona conceptos sin aplicarlos</td></tr>
+            <tr><td>Experiencia concreta</td><td>Describe con detalle verificable una situacion real</td><td>Describe con algunos detalles</td><td>Descripcion vaga o generica</td></tr>
+            <tr><td>Postura fundamentada</td><td>Toma postura con argumentacion solida y matizada</td><td>Toma postura con argumentacion basica</td><td>No toma postura o es superficial</td></tr>
+            <tr><td>Interaccion con pares</td><td>2 respuestas con nuevos argumentos o preguntas</td><td>2 respuestas breves pertinentes</td><td>1 respuesta o ausente</td></tr>
+            <tr><td>Redaccion</td><td>Lenguaje academico, claro, sin errores</td><td>Apropiado con errores menores</td><td>Errores que dificultan la comprension</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 2: ORGANIZADOR -->
+<section id="act2">
+  <span class="slbl">Actividad 02 de 04</span>
+  <h2>Actividad de Aprendizaje Significativo</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">2</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Autodiagnostico de Liderazgo + Organizador Aplicado</span>
+        <h3>Mi Perfil de Liderazgo: Como Conduzco y Como me Conducen</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>60 a 80 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>PDF o imagen en Classroom</div>
+        </div>
+      </div>
+      <p>Esta actividad aplica el aprendizaje significativo: los conceptos sobre estilos de liderazgo se anclan en una reflexion sobre el propio estilo del estudiante cuando ejerce roles de liderazgo en sus equipos universitarios. Usted realizara un autodiagnostico honesto y disenara un plan de mejora.</p>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Recuerde una situacion de liderazgo propio:</strong> Identifique una ocasion reciente en que usted haya ejercido liderazgo en un equipo universitario (coordinar un trabajo, dirigir una exposicion grupal, liderar un proyecto). Anote sus datos en el organizador.</p></li>
+        <li><p><strong>Autodiagnostico:</strong> Complete los seis nodos del organizador analizando honestamente como ejercio el liderazgo: como tomo decisiones, como se comunico, que clima genero y que estilo predomino en su conducta.</p></li>
+        <li><p><strong>Identificacion del estilo:</strong> En el campo correspondiente, determine cual de los tres estilos (autocratico, permisivo o democratico) predomino en su conducta y por que. Sea autocritico: el objetivo no es quedar bien, sino aprender.</p></li>
+        <li><p><strong>Plan de mejora:</strong> En el campo de cierre, redacte un parrafo de 4 a 6 oraciones sobre que aspectos de su liderazgo mantendria y que cambiaria para ser un conductor mas eficaz, fundamentando en los conceptos del tema.</p></li>
+        <li><p><strong>Entrega:</strong> Tome captura o exporte a documento. Nombre el archivo <code>Act2_Liderazgo_NombreApellido.pdf</code> y subalo en Classroom.</p></li>
+      </ol>
+      <h3>Organizador Interactivo: Autodiagnostico de Liderazgo</h3>
+      <div class="owrap">
+        <div class="ocent">Mi Perfil de Liderazgo &mdash; <span id="sitnm">_______________</span></div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Situacion de liderazgo analizada</label>
+          <input type="text" id="sitinp" placeholder="Ej: Coordine el equipo de 5 personas para el proyecto integrador de Didactica, 3er semestre" style="width:100%;padding:10px 14px;border:1px solid var(--azxl);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--bl);color:var(--tx);" oninput="document.getElementById('sitnm').textContent=this.value||'_______________'">
+        </div>
+        <div class="ogrid">
+          <div class="onodo" data-l="1. Como tome las decisiones"><textarea id="n1" placeholder="Decidí solo? Consulte al grupo? Deje que cada quien decidiera? Da ejemplos concretos."></textarea></div>
+          <div class="onodo" data-l="2. Como me comunique"><textarea id="n2" placeholder="Comunicacion vertical, horizontal o dispersa? Como daba instrucciones y recibía opiniones?"></textarea></div>
+          <div class="onodo" data-l="3. Que clima genere"><textarea id="n3" placeholder="El equipo trabajaba con confianza, tension o confusion? Como reaccionaban a mi conduccion?"></textarea></div>
+          <div class="onodo" data-l="4. Tarea vs socioafectivo"><textarea id="n4" placeholder="Me centre mas en lograr el objetivo o en cuidar el clima del grupo? Hubo equilibrio?"></textarea></div>
+          <div class="onodo" data-l="5. Estilo predominante"><textarea id="n5" placeholder="Cual estilo predomino: autocratico, permisivo o democratico? Justifica con evidencia de tu conducta."></textarea></div>
+          <div class="onodo" data-l="6. Efectos sobre el grupo"><textarea id="n6" placeholder="Que resultados produjo mi estilo? La productividad y el clima fueron buenos? Por que?"></textarea></div>
+        </div>
+        <div style="margin-top:20px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Plan de mejora de mi liderazgo</label>
+          <textarea id="nplan" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:100px;background:var(--bl);resize:vertical;color:var(--tx);" placeholder="Que aspectos de mi liderazgo mantendria y cuales cambiaria para ser un conductor mas eficaz? Fundamente en los conceptos del tema..."></textarea>
+        </div>
+        <div><button class="btnp" onclick="guardarOrg()">Guardar Organizador</button><button class="btno" onclick="limpiarOrg()">Reiniciar</button></div>
+        <div id="msgorg" class="msg msg-ok">Organizador guardado. Tome una captura de pantalla para entregar en Classroom.</div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Situacion analizada</td><td>Real, especifica, con datos suficientes</td><td>Real con pocos detalles</td><td>Vaga o hipotetica</td></tr>
+            <tr><td>Autodiagnostico</td><td>Honesto, autocritico y fundamentado en conceptos del tema</td><td>Pertinente con sustento parcial</td><td>Superficial o sin autocritica</td></tr>
+            <tr><td>Identificacion del estilo</td><td>Estilo correctamente identificado con evidencia clara</td><td>Estilo identificado con sustento parcial</td><td>Estilo sin justificacion</td></tr>
+            <tr><td>Plan de mejora</td><td>Concreto, viable y fundamentado</td><td>Pertinente pero general</td><td>Ausente o superficial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir evidencia a Google Classroom</span>
+    </div>
+  </div>
+</section>
+<!-- ACTIVIDAD 3: CASO -->
+<section id="act3">
+  <span class="slbl">Actividad 03 de 04</span>
+  <h2>Caso Practico: Analisis y Toma de Decisiones Pedagogicas</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">3</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Analisis de Caso con Preguntas Guiadas</span>
+        <h3>El Caso de los Tres Profesores: Un Mismo Grupo, Tres Estilos</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual o binas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>50 a 70 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Documento en Classroom</div>
+        </div>
+      </div>
+      <div class="casobox">
+        <span class="clbl">Caso Practico: Los Tres Profesores</span>
+        <p><strong>Descripcion del caso:</strong></p>
+        <p>El grupo 302 de la Licenciatura en Pedagogia, de 25 estudiantes, cursa tres materias con tres profesores de estilos de conduccion muy diferentes. Al final del semestre, los estudiantes describen su experiencia con cada uno:</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:14px 0;">
+          <li style="padding:12px 16px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--ro);font-size:.9rem;color:var(--tx2);"><strong>Profesor Martinez:</strong> "Decide absolutamente todo. Nos dice que leer, como exponer, en que orden y con que formato exacto. No acepta propuestas. Si alguien sugiere algo diferente, lo descalifica. Cumplimos todo al pie de la letra porque tememos su evaluacion, pero en cuanto deja un tema 'libre', nadie sabe que hacer. Sacamos buenas calificaciones, pero no siento que haya aprendido a pensar por mi mismo."</li>
+          <li style="padding:12px 16px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--na);font-size:.9rem;color:var(--tx2);"><strong>Profesora Lopez:</strong> "Nos dejo completamente solos. El primer dia dijo 'organicense como quieran, ustedes son adultos' y practicamente no volvio a intervenir. No hubo retroalimentacion, ni orientacion, ni estructura. Algunos equipos aprovecharon, pero la mayoria nos sentimos perdidos y desorganizados. Al final, muchos trabajos quedaron incompletos porque nunca supimos bien que se esperaba de nosotros."</li>
+          <li style="padding:12px 16px;background:var(--bl);border-radius:var(--r);border-left:3px solid var(--ve);font-size:.9rem;color:var(--tx2);"><strong>Profesor Ramirez:</strong> "Al inicio del curso construyo con nosotros las reglas y los criterios de evaluacion. Proponia temas pero escuchaba nuestras ideas y muchas veces las integraba. Cuando habia desacuerdos, facilitaba la discusion en lugar de imponer. Daba retroalimentacion constante. Trabajabamos con ganas, proponíamos cosas y, lo curioso, seguimos avanzando bien incluso cuando el falto dos semanas por un congreso."</li>
+        </ul>
+        <p>La coordinacion academica le pide a usted que elabore un analisis tecnico de los tres estilos y una recomendacion fundamentada.</p>
+      </div>
+      <h3>Preguntas de Analisis</h3>
+      <ol class="cpqs">
+        <li>
+          <div class="cq"><strong>Identificacion de estilos:</strong> Clasifique el estilo de liderazgo de cada uno de los tres profesores (Martinez, Lopez y Ramirez) segun la tipologia de Lewin. Justifique cada clasificacion con al menos dos evidencias concretas tomadas del testimonio de los estudiantes.</div>
+          <textarea class="cresp" id="c1" placeholder="Escriba aqui su clasificacion fundamentada de los tres estilos..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>Analisis de efectos:</strong> Analice los efectos de cada estilo sobre el clima grupal, la productividad y el aprendizaje. ¿Como se relaciona el caso del Profesor Martinez con el hallazgo de Lewin sobre la productividad en ausencia del lider? ¿Que ocurrio con el grupo de la Profesora Lopez y por que?</div>
+          <textarea class="cresp" id="c2" placeholder="Analice los efectos de cada estilo sobre el grupo..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>El caso del Profesor Ramirez:</strong> El grupo del Profesor Ramirez siguio avanzando incluso en su ausencia de dos semanas. Explique este fenomeno con los conceptos del tema. ¿Que caracteristicas de su estilo democratico explican que el grupo desarrollara autonomia?</div>
+          <textarea class="cresp" id="c3" placeholder="Explique el fenomeno del grupo del Profesor Ramirez..."></textarea>
+        </li>
+        <li>
+          <div class="cq"><strong>Recomendacion situacional:</strong> ¿Recomendaria que los tres profesores adoptaran siempre el estilo democratico, o hay situaciones en que los otros estilos serian preferibles? Fundamente su respuesta en el enfoque del liderazgo situacional. Proponga una recomendacion concreta para cada profesor.</div>
+          <textarea class="cresp" id="c4" placeholder="Elabore su recomendacion fundamentada para cada profesor..."></textarea>
+        </li>
+      </ol>
+      <div class="card card-o" style="margin-top:20px;">
+        <h4>Nota metodologica sobre el analisis de casos</h4>
+        <p>Una respuesta de calidad no es "el profesor Martinez es malo y Ramirez es bueno". Una respuesta con rigor pedagogico es: "El profesor Martinez ejerce un estilo autocratico, evidenciado en [datos del caso]. Segun el estudio de Lewin (1939), este estilo produce alta productividad con el lider presente pero genera dependencia y caida del desempeno en su ausencia, lo que se confirma en el testimonio cuando los estudiantes senalan que 'no saben que hacer ante un tema libre'. La recomendacion situacional para este caso seria...".</p>
+      </div>
+      <div style="margin-top:18px;">
+        <button class="btnp" onclick="guardarCaso()">Guardar Analisis</button>
+        <button class="btno" onclick="limpiarCaso()">Limpiar</button>
+      </div>
+      <div id="msgcaso" class="msg msg-ok">Analisis guardado. Exporte el documento y subalo a Classroom.</div>
+      <span class="badge" style="margin-top:20px;">Subir documento a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 4: QUIZ -->
+<section id="act4">
+  <span class="slbl">Actividad 04 de 04</span>
+  <h2>Quiz de Autoevaluacion</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">4</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Quiz Interactivo con Retroalimentacion Inmediata</span>
+        <h3>Evaluacion: Liderazgo y Estilos de Conduccion</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion del Quiz</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Preguntas</strong><br>5 reactivos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Formato</strong><br>Opcion multiple</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Puntaje maximo</strong><br>10 puntos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <p>Responda cada pregunta y presione "Calificar" al finalizar. Tome una captura del resultado y subala a Classroom.</p>
+      <div class="qwrap" id="qc">
+
+        <div class="preg">
+          <span class="qn">Pregunta 01 de 05</span>
+          <div class="qt">¿Cual es la diferencia fundamental entre autoridad formal y liderazgo?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p1" value="a"><span>No existe diferencia: la autoridad formal y el liderazgo son exactamente lo mismo en cualquier contexto grupal.</span></label></li>
+            <li><label><input type="radio" name="p1" value="b"><span>La autoridad formal es la posicion que asigna la institucion, mientras que el liderazgo es la capacidad real de influir en los demas, que puede o no coincidir con la autoridad formal.</span></label></li>
+            <li><label><input type="radio" name="p1" value="c"><span>La autoridad formal solo la poseen los estudiantes, mientras que el liderazgo es exclusivo de los docentes designados institucionalmente.</span></label></li>
+            <li><label><input type="radio" name="p1" value="d"><span>El liderazgo siempre proviene de un nombramiento oficial, mientras que la autoridad formal emerge de manera espontanea en el grupo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 02 de 05</span>
+          <div class="qt">Un docente que decide unilateralmente los objetivos, los metodos y los tiempos, ejerce control estricto y mantiene comunicacion vertical con escasa participacion del grupo, ejerce un estilo de liderazgo:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p2" value="a"><span>Democratico, porque mantiene una estructura clara que favorece la participacion organizada del grupo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="b"><span>Permisivo, porque su control estricto refleja que deja al grupo organizarse libremente bajo su supervision.</span></label></li>
+            <li><label><input type="radio" name="p2" value="c"><span>Autocratico, porque concentra la toma de decisiones, define unilateralmente metas y metodos, y limita la participacion del grupo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="d"><span>Situacional, porque adapta su estilo de manera flexible segun la madurez del grupo en cada momento.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 03 de 05</span>
+          <div class="qt">Segun el estudio clasico de Lewin, Lippitt y White (1939), ¿que ocurre con la productividad de un grupo bajo liderazgo autocratico cuando el lider se ausenta?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p3" value="a"><span>La productividad aumenta, porque el grupo se libera del control y trabaja con mayor creatividad y autonomia.</span></label></li>
+            <li><label><input type="radio" name="p3" value="b"><span>La productividad cae drasticamente, porque el grupo ha desarrollado dependencia del lider y no ha aprendido a autorregularse ni a tomar decisiones por si mismo.</span></label></li>
+            <li><label><input type="radio" name="p3" value="c"><span>La productividad se mantiene exactamente igual, porque el estilo autocratico genera habitos de trabajo permanentes e independientes de la presencia del lider.</span></label></li>
+            <li><label><input type="radio" name="p3" value="d"><span>La productividad no se ve afectada, ya que el estilo de liderazgo no tiene ninguna relacion con el desempeno del grupo en ausencia del conductor.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 04 de 05</span>
+          <div class="qt">Una docente dice a su grupo el primer dia "organicense como quieran, ustedes son adultos" y luego no ofrece orientacion, retroalimentacion ni estructura durante el resto del semestre. Su estilo de liderazgo es:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p4" value="a"><span>Democratico, porque respeta plenamente la autonomia y la capacidad de decision de los estudiantes adultos.</span></label></li>
+            <li><label><input type="radio" name="p4" value="b"><span>Autocratico, porque impone desde el inicio la norma de que el grupo debe trabajar sin su intervencion.</span></label></li>
+            <li><label><input type="radio" name="p4" value="c"><span>Permisivo o laissez-faire, porque interviene minimamente y deja al grupo sin orientacion ni seguimiento, lo que segun Lewin suele producir desorganizacion y frustracion en grupos que requieren guia.</span></label></li>
+            <li><label><input type="radio" name="p4" value="d"><span>Situacional, porque adapta su estilo a un grupo de estudiantes maduros que no necesitan ninguna conduccion.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 05 de 05</span>
+          <div class="qt">El enfoque del liderazgo situacional (Hersey y Blanchard) aporta un matiz importante al estudio de Lewin. ¿Cual es ese aporte?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p5" value="a"><span>Demuestra que el estilo autocratico es siempre el mas eficaz en cualquier contexto educativo, sin importar la madurez del grupo.</span></label></li>
+            <li><label><input type="radio" name="p5" value="b"><span>Sostiene que el estilo de liderazgo mas eficaz no es universal, sino que depende del nivel de madurez y competencia del grupo: grupos inmaduros pueden requerir mayor direccion y grupos maduros mayor autonomia.</span></label></li>
+            <li><label><input type="radio" name="p5" value="c"><span>Afirma que el estilo permisivo es el ideal para todos los grupos porque promueve la maxima libertad y autonomia individual.</span></label></li>
+            <li><label><input type="radio" name="p5" value="d"><span>Concluye que los estilos de liderazgo son irrelevantes y que lo unico que importa es la personalidad innata del lider.</span></label></li>
+          </ul>
+        </div>
+
+        <button id="btnq" onclick="calificar()">Calificar Quiz</button>
+        <div class="qres" id="qr">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:6px;">Resultado Final</span>
+          <span class="sn" id="snm">0 / 10</span>
+          <div class="bprog"><div class="bfill" id="bf"></div></div>
+          <p class="sm" id="smsg"></p>
+          <p class="sd" id="sdet"></p>
+          <br><button id="btnr" onclick="reiniciar()">Intentar de Nuevo</button>
+        </div>
+      </div>
+      <div class="card card-b" style="margin-top:22px;">
+        <h4>Instruccion de Entrega</h4>
+        <ol style="margin-left:18px;color:var(--tx2);font-size:.92rem;">
+          <li style="margin-bottom:7px;">Complete el quiz hasta obtener la pantalla de resultados con el puntaje final.</li>
+          <li style="margin-bottom:7px;">Tome una captura que incluya el puntaje, la barra de progreso y las respuestas marcadas.</li>
+          <li style="margin-bottom:7px;">Nombre el archivo: <code>Quiz_Liderazgo_NombreApellido.png</code></li>
+          <li>Subalo en la tarea "Quiz Unidad III" de Google Classroom.</li>
+        </ol>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- REFLEXION -->
+<section id="reflexion">
+  <span class="slbl">Seccion 09</span>
+  <h2>Reflexion y Plan de Aplicacion</h2>
+  <p>Esta seccion cierra el ciclo de aprendizaje. La metacognicion &mdash;reflexionar sobre lo aprendido, como se aprendio y para que sirve&mdash; consolida el conocimiento y facilita su transferencia a nuevos contextos.</p>
+  <div class="card card-g" style="margin-bottom:26px;">
+    <h4>Condicion Previa</h4>
+    <p>Esta seccion tiene mayor valor si se completa despues de realizar las cuatro actividades. La experiencia acumulada es el insumo principal de su reflexion.</p>
+  </div>
+  <h3>Cuadro de Reflexion Personal</h3>
+  <div class="refgrid">
+    <div class="refitem"><label>1. Concepto que transformo mi comprension</label><textarea id="r1" placeholder="Cual de los conceptos del tema cambio o matizo una idea previa sobre el liderazgo?"></textarea></div>
+    <div class="refitem"><label>2. Lo que reconoci sobre mi propio liderazgo</label><textarea id="r2" placeholder="Que descubrio sobre su propio estilo de liderazgo al analizarlo con los conceptos del tema?"></textarea></div>
+    <div class="refitem"><label>3. Tension o dificultad conceptual</label><textarea id="r3" placeholder="Que aspecto del tema le resulto mas dificil de comprender o le genero mayor tension intelectual?"></textarea></div>
+    <div class="refitem"><label>4. Preguntas abiertas</label><textarea id="r4" placeholder="Que preguntas nuevas surgieron? Que le gustaria explorar en las proximas unidades?"></textarea></div>
+  </div>
+  <hr class="div">
+  <h3>Plan de Aplicacion Profesional</h3>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como aplicare este conocimiento en mi vida universitaria inmediata</h4>
+    <textarea id="p1" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: En el proximo trabajo de equipo voy a ejercer un liderazgo mas democratico: construire las reglas de trabajo con mis companieros en lugar de imponerlas y facilitare las decisiones en lugar de tomarlas solo..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como transferire este conocimiento a mi futura practica pedagogica o docente</h4>
+    <textarea id="p2" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: Cuando sea docente, sere consciente de mi estilo de conduccion y adaptare mi nivel de direccion segun la madurez de cada grupo, comenzando mas directivo con grupos nuevos y promoviendo mayor autonomia conforme maduren..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h4>Mi compromiso de aprendizaje para las proximas dos semanas</h4>
+    <textarea id="p3" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:70px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Me comprometo a... (accion concreta, observable y realizable)"></textarea>
+  </div>
+  <button class="btnp" onclick="genPlan()">Generar mi Plan de Aplicacion</button>
+  <div class="planprev" id="planp">
+    <h4>Mi Plan de Aplicacion &mdash; El Liderazgo en los Grupos</h4>
+    <div id="planpc"></div>
+    <div class="card card-g" style="margin-top:16px;"><p style="margin:0;font-size:.88rem;">Tome una captura de este plan como referencia personal para las proximas semanas del curso.</p></div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <span class="slbl">Seccion 10</span>
+  <h2>Glosario de Terminos Clave</h2>
+  <div class="card">
+    <dl class="glos">
+      <div><dt>Autoridad formal</dt><dd>Posicion de poder que una institucion o estructura asigna oficialmente a una persona. Se distingue del liderazgo, que es la capacidad real de influir y puede o no coincidir con la autoridad formal.</dd></div>
+      <div><dt>Dimension de tarea</dt><dd>Conjunto de funciones del liderazgo orientadas al logro del objetivo: organizar, planificar, distribuir responsabilidades, dar seguimiento y evaluar resultados.</dd></div>
+      <div><dt>Dimension socioafectiva</dt><dd>Conjunto de funciones del liderazgo orientadas al bienestar del grupo: cuidar el clima, mediar conflictos, motivar, reconocer aportaciones y fortalecer la cohesion.</dd></div>
+      <div><dt>Liderazgo</dt><dd>Proceso de influencia social mediante el cual una persona orienta, motiva y coordina las acciones de los miembros de un grupo hacia el logro de objetivos comunes.</dd></div>
+      <div><dt>Liderazgo autocratico</dt><dd>Estilo en que el lider concentra la toma de decisiones, define unilateralmente objetivos y metodos, ejerce control estricto y mantiene comunicacion vertical con escasa participacion del grupo.</dd></div>
+      <div><dt>Liderazgo democratico</dt><dd>Estilo en que el lider promueve la participacion del grupo en las decisiones, facilita la discusion, orienta sin imponer y construye los objetivos y metodos de manera consensuada.</dd></div>
+      <div><dt>Liderazgo formal</dt><dd>Liderazgo asignado por la institucion o la estructura del grupo, como el docente o el coordinador de equipo designado.</dd></div>
+      <div><dt>Liderazgo informal</dt><dd>Liderazgo que emerge espontaneamente de la dinamica interna del grupo y recae en quien los miembros reconocen como referente sin nombramiento oficial.</dd></div>
+      <div><dt>Liderazgo permisivo (laissez-faire)</dt><dd>Estilo en que el lider interviene minimamente, otorga libertad casi total al grupo y no ofrece orientacion ni seguimiento sistematico. La expresion francesa significa "dejar hacer".</dd></div>
+      <div><dt>Liderazgo situacional</dt><dd>Enfoque (Hersey y Blanchard) que sostiene que el estilo de liderazgo mas eficaz no es universal, sino que depende del nivel de madurez y competencia del grupo en cada situacion.</dd></div>
+      <div><dt>Estilo de liderazgo</dt><dd>Patron caracteristico de conducta mediante el cual un lider ejerce su influencia sobre el grupo, especialmente en la toma de decisiones, la comunicacion y el trato con los miembros.</dd></div>
+      <div><dt>Estudio de Lewin (1939)</dt><dd>Investigacion experimental de Kurt Lewin, Ronald Lippitt y Ralph White que identifico y comparo los efectos de los estilos de liderazgo autocratico, democratico y laissez-faire sobre el comportamiento grupal.</dd></div>
+      <div><dt>Influencia social</dt><dd>Capacidad de una persona para modificar las actitudes, creencias o conductas de otras. Es la esencia del liderazgo, que se ejerce a traves de la comunicacion, el ejemplo y la gestion de relaciones.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="fi">
+    <div>
+      <span class="fn">Universidad de la Cienega &mdash; Plantel Centro</span>
+      <span>Licenciatura en Pedagogia &mdash; Tecnicas de Conduccion de Grupos</span>
+    </div>
+    <div style="text-align:right;">
+      <span>Guia Interactiva Unidad III &mdash; Temas 3 y 3.1 &mdash; Ciclo 2024&ndash;2025</span><br>
+      <span style="color:rgba(255,255,255,.35);margin-top:3px;display:block;">Material de uso educativo &mdash; version web para GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){
+  var s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('pgbar').style.width=(s/h*100)+'%';
+});
+function tog(b){b.classList.toggle('open');b.nextElementSibling.classList.toggle('show');}
+function verPrevio(){
+  if(!document.getElementById('prevresp').value.trim()){alert('Por favor escriba su reflexion antes de ver la orientacion conceptual.');return;}
+  document.getElementById('prevfb').classList.add('show');
+}
+function guardarOrg(){var m=document.getElementById('msgorg');m.classList.add('show');setTimeout(function(){m.classList.remove('show');},4500);}
+function limpiarOrg(){
+  if(!confirm('Desea reiniciar todos los campos del organizador?'))return;
+  ['sitinp','n1','n2','n3','n4','n5','n6','nplan'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('sitnm').textContent='_______________';
+}
+function guardarCaso(){var m=document.getElementById('msgcaso');m.classList.add('show');setTimeout(function(){m.classList.remove('show');},4500);}
+function limpiarCaso(){
+  if(!confirm('Desea limpiar todas las respuestas del caso?'))return;
+  ['c1','c2','c3','c4'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+}
+var RC={p1:'b',p2:'c',p3:'b',p4:'c',p5:'b'};
+var MS=[
+  "Es necesario revisar el contenido nuevamente. Regrese especialmente a la seccion de los tres estilos de liderazgo y a la tabla comparativa de sus efectos.",
+  "Ha comprendido algunos conceptos. Revise las preguntas incorrectas y los apartados correspondientes antes de continuar.",
+  "Desempeno aceptable. Domina la mayoria de los conceptos. Revise la retroalimentacion de las preguntas incorrectas.",
+  "Buen desempeno. Revise la pregunta incorrecta para alcanzar dominio completo del tema.",
+  "Excelente. Dominio completo del tema. Puede avanzar con confianza a la siguiente unidad del curso."
+];
+function calificar(){
+  var ps=['p1','p2','p3','p4','p5'],ok=0,todo=true;
+  ps.forEach(function(p){
+    var sel=document.querySelector('input[name="'+p+'"]:checked');
+    if(!sel){todo=false;return;}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.closest('li').classList.remove('ok','err');});
+    if(sel.value===RC[p]){ok++;sel.closest('li').classList.add('ok');}
+    else{sel.closest('li').classList.add('err');var c=document.querySelector('input[name="'+p+'"][value="'+RC[p]+'"]');if(c)c.closest('li').classList.add('ok');}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.disabled=true;});
+  });
+  if(!todo){alert('Por favor responda todas las preguntas antes de calificar.');return;}
+  var pts=(ok/5)*10;
+  document.getElementById('snm').textContent=pts.toFixed(0)+' / 10';
+  document.getElementById('bf').style.width=(pts*10)+'%';
+  document.getElementById('smsg').textContent=MS[ok];
+  document.getElementById('sdet').textContent=ok+' de 5 respuestas correctas. Puntaje: '+pts.toFixed(0)+'/10.';
+  var r=document.getElementById('qr');r.classList.add('show');
+  document.getElementById('btnq').disabled=true;
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function reiniciar(){
+  ['p1','p2','p3','p4','p5'].forEach(function(p){
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.checked=false;r.disabled=false;r.closest('li').classList.remove('ok','err');});
+  });
+  document.getElementById('qr').classList.remove('show');
+  document.getElementById('bf').style.width='0';
+  document.getElementById('btnq').disabled=false;
+  document.getElementById('qc').scrollIntoView({behavior:'smooth'});
+}
+function genPlan(){
+  var p1=document.getElementById('p1').value.trim(),p2=document.getElementById('p2').value.trim(),p3=document.getElementById('p3').value.trim();
+  if(!p1&&!p2&&!p3){alert('Complete al menos un campo del plan antes de generarlo.');return;}
+  var h='';
+  if(p1)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--azbg);border-radius:var(--r);border-left:3px solid var(--az);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;">Aplicacion Inmediata</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p1+'</p></div>';
+  if(p2)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--vel);border-radius:var(--r);border-left:3px solid var(--ve);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ve);display:block;margin-bottom:5px;">Practica Pedagogica Futura</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p2+'</p></div>';
+  if(p3)h+='<div style="padding:14px 18px;background:var(--doxl);border-radius:var(--r);border-left:3px solid var(--do);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:5px;">Mi Compromiso</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p3+'</p></div>';
+  document.getElementById('planpc').innerHTML=h;
+  var pp=document.getElementById('planp');pp.classList.add('show');
+  pp.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
