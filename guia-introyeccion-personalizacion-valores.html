@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Introyeccion y Personalizacion de los Valores | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vino:#5a1f3a;
+  --vino-m:#8a3357;
+  --rosa-ac:#c75a8a;
+  --vino-s:#fbeef3;
+  --terracota:#b85c2e;
+  --terracota-s:#fdf2ea;
+  --azul-prof:#1f3a5a;
+  --azul-s:#eaf1f8;
+  --oliva:#5a6b2e;
+  --oliva-s:#f0f3e6;
+  --gris:#5a5a5a;
+  --gc:#f6f4f5;
+  --crema:#faf7f5;
+  --borde:#e6dce1;
+  --blanco:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Work Sans",sans-serif;background:var(--crema);color:#241620;font-size:15.5px;line-height:1.78}
+
+/* HEADER */
+header{background:var(--vino);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;top:-100px;left:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(199,90,138,0.18) 0%,transparent 70%)}
+header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rosa-ac),var(--terracota),var(--rosa-ac))}
+.hi{max-width:1000px;margin:0 auto;padding:38px 34px 50px;position:relative;z-index:1}
+.htop{display:flex;align-items:center;gap:22px;padding-bottom:28px;margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.logo-b{background:var(--blanco);border-radius:12px;padding:10px;width:88px;height:88px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 24px rgba(0,0,0,0.35)}
+.logo-b img{width:100%;height:100%;object-fit:contain;display:block}
+.hbrand .uni{font-family:"Lora",serif;font-size:1.22rem;color:rgba(255,255,255,0.94);font-weight:700}
+.hbrand .dep{font-size:0.74rem;color:rgba(255,255,255,0.42);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.htags{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.htag{padding:4px 13px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.htag.rs{background:rgba(199,90,138,0.25);border:1px solid rgba(199,90,138,0.5);color:#f0a8c8}
+.htag.te{background:rgba(184,92,46,0.22);border:1px solid rgba(184,92,46,0.48);color:#e8a878}
+.hbody h1{font-family:"Lora",serif;font-size:2.5rem;color:var(--blanco);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hbody h1 em{color:#f0a8c8;font-style:italic}
+.hpills{display:flex;gap:9px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.62);padding:5px 14px;border-radius:14px;font-size:0.73rem;white-space:nowrap}
+
+/* NAV */
+nav.nav-s{background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(90,31,58,0.08)}
+.nav-w{max-width:1000px;margin:0 auto;padding:0 34px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-w::-webkit-scrollbar{display:none}
+.nav-w a{color:var(--gris);text-decoration:none;font-size:0.79rem;font-weight:600;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;letter-spacing:0.01em}
+.nav-w a:hover{color:var(--vino-m);border-bottom-color:var(--rosa-ac)}
+
+/* MAIN */
+main{max-width:1000px;margin:0 auto;padding:44px 34px 80px}
+
+/* BLOQUES */
+.bloque{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:44px;margin-bottom:26px;position:relative;overflow:hidden;animation:up 0.4s ease both}
+.bloque::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;border-radius:14px 0 0 14px}
+.bloque.rs::before{background:linear-gradient(to bottom,var(--vino-m),var(--rosa-ac))}
+.bloque.te::before{background:linear-gradient(to bottom,var(--terracota),#e0966a)}
+.bloque.az::before{background:linear-gradient(to bottom,var(--azul-prof),#5a82a8)}
+.bloque.ol::before{background:linear-gradient(to bottom,var(--oliva),#8a9e5a)}
+.bloque.gr::before{background:linear-gradient(to bottom,#888,#bbb)}
+.bh{display:flex;align-items:flex-start;gap:18px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--borde)}
+.bicon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"Lora",serif;font-size:1.2rem;font-weight:700;flex-shrink:0}
+.bicon.rs{background:var(--vino-s);color:var(--vino-m)}
+.bicon.te{background:var(--terracota-s);color:#8a4520}
+.bicon.az{background:var(--azul-s);color:var(--azul-prof)}
+.bicon.ol{background:var(--oliva-s);color:var(--oliva)}
+.bicon.gr{background:var(--gc);color:var(--gris)}
+.btit .sup{font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gris);margin-bottom:4px}
+.btit h2{font-family:"Lora",serif;font-size:1.5rem;font-weight:700;color:var(--vino);line-height:1.2}
+
+/* TIPOGRAFIA */
+h3{font-family:"Lora",serif;font-size:1.14rem;font-weight:700;color:var(--vino);margin:26px 0 10px}
+h3:first-child{margin-top:0}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--vino-m);font-weight:700}
+em{color:var(--gris);font-style:italic}
+
+/* CAJAS */
+.caja{border-radius:8px;padding:17px 22px;margin:17px 0;border-left:4px solid}
+.caja.rs{background:var(--vino-s);border-color:var(--rosa-ac)}
+.caja.te{background:var(--terracota-s);border-color:var(--terracota)}
+.caja.az{background:var(--azul-s);border-color:var(--azul-prof)}
+.caja.ol{background:var(--oliva-s);border-color:var(--oliva)}
+.caja.gr{background:var(--gc);border-color:#aaa}
+.caja-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px}
+.caja.rs .caja-tag{color:var(--vino-m)}
+.caja.te .caja-tag{color:#8a4520}
+.caja.az .caja-tag{color:var(--azul-prof)}
+.caja.ol .caja-tag{color:var(--oliva)}
+.caja.gr .caja-tag{color:#777}
+
+/* TABLA */
+table.t{width:100%;border-collapse:collapse;font-size:0.87rem;margin:16px 0}
+table.t th{background:var(--vino);color:var(--blanco);padding:11px 14px;text-align:left;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--borde);vertical-align:top;line-height:1.55}
+table.t tr:nth-child(even) td{background:#fdf9fa}
+
+/* LISTAS */
+ul.l,ol.l{list-style:none;padding:0}
+ul.l li{padding:9px 0 9px 28px;position:relative;border-bottom:1px solid var(--gc);font-size:0.93rem}
+ul.l li:last-child{border-bottom:none}
+ul.l li::before{content:"";position:absolute;left:8px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--rosa-ac)}
+ol.l{counter-reset:cnt}
+ol.l li{padding:10px 0 10px 42px;position:relative;border-bottom:1px solid var(--gc);counter-increment:cnt;font-size:0.93rem}
+ol.l li:last-child{border-bottom:none}
+ol.l li::before{content:counter(cnt);position:absolute;left:0;top:10px;background:var(--vino-m);color:var(--blanco);width:26px;height:26px;border-radius:6px;font-size:0.76rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* PROCESO - ESCALERA DE FORMACION */
+.proceso{display:flex;flex-direction:column;gap:10px;margin:22px 0}
+.proc-nivel{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border-radius:10px;border:1px solid var(--borde);transition:transform 0.2s,box-shadow 0.2s}
+.proc-nivel:hover{transform:translateX(6px);box-shadow:0 4px 18px rgba(90,31,58,0.1)}
+.proc-num{font-family:"Lora",serif;font-size:1.7rem;font-weight:700;min-width:44px;text-align:center;line-height:1;margin-top:2px}
+.proc-info{flex:1}
+.proc-tit{font-weight:700;font-size:0.98rem;margin-bottom:5px}
+.proc-desc{font-size:0.85rem;color:var(--gris);line-height:1.6}
+.pn1{background:var(--azul-s);border-left:4px solid var(--azul-prof)}
+.pn1 .proc-num{color:var(--azul-prof)}
+.pn2{background:var(--oliva-s);border-left:4px solid var(--oliva)}
+.pn2 .proc-num{color:var(--oliva)}
+.pn3{background:var(--terracota-s);border-left:4px solid var(--terracota)}
+.pn3 .proc-num{color:var(--terracota)}
+.pn4{background:var(--vino-s);border-left:4px solid var(--vino-m)}
+.pn4 .proc-num{color:var(--vino-m)}
+.proc-flecha{text-align:center;color:var(--borde);font-size:1.3rem;margin:-4px 0;line-height:1}
+
+/* INTROYECCION VS PERSONALIZACION */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.comp-card{border-radius:12px;padding:24px;border:1px solid var(--borde)}
+.comp-card.a{background:var(--azul-s);border-top:4px solid var(--azul-prof)}
+.comp-card.b{background:var(--vino-s);border-top:4px solid var(--vino-m)}
+.comp-tit{font-family:"Lora",serif;font-size:1.1rem;font-weight:700;margin-bottom:12px}
+.comp-card.a .comp-tit{color:var(--azul-prof)}
+.comp-card.b .comp-tit{color:var(--vino-m)}
+.comp-card ul{list-style:none;padding:0}
+.comp-card li{padding:6px 0 6px 20px;position:relative;font-size:0.86rem;line-height:1.55}
+.comp-card li::before{content:"\2013";position:absolute;left:0;font-weight:700}
+.comp-card.a li::before{color:var(--azul-prof)}
+.comp-card.b li::before{color:var(--vino-m)}
+
+/* CONOCIMIENTO PREVIO */
+.kprev{background:linear-gradient(135deg,var(--vino) 0%,var(--vino-m) 100%);border-radius:12px;padding:34px;position:relative;overflow:hidden}
+.kprev::after{content:"?";position:absolute;right:24px;bottom:-28px;font-family:"Lora",serif;font-size:160px;color:rgba(255,255,255,0.04);line-height:1}
+.kprev h3{color:#f0a8c8;margin-bottom:12px}
+.kprev p{color:rgba(255,255,255,0.84);font-size:1.04rem;font-style:italic;margin-bottom:20px;position:relative;z-index:1}
+.kp-opts{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.kp-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.88);padding:12px 18px;border-radius:8px;cursor:pointer;font-family:"Work Sans",sans-serif;font-size:0.89rem;text-align:left;transition:all 0.2s}
+.kp-btn:hover:not(:disabled){background:rgba(255,255,255,0.15);border-color:#f0a8c8}
+.kp-btn.ok{background:rgba(90,107,46,0.45);border-color:#a8c878;color:#d8f0b8}
+.kp-btn.no{background:rgba(184,92,46,0.35);border-color:#e8a878;color:#f7d0b0}
+.kp-fb{display:none;margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.89rem;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18)}
+.kp-fb.show{display:block}
+
+/* RECURSOS */
+.rec-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde)}
+.rec-item:last-child{border-bottom:none}
+.rec-tipo{font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:12px;white-space:nowrap;margin-top:2px;flex-shrink:0;color:var(--blanco)}
+.rt-l{background:var(--vino-m)}
+.rt-a{background:var(--azul-prof)}
+.rt-w{background:var(--terracota)}
+.rt-v{background:var(--oliva)}
+.rec-tit{font-weight:700;color:var(--vino);margin-bottom:2px;font-size:0.92rem}
+.rec-aut{font-size:0.8rem;color:var(--gris);line-height:1.5}
+
+/* ACTIVIDADES */
+.act-badge{display:inline-flex;align-items:center;padding:6px 16px;border-radius:20px;font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:22px;color:var(--blanco)}
+.ab-foro{background:var(--oliva)}
+.ab-indiv{background:var(--azul-prof)}
+.ab-caso{background:var(--terracota)}
+.ab-quiz{background:var(--vino-m)}
+.cita{background:var(--vino);color:var(--blanco);border-radius:10px;padding:28px 32px;position:relative;margin:20px 0}
+.cita::before{content:"\201C";position:absolute;top:4px;left:18px;font-family:"Lora",serif;font-size:5.5rem;color:rgba(255,255,255,0.08);line-height:1}
+.cita p{color:rgba(255,255,255,0.88);font-size:1.03rem;font-style:italic;position:relative;z-index:1;margin-bottom:0;line-height:1.7}
+.paso{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--gc);align-items:flex-start;font-size:0.93rem}
+.paso:last-child{border-bottom:none}
+.paso-n{background:var(--vino-s);border:1px solid var(--borde);color:var(--vino-m);font-weight:700;font-size:0.8rem;min-width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rubr{display:grid;grid-template-columns:1fr 76px;gap:10px;padding:11px 0;border-bottom:1px solid var(--gc);align-items:center;font-size:0.9rem}
+.rubr:last-child{border-bottom:none}
+.pts{background:var(--vino);color:var(--blanco);text-align:center;border-radius:6px;padding:6px 8px;font-weight:700;font-size:0.86rem}
+.escenario{background:var(--vino-s);border:1px solid #e0c0d0;border-radius:10px;padding:24px;margin:18px 0}
+.esc-tag{font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--vino-m);margin-bottom:10px}
+.cta{display:flex;align-items:center;gap:14px;background:#1a7340;color:var(--blanco);padding:15px 20px;border-radius:8px;margin-top:22px;font-size:0.89rem;font-weight:600}
+
+/* QUIZ */
+.quiz-wrap{background:var(--gc);border-radius:12px;padding:28px}
+.q-prog{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.q-bc{flex:1;height:4px;background:var(--borde);border-radius:3px;overflow:hidden}
+.q-bf{height:100%;background:var(--rosa-ac);border-radius:3px;transition:width 0.4s}
+.qt{font-size:0.78rem;color:var(--gris);font-weight:600;white-space:nowrap}
+.qb{display:none}
+.qb.act{display:block}
+.qb h4{font-family:"Work Sans",sans-serif;font-size:0.96rem;font-weight:700;color:var(--vino);margin-bottom:18px;line-height:1.55}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.qo{display:flex;align-items:flex-start;gap:12px;padding:12px 15px;background:var(--blanco);border:2px solid var(--borde);border-radius:8px;cursor:pointer;transition:all 0.2s;text-align:left}
+.qo:hover{border-color:var(--rosa-ac);background:var(--vino-s)}
+.qo.sel{border-color:var(--vino-m);background:var(--vino-s)}
+.qo.ok{border-color:var(--oliva);background:var(--oliva-s);cursor:default}
+.qo.fail{border-color:var(--terracota);background:var(--terracota-s);cursor:default}
+.qo.show-ok{border-color:var(--oliva);background:var(--oliva-s);cursor:default}
+.ql{width:26px;height:26px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.76rem;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.qo.sel .ql{background:var(--vino-m);color:var(--blanco)}
+.qo.ok .ql{background:var(--oliva);color:var(--blanco)}
+.qo.fail .ql{background:var(--terracota);color:var(--blanco)}
+.qo.show-ok .ql{background:var(--oliva);color:var(--blanco)}
+.qot{font-size:0.9rem;line-height:1.5}
+.qr{display:none;padding:12px 16px;border-radius:8px;margin-bottom:14px;font-size:0.87rem;line-height:1.5}
+.qr.ok{background:var(--oliva-s);border:1px solid var(--oliva);color:var(--oliva)}
+.qr.fail{background:var(--terracota-s);border:1px solid var(--terracota);color:var(--terracota)}
+.qr.show{display:block}
+.q-res{display:none;text-align:center;padding:36px 20px}
+.q-res.show{display:block}
+.q-sc{font-family:"Lora",serif;font-size:5.5rem;color:var(--vino);line-height:1;margin-bottom:6px}
+.q-sc span{font-size:2.2rem;color:var(--gris)}
+.q-niv{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.q-msg{color:var(--gris);font-size:0.91rem;max-width:440px;margin:0 auto 24px}
+
+/* BOTONES */
+.btn{padding:11px 22px;border-radius:7px;font-family:"Work Sans",sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.btn-p{background:var(--vino-m);color:var(--blanco)}
+.btn-p:hover{background:var(--vino);transform:translateY(-1px);box-shadow:0 4px 14px rgba(90,31,58,0.25)}
+.btn-p:disabled{background:var(--borde);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:transparent;color:var(--vino-m);border:2px solid var(--vino-m)}
+.btn-s:hover{background:var(--vino-s)}
+
+/* REFLEXION */
+.refl{background:#fdfafa;border:1px solid var(--borde);border-radius:8px;padding:20px;margin-bottom:14px}
+.refl label{display:block;font-weight:700;font-size:0.87rem;color:var(--vino);margin-bottom:10px}
+.refl textarea{width:100%;min-height:80px;padding:11px;border:1.5px solid var(--borde);border-radius:6px;font-family:"Work Sans",sans-serif;font-size:0.89rem;line-height:1.6;resize:vertical;background:var(--blanco);color:#241620;transition:border-color 0.2s}
+.refl textarea:focus{outline:none;border-color:var(--rosa-ac)}
+
+/* FOOTER */
+footer{background:var(--vino);color:rgba(255,255,255,0.44);text-align:center;padding:30px 34px;font-size:0.77rem;line-height:1.9}
+footer strong{color:rgba(255,255,255,0.82)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.bloque:nth-child(1){animation-delay:.04s}.bloque:nth-child(2){animation-delay:.08s}.bloque:nth-child(3){animation-delay:.12s}.bloque:nth-child(4){animation-delay:.16s}.bloque:nth-child(5){animation-delay:.2s}.bloque:nth-child(6){animation-delay:.24s}.bloque:nth-child(7){animation-delay:.28s}.bloque:nth-child(8){animation-delay:.32s}.bloque:nth-child(9){animation-delay:.36s}
+@media(max-width:680px){
+  .hi{padding:22px 16px 28px}
+  .hbody h1{font-size:1.85rem}
+  main{padding:24px 14px 56px}
+  .bloque{padding:22px 16px}
+  .nav-w{padding:0 14px}
+  .comp-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="htop">
+      <div class="logo-b">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="hbrand">
+        <div class="uni">Universidad de la Cienega</div>
+        <div class="dep">Licenciatura en Pedagogia &middot; Ciencias de la Educacion</div>
+      </div>
+      <div class="htags">
+        <span class="htag rs">Valores y Educacion</span>
+        <span class="htag te">Tema 4 &middot; Subtema 4.1</span>
+      </div>
+    </div>
+    <div class="hbody">
+      <h1><em>Introyeccion y Personalizacion</em><br>de los Valores:<br>El Proceso de Formacion</h1>
+      <div class="hpills">
+        <span class="hpill">Tema 4, Subtema 4.1</span>
+        <span class="hpill">Constructivismo &middot; ABP</span>
+        <span class="hpill">4 Actividades interactivas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-s">
+  <div class="nav-w">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#proceso">Proceso de formacion</a>
+    <a href="#introyeccion">Introyeccion</a>
+    <a href="#personalizacion">Personalizacion</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Act. 3 Caso</a>
+    <a href="#act4">Act. 4 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRO -->
+<section class="bloque rs" id="intro">
+  <div class="bh">
+    <div class="bicon rs">I</div>
+    <div class="btit">
+      <div class="sup">Punto de partida &middot; Tema 4, Subtema 4.1</div>
+      <h2>Introduccion al Tema</h2>
+    </div>
+  </div>
+  <p>Hasta este punto del curso, el estudio de los valores se ha centrado en preguntas de naturaleza mas bien estatica: que tipos de valores existen, como se jerarquizan, como se traducen en actitudes y conductas observables. Esta guia introduce una pregunta de naturaleza distinta, de caracter genetico y evolutivo: <strong>como llega un valor a formar parte de la identidad de una persona?</strong> Es decir, no que es un valor ni como se clasifica, sino <em>como se origina, se asimila y se hace propio</em> a lo largo del desarrollo humano.</p>
+  <p>Esta pregunta nos lleva al estudio de dos conceptos centrales: la <strong>introyeccion</strong>, entendida como el proceso inicial mediante el cual una persona incorpora valores, normas y pautas de conducta provenientes del exterior (familia, escuela, cultura, religion); y la <strong>personalizacion</strong>, entendida como el proceso posterior y mas maduro mediante el cual esos valores incorporados dejan de ser meras imposiciones externas y se convierten en convicciones genuinamente propias, asumidas con libertad y comprension critica.</p>
+  <p>Comprender este proceso de formacion es esencial para el pedagogo: le permite distinguir entre una educacion en valores que solo logra el cumplimiento externo de normas, y una educacion en valores que efectivamente forma personas con autonomia moral. Tambien le permite comprender por que muchos estudiantes "saben" cuales son los valores correctos pero no los sienten como propios, y por que la formacion axiologica autentica requiere mas tiempo y profundidad que la simple transmision de contenidos.</p>
+  <div class="caja te">
+    <div class="caja-tag">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> explicar las etapas del proceso de formacion de los valores desde una perspectiva evolutiva; <strong>(2)</strong> diferenciar conceptualmente la introyeccion de la personalizacion de los valores; <strong>(3)</strong> identificar en situaciones educativas reales el nivel de desarrollo axiologico (introyectado o personalizado) de un sujeto; y <strong>(4)</strong> diseniar estrategias pedagogicas que favorezcan el transito de la introyeccion hacia la personalizacion genuina de los valores.</p>
+  </div>
+  <div class="caja rs">
+    <div class="caja-tag">Metodologia de trabajo</div>
+    <p>Esta guia integra <strong>constructivismo</strong> (el aprendizaje como construccion activa a partir de la experiencia), <strong>pedagogia activa</strong> (el estudiante como protagonista de su propio proceso formativo) y <strong>aprendizaje basado en problemas</strong> (ABP), donde la comprension teorica del proceso de formacion de valores emerge del analisis de situaciones reales y significativas de la vida universitaria.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque te" id="previo">
+  <div class="bh">
+    <div class="bicon te">?</div>
+    <div class="btit">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Responda la siguiente pregunta con base en su comprension actual, sin consultar fuentes externas. El objetivo es identificar el punto de partida de su comprension para construir sobre ella a lo largo de la guia.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Un nino pequeniio no miente porque sus padres lo castigan si lo descubren. Veinte aniios despues, ese mismo individuo, ya adulto, no miente aunque nadie pudiera descubrirlo, porque considera que la honestidad es parte fundamental de quien el es. Que proceso describe mejor esta transformacion?</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpR(this,false)">A) Un cambio en la jerarquia axiologica del individuo, donde la honestidad paso de ser un valor de menor rango a uno de mayor rango con el paso del tiempo.</button>
+      <button class="kp-btn" onclick="kpR(this,true)">B) El transito de la introyeccion (cumplimiento de la norma por miedo al castigo externo) hacia la personalizacion (asuncion libre y consciente del valor como parte de la propia identidad).</button>
+      <button class="kp-btn" onclick="kpR(this,false)">C) Un simple proceso de maduracion biologica que ocurre automaticamente con la edad, independientemente de la experiencia o la educacion recibida.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">D) Un cambio en la tipologia del valor, donde la honestidad dejo de ser un valor individual para convertirse en un valor social a lo largo del desarrollo.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- PROCESO DE FORMACION -->
+<section class="bloque az" id="proceso">
+  <div class="bh">
+    <div class="bicon az">4.1</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico &middot; Tema 4, Subtema 4.1</div>
+      <h2>El Proceso de Formacion de los Valores</h2>
+    </div>
+  </div>
+
+  <h3>1. Los valores no nacen formados: se construyen</h3>
+  <p>Una de las premisas centrales de la pedagogia de valores contemporanea es que <strong>ningun ser humano nace con valores ya constituidos</strong>. Lo que el ser humano trae al nacer son disposiciones, capacidades afectivas y cognitivas que haran posible, con el tiempo y la experiencia, la construccion de un sistema de valores propio. Los valores se forman a traves de un proceso evolutivo, gradual y acumulativo que involucra a la familia, la escuela, el grupo de pares, la cultura y las experiencias significativas de vida.</p>
+  <p>Este proceso no es lineal ni uniforme: distintos valores pueden encontrarse en distintos niveles de desarrollo en una misma persona. Un individuo puede haber personalizado plenamente el valor de la responsabilidad academica, mientras que su valor de la solidaridad permanece todavia en un nivel introyectado, dependiente de la aprobacion social.</p>
+
+  <h3>2. Modelo general del proceso: de lo externo a lo interno</h3>
+  <p>Diversos autores (entre ellos Piaget, Kohlberg y la tradicion de la educacion en valores de origen constructivista) coinciden en describir el proceso de formacion de valores como un trayecto que va de la <strong>heteronomia</strong> (la norma viene de fuera y se cumple por presion externa) hacia la <strong>autonomia</strong> (la norma se interioriza, se comprende y se asume como propia conviccion). Este trayecto puede describirse en cuatro grandes momentos:</p>
+
+  <div class="proceso">
+    <div class="proc-nivel pn1">
+      <div class="proc-num">1</div>
+      <div class="proc-info">
+        <div class="proc-tit">Heteronomia: la norma como exterioridad</div>
+        <div class="proc-desc">El sujeto cumple la norma porque proviene de una autoridad externa (padres, docentes, instituciones) y porque su incumplimiento conlleva consecuencias negativas. No hay comprension del valor que sustenta la norma, solo obediencia condicionada por el premio o el castigo.</div>
+      </div>
+    </div>
+    <div class="proc-flecha">&#8595;</div>
+    <div class="proc-nivel pn2">
+      <div class="proc-num">2</div>
+      <div class="proc-info">
+        <div class="proc-tit">Introyeccion: la norma incorporada sin elaboracion critica</div>
+        <div class="proc-desc">El sujeto incorpora la norma o el valor de manera mas estable, de modo que ya no requiere la presencia fisica de la autoridad para cumplirla. Sin embargo, el cumplimiento sigue motivado por la evitacion de la culpa, la verguenza o la perdida de aprobacion social, no por una comprension y asuncion libre del valor.</div>
+      </div>
+    </div>
+    <div class="proc-flecha">&#8595;</div>
+    <div class="proc-nivel pn3">
+      <div class="proc-num">3</div>
+      <div class="proc-info">
+        <div class="proc-tit">Identificacion reflexiva: el valor comienza a comprenderse</div>
+        <div class="proc-desc">El sujeto comienza a comprender las razones que fundamentan el valor, no solo sus consecuencias. Empieza a evaluar criticamente si el valor le parece razonable y justificado, comparandolo con otros valores y con su propia experiencia vital. Es un momento de transicion fragil, en el que el valor puede consolidarse o debilitarse.</div>
+      </div>
+    </div>
+    <div class="proc-flecha">&#8595;</div>
+    <div class="proc-nivel pn4">
+      <div class="proc-num">4</div>
+      <div class="proc-info">
+        <div class="proc-tit">Personalizacion: el valor como parte de la identidad</div>
+        <div class="proc-desc">El sujeto asume el valor de manera libre, consciente y autonoma, integrandolo a su identidad personal. El valor se practica incluso en ausencia de toda supervision externa, de toda recompensa o de todo riesgo de sancion, porque ha dejado de ser una norma exterior y se ha convertido en una conviccion propia que define quien es la persona.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja az">
+    <div class="caja-tag">Nota metodologica</div>
+    <p>Este modelo de cuatro momentos es una herramienta analitica, no una descripcion mecanica e inevitable del desarrollo humano. Algunas personas permanecen toda su vida en el nivel de la introyeccion respecto a ciertos valores; otras pueden alcanzar la personalizacion de un valor a edades tempranas si la experiencia formativa es suficientemente significativa. El proceso tampoco es irreversible: una crisis vital o una experiencia traumatica puede hacer regresar a un sujeto de la personalizacion hacia formas mas externas de cumplimiento normativo.</p>
+  </div>
+</section>
+
+<!-- INTROYECCION -->
+<section class="bloque ol" id="introyeccion">
+  <div class="bh">
+    <div class="bicon ol">A</div>
+    <div class="btit">
+      <div class="sup">Profundizacion conceptual</div>
+      <h2>La Introyeccion de los Valores</h2>
+    </div>
+  </div>
+  <h3>1. Definicion y origen del concepto</h3>
+  <p>El termino <strong>introyeccion</strong> proviene originalmente del psicoanalisis (Ferenczi, Freud) y fue posteriormente retomado por la psicologia del desarrollo y la pedagogia de valores. Designa el proceso mediante el cual una persona incorpora a su mundo psiquico interno representaciones, normas, actitudes y valores que provienen originalmente de figuras externas significativas, sin haberlos sometido todavia a un proceso de elaboracion critica y personal.</p>
+  <p>En la formacion axiologica, la introyeccion es un momento <strong>necesario pero insuficiente</strong>. Es necesario porque ningun ser humano puede construir sus valores completamente desde cero, en aislamiento: requiere primero incorporar el legado axiologico de su familia, su cultura y su comunidad como punto de partida. Es insuficiente porque, si el proceso se detiene en este nivel, los valores permanecen como exterioridad internalizada: la persona los cumple, pero no los ha hecho verdaderamente suyos.</p>
+
+  <h3>2. Caracteristicas de los valores introyectados</h3>
+  <ul class="l">
+    <li><strong>Dependencia de la fuente externa:</strong> El valor se sostiene mientras existe, real o simbolicamente, la presencia de la autoridad que lo origino (padres, docentes, normas institucionales, opinion del grupo).</li>
+    <li><strong>Motivacion por evitacion:</strong> El cumplimiento esta motivado principalmente por evitar la culpa, la verguenza, el castigo o la perdida de aprobacion social, no por una comprension racional del bien que el valor representa.</li>
+    <li><strong>Rigidez y escasa flexibilidad contextual:</strong> El valor introyectado tiende a aplicarse de manera rigida, sin matices, porque no ha sido comprendido en su fundamento sino memorizado como regla.</li>
+    <li><strong>Vulnerabilidad ante el anonimato:</strong> Una caracteristica reveladora es que los valores introyectados tienden a debilitarse en situaciones de anonimato o ausencia de supervision, mientras que los valores personalizados se mantienen estables independientemente del contexto.</li>
+    <li><strong>Coexistencia con conflicto interno:</strong> El sujeto puede experimentar el valor introyectado como una imposicion molesta, generando resentimiento larvado o el deseo de transgredirlo en cuanto sea posible.</li>
+  </ul>
+
+  <h3>3. La introyeccion en el contexto universitario</h3>
+  <p>En la vida universitaria, la introyeccion se manifiesta con frecuencia en comportamientos como: cumplir con la honestidad academica unicamente cuando existe riesgo de deteccion (uso de software anti-plagio, supervision en examenes); participar en actividades de servicio comunitario solo porque otorgan creditos o reconocimiento, sin un compromiso genuino con el bien comun; o mostrar respeto hacia la diversidad solo en presencia de figuras de autoridad, mientras se sostienen actitudes discriminatorias en espacios informales.</p>
+  <p>Reconocer estas manifestaciones no implica un juicio moral severo hacia los estudiantes: la introyeccion es una etapa legitima y necesaria del desarrollo axiologico. El reto pedagogico consiste en disenyar experiencias que favorezcan el transito hacia niveles mas maduros de personalizacion.</p>
+</section>
+
+<!-- PERSONALIZACION -->
+<section class="bloque rs" id="personalizacion">
+  <div class="bh">
+    <div class="bicon rs">B</div>
+    <div class="btit">
+      <div class="sup">Profundizacion conceptual</div>
+      <h2>La Personalizacion de los Valores</h2>
+    </div>
+  </div>
+  <h3>1. Definicion y caracteristicas</h3>
+  <p>La <strong>personalizacion</strong> de los valores es el proceso mediante el cual una persona, a partir del legado axiologico introyectado, lo somete a un proceso de reflexion critica, comprension racional y asuncion libre, de modo que el valor deja de ser una norma exterior internalizada para convertirse en una conviccion genuinamente propia, integrada a la identidad personal del sujeto.</p>
+  <p>Un valor personalizado no necesariamente coincide en su contenido con el valor originalmente introyectado: el proceso de personalizacion puede llevar a la persona a modificar, matizar o incluso rechazar elementos del legado axiologico recibido, en la medida en que los somete a evaluacion critica desde su propia experiencia y razon. Esto es precisamente lo que distingue la madurez axiologica de la simple obediencia: la capacidad de hacer propio (o de transformar criticamente) lo que se recibio del entorno.</p>
+
+  <h3>2. Caracteristicas de los valores personalizados</h3>
+  <ul class="l">
+    <li><strong>Autonomia respecto a la fuente externa:</strong> El valor se sostiene aunque ya no exista presencia, vigilancia o aprobacion de la autoridad que originalmente lo transmitio.</li>
+    <li><strong>Motivacion intrinseca:</strong> El cumplimiento esta motivado por la conviccion de que el valor es genuinamente bueno y digno de ser vivido, no por evitar consecuencias negativas.</li>
+    <li><strong>Flexibilidad y juicio contextual:</strong> El valor personalizado se aplica con discernimiento, considerando matices y particularidades de cada situacion, porque ha sido comprendido en su fundamento, no solo memorizado como regla.</li>
+    <li><strong>Estabilidad ante el anonimato:</strong> El valor se sostiene incluso cuando nadie observa, porque la motivacion no depende del reconocimiento o la sancion externa.</li>
+    <li><strong>Integracion identitaria:</strong> El valor forma parte de como la persona se concibe a si misma; actuar en contra de el genera una genuina disonancia con la propia identidad, no solo temor a la sancion externa.</li>
+  </ul>
+
+  <h3>3. Tabla comparativa: introyeccion y personalizacion</h3>
+  <table class="t">
+    <thead><tr><th>Dimension</th><th>Valor introyectado</th><th>Valor personalizado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fuente de motivacion</strong></td><td>Externa: evitar castigo, culpa o perdida de aprobacion social.</td><td>Interna: conviccion racional y afectiva del valor del bien.</td></tr>
+      <tr><td><strong>Estabilidad ante supervision</strong></td><td>Se debilita en ausencia de autoridad o anonimato.</td><td>Se mantiene independientemente del contexto de observacion.</td></tr>
+      <tr><td><strong>Flexibilidad de aplicacion</strong></td><td>Rigida, aplicada como regla sin matices contextuales.</td><td>Flexible, aplicada con juicio y discernimiento situacional.</td></tr>
+      <tr><td><strong>Relacion con la identidad</strong></td><td>Externa a la identidad; se vive como imposicion o deber ajeno.</td><td>Integrada a la identidad; forma parte de quien la persona es.</td></tr>
+      <tr><td><strong>Capacidad de fundamentacion</strong></td><td>Limitada: se repiten las normas sin comprender su razon de ser.</td><td>Solida: la persona puede explicar y defender por que sostiene el valor.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. El papel del pedagogo en el transito hacia la personalizacion</h3>
+  <p>El pedagogo no puede "personalizar" los valores en lugar del estudiante: la personalizacion es, por definicion, un proceso que el sujeto debe realizar el mismo, de manera libre. Sin embargo, el pedagogo puede crear condiciones que favorezcan este transito:</p>
+  <ul class="l">
+    <li><strong>Generar espacios de dialogo critico:</strong> donde los valores introyectados puedan ser cuestionados, explicados y fundamentados, en lugar de simplemente reforzados como reglas.</li>
+    <li><strong>Exponer a dilemas y situaciones de conflicto real:</strong> que exijan al estudiante decidir, argumentar y posicionarse, en lugar de simplemente reproducir la norma recibida.</li>
+    <li><strong>Modelar la coherencia:</strong> el docente que practica con autenticidad los valores que ensenya ofrece al estudiante un modelo de personalizacion vivida, no solo discursiva.</li>
+    <li><strong>Respetar los tiempos del proceso:</strong> la personalizacion no puede apresurarse ni imponerse; intentar forzarla puede generar resistencia y reforzar paradojicamente la introyeccion o el rechazo.</li>
+  </ul>
+
+  <div class="caja te">
+    <div class="caja-tag">Punto de problematizacion (ABP)</div>
+    <p>Una institucion universitaria exige a sus estudiantes participar en un numero minimo de horas de servicio comunitario como requisito de titulacion. Algunos estudiantes desarrollan, a partir de esta experiencia obligatoria, un compromiso genuino y duradero con la solidaridad social; otros cumplen el requisito de manera mecanica y abandonan toda practica solidaria en cuanto se titulan. Que factores podrian explicar esta diferencia? Puede una experiencia que inicia como introyeccion forzada (obligatoria) derivar en personalizacion genuina? Esta problematizacion se retomara en el caso practico de la Actividad 3.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque gr" id="materiales">
+  <div class="bh">
+    <div class="bicon gr">M</div>
+    <div class="btit">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes academicas de acceso libre o ampliamente disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El criterio moral en el ninio</div><div class="rec-aut">Piaget, J. (1984). Martinez Roca. Obra fundacional sobre el desarrollo de la moralidad infantil, base teorica para comprender el transito de la heteronomia a la autonomia.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Psicologia del desarrollo moral</div><div class="rec-aut">Kohlberg, L. (1992). Desclee de Brouwer. Desarrollo de los estadios del juicio moral y su relacion con los procesos de internalizacion y autonomia axiologica.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">La construccion de la personalidad moral</div><div class="rec-aut">Puig, J. M. (1996). Paidos. Propuesta constructivista sobre los procesos de formacion del juicio y la accion moral, con enfasis en la personalizacion de valores.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">Internalizacion de valores: de la heteronomia a la autonomia moral</div><div class="rec-aut">Hoffman, M. (2002). Revista de Psicologia Educativa, 8(1), 45-67. Disponible en bases de datos academicas como Redalyc. Modelo psicologico de los mecanismos de internalizacion de normas.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El hombre en busca de sentido</div><div class="rec-aut">Frankl, V. (2015). Herder. Perspectiva existencial sobre la asuncion libre y personal del sentido y los valores, relevante para comprender la personalizacion.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-w">Web</div><div><div class="rec-tit">Banco de recursos sobre educacion moral y desarrollo del juicio etico (OEI)</div><div class="rec-aut">Organizacion de Estados Iberoamericanos. Disponible en: www.oei.es/historico/valores2. Materiales sobre la formacion del juicio moral en contextos educativos latinoamericanos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-v">Video</div><div><div class="rec-tit">Conferencia: De la obediencia a la conviccion: el desarrollo moral en la educacion superior</div><div class="rec-aut">Canal UNAM en YouTube. Busqueda sugerida: "UNAM desarrollo moral autonomia educacion superior". Perspectiva aplicada sobre el transito de la heteronomia a la autonomia en jovenes universitarios.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">De la norma impuesta a la conviccion propia: la formacion de valores en la universidad</div><div class="rec-aut">Hoyos, G. y Martinez, M. (2004). Revista Iberoamericana de Educacion, 35(1), 1-12. Disponible en rieoei.org. Analisis del proceso de personalizacion de valores en estudiantes universitarios latinoamericanos.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque ol" id="act1">
+  <div class="bh">
+    <div class="bicon ol">1</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-foro">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja te">
+    <div class="caja-tag">Proposito</div>
+    <p>Generar un espacio de dialogo argumentado donde los estudiantes identifiquen, en su propia trayectoria de vida, valores que permanecen en un nivel de introyeccion y valores que consideran genuinamente personalizados, reflexionando criticamente sobre los factores que explican esta diferencia.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>Piense en dos valores distintos que usted sostiene actualmente. Para el primero, identifique evidencia de que se trata de un valor genuinamente personalizado: lo practica incluso sin supervision, lo puede fundamentar racionalmente y forma parte de como se concibe a si mismo. Para el segundo, identifique evidencia de que todavia permanece, al menos parcialmente, en un nivel de introyeccion: su cumplimiento depende en alguna medida de la supervision, la aprobacion social o el temor a consecuencias negativas. Que diferencias encuentra entre las experiencias formativas (familiares, escolares, sociales) que dieron origen a uno y otro valor? Que condiciones cree que faltan para que el segundo valor complete su proceso de personalizacion?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro en Google Classroom</strong> bajo el titulo "Foro 4: Introyeccion y Personalizacion en mi Propia Trayectoria". Acceda mediante el enlace indicado por el docente.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Dedique al menos 10 minutos a identificar, de manera honesta, un valor que sienta plenamente propio y otro que reconozca como todavia dependiente de factores externos. Evite ejemplos genericos: deben ser valores reales de su propia experiencia.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial</strong> incluyendo: (a) identificacion y breve descripcion de ambos valores; (b) evidencia concreta que sustenta por que considera a uno personalizado y al otro introyectado, utilizando los criterios de la tabla comparativa de la guia; (c) analisis de las experiencias formativas que explican la diferencia; (d) reflexion sobre que condiciones favorecerian la personalizacion del segundo valor. Extension: 230-380 palabras, registro academico formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea al menos dos participaciones de companieros</strong> antes de responder. Identifique semejanzas y diferencias en los procesos formativos descritos.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> (90-130 palabras cada una): proponga una hipotesis adicional sobre por que el valor introyectado de su companiero no se ha personalizado aun, o relacione su experiencia con algun referente teorico de la guia.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y entregue en Classroom:</strong> captura o PDF de su participacion y las dos replicas en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div></div>
+  <div class="caja ol">
+    <div class="caja-tag">Ejemplo orientador (extracto)</div>
+    <p>"El valor de la puntualidad lo considero plenamente personalizado: llego a tiempo a mis clases y compromisos incluso cuando se que nadie notaria un retraso de pocos minutos, porque siento que llegar tarde es faltar al respeto del tiempo de otra persona, y eso me incomoda independientemente de las consecuencias. En cambio, el valor de la disciplina en el ejercicio fisico permanece en un nivel introyectado: solo hago ejercicio cuando tengo una clase grupal con horario fijo y companieros que notarian mi ausencia; cuando depende solo de mi voluntad individual, abandono facilmente. La diferencia parece estar en que la puntualidad fue formada desde la ninez con consecuencias relacionales claras y experimentadas (la incomodidad de hacer esperar a otros), mientras que la disciplina deportiva fue impuesta externamente por mis padres sin que yo comprendiera ni sintiera genuinamente su valor..."</p>
+  </div>
+  <div class="caja te">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La pregunta detonadora requiere identificacion <strong>autentica y personal</strong> de valores propios y de su historia formativa. Ningun sistema de inteligencia artificial puede conocer su trayectoria de vida real. El docente podra solicitar que profundice en cualquier detalle de la experiencia narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad e identificacion precisa de ambos valores</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Uso correcto de los criterios de la tabla comparativa</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad del analisis de las experiencias formativas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad argumentativa de las dos replicas dialogicas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque az" id="act2">
+  <div class="bh">
+    <div class="bicon az">2</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Diseno de una Estrategia para la Personalizacion de Valores</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-indiv">Actividad individual &middot; Aprendizaje significativo aplicado</div>
+  <div class="caja te">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de disenio pedagogico aplicado mediante la creacion de una estrategia educativa concreta orientada a favorecer el transito de un valor desde la introyeccion hacia la personalizacion en un grupo de estudiantes universitarios.</p>
+  </div>
+  <h3>Situacion problematica de base (ABP)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Contexto del problema</div>
+    <p>La Direccion de Formacion Integral de su universidad ha identificado, mediante un diagnostico institucional, que un porcentaje significativo de estudiantes cumple con la honestidad academica unicamente cuando perciben riesgo de deteccion (supervision en examenes, software anti-plagio), lo que indica un nivel predominantemente introyectado de este valor. Se le solicita disenar una <strong>microintervencion pedagogica</strong> (una secuencia de actividades aplicable en una sola sesion de clase de 90 minutos) orientada especificamente a favorecer el transito de este valor hacia un nivel de personalizacion mas genuino entre los estudiantes de su propio programa educativo.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Seleccione el grupo destinatario:</strong> defina el semestre, la materia y el contexto especifico de su programa educativo donde aplicaria esta microintervencion (puede ser un grupo real de su propia experiencia o uno hipotetico pero verosimil dentro de su carrera).</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Disene la secuencia de actividades</strong> para los 90 minutos, incorporando al menos tres de las cuatro estrategias pedagogicas descritas en el contenido tematico (dialogo critico, exposicion a dilemas, modelado de coherencia, respeto a los tiempos del proceso). Describa cada momento con tiempo estimado, objetivo especifico y dinamica concreta.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Incluya al menos un dilema o situacion de conflicto real</strong> relacionado con la honestidad academica que exija a los estudiantes posicionarse y argumentar, no solo recibir informacion sobre la norma.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Justifique teoricamente</strong> cada decision de disenio, explicando por que la actividad elegida favorece especificamente el transito de la introyeccion hacia la personalizacion (y no simplemente refuerza el cumplimiento externo de la norma).</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Disene un instrumento breve de evaluacion del impacto</strong> (puede ser una pregunta reflexiva final, una breve encuesta o una bitacora) que permita aproximarse a si la intervencion favorecio una comprension mas personalizada del valor, mas alla del cumplimiento inmediato.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Prepare el documento final</strong> con portada (nombre, matricula, materia, semestre, fecha, docente), descripcion del grupo destinatario, secuencia de actividades con tiempos, justificacion teorica y el instrumento de evaluacion. Suba en Classroom.</div></div>
+  <div class="caja te">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La microintervencion debe estar disenada para un <strong>contexto especifico y reconocible</strong> de su propio programa educativo, con justificaciones que demuestren comprension genuina del contenido teorico y no una respuesta generica aplicable a cualquier institucion. El docente podra solicitar precision sobre el contexto y la viabilidad real de la propuesta.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Pertinencia y especificidad del grupo destinatario y contexto</strong></div><div class="pts">15 pts</div></div>
+  <div class="rubr"><div><strong>Calidad y coherencia de la secuencia de actividades disenada</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Inclusion de un dilema o situacion de conflicto real bien fundamentado</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Justificacion teorica solida de cada decision de disenio</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Instrumento de evaluacion de impacto y formato del documento</strong></div><div class="pts">15 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Microintervencion Pedagogica".</div>
+</section>
+
+<!-- ACTIVIDAD 3: CASO -->
+<section class="bloque te" id="act3">
+  <div class="bh">
+    <div class="bicon te">3</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Analisis de Caso Practico</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-caso">Caso practico &middot; ABP</div>
+  <div class="caja az">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de analisis aplicado del proceso de formacion de valores mediante el estudio de un caso que ilustra trayectorias divergentes de introyeccion y personalizacion a partir de una misma experiencia institucional compartida.</p>
+  </div>
+
+  <h3>El caso: "El servicio comunitario obligatorio"</h3>
+  <div class="escenario">
+    <div class="esc-tag">Descripcion del caso</div>
+    <p>La Universidad Tecnologica del Centro exige a todos sus estudiantes de licenciatura cumplir 120 horas de servicio comunitario como requisito obligatorio de titulacion. La institucion no ofrece alternativas: quien no cumple las horas, no se titula. <strong>Renata</strong> y <strong>Bruno</strong>, ambos estudiantes de septimo semestre de Pedagogia, fueron asignados al mismo programa de apoyo escolar en una comunidad de bajos recursos durante un semestre completo.</p>
+    <p>Renata, en las primeras semanas, asistia al programa por obligacion, contando las horas que le faltaban y quejandose frecuentemente con sus companieros de lo que consideraba "una perdida de tiempo que la universidad le impone". Sin embargo, hacia la mitad del semestre, tras vincularse con un niniio de nueve aniios al que ayudaba con lectura, algo cambio: comenzo a asistir incluso en dias que no eran obligatorios, dejo de contar las horas y, al concluir el requisito institucional, decidio continuar como voluntaria por su cuenta el siguiente semestre, sin ningun beneficio academico asociado.</p>
+    <p>Bruno, por su parte, cumplio puntualmente sus 120 horas, nunca genero quejas ni conflictos, y fue calificado por la coordinadora del programa como "el estudiante mas responsable del grupo". Sin embargo, al concluir las horas exactas requeridas, dejo de asistir de manera inmediata y nunca volvio a mencionar el programa. En una conversacion informal con un companiero, comento: "Menos mal que ya cumpli, ya no tengo que volver a ese lugar."</p>
+    <p>La coordinadora del programa de servicio comunitario, al conocer ambos casos, se pregunta: "Cumplieron exactamente la misma actividad, durante el mismo tiempo, bajo las mismas condiciones institucionales. Por que el proceso fue tan distinto para cada uno?"</p>
+  </div>
+
+  <h3>Preguntas de analisis</h3>
+  <p>Responda de manera fundamentada con referencia explicita al contenido tematico de la guia. Extension total: 580-740 palabras.</p>
+  <ol class="l">
+    <li><strong>Identificacion del nivel de formacion axiologica:</strong> Utilizando los criterios de la tabla comparativa de la guia, identifique en que nivel del proceso de formacion (heteronomia, introyeccion, identificacion reflexiva o personalizacion) se encontraba Bruno al finalizar el semestre, y en que nivel se encontraba Renata. Fundamente cada identificacion con evidencia especifica del caso.</li>
+    <li><strong>Explicacion de la divergencia:</strong> Ambos estudiantes vivieron la misma experiencia institucional objetiva (mismo programa, mismo tiempo, misma obligatoriedad). Que factores, segun el contenido tematico de la guia, podrian explicar por que esta experiencia comun deriv en procesos de formacion axiologica tan distintos para cada uno?</li>
+    <li><strong>La pregunta de la coordinadora:</strong> Proponga una respuesta fundamentada a la pregunta que se plantea la coordinadora del programa al final del caso. Su respuesta debe ir mas alla de explicaciones de personalidad individual ("Renata es mas sensible", "Bruno es mas frio") e incorporar conceptos especificos del proceso de formacion de valores estudiado en la guia.</li>
+    <li><strong>Propuesta pedagogica:</strong> Si usted disenara el programa de servicio comunitario institucional, que elementos incorporaria para aumentar la probabilidad de que experiencias como la de Bruno deriven, como en el caso de Renata, hacia un proceso de personalizacion genuina, sin renunciar al caracter obligatorio del requisito? Fundamente con al menos un referente teorico de los materiales de la guia.</li>
+  </ol>
+  <div class="paso"><div class="paso-n">1</div><div>Lea el caso dos veces. Identifique las diferencias especificas en la experiencia de Renata y Bruno antes de comenzar a redactar.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div>Responda las cuatro preguntas en orden, en un documento con portada (nombre, matricula, materia, fecha, docente).</div></div>
+  <div class="paso"><div class="paso-n">3</div><div>Incluya en cada respuesta al menos una referencia explicita al contenido tematico de la guia (niveles del proceso, caracteristicas de la introyeccion o la personalizacion, estrategias pedagogicas).</div></div>
+  <div class="paso"><div class="paso-n">4</div><div>Suba el documento en la tarea "Actividad 3: Caso El servicio comunitario obligatorio" en Classroom antes de la fecha indicada.</div></div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Identificacion precisa del nivel axiologico de cada estudiante (Preg. 1)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad en la explicacion de la divergencia (Preg. 2)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Calidad y fundamentacion de la respuesta a la coordinadora (Preg. 3)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Pertinencia y fundamentacion de la propuesta pedagogica (Preg. 4)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 3: Caso Practico" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 4: QUIZ -->
+<section class="bloque rs" id="act4">
+  <div class="bh">
+    <div class="bicon rs">4</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 4: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-quiz">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja az">
+    <div class="caja-tag">Instrucciones</div>
+    <p>Responda las cinco preguntas seleccionando la opcion correcta. Recibira retroalimentacion inmediata. Al finalizar, capture su resultado y subalo a Google Classroom.</p>
+  </div>
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bc"><div class="q-bf" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="qb act" id="q1">
+      <h4>1. La introyeccion de valores se define principalmente como:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">El proceso mediante el cual una persona rechaza completamente los valores transmitidos por su familia y su cultura para construir un sistema de valores enteramente original.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">El proceso mediante el cual una persona incorpora a su mundo psiquico interno valores y normas provenientes de figuras externas significativas, sin haberlos sometido todavia a elaboracion critica y personal.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">El proceso final del desarrollo moral, en el cual la persona alcanza la madurez axiologica completa y ya no requiere ningun referente externo.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">El mecanismo psicologico mediante el cual una persona proyecta sus propios valores hacia otras personas de su entorno social inmediato.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. La introyeccion es el proceso mediante el cual se incorporan valores y normas provenientes de figuras externas significativas (familia, escuela, cultura), sin que todavia hayan sido sometidos a un proceso de elaboracion critica y personal por parte del sujeto.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. La introyeccion no es rechazo de valores externos (A), no es la etapa final del desarrollo moral (C, que corresponde a la personalizacion), ni es un mecanismo de proyeccion hacia otros (D). Es la incorporacion de valores externos sin elaboracion critica todavia.</div>
+      <button class="btn btn-p" id="btn1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qb" id="q2">
+      <h4>2. Una caracteristica distintiva de los valores introyectados, segun la guia, es que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">Se mantienen estables y constantes independientemente de si existe o no supervision o presencia de la autoridad externa que origino el valor.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">B</div><div class="qot">Tienden a debilitarse en situaciones de anonimato o ausencia de supervision, porque la motivacion del cumplimiento depende en gran medida de la fuente externa.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">C</div><div class="qot">Se aplican siempre con flexibilidad y discernimiento contextual, adaptandose a las particularidades de cada situacion especifica que enfrenta la persona.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">Generan en la persona una integracion plena con su identidad, de modo que actuar en contra del valor produce una genuina disonancia con quien la persona es.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. Una caracteristica reveladora de los valores introyectados es su vulnerabilidad ante el anonimato: tienden a debilitarse cuando no existe supervision o presencia, real o simbolica, de la autoridad externa que origino el valor. Esto los distingue de los valores personalizados, que se mantienen estables independientemente del contexto.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es B. La estabilidad ante la ausencia de supervision (A), la flexibilidad contextual (C) y la integracion identitaria plena (D) son caracteristicas de los valores personalizados, no de los introyectados, segun la tabla comparativa de la guia.</div>
+      <button class="btn btn-p" id="btn2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qb" id="q3">
+      <h4>3. Segun el modelo de cuatro momentos presentado en la guia, el momento de "identificacion reflexiva" se caracteriza principalmente porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">El sujeto cumple la norma exclusivamente por temor al castigo fisico o verbal de una autoridad que esta fisicamente presente en ese momento.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">B</div><div class="qot">El sujeto comienza a comprender las razones que fundamentan el valor y a evaluar criticamente si le parece razonable, comparandolo con otros valores y su propia experiencia.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">C</div><div class="qot">El sujeto ha alcanzado ya la madurez axiologica completa y practica el valor de manera autonoma, sin ninguna posibilidad de retroceso o debilitamiento futuro.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">El sujeto rechaza por completo el valor recibido de su entorno familiar y cultural, sustituyendolo enteramente por un sistema de valores propio y original.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. La identificacion reflexiva es el tercer momento del proceso, un momento de transicion fragil en el que el sujeto comienza a comprender las razones del valor (no solo sus consecuencias) y a evaluarlo criticamente, comparandolo con su propia experiencia. En este momento, el valor puede consolidarse hacia la personalizacion o debilitarse.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es B. El temor al castigo (A) corresponde a la heteronomia, el primer momento. La madurez axiologica completa sin posibilidad de retroceso (C) no corresponde a ningun momento del modelo, que ademas reconoce que el proceso no es irreversible. El rechazo total del valor recibido (D) tampoco describe la identificacion reflexiva.</div>
+      <button class="btn btn-p" id="btn3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qb" id="q4">
+      <h4>4. En el caso "El servicio comunitario obligatorio", el comportamiento de Bruno al finalizar exactamente sus 120 horas y no volver al programa es un ejemplo claro de:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">Personalizacion del valor de la solidaridad, ya que Bruno cumplio responsablemente con todas las horas requeridas sin generar ningun conflicto institucional.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">B</div><div class="qot">Identificacion reflexiva, porque Bruno comprendio racionalmente el valor del servicio comunitario aunque decidio no continuar practicandolo por razones personales validas.</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">C</div><div class="qot">Introyeccion, porque el cumplimiento de Bruno estuvo motivado por la obligatoriedad institucional (evitar no titularse) y desaparecio en cuanto la fuente externa de motivacion (el requisito) dejo de aplicarse.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">Heteronomia pura, porque Bruno nunca llego a incorporar de ninguna manera la norma institucional a su comportamiento durante el semestre completo.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. El comportamiento de Bruno ejemplifica la introyeccion: cumplio consistentemente con la norma (a diferencia de la heteronomia pura, que implicaria incumplimiento sin supervision directa), pero su motivacion dependia de la obligatoriedad institucional. En cuanto el requisito formal desaparecio, tambien desaparecio por completo su comportamiento asociado al valor, revelando que no habia alcanzado la personalizacion.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es C. No es personalizacion (A) porque el valor no se sostuvo en ausencia de la obligatoriedad. No es identificacion reflexiva (B) porque no hay evidencia de comprension critica genuina del valor, solo cumplimiento puntual. No es heteronomia pura (D) porque Bruno si cumplio consistentemente la norma durante el semestre, lo que indica un nivel de incorporacion mayor a la simple obediencia momentanea por presencia fisica de autoridad.</div>
+      <button class="btn btn-p" id="btn4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qb" id="q5">
+      <h4>5. Segun la guia, cual de las siguientes es una estrategia pedagogica apropiada para favorecer el transito de la introyeccion hacia la personalizacion de valores?</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">Incrementar la supervision y los mecanismos de deteccion de incumplimientos, de modo que el estudiante internalice con mayor fuerza el temor a ser descubierto.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">Reducir al minimo la exposicion del estudiante a dilemas o situaciones de conflicto moral, evitando que enfrente decisiones dificiles que puedan generarle confusion.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">Generar espacios de dialogo critico donde los valores introyectados puedan ser cuestionados y fundamentados, exponer al estudiante a dilemas reales, modelar coherencia y respetar los tiempos del proceso.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">Acelerar artificialmente el proceso mediante premios y reconocimientos publicos inmediatos cada vez que el estudiante practica el valor deseado en presencia del grupo.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La guia identifica cuatro estrategias especificas para favorecer el transito hacia la personalizacion: generar espacios de dialogo critico, exponer a dilemas y situaciones de conflicto real, modelar la coherencia, y respetar los tiempos del proceso sin intentar apresurarlo.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. Incrementar la supervision (A) refuerza la introyeccion, no la supera. Evitar dilemas (B) es contrario a lo recomendado, ya que la exposicion a conflictos reales es clave para el transito. Los premios y reconocimientos publicos inmediatos (D) refuerzan la motivacion externa, no favorecen la motivacion intrinseca propia de la personalizacion.</div>
+      <button class="btn btn-p" id="btn5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--vino-s);border-radius:8px;font-size:0.87rem;color:var(--vino-m);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura del resultado en la tarea "Actividad 4: Quiz Introyeccion y Personalizacion".</div>
+</section>
+
+<!-- REFLEXION -->
+<section class="bloque ol" id="reflexion">
+  <div class="bh">
+    <div class="bicon ol">R</div>
+    <div class="btit">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>Esta seccion invita a integrar los aprendizajes de la guia mediante un ejercicio de metacognicion y de proyeccion profesional: que impacto tendran estos contenidos en la comprension que usted tiene de su propio proceso de formacion axiologica, y en la forma en que acompaniara, como futuro pedagogo, el proceso de formacion de valores de sus estudiantes?</p>
+
+  <div class="refl"><label>1. A lo largo de esta guia, identifico algun valor propio que crei plenamente personalizado pero que, al analizarlo con los criterios estudiados, reconoce que todavia conserva elementos de introyeccion? Describa el valor y la evidencia que lo llevo a esta reflexion.</label><textarea placeholder="Reflexione con honestidad sobre un valor que crey&oacute; m&aacute;s maduro de lo que en realidad est&aacute;..."></textarea></div>
+
+  <div class="refl"><label>2. Piense en una experiencia formativa de su propia vida (familiar, escolar, religiosa o comunitaria) que considere haber favorecido genuinamente el transito de un valor hacia la personalizacion. Que elementos especificos de esa experiencia coinciden con las estrategias pedagogicas descritas en la guia?</label><textarea placeholder="Identifique una experiencia real y conecte sus elementos con las estrategias pedag&oacute;gicas estudiadas..."></textarea></div>
+
+  <div class="refl"><label>3. Como futuro pedagogo, que riesgos identifica en intentar "forzar" la personalizacion de un valor en sus futuros estudiantes (por ejemplo, mediante presion excesiva, sermones reiterados o exigencias de declaraciones publicas de conviccion)? Que haria usted de manera diferente?</label><textarea placeholder="Reflexione sobre los riesgos de forzar el proceso y proponga una alternativa pedag&oacute;gicamente m&aacute;s respetuosa..."></textarea></div>
+
+  <div class="refl"><label>4. Plantee una accion concreta que realizara en los proximos 15 dias para favorecer la personalizacion de algun valor propio que reconozca todavia en nivel de introyeccion. Especifique: que valor, que hara exactamente, en que contexto universitario, y como reconocera que avanzo hacia una mayor personalizacion.</label><textarea placeholder="Sea espec&iacute;fico: qu&eacute; valor trabajar&aacute;, qu&eacute; acci&oacute;n concreta tomar&aacute;, en qu&eacute; contexto, c&oacute;mo medir&aacute; el avance..."></textarea></div>
+
+  <div class="caja te">
+    <div class="caja-tag">Instrucciones para la entrega</div>
+    <p>Las respuestas de esta seccion se entregaran como documento independiente en la tarea "Reflexion Final: Introyeccion y Personalizacion de Valores" en Google Classroom. Extension minima por respuesta: 120 palabras. Se evaluaran la profundidad reflexiva, la autenticidad del analisis y la coherencia con los contenidos teoricos.</p>
+  </div>
+
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Frankl, V. (2015). <em>El hombre en busca de sentido</em>. Herder. (Obra original publicada en 1946).</li>
+    <li>Hoffman, M. L. (2002). Internalizacion de valores: de la heteronomia a la autonomia moral. <em>Revista de Psicologia Educativa, 8</em>(1), 45-67.</li>
+    <li>Hoyos, G. y Martinez, M. (2004). De la norma impuesta a la conviccion propia: la formacion de valores en la universidad. <em>Revista Iberoamericana de Educacion, 35</em>(1), 1-12.</li>
+    <li>Kohlberg, L. (1992). <em>Psicologia del desarrollo moral</em>. Desclee de Brouwer.</li>
+    <li>Piaget, J. (1984). <em>El criterio moral en el ninio</em>. Martinez Roca. (Obra original publicada en 1932).</li>
+    <li>Puig, J. M. (1996). <em>La construccion de la personalidad moral</em>. Paidos.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 4: Introyeccion y Personalizacion de los Valores &middot; Subtema 4.1: El Proceso de Formacion de los Valores<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpR(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Exactamente: este es el transito clasico de la introyeccion (cumplimiento por miedo al castigo externo) hacia la personalizacion (asuncion libre del valor como parte de la identidad propia). Este proceso es el objeto central de estudio de esta guia."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es B.</strong> No se trata de un cambio de jerarquia axiologica (A), ni de maduracion biologica automatica (C), ni de un cambio de tipologia de individual a social (D). Se trata del transito de la introyeccion hacia la personalizacion: de la obediencia motivada por el miedo externo hacia la asuncion libre y consciente del valor como parte de la propia identidad."; }
+}
+var qE = { pts: 0, resp: {} };
+function qS(el, qid, ok) {
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  var opts = el.parentElement.querySelectorAll(".qo");
+  opts.forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){ el.classList.add("ok"); qE.pts++; }
+  else { el.classList.add("fail"); }
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn"+n).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur,next,num){
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+function qRes(){
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida e integrada del proceso de formacion de los valores y de la diferencia entre introyeccion y personalizacion. Esta en condiciones de aplicar estos marcos en su practica pedagogica.";col="var(--oliva)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos asociados a las preguntas donde recibio retroalimentacion de mejora.";col="var(--azul-prof)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren estudio adicional. Se recomienda releer las secciones teoricas vinculadas a los errores.";col="var(--terracota)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido completo de la guia y retome el quiz tras el repaso.";col="var(--vino-m)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act4").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>

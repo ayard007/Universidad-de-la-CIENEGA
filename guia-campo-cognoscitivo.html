@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campo Cognoscitivo | Enfoques Psicológicos | UdC Plantel Centro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS ══════════════════════════════════════════════ */
+:root{
+  --violeta:    #4a2f7a;
+  --violeta-m:  #6b4aa8;
+  --violeta-cl: #e6ddf5;
+  --violeta-xs: #f3eefb;
+  --coral:      #d9633b;
+  --coral-cl:   #fbe2d6;
+  --oro:        #b8923a;
+  --oro-cl:     #f5ecd3;
+  --verde:      #2f7a5c;
+  --verde-cl:   #d9f0e6;
+  --tinta:      #251a3d;
+  --carbon:     #170f28;
+  --papel:      #f7f4ef;
+  --papel-m:    #ede7dc;
+  --texto:      #221a35;
+  --texto-2:    #4a3d63;
+  --texto-3:    #7a6f8f;
+  --borde:      #d4c9e3;
+  --blanco:     #ffffff;
+  --sombra-s:   0 3px 16px rgba(37,26,61,.09);
+  --sombra-m:   0 8px 40px rgba(37,26,61,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--papel);
+  color:var(--texto);
+  line-height:1.75;
+  font-size:15.5px;
+}
+
+/* ═══ BARRA INSTITUCIONAL ═══════════════════════════════ */
+.inst-bar{
+  background:var(--carbon);
+  padding:8px 32px;
+  display:flex;align-items:center;gap:14px;
+}
+.inst-bar img{height:40px;width:auto}
+.inst-bar-txt{flex:1}
+.inst-bar-txt .nom{
+  font-family:'Manrope',sans-serif;
+  font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85);
+}
+.inst-bar-txt .sub{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+}
+.inst-nav{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.inst-nav a{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);text-decoration:none;
+  padding:4px 10px;border:1px solid rgba(255,255,255,.15);
+  border-radius:1px;transition:all .2s;white-space:nowrap;
+}
+.inst-nav a:hover{color:var(--blanco);border-color:rgba(255,255,255,.4)}
+
+/* ═══ HERO: ILUSIÓN FIGURA-FONDO ═════════════════════════ */
+.hero{
+  background:var(--violeta);
+  position:relative;overflow:hidden;
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:44px;
+  padding:56px 40px 50px;
+  position:relative;z-index:1;
+}
+.hero-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4.3vw,3.3rem);
+  font-weight:600;color:var(--blanco);
+  line-height:1.06;margin-bottom:10px;
+}
+.hero h1 em{color:var(--coral);font-style:italic;font-weight:500}
+.hero-sub{
+  font-family:'Fraunces',serif;font-size:1.15rem;
+  color:rgba(255,255,255,.55);font-style:italic;margin-bottom:22px;
+}
+.hero-desc{
+  font-size:.9rem;color:rgba(255,255,255,.52);
+  max-width:530px;line-height:1.7;margin-bottom:26px;
+}
+.hero-chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;border-radius:1px;
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.65);
+}
+.chip.coral{border-color:var(--coral);color:var(--coral)}
+
+/* Ilusión gestáltica: vaso de Rubin estilizado */
+.gestalt-diagram{
+  width:230px;flex-shrink:0;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:4px;padding:22px 18px;
+  text-align:center;
+}
+.gestalt-svg{width:100%;height:auto;display:block;margin-bottom:14px}
+.gestalt-label{
+  font-family:'IBM Plex Mono',monospace;font-size:7.5px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);line-height:1.6;
+}
+.gestalt-label strong{color:var(--coral);display:block;font-size:8px;margin-bottom:3px}
+
+/* ═══ LAYOUT ══════════════════════════════════════════════ */
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start;padding:44px 0 80px}
+.sidebar{position:sticky;top:84px}
+.side-label{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:10px;padding-left:10px;
+}
+.side-nav{list-style:none}
+.side-nav li{border-left:2px solid var(--borde);transition:border-color .2s}
+.side-nav li.on{border-left-color:var(--coral)}
+.side-nav a{
+  display:block;padding:6px 10px;font-size:.8rem;
+  color:var(--texto-2);text-decoration:none;line-height:1.3;transition:color .2s;
+}
+.side-nav a:hover,.side-nav li.on a{color:var(--coral);font-weight:600}
+.side-sep{height:1px;background:var(--borde);margin:7px 0}
+
+/* ═══ CARDS ══════════════════════════════════════════════ */
+.card{
+  background:var(--blanco);border:1px solid var(--borde);
+  border-radius:5px;margin-bottom:30px;overflow:hidden;box-shadow:var(--sombra-s);
+}
+.card-head{padding:16px 26px;display:flex;align-items:center;gap:12px}
+.card-head.violeta{background:var(--violeta)}
+.card-head.coral{background:var(--coral)}
+.card-head.verde{background:var(--verde)}
+.card-head.oro{background:var(--oro)}
+.card-head.tinta{background:var(--tinta)}
+.card-head.crema{background:var(--papel-m)}
+
+.ch-ico{
+  font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;
+  color:rgba(255,255,255,.2);line-height:1;min-width:36px;
+}
+.ch-ico.dark{color:rgba(0,0,0,.12)}
+.ch-txt h2{
+  font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;
+  color:var(--blanco);line-height:1.2;
+}
+.ch-txt h2.dark{color:var(--carbon)}
+.ch-txt .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:2px;
+}
+.ch-txt .sub.dark{color:var(--texto-3)}
+
+.card-body{padding:28px 32px}
+
+/* ═══ TIPOGRAFÍA INTERNA ══════════════════════════════════ */
+h3{
+  font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;
+  color:var(--violeta);margin:26px 0 10px;
+}
+h3:first-child{margin-top:0}
+h4{
+  font-family:'Manrope',sans-serif;font-size:.82rem;font-weight:700;
+  color:var(--texto);text-transform:uppercase;letter-spacing:.07em;margin:20px 0 8px;
+}
+h4:first-child{margin-top:0}
+p{color:var(--texto-2);margin-bottom:12px;font-size:.94rem;line-height:1.75}
+p:last-child{margin-bottom:0}
+strong{color:var(--texto);font-weight:700}
+em{font-style:italic}
+
+/* ═══ CAJAS ESPECIALES ════════════════════════════════════ */
+.caja{padding:14px 18px;border-radius:3px;margin:14px 0;font-size:.91rem}
+.caja.violeta{background:var(--violeta-xs);border-left:3px solid var(--violeta-m)}
+.caja.coral{background:var(--coral-cl);border-left:3px solid var(--coral)}
+.caja.verde{background:var(--verde-cl);border-left:3px solid var(--verde)}
+.caja.oro{background:var(--oro-cl);border-left:3px solid var(--oro)}
+.caja.warn{background:#fff9e0;border:1px solid #e0c020;border-radius:3px}
+.caja-tit{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;
+}
+.caja.violeta .caja-tit{color:var(--violeta-m)}
+.caja.coral .caja-tit{color:var(--coral)}
+.caja.verde .caja-tit{color:var(--verde)}
+.caja.oro .caja-tit{color:var(--oro)}
+
+.cita{
+  font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;
+  color:var(--texto);border-left:3px solid var(--coral);
+  padding:12px 18px;background:var(--coral-cl);
+  border-radius:0 3px 3px 0;margin:16px 0;
+}
+.cita cite{
+  display:block;font-style:normal;font-family:'IBM Plex Mono',monospace;
+  font-size:8.5px;color:var(--coral);margin-top:6px;letter-spacing:.08em;
+}
+
+/* ═══ TABLA ══════════════════════════════════════════════ */
+.tw{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+thead tr{background:var(--violeta);color:var(--blanco)}
+thead th{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.11em;text-transform:uppercase;
+  padding:10px 14px;text-align:left;font-weight:400;
+}
+tbody tr:nth-child(even){background:var(--violeta-xs)}
+tbody tr:hover{background:var(--coral-cl)}
+td{padding:9px 14px;border-bottom:1px solid var(--borde);
+  color:var(--texto-2);vertical-align:top;font-size:.87rem}
+td strong{color:var(--violeta)}
+
+/* ═══ PRINCIPIOS GESTALT VISUALES ═════════════════════════ */
+.principios-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;margin:16px 0;
+}
+.principio-card{
+  border:1px solid var(--borde);border-radius:4px;overflow:hidden;
+  background:var(--blanco);
+}
+.principio-svg-wrap{
+  background:var(--violeta-xs);padding:18px;
+  display:flex;align-items:center;justify-content:center;
+  height:90px;
+}
+.principio-svg-wrap svg{max-height:100%}
+.principio-txt{padding:12px 14px}
+.principio-txt .pn{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;
+}
+.principio-txt .pd{font-size:.84rem;color:var(--texto-2);line-height:1.55}
+
+/* ═══ PASOS ══════════════════════════════════════════════ */
+.pasos{counter-reset:p;list-style:none;margin:12px 0}
+.pasos li{display:flex;gap:12px;margin-bottom:10px;counter-increment:p;align-items:flex-start}
+.pasos li::before{
+  content:counter(p);background:var(--violeta);color:var(--blanco);
+  font-family:'Fraunces',serif;font-weight:600;font-size:.88rem;
+  min-width:25px;height:25px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.pasos.coral li::before{background:var(--coral)}
+.pasos.verde li::before{background:var(--verde)}
+.pasos.oro li::before{background:var(--oro)}
+.pasos li p{margin:0;font-size:.91rem}
+
+/* ═══ BOTONES ════════════════════════════════════════════ */
+.btn{
+  display:inline-block;padding:8px 20px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer;transition:all .2s;
+}
+.btn.violeta{background:var(--violeta);color:var(--blanco)}
+.btn.violeta:hover{background:var(--tinta)}
+.btn.coral{background:var(--coral);color:var(--blanco)}
+.btn.coral:hover{background:#b14a28}
+.btn.verde{background:var(--verde);color:var(--blanco)}
+.btn.verde:hover{background:#1f5c44}
+.btn.oro{background:var(--oro);color:var(--blanco)}
+.btn.oro:hover{background:#8f7028}
+.btn.out{background:transparent;color:var(--violeta);border:1.5px solid var(--borde)}
+.btn.out:hover{background:var(--violeta-xs);border-color:var(--violeta)}
+
+.classroom-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#1a73e8;color:var(--blanco);
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 14px;border-radius:2px;margin:10px 0 14px;
+}
+.classroom-tag::before{content:'▶';font-size:7px}
+
+/* ═══ RÚBRICA ════════════════════════════════════════════ */
+.rubrica{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:14px 0}
+.crit{border:1px solid var(--borde);border-radius:3px;padding:12px 14px;background:var(--blanco)}
+.crit .cn{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--texto-3);margin-bottom:4px;
+}
+.crit .cp{
+  font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;
+  color:var(--violeta);line-height:1;margin-bottom:5px;
+}
+.crit .cp span{font-size:.88rem;font-weight:400;font-family:'Manrope',sans-serif;color:var(--texto-3)}
+.crit p{font-size:.82rem;margin:0;color:var(--texto-2)}
+
+/* ═══ PREVIOS ════════════════════════════════════════════ */
+.prev-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.prev-item{border:1.5px solid var(--borde);border-radius:3px;padding:13px;background:var(--papel)}
+.prev-item label{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.prev-item textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px 11px;
+  font-family:'Manrope',sans-serif;font-size:.88rem;color:var(--texto);
+  background:var(--blanco);outline:none;resize:vertical;min-height:80px;transition:border-color .2s;
+}
+.prev-item textarea:focus{border-color:var(--coral);background:var(--blanco)}
+
+/* ═══ RECURSOS ═══════════════════════════════════════════ */
+.recursos{display:flex;flex-direction:column;gap:10px;margin:13px 0}
+.recurso{
+  display:flex;align-items:flex-start;gap:12px;padding:12px 15px;
+  border:1px solid var(--borde);border-radius:3px;background:var(--blanco);
+  transition:box-shadow .2s,border-color .2s;
+}
+.recurso:hover{border-color:var(--coral);box-shadow:var(--sombra-s)}
+.rec-tipo{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 8px;border-radius:1px;white-space:nowrap;
+  flex-shrink:0;margin-top:2px;
+}
+.rec-tipo.libro{background:var(--verde-cl);color:var(--verde)}
+.rec-tipo.pdf{background:var(--coral-cl);color:var(--coral)}
+.rec-tipo.video{background:var(--violeta-cl);color:var(--violeta-m)}
+.rec-tipo.web{background:var(--oro-cl);color:var(--oro)}
+.rec-info .rec-tit{font-weight:700;font-size:.9rem;color:var(--violeta);margin-bottom:2px}
+.rec-info .rec-desc{font-size:.83rem;color:var(--texto-2)}
+.rec-info .rec-autor{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--texto-3);
+  margin-top:3px;letter-spacing:.07em;
+}
+
+/* ═══ FORO ════════════════════════════════════════════════ */
+.foro{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;margin:14px 0}
+.foro-head{background:var(--papel-m);padding:11px 18px;border-bottom:1px solid var(--borde)}
+.foro-head span{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--violeta);font-weight:500;
+}
+.foro-pq{
+  padding:18px 20px;font-family:'Fraunces',serif;font-size:1.04rem;
+  font-style:italic;color:var(--texto);line-height:1.65;
+  background:var(--blanco);border-bottom:1px solid var(--borde);
+}
+.foro-input{padding:14px 18px}
+.foro-input label{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.foro-input textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:11px;
+  font-family:'Manrope',sans-serif;font-size:.9rem;color:var(--texto);
+  resize:vertical;min-height:106px;background:var(--papel);outline:none;transition:border-color .2s;
+}
+.foro-input textarea:focus{border-color:var(--violeta);background:var(--blanco)}
+
+.ej{
+  margin-top:11px;padding:12px 15px;background:var(--violeta-xs);border-radius:3px;
+  border-left:3px solid var(--violeta-m);font-size:.86rem;color:var(--texto-2);
+  display:none;line-height:1.6;
+}
+.ej.vis{display:block}
+
+/* ═══ CASO ════════════════════════════════════════════════ */
+.caso-texto{
+  background:var(--papel);border-left:4px solid var(--coral);
+  padding:18px 22px;border-radius:0 3px 3px 0;margin:14px 0;
+  font-family:'Fraunces',serif;font-size:1.02rem;line-height:1.8;color:var(--texto);
+}
+.caso-texto em{color:var(--coral);font-style:normal;font-weight:600}
+
+.caso-qs{margin:14px 0}
+.caso-q{border:1px solid var(--borde);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.cq-head{
+  background:var(--papel-m);padding:9px 14px;display:flex;align-items:center;gap:9px;
+  font-weight:700;font-size:.88rem;color:var(--texto);
+}
+.cq-num{
+  background:var(--coral);color:var(--blanco);font-family:'Fraunces',serif;
+  font-weight:600;font-size:.88rem;min-width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cq-body{padding:11px 14px}
+.cq-body textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px;
+  font-family:'Manrope',sans-serif;font-size:.87rem;color:var(--texto);
+  resize:vertical;min-height:76px;background:var(--blanco);outline:none;transition:border-color .2s;
+}
+.cq-body textarea:focus{border-color:var(--coral)}
+
+/* ═══ QUIZ ════════════════════════════════════════════════ */
+.quiz-bar-wrap{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  background:var(--papel-m);border-radius:3px;margin-bottom:14px;
+}
+.qbt{flex:1;height:4px;background:var(--borde);border-radius:2px;overflow:hidden}
+.qbf{height:100%;background:var(--violeta);transition:width .4s;border-radius:2px}
+.qbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--texto-3);white-space:nowrap}
+
+.qcard{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;display:none}
+.qcard.on{display:block}
+.qn{background:var(--oro);color:var(--blanco);padding:8px 16px;
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase}
+.qt{padding:16px 20px 10px;font-size:.95rem;font-weight:700;color:var(--texto);line-height:1.5}
+.qopts{padding:0 20px 14px}
+.qopt{
+  display:flex;align-items:flex-start;gap:11px;padding:9px 12px;margin-bottom:6px;
+  border:1.5px solid var(--borde);border-radius:2px;cursor:pointer;transition:all .2s;
+  font-size:.87rem;color:var(--texto-2);user-select:none;
+}
+.qopt:hover:not(.lock){border-color:var(--violeta-m);background:var(--violeta-xs);color:var(--violeta)}
+.qopt.ok{background:var(--verde-cl);border-color:var(--verde);color:var(--verde)}
+.qopt.err{background:var(--coral-cl);border-color:var(--coral);color:var(--coral)}
+.qopt.lock{cursor:default}
+.qletra{
+  font-family:'Fraunces',serif;font-weight:600;font-size:.88rem;
+  min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;border:1.5px solid currentColor;flex-shrink:0;margin-top:1px;
+}
+.qfb{margin:4px 20px 12px;padding:10px 14px;border-radius:2px;font-size:.86rem;display:none}
+.qfb.vis{display:block}
+.qfb.ok{background:var(--verde-cl);color:#0f4a30;border-left:3px solid var(--verde)}
+.qfb.err{background:var(--coral-cl);color:#7a2c10;border-left:3px solid var(--coral)}
+.qnav{padding:0 20px 14px;display:flex;justify-content:flex-end}
+
+.qres{display:none;text-align:center;padding:44px 28px;border:1.5px solid var(--borde);border-radius:4px}
+.qres.vis{display:block}
+.rpct{font-family:'Fraunces',serif;font-size:5rem;font-weight:600;line-height:1;margin-bottom:6px}
+.rpct.ex{color:var(--verde)}.rpct.bn{color:var(--violeta-m)}
+.rpct.rg{color:var(--oro)}.rpct.bj{color:var(--coral)}
+.rlbl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.rmsg{font-size:.93rem;color:var(--texto-2);max-width:460px;margin:0 auto 20px}
+.rstats{display:flex;justify-content:center;gap:28px;margin-bottom:20px}
+.rstat .n{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600}
+.rstat .n.v{color:var(--verde)}.rstat .n.r{color:var(--coral)}
+.rstat .l{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-3)}
+
+/* ═══ REFLEXIÓN ══════════════════════════════════════════ */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.ref-campo label{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--texto-3);display:block;margin-bottom:6px;
+}
+.ref-campo textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:10px 12px;
+  font-family:'Manrope',sans-serif;font-size:.88rem;color:var(--texto);
+  background:var(--papel);outline:none;resize:vertical;min-height:86px;transition:border-color .2s;
+}
+.ref-campo textarea:focus{border-color:var(--coral);background:var(--blanco)}
+
+/* ═══ FOOTER ══════════════════════════════════════════════ */
+footer{
+  background:var(--carbon);color:rgba(255,255,255,.3);text-align:center;padding:24px;
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;line-height:2.2;
+}
+footer strong{color:rgba(255,255,255,.7)}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .inst-nav{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .gestalt-diagram{display:none}
+  .card-body{padding:20px 18px}
+  .prev-grid,.ref-grid{grid-template-columns:1fr}
+  .rubrica{grid-template-columns:1fr 1fr}
+  .principios-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA INSTITUCIONAL -->
+<header class="inst-bar">
+  <img alt="Universidad de la Ciénega"
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==">
+  <div class="inst-bar-txt">
+    <div class="nom">Universidad de la Ciénega · Plantel Centro</div>
+    <div class="sub">Licenciatura en Pedagogía · Teorías del Aprendizaje · Tema 2.2</div>
+  </div>
+  <nav class="inst-nav">
+    <a href="#intro">Intro</a>
+    <a href="#previos">Previos</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Foro</a>
+    <a href="#act2">Act.2</a>
+    <a href="#act3">Caso</a>
+    <a href="#act4">Quiz</a>
+    <a href="#reflexion">Reflexión</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Tema 2 · Subtema 2.2 · Guía de Aprendizaje Activo</div>
+      <h1>Enfoques Psicológicos<br>acerca del Conocimiento<br><em>Campo Cognoscitivo</em></h1>
+      <div class="hero-sub">2.2 La psicología de la Gestalt y el aprendizaje por comprensión</div>
+      <p class="hero-desc">Frente a la fragmentación conductista del aprendizaje en unidades estímulo-respuesta, la psicología de la Gestalt propuso que la mente humana organiza la experiencia en totalidades estructuradas con sentido propio. Comprender el campo cognoscitivo te permitirá diseñar experiencias de aprendizaje orientadas a la comprensión genuina, no solo a la repetición de conductas.</p>
+      <div class="hero-chips">
+        <span class="chip">Lic. en Pedagogía</span>
+        <span class="chip">Teorías del Aprendizaje</span>
+        <span class="chip coral">Metodología Constructivista</span>
+        <span class="chip">4 Actividades</span>
+        <span class="chip">ABP</span>
+      </div>
+    </div>
+    <div class="gestalt-diagram">
+      <svg class="gestalt-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Vaso de Rubin estilizado: figura-fondo -->
+        <rect x="0" y="0" width="200" height="160" fill="none"/>
+        <path d="M 70 20 Q 60 50 70 80 Q 60 110 70 140 L 70 20 Z" fill="#d9633b" opacity="0.85"/>
+        <path d="M 130 20 Q 140 50 130 80 Q 140 110 130 140 L 130 20 Z" fill="#d9633b" opacity="0.85"/>
+        <path d="M 70 20 Q 100 35 130 20 L 130 140 Q 100 125 70 140 Z" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+        <text x="100" y="14" text-anchor="middle" fill="rgba(255,255,255,.4)" font-family="IBM Plex Mono" font-size="7">FIGURA</text>
+        <text x="100" y="155" text-anchor="middle" fill="rgba(255,255,255,.4)" font-family="IBM Plex Mono" font-size="7">FONDO</text>
+      </svg>
+      <div class="gestalt-label">
+        <strong>Figura y fondo</strong>
+        El principio gestáltico fundamental: la percepción organiza el campo en lo que se destaca y lo que retrocede.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="page-wrap">
+<div class="grid">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="side-label">Índice</div>
+    <ul class="side-nav">
+      <li><a href="#intro">Introducción</a></li>
+      <li><a href="#previos">Conocimientos previos</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#contenido">Contenido temático</a></li>
+      <li><a href="#materiales">Materiales de consulta</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#act1">Actividad 1 · Foro</a></li>
+      <li><a href="#act2">Actividad 2 · Aprendizaje</a></li>
+      <li><a href="#act3">Actividad 3 · Caso</a></li>
+      <li><a href="#act4">Actividad 4 · Quiz</a></li>
+      <div class="side-sep"></div>
+      <li><a href="#reflexion">Reflexión final</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+  <!-- ══ INTRODUCCIÓN ══ -->
+  <div class="card" id="intro">
+    <div class="card-head violeta">
+      <div class="ch-ico">I</div>
+      <div class="ch-txt">
+        <h2>Introducción al tema</h2>
+        <div class="sub">Punto de partida · Relevancia pedagógica · Ruptura con el conductismo</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>En el subtema anterior estudiaste el conductismo: el modelo Estímulo–Respuesta que explica el aprendizaje como la formación de asociaciones entre eventos observables. Ahora exploramos un enfoque que surgió, en buena medida, como respuesta crítica a esa fragmentación: la <strong>psicología de la Gestalt</strong> y su concepto central, el <strong>campo cognoscitivo</strong>.</p>
+
+      <div class="cita">
+        "El todo es diferente de la suma de sus partes."
+        <cite>— Principio fundamental de la psicología de la Gestalt, Max Wertheimer (1912)</cite>
+      </div>
+
+      <p>Mientras el conductismo descompone la conducta en unidades mínimas (estímulo, respuesta, reforzador), la Gestalt sostiene que la mente humana no percibe ni aprende fragmentos aislados, sino <strong>totalidades estructuradas y con sentido</strong>. El campo cognoscitivo es precisamente ese espacio psicológico organizado en el que el sujeto percibe, comprende y resuelve problemas, no mediante ensayo y error mecánico, sino mediante la reorganización súbita de los elementos: el <strong>insight</strong> o momento de comprensión repentina.</p>
+
+      <div class="caja violeta">
+        <div class="caja-tit">Pregunta orientadora de la unidad</div>
+        <p style="margin:0;font-size:.95rem;color:var(--texto)"><em>¿Las prácticas docentes que privilegian la memorización fragmentada de contenidos favorecen o impiden la comprensión estructural que describe la psicología de la Gestalt? ¿Cómo podría un docente universitario diseñar experiencias que promuevan el insight en lugar de la mera acumulación de información?</em></p>
+      </div>
+
+      <h3>¿Por qué importa este subtema para tu formación docente?</h3>
+      <p>Comprender el campo cognoscitivo te permitirá, como pedagogo en formación:</p>
+      <ol class="pasos">
+        <li><p>Distinguir entre aprendizaje por asociación mecánica (conductismo) y aprendizaje por comprensión estructural (Gestalt), reconociendo cuándo cada uno es pedagógicamente apropiado.</p></li>
+        <li><p>Diseñar situaciones de aprendizaje que favorezcan el insight: la reorganización perceptual que produce comprensión genuina y duradera.</p></li>
+        <li><p>Aplicar los principios de organización perceptual de la Gestalt (figura-fondo, proximidad, semejanza, cierre, totalidad) al diseño de materiales didácticos claros y comprensibles.</p></li>
+        <li><p>Articular la Gestalt con el constructivismo posterior, reconociendo su influencia directa en autores como Wertheimer, Köhler, Koffka y, más tarde, en la psicología cognitiva contemporánea.</p></li>
+      </ol>
+
+      <div class="caja coral">
+        <div class="caja-tit">Conexión con el subtema 2.1</div>
+        <p style="margin:0;font-size:.91rem">El conductismo y la Gestalt surgieron en paralelo durante las primeras décadas del siglo XX, en abierta confrontación teórica. Donde el conductismo busca explicar la conducta sin recurrir a procesos mentales internos, la Gestalt sitúa la organización activa de la mente como el fenómeno central a explicar. Esta tensión histórica anticipa el debate conductismo-cognitivismo que marcaría toda la psicología educativa posterior.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONOCIMIENTOS PREVIOS ══ -->
+  <div class="card" id="previos">
+    <div class="card-head crema">
+      <div class="ch-ico dark">?</div>
+      <div class="ch-txt">
+        <h2 class="dark">Activación de conocimientos previos</h2>
+        <div class="sub dark">Reflexión inicial · Ancla ausubeliana · Sin respuestas incorrectas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Antes de explorar el contenido formal, reflexiona desde tu propia experiencia. El aprendizaje significativo requiere anclar lo nuevo en lo que ya conoces, aunque sea de manera intuitiva.</p>
+      <div class="caja warn">
+        <strong>Instrucción:</strong> Responde con sinceridad y desde tu experiencia real. No hay respuestas correctas o incorrectas en esta etapa. Esta activación es personal y no se entrega en Classroom, pero es indispensable para que el aprendizaje posterior sea genuino.
+      </div>
+      <div class="prev-grid">
+        <div class="prev-item">
+          <label>1. ¿Has experimentado alguna vez el momento de "ajá" — entender de pronto algo que antes no comprendías, sin que nadie te lo explicara paso a paso? Describe esa experiencia.</label>
+          <textarea placeholder="Narra la situación concreta y específica..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>2. ¿Crees que es posible aprender algo "memorizando partes" sin comprender el conjunto? ¿Qué diferencia hay, según tu experiencia, entre memorizar y comprender?</label>
+          <textarea placeholder="Tu reflexión, basada en tu propia experiencia escolar..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>3. Cuando ves una imagen o un objeto, ¿alguna vez has notado que tu percepción "cambia" según en qué parte te enfocas (como las ilusiones ópticas)? ¿Qué crees que dice esto sobre cómo funciona tu mente?</label>
+          <textarea placeholder="Describe tu intuición al respecto..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>4. Antes de esta guía, ¿conocías el término "Gestalt" o habías escuchado los nombres Wertheimer, Köhler o Koffka? ¿Qué sabías de ellos, aunque fuera vago?</label>
+          <textarea placeholder="Tu respuesta, aunque sea parcial o incierta..."></textarea>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:6px">
+        <button class="btn violeta" onclick="guardarPrevios()">Registrar respuestas (esta sesión)</button>
+      </div>
+      <div id="pok" style="display:none;text-align:center;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--verde)">Respuestas registradas correctamente</div>
+    </div>
+  </div>
+
+  <!-- ══ CONTENIDO TEMÁTICO ══ -->
+  <div class="card" id="contenido">
+    <div class="card-head coral">
+      <div class="ch-ico">II</div>
+      <div class="ch-txt">
+        <h2>Contenido Temático</h2>
+        <div class="sub">Tema 2 · Subtema 2.2 · Campo Cognoscitivo · Psicología de la Gestalt</div>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <h3>1. Origen y propósito de la psicología de la Gestalt</h3>
+      <p>La psicología de la Gestalt (del alemán <em>Gestalt</em>: forma, configuración, totalidad estructurada) surgió en Alemania a principios del siglo XX, fundada principalmente por <strong>Max Wertheimer</strong> (1880–1943), <strong>Wolfgang Köhler</strong> (1887–1967) y <strong>Kurt Koffka</strong> (1886–1941). Su punto de partida fue el estudio de la percepción: observaron que cuando una persona ve, por ejemplo, dos luces que se encienden y apagan alternadamente a cierta velocidad, percibe <em>movimiento</em> (el llamado fenómeno phi), aunque objetivamente solo existan dos luces estáticas.</p>
+      <p>Este fenómeno, aparentemente simple, llevó a una conclusión radical: <strong>la mente no registra elementos aislados que luego se suman; organiza activamente la experiencia en totalidades con sentido propio</strong>, que no pueden reducirse ni explicarse a partir de la suma de sus componentes.</p>
+
+      <h3>2. El concepto de Campo Cognoscitivo</h3>
+      <p>El <strong>campo cognoscitivo</strong> (o campo psicológico) es el concepto central que la Gestalt aporta a la teoría del aprendizaje. Se refiere al espacio psicológico total en el que un sujeto percibe, piensa y actúa en un momento dado: incluye no solo los estímulos externos, sino la forma en que el sujeto los organiza, relaciona y dota de significado.</p>
+
+      <div class="caja violeta">
+        <div class="caja-tit">Definición operativa</div>
+        <p style="margin:0;font-size:.92rem">El campo cognoscitivo es la totalidad organizada de relaciones que un individuo percibe entre los elementos de una situación, en un momento determinado. Aprender no es agregar elementos nuevos a una lista, sino <strong>reestructurar el campo cognoscitivo</strong> para que las relaciones entre los elementos adquieran un nuevo sentido.</p>
+      </div>
+
+      <h3>3. Las leyes de la organización perceptual</h3>
+      <p>La Gestalt formuló un conjunto de principios o "leyes" que explican cómo la mente organiza espontáneamente los estímulos en totalidades coherentes. Estos principios tienen aplicaciones directas en el diseño de materiales educativos:</p>
+
+      <div class="principios-grid">
+        <div class="principio-card">
+          <div class="principio-svg-wrap">
+            <svg viewBox="0 0 120 70" width="110" height="64">
+              <circle cx="20" cy="35" r="6" fill="#4a2f7a"/>
+              <circle cx="36" cy="35" r="6" fill="#4a2f7a"/>
+              <circle cx="52" cy="35" r="6" fill="#4a2f7a"/>
+              <circle cx="80" cy="35" r="6" fill="#d9633b"/>
+              <circle cx="96" cy="35" r="6" fill="#d9633b"/>
+              <circle cx="112" cy="35" r="6" fill="#d9633b"/>
+            </svg>
+          </div>
+          <div class="principio-txt">
+            <div class="pn">Proximidad</div>
+            <div class="pd">Los elementos cercanos entre sí tienden a percibirse como grupo. Aplicación: agrupar visualmente contenidos relacionados en un material didáctico.</div>
+          </div>
+        </div>
+        <div class="principio-card">
+          <div class="principio-svg-wrap">
+            <svg viewBox="0 0 120 70" width="110" height="64">
+              <circle cx="25" cy="20" r="7" fill="#4a2f7a"/>
+              <circle cx="25" cy="50" r="7" fill="#4a2f7a"/>
+              <circle cx="60" cy="20" r="7" fill="#4a2f7a"/>
+              <circle cx="60" cy="50" r="7" fill="#4a2f7a"/>
+              <rect x="88" y="13" width="14" height="14" fill="#d9633b"/>
+              <rect x="88" y="43" width="14" height="14" fill="#d9633b"/>
+            </svg>
+          </div>
+          <div class="principio-txt">
+            <div class="pn">Semejanza</div>
+            <div class="pd">Elementos similares en forma o color se perciben como pertenecientes al mismo grupo. Aplicación: usar codificación visual consistente para conceptos relacionados.</div>
+          </div>
+        </div>
+        <div class="principio-card">
+          <div class="principio-svg-wrap">
+            <svg viewBox="0 0 120 70" width="110" height="64">
+              <path d="M 20 15 A 25 25 0 1 1 19 55" fill="none" stroke="#4a2f7a" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="principio-txt">
+            <div class="pn">Cierre</div>
+            <div class="pd">La mente completa formas incompletas para percibir totalidades. Aplicación: el aprendizaje significativo permite que el estudiante "cierre" estructuras conceptuales incompletas con sentido propio.</div>
+          </div>
+        </div>
+        <div class="principio-card">
+          <div class="principio-svg-wrap">
+            <svg viewBox="0 0 120 70" width="110" height="64">
+              <line x1="15" y1="20" x2="105" y2="50" stroke="#4a2f7a" stroke-width="4"/>
+              <line x1="15" y1="50" x2="105" y2="20" stroke="#d9633b" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="principio-txt">
+            <div class="pn">Continuidad</div>
+            <div class="pd">Los elementos alineados en una dirección se perciben como una secuencia continua. Aplicación: estructurar contenidos en una progresión lógica visualmente coherente.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>4. Wolfgang Köhler y el aprendizaje por insight</h3>
+      <p><strong>Wolfgang Köhler</strong> realizó experimentos clásicos con chimpancés en la isla de Tenerife (1913–1917). En uno de ellos, un chimpancé llamado Sultán debía alcanzar un plátano colgado fuera de su alcance, disponiendo de dos cañas cortas que, por separado, no eran suficientes. Köhler observó que el chimpancé, tras un período de aparente inactividad y observación del problema en su totalidad, súbitamente unía las dos cañas y alcanzaba el plátano.</p>
+
+      <div class="caja coral">
+        <div class="caja-tit">El fenómeno del insight</div>
+        <p style="margin:0;font-size:.92rem">Köhler denominó <strong>insight</strong> (comprensión súbita) a este tipo de aprendizaje: no ocurre por ensayo y error gradual ni por reforzamiento progresivo (como predeciría el conductismo), sino por una <strong>reestructuración repentina del campo cognoscitivo</strong>, en la que el sujeto percibe de pronto la relación funcional entre los elementos de un problema.</p>
+      </div>
+
+      <p>Esta observación contradecía directamente el modelo conductista del aprendizaje por ensayo y error de Thorndike: el chimpancé no llegaba a la solución mediante intentos aleatorios reforzados, sino mediante una comprensión estructural del problema completo.</p>
+
+      <h3>5. Kurt Koffka y la transferencia del aprendizaje</h3>
+      <p><strong>Kurt Koffka</strong> extendió los principios gestálticos al estudio del desarrollo y el aprendizaje, enfatizando que lo que se aprende no son respuestas específicas a estímulos específicos, sino <strong>principios y relaciones estructurales</strong> que pueden transferirse a situaciones nuevas y diferentes. Esta es la diferencia esencial entre el aprendizaje gestáltico y el aprendizaje conductista: el primero genera comprensión transferible; el segundo genera respuestas específicas a contextos específicos.</p>
+
+      <h3>6. Comparación: Conductismo (E→R) versus Campo Cognoscitivo (Gestalt)</h3>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimensión</th>
+              <th>Conductismo (E→R)</th>
+              <th>Campo Cognoscitivo (Gestalt)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unidad de análisis</strong></td>
+              <td>Asociaciones aisladas entre estímulos y respuestas.</td>
+              <td>Totalidades estructuradas y campos de relaciones significativas.</td>
+            </tr>
+            <tr>
+              <td><strong>Mecanismo de aprendizaje</strong></td>
+              <td>Ensayo y error gradual, reforzado progresivamente.</td>
+              <td>Insight: reestructuración súbita de la comprensión del problema.</td>
+            </tr>
+            <tr>
+              <td><strong>Rol del sujeto</strong></td>
+              <td>Receptor pasivo moldeado por las contingencias ambientales.</td>
+              <td>Organizador activo que estructura perceptualmente su experiencia.</td>
+            </tr>
+            <tr>
+              <td><strong>Transferencia</strong></td>
+              <td>Limitada: las respuestas son específicas al contexto de aprendizaje.</td>
+              <td>Amplia: los principios comprendidos se transfieren a problemas nuevos.</td>
+            </tr>
+            <tr>
+              <td><strong>Implicación pedagógica</strong></td>
+              <td>Práctica repetida, retroalimentación inmediata, fragmentación del contenido.</td>
+              <td>Presentación de problemas completos, fomento de la comprensión estructural.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7. El campo cognoscitivo en la educación universitaria</h3>
+      <p>Los principios del campo cognoscitivo tienen implicaciones directas y prácticas para el diseño de la enseñanza universitaria:</p>
+      <ol class="pasos coral">
+        <li><p>Presentar los contenidos como totalidades con sentido, en lugar de listas fragmentadas de datos a memorizar de forma aislada.</p></li>
+        <li><p>Diseñar problemas completos y auténticos que permitan al estudiante experimentar el insight, en lugar de ejercicios mecánicos repetitivos.</p></li>
+        <li><p>Aplicar los principios de organización visual (proximidad, semejanza, cierre, continuidad) en el diseño de diapositivas, esquemas y materiales didácticos.</p></li>
+        <li><p>Favorecer momentos de pausa y observación reflexiva del problema completo antes de intervenir con explicaciones fragmentadas, replicando las condiciones que produjeron el insight en los experimentos de Köhler.</p></li>
+      </ol>
+
+      <div class="caja oro">
+        <div class="caja-tit">Conexión esencial para el pedagogo</div>
+        <p style="margin:0;font-size:.93rem">La Gestalt no rechaza la importancia de la práctica o la repetición, pero sostiene que estas son insuficientes si no van acompañadas de comprensión estructural. Un docente que solo fragmenta el conocimiento en partes aisladas —por más que las refuerce sistemáticamente— corre el riesgo de producir estudiantes que reproducen procedimientos sin comprender por qué funcionan, exactamente como ocurrió en los casos estudiados en la guía del conductismo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MATERIALES ══ -->
+  <div class="card" id="materiales">
+    <div class="card-head violeta">
+      <div class="ch-ico">III</div>
+      <div class="ch-txt">
+        <h2>Materiales de Consulta Formales</h2>
+        <div class="sub">Fuentes académicas · Consultar antes de las actividades</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Se presentan fuentes académicas seleccionadas para profundizar en la psicología de la Gestalt y el campo cognoscitivo. Se recomienda revisar al menos dos antes de realizar las actividades prácticas.</p>
+      <div class="recursos">
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Psicología educativa — Capítulo 8: Perspectivas cognitivas tempranas</div>
+            <div class="rec-desc">Exposición sistemática de la psicología de la Gestalt aplicada al aprendizaje, con ejemplos contemporáneos de educación superior y comparación con otros enfoques cognitivos.</div>
+            <div class="rec-autor">Woolfolk, A. (2014). Psicología educativa (12.ª ed.). Pearson. México.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">The Mentality of Apes — Capítulos sobre los experimentos de Tenerife</div>
+            <div class="rec-desc">Texto primario donde Köhler documenta sus experimentos sobre el aprendizaje por insight en primates. Fuente histórica indispensable para comprender el origen empírico del concepto.</div>
+            <div class="rec-autor">Köhler, W. (1925). The Mentality of Apes. Harcourt, Brace & Company. Nueva York.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo libro">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Principles of Gestalt Psychology — Capítulos 1 y 2</div>
+            <div class="rec-desc">Koffka sistematiza los principios de la psicología de la Gestalt y su aplicación al estudio del aprendizaje y el desarrollo. Texto fundacional de referencia obligada.</div>
+            <div class="rec-autor">Koffka, K. (1935). Principles of Gestalt Psychology. Harcourt, Brace & Company. Nueva York.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo pdf">Artículo</span>
+          <div class="rec-info">
+            <div class="rec-tit">La psicología de la Gestalt y su vigencia en la educación contemporánea</div>
+            <div class="rec-desc">Artículo de revisión que analiza la influencia de los principios gestálticos en el diseño instruccional y la psicología cognitiva actual, con aplicaciones a la educación superior latinoamericana.</div>
+            <div class="rec-autor">Disponible en Redalyc · Latindex · ERIC. Buscar: "psicología Gestalt educación aprendizaje" en bases de datos institucionales UdC.</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo video">Video</span>
+          <div class="rec-info">
+            <div class="rec-tit">Psicología de la Gestalt: percepción, insight y aprendizaje — Conferencias académicas</div>
+            <div class="rec-desc">Series de conferencias universitarias sobre los principios gestálticos y su aplicación educativa. Buscar en canales académicos de YouTube: UNAM Psicología, Universidad Complutense, Universidad de Chile.</div>
+            <div class="rec-autor">Plataforma YouTube · Filtro: "psicología Gestalt aprendizaje conferencia académica".</div>
+          </div>
+        </div>
+        <div class="recurso">
+          <span class="rec-tipo web">Web</span>
+          <div class="rec-info">
+            <div class="rec-tit">Stanford Encyclopedia of Philosophy — "Gestalt Theory"</div>
+            <div class="rec-desc">Artículo enciclopédico de referencia global sobre los fundamentos filosóficos y psicológicos de la teoría de la Gestalt, su historia y su legado en la ciencia cognitiva.</div>
+            <div class="rec-autor">plato.stanford.edu — Acceso libre y gratuito en inglés.</div>
+          </div>
+        </div>
+      </div>
+      <div class="caja warn" style="margin-top:12px">
+        <strong>Nota de citación:</strong> Al referenciar estas fuentes en tus actividades, utiliza el formato APA 7.ª edición. Consulta las bases de datos y el catálogo de la biblioteca universitaria para el acceso a los textos.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 1: FORO ══ -->
+  <div class="card" id="act1">
+    <div class="card-head violeta">
+      <div class="ch-ico">A1</div>
+      <div class="ch-txt">
+        <h2>Actividad 1 · Foro de Mediación</h2>
+        <div class="sub">Reflexión crítica · Intercambio argumentado · Construcción colaborativa</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag">Entregable en Google Classroom · Foro de discusión</div>
+
+      <h4>Propósito</h4>
+      <p>Esta actividad busca que, mediante el diálogo argumentado con tus compañeros, construyas una comprensión más profunda sobre las implicaciones pedagógicas reales del campo cognoscitivo. El foro requiere argumentación fundamentada en el contenido estudiado y anclada en experiencias universitarias verificables.</p>
+
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos">
+        <li><p>Ingresa a Google Classroom y localiza el foro titulado <strong>"¿Comprensión o memorización? El campo cognoscitivo en el aula universitaria"</strong></p></li>
+        <li><p>Lee con atención la pregunta detonadora. Dedica al menos 15 minutos a reflexionar antes de escribir. Utiliza el espacio de práctica de esta guía para elaborar tu borrador.</p></li>
+        <li><p>Redacta tu participación inicial con un mínimo de <strong>220 palabras</strong>, incluyendo: (a) una postura clara sobre el problema planteado, (b) referencia explícita a al menos un autor o concepto gestáltico estudiado, y (c) conexión con una experiencia concreta y verificable como estudiante universitario.</p></li>
+        <li><p>Lee las aportaciones de al menos <strong>dos compañeros</strong> y responde a cada uno con un comentario de mínimo 90 palabras que amplíe, contraste o cuestione el argumento con nuevos elementos del contenido.</p></li>
+        <li><p>Guarda capturas de pantalla de tu participación principal y tus comentarios. Adjúntalas en Classroom como evidencia de entrega.</p></li>
+      </ol>
+
+      <h4>Pregunta detonadora</h4>
+      <div class="foro">
+        <div class="foro-head">
+          <span>Foro · Teorías del Aprendizaje · Tema 2.2 · Campo Cognoscitivo</span>
+        </div>
+        <div class="foro-pq">
+          Piensa en una materia donde hayas sentido que "memorizaste" información sin comprenderla realmente, y en otra donde experimentaste un momento de comprensión genuina — un "insight" en términos de Köhler. <strong>¿Qué diferencias identificas en la forma en que ambos docentes presentaron el contenido? ¿Puede un docente universitario diseñar deliberadamente condiciones que favorezcan el insight, o es un fenómeno espontáneo que no puede planificarse pedagógicamente? Fundamenta tu postura con los principios gestálticos estudiados y con tu experiencia.</strong>
+        </div>
+        <div class="foro-input">
+          <label>Espacio de práctica — elabora tu borrador antes de publicar en Classroom</label>
+          <textarea id="f1" placeholder="Desarrolla tu postura aquí. Compara las dos experiencias de aprendizaje con precisión, identifica qué hizo diferente a cada docente, y argumenta si el insight puede diseñarse pedagógicamente. Esta reflexión requiere tu perspectiva personal específica — no puede ser generada de manera externa."></textarea>
+          <br>
+          <button class="btn violeta" onclick="guardarForo()">Guardar borrador</button>
+          <button class="btn out" style="margin-left:8px" onclick="toggleEj('ej1')">Ver ejemplo orientativo</button>
+          <div class="ej" id="ej1">
+            <strong>Ejemplo orientativo (no reproducir — construye tu propio argumento):</strong><br><br>
+            En mi materia de Estadística del semestre pasado, memoricé fórmulas para calcular la desviación estándar sin entender realmente qué representaba ese número. El profesor presentaba la fórmula, resolvía un ejemplo y asignaba ejercicios idénticos. Esto coincide con lo que la guía describe como fragmentación: aprendí pasos aislados, no la estructura del problema.<br><br>
+            En contraste, en Metodología de la Investigación, la profesora nos presentó un problema completo de análisis de datos reales antes de explicar ningún procedimiento. Nos dejó explorar, equivocarnos y discutir en equipo durante 20 minutos. Cuando finalmente explicó el concepto de varianza, sentí ese "ajá" que describe Köhler: de pronto entendí por qué esa medida tenía sentido, no solo cómo calcularla.<br><br>
+            Creo que sí es posible diseñar condiciones para el insight, aunque no se pueda garantizar el momento exacto en que ocurre. La clave, según Köhler, es presentar el problema como una totalidad y dar tiempo para la exploración estructural, en lugar de fragmentar la solución desde el principio.
+          </div>
+        </div>
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Postura fundamentada</div><div class="cp">30 <span>pts</span></div><p>Postura clara respaldada con referencia a autores o conceptos gestálticos del contenido.</p></div>
+        <div class="crit"><div class="cn">Conexión experiencial</div><div class="cp">25 <span>pts</span></div><p>Argumento anclado en experiencias universitarias concretas y verificables del estudiante.</p></div>
+        <div class="crit"><div class="cn">Calidad de comentarios</div><div class="cp">25 <span>pts</span></div><p>Comentarios a pares que amplían el debate con nuevos elementos fundamentados; no solo acuerdo.</p></div>
+        <div class="crit"><div class="cn">Redacción académica</div><div class="cp">20 <span>pts</span></div><p>Escritura clara, vocabulario psicológico-pedagógico apropiado, extensión mínima cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 2 ══ -->
+  <div class="card" id="act2">
+    <div class="card-head verde">
+      <div class="ch-ico">A2</div>
+      <div class="ch-txt">
+        <h2>Actividad 2 · Rediseño Gestáltico de un Material Didáctico</h2>
+        <div class="sub">Aprendizaje significativo · Aplicación práctica · Producción académica original</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:var(--verde)">Entregable en Google Classroom · Documento o material rediseñado</div>
+
+      <h4>Propósito</h4>
+      <p>Esta actividad genera aprendizaje significativo al aplicar directamente los principios de organización perceptual de la Gestalt (proximidad, semejanza, cierre, continuidad) al rediseño de un material educativo real que hayas recibido como estudiante universitario.</p>
+
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos verde">
+        <li><p><strong>Selecciona un material.</strong> Elige una presentación de diapositivas, un esquema, una guía de estudio o un material visual real que hayas recibido en alguna de tus materias actuales. Debe ser un material que consideres confuso, fragmentado o difícil de comprender como totalidad.</p></li>
+        <li><p><strong>Sección A — Diagnóstico gestáltico.</strong> Analiza el material original identificando qué principios de organización perceptual viola o ignora (falta de agrupación visual, ausencia de jerarquía, elementos dispersos sin relación clara, etc.). Cita o describe ejemplos específicos del material.</p></li>
+        <li><p><strong>Sección B — Rediseño aplicado.</strong> Rediseña una sección del material (mínimo una diapositiva o un esquema completo) aplicando explícitamente al menos tres principios gestálticos estudiados: proximidad, semejanza, cierre o continuidad. Puedes usar cualquier herramienta (PowerPoint, Canva, papel y lápiz fotografiado, etc.).</p></li>
+        <li><p><strong>Sección C — Justificación teórica.</strong> Explica, para cada principio aplicado, por qué esa modificación específica facilita la formación de un campo cognoscitivo más organizado y favorece la comprensión estructural en lugar de la memorización fragmentada.</p></li>
+        <li><p><strong>Entrega.</strong> Sube el documento de análisis (600–900 palabras) junto con las imágenes del material original y el rediseñado. Entrega en Classroom en formato PDF o Word con imágenes incluidas.</p></li>
+      </ol>
+
+      <div class="caja verde">
+        <div class="caja-tit">Ejemplo de justificación en la Sección C</div>
+        <p style="font-size:.88rem;margin:0">
+          <strong>Principio aplicado:</strong> Proximidad. En el material original, los conceptos "variable independiente" y "variable dependiente" estaban ubicados en extremos opuestos de la diapositiva, sin conexión visual aparente, aunque conceptualmente están directamente relacionados.<br><br>
+          <strong>Modificación:</strong> Reubiqué ambos conceptos uno junto al otro, conectados por una flecha, dentro de un mismo recuadro.<br><br>
+          <strong>Justificación teórica:</strong> Según el principio de proximidad, los elementos espacialmente cercanos se perciben como un grupo relacionado. Al agruparlos visualmente, el campo cognoscitivo del estudiante organiza estos dos conceptos como una unidad funcional relacionada, en lugar de percibirlos como datos aislados que deben memorizarse por separado.
+        </p>
+      </div>
+
+      <div class="caja warn">
+        <strong>Sobre el pensamiento crítico genuino:</strong> Esta actividad requiere que utilices un material real de una materia que estés cursando actualmente, con imágenes verificables del antes y el después. Esta especificidad hace que el ejercicio sea propio e irrepetible.
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Diagnóstico preciso</div><div class="cp">25 <span>pts</span></div><p>Identifica correctamente las violaciones a los principios gestálticos en el material original.</p></div>
+        <div class="crit"><div class="cn">Rediseño aplicado</div><div class="cp">30 <span>pts</span></div><p>Aplica correctamente al menos tres principios gestálticos en el material rediseñado.</p></div>
+        <div class="crit"><div class="cn">Justificación teórica</div><div class="cp">30 <span>pts</span></div><p>Explica con fundamento psicológico por qué cada modificación mejora la organización del campo cognoscitivo.</p></div>
+        <div class="crit"><div class="cn">Presentación y redacción</div><div class="cp">15 <span>pts</span></div><p>Material visual claro, imágenes incluidas, escritura académica, extensión cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 3: CASO ══ -->
+  <div class="card" id="act3">
+    <div class="card-head oro">
+      <div class="ch-ico">A3</div>
+      <div class="ch-txt">
+        <h2>Actividad 3 · Caso Práctico: "El Taller de la Profesora Mendoza"</h2>
+        <div class="sub">Aprendizaje Basado en Problemas · Análisis crítico · Propuesta pedagógica</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:var(--oro)">Entregable en Google Classroom · Análisis integrado</div>
+
+      <h4>Presentación del caso</h4>
+      <p>Lee con atención el siguiente caso. Está basado en situaciones documentadas en contextos universitarios reales. Tu tarea es analizarlo desde los principios del campo cognoscitivo y proponer intervenciones pedagógicas fundamentadas.</p>
+
+      <div class="caso-texto">
+        <p>La <em>profesora Mendoza</em> imparte el taller de Diseño de Algoritmos en la carrera de Ingeniería en Sistemas. Durante años utilizó un método tradicional: presentaba la sintaxis de cada estructura de control (condicionales, bucles, funciones) de manera aislada, con ejercicios específicos para cada una. Los estudiantes memorizaban la sintaxis correctamente, pero cuando se enfrentaban a un problema real que requería combinar varias estructuras, la mayoría no sabía cómo abordarlo: "sabían las piezas pero no el rompecabezas", como ella misma describió en una reunión de academia.</p>
+        <p>Este semestre, la profesora Mendoza decidió cambiar su método. En lugar de enseñar estructuras aisladas, presenta a los estudiantes un problema completo y auténtico desde el primer día — por ejemplo, diseñar un sistema simple de gestión de inventario — y les pide que, en equipos, exploren el problema durante 30 minutos antes de recibir cualquier explicación formal. Solo después de esta exploración, introduce los conceptos técnicos necesarios, mostrando cómo cada estructura resuelve una parte específica del problema que ya identificaron.</p>
+        <p>Los resultados preliminares muestran que los estudiantes tardan más tiempo en dominar la sintaxis básica que con el método anterior, pero cuando se les presentan problemas nuevos y diferentes al final del curso, resuelven significativamente mejor que generaciones anteriores. Sin embargo, algunos estudiantes han manifestado frustración: "prefiero que me digas directamente cómo se hace, perder tiempo explorando me genera ansiedad".</p>
+      </div>
+
+      <h4>Preguntas de análisis</h4>
+      <div class="caso-qs">
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">1</span>Describe, en términos de la psicología de la Gestalt, qué transformación pedagógica realizó la profesora Mendoza. ¿Qué problema del método anterior identifica correctamente la metáfora de "las piezas sin el rompecabezas"?</div>
+          <div class="cq-body"><textarea placeholder="Análisis gestáltico detallado..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">2</span>¿De qué manera el nuevo método de la profesora Mendoza busca replicar las condiciones que produjeron el insight en los experimentos de Köhler con chimpancés? Identifica al menos dos paralelismos concretos entre el caso y los experimentos descritos en el contenido temático.</div>
+          <div class="cq-body"><textarea placeholder="Comparación fundamentada con los experimentos de Köhler..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">3</span>Algunos estudiantes prefieren el método anterior porque genera menos ansiedad inicial, aunque produzca aprendizaje menos transferible. ¿Cómo explicarías esta tensión usando los conceptos de campo cognoscitivo y transferencia del aprendizaje? ¿Es válida la preferencia de esos estudiantes?</div>
+          <div class="cq-body"><textarea placeholder="Análisis crítico de la tensión entre comodidad inmediata y aprendizaje profundo..."></textarea></div>
+        </div>
+        <div class="caso-q">
+          <div class="cq-head"><span class="cq-num">4</span>Como pedagogo asesor de la profesora Mendoza, propone tres ajustes concretos a su metodología que equilibren el fomento del insight con el manejo de la ansiedad reportada por algunos estudiantes. Para cada ajuste: describe la acción específica y fundamenta su efecto esperado en términos de organización del campo cognoscitivo.</div>
+          <div class="cq-body"><textarea placeholder="Propuesta pedagógica fundamentada y equilibrada..."></textarea></div>
+        </div>
+      </div>
+
+      <div class="caja oro" style="margin-top:14px">
+        <div class="caja-tit">Instrucción de entrega</div>
+        <p style="margin:0;font-size:.91rem">Redacta tu análisis como un texto integrado de 550–800 palabras que responda coherentemente las cuatro preguntas. No es un cuestionario separado, sino un dictamen pedagógico articulado. Entrega en Classroom en formato PDF o Word.</p>
+      </div>
+
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Diagnóstico gestáltico</div><div class="cp">25 <span>pts</span></div><p>Identifica correctamente la transformación pedagógica en términos de la teoría de la Gestalt.</p></div>
+        <div class="crit"><div class="cn">Comparación con Köhler</div><div class="cp">25 <span>pts</span></div><p>Establece al menos dos paralelismos fundamentados con los experimentos descritos en el contenido.</p></div>
+        <div class="crit"><div class="cn">Análisis crítico</div><div class="cp">25 <span>pts</span></div><p>Examina con profundidad la tensión entre comodidad inmediata y transferencia del aprendizaje.</p></div>
+        <div class="crit"><div class="cn">Propuesta pedagógica</div><div class="cp">25 <span>pts</span></div><p>Tres ajustes específicos, realizables y fundamentados en los principios del campo cognoscitivo.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 4: QUIZ ══ -->
+  <div class="card" id="act4">
+    <div class="card-head tinta">
+      <div class="ch-ico">A4</div>
+      <div class="ch-txt">
+        <h2>Actividad 4 · Quiz de Comprensión</h2>
+        <div class="sub">5 preguntas · Retroalimentación inmediata · Puntaje final visible</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="classroom-tag" style="background:var(--tinta)">Entregable en Google Classroom · Captura de pantalla del resultado</div>
+
+      <p>Responde las cinco preguntas. Recibirás retroalimentación inmediata. Al finalizar, toma captura de pantalla del resultado y súbela a Classroom. Puedes reiniciar para practicar antes de tu captura definitiva.</p>
+
+      <div id="quiz-wrap">
+        <div class="quiz-bar-wrap">
+          <span class="qbl" id="qlbl">Pregunta 1 de 5</span>
+          <div class="qbt"><div class="qbf" id="qbar" style="width:20%"></div></div>
+          <span class="qbl" id="qscore">0 correctas</span>
+        </div>
+
+        <!-- Q1 -->
+        <div class="qcard on" id="q1">
+          <div class="qn">Pregunta 1 de 5</div>
+          <div class="qt">El principio fundamental de la psicología de la Gestalt, formulado por Wertheimer, establece que:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">A</span>El aprendizaje ocurre mediante asociaciones repetidas entre estímulos y respuestas observables.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',true)"><span class="qletra">B</span>El todo es diferente de la suma de sus partes: la mente organiza la experiencia en totalidades con sentido propio.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">C</span>El conocimiento se construye exclusivamente a través de la interacción social mediada por el lenguaje.</div>
+            <div class="qopt" onclick="resp(this,'q1','fb1',false)"><span class="qletra">D</span>La mente humana es una pizarra en blanco que se llena progresivamente a través de la experiencia sensorial.</div>
+          </div>
+          <div class="qfb" id="fb1"></div>
+          <div class="qnav"><button class="btn tinta" id="n1" style="display:none" onclick="nxt(2)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qcard" id="q2">
+          <div class="qn">Pregunta 2 de 5</div>
+          <div class="qt">Wolfgang Köhler realizó experimentos con chimpancés en los que observó que resolvían problemas (como alcanzar un plátano con dos cañas) no por ensayo y error gradual, sino mediante:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">A</span>Reforzamiento progresivo de respuestas exitosas previas, según el modelo de Skinner.</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">B</span>Condicionamiento clásico, asociando el plátano con un estímulo neutro presentado repetidamente.</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',true)"><span class="qletra">C</span>Insight: una reestructuración súbita del campo cognoscitivo que les permitió comprender la relación funcional entre los elementos del problema.</div>
+            <div class="qopt" onclick="resp(this,'q2','fb2',false)"><span class="qletra">D</span>Imitación directa de la conducta de otros chimpancés que ya habían resuelto el problema.</div>
+          </div>
+          <div class="qfb" id="fb2"></div>
+          <div class="qnav"><button class="btn tinta" id="n2" style="display:none" onclick="nxt(3)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qcard" id="q3">
+          <div class="qn">Pregunta 3 de 5</div>
+          <div class="qt">Un docente agrupa visualmente, en una diapositiva, los conceptos relacionados colocándolos cerca unos de otros para que el estudiante los perciba como un conjunto. Esto aplica el principio gestáltico de:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">A</span>Cierre: la mente completa formas incompletas para percibir totalidades coherentes.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',true)"><span class="qletra">B</span>Proximidad: los elementos cercanos entre sí tienden a percibirse como un grupo relacionado.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">C</span>Semejanza: los elementos similares en forma o color se perciben como pertenecientes al mismo grupo.</div>
+            <div class="qopt" onclick="resp(this,'q3','fb3',false)"><span class="qletra">D</span>Continuidad: los elementos alineados en una dirección se perciben como una secuencia continua.</div>
+          </div>
+          <div class="qfb" id="fb3"></div>
+          <div class="qnav"><button class="btn tinta" id="n3" style="display:none" onclick="nxt(4)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="qcard" id="q4">
+          <div class="qn">Pregunta 4 de 5</div>
+          <div class="qt">La principal diferencia entre el aprendizaje según el conductismo y el aprendizaje según la psicología de la Gestalt respecto a la transferencia es que:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">A</span>El conductismo produce mayor transferencia porque entrena respuestas generales aplicables a cualquier contexto.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',true)"><span class="qletra">B</span>El aprendizaje gestáltico, al comprender principios y relaciones estructurales, se transfiere mejor a problemas nuevos; el conductismo genera respuestas específicas y limitadas al contexto de entrenamiento.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">C</span>Ambos enfoques producen exactamente el mismo nivel de transferencia, ya que se basan en los mismos mecanismos cerebrales.</div>
+            <div class="qopt" onclick="resp(this,'q4','fb4',false)"><span class="qletra">D</span>Ninguno de los dos enfoques aborda el concepto de transferencia del aprendizaje en su formulación teórica.</div>
+          </div>
+          <div class="qfb" id="fb4"></div>
+          <div class="qnav"><button class="btn tinta" id="n4" style="display:none" onclick="nxt(5)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="qcard" id="q5">
+          <div class="qn">Pregunta 5 de 5</div>
+          <div class="qt">El concepto de "campo cognoscitivo" en la psicología de la Gestalt se refiere principalmente a:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">A</span>Una asociación fija entre un estímulo específico y una respuesta conductual entrenada mediante repetición.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">B</span>El conjunto de conocimientos previos que un estudiante posee antes de iniciar una materia universitaria.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',true)"><span class="qletra">C</span>La totalidad organizada de relaciones que un individuo percibe entre los elementos de una situación, en un momento determinado.</div>
+            <div class="qopt" onclick="resp(this,'q5','fb5',false)"><span class="qletra">D</span>El espacio físico del aula donde ocurre la interacción entre el docente y los estudiantes durante la clase.</div>
+          </div>
+          <div class="qfb" id="fb5"></div>
+          <div class="qnav"><button class="btn tinta" id="n5" style="display:none" onclick="mostrarRes()">Ver resultado &rarr;</button></div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="qres" id="qres">
+          <div class="rpct" id="rpct"></div>
+          <div class="rlbl" id="rlbl"></div>
+          <div class="rmsg" id="rmsg"></div>
+          <div class="rstats">
+            <div class="rstat"><div class="n v" id="rcorr"></div><div class="l">Correctas</div></div>
+            <div class="rstat"><div class="n r" id="rincorr"></div><div class="l">Incorrectas</div></div>
+            <div class="rstat"><div class="n" style="color:var(--violeta-m)">5</div><div class="l">Total</div></div>
+          </div>
+          <div class="caja warn" style="text-align:left;max-width:460px;margin:0 auto 18px">
+            <strong>Para Classroom:</strong> Toma captura de pantalla de esta pantalla con la fecha visible en tu dispositivo y súbela como evidencia en la tarea correspondiente.
+          </div>
+          <button class="btn tinta" onclick="reiniciar()">Reiniciar quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REFLEXIÓN FINAL ══ -->
+  <div class="card" id="reflexion">
+    <div class="card-head coral">
+      <div class="ch-ico">R</div>
+      <div class="ch-txt">
+        <h2>Reflexión Final y Plan de Aplicación</h2>
+        <div class="sub">Metacognición · Transferencia · Compromiso pedagógico</div>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <h3>El valor de comprender el campo cognoscitivo</h3>
+      <p>Haber estudiado la psicología de la Gestalt te ofrece una herramienta conceptual poderosa: la capacidad de distinguir entre un aprendizaje que produce cumplimiento de tareas fragmentadas y un aprendizaje que produce comprensión estructural transferible. Esta distinción es central para tu identidad como pedagogo reflexivo.</p>
+
+      <div class="cita">
+        "No basta con que el alumno sepa hacer; necesita comprender por qué lo que hace funciona, y esa comprensión solo emerge cuando percibe la estructura completa del problema."
+        <cite>— Paráfrasis de los principios gestálticos aplicados a la educación</cite>
+      </div>
+
+      <h4>Completa tu plan de aplicación</h4>
+      <p>Responde cada campo con honestidad y precisión. Este plan puede integrarse a tu portafolio de formación docente.</p>
+
+      <div class="ref-grid">
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>1. Antes de esta guía, ¿habías experimentado el fenómeno del insight sin saber nombrarlo así? Describe esa experiencia y explica cómo la comprendes ahora con el concepto de campo cognoscitivo.</label>
+          <textarea placeholder="Compara tu comprensión intuitiva previa con la comprensión teórica actual..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>2. ¿Qué principio de organización perceptual (proximidad, semejanza, cierre, continuidad) consideras más relevante para tu futura práctica docente? ¿Por qué?</label>
+          <textarea placeholder="Nombra el principio y argumenta con elementos del contenido revisado..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>3. ¿En qué situaciones educativas consideras que el conductismo (E→R) sigue siendo más apropiado que el enfoque gestáltico, y viceversa? Da un ejemplo concreto de cada uno.</label>
+          <textarea placeholder="Articula ambos enfoques con ejemplos específicos de tu experiencia académica..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>4. Como futuro docente, ¿qué estrategia concreta implementarás para favorecer el insight en tus estudiantes en lugar de la memorización fragmentada?</label>
+          <textarea placeholder="Describe una acción pedagógica específica y realizable, con fundamento gestáltico explícito..."></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>5. ¿Cómo articulas el campo cognoscitivo (tema 2.2) con el conductismo (2.1) y los aspectos filosóficos y psicológicos generales estudiados en la Unidad I? ¿Cuál es tu comprensión integrada hasta este punto del curso?</label>
+          <textarea placeholder="Construye tu síntesis propia sobre la evolución histórica de las teorías del aprendizaje estudiadas..."></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>6. Plan de acción: ¿qué harás en los próximos 30 días para profundizar en este tema? (lectura específica, observación de una clase, diseño de un material aplicando principios gestálticos)</label>
+          <textarea placeholder="Sé específico: nombre del texto, fecha aproximada, qué observarás o diseñarás..."></textarea>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:8px">
+        <button class="btn coral" onclick="guardarRef()">Guardar reflexión (esta sesión)</button>
+      </div>
+      <div id="rok" style="display:none;text-align:center;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--verde)">Reflexión guardada correctamente</div>
+
+      <div style="height:16px"></div>
+      <div class="caja violeta">
+        <div class="caja-tit">Lecturas de cierre recomendadas</div>
+        <ul style="margin:8px 0 0;padding-left:16px;font-size:.88rem;color:var(--texto-2)">
+          <li style="margin-bottom:5px">Köhler, W. (1925). <em>The Mentality of Apes</em>. Harcourt, Brace & Company. — Capítulos sobre los experimentos de Tenerife.</li>
+          <li style="margin-bottom:5px">Koffka, K. (1935). <em>Principles of Gestalt Psychology</em>. Harcourt, Brace & Company. — Capítulos 1 y 2.</li>
+          <li style="margin-bottom:5px">Woolfolk, A. (2014). <em>Psicología educativa</em> (12.ª ed.). Pearson. — Capítulo 8.</li>
+          <li>Wertheimer, M. (1945). <em>Productive Thinking</em>. Harper & Brothers. (Aplicación de los principios gestálticos al pensamiento productivo y la resolución de problemas).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Licenciatura en Pedagogía · Teorías del Aprendizaje<br>
+  Guía de Aprendizaje Activo — Tema 2: Enfoques Psicológicos · 2.2 Campo Cognoscitivo<br>
+  Metodología: Constructivismo · Pedagogía Activa · Aprendizaje Basado en Problemas
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* ── PREVIOS ── */
+function guardarPrevios(){
+  const cc=document.querySelectorAll('#previos textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor responde todas las preguntas antes de guardar.');return}
+  document.getElementById('pok').style.display='block';
+}
+
+/* ── FORO ── */
+function guardarForo(){
+  const t=document.getElementById('f1').value.trim();
+  if(!t){alert('Escribe tu borrador antes de guardar.');return}
+  const b=event.target;b.textContent='Borrador guardado';
+  b.style.background='var(--verde)';b.disabled=true;
+}
+function toggleEj(id){
+  const el=document.getElementById(id);el.classList.toggle('vis');
+  event.target.textContent=el.classList.contains('vis')?'Ocultar ejemplo':'Ver ejemplo orientativo';
+}
+
+/* ── QUIZ ── */
+let sc=0;
+const FBS={
+  fb1:{
+    ok:'Correcto. Wertheimer formuló este principio fundamental tras observar el fenómeno phi: la mente no percibe elementos aislados que luego se suman, sino totalidades organizadas con sentido propio que no pueden reducirse a la suma de sus partes.',
+    err:'Incorrecto. El principio fundamental de la Gestalt es "el todo es diferente de la suma de sus partes" (Wertheimer). La asociación E→R describe el conductismo; la interacción social mediada por el lenguaje describe a Vygotsky; la pizarra en blanco describe el empirismo de Locke.'
+  },
+  fb2:{
+    ok:'Correcto. Köhler observó que los chimpancés resolvían el problema mediante insight: una reestructuración súbita del campo cognoscitivo en la que comprendían de pronto la relación funcional entre los elementos del problema (las cañas y el plátano), no mediante ensayo-error gradual.',
+    err:'Incorrecto. Köhler documentó que la solución surgía por insight — comprensión súbita de la estructura del problema — y no por reforzamiento progresivo (Skinner), condicionamiento clásico (Pavlov) ni imitación directa.'
+  },
+  fb3:{
+    ok:'Correcto. El principio de proximidad establece que los elementos espacialmente cercanos tienden a percibirse como un grupo relacionado. Agrupar visualmente conceptos relacionados aplica directamente este principio para facilitar la organización del campo cognoscitivo del estudiante.',
+    err:'Incorrecto. Agrupar elementos por cercanía espacial es el principio de proximidad. El cierre completa formas incompletas; la semejanza agrupa por similitud de forma o color; la continuidad percibe secuencias alineadas como continuas.'
+  },
+  fb4:{
+    ok:'Correcto. El aprendizaje gestáltico, al basarse en la comprensión de principios y relaciones estructurales (Koffka), se transfiere con mayor facilidad a problemas nuevos y diferentes. El conductismo, al entrenar asociaciones específicas E→R, genera respuestas más limitadas al contexto original de aprendizaje.',
+    err:'Incorrecto. Es precisamente al revés: el aprendizaje gestáltico favorece la transferencia porque comprende principios estructurales; el conductismo genera respuestas específicas y limitadas al contexto de entrenamiento. Ambos enfoques sí abordan, de manera opuesta, el problema de la transferencia.'
+  },
+  fb5:{
+    ok:'Correcto. El campo cognoscitivo es la totalidad organizada de relaciones que un sujeto percibe entre los elementos de una situación en un momento dado. No es una asociación fija, ni los conocimientos previos en sí mismos, ni el espacio físico del aula.',
+    err:'Incorrecto. El campo cognoscitivo es la totalidad organizada de relaciones que el sujeto percibe entre los elementos de una situación. No se refiere a asociaciones E→R (conductismo), a los conocimientos previos como contenido (Ausubel) ni al espacio físico del aula.'
+  }
+};
+
+function resp(el,qid,fbid,corr){
+  document.getElementById(qid).querySelectorAll('.qopt').forEach(o=>{o.classList.add('lock');o.onclick=null});
+  const fb=document.getElementById(fbid);fb.classList.add('vis');
+  if(corr){el.classList.add('ok');fb.classList.add('ok');fb.innerHTML='<strong>Correcto.</strong> '+FBS[fbid].ok;sc++}
+  else{el.classList.add('err');fb.classList.add('err');fb.innerHTML='<strong>Incorrecto.</strong> '+FBS[fbid].err}
+  const n=parseInt(qid.replace('q',''));
+  document.getElementById('n'+n).style.display='inline-block';
+  document.getElementById('qscore').textContent=sc+' correcta'+(sc!==1?'s':'');
+}
+function nxt(n){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q'+n).classList.add('on');
+  document.getElementById('qbar').style.width=(n*20)+'%';
+  document.getElementById('qlbl').textContent='Pregunta '+n+' de 5';
+}
+function mostrarRes(){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  const r=document.getElementById('qres');r.classList.add('vis');
+  const pct=Math.round(sc/5*100);
+  const rp=document.getElementById('rpct');rp.textContent=pct+'%';
+  document.getElementById('rcorr').textContent=sc;
+  document.getElementById('rincorr').textContent=5-sc;
+  let cls,lbl,msg;
+  if(sc===5){cls='ex';lbl='Desempeño sobresaliente';msg='Dominas los conceptos del campo cognoscitivo, los principios de organización perceptual y el fenómeno del insight. Estás preparado para diseñar materiales y experiencias de aprendizaje fundamentados en la comprensión estructural.'}
+  else if(sc>=4){cls='bn';lbl='Buen desempeño';msg='Comprensión sólida del contenido. Revisa las preguntas donde tuviste dificultad antes de subir tu evidencia a Classroom.'}
+  else if(sc>=3){cls='rg';lbl='Desempeño suficiente';msg='Comprensión parcial. Se recomienda releer las secciones 2 a 6 del contenido temático y consultar los materiales de referencia.'}
+  else{cls='bj';lbl='Requiere reforzamiento';msg='Necesitas revisar el contenido con mayor detenimiento. Regresa al tema, consulta las fuentes bibliográficas y reinicia el quiz.'}
+  rp.className='rpct '+cls;
+  document.getElementById('rlbl').textContent=lbl;
+  document.getElementById('rmsg').textContent=msg;
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qlbl').textContent='Quiz completado';
+}
+function reiniciar(){
+  sc=0;
+  document.getElementById('qres').classList.remove('vis');
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qlbl').textContent='Pregunta 1 de 5';
+  document.getElementById('qscore').textContent='0 correctas';
+  for(let i=1;i<=5;i++){
+    const q=document.getElementById('q'+i);
+    q.querySelectorAll('.qopt').forEach(o=>o.classList.remove('ok','err','lock'));
+    const fb=document.getElementById('fb'+i);fb.classList.remove('vis','ok','err');fb.innerHTML='';
+    const n=document.getElementById('n'+i);if(n)n.style.display='none';
+  }
+  reattach();
+}
+function reattach(){
+  const d=[
+    {id:'q1',fb:'fb1',a:[false,true,false,false]},
+    {id:'q2',fb:'fb2',a:[false,false,true,false]},
+    {id:'q3',fb:'fb3',a:[false,true,false,false]},
+    {id:'q4',fb:'fb4',a:[false,true,false,false]},
+    {id:'q5',fb:'fb5',a:[false,false,true,false]}
+  ];
+  d.forEach(x=>{
+    document.getElementById(x.id).querySelectorAll('.qopt').forEach((o,i)=>{
+      const c=x.a[i];const q=x.id;const f=x.fb;
+      o.onclick=function(){resp(this,c,q,f)};
+    });
+  });
+}
+
+/* ── REFLEXIÓN ── */
+function guardarRef(){
+  const cc=document.querySelectorAll('#reflexion textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor completa todos los campos antes de guardar.');return}
+  const b=event.target;b.textContent='Reflexión guardada';
+  b.style.background='var(--verde)';b.style.color='var(--blanco)';b.disabled=true;
+  document.getElementById('rok').style.display='block';
+}
+</script>
+</body>
+</html>
