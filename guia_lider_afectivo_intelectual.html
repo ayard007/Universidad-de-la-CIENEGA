@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guia Interactiva | El Lider Afectivo y el Intelectual | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --az:#2b3a7a; --azm:#3d52a0; --azl:#6b80c4; --azxl:#dce3f5; --azbg:#f0f3fb;
+  --do:#c49a28; --dol:#f6eccc; --doxl:#fdf8ec;
+  --cr:#faf9f6; --bl:#ffffff; --tx:#18192a; --tx2:#444460; --tx3:#757590;
+  --ve:#1f7a4f; --vel:#e6f5ee; --veb:#9ecdb4;
+  --ro:#b82a2a; --rol:#fdecea;
+  --na:#d4730a; --nal:#fef0e0;
+  /* afectivo = rosa calido, intelectual = azul cobalto */
+  --af:#c0396b; --afl:#fbe9f0; --afb:#e8a8c2;
+  --in:#2563a0; --inl:#e6eef7; --inb:#a0c0e0;
+  --sh:0 1px 8px rgba(43,58,122,.08); --shm:0 3px 18px rgba(43,58,122,.11);
+  --r:6px; --rg:14px; --max:980px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cr);color:var(--tx);line-height:1.78;}
+#pgbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--af),var(--in));z-index:9999;transition:width .1s linear;}
+.topbar{background:var(--az);color:rgba(255,255,255,.7);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;}
+.topbar strong{color:rgba(255,255,255,.92);}
+header{background:linear-gradient(135deg,#1a2860 0%,var(--az) 55%,#2e468c 100%);position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 50%,rgba(107,128,196,.18) 0%,transparent 60%),repeating-linear-gradient(90deg,transparent,transparent 100px,rgba(255,255,255,.014) 100px,rgba(255,255,255,.014) 101px);pointer-events:none;}
+.hdr{max-width:var(--max);margin:0 auto;padding:42px 40px 54px;display:grid;grid-template-columns:160px 1fr;gap:36px;align-items:center;position:relative;}
+.logo-wrap{background:var(--bl);border-radius:var(--rg);padding:16px 18px;box-shadow:0 0 0 3px rgba(196,154,40,.45),var(--shm);display:flex;align-items:center;justify-content:center;}
+.logo-wrap img{width:100%;height:auto;display:block;}
+.hdr-meta .bc{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);margin-bottom:10px;display:block;}
+.hdr-meta h1{font-family:'Playfair Display',serif;font-size:2.15rem;font-weight:900;color:var(--bl);line-height:1.15;margin-bottom:6px;}
+.hdr-meta .sub{font-size:1rem;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:22px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:4px 12px;border-radius:99px;}
+nav{background:var(--azm);position:sticky;top:0;z-index:200;box-shadow:0 2px 14px rgba(0,0,0,.22);}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-i::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.76);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:13px 15px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;display:block;}
+nav a:hover{color:var(--bl);border-bottom-color:var(--do);}
+main{max-width:var(--max);margin:0 auto;padding:56px 40px 100px;}
+section{margin-bottom:72px;scroll-margin-top:56px;}
+.slbl{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:4px;padding-left:20px;}
+h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--az);margin-bottom:22px;padding-left:20px;position:relative;line-height:1.2;}
+h2::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--do);border-radius:2px;}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--azm);margin:30px 0 12px;}
+h4{font-size:.88rem;font-weight:600;color:var(--tx);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 8px;}
+p{margin-bottom:14px;color:var(--tx2);font-size:.97rem;}
+strong{color:var(--tx);}
+code{font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--azbg);padding:2px 7px;border-radius:4px;}
+.card{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:26px 30px;margin-bottom:20px;box-shadow:var(--sh);}
+.card-b{background:var(--azbg);border-color:#b6c4e8;}
+.card-g{background:var(--doxl);border-color:var(--do);border-left:5px solid var(--do);}
+.card-v{background:var(--vel);border-color:var(--veb);border-left:5px solid var(--ve);}
+.obj{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:30px 36px;margin-bottom:32px;position:relative;overflow:hidden;}
+.obj::after{content:'OBJETIVO';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.04);pointer-events:none;white-space:nowrap;}
+.obj .elbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:8px;}
+.obj p{color:rgba(255,255,255,.88);font-size:1rem;margin:0;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px;}
+.citem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.citem .ctipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.citem p{font-size:.88rem;margin:0;color:var(--tx2);}
+.def{border-left:4px solid var(--azm);background:var(--azbg);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--azl);margin-top:8px;display:block;}
+.tw{overflow-x:auto;margin:20px 0;border-radius:var(--r);box-shadow:var(--sh);}
+table{width:100%;border-collapse:collapse;font-size:.9rem;}
+thead th{background:var(--az);color:var(--bl);padding:12px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;}
+tbody td{padding:11px 16px;border-bottom:1px solid var(--azxl);color:var(--tx2);}
+tbody tr:nth-child(even) td{background:var(--azbg);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--doxl);}
+.steps{list-style:none;counter-reset:sc;margin:16px 0;}
+.steps li{counter-increment:sc;display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;padding:16px 20px;background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);box-shadow:var(--sh);}
+.steps li::before{content:counter(sc);background:var(--az);color:var(--bl);min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;flex-shrink:0;margin-top:1px;}
+.steps li p{margin:0;font-size:.92rem;}
+.acd{border:1px solid var(--azxl);border-radius:var(--r);margin:14px 0;overflow:hidden;}
+.acdbtn{width:100%;background:var(--azbg);border:none;padding:14px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--az);transition:background .2s;}
+.acdbtn:hover{background:#d0d9f0;}
+.acdbtn .ic{font-style:normal;transition:transform .28s;font-size:1.1rem;}
+.acdbtn.open .ic{transform:rotate(45deg);}
+.acdbody{display:none;padding:18px 22px;background:var(--bl);border-top:1px solid var(--azxl);font-size:.93rem;color:var(--tx2);}
+.acdbody.show{display:block;}
+.awrap{margin-bottom:40px;}
+.ahead{background:var(--az);border-radius:var(--rg) var(--rg) 0 0;padding:20px 28px;display:flex;align-items:center;gap:18px;}
+.anum{background:var(--do);color:var(--bl);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ahtxt .atipo{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:2px;}
+.ahtxt h3{color:var(--bl);margin:0;font-size:1.08rem;}
+.abody{background:var(--bl);border:1px solid var(--azxl);border-top:none;border-radius:0 0 var(--rg) var(--rg);padding:28px 30px;box-shadow:var(--sh);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ve);color:var(--bl);padding:8px 18px;border-radius:var(--r);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-top:22px;}
+.fdemo{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);overflow:hidden;margin:18px 0;}
+.fhdr{background:var(--az);color:var(--bl);padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;}
+.fpost{padding:14px 18px;border-bottom:1px solid #b6c4e8;font-size:.9rem;}
+.fpost:last-child{border-bottom:none;}
+.fpost .fautor{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--azm);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;display:block;}
+.fpost.frep{margin-left:28px;background:var(--bl);}
+.owrap{background:var(--azbg);border:1px solid #b6c4e8;border-radius:var(--r);padding:24px;margin:18px 0;}
+.ocent{background:var(--az);color:var(--bl);padding:14px 24px;border-radius:var(--r);font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;text-align:center;margin-bottom:18px;}
+.ogrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.onodo{background:var(--bl);border:2px solid var(--azl);border-radius:var(--r);padding:12px;}
+.onodo::before{content:attr(data-l);font-family:'JetBrains Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;}
+.onodo textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:8px;font-family:'Inter',sans-serif;font-size:.85rem;background:var(--azbg);resize:vertical;min-height:62px;color:var(--tx);}
+.onodo textarea:focus{outline:2px solid var(--azm);background:var(--bl);}
+.btnp{background:var(--az);color:var(--bl);border:none;padding:11px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;transition:background .2s;}
+.btnp:hover{background:var(--azm);}
+.btno{background:transparent;color:var(--az);border:2px solid var(--az);padding:10px 24px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;margin-left:10px;transition:background .2s;}
+.btno:hover{background:var(--azbg);}
+.qwrap{margin-top:8px;}
+.preg{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:22px 26px;margin-bottom:16px;box-shadow:var(--sh);}
+.preg .qn{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;}
+.preg .qt{font-size:.98rem;font-weight:600;color:var(--tx);margin-bottom:14px;}
+.opts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.opts li label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:10px 16px;border:1px solid var(--azxl);border-radius:var(--r);width:100%;transition:background .15s,border-color .15s;font-size:.92rem;color:var(--tx2);}
+.opts li label:hover{background:var(--azbg);border-color:var(--azl);}
+.opts li input[type=radio]{accent-color:var(--az);flex-shrink:0;margin-top:2px;}
+.ok label{background:var(--vel)!important;border-color:var(--ve)!important;color:var(--ve)!important;}
+.err label{background:var(--rol)!important;border-color:var(--ro)!important;}
+.qres{background:var(--az);color:var(--bl);border-radius:var(--rg);padding:32px 36px;text-align:center;margin-top:24px;display:none;}
+.qres.show{display:block;}
+.qres .sn{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--do);line-height:1;display:block;margin:10px 0;}
+.qres .sm{font-size:1.05rem;color:rgba(255,255,255,.88);margin-bottom:10px;}
+.qres .sd{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:rgba(255,255,255,.55);}
+.bprog{width:100%;background:rgba(255,255,255,.15);border-radius:99px;height:8px;margin:14px 0 20px;overflow:hidden;}
+.bfill{height:100%;background:var(--do);border-radius:99px;transition:width .7s ease;width:0;}
+#btnq{background:var(--do);color:var(--bl);border:none;padding:13px 36px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:background .2s;display:block;margin:14px auto 0;}
+#btnq:hover{background:#a07820;}
+#btnq:disabled{opacity:.45;cursor:not-allowed;}
+#btnr{background:rgba(255,255,255,.14);color:var(--bl);border:1px solid rgba(255,255,255,.3);padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-top:14px;transition:background .2s;}
+#btnr:hover{background:rgba(255,255,255,.25);}
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.refitem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--azm);}
+.refitem label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:8px;}
+.refitem textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--azbg);resize:vertical;min-height:90px;color:var(--tx);}
+.refitem textarea:focus{outline:none;border-color:var(--azm);background:var(--bl);}
+.planprev{background:var(--bl);border:2px solid var(--az);border-radius:var(--rg);padding:24px 28px;margin-top:20px;display:none;}
+.planprev.show{display:block;}
+.planprev h4{color:var(--az);margin-bottom:14px;}
+.quote{border-left:4px solid var(--do);background:var(--doxl);padding:18px 22px;border-radius:0 var(--r) var(--r) 0;margin:20px 0;font-style:italic;font-size:.97rem;color:var(--tx2);}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:.8rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
+.msg{padding:12px 18px;border-radius:var(--r);font-size:.88rem;margin-top:12px;display:none;}
+.msg.show{display:block;}
+.msg-ok{background:var(--vel);color:var(--ve);border:1px solid var(--veb);}
+hr.div{border:none;border-top:1px solid var(--azxl);margin:32px 0;}
+.glos dt{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--az);margin-bottom:4px;}
+.glos dd{font-size:.9rem;color:var(--tx2);padding-left:16px;margin-bottom:16px;}
+/* DOS LIDERES contraste */
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0;}
+.dual-card{border-radius:var(--rg);padding:26px 24px;display:flex;flex-direction:column;gap:10px;border:1px solid;}
+.dual-card .d-icon{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;line-height:1;}
+.dual-card .d-lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+.dual-card h4{margin:0;font-size:1.15rem;}
+.dual-card ul{list-style:none;padding:0;margin:0;}
+.dual-card ul li{font-size:.86rem;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--tx2);}
+.dual-card ul li:last-child{border-bottom:none;}
+.dc-af{background:var(--afl);border-color:var(--afb);}
+.dc-in{background:var(--inl);border-color:var(--inb);}
+.dc-af .d-icon,.dc-af .d-lbl,.dc-af h4{color:var(--af);}
+.dc-in .d-icon,.dc-in .d-lbl,.dc-in h4{color:var(--in);}
+.def-af{border-left:4px solid var(--af);background:var(--afl);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def-af .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--af);margin-top:8px;display:block;}
+.def-in{border-left:4px solid var(--in);background:var(--inl);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def-in .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--in);margin-top:8px;display:block;}
+footer{background:var(--az);color:rgba(255,255,255,.6);padding:36px 40px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
+.fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.fi .fn{font-size:.75rem;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:3px;display:block;}
+@media(max-width:720px){
+  .hdr{grid-template-columns:1fr;text-align:center;}
+  .logo-wrap{width:120px;margin:0 auto;}
+  main{padding:36px 20px 60px;}
+  .refgrid,.ogrid,.dual-grid{grid-template-columns:1fr;}
+  nav a{padding:12px 10px;font-size:.58rem;}
+  h2{font-size:1.5rem;}
+  .topbar{font-size:.55rem;padding:6px 16px;}
+}
+</style>
+</head>
+<body>
+<div id="pgbar"></div>
+<div class="topbar">
+  <span><strong>Universidad de la Cienega</strong> &mdash; Licenciatura en Pedagogia</span>
+  <span>Tecnicas de Conduccion de Grupos &mdash; Ciclo 2024&ndash;2025</span>
+</div>
+<header>
+  <div class="hdr">
+    <div class="logo-wrap"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACo2lRZFhJ+ZwSB7DGT+o/Ooru6hs7d7qc4SMZJ/z61y/hiefUp7rV7j+MiOMf3VHOB+dUo6NiuXfGH/Iran/ANesv/oJr4wr7P8AF/8AyK2p/wDXrL/6Ca+MK9LAfAwZ9406m06vLGJiloooAKKKKACiiuL8XeNNP8K2oaYCW5kH7uEHk+59F9/yqoxcnZAdTeXtpp9u11fSpDEvVnOBXj2u/GKygLReH7f7SR/y1lyqfgv3j+OK8Y17xLq3iS8N3qcu7H3IxkIg9FX+vX3q74e8F694lIewh2QZwZpDtT8DyT+FehDBwiuaqyWz2n4a+K9Z8UXGovqsissQjMaIoVV3bs47noOpNeH63resrrN6iXtwqrPIABKwwNx96+jPA/glfB8dwzXBuJbrZvwu1RszjHU9+tfL+u/8hu+/6+Jf/QzVYbklUlyrQD32O6u3+EBvXmkM3kk+YWO7IlPOeteMWPjXxXp+PI1GYgdBI3mD8nzX0L4FsLTU/h9ZWF8nmQyxuHUkjI8xj1GDVDUfhF4XulJsTLZt22tvX8Q2T+RFZUqtOEpRqLqM4/RvjLeRlY9ctVlXoZITtbHqVPBP0Ir2fQ/Eej+IoDPpU6ybcbk6Ouf7ynkfXoe1fOev/C7xDo4ae0AvoB3iB3gepTr+Wa9d+GnhUaDo/wBtuV23d5h2B6on8K+x7n3+lLEwo8vNTA9I81BIIiQGIyB6gdalrmvEizRWS39scS2zhwfY8EfT1q9pGrQavaLcw8Hoynqprj5Xa4XNeikFLUjCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqhqV4thYy3bYOxSQD3PYfiaaTbsgPPvGeqma4Gmwt8kXL+7EdPwrr/C9v9m0WBT95wXP/AAI8fpXjcrvNI00h3O5JY+pPWve7OAW1rFbj/lmip+QxXViEowUEZQd3cxfF/wDyK2p/9esv/oJr4wr7P8X/APIq6n/16y/+gmvjCunAfAzRn3jTqaKdXljCiiigAooprMFBZjgDkk0Act4v8T2vhbSzezYaZzshj7u3+A6k/wBcV8h6lqN5q17JqF85kmlOST+gHoB2FdJ458SyeJddluEP+jRExwDttB+99WPP6V3Pwr8Greyf8JJqaZiibFujDh2HVz7Kenv9K9SnBYenzy3ZL1L/AIF+GKmNNW8Sx53fNHbN6di//wAT+fpXu0aJGgjjUKqgAADAAHoKfRXn1a0qjvIaQGviLXR/xO77/r4l/wDQzX27XxFrv/Ibvv8Ar4l/9DNduX7sGfU3w3/5ErTv9x//AENq7iuH+G//ACJWnf7j/wDobV3FcVb45eoBRRRWYEFzAtzbyW79JFKn8RXj2i6m+jagTJ9wkpKvt6/ga9orxLxJD9n1u5jHQtu/76Ga6sLZtxZMnZXPa0dXUOpyCMin1x3g/UvtVibOQ5eDge6dvyrsawqQcZOLHF3VwoooqCgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArhPHNyUtILUf8tWJP0XH9TXd15V44ctqcUfZYgfzJ/wAK3wyvNEzdkctZoJLyGJud7qv5mvfa8J0gZ1S1H/TZP/QhXu1a4zdEwRzni/8A5FbU/wDr1l/9BNfGFfZ/i/8A5FXU/wDr1l/9BNfGFdGA+Bls+8RSikp1eWCCiiigYV558TtYbSfC0yRErLdnyFI7Bgd3/joI/GvQ6+e/jPfeZfWGnA8RxtK3/Azgf+g1vhoqVRJiZ5FpGmT6zqdvpdvw9xIEBxnAPUn2A5Nfaen2NvptlDY2q7I4UVFHsoxXzt8INOW51+e/kAItITtJ7O5wP/Hd1fS1b46d5cnRCQtIaWkrhKCviHXf+Q3ff9fEv/oZr7er4h13/kN33/XxL/6Ga9HLt2Jn1N8N/wDkStO/3H/9Dau4rh/hv/yJWnf7j/8AobV3FcVb45eoBRigUtZDEryfxvFs1SOUD78Qz9QTXrNedePYwfskn++D/wCO104V/vERNaHN+GLw2mrxEn5ZP3bf8C6frivaK+eo3aNldeCpBH4V9AxSCWJZF6MoI/GtMYtVIUNrEtFJmlrjNAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAryPxoP+Jz9Yl/ma9crzLxzbhby3uf76Ff++Tn/ANmrpwr98iexyukHGqWp/wCmyf8AoQr3avAbWQQ3Ecx/hYH9a99HSrxi1TJpnO+MP+RW1P8A69Zf/QTXxhX2p4qjaXw1qUS9WtJgP++DXxUK6MA/dki2z7yp1V7aRZreOVejorD8RmpxXlsYtFFFAwr5b+LcjP4tKnolvGo/U/1r6kr5g+L0HleKUcdJLZD+IZh/SuvBP94SzqvgtH+51OU8ktCPyDV7pXg3wVmGdTgJ5PksB9NwP9K95qMV/FYIWiikrnKA18Ra9/yGr7/r4l/9DNfbtfDmrTLc6ndXCfdkmkYfQsTXo5duxM+q/hv/AMiVp3+4/wD6G1dxXF/DyNovBmmo3UxFv++mJ/rXaVw1fjl6gLRRRUDErgPHg/c2rejP/Su/rz7x6wCWi+pc/lt/xrfDfxETLY84zXvWm86fb/8AXJP5CvB1UswVRkk4H1r6At4hDAkI6IoX8hiujG9CIE1AoxS1wGoUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVy/i2yN3pRkUZaBg/4dD+nNdRTHVXUo4yGGCKqMuVpoTV0fPte7abP9qsILj+/GpP1xzXjeq6e2mX0loRwDlT6qehr0fwdd/adIEZGDCxT8Oo/nXbirSgpIzho7HSzxLPC8L8q6lT9CMV8N3drLZXUtpMMPC7I31UkH+VfdVfLXxT0U6Z4jN6gxFfL5o9A4wHH8j+NGAmlJx7mh7r4D1JdU8KWMwPzRxiF/8Aej+X9QM/jXY185/CHxELS+l8P3DfLdfvIif+ei/eH/Ah/KvouufEU+SbQIWiiisBhXhfxn05mgsNVQZCFoXPfn5l/ka90rmfFui/2/oF1poGXdd0f++vK/meK2oVOSopCZ88/C7VU0zxVHFKQEu0aAk+pwy/mRj8a+q6+FVaa1uAy5jmhbIPdWU/zBr7F8J69F4j0WHUUI8wjbKvdXXqPoeo9jXVjqVmqiEjpqQ0Cg155RheJNSXR9DvNSJwYYWKn/aIwo/EkV8VqrMQq8knHuSa96+MHiNNkXhu2bLEiWfHp/Av4nn8q88+HmiHWvFFsrrmG2PnyemE+6PxbH4V6mEXsqbnIln1No1gNM0m008f8sIUj/FQAT+NalFFeW9W2MWiiigYleY+Opt15bwf3Iy3/fR/+tXp1ePeKp/tGtSgfdjCoPwGT+prpwi/eXIm9Cj4ftDeavbxjorb2+i8/wD1q9vrg/BOnGKGTUpBzL8qf7o6n8T/ACrvKWKnzTt2FBaC0UUVzmgUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUlAHLeKNG/tGz86Bczwglf9odx/hXKeC7vydQktGOBOnA/2l/8ArE16mRXnviHR5dNuxr2nD5VYPIg7EH730PeumlUvF02Q1rc9CrjfHHhv/hJdDktIgPtEf7yAn++O30Ycf/qrq7a4juoI7iI5WRQw+hqesIzcWmij4VSS5sbnem6GeB+D0ZWU/wAwa+s/BHjC38U6aGchbyFQJ06c/wB4ex/TpXD/ABM8Bveb/EWjpmUDNxEo5fH8a+/qO/Xr18L0rVb/AEW9TUNOlMUsZ4I6EdwR3Br1JpYiF47i2PuWivNPCXxI0rxAq2t+VtL04+RjhHP+wT/I8/WvSq8ucHF2kigoooqRHzR8U/CbaXqJ1+zTFtdMfMx/DKecn2br9c+1c74I8XzeFtR8yTL2k2FmQdcDow9x+or6tvrC01K0ksb2MSwyqVZT3B/l9a8D/wCFNXsmqvEbpEsA2Vk+9KV9NvTI6Z6e1ejRxEZU3CoB7/Z3trqFrHe2UiywyqGVlOQQawPFviiy8LaY15cENK4KwxZ5dv8AAdzXHXniLwv8ONLOj6axubgEnyt+47j/ABO3Rc+gH0FfP2ua5qPiG+bUNTk3yN0A4VR2VR2A/wD11lRwrlK72C5T1C/udUvJdQvG3zTMWdvUn+g6D2r6i+HHhd/Dui+bdrtu7vDyA9VH8KH3Gefc15/8M/AbTSx+JNZjIjQhraJv4j2dh6DsO/Xp1+g6vF1l/DjsIWiiivPGLSVnanq2n6PbG71KZIIh3Y4z7AdSfYVcgniuoUuIGDxyKGVhyCpGQRVWdrjHSSJDG0khwqgsT7DrXiNpbXGt6rsXP75y7t/dBOSf6V6V4svDb6WYEz5lwfLUDrg9ePpx+NL4b0RdKti8oBnlwXPoOy/h3963pSUIOXUlq50EEKW8SwRDaiAKB6AVMKTFLXPuNIWiiigYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFIyqylWGQeCKWigDOsLJbFGt4f9Vu3IP7ueoHtnkfWtClooeurAb1ryDxp8L7bVnfU9C2wXZ5eI8JIfUdlb9D7da9hpMVpTqypvmixNHw1faff6XctZ6jC8Eq9VcYP/ANce/Suq0P4geJ9CVYYLjz4F6RTjePwPDD6A4r6n1TRdK1qA22qW6XCdtw5H0PUfhXk+rfBuwlJfRrt4Cekco3r9ARggfXNd8MVTqK1RBYrWXxpiOBqOnsD/ABNE4P5KwH862P8Ahc3hr/n2u/8AvlP/AIuvOLr4T+Lbc4hWG4HqkmP/AEMLWafhp40/58P/ACJH/wDFUeywz2Yrnot78abRciw0+Rz2MrhP0UN/OvOta+JPijWFMQnFrEeqwZUn6tnd+uKu2nwo8X3DYliitx6ySA/+gbq7bSfgzDG4fWb1pBjmOAbR/wB9HOR+Ap3w9PVDPB7W2u7+4W3tInmlc4CoCzE/zr3Twr8M7bS1Gt+L2QCEeYICRsXHeQ9D9Onua9d0jw9o+gweRpFskA7sBlj9WPJ/OjW9B0zxBZ/YdVj82LO4AEqQfUYNY1cY5+6tEKx4vr3xguYtQEfhyGNrWPK7plJ8w+oAIKj07nvTrf42TqmLrTFZvVJSo/Iq3860NQ+C1lI5bTL94gedsqB//HgV/ka5eT4N+JFOIri1ce7MP/ZTWkfqzVmBuy/G4bf3Wl8/7U3+CVzWofFzxPeKUsxDaD1Rdzfm2R+lOX4O+KWbDS2qj13sf/Za3rD4LS5B1PUVHqsKZ/8AHmx/Kq/2aIHjV/qN9qc32nUJ5J5P70jFvyz0r6N+Et3rD6I1nqMEiwRHNvKwwGVuqjPJAPQ9Ocdq39G+HfhbRWWaG28+Zekk53n8uFB9wK7YDFc+IxMZrkitBme1iJr9b2c7hCuIl7Anq31PQVpUClrkuAtFFFIYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFY2p21+R5+mS7Jh/C3KP7EHofcVs0hpp2A8/j8Zy20v2fVbUpIvDbP/AIk/410lr4i0e6XKXCqfR/lP64FP1bRLPVo8TjbIPuyDqP8AEV5bqeh3+lOTMu6LtIvIx7+ldNOFOppsyG2j2dXVwGUgg9xTq8BjuJoDuhdkPqpI/lWnD4h1qHG25cgf3sN/MGqeEfRkqa6nttIK8iTxfrS9XRvqg/pipP8AhNNZ/wCmf/fJ/wAan6pND9pE9aoryF/GOtN0dF+i/wCOaoS+I9cn4e6cA9lwv8hQsJNh7RHtbMqDcxAHqawrrxLpFqOZhIfRPm/lxXkZkvr5xHukmc9ASWNdto3g4nE+qNx18pf/AGY/0FOVCEFebHdvY17TW7/W326bD5MGcGaXn/vkDv8Aia6qNNihSSx9T1NCRpEixxqFVRgADAAp9c0muiKQuKMUtFSMSilooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKjZFYFWAIPY1JRQFjkNQ8IaZeMZIAbd/8AY+7/AN8/4YrlLrwdq0LfuNky+xwfyP8AjXrJFFbxxE46EOCZ4fJomrRtta1lz7KSP0qP+yNV7Ws3/fB/wr3PFFa/XJdhKmjxmDwxrc/IgKL6uQP06/pXSWXgYDDX8+fVYx/U/wCFeh0tRLFTeiH7NFCy06zsE2WsSp7gcn6nqavUYpa5229WUhKKWkxSGLRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFYF/4m0fTdUg0a7lK3Vzjy02sc7iQOQCByO9NJvYDfopM0tIAoprMEUs3QDNYmheI9J8RwyT6TIZUiYKxKleSM9wKdna4G7RRRSAKKKx4de0241ebQ4pCbuBQ7ptYAKcc5Ix3Hemk3sBsUUUUgCiiigAooooAKKKKACiiigAooooAKKx7zXdMsdRttJuZCtzd58pNrHOPcDA/GtfNHqAtFFRyypBG0shwqAsT7Dk0ASUVkaNrmm6/Z/b9LkMkW4rkqV5HswBrXptW0YBRRRSAKKKKACisbWtd03QLZLvVJDHG7iNSFLZYgkDAB9K2adnuAUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK8N8Zf8AJTNC+kP/AKNavcq8N8Zf8lM0L6Q/+jWrahu/QD3GgUUtYgRzf6p/90/yrw34WapY6P4c1G/1GTyoY7hdzYJxkADgAnqa9ym/1T/7p/lXy/o3/JNNc/6+If8A0JK6qEVKEovyEz3288Y+G9Pt4bq8vUjS4RZIxyWKNyDtA3AfUVij4o+CSwX7aee/lSf/ABNUfBXg3Qv7Cs9SvbdLu5uIUdpJxvwCPlVQ2cBRgcV2jeG/D7rtk0+1Ye8Kf4VnJU4trUZLpOuaTrkJn0q5S4Uddp5H1HUfjWOL3wvba/eyJtGoww77lgrFhGAp9CDxjpzXnsOm2vhr4q2dno6+TBe27M8a/dHyucAemUB/lWzo/wDyVbV8/wDPqn8oqp00ruL0sB6FpGtaZrtr9t0qYTxBipYAjBHUEEAitWvELBj4A8dyaY/yaZq5DRf3UcngfgTj6EGva3dY1LuQFAJJPYCs6lPlemzFcyNY8Q6RoPk/2pN5RuGKxqFZixGM4CgnuKg1bxZ4f0Jgmq3aQuRuCcs2P91QT+YrzTQUfx140m8SzqTYaafLtgehYdDj/wAePuRXL+G9b8IHU9Q1rxi6yXM0zeUjxtIoX14BHoB6AcVqqC67oLnqf/C0fBf/AD9v/wB+pP8A4mtjSvGvhjWpxa6feK8x6IwZGP0DAZ/CuO/4TX4Wf3YP/AVv/iK4bxzrfgi+s4bvwuyxajDKrKYomiyvPJ+UAkHGD1pqgm7crQXPervX9Jsb+LS7ucR3Eyl0QgjKrkk5xgY2nqa5u4+Jngy3laJ73cVOMojsv4ELg/hXn/i63TX/ABfoEVySqXtrGX2nHysWLAY9RkV69b+FvDltGIodPtgo/wCmSk/mRk1m4wilzAQ6P4v8Oa/J5GlXiyy4z5ZBV8eysAT+FLrPi3w9oDiLVbpYpCN2wAs2PXCgkfjXA+LPDCWHiHRdW8P2Rjb7SBP9njO0JuXlgvA4yCeM1zUN3oGm+P8AWH8ZRKTI+YGmQyLjPHGD/DjBxxjtVxowl7y2/ED0T/hafgr/AJ+3/wC/Un/xNaum+O/CurTrbWV6plbhVcMhJ9BuAyfasP8A4SL4Y+tj/wB+R/8AE1ha3ZfD3xUsNnpN9aWN2JAyvGgUsOm3HyZySO9L2ceqaA7/AFKTw2NesF1AKdQYN9lJViffBAwPxrT1bW9K0OAXGq3CQIxwu7qT7AZJ/CvOPE2V8feHFY7iFcE+vWs2Swt/EvxUurTVx51vYQAxxH7pOEPI9MsSR370eyTs29LBc6w/FLwWP+Xxj/2yk/8AiakHjvwtrNtPaWN4pleJwqOrITwem4AE+3WunTQNCQbVsLYD2iT/AArC8R+DvD+paTcp9jhilEbNHIiBWVgMg5A6Z6jvUp077MDB+Eg2+El/67P/AEre1D4g+EdMuGtbm+UyISGEatIAR2JUEZrl/hmpfwNMomEG55v3h/g4HzdR93rWDoeofDXwxZmwuZY9SnDsXn+zFvoBuzwB6H3rScFKUrq47nbr8UvBbHb9rYfWKT/4muz03VdO1e2F3psyzxHjcp6H0PcH2NeXL40+Fsp8t7aFQe7WvH6KareCPsNl491TT9DcNp0tss6KpyufkPHsNxFTKlHlbStYR6TrHivQNBZU1S6WJ2GQgyzY9dqgnFc9/wALS8Ff8/bf9+n/APia5XwNpVl4j1jWNd1iJbqQXRRBKNwUc9jx0wB6Yr1b+wdE/wCfG3/79J/hSnGEHyvcZ5J8Q/Eej+IfDNvLpFwswS8j3AZDD5X6ggH9K9wBrwz4p+G9JsLS01bT4Et5DcLG4iUKrAgnJA4yMda9zHSipbkjy+Yh1FFFYDCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK8P+JcculeJNH8T7GeGBlV8D+4+4DPqQTj6V7hVW7s7W/ga1vYlmifqjgEH8DV058ruBgW3jXwrdQLPHqVuoYZw7hGH1VsEVY/4Szwx/wBBO1/7+p/jWDL8MvBkrbvsZX/dkcf+zVF/wq3wX/z6v/39f/GrtS7sC1rvjzw1p2nSzRXsM8pVhHHE4dmbHH3c4HqTXkenWE1l8JdQurhCPtU8ciA9SgdFB/PNetW3w08GWsoljsQxBzh3dh+KliD+VdTf6Rp+qWLaZexB7ZgoMYyowpBH3cYAxVqrCCSgJmd4QP8AxS2mf9esX/oArpKrWlrBY2sVnarsihQIi9cKowOTzViueTu2wPINY/5K9o//AF6t/wCgTVY0g5+K2r/9eqfyir0GbQ9Ln1aHXJoQ15ApSOTJyFIIxjOP4j2oi0PTINWm1uKLF3OgR5MnlRjjGcfwjtWrqK1vKwznfHvh0+ItBkigGbq3/ewEddwHK/8AAhx9cV5jf+OrrXPClr4ftNzapeP9llx/dHGc+r5Gf+BV9CEVzdp4Q8O2OqNrNraKl0zMxcFurZyQCcDOfSnTqxStNbbCLPhzQ7fw7pEGlW3PljLt/ec8s34n9OK8d8Ey6Bo2pan4e8TR28c6Tlo3uFXDDpgMw47Ec8g8V7/XPav4V0DXmD6vaJO4GN/Ktj03KQcfjShU3UuoWKOfA3/UN/8AIVcr4m8S+DtChjbTbOxv7h22iKIR5A7klVYD2Hetj/hVvgj/AJ8m/wC/sn/xVaml+BvCujTLc2FiglXlXctIQfUbicH3FPmprVthY4HXWP8AwsPw4XQRMbdcoOi/f4H06V7VWPdaFpd7qUGsXMO66thiN9zDaOewOD1PUVsCs5zUkrALXlUXiPTNQ8R6lofjCGyjFo4Fq86gbkJJ5ZyRnG08YzzXqtc1rPhDw94gcS6rarLIo2hwSjY9MqQTj3optJ+8Bk+R8Nf7mlf+Qa4H4h23gUaC8mjizF4rp5f2XbuOT82QnUY9a7j/AIVb4K/582/7+v8A/FVasvh14PsJ1uILEM68jzGZwPwYkVtCcIu92M4a6eaTxL4Pe6JMrWqly3XcU5z+NPlvIPC/xSub7VW8u3v4VVJW+6CQvX0GVIz7ivVrrQ9MvNRt9VuYQ9zaZ8lyT8uevAOPzFO1TRtM1qAW+qW6ToDkbhyp9iOR+BqVWWz2EQDxP4cYbl1K0IP/AE2T/GsPxH4y8P2ekXDQ3sM80iMkUcLh2Z2GAMLnv3qo3wt8Esc/YiPpLJ/8VWnpngLwpo84ubGyUSr0Z2ZyPcbicH3HNL92tbsDyrR0uH+EN+LfJIlYtt67Ay7v/Hc59q6/wLqfg2Dw1Zp51pDMIwJhKyK+/wDizuwT/hXoWmaLpujWZsNOhEcBJYpksMnr94mubufhv4Mu5Glk09VZjk7GdB/3yrAD8BVOrGV0+4WNF9Z8JOpVryxI9DJGR/OvNfBkulSfEvVX0QJ9kNudnlgBM5j3bfbdnFdgnwu8ERuH+w7sdjLIR/6FXR2XhvRtO1BtSsrdYZ2jERKkgbFxgbc7RjaOgpc8Emk3qM8w8E6xp/hnWtY0LWJVtWa5MkbSHarA57njkYIz1r1L/hJfD3/QRtf+/wAn+NQ6x4V0DX2D6taJM6jaG5Vsem5SDj2rnv8AhV3gr/nzb/v7J/8AFUSlCb5mI4v4peJdK1KztNL0ydLmRZxK7REOqgAgAkcZOf0r3WuSTwL4WjszYJZIIS6yEZbJZc4JbOTjJwM111TOUbKMQFooorIYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAmKWs661bTrK5gs7qZI5bk4iVjgueBgfmK0M0ALRRRQAUUVDcXENrC9xcMEjjUuzHoAoySfwoAmoqlYahZ6nbLeWEqzQvna68g4OD+tXaACiiikAUUVRvtRsdNh+06hNHBHnG6Rgo+nPenZvYC9RXFN8RPBqnH9ooforH+S03/hY3gz/oIJ/3y/8A8TV+yn2A7aiue07xZ4d1aQQ2F7FJIeiZwx+inBrQvNX02wuILW8nSKW5O2JWOC5yBgfiRUuLWlgNKiikJCgknAHrSAWiqtvfWV2SLSeOYr12MGxn1watUAJijFLRQAUUUUgCiiimAUUUUgCiiiiwBRRRQAUUUUwCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooriPiHql1pPhW6ubJikrbYww4Kh2AJHvjpVRi5NJAbd34l8P2DmK8v7eJx1RpFDD8M5qoPGnhQkD+07bn/AKaL/jXG+GPht4aOkW91qVubmeeNZXZ3YAFxnAAIGBmuh/4V34Oxj+z0/Bm/+KrS1NOzuDZynjOeK48YeGZoHWSNpSVZTkH5l6EcV6xcXVtZxGe7lSGMdWdgoH4mvBNY8N23hrxzokGnlxaTzK6RMxYI28BguecHipNWfS/E3j+5tPEt4tvp2nrtjjaQRhmGARkkckkkkc4GK1dNSSttYR643jLwopwdUtfwlU/1qzaeJvD9/KILO/t5XPRUlUn8s5rhRpHwiHBksD9bn/7OsPxBoPwxl0ud9Lu7SC6jRniaO4DEsoyBgscg1CpwbtqB7lmsHxV/yLOqf9ek3/oBrB+G+rXWr+FoJb1zJLCzQsx5JC/dz77SK3fFf/Isap/16Tf+gGsuXlnZjOb+F3/ImWv+9L/6Ga6W58U+HLOUw3WoW0bqcFTIuR9RmvO/C1nqN78L/smlSrBPL5iiRyVCgyHdyASPlzWfo+g/DPT9Pit9ZubS4u8ZlcTEjd7YIwPwraVNNtsD01fGfhRmCjVLXJ9ZVH9a6CC4guohPbSLLG3KshDA/QjivJRpfwhmPlB7QE+szL+u4VS8KwJ4a8fXHhzT5mewuIPNjUtuw2AwI/DI9xUukmny3+YHtteB6tZf8Jp8SpNGvnY2VjHnYGxkKF3fiWbBPXAr3uvEfDP/ACVbV/8ArnJ/6FHRQ+0+yEd/H4E8IRLtXTYce4J/U81J/wAIR4T/AOgbB/3zXVUVm60+47niXxD8E6LpuitrujRfZbi1dG/dk4ILBemeCM5BFdWLbQ9ct9A1TxDMsd8I45YFMgQvKdjHCnr8wHFeh1498Qv+Rt8L/wDXz/7UjrWE3O0W9e4Hrs00VvE00zqiKMlmOAPqTXnHivWtH1uzXSrbXLS1glbFw4kBcx91XBxz35/rXL+Op7bWPGll4c1a7Ftp0UfmS5cICxBPJOB0AA9MmtlNG+EcUe0SWR9zcZP6vTjTUUpO9/IVzpfDl74K0uBNJ0K8teSOBIpd29Sc5JP/AOqurvL+y0+IT388dvGTt3SsEGfTJxzxXkGp6D8K7qykjtLq0gm2kxulwMhu3BYgj2xXE3+r3Wp/C2AXj+ZJbagsIY9SojYjP0zj6Ch0eb3kFz6NvNY0rTgp1C6ht94yvmOq5+mTzWdH4w8LSnamp2ufeVR/M1zWnfD3RrqFL/xAHvr2ZQ8ju7AZI6KqkAAdBV2f4aeDZkKiy8s44ZHcEe/XH6VHLTWjbGdzHIsqCRCGVuQQcgis++1nStMwNSuobYsMgSOq5+mTXlPgG5n0O48QaG7tLb6YxeLcew3Z+m7AP/665zwhZeFdbin17xrewyXk8jYjlm2FVHcgMDz2HQDGKfsUm77CbPZf+Ez8Kf8AQTtv+/grWsNW0zVFL6dcxXAHUxOHx9cGvOTpHwjP8dh/4Ef/AGdcVr58M+F9X0/WvBt3Hnzds8MMokBTjOeWIBGQfwqo0YvSNwufQtxc29pEZ7qRIox1Z2CgfieK59vGnhRTj+07Y/SRT/I15xrVmfGHxDPh+/kb7DYQiQxqcBiQCfxO4DPoK7cfDrwYBj+z0P1Zyf51HJGKXOM3LLxJoGpSCGxvreaQ8hFkUt+Wc1es9QsdRiM1hPHcIDtLROHAPpkd64i/+G3hlrZ206E2dyo3RTRuwZHHQ8nHWub+FH2hvCN8LUhZmnkEZPQP5aBcn60ezi4uUWB6de+IdC05zFf30EMg/geRQ35ZzVNfGXhRjganbfjIB/OvKdF8N+CNOgdPF95a3WoGRjIRcMQOehAIOfXIrbXTvg9Idge0BP8A02Zf1LCqdGK7sVz1m2ura8iE9pKk0Z6MjBgfxFWK8Q8O20Phb4hf2Lo8m/TtRt/OVd24AgEgg9/unHsa9uFZ1IcrGLRRRWYBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXnfxSieTwdc7ATtaNjjsN45r0SobiCG5he3uEDxyKVZWGQQeCCKqEuWSkBg+E7611Dw9Yz2rhx5EasAeVZVAIPuDXRV5Tc/CTRWmMunXVzZ5/hRgQPpkZ/M1CPhLbHiTVrxlPUbhyP1rS0G7834CM/xjqNrdfELQbKBw728q+ZtOdpdxgH3+X9aybbSdFuviXqmn+I4kdZsyQByVBZtrDBBHOCePavQbT4a+H7GexuLUyq9lIZd2QTIxx98kcgY4AxWp4k8FaJ4o2yX6Mk6Das0R2uB1x3BGeeQa0VWKsk+gFUfDjwUCT/Zyf99v/wDFVS1TwT4C0qxm1G8sEWOFSzfO+TgdB83U9BWZ/wAKtC/LDrV8iDoN/T8sU5fhPpkrq2pX93dqpztdxj+RP5GjmX84HSeBrjQbrRPP8O2r2lq0jfJJ1LAAE/ebjt17VpeK/wDkWNT/AOvSb/0A1q2NjaabaR2NjGIoYhhVHQCm6jZR6lYT6fMSqXEbxMV6gOCCR781z8153GfOWo3VzB8KdOhhYqk926yYOMgFyAfbIB/CvXNJ8C+DBp8DRWUU6vGrCRjvLZHXOcc+3FaNr4M0eDw6vhicPc2qksDIRvyWLZBAGCCa48/CLTo2Is9SvIUP8IYfzAFdLqqV0nYR2D+B/CLDH9mW4+i4/lXmGhWOnaX8VpLDSzi3jibau4sFJTJUEk9DmugX4S2TMBcapeSJ3XcB/MGuj0jwBoeh6tHq+neYjxRGMISCpyMFjxuJPfmj2qimnJu6A7mvCLa6i8P/ABYuzqDCOO8Tajtwo3hWGfxUj617sK5XxJ4N0bxTGo1FGWSMYWWM7XA9O4I+orGlUUW1LqB1AKkZU5pa8cPwb08cRalcKo7EKf5YpB8HbMf8xO4/75H+NPkp/wA34AdV8Q9fXRfDk7W9wIbuTCwgNhs5G4jHPC55rzbWZLy4uvA9xeuzzSMjszdSWeM5NdjYfCPw/azrcXk092VOdshAU/UAZP511ms+E7DWr/T7+4kkjbTX3xLHtCnlThgQePlHTFXGcI2SGeW+KdO0uX4n20fiCMNZ3kCgbyQu7BUDII/iGPxr0P8A4Vv4Kx/yDk/77k/+KrV8QeF9I8TW4t9UjJ2ElHU4ZSeuD79x0ril+FcEPy2mr30SdgH/AMMUlUUkvesI2LnwB4Ds4HurmxjjijBZmaRwAB/wKvL/ABNeeHr7wCJvDVpJaW/9oKGWQcs4jPP3m4wR3rt/+FTafOw/tHUr25UHO1nGP1BrpNU8DaLqOhQ+How1rbQSCRfKxuyARyWDZzuOc801UUWryuB1lt/qI/8AcX+VWBTEQRoqDkKAOfaniuZvUDxXQYHuvFHi+1i5eVCij3O4Csz4beHfCevaNImoWyS3sMjK4ZmDbf4TgMOO3TtXrOl+GLPSdYvtat5JGlvyDIrY2jBJ+XAB79ya57WfhloGqXr6lbvNY3Mh3M0DAAsepwQcE+2K6XVT0v2Auf8ACuPBv/QPT/vuT/4quY8RaT8OfDMlut5phklnbCJEzMwx3IZxxk4qx/wq4/8AQbv/APvv/wCvWpo3w00HSrxdRmea9uEO5WnYEKfUADqOxOafNFaubYHLXt7B4Y+KUuo6qfLttQgASX+FSFUc490x+Oa9SXxL4ekXcmo2pH/XZP8AGuG8T+IdJj8RJ4c8V2cR0+VBJHcPk4Y/+g85GR/KoB4X+FEgBWS2x7Xbf0eiUVJJyuB1+reMvDem2UlxJfQSEKdqRyK7MewAUk814x4eurm0+FOsTWjFH+0bdwOCA4iU4/Amu2ez+F3hmNtVtjbPNGpMaiUzMWHTapZuc9+3WpPhfo+/wfNDqMWYb6aRtjD70ZUL+pB/nTjaEL+gCeCfB3hK78OWd9LaRXUs0YaR3Jb5+4xnAx0rrD4F8IEEf2Zbj6Lj+VcpL8I9GErPYXl1bKxztVgQPpkZ/Mmmj4TWbMPN1S8Ze4DAfzB/lSlNNt84MwrDTtP0n4rW9jpRxAsDNs3lgjMjEgZJxnrj3r3gVwmlfD7Q9G1S21WxaVXtozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Logo Universidad de la Cienega"></div>
+    <div class="hdr-meta">
+      <span class="bc">Pedagogia &nbsp;|&nbsp; Tecnicas de Conduccion de Grupos &nbsp;|&nbsp; Unidad III &nbsp;|&nbsp; Tema 3.2</span>
+      <h1>El Lider Afectivo y el Intelectual</h1>
+      <p class="sub">3.2 Dos dimensiones complementarias del liderazgo en la conduccion de grupos</p>
+      <div class="chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogia Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">3 Actividades</span>
+        <span class="chip">Nivel Licenciatura</span>
+      </div>
+    </div>
+  </div>
+</header>
+<nav>
+  <div class="nav-i">
+    <a href="#intro">Introduccion</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aprendizaje</a>
+    <a href="#act3">Act. 3 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+</nav>
+<main>
+<!-- INTRODUCCION -->
+<section id="intro">
+  <span class="slbl">Seccion 01</span>
+  <h2>Introduccion al Tema</h2>
+  <div class="obj">
+    <span class="elbl">Objetivo de Aprendizaje</span>
+    <p>El estudiante distinguira y comprendera las funciones del lider afectivo (orientado a las relaciones y el clima emocional del grupo) y del lider intelectual (orientado a la tarea, las ideas y el logro de objetivos), analizara su complementariedad en la conduccion de grupos y aplicara este conocimiento para ejercer un liderazgo equilibrado en sus equipos universitarios y en su futura practica profesional como pedagogo.</p>
+  </div>
+  <p>En el estudio del liderazgo, una de las distinciones mas fertiles y de mayor utilidad practica es la que diferencia dos grandes funciones que todo grupo necesita cubrir: la funcion <strong>afectiva o socioemocional</strong>, que cuida el clima, los vinculos y el bienestar de los miembros, y la funcion <strong>intelectual o de tarea</strong>, que orienta el grupo hacia las ideas, la resolucion de problemas y el logro de objetivos. De esta distincion surgen dos figuras: el lider afectivo y el lider intelectual.</p>
+  <p>Esta distincion tiene su origen en las investigaciones de Robert Bales en la Universidad de Harvard durante la decada de 1950, quien observo que en los grupos suelen emerger dos tipos de liderazgo diferenciados y, frecuentemente, ejercidos por personas distintas: el <em>lider de tarea</em> (intelectual), que impulsa el trabajo, y el <em>lider socioemocional</em> (afectivo), que mantiene la cohesion y resuelve las tensiones interpersonales.</p>
+  <div class="quote">
+    "Rara vez una misma persona es, al mismo tiempo, la mejor para impulsar la tarea y la mejor para cuidar las relaciones. Los grupos eficaces aprenden a articular ambas funciones, ya sea en una persona excepcional o en un liderazgo compartido."
+    <cite>&mdash; Adaptado de Bales, R. F. (1950). Interaction Process Analysis. Addison-Wesley.</cite>
+  </div>
+  <p>Para el pedagogo, comprender estas dos dimensiones es esencial: un docente o conductor de grupo que solo atiende la tarea (lider intelectual) puede lograr objetivos a costa del clima y la motivacion; uno que solo atiende lo afectivo puede generar un grupo agradable pero poco productivo. El reto pedagogico consiste en integrar ambas funciones.</p>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Constructivismo: el liderazgo como construccion de vinculos y de saberes<span class="ic">+</span></button>
+    <div class="acdbody"><p>Desde el constructivismo, el aprendizaje requiere tanto un andamiaje cognitivo (la dimension intelectual) como un clima emocional seguro (la dimension afectiva). Vygotsky y la pedagogia del vinculo coinciden en que no hay construccion de conocimiento sin una relacion afectiva que la sostenga. Esta guia invita al estudiante a reconocer ambas dimensiones en su propia experiencia de liderazgo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Aprendizaje Basado en Problemas: equilibrar lo afectivo y lo intelectual<span class="ic">+</span></button>
+    <div class="acdbody"><p>El ABP plantea problemas reales. Aqui el problema es: ¿como equilibrar la atencion a la tarea y la atencion a las relaciones cuando se conduce un grupo? Las actividades situan al estudiante ante dilemas concretos donde debe decidir como articular ambas funciones del liderazgo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Pedagogia Activa: del analisis a la practica del liderazgo integral<span class="ic">+</span></button>
+    <div class="acdbody"><p>Cada actividad exige que el estudiante haga algo con el conocimiento: analizar su tendencia (afectiva o intelectual), debatir, autoevaluarse y proyectar mejoras. El liderazgo integral no se memoriza: se reflexiona y se practica.</p></div>
+  </div>
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Competencia Conceptual</span><p>Definir y distinguir las funciones del lider afectivo y del lider intelectual con precision teorica.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Analitica</span><p>Identificar ambas funciones en situaciones reales y analizar las consecuencias de su presencia, ausencia o desequilibrio en el grupo.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Aplicada</span><p>Articular las dimensiones afectiva e intelectual del liderazgo para conducir grupos de manera equilibrada y eficaz.</p></div>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<section id="contenido">
+  <span class="slbl">Seccion 02</span>
+  <h2>Contenido Tematico</h2>
+
+  <h3>3.2 El Lider Afectivo y el Lider Intelectual</h3>
+  <p>La investigacion de Robert Bales sobre los procesos de interaccion en grupos pequenos revelo que, para funcionar de manera eficaz, todo grupo necesita cubrir dos grandes tipos de necesidades: las necesidades relacionadas con la <strong>tarea</strong> (avanzar hacia el objetivo) y las necesidades relacionadas con lo <strong>socioemocional</strong> (mantener la cohesion y un clima positivo). De ahi surgen dos figuras de liderazgo complementarias.</p>
+
+  <div class="dual-grid">
+    <div class="dual-card dc-af">
+      <div class="d-icon">A</div>
+      <span class="d-lbl">Funcion socioemocional</span>
+      <h4>El Lider Afectivo</h4>
+      <ul>
+        <li>Cuida el clima emocional del grupo</li>
+        <li>Atiende los vinculos y las relaciones</li>
+        <li>Media y resuelve conflictos</li>
+        <li>Motiva y reconoce a los miembros</li>
+        <li>Fomenta la cohesion y la pertenencia</li>
+        <li>Escucha y contiene emocionalmente</li>
+      </ul>
+    </div>
+    <div class="dual-card dc-in">
+      <div class="d-icon">I</div>
+      <span class="d-lbl">Funcion de tarea</span>
+      <h4>El Lider Intelectual</h4>
+      <ul>
+        <li>Orienta el grupo hacia el objetivo</li>
+        <li>Aporta ideas, analisis y soluciones</li>
+        <li>Organiza, planifica y estructura</li>
+        <li>Impulsa el avance del trabajo</li>
+        <li>Evalua resultados y procesos</li>
+        <li>Es referente por su conocimiento</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>El Lider Afectivo</h4>
+  <div class="def-af">
+    <p><strong>Lider afectivo (o socioemocional):</strong> Persona que, en el seno de un grupo, asume principalmente la funcion de mantener la cohesion, cuidar el clima emocional, atender los vinculos interpersonales, mediar en los conflictos y motivar a los miembros. Su liderazgo se sustenta en su capacidad relacional, su empatia y su habilidad para generar un ambiente de confianza y pertenencia.</p>
+    <span class="fte">Ref: Bales, R. F. (1950). Interaction Process Analysis. / Cartwright, D. y Zander, A. (1968). Group Dynamics.</span>
+  </div>
+  <p>El lider afectivo es quien el grupo busca cuando hay tension, desanimo o conflicto. Su aportacion es decisiva para que el grupo se sostenga como colectividad: sin atencion a lo socioemocional, incluso los grupos mas competentes en la tarea pueden fracturarse. En el contexto educativo, el docente que ejerce un fuerte liderazgo afectivo genera un clima de aula donde los estudiantes se sienten seguros para participar, equivocarse y aprender.</p>
+  <p>No obstante, un liderazgo exclusivamente afectivo tiene limitaciones: un grupo con excelente clima pero sin orientacion hacia la tarea puede ser agradable pero improductivo. El exceso de atencion a lo emocional, en detrimento del avance, puede derivar en complacencia y estancamiento.</p>
+
+  <h4>El Lider Intelectual</h4>
+  <div class="def-in">
+    <p><strong>Lider intelectual (o de tarea):</strong> Persona que, en el seno de un grupo, asume principalmente la funcion de orientar hacia el objetivo, aportar ideas y analisis, organizar el trabajo, resolver problemas e impulsar el avance hacia las metas. Su liderazgo se sustenta en su competencia, su conocimiento y su capacidad de estructurar y dar direccion al trabajo del grupo.</p>
+    <span class="fte">Ref: Bales, R. F. (1950). Interaction Process Analysis. / Cartwright, D. y Zander, A. (1968). Group Dynamics.</span>
+  </div>
+  <p>El lider intelectual es quien el grupo reconoce como referente cuando hay que tomar decisiones tecnicas, resolver un problema complejo o estructurar una tarea. Su aportacion es decisiva para que el grupo avance y logre sus objetivos. En el contexto educativo, el docente que ejerce un fuerte liderazgo intelectual aporta claridad conceptual, rigor y direccion al proceso de aprendizaje.</p>
+  <p>Sin embargo, un liderazgo exclusivamente intelectual tambien tiene limitaciones: un grupo orientado solo a la tarea, sin atencion al clima ni a los vinculos, puede volverse eficiente pero frio, desmotivado y propenso a la desercion. El exceso de foco en el resultado, en detrimento de las personas, deteriora la cohesion a largo plazo.</p>
+
+  <h4>Tabla comparativa: dos funciones complementarias</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Dimension</th><th>Lider Afectivo</th><th>Lider Intelectual</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Funcion principal</strong></td><td>Mantener la cohesion y el clima</td><td>Orientar hacia el objetivo y la tarea</td></tr>
+        <tr><td><strong>Fuente de su liderazgo</strong></td><td>Capacidad relacional y empatia</td><td>Conocimiento y competencia tecnica</td></tr>
+        <tr><td><strong>El grupo lo busca cuando</strong></td><td>Hay tension, conflicto o desanimo</td><td>Hay que resolver, decidir o estructurar</td></tr>
+        <tr><td><strong>Pregunta que responde</strong></td><td>¿Como estamos como grupo?</td><td>¿Hacia donde vamos y como llegamos?</td></tr>
+        <tr><td><strong>Aporte al grupo</strong></td><td>Confianza, motivacion, pertenencia</td><td>Direccion, claridad, avance</td></tr>
+        <tr><td><strong>Riesgo si actua solo</strong></td><td>Buen clima pero baja productividad</td><td>Alta eficiencia pero clima frio y desmotivacion</td></tr>
+        <tr><td><strong>En el aula universitaria</strong></td><td>Genera seguridad para participar y equivocarse</td><td>Aporta rigor, estructura y direccion al aprendizaje</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>La Complementariedad: Hacia un Liderazgo Integral</h3>
+  <p>La distincion entre lider afectivo e intelectual no implica que sean opuestos ni que haya que elegir entre uno y otro. Al contrario: ambas funciones son <strong>complementarias y necesarias</strong>. Los grupos mas eficaces son aquellos que logran cubrir ambas funciones, ya sea porque:</p>
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Opcion 1</span><p><strong>Liderazgo integral:</strong> Una misma persona desarrolla la capacidad de articular ambas funciones, equilibrando la atencion a la tarea y a las relaciones. Es el ideal, aunque exigente.</p></div>
+    <div class="citem"><span class="ctipo">Opcion 2</span><p><strong>Liderazgo compartido:</strong> Dos o mas personas asumen funciones complementarias: una ejerce el liderazgo afectivo y otra el intelectual, articulandose de manera coordinada.</p></div>
+    <div class="citem"><span class="ctipo">Opcion 3</span><p><strong>Liderazgo rotativo:</strong> Segun la fase y las necesidades del grupo, distintos miembros asumen alternativamente la funcion afectiva o la intelectual.</p></div>
+  </div>
+
+  <div class="card card-b">
+    <h4>La inteligencia emocional como puente</h4>
+    <p>Investigaciones contemporaneas (Goleman, 1998) han mostrado que el liderazgo mas eficaz integra la competencia tecnica (dimension intelectual) con la inteligencia emocional (dimension afectiva). El lider que combina conocimiento con empatia, autoconciencia y habilidades sociales logra resultados superiores y sostenibles. Para el pedagogo, esto significa que la formacion en liderazgo debe atender tanto el desarrollo intelectual como el emocional.</p>
+  </div>
+
+  <div class="card card-v">
+    <h4>Sintesis para el pedagogo</h4>
+    <p>El docente y el conductor de grupos deben reconocer que el liderazgo eficaz requiere atender dos grandes funciones: la afectiva (clima, vinculos, motivacion) y la intelectual (tarea, ideas, direccion). Identificar la propia tendencia &mdash;hacia lo afectivo o hacia lo intelectual&mdash; y desarrollar deliberadamente la dimension menos fuerte es una de las tareas centrales de la formacion del lider pedagogico. En el trabajo con estudiantes, fomentar el liderazgo compartido permite que distintas personas aporten su fortaleza al grupo.</p>
+  </div>
+</section>
+<!-- ACTIVIDAD 1: FORO -->
+<section id="act1">
+  <span class="slbl">Actividad 01 de 03</span>
+  <h2>Actividad de Foro: Reflexion Critica y Debate</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">1</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Foro de Discusion Asincrono en Google Classroom</span>
+        <h3>¿Corazon o Cabeza? El Lider que Mejor Conduce un Grupo</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Foro asincrono</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Plazo</strong><br>48 a 72 horas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Participaciones</strong><br>1 aportacion + 2 respuestas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <h3>Pregunta Detonadora</h3>
+      <div style="background:var(--az);color:var(--bl);border-radius:var(--rg);padding:26px 30px;margin:16px 0 22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;">Pregunta para el Foro</span>
+        <p style="color:var(--bl);font-size:1.05rem;font-style:italic;margin:0;line-height:1.85;">"En su experiencia universitaria, ¿que tipo de lider ha tenido mayor impacto positivo en su aprendizaje: el lider afectivo, que cuida el clima y los vinculos, o el lider intelectual, que aporta direccion, ideas y rigor? Describa una situacion concreta. A partir de los conceptos del tema, ¿cree que un grupo puede funcionar bien con solo una de las dos funciones, o ambas son indispensables? ¿Es posible que una misma persona ejerza las dos, o conviene que el liderazgo sea compartido? Fundamente su postura."</p>
+      </div>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Acceso al foro:</strong> Ingrese a Google Classroom con su cuenta institucional. Localice la materia "Tecnicas de Conduccion de Grupos" y abra la actividad "Foro Unidad III: Lider Afectivo e Intelectual".</p></li>
+        <li><p><strong>Preparacion:</strong> Identifique la situacion concreta que analizara. Revise las caracteristicas de ambas figuras en el contenido para clasificar con precision el liderazgo que describira.</p></li>
+        <li><p><strong>Redaccion de su aportacion (180 a 280 palabras):</strong> Estructure su texto en tres partes: (a) descripcion de la situacion concreta y el tipo de lider que tuvo impacto, (b) analisis de por que ese liderazgo fue eficaz o limitado usando los conceptos del tema, y (c) postura fundamentada sobre la complementariedad de ambas funciones.</p></li>
+        <li><p><strong>Interaccion con pares:</strong> Lea al menos dos participaciones de companieros y responda de forma sustantiva a cada una, aportando nuevos argumentos o planteando contra-preguntas. Evite respuestas de validacion superficial.</p></li>
+        <li><p><strong>Entrega:</strong> Tome una captura de pantalla de su aportacion y al menos una respuesta. Subala en la tarea correspondiente de Classroom.</p></li>
+      </ol>
+      <h3>Ejemplo Orientador</h3>
+      <div class="fdemo">
+        <div class="fhdr">Foro: Corazon o Cabeza (ejemplo ilustrativo)</div>
+        <div class="fpost">
+          <span class="fautor">Estudiante A &mdash; Lunes, 18:40 hrs</span>
+          <p>En mi experiencia, ambas funciones resultaron indispensables, pero las viví en personas distintas dentro de un mismo equipo de proyecto integrador. Una companiera ejercia un claro liderazgo intelectual: estructuraba el trabajo, proponia el marco teorico, detectaba errores de logica y nos daba direccion cuando nos perdiamos. Sin embargo, su foco exclusivo en la tarea generaba tension: cuando alguien se equivocaba, su correccion era tan directa que desanimaba. Fue otro companiero quien asumio el liderazgo afectivo: mediaba cuando habia roces, reconocia los aportes de cada quien y mantenia el animo en los momentos de mayor carga. El equipo funciono bien precisamente porque ambos liderazgos se articularon: el intelectual nos hacia avanzar y el afectivo nos mantenia unidos. Creo que un grupo no puede funcionar de manera sostenible con solo una funcion. Considerando lo que vimos sobre Bales, pienso que lo ideal seria que una persona desarrollara ambas, pero en la practica el liderazgo compartido fue lo que nos salvo. Una sola persona dificilmente puede sostener las dos funciones al maximo nivel todo el tiempo.</p>
+        </div>
+        <div class="fpost frep">
+          <span class="fautor">Estudiante B &mdash; responde a Estudiante A &mdash; Martes, 09:55 hrs</span>
+          <p>Tu ejemplo de liderazgo compartido es muy claro. Quiero anadir una tension: ¿que pasa cuando ambos liderazgos no se coordinan y entran en conflicto? En mi equipo, la lider de tarea y el lider afectivo competian entre si: ella queria avanzar a toda costa y el priorizaba que todos estuvieran comodos, lo que a veces frenaba el trabajo. ¿Como crees que se logra que ambas funciones se complementen en lugar de chocar? ¿Sera que se necesita un acuerdo explicito sobre los roles desde el inicio?</p>
+        </div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Sustento teorico</td><td>Aplica los conceptos de lider afectivo, intelectual y complementariedad con precision</td><td>Aplica 2 conceptos pertinentes</td><td>Menciona conceptos sin aplicarlos</td></tr>
+            <tr><td>Experiencia concreta</td><td>Describe con detalle verificable una situacion real</td><td>Describe con algunos detalles</td><td>Descripcion vaga o generica</td></tr>
+            <tr><td>Postura fundamentada</td><td>Toma postura con argumentacion solida y matizada</td><td>Toma postura con argumentacion basica</td><td>No toma postura o es superficial</td></tr>
+            <tr><td>Interaccion con pares</td><td>2 respuestas con nuevos argumentos o preguntas</td><td>2 respuestas breves pertinentes</td><td>1 respuesta o ausente</td></tr>
+            <tr><td>Redaccion</td><td>Lenguaje academico, claro, sin errores</td><td>Apropiado con errores menores</td><td>Errores que dificultan la comprension</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO -->
+<section id="act2">
+  <span class="slbl">Actividad 02 de 03</span>
+  <h2>Actividad de Aprendizaje Significativo</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">2</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Autodiagnostico Comparativo + Organizador Aplicado</span>
+        <h3>Mi Balance de Liderazgo: ¿Mas Afectivo o Mas Intelectual?</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>60 a 80 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>PDF o imagen en Classroom</div>
+        </div>
+      </div>
+      <p>Esta actividad aplica el aprendizaje significativo: los conceptos sobre el lider afectivo e intelectual se anclan en un autoanalisis honesto de la propia tendencia del estudiante cuando ejerce liderazgo en sus equipos universitarios. El objetivo es que reconozca su fortaleza dominante y disenie un plan para desarrollar la dimension menos fuerte.</p>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Recuerde una situacion de liderazgo propio:</strong> Identifique una ocasion reciente en que usted haya ejercido liderazgo en un equipo universitario. Anote sus datos en el organizador.</p></li>
+        <li><p><strong>Analice ambas dimensiones:</strong> Complete los cuatro nodos del organizador analizando como ejercio cada funcion: cuanto atendio a la tarea (intelectual) y cuanto al clima y los vinculos (afectivo). Use ejemplos concretos de su conducta.</p></li>
+        <li><p><strong>Determine su tendencia:</strong> En el campo de balance, indique cual dimension predomino en su liderazgo y por que. Sea autocritico: el objetivo es aprender, no quedar bien.</p></li>
+        <li><p><strong>Plan de desarrollo:</strong> En el campo de cierre, redacte un parrafo de 4 a 6 oraciones sobre como desarrollaria deliberadamente la dimension menos fuerte de su liderazgo, con acciones concretas, fundamentando en los conceptos del tema.</p></li>
+        <li><p><strong>Entrega:</strong> Tome captura o exporte a documento. Nombre el archivo <code>Act2_LiderAfectivoIntelectual_NombreApellido.pdf</code> y subalo en Classroom.</p></li>
+      </ol>
+      <h3>Organizador Interactivo: Mi Balance de Liderazgo</h3>
+      <div class="owrap">
+        <div class="ocent">Mi Balance Afectivo&ndash;Intelectual &mdash; <span id="sitnm">_______________</span></div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Situacion de liderazgo analizada</label>
+          <input type="text" id="sitinp" placeholder="Ej: Coordine el equipo de 5 personas para la exposicion de Teorias del Aprendizaje, 3er semestre" style="width:100%;padding:10px 14px;border:1px solid var(--azxl);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--bl);color:var(--tx);" oninput="document.getElementById('sitnm').textContent=this.value||'_______________'">
+        </div>
+        <div class="ogrid">
+          <div class="onodo" data-l="Dimension AFECTIVA: que hice"><textarea id="n1" placeholder="Como cuide el clima y los vinculos? Medie conflictos? Motive y reconoci a mis companieros? Da ejemplos concretos."></textarea></div>
+          <div class="onodo" data-l="Dimension INTELECTUAL: que hice"><textarea id="n2" placeholder="Como oriente la tarea? Aporte ideas y estructura? Organice el trabajo y di direccion? Da ejemplos concretos."></textarea></div>
+          <div class="onodo" data-l="Mi tendencia predominante"><textarea id="n3" placeholder="Cual dimension predomino en mi liderazgo: afectiva o intelectual? Justifica con evidencia de tu conducta."></textarea></div>
+          <div class="onodo" data-l="Efectos sobre el grupo"><textarea id="n4" placeholder="Que produjo mi tendencia? El grupo tuvo buen clima, buena productividad o ambos? Que falto?"></textarea></div>
+        </div>
+        <div style="margin-top:20px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:6px;">Plan para desarrollar mi dimension menos fuerte</label>
+          <textarea id="nplan" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:100px;background:var(--bl);resize:vertical;color:var(--tx);" placeholder="Como desarrollaria deliberadamente la dimension menos fuerte de mi liderazgo (afectiva o intelectual)? Acciones concretas, fundamentadas en los conceptos del tema..."></textarea>
+        </div>
+        <div><button class="btnp" onclick="guardarOrg()">Guardar Organizador</button><button class="btno" onclick="limpiarOrg()">Reiniciar</button></div>
+        <div id="msgorg" class="msg msg-ok">Organizador guardado. Tome una captura de pantalla para entregar en Classroom.</div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Situacion analizada</td><td>Real, especifica, con datos suficientes</td><td>Real con pocos detalles</td><td>Vaga o hipotetica</td></tr>
+            <tr><td>Analisis de ambas dimensiones</td><td>Analiza con precision y evidencia las dos funciones</td><td>Analiza ambas con sustento parcial</td><td>Analiza solo una o sin sustento</td></tr>
+            <tr><td>Identificacion de tendencia</td><td>Tendencia identificada con autocritica y evidencia clara</td><td>Tendencia identificada con sustento parcial</td><td>Tendencia sin justificacion</td></tr>
+            <tr><td>Plan de desarrollo</td><td>Concreto, viable y fundamentado</td><td>Pertinente pero general</td><td>Ausente o superficial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir evidencia a Google Classroom</span>
+    </div>
+  </div>
+</section>
+<!-- ACTIVIDAD 3: QUIZ -->
+<section id="act3">
+  <span class="slbl">Actividad 03 de 03</span>
+  <h2>Quiz de Autoevaluacion</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">3</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Quiz Interactivo con Retroalimentacion Inmediata</span>
+        <h3>Evaluacion: El Lider Afectivo y el Intelectual</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion del Quiz</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Preguntas</strong><br>5 reactivos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Formato</strong><br>Opcion multiple</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Puntaje maximo</strong><br>10 puntos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <p>Responda cada pregunta y presione "Calificar" al finalizar. Tome una captura del resultado y subala a Classroom.</p>
+      <div class="qwrap" id="qc">
+
+        <div class="preg">
+          <span class="qn">Pregunta 01 de 05</span>
+          <div class="qt">¿Cual es la funcion principal del lider afectivo o socioemocional en un grupo?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p1" value="a"><span>Orientar al grupo hacia el cumplimiento de los objetivos y aportar las soluciones tecnicas a los problemas que enfrenta.</span></label></li>
+            <li><label><input type="radio" name="p1" value="b"><span>Mantener la cohesion, cuidar el clima emocional, atender los vinculos interpersonales, mediar en los conflictos y motivar a los miembros del grupo.</span></label></li>
+            <li><label><input type="radio" name="p1" value="c"><span>Concentrar todas las decisiones del grupo y ejercer un control estricto sobre las actividades de cada miembro.</span></label></li>
+            <li><label><input type="radio" name="p1" value="d"><span>Estructurar y planificar el trabajo, asignar tareas y evaluar los resultados obtenidos por el grupo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 02 de 05</span>
+          <div class="qt">¿En que se sustenta principalmente el liderazgo del lider intelectual o de tarea?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p2" value="a"><span>En su capacidad relacional, su empatia y su habilidad para generar confianza y pertenencia en el grupo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="b"><span>En su autoridad formal y en el control coercitivo que ejerce sobre los miembros del grupo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="c"><span>En su conocimiento, su competencia tecnica y su capacidad para estructurar el trabajo y dar direccion al grupo hacia el logro de objetivos.</span></label></li>
+            <li><label><input type="radio" name="p2" value="d"><span>En su carisma personal y en la simpatia que genera entre los miembros del grupo independientemente de la tarea.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 03 de 05</span>
+          <div class="qt">La distincion entre el lider afectivo y el lider intelectual tiene su origen principal en las investigaciones de:</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p3" value="a"><span>Robert Bales, quien observo que en los grupos suelen emerger un lider de tarea (intelectual) y un lider socioemocional (afectivo), frecuentemente ejercidos por personas distintas.</span></label></li>
+            <li><label><input type="radio" name="p3" value="b"><span>Kurt Lewin, quien identifico exclusivamente los estilos autocratico, democratico y laissez-faire en su estudio de 1939.</span></label></li>
+            <li><label><input type="radio" name="p3" value="c"><span>Hersey y Blanchard, quienes propusieron que el liderazgo debe adaptarse unicamente al nivel de madurez del grupo.</span></label></li>
+            <li><label><input type="radio" name="p3" value="d"><span>Abraham Maslow, quien establecio la jerarquia de necesidades como unico fundamento del liderazgo grupal.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 04 de 05</span>
+          <div class="qt">Un equipo de trabajo tiene excelente clima, todos se sienten comodos y motivados, pero rara vez cumple sus entregas a tiempo y los productos son de baja calidad. Segun los conceptos del tema, ¿que funcion de liderazgo esta probablemente debilitada o ausente?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p4" value="a"><span>La funcion afectiva, porque el buen clima indica que falta atencion a las emociones de los miembros.</span></label></li>
+            <li><label><input type="radio" name="p4" value="b"><span>La funcion intelectual o de tarea, porque el grupo cuida las relaciones pero carece de orientacion hacia el objetivo, estructura y direccion que impulsen el avance y la calidad del trabajo.</span></label></li>
+            <li><label><input type="radio" name="p4" value="c"><span>Ninguna funcion esta debilitada, porque un buen clima garantiza por si solo el cumplimiento de las metas del grupo.</span></label></li>
+            <li><label><input type="radio" name="p4" value="d"><span>Ambas funciones estan ausentes, porque un grupo con buen clima no puede tener problemas de productividad de ningun tipo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 05 de 05</span>
+          <div class="qt">¿Cual de las siguientes afirmaciones describe correctamente la relacion entre el lider afectivo y el lider intelectual?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p5" value="a"><span>Son funciones opuestas e incompatibles: un grupo debe elegir entre atender la tarea o atender las relaciones, pero nunca ambas.</span></label></li>
+            <li><label><input type="radio" name="p5" value="b"><span>Son funciones complementarias y necesarias: los grupos mas eficaces logran cubrir ambas, ya sea mediante un liderazgo integral en una persona, un liderazgo compartido entre varias o un liderazgo rotativo segun las necesidades del grupo.</span></label></li>
+            <li><label><input type="radio" name="p5" value="c"><span>La funcion intelectual es siempre superior a la afectiva, por lo que el lider de tarea debe imponerse sobre el socioemocional en todo grupo.</span></label></li>
+            <li><label><input type="radio" name="p5" value="d"><span>Ambas funciones deben ser ejercidas obligatoriamente por una sola persona; el liderazgo compartido siempre genera conflicto y debe evitarse.</span></label></li>
+          </ul>
+        </div>
+
+        <button id="btnq" onclick="calificar()">Calificar Quiz</button>
+        <div class="qres" id="qr">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:6px;">Resultado Final</span>
+          <span class="sn" id="snm">0 / 10</span>
+          <div class="bprog"><div class="bfill" id="bf"></div></div>
+          <p class="sm" id="smsg"></p>
+          <p class="sd" id="sdet"></p>
+          <br><button id="btnr" onclick="reiniciar()">Intentar de Nuevo</button>
+        </div>
+      </div>
+      <div class="card card-b" style="margin-top:22px;">
+        <h4>Instruccion de Entrega</h4>
+        <ol style="margin-left:18px;color:var(--tx2);font-size:.92rem;">
+          <li style="margin-bottom:7px;">Complete el quiz hasta obtener la pantalla de resultados con el puntaje final.</li>
+          <li style="margin-bottom:7px;">Tome una captura que incluya el puntaje, la barra de progreso y las respuestas marcadas.</li>
+          <li style="margin-bottom:7px;">Nombre el archivo: <code>Quiz_LiderAfectivoIntelectual_NombreApellido.png</code></li>
+          <li>Subalo en la tarea "Quiz Unidad III - Tema 3.2" de Google Classroom.</li>
+        </ol>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- REFLEXION -->
+<section id="reflexion">
+  <span class="slbl">Seccion 06</span>
+  <h2>Reflexion y Plan de Aplicacion</h2>
+  <p>Esta seccion cierra el ciclo de aprendizaje. La metacognicion &mdash;reflexionar sobre lo aprendido, como se aprendio y para que sirve&mdash; consolida el conocimiento y facilita su transferencia a nuevos contextos.</p>
+  <div class="card card-g" style="margin-bottom:26px;">
+    <h4>Condicion Previa</h4>
+    <p>Esta seccion tiene mayor valor si se completa despues de realizar las tres actividades. La experiencia acumulada es el insumo principal de su reflexion.</p>
+  </div>
+  <h3>Cuadro de Reflexion Personal</h3>
+  <div class="refgrid">
+    <div class="refitem"><label>1. Concepto que transformo mi comprension</label><textarea id="r1" placeholder="Cual de los conceptos del tema cambio o matizo una idea previa sobre el liderazgo?"></textarea></div>
+    <div class="refitem"><label>2. Lo que reconoci sobre mi propio liderazgo</label><textarea id="r2" placeholder="Que descubrio sobre su tendencia (afectiva o intelectual) al analizarla con los conceptos del tema?"></textarea></div>
+    <div class="refitem"><label>3. Tension o dificultad conceptual</label><textarea id="r3" placeholder="Que aspecto del tema le resulto mas dificil de comprender o le genero mayor tension intelectual?"></textarea></div>
+    <div class="refitem"><label>4. Preguntas abiertas</label><textarea id="r4" placeholder="Que preguntas nuevas surgieron? Que le gustaria explorar en las proximas unidades?"></textarea></div>
+  </div>
+  <hr class="div">
+  <h3>Plan de Aplicacion Profesional</h3>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como aplicare este conocimiento en mi vida universitaria inmediata</h4>
+    <textarea id="p1" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: En el proximo trabajo de equipo, si tiendo a lo intelectual, hare un esfuerzo deliberado por atender el clima: reconocere los aportes de mis companieros y mediare cuando haya tension, en lugar de centrarme solo en avanzar..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como transferire este conocimiento a mi futura practica pedagogica o docente</h4>
+    <textarea id="p2" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Ej: Cuando sea docente, atendere conscientemente las dos funciones: aportare rigor y direccion (intelectual) sin descuidar el clima emocional del aula (afectivo), y fomentare el liderazgo compartido entre mis estudiantes en los trabajos colaborativos..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h4>Mi compromiso de aprendizaje para las proximas dos semanas</h4>
+    <textarea id="p3" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:70px;background:var(--azbg);resize:vertical;color:var(--tx);" placeholder="Me comprometo a... (accion concreta, observable y realizable)"></textarea>
+  </div>
+  <button class="btnp" onclick="genPlan()">Generar mi Plan de Aplicacion</button>
+  <div class="planprev" id="planp">
+    <h4>Mi Plan de Aplicacion &mdash; El Lider Afectivo y el Intelectual</h4>
+    <div id="planpc"></div>
+    <div class="card card-g" style="margin-top:16px;"><p style="margin:0;font-size:.88rem;">Tome una captura de este plan como referencia personal para las proximas semanas del curso.</p></div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <span class="slbl">Seccion 07</span>
+  <h2>Glosario de Terminos Clave</h2>
+  <div class="card">
+    <dl class="glos">
+      <div><dt>Clima grupal</dt><dd>Percepcion compartida de los miembros sobre la calidad de las relaciones, la seguridad psicologica y el ambiente emocional del grupo. Es el principal ambito de accion del lider afectivo.</dd></div>
+      <div><dt>Cohesion grupal</dt><dd>Fuerza que mantiene unidos a los miembros del grupo y genera sentido de pertenencia. El lider afectivo contribuye decisivamente a fortalecerla.</dd></div>
+      <div><dt>Dimension de tarea</dt><dd>Conjunto de funciones del liderazgo orientadas al logro del objetivo: organizar, planificar, aportar ideas, estructurar y evaluar. Es el ambito propio del lider intelectual.</dd></div>
+      <div><dt>Dimension socioemocional</dt><dd>Conjunto de funciones del liderazgo orientadas al bienestar del grupo: cuidar el clima, mediar conflictos, motivar y fortalecer los vinculos. Es el ambito propio del lider afectivo.</dd></div>
+      <div><dt>Funcion socioemocional de Bales</dt><dd>Categoria de comportamiento grupal identificada por Robert Bales, orientada a mantener las relaciones y la cohesion del grupo, de la que surge la figura del lider afectivo.</dd></div>
+      <div><dt>Funcion de tarea de Bales</dt><dd>Categoria de comportamiento grupal identificada por Robert Bales, orientada a impulsar el trabajo y el logro de objetivos, de la que surge la figura del lider intelectual.</dd></div>
+      <div><dt>Inteligencia emocional</dt><dd>Conjunto de competencias (autoconciencia, autorregulacion, empatia, habilidades sociales) que, segun Goleman, permite integrar la dimension afectiva con la intelectual en un liderazgo eficaz.</dd></div>
+      <div><dt>Lider afectivo (socioemocional)</dt><dd>Persona que asume principalmente la funcion de cuidar el clima, los vinculos y la cohesion del grupo, mediar conflictos y motivar a los miembros, sustentando su liderazgo en su capacidad relacional y su empatia.</dd></div>
+      <div><dt>Lider intelectual (de tarea)</dt><dd>Persona que asume principalmente la funcion de orientar hacia el objetivo, aportar ideas, organizar el trabajo e impulsar el avance, sustentando su liderazgo en su conocimiento y competencia tecnica.</dd></div>
+      <div><dt>Liderazgo compartido</dt><dd>Modalidad en que dos o mas personas asumen funciones complementarias del liderazgo: una ejerce la funcion afectiva y otra la intelectual, articulandose de manera coordinada.</dd></div>
+      <div><dt>Liderazgo integral</dt><dd>Capacidad de una misma persona para articular ambas funciones del liderazgo, equilibrando la atencion a la tarea y a las relaciones. Es el ideal del liderazgo, aunque exigente.</dd></div>
+      <div><dt>Liderazgo rotativo</dt><dd>Modalidad en que, segun la fase y las necesidades del grupo, distintos miembros asumen alternativamente la funcion afectiva o la intelectual del liderazgo.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="fi">
+    <div>
+      <span class="fn">Universidad de la Cienega &mdash; Plantel Centro</span>
+      <span>Licenciatura en Pedagogia &mdash; Tecnicas de Conduccion de Grupos</span>
+    </div>
+    <div style="text-align:right;">
+      <span>Guia Interactiva Unidad III &mdash; Tema 3.2 &mdash; Ciclo 2024&ndash;2025</span><br>
+      <span style="color:rgba(255,255,255,.35);margin-top:3px;display:block;">Material de uso educativo &mdash; version web para GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){
+  var s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('pgbar').style.width=(s/h*100)+'%';
+});
+function tog(b){b.classList.toggle('open');b.nextElementSibling.classList.toggle('show');}
+function guardarOrg(){var m=document.getElementById('msgorg');m.classList.add('show');setTimeout(function(){m.classList.remove('show');},4500);}
+function limpiarOrg(){
+  if(!confirm('Desea reiniciar todos los campos del organizador?'))return;
+  ['sitinp','n1','n2','n3','n4','nplan'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('sitnm').textContent='_______________';
+}
+var RC={p1:'b',p2:'c',p3:'a',p4:'b',p5:'b'};
+var MS=[
+  "Es necesario revisar el contenido nuevamente. Regrese especialmente a las definiciones del lider afectivo e intelectual y a la tabla comparativa de ambas funciones.",
+  "Ha comprendido algunos conceptos. Revise las preguntas incorrectas y los apartados correspondientes antes de continuar.",
+  "Desempeno aceptable. Domina la mayoria de los conceptos. Revise la retroalimentacion de las preguntas incorrectas.",
+  "Buen desempeno. Revise la pregunta incorrecta para alcanzar dominio completo del tema.",
+  "Excelente. Dominio completo del tema. Puede avanzar con confianza a la siguiente unidad del curso."
+];
+function calificar(){
+  var ps=['p1','p2','p3','p4','p5'],ok=0,todo=true;
+  ps.forEach(function(p){
+    var sel=document.querySelector('input[name="'+p+'"]:checked');
+    if(!sel){todo=false;return;}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.closest('li').classList.remove('ok','err');});
+    if(sel.value===RC[p]){ok++;sel.closest('li').classList.add('ok');}
+    else{sel.closest('li').classList.add('err');var c=document.querySelector('input[name="'+p+'"][value="'+RC[p]+'"]');if(c)c.closest('li').classList.add('ok');}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.disabled=true;});
+  });
+  if(!todo){alert('Por favor responda todas las preguntas antes de calificar.');return;}
+  var pts=(ok/5)*10;
+  document.getElementById('snm').textContent=pts.toFixed(0)+' / 10';
+  document.getElementById('bf').style.width=(pts*10)+'%';
+  document.getElementById('smsg').textContent=MS[ok];
+  document.getElementById('sdet').textContent=ok+' de 5 respuestas correctas. Puntaje: '+pts.toFixed(0)+'/10.';
+  var r=document.getElementById('qr');r.classList.add('show');
+  document.getElementById('btnq').disabled=true;
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function reiniciar(){
+  ['p1','p2','p3','p4','p5'].forEach(function(p){
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.checked=false;r.disabled=false;r.closest('li').classList.remove('ok','err');});
+  });
+  document.getElementById('qr').classList.remove('show');
+  document.getElementById('bf').style.width='0';
+  document.getElementById('btnq').disabled=false;
+  document.getElementById('qc').scrollIntoView({behavior:'smooth'});
+}
+function genPlan(){
+  var p1=document.getElementById('p1').value.trim(),p2=document.getElementById('p2').value.trim(),p3=document.getElementById('p3').value.trim();
+  if(!p1&&!p2&&!p3){alert('Complete al menos un campo del plan antes de generarlo.');return;}
+  var h='';
+  if(p1)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--azbg);border-radius:var(--r);border-left:3px solid var(--az);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azl);display:block;margin-bottom:5px;">Aplicacion Inmediata</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p1+'</p></div>';
+  if(p2)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--vel);border-radius:var(--r);border-left:3px solid var(--ve);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ve);display:block;margin-bottom:5px;">Practica Pedagogica Futura</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p2+'</p></div>';
+  if(p3)h+='<div style="padding:14px 18px;background:var(--doxl);border-radius:var(--r);border-left:3px solid var(--do);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:5px;">Mi Compromiso</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p3+'</p></div>';
+  document.getElementById('planpc').innerHTML=h;
+  var pp=document.getElementById('planp');pp.classList.add('show');
+  pp.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>

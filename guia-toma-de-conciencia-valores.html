@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Toma de Conciencia y Valores | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --marino:#0f2a44;
+  --marino-m:#1a4266;
+  --celeste:#2a7fc0;
+  --celeste-s:#e8f3fb;
+  --ambar:#d4870a;
+  --ambar-s:#fef5e7;
+  --esmeralda:#1a6e4a;
+  --esmeralda-s:#e8f5ee;
+  --coral:#c0402a;
+  --coral-s:#fdf0ed;
+  --gris:#555;
+  --gc:#f4f5f7;
+  --arena:#faf9f7;
+  --borde:#d8e2ec;
+  --blanco:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Nunito",sans-serif;background:var(--arena);color:#111d2a;font-size:16px;line-height:1.78}
+
+/* HEADER */
+header{background:linear-gradient(135deg,var(--marino) 0%,var(--marino-m) 100%);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--celeste),var(--ambar),var(--celeste))}
+header::after{content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(42,127,192,0.2) 0%,transparent 70%)}
+.hi{max-width:980px;margin:0 auto;padding:36px 32px 48px;position:relative;z-index:1}
+.htop{display:flex;align-items:center;gap:20px;padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.logo-b{background:var(--blanco);border-radius:12px;padding:10px;width:86px;height:86px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.logo-b img{width:100%;height:100%;object-fit:contain;display:block}
+.hbrand .uni{font-family:"Merriweather",serif;font-size:1.15rem;color:rgba(255,255,255,0.94);font-weight:700}
+.hbrand .dep{font-size:0.73rem;color:rgba(255,255,255,0.42);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.htags{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.htag{padding:4px 12px;border-radius:20px;font-size:0.69rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.htag.ce{background:rgba(42,127,192,0.28);border:1px solid rgba(42,127,192,0.55);color:#90cef0}
+.htag.am{background:rgba(212,135,10,0.22);border:1px solid rgba(212,135,10,0.48);color:#f0c870}
+.hbody h1{font-family:"Merriweather",serif;font-size:2.3rem;color:var(--blanco);font-weight:700;line-height:1.18;margin-bottom:12px}
+.hbody h1 em{color:#90cef0;font-style:italic}
+.hpills{display:flex;gap:8px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.6);padding:4px 13px;border-radius:14px;font-size:0.72rem;white-space:nowrap}
+
+/* NAV */
+nav.nav-s{background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(15,42,68,0.08)}
+.nav-w{max-width:980px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-w::-webkit-scrollbar{display:none}
+.nav-w a{color:var(--gris);text-decoration:none;font-size:0.79rem;font-weight:600;padding:13px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav-w a:hover{color:var(--celeste);border-bottom-color:var(--celeste)}
+
+/* MAIN */
+main{max-width:980px;margin:0 auto;padding:40px 32px 80px}
+
+/* BLOQUES */
+.bloque{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:42px;margin-bottom:24px;position:relative;overflow:hidden;animation:up 0.4s ease both}
+.bloque::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;border-radius:14px 0 0 14px}
+.bloque.ce::before{background:linear-gradient(to bottom,var(--celeste),#60aee0)}
+.bloque.am::before{background:linear-gradient(to bottom,var(--ambar),#f0b040)}
+.bloque.es::before{background:linear-gradient(to bottom,var(--esmeralda),#40b07a)}
+.bloque.co::before{background:linear-gradient(to bottom,var(--coral),#e07060)}
+.bloque.gr::before{background:linear-gradient(to bottom,#888,#bbb)}
+.bloque.ma::before{background:linear-gradient(to bottom,var(--marino),var(--marino-m))}
+.bh{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--borde)}
+.bicon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:"Merriweather",serif;font-size:1.1rem;font-weight:700;flex-shrink:0}
+.bicon.ce{background:var(--celeste-s);color:var(--marino-m)}
+.bicon.am{background:var(--ambar-s);color:#8a5500}
+.bicon.es{background:var(--esmeralda-s);color:var(--esmeralda)}
+.bicon.co{background:var(--coral-s);color:var(--coral)}
+.bicon.gr{background:var(--gc);color:var(--gris)}
+.bicon.ma{background:var(--celeste-s);color:var(--marino)}
+.btit .sup{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gris);margin-bottom:4px}
+.btit h2{font-family:"Merriweather",serif;font-size:1.4rem;font-weight:700;color:var(--marino);line-height:1.22}
+
+/* TIPOGRAFIA */
+h3{font-family:"Merriweather",serif;font-size:1.08rem;font-weight:700;color:var(--marino);margin:24px 0 10px}
+h3:first-child{margin-top:0}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--marino-m);font-weight:700}
+em{color:var(--gris);font-style:italic}
+
+/* CAJAS */
+.caja{border-radius:8px;padding:16px 20px;margin:16px 0;border-left:4px solid}
+.caja.ce{background:var(--celeste-s);border-color:var(--celeste)}
+.caja.am{background:var(--ambar-s);border-color:var(--ambar)}
+.caja.es{background:var(--esmeralda-s);border-color:var(--esmeralda)}
+.caja.co{background:var(--coral-s);border-color:var(--coral)}
+.caja.gr{background:var(--gc);border-color:#aaa}
+.caja-tag{font-size:0.69rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px}
+.caja.ce .caja-tag{color:var(--marino-m)}
+.caja.am .caja-tag{color:#8a5500}
+.caja.es .caja-tag{color:var(--esmeralda)}
+.caja.co .caja-tag{color:var(--coral)}
+.caja.gr .caja-tag{color:#666}
+
+/* TABLA */
+table.t{width:100%;border-collapse:collapse;font-size:0.86rem;margin:16px 0}
+table.t th{background:var(--marino);color:var(--blanco);padding:10px 13px;text-align:left;font-weight:700;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.04em}
+table.t td{padding:10px 13px;border-bottom:1px solid var(--borde);vertical-align:top;line-height:1.55}
+table.t tr:nth-child(even) td{background:#f8fafc}
+
+/* LISTAS */
+ul.l,ol.l{list-style:none;padding:0}
+ul.l li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--gc);font-size:0.93rem}
+ul.l li:last-child{border-bottom:none}
+ul.l li::before{content:"";position:absolute;left:7px;top:17px;width:6px;height:6px;border-radius:50%;background:var(--celeste)}
+ol.l{counter-reset:cnt}
+ol.l li{padding:9px 0 9px 40px;position:relative;border-bottom:1px solid var(--gc);counter-increment:cnt;font-size:0.93rem}
+ol.l li:last-child{border-bottom:none}
+ol.l li::before{content:counter(cnt);position:absolute;left:0;top:9px;background:var(--marino-m);color:var(--blanco);width:25px;height:25px;border-radius:6px;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* NIVELES DE TOMA DE CONCIENCIA */
+.conc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:20px 0}
+.conc-card{border-radius:10px;padding:20px;border:1px solid var(--borde);border-top:4px solid var(--celeste);background:var(--gc);transition:transform 0.2s,box-shadow 0.2s}
+.conc-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(15,42,68,0.1)}
+.conc-card.n2{border-top-color:var(--ambar)}
+.conc-card.n3{border-top-color:var(--esmeralda)}
+.conc-card.n4{border-top-color:var(--coral)}
+.conc-card .cn{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.conc-card .ct{font-family:"Merriweather",serif;font-size:1rem;font-weight:700;color:var(--marino);margin-bottom:7px}
+.conc-card .cd{font-size:0.82rem;color:var(--gris);line-height:1.55}
+.conc-card.n1 .cn{color:var(--celeste)}
+.conc-card.n2 .cn{color:#8a5500}
+.conc-card.n3 .cn{color:var(--esmeralda)}
+.conc-card.n4 .cn{color:var(--coral)}
+
+/* ESPIRAL DE DESARROLLO */
+.espiral{display:flex;flex-direction:column;gap:0;margin:22px 0}
+.esp-fila{display:flex;align-items:stretch;gap:0}
+.esp-num{width:52px;display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.esp-circulo{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:var(--blanco);flex-shrink:0;z-index:1}
+.esp-linea{flex:1;width:2px;background:var(--borde);margin:0 auto}
+.esp-cont{flex:1;padding:14px 18px 20px;border-radius:10px;margin-bottom:12px;border:1px solid var(--borde)}
+.ef1 .esp-circulo{background:var(--celeste)}
+.ef1 .esp-cont{background:var(--celeste-s)}
+.ef2 .esp-circulo{background:var(--ambar)}
+.ef2 .esp-cont{background:var(--ambar-s)}
+.ef3 .esp-circulo{background:var(--esmeralda)}
+.ef3 .esp-cont{background:var(--esmeralda-s)}
+.ef4 .esp-circulo{background:var(--coral)}
+.ef4 .esp-cont{background:var(--coral-s)}
+.ef5 .esp-circulo{background:var(--marino)}
+.ef5 .esp-cont{background:var(--celeste-s)}
+.esp-tit{font-weight:700;font-size:0.95rem;color:var(--marino);margin-bottom:5px}
+.esp-desc{font-size:0.84rem;color:var(--gris);line-height:1.6}
+.esp-ej{font-size:0.78rem;font-style:italic;margin-top:5px;color:var(--marino-m)}
+
+/* CONOCIMIENTO PREVIO */
+.kprev{background:linear-gradient(135deg,var(--marino) 0%,var(--marino-m) 100%);border-radius:12px;padding:32px;position:relative;overflow:hidden}
+.kprev::after{content:"?";position:absolute;right:22px;bottom:-28px;font-family:"Merriweather",serif;font-size:150px;color:rgba(255,255,255,0.04);line-height:1}
+.kprev h3{color:#90cef0;margin-bottom:10px}
+.kprev p{color:rgba(255,255,255,0.84);font-size:1.02rem;font-style:italic;margin-bottom:18px;position:relative;z-index:1}
+.kp-opts{display:flex;flex-direction:column;gap:9px;position:relative;z-index:1}
+.kp-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.88);padding:11px 17px;border-radius:8px;cursor:pointer;font-family:"Nunito",sans-serif;font-size:0.88rem;text-align:left;transition:all 0.2s}
+.kp-btn:hover:not(:disabled){background:rgba(255,255,255,0.15);border-color:#90cef0}
+.kp-btn.ok{background:rgba(26,110,74,0.45);border-color:#80d0a8;color:#c8f0d8}
+.kp-btn.no{background:rgba(192,64,42,0.35);border-color:#e89080;color:#f7c8b8}
+.kp-fb{display:none;margin-top:14px;padding:13px 17px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.88rem;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18)}
+.kp-fb.show{display:block}
+
+/* RECURSOS */
+.rec-item{display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid var(--borde)}
+.rec-item:last-child{border-bottom:none}
+.rec-tipo{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:4px 9px;border-radius:11px;white-space:nowrap;margin-top:2px;flex-shrink:0;color:var(--blanco)}
+.rt-l{background:var(--marino-m)}
+.rt-a{background:var(--esmeralda)}
+.rt-w{background:var(--coral)}
+.rt-v{background:var(--ambar)}
+.rec-tit{font-weight:700;color:var(--marino);margin-bottom:2px;font-size:0.91rem}
+.rec-aut{font-size:0.79rem;color:var(--gris);line-height:1.5}
+
+/* ACTIVIDADES */
+.act-badge{display:inline-flex;align-items:center;padding:6px 15px;border-radius:20px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:20px;color:var(--blanco)}
+.ab-f{background:var(--esmeralda)}
+.ab-i{background:var(--marino-m)}
+.ab-q{background:var(--ambar)}
+.cita{background:var(--marino);color:var(--blanco);border-radius:10px;padding:26px 30px;position:relative;margin:18px 0}
+.cita::before{content:"\201C";position:absolute;top:4px;left:16px;font-family:"Merriweather",serif;font-size:5rem;color:rgba(255,255,255,0.07);line-height:1}
+.cita p{color:rgba(255,255,255,0.88);font-size:1.02rem;font-style:italic;position:relative;z-index:1;margin-bottom:0;line-height:1.7}
+.paso{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--gc);align-items:flex-start;font-size:0.92rem}
+.paso:last-child{border-bottom:none}
+.paso-n{background:var(--celeste-s);border:1px solid var(--borde);color:var(--marino-m);font-weight:700;font-size:0.79rem;min-width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.rubr{display:grid;grid-template-columns:1fr 72px;gap:10px;padding:10px 0;border-bottom:1px solid var(--gc);align-items:center;font-size:0.89rem}
+.rubr:last-child{border-bottom:none}
+.pts{background:var(--marino);color:var(--blanco);text-align:center;border-radius:6px;padding:5px 8px;font-weight:700;font-size:0.85rem}
+.escenario{background:var(--celeste-s);border:1px solid #b8d4e8;border-radius:10px;padding:22px;margin:16px 0}
+.esc-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--marino-m);margin-bottom:8px}
+.cta{display:flex;align-items:center;gap:12px;background:#1a6e4a;color:var(--blanco);padding:14px 18px;border-radius:8px;margin-top:20px;font-size:0.88rem;font-weight:700}
+
+/* QUIZ */
+.quiz-wrap{background:var(--gc);border-radius:12px;padding:26px}
+.q-prog{display:flex;align-items:center;gap:13px;margin-bottom:20px}
+.q-bc{flex:1;height:4px;background:var(--borde);border-radius:3px;overflow:hidden}
+.q-bf{height:100%;background:var(--celeste);border-radius:3px;transition:width 0.4s}
+.qt{font-size:0.77rem;color:var(--gris);font-weight:600;white-space:nowrap}
+.qb{display:none}
+.qb.act{display:block}
+.qb h4{font-family:"Nunito",sans-serif;font-size:0.95rem;font-weight:700;color:var(--marino);margin-bottom:16px;line-height:1.55}
+.q-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.qo{display:flex;align-items:flex-start;gap:11px;padding:11px 14px;background:var(--blanco);border:2px solid var(--borde);border-radius:8px;cursor:pointer;transition:all 0.2s;text-align:left}
+.qo:hover{border-color:var(--celeste);background:var(--celeste-s)}
+.qo.sel{border-color:var(--marino-m);background:var(--celeste-s)}
+.qo.ok{border-color:var(--esmeralda);background:var(--esmeralda-s);cursor:default}
+.qo.fail{border-color:var(--coral);background:var(--coral-s);cursor:default}
+.qo.show-ok{border-color:var(--esmeralda);background:var(--esmeralda-s);cursor:default}
+.ql{width:25px;height:25px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.qo.sel .ql{background:var(--marino-m);color:var(--blanco)}
+.qo.ok .ql{background:var(--esmeralda);color:var(--blanco)}
+.qo.fail .ql{background:var(--coral);color:var(--blanco)}
+.qo.show-ok .ql{background:var(--esmeralda);color:var(--blanco)}
+.qot{font-size:0.89rem;line-height:1.5}
+.qr{display:none;padding:11px 15px;border-radius:8px;margin-bottom:12px;font-size:0.86rem;line-height:1.5}
+.qr.ok{background:var(--esmeralda-s);border:1px solid var(--esmeralda);color:var(--esmeralda)}
+.qr.fail{background:var(--coral-s);border:1px solid var(--coral);color:var(--coral)}
+.qr.show{display:block}
+.q-res{display:none;text-align:center;padding:34px 18px}
+.q-res.show{display:block}
+.q-sc{font-family:"Merriweather",serif;font-size:5rem;color:var(--marino);line-height:1;margin-bottom:6px}
+.q-sc span{font-size:2rem;color:var(--gris)}
+.q-niv{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.q-msg{color:var(--gris);font-size:0.9rem;max-width:420px;margin:0 auto 22px}
+
+/* BOTONES */
+.btn{padding:10px 20px;border-radius:7px;font-family:"Nunito",sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.btn-p{background:var(--marino-m);color:var(--blanco)}
+.btn-p:hover{background:var(--marino);transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,42,68,0.25)}
+.btn-p:disabled{background:var(--borde);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:transparent;color:var(--marino-m);border:2px solid var(--marino-m)}
+.btn-s:hover{background:var(--celeste-s)}
+
+/* REFLEXION */
+.refl{background:#fafbfd;border:1px solid var(--borde);border-radius:8px;padding:18px;margin-bottom:13px}
+.refl label{display:block;font-weight:700;font-size:0.86rem;color:var(--marino);margin-bottom:9px}
+.refl textarea{width:100%;min-height:78px;padding:10px;border:1.5px solid var(--borde);border-radius:6px;font-family:"Nunito",sans-serif;font-size:0.88rem;line-height:1.6;resize:vertical;background:var(--blanco);color:#111d2a;transition:border-color 0.2s}
+.refl textarea:focus{outline:none;border-color:var(--celeste)}
+
+/* FOOTER */
+footer{background:var(--marino);color:rgba(255,255,255,0.44);text-align:center;padding:28px 32px;font-size:0.76rem;line-height:1.9}
+footer strong{color:rgba(255,255,255,0.82)}
+@keyframes up{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+.bloque:nth-child(1){animation-delay:.04s}.bloque:nth-child(2){animation-delay:.08s}.bloque:nth-child(3){animation-delay:.12s}.bloque:nth-child(4){animation-delay:.16s}.bloque:nth-child(5){animation-delay:.2s}.bloque:nth-child(6){animation-delay:.24s}.bloque:nth-child(7){animation-delay:.28s}.bloque:nth-child(8){animation-delay:.32s}
+@media(max-width:680px){
+  .hi{padding:22px 16px 28px}
+  .hbody h1{font-size:1.75rem}
+  main{padding:22px 14px 56px}
+  .bloque{padding:22px 16px}
+  .nav-w{padding:0 12px}
+  .conc-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="htop">
+      <div class="logo-b">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="hbrand">
+        <div class="uni">Universidad de la Cienega</div>
+        <div class="dep">Licenciatura en Pedagogia &middot; Valores y Educacion</div>
+      </div>
+      <div class="htags">
+        <span class="htag ce">Tema 4 &middot; Subtema 4.2</span>
+        <span class="htag am">Constructivismo &middot; ABP</span>
+      </div>
+    </div>
+    <div class="hbody">
+      <h1>Introyeccion y Personalizacion:<br><em>Toma de Conciencia y Valores</em></h1>
+      <div class="hpills">
+        <span class="hpill">Subtema 4.2</span>
+        <span class="hpill">Licenciatura en Pedagogia</span>
+        <span class="hpill">3 Actividades &middot; Foro &middot; Aplicada &middot; Quiz</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-s">
+  <div class="nav-w">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#niveles">Niveles de conciencia</a>
+    <a href="#espiral">Espiral de desarrollo</a>
+    <a href="#pedagogia">Implicacion pedagogica</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRODUCCION -->
+<section class="bloque ce" id="intro">
+  <div class="bh">
+    <div class="bicon ce">I</div>
+    <div class="btit">
+      <div class="sup">Punto de partida &middot; Tema 4, Subtema 4.2</div>
+      <h2>Introduccion al Tema</h2>
+    </div>
+  </div>
+  <p>El subtema anterior exploro como los valores se forman a lo largo de la vida a traves de los procesos de introyeccion y personalizacion: de la incorporacion de normas externas hacia la asuncion libre y consciente de convicciones propias. Este subtema profundiza en un elemento que es condicion de posibilidad de toda personalizacion genuina: la <strong>toma de conciencia</strong>.</p>
+  <p>No es posible asumir libremente un valor que no se ha examinado. No es posible personalizar una conviccion que permanece invisible, automatica, incuestionada. La toma de conciencia es el proceso mediante el cual el sujeto hace visible lo que estaba oculto: sus propios valores, los mecanismos por los cuales los incorporo, las contradicciones entre sus convicciones declaradas y sus comportamientos reales, y las condiciones que favorecen u obstaculizan el ejercicio de esos valores en su vida concreta.</p>
+  <p>Para el pedagogo en formacion, este tema tiene una doble dimension. En primer lugar, una dimension personal: desarrollar la capacidad de tomar conciencia de los propios valores es parte fundamental de la madurez axiologica del educador. En segundo lugar, una dimension profesional: disenar experiencias educativas que favorezcan la toma de conciencia de los valores en los estudiantes es una de las competencias mas exigentes y mas importantes de la formacion pedagogica en valores.</p>
+  <div class="caja am">
+    <div class="caja-tag">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> explicar que es la toma de conciencia y por que es condicion de la personalizacion de los valores; <strong>(2)</strong> identificar los niveles de conciencia axiologica en situaciones educativas reales; <strong>(3)</strong> analizar criticamente su propio nivel de conciencia respecto a sus valores; y <strong>(4)</strong> disenar estrategias pedagogicas que favorezcan la toma de conciencia axiologica en estudiantes universitarios.</p>
+  </div>
+  <div class="caja ce">
+    <div class="caja-tag">Metodologia de trabajo</div>
+    <p>Esta guia combina <strong>constructivismo</strong> (aprendizaje como construccion activa de significados), <strong>pedagogia activa</strong> (el estudiante como protagonista) y <strong>aprendizaje basado en problemas</strong> (ABP), donde la comprension teorica emerge del analisis de situaciones reales y significativas de la vida universitaria.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque am" id="previo">
+  <div class="bh">
+    <div class="bicon am">?</div>
+    <div class="btit">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Responda la siguiente pregunta con base en su comprension actual, sin consultar fuentes externas. El objetivo es identificar desde donde parte su comprension para construir sobre ella.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Una estudiante universitaria sabe que copiaria en un examen "si pudiera hacerlo sin que nadie la descubriera", pero nunca se ha detenido a examinar por que sostiene esa disposicion, ni que dice de sus valores mas profundos. Que proceso describe mejor lo que le falta a esta estudiante para poder avanzar hacia la personalizacion del valor de la honestidad?</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpR(this,false)">A) Le falta voluntad: si realmente valorara la honestidad, ya actuaria de manera coherente con ese valor independientemente de la supervision.</button>
+      <button class="kp-btn" onclick="kpR(this,true)">B) Le falta toma de conciencia: no ha examinado sus propias disposiciones ni las razones que las sustentan, lo que le impide asumir una posicion libre y reflexiva respecto al valor.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">C) Le falta informacion sobre la honestidad academica: si conociera las consecuencias del plagio, modificaria su disposicion de manera natural y automatica.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">D) Le falta un sistema externo de supervision mas riguroso que haga imposible la deshonestidad y la obligue a comportarse de manera honesta en todos los contextos.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- CONTENIDO TEMATICO -->
+<section class="bloque ce" id="contenido">
+  <div class="bh">
+    <div class="bicon ce">4.2</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico &middot; Subtema 4.2</div>
+      <h2>Toma de Conciencia y Valores</h2>
+    </div>
+  </div>
+
+  <h3>1. Que es la toma de conciencia?</h3>
+  <p>La <strong>toma de conciencia</strong> es el proceso mediante el cual un sujeto dirige su atencion reflexiva hacia aspectos de su propia experiencia que anteriormente operaban de manera implicita, automatica o invisible. En el ambito axiologico, tomar conciencia de los propios valores implica hacerlos visibles como objetos de examen: preguntarse cuales son, de donde provienen, en que medida los practica efectivamente, que contradicciones existen entre lo que declara y lo que hace, y que condiciones internas y externas influyen en el ejercicio de esos valores en su vida concreta.</p>
+  <p>La toma de conciencia no equivale a la simple introspection espontanea. Es un proceso que requiere <em>disposicion, tiempo, herramientas y acompaniamiento</em>. La mayoria de las personas, sin un estimulo especifico, no examina sus propios valores con rigor: los da por supuestos, los reproduce inconscientemente o los racionalizan post-hoc para justificar comportamientos que ya realizaron por otras razones.</p>
+
+  <h3>2. Por que la toma de conciencia es condicion de la personalizacion?</h3>
+  <p>Un valor no puede ser asumido de manera libre, consciente y critica si el sujeto no sabe que lo tiene, si no comprende de donde le viene, o si no reconoce la distancia que existe entre lo que declara valer y lo que efectivamente practica. Por eso, la toma de conciencia no es un lujo formativo: es la condicion de posibilidad de toda personalizacion genuina.</p>
+  <p>Dicho de otro modo: <strong>la introyeccion puede ocurrir sin conciencia</strong> (de hecho, suele ocurrir precisamente en ausencia de ella); pero la personalizacion, por definicion, <strong>requiere conciencia</strong>. Asumir un valor como propio, de manera libre y reflexiva, exige primero haberlo examinado, comprendido en su fundamento y elegido entre alternativas posibles.</p>
+
+  <h3>3. Dimensiones de la toma de conciencia axiologica</h3>
+  <table class="t">
+    <thead><tr><th>Dimension</th><th>Pregunta orientadora</th><th>Ejemplo universitario</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Conciencia del valor</strong></td><td>Que valores operan efectivamente en mi vida? No solo cuales declaro, sino cuales guian realmente mis decisiones?</td><td>Reconocer que en la practica priorizo la calificacion por encima del aprendizaje genuino, aunque declare lo contrario.</td></tr>
+      <tr><td><strong>Conciencia del origen</strong></td><td>De donde provienen mis valores? Que personas, instituciones o experiencias los formaron?</td><td>Identificar que el temor al fracaso academico viene de mensajes recibidos en la familia durante la infancia.</td></tr>
+      <tr><td><strong>Conciencia de la coherencia</strong></td><td>Que distancia existe entre mis valores declarados y mis conductas reales? Donde estan las brechas?</td><td>Reconocer que se declara compromiso con la equidad pero se toman decisiones grupales que favorecen a los mas habiles.</td></tr>
+      <tr><td><strong>Conciencia del contexto</strong></td><td>Que condiciones del entorno facilitan o dificultan el ejercicio de mis valores? Como reacciono ante la presion social?</td><td>Notar que los valores de solidaridad se debilitan cuando existe competencia por evaluaciones con curva o con cupo limitado.</td></tr>
+      <tr><td><strong>Conciencia de la eleccion</strong></td><td>En que medida mis valores son genuinamente elegidos? O simplemente son los que me fueron dados sin haberlos examinado?</td><td>Distinguir que valores se asumen despues de una reflexion critica y cuales simplemente se heredaron sin cuestionamiento.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- NIVELES DE CONCIENCIA -->
+<section class="bloque es" id="niveles">
+  <div class="bh">
+    <div class="bicon es">N</div>
+    <div class="btit">
+      <div class="sup">Modelo conceptual</div>
+      <h2>Niveles de Toma de Conciencia Axiologica</h2>
+    </div>
+  </div>
+  <p>La toma de conciencia no es un fenomeno de todo-o-nada: se desarrolla de manera progresiva. Es posible identificar cuatro niveles que describen el grado en que un sujeto ha hecho conscientes sus propios valores y los procesos que los sustentan.</p>
+  <div class="conc-grid">
+    <div class="conc-card n1">
+      <div class="cn">Nivel 1</div>
+      <div class="ct">Inconsciencia axiologica</div>
+      <div class="cd">El sujeto actua conforme a valores sin ser consciente de ello. Sus disposiciones y conductas son completamente automaticas e implicitas. No ha examinado ni identificado sus propios valores.</div>
+    </div>
+    <div class="conc-card n2">
+      <div class="cn">Nivel 2</div>
+      <div class="ct">Conciencia nominal</div>
+      <div class="cd">El sujeto es capaz de nombrar sus valores cuando se le pregunta, pero esta identificacion es superficial: no ha examinado su origen, su coherencia interna ni la brecha entre declaracion y practica.</div>
+    </div>
+    <div class="conc-card n3">
+      <div class="cn">Nivel 3</div>
+      <div class="ct">Conciencia reflexiva</div>
+      <div class="cd">El sujeto examina sus valores con cierta profundidad: reconoce su origen, identifica brechas entre discurso y practica, y comienza a evaluar criticamente si los valores que sostiene le parecen justificados.</div>
+    </div>
+    <div class="conc-card n4">
+      <div class="cn">Nivel 4</div>
+      <div class="ct">Conciencia critico-transformadora</div>
+      <div class="cd">El sujeto no solo examina sus valores: actua sobre esa conciencia para transformar sus disposiciones y conductas, asumiendo libremente los valores que considera fundamentados y trabajando activamente para reducir sus brechas.</div>
+    </div>
+  </div>
+  <div class="caja am">
+    <div class="caja-tag">Observacion pedagogica</div>
+    <p>La mayoria de los estudiantes universitarios ingresa a la educacion superior en el nivel 1 o 2 respecto a muchos de sus valores. El transito hacia los niveles 3 y 4 no ocurre espontaneamente: requiere experiencias formativas deliberadamente disenadaspara provocar la reflexion critica sobre los propios valores, sus origenes y sus brechas. Esta es una de las responsabilidades mas importantes y mas desafiantes del pedagogo universitario.</p>
+  </div>
+</section>
+
+<!-- ESPIRAL DE DESARROLLO -->
+<section class="bloque am" id="espiral">
+  <div class="bh">
+    <div class="bicon am">E</div>
+    <div class="btit">
+      <div class="sup">Modelo de proceso</div>
+      <h2>La Espiral de Toma de Conciencia y Personalizacion</h2>
+    </div>
+  </div>
+  <p>La toma de conciencia no es un momento puntual sino un proceso que se desarrolla en espiral: cada ciclo lleva al sujeto a una comprension mas profunda de sus valores y a un mayor grado de libertad en su ejercicio. El siguiente modelo describe las cinco etapas de esta espiral.</p>
+
+  <div class="espiral">
+    <div class="esp-fila ef1">
+      <div class="esp-num">
+        <div class="esp-circulo">1</div>
+        <div class="esp-linea"></div>
+      </div>
+      <div class="esp-cont">
+        <div class="esp-tit">Experiencia detonadora</div>
+        <div class="esp-desc">Una situacion de la vida real genera una incomodidad, una contradiccion o una tension que no puede resolverse de manera automatica. Esta experiencia actua como detonador de la reflexion axiologica.</div>
+        <div class="esp-ej">Ejemplo: Un estudiante descubre que un amigo copio su trabajo y siente una incomodidad que no sabe como nombrar ni como resolver.</div>
+      </div>
+    </div>
+    <div class="esp-fila ef2">
+      <div class="esp-num">
+        <div class="esp-circulo">2</div>
+        <div class="esp-linea"></div>
+      </div>
+      <div class="esp-cont">
+        <div class="esp-tit">Atencion reflexiva</div>
+        <div class="esp-desc">El sujeto dirige su atencion hacia la experiencia y hacia sus propias reacciones. Comienza a preguntarse: por que me incomoda esto? Que dice esta reaccion de mis valores? Que valores estan en juego aqui?</div>
+        <div class="esp-ej">Ejemplo: El estudiante se pregunta si su incomodidad se debe a que siente que se vulnero su trabajo, o a una conviccion mas profunda sobre la deshonestidad academica.</div>
+      </div>
+    </div>
+    <div class="esp-fila ef3">
+      <div class="esp-num">
+        <div class="esp-circulo">3</div>
+        <div class="esp-linea"></div>
+      </div>
+      <div class="esp-cont">
+        <div class="esp-tit">Identificacion y examen del valor</div>
+        <div class="esp-desc">El sujeto identifica el valor o valores implicados en la situacion y los examina: de donde vienen? los considera justificados? son coherentes con otros valores que sostiene? Esta es la etapa central de la toma de conciencia.</div>
+        <div class="esp-ej">Ejemplo: El estudiante examina su valor de la honestidad academica, reconoce que lo recibio de la familia y la escuela, y evalua si lo considera justificado por razones que el mismo puede articular.</div>
+      </div>
+    </div>
+    <div class="esp-fila ef4">
+      <div class="esp-num">
+        <div class="esp-circulo">4</div>
+        <div class="esp-linea"></div>
+      </div>
+      <div class="esp-cont">
+        <div class="esp-tit">Decision libre y fundamentada</div>
+        <div class="esp-desc">A partir del examen del valor, el sujeto toma una decision reflexiva: asumir el valor con mayor conviccion, modificarlo, matizarlo o rechazarlo. Esta decision, sea cual sea, es mas libre que la anterior porque ha sido tomada conscientemente.</div>
+        <div class="esp-ej">Ejemplo: El estudiante decide que la honestidad academica le parece genuinamente importante (no solo por evitar sanciones) y decide hablar con su amigo sobre lo ocurrido.</div>
+      </div>
+    </div>
+    <div class="esp-fila ef5">
+      <div class="esp-num">
+        <div class="esp-circulo">5</div>
+        <div class="esp-linea" style="opacity:0"></div>
+      </div>
+      <div class="esp-cont">
+        <div class="esp-tit">Compromiso y nueva experiencia</div>
+        <div class="esp-desc">El sujeto actua conforme a su decision y la nueva experiencia genera un ciclo mas profundo de la espiral: nuevas tensiones, nuevas reflexiones, mayor riqueza de conciencia. La personalizacion del valor se consolida progresivamente.</div>
+        <div class="esp-ej">Ejemplo: La conversacion con su amigo genera nuevas tensiones (lealtad vs. honestidad) que llevan al estudiante a un nuevo ciclo de reflexion axiologica mas complejo y maduro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLICACION PEDAGOGICA -->
+<section class="bloque ma" id="pedagogia">
+  <div class="bh">
+    <div class="bicon ma">P</div>
+    <div class="btit">
+      <div class="sup">Aplicacion profesional</div>
+      <h2>Implicaciones Pedagogicas: Favorecer la Toma de Conciencia en el Aula Universitaria</h2>
+    </div>
+  </div>
+  <h3>1. El rol del pedagogo ante la toma de conciencia</h3>
+  <p>El pedagogo no puede tomar conciencia en lugar del estudiante: la toma de conciencia es, por su naturaleza, un proceso que el sujeto debe realizar el mismo, de manera activa. Sin embargo, el pedagogo puede crear condiciones que hagan posible, faciliten y profundicen ese proceso. Este es uno de los roles mas delicados y mas importantes del educador en valores: <em>provocar la reflexion sin imponerla, acompanar sin dirigir, preguntar sin prescribir</em>.</p>
+  <h3>2. Estrategias especificas para favorecer la toma de conciencia axiologica</h3>
+  <ul class="l">
+    <li><strong>El dialogo socratico:</strong> Formulacion de preguntas que llevan al estudiante a examinar sus propias creencias, identificar contradicciones y articular fundamentos que antes permanecian implicitos. No es interrogatorio: es acompaniamiento reflexivo.</li>
+    <li><strong>Los dilemas morales:</strong> Presentacion de situaciones problematicas que no tienen una solucion obvia y que exigen al estudiante posicionarse, argumentar y confrontar su posicion con la de otros. Los dilemas generan el desequilibrio cognitivo que activa la reflexion.</li>
+    <li><strong>El diario reflexivo o bitacora axiologica:</strong> Escritura regular sobre situaciones de la vida academica donde se percibe tension valorativa. La escritura exige precisar, nombrar y examinar lo que de otro modo permanece vago e implicito.</li>
+    <li><strong>El analisis de casos:</strong> Estudio de situaciones reales o verisimiles que ilustran brechas entre valores declarados y conductas efectivas. El caso actua como espejo que permite al estudiante ver en otro lo que podria no ver facilmente en si mismo.</li>
+    <li><strong>La autoevaluacion axiologica estructurada:</strong> Instrumentos que guian al estudiante en el examen sistematico de sus valores, sus origenes, sus brechas y sus condiciones de ejercicio. Requiere diseno cuidadoso para evitar respuestas superficiales o socialmente deseables.</li>
+    <li><strong>El intercambio dialogico con pares:</strong> El contacto con perspectivas valorativas distintas a la propia actua como detonador de la toma de conciencia. Escuchar a alguien que sostiene valores diferentes bien fundamentados puede activar la reflexion sobre los propios de manera mas efectiva que cualquier discurso docente.</li>
+  </ul>
+  <h3>3. Condiciones para que la toma de conciencia sea genuina</h3>
+  <p>No toda actividad que formalmente "invita a reflexionar" sobre valores genera toma de conciencia autentica. Para que el proceso sea genuino, es necesario que se den al menos las siguientes condiciones en el entorno educativo:</p>
+  <ul class="l">
+    <li><strong>Seguridad psicologica:</strong> El estudiante necesita sentir que puede expresar sus valores reales (incluyendo sus dudas, contradicciones y brechas) sin temor a ser juzgado, sancionado o expuesto.</li>
+    <li><strong>Ausencia de respuesta correcta prescrita:</strong> Si el estudiante percibe que el docente ya tiene la respuesta y solo busca que el la reproduzca, la reflexion se vuelve performance y no toma de conciencia genuina.</li>
+    <li><strong>Tiempo y profundidad:</strong> La toma de conciencia no ocurre en actividades superficiales de cinco minutos. Requiere tiempo suficiente para que la incomodidad inicial se procese y se convierta en reflexion articulada.</li>
+    <li><strong>Vinculo con la experiencia propia:</strong> La reflexion sobre valores abstractos o ajenos rara vez genera toma de conciencia profunda. Es necesario que el material de reflexion este conectado con la experiencia real del estudiante.</li>
+  </ul>
+  <div class="caja co">
+    <div class="caja-tag">Punto de problematizacion ABP</div>
+    <p>Un docente disenya una actividad donde los estudiantes deben responder a la pregunta "Cuales son sus tres valores principales?" Al final, todos los estudiantes responden con valores socialmente valorados (honestidad, respeto, responsabilidad) y nadie menciona contradicciones, dudas ni brechas. ¿Que ocurrio en esta actividad? ¿Genero realmente toma de conciencia axiologica, o produjo respuestas de conformidad social? ¿Que habria que cambiar en el diseno para favorecer una reflexion mas autentica? Este dilema es el punto de partida de la Actividad 2.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque gr" id="materiales">
+  <div class="bh">
+    <div class="bicon gr">M</div>
+    <div class="btit">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes de acceso libre o disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Pedagogia del oprimido</div><div class="rec-aut">Freire, P. (2005). Siglo XXI. Obra fundamental sobre la concientizacion como proceso de toma de conciencia critica de la realidad y condicion de la transformacion personal y social.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">La construccion de la personalidad moral</div><div class="rec-aut">Puig, J. M. (1996). Paidos. Propuesta constructivista sobre el desarrollo del juicio moral y los procesos de reflexion critica sobre los propios valores.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Desarrollo del juicio moral</div><div class="rec-aut">Kohlberg, L. (1992). Desclee de Brouwer. Marco teorico sobre los estadios del desarrollo moral y la relacion entre conciencia reflexiva y autonomia axiologica.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">La concientizacion como proceso pedagogico: entre Freire y la educacion en valores</div><div class="rec-aut">Bolivar, A. (2000). Revista de Educacion, (322), 125-146. Disponible en Dialnet. Vinculo entre el concepto freireano de concientizacion y la formacion axiologica critica.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Educacion para la conciencia moral</div><div class="rec-aut">Nucci, L. (2009). Narcea. Perspectiva psicologica y pedagogica sobre el desarrollo de la conciencia moral y los procesos de reflexion axiologica en contextos educativos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-w">Web</div><div><div class="rec-tit">Recursos sobre educacion en valores y pensamiento critico (OEI)</div><div class="rec-aut">Organizacion de Estados Iberoamericanos. Disponible en: www.oei.es/valores. Materiales sobre concientizacion axiologica y reflexion critica en educacion superior latinoamericana.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-v">Video</div><div><div class="rec-tit">Concientizacion y educacion: la herencia de Paulo Freire</div><div class="rec-aut">Canal CREFAL en YouTube. Busqueda sugerida: "CREFAL Paulo Freire concientizacion educacion". Perspectiva latinoamericana sobre el proceso de toma de conciencia critica en contextos educativos.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque es" id="act1">
+  <div class="bh">
+    <div class="bicon es">1</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-f">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja am">
+    <div class="caja-tag">Proposito</div>
+    <p>Generar un espacio de intercambio reflexivo y argumentado donde los estudiantes examinen criticamente una situacion universitaria real en la que la ausencia o presencia de toma de conciencia axiologica tuvo consecuencias concretas, y construyan colaborativamente una comprension mas profunda del proceso estudiado.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>A lo largo de su trayectoria universitaria, es probable que haya vivido o presenciado una situacion en la que alguien (usted mismo, un companiero o un docente) actuo de una manera que parecia incongruente con los valores que declaraba sostener, sin aparentemente darse cuenta de esa incongruencia. Describa esa situacion con precision: cuales eran los valores declarados, cual fue la conducta observada, y por que considera que la persona involucrada no habia tomado conciencia de la brecha entre ambos. Y reflexione: que factores del contexto universitario facilitaron que esa falta de conciencia axiologica se mantuviera sin ser cuestionada?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro en Google Classroom</strong> con el titulo "Foro 4.2: Toma de Conciencia y Valores en la Universidad". Acceda mediante el enlace indicado por el docente en la plataforma.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Identifique una situacion real, concreta y verificable de su propia trayectoria universitaria. No use situaciones hipoteticas ni ejemplos tomados de noticias o libros. Debe ser una experiencia que usted vivio o presencio directamente.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial</strong> incluyendo: (a) descripcion precisa de la situacion, los actores y el contexto; (b) identificacion de los valores declarados y la conducta observada que los contradecia; (c) analisis de por que considera que habia una ausencia de toma de conciencia y en cual de las cinco dimensiones (conciencia del valor, del origen, de la coherencia, del contexto, de la eleccion); (d) identificacion de los factores del contexto universitario que facilitaron que esa falta de conciencia no fuera cuestionada. Extension: 240-380 palabras, registro formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea al menos dos participaciones de companieros</strong> e identifique patrones comunes: tipos de situaciones, dimensiones de la conciencia mas frecuentemente ausentes, factores contextuales recurrentes.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> (90-130 palabras cada una): proponga una hipotesis adicional sobre los factores que impidieron la toma de conciencia en el caso de su companiero, o relacione su situacion con el modelo de niveles de conciencia axiologica de la guia.</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y entregue en Classroom:</strong> captura o PDF de su participacion y las dos replicas en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div></div>
+  <div class="caja es">
+    <div class="caja-tag">Ejemplo orientador (extracto)</div>
+    <p>"En tercer semestre, en la materia de Evaluacion Educativa, el docente afirmaba constantemente que la evaluacion debe ser un instrumento de aprendizaje y no de control, y que cada estudiante debe ser evaluado desde sus propios avances. Sin embargo, en la practica aplicaba examenes identicos para todos los grupos, con preguntas cerradas y sin ninguna retroalimentacion cualitativa. Cuando algun estudiante le senialaba la incongruencia, el respondia que 'en la teoria es asi, pero en la practica hay limitaciones institucionales'. La ausencia de toma de conciencia parecia estar en la dimension de la coherencia: el docente declaraba un valor pero no habia examinado la distancia entre ese valor y su practica evaluativa real. Un factor que facilito esta falta de cuestionamiento fue la cultura institucional de evaluacion por curva, que el resto del profesorado tambien practicaba..."</p>
+  </div>
+  <div class="caja co">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La pregunta detonadora requiere una situacion <strong>real, concreta y verificable</strong> de su propia trayectoria universitaria. Ningun sistema de inteligencia artificial conoce esos detalles. El docente podra solicitar precision sobre cualquier elemento de la situacion narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad y precision de la situacion narrada</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Identificacion correcta de la dimension de conciencia ausente</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Analisis de los factores contextuales que facilitaron la falta de conciencia</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad argumentativa de las dos replicas dialogicas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque ce" id="act2">
+  <div class="bh">
+    <div class="bicon ce">2</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Rediseno Pedagogico para la Toma de Conciencia</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-i">Actividad individual &middot; Aprendizaje aplicado</div>
+  <div class="caja am">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de diseno pedagogico critico mediante el analisis y rediseno de una actividad educativa que, en su forma original, no favorece la toma de conciencia axiologica autentica, transformandola en una propuesta que active genuinamente el proceso reflexivo descrito en la guia.</p>
+  </div>
+  <h3>Situacion problematica de base (ABP)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Contexto del problema</div>
+    <p>La Coordinacion de Formacion en Valores de su universidad le presenta la siguiente actividad que actualmente se aplica en primer semestre de todas las licenciaturas y le pide que la analice critica y proponga una version mejorada:</p>
+    <p style="margin-top:12px;font-style:italic;padding:14px;background:var(--blanco);border-radius:8px;border:1px solid var(--borde);font-size:0.9rem;">"Actividad: Mis valores universitarios. Instruccion: En una hoja en blanco, escriba los cinco valores que considera mas importantes para su vida universitaria y explique brevemente por que los eligio. Entreguela al docente al final de la sesion de 20 minutos."</p>
+    <p style="margin-top:12px">La Coordinacion reconoce que esta actividad no esta generando toma de conciencia axiologica autentica: los estudiantes escriben valores socialmente valorados de manera superficial, sin que la actividad los lleve a examinar sus valores reales, sus origenes o sus brechas. Le solicitan que, manteniendo el objetivo general (que los estudiantes reflexionen sobre sus valores universitarios), disenye una version que si favorezca genuinamente la toma de conciencia.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Analice criticamente la actividad original</strong> identificando: (a) por que no genera toma de conciencia axiologica autentica (use el modelo de los cuatro niveles y las cinco dimensiones de la guia); (b) que condiciones para la toma de conciencia genuina estan ausentes; (c) que tipo de respuestas predecibles genera su diseno actual.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Disenye la actividad redisenadaa</strong>: cree una actividad alternativa que, manteniendo el objetivo de reflexion sobre los propios valores, incorpore al menos tres de las siguientes caracteristicas: exposicion a una situacion detonadora, preguntas que activen la atencion reflexiva, identificacion de brechas entre lo declarado y lo practicado, analisis del origen de los valores, condiciones de seguridad psicologica. Describa la actividad paso a paso con tiempos estimados.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Justifique teoricamente cada decision de diseno</strong> explicando por que cada elemento de su propuesta favorece especificamente alguna de las cinco dimensiones de la toma de conciencia axiologica descritas en la guia.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Anticipe posibles resistencias:</strong> Que resistencias o dificultades podrian surgir al aplicar su actividad redisenadaa (resistencias de los estudiantes, limitaciones de tiempo, condiciones institucionales)? Proponga una estrategia para cada dificultad anticipada.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Prepare el documento final</strong> con portada completa (nombre, matricula, materia, semestre, fecha, docente), analisis critico de la actividad original, propuesta de actividad redisenadaa con justificacion teorica, y anticipacion de resistencias. Suba en Classroom.</div></div>
+  <div class="caja co">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>El analisis critico y la propuesta de rediseno deben aplicar de manera especifica y fundamentada los conceptos del contenido tematico de esta guia, no principios genericos de pedagogia. El docente puede solicitar que explique verbalmente el fundamento teorico de cualquier decision de diseno.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Profundidad y precision del analisis critico de la actividad original</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Calidad y coherencia de la actividad redisenadaa</strong></div><div class="pts">30 pts</div></div>
+  <div class="rubr"><div><strong>Solidez de la justificacion teorica con referencia explicita al contenido</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Anticipacion de resistencias con estrategias pertinentes</strong></div><div class="pts">10 pts</div></div>
+  <div class="rubr"><div><strong>Formato, portada y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Rediseno Pedagogico" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 3: QUIZ -->
+<section class="bloque am" id="act3">
+  <div class="bh">
+    <div class="bicon am">3</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-q">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja ce">
+    <div class="caja-tag">Instrucciones</div>
+    <p>Seleccione la opcion correcta en cada pregunta. Recibira retroalimentacion inmediata. Al finalizar, capture su resultado y subalo a Google Classroom como evidencia.</p>
+  </div>
+
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bc"><div class="q-bf" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="qb act" id="q1">
+      <h4>1. La toma de conciencia axiologica es condicion de la personalizacion de los valores porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">Es el mecanismo por el cual los valores externos se incorporan al mundo interior del sujeto en la etapa de la infancia temprana, sin necesidad de reflexion consciente.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">No es posible asumir un valor de manera libre y reflexiva si ese valor no ha sido previamente examinado: hecho visible, comprendido en su fundamento y elegido entre alternativas posibles.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">Es el ultimo estadio del desarrollo moral que garantiza que los valores adquiridos en la infancia permanezcan estables e inmutables durante toda la vida adulta del sujeto.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">Es el proceso mediante el cual un sujeto elimina definitivamente todos los valores introyectados en su infancia y los reemplaza por valores construidos de manera completamente autonoma.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. La guia establece que la introyeccion puede ocurrir sin conciencia (de hecho, suele ocurrir precisamente en ausencia de ella), pero la personalizacion requiere conciencia. No es posible asumir libre y reflexivamente un valor que permanece invisible, automatico e incuestionado.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. La toma de conciencia no es el mecanismo de la introyeccion (A), no garantiza la inmutabilidad de valores (C), y no implica la eliminacion de valores introyectados sino su examen critico (D). Es la condicion para que el examen y la asuncion libre sean posibles.</div>
+      <button class="btn btn-p" id="btn1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qb" id="q2">
+      <h4>2. Un estudiante que puede nombrar sus valores cuando se le pregunta, pero no ha examinado su origen ni ha identificado brechas entre lo que declara y lo que practica, se encuentra en el nivel de:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">Inconsciencia axiologica, porque todavia no ha tomado conciencia de ninguno de sus valores ni puede nombrarlos cuando se le pregunta.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">B</div><div class="qot">Conciencia nominal, porque la identificacion de sus valores es superficial: puede nombrarlos pero no ha examinado su origen, coherencia ni brechas.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">C</div><div class="qot">Conciencia reflexiva, porque el hecho de poder nombrar y verbalizar sus valores implica ya un proceso de reflexion sobre la propia experiencia axiologica.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">Conciencia critico-transformadora, porque ha logrado articular verbalmente sus valores, lo que es el primer paso para actuar sobre ellos y transformar su conducta.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. El nivel de conciencia nominal es precisamente ese: el sujeto puede nombrar sus valores cuando se le pregunta, pero la identificacion es superficial. No ha examinado su origen, no ha evaluado si los considera justificados, ni ha identificado las brechas entre sus valores declarados y sus conductas reales.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es B. La inconsciencia axiologica (A) implica que el sujeto no puede ni siquiera nombrar sus valores. La conciencia reflexiva (C) requiere un examen critico del origen y la coherencia, que este estudiante no ha realizado. La conciencia critico-transformadora (D) implica actuar sobre la conciencia para transformar conductas, lo que tampoco describe esta situacion.</div>
+      <button class="btn btn-p" id="btn2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qb" id="q3">
+      <h4>3. Segun la guia, la dimension de "conciencia del contexto" se refiere a:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">La capacidad del sujeto para identificar en que momento historico y cultural especifico se originaron los valores que sostiene actualmente.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">B</div><div class="qot">El reconocimiento de que los propios valores difieren de los de otras personas y culturas, lo que exige una actitud de tolerancia y apertura intercultural.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">C</div><div class="qot">La conciencia de que condiciones del entorno facilitan o dificultan el ejercicio de los propios valores, y el reconocimiento de como el sujeto reacciona ante presiones sociales especificas.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">La comprension de que los valores solo pueden realizarse en contextos sociales y comunitarios, lo que los distingue de los valores puramente individuales.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. La dimension de conciencia del contexto se orienta por la pregunta: "Que condiciones del entorno facilitan o dificultan el ejercicio de mis valores? Como reacciono ante la presion social?". Permite al sujeto comprender por que sus valores se debilitan en ciertos contextos (competencia, anonimato, presion del grupo) y fortalecen en otros.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es C. La ubicacion historico-cultural de los valores (A) corresponde mas a la dimension del origen. La tolerancia intercultural (B) no es la definicion de esta dimension. La distincion entre valores sociales e individuales (D) corresponde a la tipologia axiologica, no a la toma de conciencia contextual.</div>
+      <button class="btn btn-p" id="btn3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qb" id="q4">
+      <h4>4. Cuando los estudiantes del docente, ante la pregunta "Cuales son sus tres valores principales?", responden unanimemente con valores socialmente valorados sin mencionar contradicciones ni brechas, el problema de diseno de la actividad es principalmente que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">Los estudiantes no tienen valores axiologicos propios todavia, lo que demuestra que la formacion en valores debio comenzar desde niveles educativos previos.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">B</div><div class="qot">La pregunta es demasiado dificil para el nivel de los estudiantes y deberia reformularse con terminos mas sencillos para facilitar una respuesta mas honesta.</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">C</div><div class="qot">La actividad no crea las condiciones necesarias para la toma de conciencia genuina: no genera experiencia detonadora, no hay seguridad psicologica, no hay vinculo con experiencia propia, y la pregunta tiene una respuesta "correcta" implicita socialmente deseable.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">Los valores mas importantes siempre son los mismos para todos los seres humanos, por lo que la respuesta unanime de los estudiantes refleja con precision su nivel de conciencia axiologica real.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. La actividad genera conformidad social en lugar de toma de conciencia porque no cumple ninguna de las condiciones necesarias para la reflexion genuina: no hay situacion detonadora de tension, no hay seguridad para expresar dudas o contradicciones, la pregunta tiene respuestas "correctas" implicitas, y no hay vinculo con experiencias reales especificas del estudiante.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es C. La respuesta unanime no implica ausencia de valores propios (A). El problema no es la dificultad del lenguaje (B). Y los valores no son universalmente iguales para todos: la unanimidad revela conformidad social, no una realidad axiologica compartida (D). El problema es de diseno de la actividad.</div>
+      <button class="btn btn-p" id="btn4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qb" id="q5">
+      <h4>5. Una de las condiciones fundamentales para que la toma de conciencia axiologica sea genuina, segun la guia, es la seguridad psicologica en el entorno educativo. Esto significa que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">El docente debe evitar cualquier actividad que genere incomodidad o tension en los estudiantes, creando un ambiente exclusivamente positivo y de affirmacion de sus valores actuales.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">Los estudiantes deben recibir garantias formales por escrito de que sus respuestas en actividades de reflexion axiologica no seran compartidas con ningun miembro de la institucion.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">El estudiante necesita sentir que puede expresar sus valores reales, sus dudas, contradicciones y brechas sin temor a ser juzgado, sancionado o expuesto, lo que es condicion para que la reflexion sea honesta y no una performance.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">El docente debe validar siempre y sin cuestionamiento todos los valores que los estudiantes expresen en el aula, para que sientan que su perspectiva es igualmente respetada que la del docente.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La seguridad psicologica es la condicion que permite al estudiante expresar sus valores reales (incluyendo contradicciones, dudas y brechas) sin temor a consecuencias negativas. Sin esta condicion, la reflexion se convierte en performance: el estudiante dice lo que cree que se espera de el, no lo que genuinamente piensa y siente.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. Evitar toda incomodidad (A) es contradictorio con la toma de conciencia, que requiere tension reflexiva. Las garantias formales por escrito (B) son un recurso posible pero no la definicion de seguridad psicologica. Validar sin cuestionamiento todos los valores (D) tampoco es lo que se propone: se trata de no sancionar la expresion honesta, no de eliminar la reflexion critica.</div>
+      <button class="btn btn-p" id="btn5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:11px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:18px;padding:14px;background:var(--celeste-s);border-radius:8px;font-size:0.86rem;color:var(--marino-m);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:22px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura del resultado en la tarea "Actividad 3: Quiz Toma de Conciencia y Valores".</div>
+</section>
+
+<!-- REFLEXION FINAL -->
+<section class="bloque es" id="reflexion">
+  <div class="bh">
+    <div class="bicon es">R</div>
+    <div class="btit">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>El proceso formativo no concluye con la entrega de las actividades. Esta seccion le invita a integrar los aprendizajes mediante un ejercicio de metacognicion y a planificar como incorporara estos contenidos en su vida academica actual y en su futura practica como pedagogo.</p>
+
+  <div class="refl"><label>1. De las cinco dimensiones de la toma de conciencia axiologica estudiadas (conciencia del valor, del origen, de la coherencia, del contexto y de la eleccion), en cual identifica su mayor debilidad actualmente como estudiante? Describa una situacion concreta de su vida universitaria que ilustre esa debilidad.</label><textarea placeholder="Identifique la dimension, argumente por que es su mayor debilidad y ejemplifique con una situacion real de su vida universitaria actual..."></textarea></div>
+
+  <div class="refl"><label>2. El modelo de la espiral de toma de conciencia describe cinco etapas. Piense en un valor propio que haya transitado por esa espiral (aunque sea parcialmente). Describa que fue la experiencia detonadora, como se desarrollo la atencion reflexiva y donde considera que se encuentra actualmente en el proceso.</label><textarea placeholder="Identifique un valor especifico y reconstruya su espiral de toma de conciencia: cual fue el detonador, como reflexiono, que decidio, donde esta ahora..."></textarea></div>
+
+  <div class="refl"><label>3. Como futuro pedagogo, identifique una materia o espacio formativo de su propio programa de estudios donde considere que podria incorporar estrategias de toma de conciencia axiologica. Proponga una actividad concreta y justifique por que genera toma de conciencia genuina y no solo conformidad social.</label><textarea placeholder="Nombre la materia o espacio, proponga la actividad con suficiente detalle y justifique teoricamente por que favorece la toma de conciencia..."></textarea></div>
+
+  <div class="refl"><label>4. En los proximos 15 dias, que accion concreta tomara para avanzar en su propia toma de conciencia sobre algun valor especifico? Indique: que valor, que dimension de la conciencia trabajara, que hara exactamente, en que contexto y como reconocera que avanzo.</label><textarea placeholder="Sea muy especifico: que valor, que dimension de la conciencia, que accion concreta, en que contexto, como medira el avance..."></textarea></div>
+
+  <div class="caja am">
+    <div class="caja-tag">Instrucciones para la entrega</div>
+    <p>Las respuestas de esta seccion se entregaran como documento independiente en la tarea "Reflexion Final: Toma de Conciencia y Valores" en Google Classroom. Extension minima por respuesta: 120 palabras. Se evaluaran la profundidad reflexiva, la autenticidad del analisis y la coherencia con los contenidos teoricos de la guia.</p>
+  </div>
+
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Bolivar, A. (2000). La concientizacion como proceso pedagogico. <em>Revista de Educacion</em>, (322), 125-146.</li>
+    <li>Freire, P. (2005). <em>Pedagogia del oprimido</em>. Siglo XXI. (Obra original publicada en 1968).</li>
+    <li>Kohlberg, L. (1992). <em>Psicologia del desarrollo moral</em>. Desclee de Brouwer.</li>
+    <li>Nucci, L. (2009). <em>Educacion para la conciencia moral</em>. Narcea.</li>
+    <li>Puig, J. M. (1996). <em>La construccion de la personalidad moral</em>. Paidos.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 4: Introyeccion y Personalizacion de los Valores<br>
+  Subtema 4.2: Toma de Conciencia y Valores<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpR(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Exactamente: lo que le falta a esta estudiante es la toma de conciencia. No ha examinado sus propias disposiciones ni las razones que las sustentan, lo que le impide posicionarse libre y reflexivamente respecto al valor de la honestidad. Este es el objeto central de estudio de esta guia."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es B.</strong> No es un problema de voluntad (A, que supone que el valor ya esta personalizado pero falta accion), ni de informacion sobre consecuencias (C, que reforzaria la introyeccion por temor pero no generaria personalizacion), ni de supervision externa (D, que es exactamente lo contrario a la personalizacion). La raiz del problema es la ausencia de toma de conciencia sobre sus propias disposiciones."; }
+}
+var qE={pts:0,resp:{}};
+function qS(el,qid,ok){
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  el.parentElement.querySelectorAll(".qo").forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){el.classList.add("ok");qE.pts++;}
+  else{el.classList.add("fail");}
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn"+n).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur,next,num){
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+function qRes(){
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida e integrada de la toma de conciencia axiologica y su relacion con la personalizacion de los valores. Esta preparado para aplicar estos marcos en su practica pedagogica.";col="var(--esmeralda)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos asociados a las preguntas donde recibio retroalimentacion de mejora.";col="var(--celeste)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren mayor estudio. Se recomienda releer las secciones tematicas vinculadas a los errores.";col="var(--ambar)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido completo de la guia y retome el quiz tras el repaso.";col="var(--coral)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>

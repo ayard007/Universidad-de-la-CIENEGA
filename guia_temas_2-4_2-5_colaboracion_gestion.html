@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva | Temas 2.4 y 2.5 | Internet: Colaboración y Gestión Educativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   TOKENS — Colaboración institucional: verde oliva profundo + ámbar
+════════════════════════════════════════════════════════ */
+:root {
+  --olive:    #2d3f1e;
+  --olive-m:  #3a5126;
+  --olive-l:  #4d6d32;
+  --olive-lt: #d0e4b8;
+  --olive-gs: #edf5e0;
+  --rust:     #7a4218;
+  --rust-lt:  #f2dbc8;
+  --rust-gs:  #fdf4ec;
+  --ink:      #1c2014;
+  --ink-mid:  #2e3420;
+  --ink-soft: #5a6344;
+  --ink-pale: #8a9470;
+  --parch:    #faf9f4;
+  --parch-d:  #f2f0e6;
+  --teal:     #1a5260;
+  --teal-lt:  #c8dfe5;
+  --teal-gs:  #e8f4f8;
+  --border:   #dce3cc;
+  --white:    #ffffff;
+  --ok:       #1c4d2a;
+  --ok-bg:    #dff0e5;
+  --err:      #6b2020;
+  --err-bg:   #f8e5e5;
+  --r:        10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:16px;line-height:1.76;
+  color:var(--ink);background:var(--parch);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── TOPBAR ─── */
+.bar{background:var(--olive);position:sticky;top:0;z-index:300;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.bar-in{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 32px;gap:20px}
+.bar-brand{display:flex;align-items:center;gap:14px}
+.bar-brand img{height:40px;filter:brightness(0) invert(1)}
+.bar-sep{width:1px;height:32px;background:rgba(255,255,255,.18)}
+.bar-title{color:rgba(255,255,255,.55);font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
+.bar-title strong{display:block;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.02em}
+.bar-nav{display:flex;gap:2px}
+.bar-nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:11.5px;font-weight:500;padding:6px 12px;border-radius:6px;transition:.2s;white-space:nowrap}
+.bar-nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+@media(max-width:840px){.bar-nav{display:none}}
+
+/* ─── HERO — red hexagonal colaborativa ─── */
+.hero{
+  background:var(--olive);
+  padding:76px 32px 68px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='92'%3E%3Cpolygon points='40,4 74,22 74,58 40,76 6,58 6,22' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size:80px 92px;
+}
+.hero::after{content:'';position:absolute;bottom:-100px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(77,109,50,.35) 0%,transparent 70%)}
+.hero-in{max-width:800px;margin:0 auto;position:relative;z-index:1}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#c8dfb8;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:26px}
+.hero-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:#9dd16e}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.3rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:16px;letter-spacing:-.01em}
+.hero h1 em{color:#c8dfb8;font-style:italic;font-weight:400}
+.hero-sub{color:rgba(255,255,255,.68);font-size:1rem;font-weight:300;line-height:1.72;margin-bottom:44px;max-width:640px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px}
+.h-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.76);font-size:12px;font-weight:500;padding:6px 16px;border-radius:6px;letter-spacing:.02em}
+.h-tag span{color:#fff;font-weight:600}
+
+/* ─── LAYOUT ─── */
+.wrap{max-width:1160px;margin:0 auto;padding:52px 32px;display:grid;grid-template-columns:262px 1fr;gap:48px;align-items:start}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}.toc{display:none}}
+
+/* ─── TOC ─── */
+.toc{position:sticky;top:74px;display:flex;flex-direction:column;gap:20px}
+.toc-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.toc-hd{background:var(--olive);color:#fff;padding:12px 18px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.toc-nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 18px;font-size:12.5px;font-weight:400;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--border);transition:.15s}
+.toc-nav a:last-child{border-bottom:none}
+.toc-nav a:hover{background:var(--olive-gs);color:var(--olive-m);padding-left:22px}
+.toc-nav a.on{background:var(--olive-lt);color:var(--olive);font-weight:600;padding-left:24px;border-left:3px solid var(--olive-l)}
+.nb{background:var(--olive);color:#fff;font-size:10px;font-weight:700;min-width:20px;height:20px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.toc-meta .row{display:flex;justify-content:space-between;padding:7px 18px;font-size:12px;border-bottom:1px solid var(--border);color:var(--ink-pale)}
+.toc-meta .row:last-child{border-bottom:none}
+.toc-meta .row strong{color:var(--ink);font-weight:600;text-align:right;max-width:56%;line-height:1.35}
+
+/* ─── CARDS ─── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.card-hd{display:flex;align-items:center;gap:16px;padding:22px 30px;background:var(--olive-m)}
+.card-hd.rust-hd{background:var(--rust)}
+.card-hd.teal-hd{background:var(--teal)}
+.card-num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,.15);color:#fff}
+.card-hd-txt h2{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;font-weight:600;margin-bottom:2px;line-height:1.2}
+.card-hd-txt p{color:rgba(255,255,255,.55);font-size:11.5px;font-weight:300;letter-spacing:.04em}
+.card-body{padding:32px}
+
+/* ─── TYPOGRAPHY ─── */
+h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--olive);font-weight:600;margin:30px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--olive-lt)}
+h3:first-child{margin-top:0}
+h4{font-size:.875rem;color:var(--olive-m);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin:22px 0 9px}
+p{margin-bottom:14px;color:var(--ink-mid);line-height:1.78}
+p:last-child{margin-bottom:0}
+
+/* ─── CALLOUTS ─── */
+.note{border-radius:9px;padding:16px 20px;margin:20px 0;font-size:.9rem;border-left:4px solid}
+.n-olive{background:var(--olive-gs);border-color:var(--olive-l);color:var(--olive)}
+.n-rust{background:var(--rust-gs);border-color:var(--rust);color:var(--rust)}
+.n-teal{background:var(--teal-gs);border-color:var(--teal);color:var(--teal)}
+.n-ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.note strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;font-weight:700}
+
+/* ─── TILES ─── */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px;margin:18px 0}
+.tile{background:var(--olive-gs);border:1px solid var(--border);border-radius:9px;padding:18px;border-top:3px solid var(--olive-l)}
+.tile h5{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--olive);margin-bottom:6px}
+.tile p{font-size:.82rem;color:var(--ink-soft);margin:0}
+
+/* ─── COLLAB DIAGRAM ─── */
+.collab-diagram{background:var(--olive);border-radius:12px;padding:28px;margin:20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.collab-node{background:rgba(255,255,255,.08);border:1px solid rgba(200,223,184,.3);border-radius:9px;padding:16px;text-align:center}
+.collab-node h5{color:#c8dfb8;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.collab-node p{color:rgba(255,255,255,.68);font-size:.78rem;margin:0;line-height:1.5}
+.collab-node.center{background:rgba(77,109,50,.4);border-color:rgba(157,209,110,.5)}
+.collab-node.center h5{color:#9dd16e}
+
+/* ─── TABLE ─── */
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0}
+.tbl thead th{background:var(--olive);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.79rem;letter-spacing:.04em;text-transform:uppercase}
+.tbl tbody td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--ink-mid);vertical-align:top}
+.tbl tbody tr:nth-child(even) td{background:var(--olive-gs)}
+.tbl tbody tr:last-child td{border-bottom:none}
+
+/* ─── RUBRIC ─── */
+.rtbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:16px 0;display:block;overflow-x:auto}
+.rtbl thead th{background:var(--olive-m);color:#fff;padding:9px 12px;text-align:center;min-width:90px;font-size:.76rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.rtbl thead th:first-child{text-align:left;min-width:130px}
+.rtbl td{padding:9px 12px;border:1px solid var(--border);vertical-align:top;line-height:1.4;color:var(--ink-mid)}
+.rtbl td:first-child{font-weight:600;color:var(--olive);background:var(--olive-gs)}
+
+/* ─── STEPS ─── */
+.steps{list-style:none;padding:0;margin:16px 0;counter-reset:s}
+.steps li{counter-increment:s;padding:13px 16px 13px 54px;position:relative;background:var(--olive-gs);border:1px solid var(--border);border-radius:9px;margin-bottom:9px;font-size:.91rem;color:var(--ink-mid)}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:50%;transform:translateY(-50%);background:var(--olive);color:#fff;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem}
+.steps li strong{color:var(--ink)}
+
+/* ─── BULLET LIST ─── */
+.bl{list-style:none;padding:0;margin:12px 0 18px}
+.bl li{padding:8px 0 8px 28px;position:relative;font-size:.92rem;border-bottom:1px solid var(--border);color:var(--ink-mid)}
+.bl li:last-child{border-bottom:none}
+.bl li::before{content:'';position:absolute;left:8px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--olive-l)}
+
+/* ─── ACT HEADER ─── */
+.act-hd{display:flex;align-items:flex-start;gap:16px;padding:20px;background:var(--olive-gs);border-radius:10px;border:1px solid var(--border);margin-bottom:24px}
+.act-badge{background:var(--olive);color:var(--olive-lt);font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.act-hd-t h3{border:none;padding:0;margin:0 0 3px;font-size:1.02rem}
+.act-hd-t p{font-size:.84rem;color:var(--ink-pale);margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pill{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:20px;border:1px solid}
+.p-olive{background:var(--olive-lt);color:var(--olive);border-color:var(--olive-l)}
+.p-rust{background:var(--rust-lt);color:var(--rust);border-color:var(--rust)}
+.p-ok{background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+
+/* ─── FORUM BOX ─── */
+.fbox{background:var(--rust-gs);border:2px solid var(--rust);border-radius:10px;padding:26px;margin:18px 0}
+.fbox .flbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.fbox blockquote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ink);line-height:1.65;margin:0 0 12px;border:none;padding:0}
+.fbox p{font-size:.87rem;color:var(--ink-pale);margin:0}
+
+/* ─── SCENARIO ─── */
+.scenario{background:var(--olive);border-radius:12px;padding:30px;margin:18px 0}
+.scenario .slbl{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8dfb8;margin-bottom:14px}
+.scenario p{color:rgba(255,255,255,.82);font-size:.93rem;line-height:1.72;margin-bottom:14px}
+.scenario p:last-child{margin-bottom:0}
+.scenario ul{list-style:none;padding:0;margin:0}
+.scenario ul li{padding:8px 0 8px 26px;position:relative;font-size:.9rem;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.1)}
+.scenario ul li:last-child{border-bottom:none}
+.scenario ul li::before{content:'';position:absolute;left:6px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--olive-lt)}
+
+/* ─── CASE CARD ─── */
+.case-wrap{border:2px solid var(--olive-l);border-radius:12px;overflow:hidden;margin:18px 0}
+.case-top{background:var(--olive-l);padding:16px 22px}
+.case-top h4{margin:0;font-size:.95rem;color:#fff;text-transform:none;letter-spacing:0;font-weight:600}
+.case-top small{color:rgba(255,255,255,.75);font-size:.81rem}
+.case-body{padding:24px}
+.case-body p{font-size:.92rem;line-height:1.74}
+.cq{background:var(--olive-gs);border-left:4px solid var(--olive-l);border-radius:0 9px 9px 0;padding:14px 18px;margin:14px 0;font-size:.9rem;color:var(--ink)}
+.cq strong{display:block;color:var(--olive-m);font-size:.79rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+
+/* ─── PRIOR ─── */
+.prior{background:var(--rust-gs);border:1px solid var(--rust);border-radius:10px;padding:24px;margin:18px 0}
+.prior .plbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--rust);margin-bottom:13px}
+.prior blockquote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--ink);margin-bottom:12px;line-height:1.65;border:none;padding:0}
+.prior textarea{width:100%;min-height:94px;border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;color:var(--ink);background:#fff;resize:vertical;line-height:1.55;transition:border-color .2s}
+.prior textarea:focus{outline:none;border-color:var(--olive-l)}
+.prior textarea::placeholder{color:var(--ink-pale);font-style:italic}
+
+/* ─── EXT RESOURCES ─── */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.res-card{background:#fff;border:1px solid var(--border);border-radius:9px;padding:16px;transition:box-shadow .2s}
+.res-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.res-card .rtype{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive-l);margin-bottom:8px}
+.res-card h5{font-size:.87rem;color:var(--ink);font-weight:600;margin-bottom:5px;line-height:1.35}
+.res-card p{font-size:.8rem;color:var(--ink-pale);margin-bottom:10px;line-height:1.45}
+.res-card a{font-size:.8rem;color:var(--olive-m);text-decoration:none;font-weight:600}
+.res-card a:hover{text-decoration:underline}
+
+/* ─── CLASSROOM ─── */
+.classroom{background:#eef3ff;border:1px solid #b8c8ee;border-radius:10px;padding:18px 22px;margin-top:24px;display:flex;gap:14px;align-items:flex-start}
+.classroom .ci{width:40px;height:40px;border-radius:8px;background:var(--olive);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.classroom .ci svg{width:20px;height:20px;fill:#fff}
+.classroom h4{margin:0 0 5px;font-size:.87rem;color:var(--ink);font-weight:600}
+.classroom p{font-size:.83rem;color:var(--ink-pale);margin:0}
+
+/* ─── DIM GRID ─── */
+.dim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:20px 0}
+.dim-card{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.dim-card .dim-top{background:var(--teal);padding:12px 16px}
+.dim-card .dim-top h5{color:#fff;font-size:.85rem;font-weight:700;margin:0}
+.dim-card .dim-top small{color:rgba(255,255,255,.65);font-size:.75rem}
+.dim-card .dim-body{padding:14px 16px;background:#fff}
+.dim-card .dim-body p{font-size:.82rem;color:var(--ink-soft);margin:0;line-height:1.55}
+
+/* ─── TAG ROW ─── */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{background:var(--olive-lt);color:var(--olive);border:1px solid var(--olive-l);font-size:.78rem;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.03em}
+.tag.teal-tag{background:var(--teal-lt);color:var(--teal);border-color:var(--teal)}
+.tag.rust-tag{background:var(--rust-lt);color:var(--rust);border-color:var(--rust)}
+
+/* ─── EXAMPLE ─── */
+.eg{background:#fff;border:1px solid var(--border);border-radius:9px;padding:16px 20px;margin:12px 0;position:relative}
+.eg::before{content:'Ejemplo orientador';position:absolute;top:-10px;left:14px;background:#fff;color:var(--olive-l);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:0 8px;border:1px solid var(--border);border-radius:4px}
+.eg p{font-size:.87rem;color:var(--ink-pale);font-style:italic;margin:0}
+
+/* ─── QUIZ ─── */
+.qpb{height:5px;background:var(--border);border-radius:3px;margin-bottom:28px;overflow:hidden}
+.qpf{height:100%;background:linear-gradient(90deg,var(--olive-l),var(--rust));border-radius:3px;transition:width .4s ease;width:0}
+.qq{display:none;animation:fu .3s ease}
+.qq.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.qc{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--olive-l);margin-bottom:12px}
+.qt{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ink);font-weight:600;margin-bottom:20px;line-height:1.5}
+.qo{list-style:none;padding:0;margin:0 0 22px}
+.qo li{margin-bottom:9px}
+.opt{width:100%;text-align:left;padding:13px 17px;background:var(--olive-gs);border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:.91rem;color:var(--ink-mid);font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;display:flex;align-items:center;gap:13px}
+.opt:hover:not(:disabled){background:var(--olive-lt);border-color:var(--olive-l);color:var(--ink)}
+.opt .ol{background:var(--olive);color:#fff;width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0}
+.opt.c{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.opt.c .ol{background:var(--ok)}
+.opt.w{background:var(--err-bg);border-color:var(--err);color:var(--err)}
+.opt.w .ol{background:var(--err)}
+.opt:disabled{cursor:default}
+.qfb{display:none;padding:13px 17px;border-radius:8px;font-size:.88rem;margin-bottom:18px;border-left:4px solid}
+.qfb.c{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.qfb.w{background:var(--err-bg);border-color:var(--err);color:var(--err)}
+.qfb strong{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.qnb{background:var(--olive);color:#fff;border:none;padding:11px 28px;border-radius:7px;font-size:.88rem;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;letter-spacing:.04em;transition:all .2s;display:none}
+.qnb:hover{background:var(--olive-l)}
+.qres{display:none;text-align:center;padding:44px 20px;animation:fu .4s ease}
+.sring{width:120px;height:120px;border-radius:50%;margin:0 auto 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid}
+.sring .sn{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;line-height:1}
+.sring .sd{font-size:.82rem;opacity:.7}
+.r-hi{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.r-mid{border-color:var(--rust);color:var(--rust);background:var(--rust-lt)}
+.r-lo{border-color:var(--err);color:var(--err);background:var(--err-bg)}
+.rmsg{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.rdet{font-size:.88rem;color:var(--ink-pale);margin-bottom:26px}
+.btn-retry{background:#fff;color:var(--olive);border:2px solid var(--olive);padding:10px 28px;border-radius:7px;font-size:.88rem;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-retry:hover{background:var(--olive);color:#fff}
+
+/* ─── PLANNER ─── */
+.planner{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+@media(max-width:600px){.planner{grid-template-columns:1fr}}
+.pl{background:var(--olive-gs);border:1px solid var(--border);border-radius:10px;padding:18px}
+.pl h4{margin:0 0 4px;font-size:.85rem}
+.pl small{font-size:.8rem;color:var(--ink-pale);display:block;margin-bottom:9px;line-height:1.45}
+.pl textarea{width:100%;min-height:98px;border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.87rem;color:var(--ink);background:#fff;resize:vertical;line-height:1.55;transition:border-color .2s}
+.pl textarea:focus{outline:none;border-color:var(--olive-l)}
+.pl textarea::placeholder{color:var(--ink-pale);font-style:italic}
+.sbtn{background:var(--olive-m);color:#fff;border:none;padding:11px 28px;border-radius:7px;font-size:.88rem;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;margin-top:14px}
+.sbtn:hover{background:var(--olive)}
+.sok{display:none;margin-top:12px;padding:12px 16px;background:var(--ok-bg);border:1px solid var(--ok);border-radius:7px;font-size:.87rem;color:var(--ok);font-weight:600}
+hr.dv{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+/* ─── FOOTER ─── */
+footer{background:var(--olive);color:rgba(255,255,255,.5);text-align:center;padding:32px;font-size:.8rem;line-height:1.9;margin-top:40px}
+footer strong{color:rgba(255,255,255,.85)}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="bar">
+  <div class="bar-in">
+    <div class="bar-brand">
+      <img src="data:image/jpeg;base64,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" alt="Universidad de la Ciénega">
+      <div class="bar-sep"></div>
+      <div class="bar-title">
+        Licenciatura en Pedagogía
+        <strong>Tecnología y Educación I — Unidad 2</strong>
+      </div>
+    </div>
+    <nav class="bar-nav">
+      <a href="#intro">Introducción</a>
+      <a href="#previo">Conocimiento previo</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#actividades">Actividades</a>
+      <a href="#reflexion">Reflexión</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-chip">Guía de Aprendizaje Interactiva · Unidad 2 · Temas 2.4 y 2.5</div>
+    <h1>Internet para el <em>Trabajo Colaborativo</em><br>y la <em>Gestión Educativa</em></h1>
+    <p class="hero-sub">
+      Análisis constructivista de cómo Internet transforma las formas de colaboración
+      entre estudiantes y docentes, y cómo sostiene la administración y gestión
+      de los centros educativos contemporáneos.
+    </p>
+    <div class="hero-tags">
+      <div class="h-tag"><span>Unidad:</span> 2 — Nuevas herramientas pedagógicas</div>
+      <div class="h-tag"><span>Temas:</span> 2.4 Colaboración · 2.5 Gestión</div>
+      <div class="h-tag"><span>Metodología:</span> Constructivismo · ABP</div>
+      <div class="h-tag"><span>Entregables:</span> 4 actividades Classroom</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="toc">
+    <div class="toc-box">
+      <div class="toc-hd">Contenido de la guía</div>
+      <nav class="toc-nav">
+        <a href="#intro"><span class="nb">1</span>Introducción al tema</a>
+        <a href="#previo"><span class="nb">2</span>Conocimiento previo</a>
+        <a href="#contenido"><span class="nb">3</span>Marco conceptual</a>
+        <a href="#recursos"><span class="nb">4</span>Materiales de consulta</a>
+        <a href="#act1"><span class="nb">5</span>Actividad 1: Foro</a>
+        <a href="#act2"><span class="nb">6</span>Actividad 2: ABP</a>
+        <a href="#act3"><span class="nb">7</span>Actividad 3: Caso práctico</a>
+        <a href="#act4"><span class="nb">8</span>Actividad 4: Quiz</a>
+        <a href="#reflexion"><span class="nb">9</span>Reflexión y cierre</a>
+      </nav>
+    </div>
+    <div class="toc-box">
+      <div class="toc-hd">Datos del curso</div>
+      <div class="toc-meta">
+        <div class="row"><span>Materia</span><strong>Tecnología y Educación I</strong></div>
+        <div class="row"><span>Unidad</span><strong>2 · Nuevas herramientas</strong></div>
+        <div class="row"><span>Temas</span><strong>2.4 y 2.5</strong></div>
+        <div class="row"><span>Nivel</span><strong>Licenciatura en Pedagogía</strong></div>
+        <div class="row"><span>Enfoque</span><strong>Constructivismo · ABP</strong></div>
+        <div class="row"><span>Entregables</span><strong>4 actividades Classroom</strong></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ① INTRODUCCIÓN -->
+    <section class="card" id="intro">
+      <div class="card-hd">
+        <div class="card-num">I</div>
+        <div class="card-hd-txt">
+          <h2>Introducción al tema</h2>
+          <p>Contextualización, propósito y orientación pedagógica</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Esta guía aborda los temas 2.4 y 2.5 de la Unidad 2, que completan el panorama de las nuevas herramientas pedagógicas al examinar dos dimensiones específicas del papel de Internet en la educación: su función como soporte para el <strong>trabajo colaborativo</strong> —cómo Internet habilita la construcción conjunta del conocimiento entre estudiantes y docentes— y su papel en la <strong>gestión y administración de los centros educativos</strong> —cómo Internet transforma los procesos organizativos, comunicativos y administrativos de las instituciones escolares.</p>
+
+        <p>Estas dos dimensiones, aunque aparentemente distintas, comparten una raíz común: la capacidad de Internet para conectar personas, distribuir información y coordinar procesos más allá de las fronteras del tiempo y el espacio. En el contexto universitario, ambas tienen implicaciones directas para la experiencia cotidiana del estudiante de pedagogía: en sus propios trabajos en equipo y en la comprensión de los sistemas de gestión de la institución en la que estudia y en las que se desempeñará profesionalmente.</p>
+
+        <div class="note n-olive">
+          <strong>Orientación pedagógica</strong>
+          Esta guía está diseñada con metodología constructivista y de aprendizaje basado en problemas. No se trata de listar herramientas digitales, sino de comprender las condiciones pedagógicas, organizativas y humanas que hacen posible o imposible la colaboración y la gestión efectivas mediadas por Internet.
+        </div>
+
+        <h3>Propósitos de aprendizaje</h3>
+        <div class="tiles">
+          <div class="tile">
+            <h5>Comprender</h5>
+            <p>Las condiciones pedagógicas que distinguen la verdadera colaboración en red de la mera coordinación técnica de tareas.</p>
+          </div>
+          <div class="tile">
+            <h5>Analizar</h5>
+            <p>Las dimensiones de la gestión y administración educativa que se transforman con el uso de Internet como herramienta institucional.</p>
+          </div>
+          <div class="tile">
+            <h5>Reflexionar</h5>
+            <p>Críticamente sobre la calidad colaborativa de sus propios trabajos en equipo universitarios mediados por tecnología.</p>
+          </div>
+          <div class="tile">
+            <h5>Proyectar</h5>
+            <p>Estrategias para mejorar la colaboración y la gestión en su propio contexto universitario como estudiante y futuro pedagogo.</p>
+          </div>
+        </div>
+
+        <div class="note n-rust">
+          <strong>Modo de uso</strong>
+          Recorra la guía en orden: primero registre sus conocimientos previos, estudie el marco conceptual, consulte al menos dos fuentes externas y, finalmente, desarrolle las cuatro actividades para Google Classroom. El planificador de reflexión final integra todo el recorrido.
+        </div>
+      </div>
+    </section>
+
+    <!-- ② CONOCIMIENTO PREVIO -->
+    <section class="card" id="previo">
+      <div class="card-hd rust-hd">
+        <div class="card-num">II</div>
+        <div class="card-hd-txt">
+          <h2>Exploración de conocimientos previos</h2>
+          <p>Activación del pensamiento antes del estudio formal del tema</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Antes de estudiar los contenidos formales de esta guía, reflexione sobre su experiencia directa con el trabajo colaborativo en línea y con la gestión administrativa digital en su universidad. El aprendizaje constructivista parte siempre de lo que el estudiante ya vive y conoce.</p>
+
+        <div class="prior">
+          <div class="plbl">Pregunta de exploración previa</div>
+          <blockquote>"¿Cómo son realmente sus experiencias de trabajo en equipo mediado por tecnología en la licenciatura? ¿Considera que esos trabajos implican verdadera colaboración o principalmente una distribución de tareas individuales? Por otro lado, ¿qué sistemas digitales conoce o usa para gestionar su vida académica en la universidad (inscripciones, calificaciones, trámites, comunicación institucional) y qué tan eficientes o deficientes los considera?"</blockquote>
+          <textarea id="previo-txt" placeholder="Escriba aquí sus reflexiones iniciales sobre ambas preguntas. Sea honesto y específico sobre sus experiencias reales de trabajo colaborativo en línea y de uso de sistemas de gestión universitaria digital..."></textarea>
+        </div>
+
+        <p style="font-size:.87rem;color:var(--ink-pale);margin-top:10px">Conserve estas reflexiones. El planificador final le pedirá contrastarlas con lo que habrá construido a través del estudio y las actividades.</p>
+      </div>
+    </section>
+
+    <!-- ③ CONTENIDO -->
+    <section class="card" id="contenido">
+      <div class="card-hd">
+        <div class="card-num">III</div>
+        <div class="card-hd-txt">
+          <h2>Marco conceptual del tema</h2>
+          <p>Temas 2.4 y 2.5 — Colaboración y gestión educativa con Internet</p>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <!-- DIAGRAMA COLABORATIVO -->
+        <h3>Red de funciones de Internet en la educación institucional</h3>
+        <div class="collab-diagram">
+          <div class="collab-node">
+            <h5>Comunicación entre pares</h5>
+            <p>Foros, chats, videollamadas, tableros colaborativos</p>
+          </div>
+          <div class="collab-node">
+            <h5>Co-creación de contenidos</h5>
+            <p>Documentos compartidos, wikis, presentaciones colaborativas</p>
+          </div>
+          <div class="collab-node center">
+            <h5>Internet como herramienta institucional</h5>
+            <p>2.4 Colaboración · 2.5 Gestión</p>
+          </div>
+          <div class="collab-node">
+            <h5>Gestión académica</h5>
+            <p>Control escolar, calificaciones, inscripciones, expedientes</p>
+          </div>
+          <div class="collab-node">
+            <h5>Comunicación institucional</h5>
+            <p>Plataformas, correo institucional, portales para familias</p>
+          </div>
+        </div>
+
+        <hr class="dv">
+
+        <h3 id="sub24">2.4 Internet como soporte para el trabajo colaborativo</h3>
+
+        <p>El trabajo colaborativo mediado por tecnología es uno de los temas más relevantes —y también más malentendidos— de la pedagogía contemporánea. La mera existencia de herramientas digitales que permiten que varias personas trabajen sobre un mismo documento o proyecto no garantiza que el proceso sea genuinamente colaborativo. La colaboración, en sentido pedagógico, implica algo cualitativamente distinto de la simple división de tareas o la coordinación de entregables.</p>
+
+        <p>Autores como César Coll y Javier Onrubia han señalado que la actividad conjunta en entornos virtuales es colaborativa cuando implica una construcción compartida del significado: cuando los participantes co-regulan el proceso, negocian las ideas, se retroalimentan mutuamente y construyen juntos algo que ninguno de ellos habría podido producir de manera individual. Desde esta perspectiva, repartir un trabajo en partes y luego ensamblarlas no es colaborar: es dividir.</p>
+
+        <h4>Diferencia entre cooperación y colaboración en entornos digitales</h4>
+        <table class="tbl">
+          <thead>
+            <tr><th>Dimensión</th><th>Cooperación</th><th>Colaboración genuina</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>División del trabajo</strong></td><td>Cada integrante trabaja una parte diferente de manera independiente</td><td>Todo el equipo trabaja sobre los mismos problemas e ideas de manera interdependiente</td></tr>
+            <tr><td><strong>Comunicación</strong></td><td>Intercambio de productos terminados para su ensamblaje final</td><td>Diálogo continuo sobre el proceso, los significados y las decisiones del grupo</td></tr>
+            <tr><td><strong>Producto</strong></td><td>Yuxtaposición de contribuciones individuales</td><td>Construcción emergente que trasciende la suma de las partes individuales</td></tr>
+            <tr><td><strong>Rol de la tecnología</strong></td><td>Canal de distribución y entrega de partes</td><td>Espacio activo de co-construcción y diálogo sostenido</td></tr>
+            <tr><td><strong>Aprendizaje resultante</strong></td><td>Cada quien aprende solo su parte</td><td>Todos aprenden del proceso conjunto y del intercambio de perspectivas</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Herramientas digitales que potencian la colaboración genuina</h4>
+        <div class="dim-grid">
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Documentos colaborativos en tiempo real</h5>
+              <small>Co-escritura y co-edición</small>
+            </div>
+            <div class="dim-body">
+              <p>Google Docs, Notion, Overleaf. Permiten que múltiples personas escriban, comenten y editen simultáneamente, dejando trazas del proceso colaborativo.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Tableros colaborativos visuales</h5>
+              <small>Pensamiento compartido</small>
+            </div>
+            <div class="dim-body">
+              <p>Miro, Padlet, Jamboard. Espacios de trabajo visual donde los equipos organizan ideas, mapas mentales y proyectos de manera conjunta.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Gestores de proyectos colaborativos</h5>
+              <small>Coordinación de procesos</small>
+            </div>
+            <div class="dim-body">
+              <p>Trello, Asana, Notion. Permiten visualizar el avance, distribuir responsabilidades y dar seguimiento al proceso grupal de forma transparente.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Plataformas de videoconferencia</h5>
+              <small>Sincronía y diálogo</small>
+            </div>
+            <div class="dim-body">
+              <p>Zoom, Google Meet, Teams. Recuperan la presencia y el diálogo en tiempo real, indispensables para la negociación de significados en el proceso colaborativo.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Wikis educativas</h5>
+              <small>Co-autoría del conocimiento</small>
+            </div>
+            <div class="dim-body">
+              <p>Espacios donde los estudiantes construyen colectivamente documentos de conocimiento que pueden ser ampliados, corregidos y enriquecidos por el grupo.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top">
+              <h5>Repositorios compartidos</h5>
+              <small>Memoria colectiva del equipo</small>
+            </div>
+            <div class="dim-body">
+              <p>Google Drive, GitHub (para proyectos de programación). Centralizan los materiales del equipo y permiten el historial de versiones y cambios.</p>
+            </div>
+          </div>
+        </div>
+
+        <h4>Condiciones pedagógicas para la colaboración en red</h4>
+        <p>Las herramientas digitales por sí solas no garantizan la colaboración. Para que el trabajo colaborativo en red sea pedagógicamente genuino, deben darse condiciones específicas de diseño, mediación y cultura grupal:</p>
+
+        <ul class="bl">
+          <li><strong>Interdependencia positiva:</strong> cada integrante necesita de los demás para completar la tarea; el diseño de la actividad hace imposible el éxito individual sin la participación real del grupo.</li>
+          <li><strong>Responsabilidad individual y colectiva:</strong> cada miembro responde tanto por su aportación personal como por el aprendizaje de todo el equipo.</li>
+          <li><strong>Interacción promotora:</strong> el diseño activa el diálogo, la retroalimentación y el cuestionamiento entre los participantes, no solo la entrega de productos.</li>
+          <li><strong>Habilidades sociales explícitamente enseñadas:</strong> la colaboración requiere competencias de comunicación, negociación y gestión del conflicto que deben ser modeladas y practicadas.</li>
+          <li><strong>Evaluación del proceso grupal:</strong> el equipo reflexiona periódicamente sobre su propio funcionamiento y lo ajusta, no solo evalúa el producto final.</li>
+        </ul>
+
+        <div class="note n-olive">
+          <strong>Para reflexionar desde la propia experiencia</strong>
+          Piense en sus últimas experiencias de trabajo en equipo mediado por tecnología en la licenciatura. ¿Cumplían con estas condiciones o predominó la distribución individual de tareas? Esta reflexión será el punto de partida de la Actividad 1.
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Colaboración genuina en red</span>
+          <span class="tag">Interdependencia positiva</span>
+          <span class="tag teal-tag">Aprendizaje colaborativo en línea</span>
+          <span class="tag teal-tag">Co-construcción del conocimiento</span>
+          <span class="tag rust-tag">Cooperación vs. colaboración</span>
+        </div>
+
+        <hr class="dv">
+
+        <h3 id="sub25">2.5 Internet para la gestión y la administración de los centros educativos</h3>
+
+        <p>Más allá de su papel en los procesos de enseñanza-aprendizaje, Internet ha transformado radicalmente la <strong>gestión y administración</strong> de los centros educativos. Esta dimensión, muchas veces subestimada en los programas de pedagogía, tiene implicaciones directas para la eficiencia institucional, la comunicación con las familias, la toma de decisiones basada en datos y la transparencia en la rendición de cuentas.</p>
+
+        <p>El pedagogo del siglo XXI no puede limitarse a comprender los procesos de enseñanza-aprendizaje: debe también comprender cómo funciona la organización educativa, cómo fluye la información dentro de ella y cómo las tecnologías digitales reconfigurando las estructuras de gestión, comunicación y toma de decisiones en los centros escolares.</p>
+
+        <h4>Dimensiones de la gestión educativa transformadas por Internet</h4>
+        <table class="tbl">
+          <thead>
+            <tr><th>Dimensión de gestión</th><th>Antes de Internet</th><th>Con Internet</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Control escolar</strong></td>
+              <td>Registros en papel, expedientes físicos, procesos manuales de inscripción y calificación</td>
+              <td>Sistemas de información educativa (SIE), control escolar digital, plataformas de gestión académica</td>
+            </tr>
+            <tr>
+              <td><strong>Comunicación institución-familias</strong></td>
+              <td>Circulares impresas, reuniones presenciales obligatorias, comunicación episódica</td>
+              <td>Plataformas de mensajería institucional, portales para padres, correo electrónico, aplicaciones móviles</td>
+            </tr>
+            <tr>
+              <td><strong>Gestión docente</strong></td>
+              <td>Planificaciones en papel, registro manual de asistencia, seguimiento informal</td>
+              <td>Plataformas de planificación curricular, registro digital de asistencia y evaluaciones, seguimiento con datos</td>
+            </tr>
+            <tr>
+              <td><strong>Toma de decisiones</strong></td>
+              <td>Basada en experiencia, intuición y reportes manuales ocasionales</td>
+              <td>Análisis de datos educativos, learning analytics, tableros de indicadores institucionales</td>
+            </tr>
+            <tr>
+              <td><strong>Recursos y finanzas</strong></td>
+              <td>Presupuestos en papel, procesos de adquisición lentos y opacos</td>
+              <td>Sistemas de gestión financiera en línea, transparencia presupuestal, licitaciones electrónicas</td>
+            </tr>
+            <tr>
+              <td><strong>Relación con autoridades</strong></td>
+              <td>Reportes estadísticos en papel enviados periódicamente</td>
+              <td>Sistemas nacionales de información educativa, reporte en tiempo real a organismos supervisores</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Plataformas de gestión educativa más relevantes en el contexto mexicano</h4>
+        <ul class="bl">
+          <li><strong>SIIE (Sistema de Información e Indicadores Educativos) — SEP:</strong> plataforma federal de información estadística sobre el sistema educativo mexicano, base para la planeación y la política educativa.</li>
+          <li><strong>SIGED (Sistema de Información y Gestión Educativa):</strong> sistema nacional para el registro, actualización y consulta de información sobre planteles, docentes y alumnos de educación básica.</li>
+          <li><strong>Google Workspace for Education:</strong> suite ampliamente adoptada en universidades mexicanas que integra correo institucional, almacenamiento, gestión de aula y herramientas de colaboración.</li>
+          <li><strong>Sistemas institucionales propios:</strong> portales de control escolar, plataformas de servicios escolares y sistemas de seguimiento académico propios de cada universidad.</li>
+          <li><strong>Moodle y LMS institucionales:</strong> plataformas de gestión del aprendizaje que sirven simultáneamente como herramienta pedagógica y como sistema de gestión del proceso académico.</li>
+        </ul>
+
+        <h4>Tensiones y desafíos de la gestión educativa digital</h4>
+        <p>La transformación digital de la gestión educativa no está exenta de tensiones y riesgos que el pedagogo debe conocer y analizar críticamente:</p>
+
+        <div class="dim-grid" style="grid-template-columns:1fr 1fr">
+          <div class="dim-card">
+            <div class="dim-top" style="background:var(--ok)">
+              <h5 style="color:#fff">Oportunidades</h5>
+              <small style="color:rgba(255,255,255,.7)">Beneficios institucionales</small>
+            </div>
+            <div class="dim-body">
+              <p>Mayor eficiencia y agilidad en los procesos administrativos; acceso en tiempo real a información relevante; comunicación más fluida con familias y comunidad; toma de decisiones basada en datos; mayor transparencia y rendición de cuentas; reducción de trámites presenciales y uso de papel.</p>
+            </div>
+          </div>
+          <div class="dim-card">
+            <div class="dim-top" style="background:var(--err)">
+              <h5 style="color:#fff">Riesgos y tensiones</h5>
+              <small style="color:rgba(255,255,255,.7)">Desafíos institucionales</small>
+            </div>
+            <div class="dim-body">
+              <p>Riesgos de seguridad y privacidad de datos de estudiantes y familias; brechas de acceso que excluyen a comunidades sin conectividad; exceso de control y vigilancia digital de docentes y estudiantes; dependencia tecnológica de plataformas externas; resistencia institucional al cambio de procesos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note n-teal">
+          <strong>La perspectiva del pedagogo ante la gestión digital</strong>
+          El pedagogo no es solo un técnico de la enseñanza: es un profesional que comprende la institución educativa como un sistema complejo. Conocer los sistemas de gestión digital de los centros escolares le permite actuar con mayor agencia, comprender las estructuras en las que trabajará y contribuir a que la transformación digital de la gestión educativa sirva efectivamente a los propósitos formativos de la institución, y no solo a los de la eficiencia burocrática.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ④ RECURSOS -->
+    <section class="card" id="recursos">
+      <div class="card-hd teal-hd">
+        <div class="card-num">IV</div>
+        <div class="card-hd-txt">
+          <h2>Materiales externos de consulta</h2>
+          <p>Fuentes académicas formales recomendadas para los Temas 2.4 y 2.5</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Los siguientes materiales han sido seleccionados por su rigor académico, pertinencia directa para los temas de esta guía y disponibilidad en acceso abierto o mediante recursos institucionales. Se recomienda revisar al menos dos antes de desarrollar las actividades.</p>
+
+        <div class="res-grid">
+          <div class="res-card">
+            <div class="rtype">Artículo académico</div>
+            <h5>Coll, C. y Onrubia, J. — Aprendizaje colaborativo y TIC (2008)</h5>
+            <p>Marco conceptual sobre las condiciones de la colaboración genuina en entornos virtuales de aprendizaje.</p>
+            <a href="https://www.tdx.cat/handle/10803/1283" target="_blank">Buscar en acceso abierto</a>
+          </div>
+          <div class="res-card">
+            <div class="rtype">Libro de referencia</div>
+            <h5>Johnson, D. y Johnson, R. — Cooperative Learning (1994)</h5>
+            <p>Fundamento clásico sobre el aprendizaje cooperativo y colaborativo: condiciones, roles y diseño de actividades.</p>
+            <a href="https://www.ascd.org" target="_blank">Buscar en biblioteca institucional</a>
+          </div>
+          <div class="res-card">
+            <div class="rtype">Informe UNESCO</div>
+            <h5>UNESCO — Gestión educativa estratégica (2011, módulo 2)</h5>
+            <p>Marco latinoamericano sobre gestión educativa y el papel de las tecnologías en la administración de los centros escolares.</p>
+            <a href="https://unesdoc.unesco.org/ark:/48223/pf0000219418" target="_blank">Acceder al documento</a>
+          </div>
+          <div class="res-card">
+            <div class="rtype">Artículo académico</div>
+            <h5>Pozner, P. — El directivo como gestor de aprendizajes escolares (2000)</h5>
+            <p>Referencia sobre gestión institucional educativa: funciones, desafíos y las nuevas demandas de la era digital.</p>
+            <a href="https://www.aique.com.ar" target="_blank">Buscar en biblioteca institucional</a>
+          </div>
+          <div class="res-card">
+            <div class="rtype">Informe OCDE</div>
+            <h5>OCDE — Technology and Innovation in Education: TALIS (2020)</h5>
+            <p>Análisis internacional sobre el uso de tecnología por docentes y en la gestión de centros educativos.</p>
+            <a href="https://www.oecd.org/education/talis/" target="_blank">Acceder al recurso</a>
+          </div>
+          <div class="res-card">
+            <div class="rtype">Documento institucional</div>
+            <h5>SEP México — Estrategia Digital Nacional para la Educación</h5>
+            <p>Marco de política pública sobre la transformación digital de la gestión educativa en el contexto mexicano.</p>
+            <a href="https://www.sep.gob.mx" target="_blank">Acceder al recurso</a>
+          </div>
+        </div>
+
+        <div class="note n-ok">
+          <strong>Formato de cita APA 7.a edición</strong>
+          Coll, C., y Onrubia, J. (2008). Aprender y enseñar con las TIC. En C. Coll y C. Monereo (Eds.), <em>Psicología de la educación virtual</em>. Morata. / UNESCO. (2011). <em>Gestión educativa estratégica</em>. UNESCO-IIPE.
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ FORO -->
+    <section class="card" id="act1">
+      <div class="card-hd">
+        <div class="card-num">V</div>
+        <div class="card-hd-txt">
+          <h2>Actividad 1 — Foro de mediación académica</h2>
+          <p>Reflexión crítica y construcción colaborativa del conocimiento</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="act-hd">
+          <div class="act-badge">F1</div>
+          <div class="act-hd-t">
+            <h3>¿Colaboramos de verdad o solo repartimos tareas?</h3>
+            <p>Foro de intercambio argumentado · Google Classroom</p>
+            <div class="pills">
+              <span class="pill p-olive">Participación individual</span>
+              <span class="pill p-rust">Valor: 20 puntos</span>
+              <span class="pill p-ok">Plataforma: Google Classroom</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Pregunta detonadora</h3>
+        <div class="fbox">
+          <div class="flbl">Pregunta para reflexión y debate en foro</div>
+          <blockquote>"A la luz de la distinción entre cooperación y colaboración genuina estudiada en el Tema 2.4, ¿considera que los trabajos en equipo mediados por tecnología que ha realizado en su licenciatura han implicado verdadera colaboración o predominantemente distribución cooperativa de tareas? ¿Qué condiciones pedagógicas, tecnológicas o culturales han favorecido o dificultado la construcción conjunta del conocimiento en esos trabajos? Argumente con al menos un ejemplo concreto de su experiencia en alguna asignatura de la licenciatura."</blockquote>
+          <p>No existen respuestas correctas únicas. Se valora la honestidad en la autoevaluación, la solidez del argumento teórico y la profundidad del diálogo académico con los pares.</p>
+        </div>
+
+        <h3>Instrucciones paso a paso</h3>
+        <ol class="steps">
+          <li><strong>Estudie el Tema 2.4</strong>, especialmente la distinción entre cooperación y colaboración y las condiciones pedagógicas para la colaboración genuina en red.</li>
+          <li><strong>Identifique un trabajo en equipo concreto</strong> realizado en alguna asignatura de su licenciatura que haya implicado uso de tecnología digital. Recuerde con detalle cómo trabajaron, qué herramientas usaron y cómo se relacionaron en el proceso.</li>
+          <li><strong>Clasifique la experiencia:</strong> ¿fue cooperación o colaboración genuina? ¿Cuáles de las cinco condiciones pedagógicas se cumplieron y cuáles no? Prepare su argumento con evidencia específica.</li>
+          <li><strong>Redacte su aportación</strong> (200–300 palabras) con estructura clara: posicionamiento, argumento con ejemplo situado, reflexión propositiva. Use lenguaje académico formal.</li>
+          <li><strong>Ingrese a Google Classroom</strong> y publique en el foro "Foro 1 — ¿Colaboramos de verdad o solo repartimos tareas?"</li>
+          <li><strong>Responda a dos participaciones de compañeros</strong> (mínimo 80 palabras cada una) aportando una perspectiva complementaria o un cuestionamiento fundamentado.</li>
+        </ol>
+
+        <div class="eg">
+          <p>"En el tercer semestre, para la materia de Didáctica, realizamos un proyecto en equipo de cuatro personas usando Google Docs. Sin embargo, al analizar el proceso a la luz del Tema 2.4, reconozco que fue principalmente cooperación: cada quien redactó su sección de manera independiente y al final 'pegamos' las partes. Nadie leyó ni comentó el trabajo de los demás antes de la entrega. Lo que faltó fue la interacción promotora que describe Coll: no hubo diálogo sobre las ideas, ni retroalimentación mutua. La herramienta tecnológica era colaborativa, pero el proceso no lo era. El problema no era la tecnología sino el diseño de la actividad y la cultura de trabajo del equipo..."</p>
+        </div>
+
+        <h3>Criterios de evaluación</h3>
+        <table class="rtbl">
+          <thead><tr><th>Criterio</th><th>Excelente (5)</th><th>Satisfactorio (3)</th><th>Insuficiente (1)</th></tr></thead>
+          <tbody>
+            <tr><td>Fundamentación teórica</td><td>Aplica con precisión la distinción cooperación/colaboración y los conceptos del Tema 2.4.</td><td>Menciona conceptos sin aplicación profunda.</td><td>No vincula con los contenidos del tema.</td></tr>
+            <tr><td>Ejemplo situado y específico</td><td>Ejemplo concreto de su licenciatura con análisis detallado.</td><td>Ejemplo parcialmente específico o análisis débil.</td><td>Ejemplo genérico o ausente.</td></tr>
+            <tr><td>Interacción académica</td><td>Responde a dos participaciones con argumentos reflexivos.</td><td>Responde superficialmente a una participación.</td><td>No interactúa con compañeros.</td></tr>
+            <tr><td>Calidad formal</td><td>Lenguaje académico, ortografía correcta, extensión adecuada.</td><td>Comprensible con errores menores.</td><td>Informal o extensión insuficiente.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="classroom">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6z"/></svg></div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Acceda a la tarea "Foro 1 — ¿Colaboramos de verdad o solo repartimos tareas?" y publique directamente en los comentarios. No requiere archivo adjunto. Verifique la fecha de cierre en el tablón del aula virtual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ ABP -->
+    <section class="card" id="act2">
+      <div class="card-hd">
+        <div class="card-num">VI</div>
+        <div class="card-hd-txt">
+          <h2>Actividad 2 — Aprendizaje Basado en Problemas</h2>
+          <p>Rediseño de una actividad colaborativa y diagnóstico del sistema de gestión de la licenciatura</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="act-hd">
+          <div class="act-badge">A2</div>
+          <div class="act-hd-t">
+            <h3>Propuesta dual: colaboración genuina y gestión digital en la licenciatura</h3>
+            <p>Análisis situado y propuesta pedagógica · Entregable individual</p>
+            <div class="pills">
+              <span class="pill p-olive">Trabajo individual</span>
+              <span class="pill p-rust">Valor: 30 puntos</span>
+              <span class="pill p-ok">Formato: PDF o Word</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Situación problemática</h3>
+        <div class="scenario">
+          <div class="slbl">Escenario ABP — Lectura cuidadosa requerida</div>
+          <p>La coordinadora académica de la Licenciatura en Pedagogía de la Universidad de la Ciénega ha convocado a estudiantes de semestres avanzados para contribuir con dos diagnósticos breves que servirán de insumo para la actualización del plan de estudios y la mejora de los procesos institucionales:</p>
+          <p><strong>Parte A — Colaboración:</strong> Tomando como referencia una actividad de trabajo en equipo real de alguna asignatura de la licenciatura, elabore un rediseño de esa actividad para que promueva colaboración genuina (no solo cooperación), especificando qué herramientas digitales usaría y cómo garantizaría las condiciones pedagógicas de la colaboración.</p>
+          <p><strong>Parte B — Gestión:</strong> Realice un breve diagnóstico del sistema de gestión digital que utiliza la Universidad de la Ciénega con los estudiantes (control escolar, comunicación, trámites, plataformas académicas). Identifique dos fortalezas y dos áreas de mejora, desde la perspectiva de un estudiante que también es futuro pedagogo.</p>
+          <ul>
+            <li>Ambas partes deben estar fundamentadas en los conceptos de los Temas 2.4 y 2.5 respectivamente.</li>
+            <li>La Parte A debe referenciar condiciones pedagógicas específicas del marco conceptual.</li>
+            <li>La Parte B debe usar criterios pedagógicos e institucionales, no solo preferencias personales.</li>
+          </ul>
+        </div>
+
+        <h3>Instrucciones paso a paso</h3>
+        <ol class="steps">
+          <li><strong>Estudie los Temas 2.4 y 2.5</strong> y revise al menos dos materiales de la Sección IV antes de comenzar.</li>
+          <li><strong>Para la Parte A:</strong> elija una actividad colaborativa real de la licenciatura. Descríbala brevemente y rediseñe con base en las cinco condiciones pedagógicas del Tema 2.4. Justifique las herramientas digitales con argumentos pedagógicos.</li>
+          <li><strong>Para la Parte B:</strong> observe y recuerde su experiencia con los sistemas digitales de la universidad. Identifique dos fortalezas concretas y dos áreas de mejora concretas, usando los conceptos del Tema 2.5.</li>
+          <li><strong>Redacte el documento</strong> con la estructura indicada. Extensión total: 550–750 palabras. Al menos dos referencias APA 7.a.</li>
+          <li><strong>Suba el documento</strong> a la tarea "Actividad 2 — Colaboración y gestión digital en la licenciatura" en Google Classroom.</li>
+        </ol>
+
+        <h3>Estructura del documento</h3>
+        <table class="tbl">
+          <thead><tr><th>Sección</th><th>Contenido esperado</th><th>Extensión</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Encabezado</strong></td><td>Nombre, matrícula, fecha, materia y programa</td><td>—</td></tr>
+            <tr><td><strong>Parte A — Rediseño colaborativo</strong></td><td>Descripción de la actividad original + rediseño con condiciones pedagógicas y herramientas justificadas</td><td>260–320 palabras</td></tr>
+            <tr><td><strong>Parte B — Diagnóstico de gestión digital</strong></td><td>Dos fortalezas y dos áreas de mejora del sistema de gestión digital institucional, con justificación pedagógica</td><td>200–260 palabras</td></tr>
+            <tr><td><strong>Reflexión integradora</strong></td><td>¿Qué relación existe entre la colaboración digital (2.4) y la gestión institucional digital (2.5) en el contexto de la licenciatura?</td><td>60–80 palabras</td></tr>
+            <tr><td><strong>Referencias</strong></td><td>Mínimo dos referencias en APA 7.a edición</td><td>—</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note n-rust">
+          <strong>Diseño pedagógico anticopia</strong>
+          Ambas partes de esta actividad requieren observación directa de su experiencia universitaria real en la Universidad de la Ciénega. Una propuesta genérica o no anclada en la institución y las asignaturas reales que usted vive no cumple con el propósito formativo. El valor de su trabajo reside en que solo usted puede describir con precisión lo que experimenta en este contexto específico.
+        </div>
+
+        <div class="classroom">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6z"/></svg></div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Adjunte su documento en PDF o Word en la tarea "Actividad 2 — Colaboración y gestión digital en la licenciatura". Confirme que el archivo se cargó correctamente antes de cerrar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ CASO -->
+    <section class="card" id="act3">
+      <div class="card-hd">
+        <div class="card-num">VII</div>
+        <div class="card-hd-txt">
+          <h2>Actividad 3 — Análisis de caso práctico</h2>
+          <p>Aplicación del marco conceptual a una situación educativa real</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="act-hd">
+          <div class="act-badge">C3</div>
+          <div class="act-hd-t">
+            <h3>Caso: La transformación digital del Colegio Comunitario "Lázaro Cárdenas"</h3>
+            <p>Análisis fundamentado de un caso sobre colaboración y gestión digital · Entregable individual</p>
+            <div class="pills">
+              <span class="pill p-olive">Trabajo individual</span>
+              <span class="pill p-rust">Valor: 25 puntos</span>
+              <span class="pill p-ok">Formato: PDF o Word</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Lectura del caso</h3>
+        <div class="case-wrap">
+          <div class="case-top">
+            <h4>Caso educativo: La transformación digital del Colegio Comunitario "Lázaro Cárdenas"</h4>
+            <small>Caso elaborado con fines didácticos · Tecnología y Educación I · Universidad de la Ciénega</small>
+          </div>
+          <div class="case-body">
+            <p>El Colegio de Bachilleres Comunitario "Lázaro Cárdenas", ubicado en una localidad semiurbana de Jalisco con 680 estudiantes, inició en 2022 un proceso de transformación digital impulsado por su nueva directora, la profesora Alma. El proceso abarcó simultáneamente dos dimensiones: la incorporación del trabajo colaborativo en línea en las aulas y la digitalización de los procesos de gestión y administración escolar.</p>
+
+            <p>En la dimensión pedagógica, la profesora Alma capacitó a los docentes en el uso de Google Workspace for Education y propuso que al menos dos proyectos por semestre se desarrollaran utilizando herramientas colaborativas digitales. Sin embargo, los resultados fueron desiguales. En la clase de Historia, la maestra Laura diseñó una wiki colectiva donde los estudiantes construían juntos una "enciclopedia de la región": cada equipo investigaba un tema, publicaba en la wiki y comentaba el trabajo de los demás equipos durante tres semanas. El proceso generó un debate activo y los estudiantes reportaron que aprendieron más que en cualquier actividad anterior. En cambio, en Matemáticas, el maestro Rodrigo simplemente instruyó a sus grupos para que resolvieran los ejercicios en un documento de Google compartido, pero cada alumno resolvió sus propios ejercicios en su sección individual, sin interacción con los demás.</p>
+
+            <p>En la dimensión de gestión, la directora implementó un sistema en línea para el registro de asistencia, calificaciones y comunicación con familias. Los docentes que antes llenaban listas en papel y llamaban por teléfono a los padres de alumnos ausentes pasaron a registrar todo digitalmente. Las familias recibieron acceso a un portal donde podían ver las calificaciones y recibir avisos en tiempo real. Sin embargo, surgieron tensiones: el 30% de las familias no contaba con smartphone o conectividad estable, por lo que quedaron excluidas del nuevo sistema de comunicación. Además, algunos docentes reportaron sentirse vigilados con el sistema digital de registro, pues la dirección podía ver en tiempo real si habían registrado la asistencia o las calificaciones.</p>
+
+            <p>Al término del primer año, la directora Alma reconoció que la digitalización había avanzado en lo técnico, pero que las dimensiones pedagógica, cultural e inclusiva requerían mucho más trabajo. "Las herramientas funcionan", declaró, "pero el cambio real todavía no ha llegado a todas las aulas ni a todas las familias."</p>
+          </div>
+        </div>
+
+        <h3>Preguntas para el análisis</h3>
+        <div class="cq">
+          <strong>Pregunta 1 — Cooperación versus colaboración (Tema 2.4)</strong>
+          Compare la experiencia de la clase de Historia de Laura y la de Matemáticas de Rodrigo. ¿Cuál de las dos ilustra colaboración genuina y cuál cooperación? Aplique al menos tres de las cinco condiciones pedagógicas del marco conceptual para fundamentar su análisis.
+        </div>
+        <div class="cq">
+          <strong>Pregunta 2 — Gestión digital: oportunidades y riesgos (Tema 2.5)</strong>
+          Identifique en el caso al menos dos oportunidades y dos riesgos concretos de la transformación digital de la gestión del Colegio "Lázaro Cárdenas". Vincule cada uno con los conceptos del Tema 2.5 y con situaciones textuales del caso.
+        </div>
+        <div class="cq">
+          <strong>Pregunta 3 — El problema de la exclusión digital</strong>
+          El caso señala que el 30% de las familias quedó excluido del nuevo sistema de comunicación por falta de dispositivos o conectividad. Desde la perspectiva pedagógica e institucional, ¿qué responsabilidad tiene el colegio ante esta situación y qué estrategias propondría para abordarla sin revertir la digitalización?
+        </div>
+        <div class="cq">
+          <strong>Pregunta 4 — Reflexión integradora</strong>
+          La directora Alma concluye que "las herramientas funcionan, pero el cambio real todavía no ha llegado". ¿Qué nos dice esta frase sobre la relación entre tecnología, pedagogía y transformación institucional? ¿Qué aprendizaje le aporta este caso para su futura práctica como pedagogo?
+        </div>
+
+        <h3>Formato de entrega</h3>
+        <p>Organice sus respuestas en un documento con encabezado completo, las cuatro preguntas numeradas y tituladas, y referencias si cita fuentes adicionales. Extensión estimada: 420–560 palabras.</p>
+
+        <div class="classroom">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6z"/></svg></div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Adjunte su documento en la tarea "Actividad 3 — Caso: Colegio Comunitario Lázaro Cárdenas". Verifique que haya respondido las cuatro preguntas antes de confirmar la entrega.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ QUIZ -->
+    <section class="card" id="act4">
+      <div class="card-hd">
+        <div class="card-num">VIII</div>
+        <div class="card-hd-txt">
+          <h2>Actividad 4 — Quiz de conocimientos</h2>
+          <p>Evaluación formativa sobre los Temas 2.4 y 2.5 con retroalimentación inmediata</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="act-hd">
+          <div class="act-badge">Q4</div>
+          <div class="act-hd-t">
+            <h3>Quiz: Trabajo colaborativo y gestión educativa con Internet</h3>
+            <p>5 preguntas · Retroalimentación inmediata · Puntaje al finalizar</p>
+            <div class="pills">
+              <span class="pill p-olive">Trabajo individual</span>
+              <span class="pill p-rust">Valor: 10 puntos</span>
+              <span class="pill p-ok">Evidencia: Captura de pantalla</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note n-olive">
+          <strong>Instrucciones</strong>
+          Responda las 5 preguntas seleccionando la opción que considere correcta. Al finalizar verá su puntaje y retroalimentación pedagógica por cada respuesta. Tome una captura de pantalla del resultado y adjúntela en la tarea de Google Classroom.
+        </div>
+
+        <div class="qpb"><div class="qpf" id="qpf"></div></div>
+
+        <!-- Q1 -->
+        <div class="qq on" id="q1">
+          <div class="qc">Pregunta 1 de 5</div>
+          <div class="qt">Según el Tema 2.4, la diferencia central entre cooperación y colaboración genuina en entornos digitales radica en que:</div>
+          <ul class="qo">
+            <li><button class="opt" onclick="ans(this,false,'q1','La herramienta tecnológica no determina si el trabajo es colaborativo o cooperativo; lo que importa es el diseño pedagógico de la actividad y la dinámica que se promueve.')"><span class="ol">A</span>La cooperación usa herramientas digitales más avanzadas que las empleadas en la colaboración.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q1','La cantidad de miembros del equipo no es el factor determinante entre cooperación y colaboración; lo central es la calidad de la interdependencia y el proceso de construcción conjunta.')"><span class="ol">B</span>La cooperación requiere más integrantes en el equipo que la colaboración, que puede realizarse en parejas.</button></li>
+            <li><button class="opt" onclick="ans(this,true,'q1','Correcto. La distinción central es la calidad del proceso: en la cooperación cada quien trabaja independientemente su parte para ensamblar al final; en la colaboración genuina todos trabajan de manera interdependiente construyendo algo que ninguno podría haber producido solo, con diálogo continuo y co-regulación del proceso.')"><span class="ol">C</span>En la cooperación cada integrante trabaja su parte de manera independiente para ensamblarla al final; en la colaboración genuina todos trabajan de manera interdependiente, construyendo conjuntamente algo que trasciende la suma de las partes.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q1','Aunque el tiempo puede ser un factor en algunos contextos, la distinción central entre cooperación y colaboración no se basa en sincronía versus asincronía.')"><span class="ol">D</span>La cooperación es siempre asincrónica y la colaboración es siempre sincrónica, usando videoconferencia.</button></li>
+          </ul>
+          <div class="qfb" id="fb-q1"></div>
+          <button class="qnb" id="nb-q1" onclick="next('q1','q2')">Siguiente pregunta</button>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qq" id="q2">
+          <div class="qc">Pregunta 2 de 5</div>
+          <div class="qt">¿Cuál de las siguientes situaciones ilustra mejor la condición pedagógica de "interdependencia positiva" en el trabajo colaborativo en red?</div>
+          <ul class="qo">
+            <li><button class="opt" onclick="ans(this,false,'q2','Que una plataforma sea gratuita es una ventaja práctica, pero no tiene relación con la interdependencia positiva como condición pedagógica del trabajo colaborativo.')"><span class="ol">A</span>El equipo usa una plataforma gratuita de colaboración para que todos puedan acceder sin costo.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q2','La misma calificación no garantiza interdependencia positiva; de hecho, puede generar trabajos donde algunos miembros no participan y otros hacen todo el trabajo.')"><span class="ol">B</span>Todos los integrantes del equipo reciben la misma calificación sin importar la contribución individual.</button></li>
+            <li><button class="opt" onclick="ans(this,true,'q2','Correcto. La interdependencia positiva se logra cuando el diseño de la actividad hace imposible el éxito individual sin la participación real de todo el equipo: cada miembro tiene una pieza que los demás necesitan, lo que genera dependencia mutua genuina.')"><span class="ol">C</span>La actividad está diseñada de manera que cada integrante posee una pieza de información o competencia que los demás necesitan, haciendo imposible el éxito individual sin la participación real del grupo.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q2','El rol de coordinador es útil para la organización, pero por sí solo no garantiza la interdependencia positiva entre todos los miembros del equipo.')"><span class="ol">D</span>Un integrante asume el rol de coordinador y se comunica por WhatsApp con el resto para recopilar sus contribuciones.</button></li>
+          </ul>
+          <div class="qfb" id="fb-q2"></div>
+          <button class="qnb" id="nb-q2" onclick="next('q2','q3')">Siguiente pregunta</button>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qq" id="q3">
+          <div class="qc">Pregunta 3 de 5</div>
+          <div class="qt">Un docente usa un tablero de Miro para que sus estudiantes construyan colectivamente un mapa conceptual sobre el tema de estudio, aportando ideas, conectando conceptos de otros compañeros y dejando comentarios de retroalimentación. Esta práctica se alinea principalmente con:</div>
+          <ul class="qo">
+            <li><button class="opt" onclick="ans(this,false,'q3','La gestión digital institucional se refiere a la administración y organización del centro escolar, no al diseño de actividades de aprendizaje en el aula.')"><span class="ol">A</span>La gestión digital institucional del centro escolar (Tema 2.5).</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q3','La evaluación formativa digital es una herramienta específica de diagnóstico del aprendizaje; no describe esta dinámica de construcción colectiva de un mapa conceptual.')"><span class="ol">B</span>El uso de Internet como herramienta de evaluación formativa digital asincrónica.</button></li>
+            <li><button class="opt" onclick="ans(this,true,'q3','Correcto. El uso de Miro para co-construir un mapa conceptual con aportaciones, conexiones y retroalimentación mutua es un ejemplo de Internet como soporte para la colaboración genuina: los estudiantes co-crean conocimiento de manera interdependiente, con diálogo visual y escrito.')"><span class="ol">C</span>Internet como soporte para el trabajo colaborativo genuino (Tema 2.4), pues los estudiantes co-construyen conocimiento de manera interdependiente.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q3','El microaprendizaje implica pequeñas unidades de contenido para consumo individual; no describe esta dinámica de construcción colectiva en un tablero compartido.')"><span class="ol">D</span>El microaprendizaje en dispositivos móviles con recursos visuales para uso individual.</button></li>
+          </ul>
+          <div class="qfb" id="fb-q3"></div>
+          <button class="qnb" id="nb-q3" onclick="next('q3','q4')">Siguiente pregunta</button>
+        </div>
+
+        <!-- Q4 -->
+        <div class="qq" id="q4">
+          <div class="qc">Pregunta 4 de 5</div>
+          <div class="qt">Según el Tema 2.5, el uso de un portal digital institucional que permite a las familias ver las calificaciones y recibir avisos de asistencia en tiempo real corresponde a qué dimensión de la gestión educativa transformada por Internet:</div>
+          <ul class="qo">
+            <li><button class="opt" onclick="ans(this,false,'q4','El control escolar se refiere al registro y administración de datos académicos; el portal para familias corresponde específicamente a la comunicación institución-familias.')"><span class="ol">A</span>Control escolar digital y registro de expedientes académicos de los estudiantes.</button></li>
+            <li><button class="opt" onclick="ans(this,true,'q4','Correcto. El portal que permite a las familias consultar calificaciones y recibir avisos corresponde a la dimensión de comunicación institución-familias: transforma la relación de episódica y presencial a continua, asincrónica y accesible remotamente.')"><span class="ol">B</span>Comunicación institución-familias: transforma la relación de episódica y presencial a continua, asincrónica y accesible de manera remota.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q4','La gestión financiera y de recursos corresponde al manejo presupuestal y adquisiciones; no a la comunicación con familias sobre calificaciones y asistencia.')"><span class="ol">C</span>Gestión financiera y de recursos materiales del centro escolar.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q4','La toma de decisiones basada en datos implica análisis de indicadores educativos; no describe específicamente el portal de comunicación con familias.')"><span class="ol">D</span>Toma de decisiones basada en datos y análisis de indicadores de rendimiento escolar.</button></li>
+          </ul>
+          <div class="qfb" id="fb-q4"></div>
+          <button class="qnb" id="nb-q4" onclick="next('q4','q5')">Siguiente pregunta</button>
+        </div>
+
+        <!-- Q5 -->
+        <div class="qq" id="q5">
+          <div class="qc">Pregunta 5 de 5</div>
+          <div class="qt">Un directivo escolar afirma: "Desde que digitalizamos todos nuestros procesos, la escuela funciona perfectamente. Ahora todo está en el sistema y podemos controlar cada detalle de lo que pasa." Desde la perspectiva crítica del Tema 2.5, esta posición expresa principalmente:</div>
+          <ul class="qo">
+            <li><button class="opt" onclick="ans(this,false,'q5','La eficiencia es un valor legítimo en la gestión, pero el marco conceptual no avala una visión acrítica de la digitalización que ignore los riesgos de control, exclusión y dependencia.')"><span class="ol">A</span>Un modelo de gestión educativa digital ideal al que todas las instituciones deberían aspirar.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q5','La SEP o los organismos supervisores no son el problema identificado en este enunciado; el marco conceptual señala riesgos internos de la gestión digital excesivamente centrada en el control.')"><span class="ol">B</span>Una violación de las normas de la SEP sobre privacidad de datos estudiantiles.</button></li>
+            <li><button class="opt" onclick="ans(this,true,'q5','Correcto. El énfasis en "controlar cada detalle" refleja uno de los riesgos señalados en el Tema 2.5: el exceso de vigilancia y control que la gestión digital puede introducir, transformando la escuela en una burocracia de monitoreo permanente que puede afectar la confianza institucional y la autonomía profesional docente.')"><span class="ol">C</span>Un riesgo identificado en el Tema 2.5: el exceso de control y vigilancia que puede introducir la gestión digital, afectando la confianza institucional y la autonomía profesional docente.</button></li>
+            <li><button class="opt" onclick="ans(this,false,'q5','Aunque la redundancia de sistemas puede ser un problema práctico, el enunciado describe más claramente el riesgo de sobrecontrol digital, no uno de duplicidad de sistemas.')"><span class="ol">D</span>Un problema de redundancia entre sistemas de información digitales y analógicos en la institución.</button></li>
+          </ul>
+          <div class="qfb" id="fb-q5"></div>
+          <button class="qnb" id="nb-q5" onclick="showResult()">Ver resultado final</button>
+        </div>
+
+        <!-- RESULTADO -->
+        <div class="qres" id="qres">
+          <div class="sring" id="sr"><span class="sn" id="sn">0</span><span class="sd">de 5</span></div>
+          <div class="rmsg" id="rm"></div>
+          <div class="rdet" id="rd"></div>
+          <div class="note n-rust" style="text-align:left;margin-bottom:22px;">
+            <strong>Para entregar en Google Classroom</strong>
+            Tome una captura de pantalla de esta pantalla de resultados y adjúntela en la tarea "Actividad 4 — Quiz Temas 2.4 y 2.5" de Google Classroom. La captura debe mostrar claramente su puntaje y el mensaje de nivel de desempeño.
+          </div>
+          <button class="btn-retry" onclick="retry()">Volver a intentar</button>
+        </div>
+
+        <div class="classroom" style="margin-top:24px">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17h2v-4.82l2 1.09V17c0 1.66 2.24 3 5 3s5-1.34 5-3v-3.73l2-1.09L23 9l-11-6z"/></svg></div>
+          <div>
+            <h4>Entrega en Google Classroom</h4>
+            <p>Adjunte la captura de pantalla de su resultado en la tarea "Actividad 4 — Quiz Temas 2.4 y 2.5". Confirme la entrega verificando que la imagen muestre el puntaje final obtenido.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ REFLEXIÓN -->
+    <section class="card" id="reflexion">
+      <div class="card-hd rust-hd">
+        <div class="card-num">IX</div>
+        <div class="card-hd-txt">
+          <h2>Reflexión y aplicación</h2>
+          <p>Planificación de la transferencia del aprendizaje a la vida académica y profesional</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>El aprendizaje significativo no se agota en la comprensión conceptual: se consolida cuando se traduce en nuevas formas de actuar, pensar y diseñar. Esta sección cierra el ciclo de aprendizaje de la guía invitándole a planificar conscientemente la transferencia de lo aprendido a su vida universitaria y a su futuro desempeño profesional como pedagogo.</p>
+
+        <div class="note n-ok">
+          <strong>Metacognición aplicada</strong>
+          Al completar este planificador, usted practica dos competencias que los temas de esta guía han descrito: la colaboración reflexiva (al articular ideas en un espacio propio de pensamiento compartido con el docente) y la gestión autónoma del propio aprendizaje. El cierre de la guía es, en sí mismo, una demostración de las competencias que ha estudiado.
+        </div>
+
+        <h3>Compare sus ideas: antes y después</h3>
+        <p>Antes de completar el planificador, regrese a la Sección II y relea lo que escribió sobre su experiencia de trabajo colaborativo en línea y de uso de sistemas de gestión digital. Luego responda la primera pregunta del planificador comparando esas ideas iniciales con lo que ahora comprende.</p>
+
+        <h3>Planificador de transferencia del aprendizaje</h3>
+        <div class="planner">
+          <div class="pl">
+            <h4>Evolución de mi comprensión</h4>
+            <small>¿Cómo cambió o se profundizó su visión sobre el trabajo colaborativo y la gestión digital respecto a sus ideas iniciales de la Sección II?</small>
+            <textarea id="p1" placeholder="Compare sus reflexiones iniciales con lo que ahora comprende sobre los Temas 2.4 y 2.5..."></textarea>
+          </div>
+          <div class="pl">
+            <h4>Aprendizaje más significativo</h4>
+            <small>¿Cuál fue el concepto, la distinción o la tensión del tema que le resultó más reveladora o pertinente para su formación?</small>
+            <textarea id="p2" placeholder="Identifique el concepto o idea que más impactó su comprensión..."></textarea>
+          </div>
+          <div class="pl">
+            <h4>Aplicación como estudiante universitario</h4>
+            <small>¿Qué cambio concreto realizará en sus propios trabajos en equipo mediados por tecnología a partir de este tema?</small>
+            <textarea id="p3" placeholder="Describa al menos una acción concreta que implementará en sus próximas actividades colaborativas..."></textarea>
+          </div>
+          <div class="pl">
+            <h4>Aplicación como futuro pedagogo</h4>
+            <small>¿Qué implicaciones tienen estos temas para su futura práctica profesional, ya sea como docente, como diseñador de experiencias o como gestor educativo?</small>
+            <textarea id="p4" placeholder="Proyecte cómo influirán estos aprendizajes en su práctica pedagógica y gestión institucional futura..."></textarea>
+          </div>
+        </div>
+
+        <div style="text-align:center">
+          <button class="sbtn" onclick="guardar()">Guardar mi reflexión</button>
+          <div class="sok" id="sok">Su reflexión ha sido guardada en este dispositivo. Puede tomar una captura de pantalla o imprimir la página para incluirla en su portafolio de aprendizaje.</div>
+        </div>
+
+        <hr class="dv">
+
+        <h3>Preguntas abiertas para seguir pensando</h3>
+        <ul class="bl">
+          <li>¿Puede existir colaboración genuina en entornos completamente asincrónicos y textuales, sin presencia sincrónica? ¿Qué necesitaría garantizarse para que eso sea posible?</li>
+          <li>¿La digitalización de la gestión escolar fortalece o debilita la autonomía pedagógica de los docentes? ¿Depende del diseño del sistema o es una consecuencia inevitable de la vigilancia digital?</li>
+          <li>¿Cómo se diseña una experiencia colaborativa genuina cuando parte del grupo no tiene conectividad o dispositivos adecuados? ¿Qué responsabilidad pedagógica e institucional hay en esto?</li>
+          <li>¿Qué diferencia existe entre un pedagogo que sabe usar Google Workspace y un pedagogo que comprende pedagógicamente cuándo y cómo ese entorno puede potenciar la colaboración?</li>
+          <li>¿La digitalización de los centros escolares mexicanos ha mejorado la educación para todos los estudiantes por igual? ¿Qué evidencias apoyarían o refutarían esta afirmación?</li>
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Licenciatura en Pedagogía · Tecnología y Educación I<br>
+  Unidad 2 — Temas 2.4 y 2.5: Internet para el trabajo colaborativo y la gestión educativa<br>
+  <span style="font-size:.75rem;opacity:.5">Guía de aprendizaje interactiva · Uso académico exclusivo · Constructivismo · ABP · Pedagogía activa</span>
+</footer>
+
+<script>
+var score=0,answered={};
+function ans(btn,correct,qid,fb){
+  if(answered[qid])return;
+  answered[qid]=true;
+  btn.closest('.qo').querySelectorAll('.opt').forEach(function(b){b.disabled=true});
+  var fe=document.getElementById('fb-'+qid),nb=document.getElementById('nb-'+qid);
+  if(correct){btn.classList.add('c');score++;fe.className='qfb c';fe.innerHTML='<strong>Respuesta correcta</strong>'+fb}
+  else{btn.classList.add('w');fe.className='qfb w';fe.innerHTML='<strong>Respuesta incorrecta</strong>'+fb}
+  fe.style.display='block';nb.style.display='inline-block';
+  document.getElementById('qpf').style.width=(parseInt(qid.replace('q',''))/5*100)+'%';
+}
+function next(cur,nxt){document.getElementById(cur).classList.remove('on');document.getElementById(nxt).classList.add('on')}
+function showResult(){
+  document.getElementById('q5').classList.remove('on');
+  var r=document.getElementById('qres');r.style.display='block';
+  document.getElementById('qpf').style.width='100%';
+  document.getElementById('sn').textContent=score;
+  var sr=document.getElementById('sr'),rm=document.getElementById('rm'),rd=document.getElementById('rd');
+  if(score===5){sr.className='sring r-hi';rm.textContent='Resultado sobresaliente';rd.textContent='Ha respondido correctamente las 5 preguntas. Su comprensión de los Temas 2.4 y 2.5 es sólida y bien fundamentada.'}
+  else if(score>=3){sr.className='sring r-mid';rm.textContent='Resultado satisfactorio';rd.textContent='Ha respondido correctamente '+score+' de 5 preguntas. Revise los conceptos en los que hubo error antes de continuar.'}
+  else{sr.className='sring r-lo';rm.textContent='Se recomienda reforzar el tema';rd.textContent='Ha respondido correctamente '+score+' de 5 preguntas. Relea el marco conceptual de los Temas 2.4 y 2.5 e intente el quiz nuevamente.'}
+}
+function retry(){
+  score=0;answered={};
+  document.getElementById('qres').style.display='none';
+  document.getElementById('qpf').style.width='0';
+  for(var i=1;i<=5;i++){
+    var q=document.getElementById('q'+i);
+    q.classList.remove('on');
+    q.querySelectorAll('.opt').forEach(function(b){b.disabled=false;b.className='opt'});
+    var fb=document.getElementById('fb-q'+i);fb.style.display='none';fb.className='qfb';
+    var nb=document.getElementById('nb-q'+i);if(nb)nb.style.display='none';
+  }
+  document.getElementById('q1').classList.add('on');
+}
+function guardar(){
+  var d={p1:document.getElementById('p1').value,p2:document.getElementById('p2').value,p3:document.getElementById('p3').value,p4:document.getElementById('p4').value,previo:document.getElementById('previo-txt').value};
+  if(!d.p1&&!d.p2&&!d.p3&&!d.p4){alert('Complete al menos uno de los campos de reflexión antes de guardar.');return}
+  try{localStorage.setItem('guia_24_25',JSON.stringify(d))}catch(e){}
+  var ok=document.getElementById('sok');ok.style.display='block';
+  setTimeout(function(){ok.style.display='none'},5000);
+}
+window.addEventListener('load',function(){
+  try{var s=localStorage.getItem('guia_24_25');if(s){var d=JSON.parse(s);if(d.p1)document.getElementById('p1').value=d.p1;if(d.p2)document.getElementById('p2').value=d.p2;if(d.p3)document.getElementById('p3').value=d.p3;if(d.p4)document.getElementById('p4').value=d.p4;if(d.previo)document.getElementById('previo-txt').value=d.previo}}catch(e){}
+});
+var secs=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('.toc-nav a');
+window.addEventListener('scroll',function(){
+  var cur='';
+  secs.forEach(function(s){if(window.pageYOffset>=s.offsetTop-110)cur=s.id});
+  links.forEach(function(a){a.classList.remove('on');if(a.getAttribute('href').replace('#','')===cur)a.classList.add('on')});
+});
+</script>
+</body>
+</html>

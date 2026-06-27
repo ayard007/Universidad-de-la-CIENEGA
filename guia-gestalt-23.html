@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestalt | Enfoques Psicológicos del Conocimiento | UdC Plantel Centro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════ VARIABLES ════════════════════════════════ */
+:root{
+  --indigo:      #2d3561;
+  --indigo-m:    #4a57a0;
+  --indigo-cl:   #dde1f5;
+  --indigo-xs:   #f0f2fc;
+  --lima:        #7ab317;
+  --lima-m:      #97d420;
+  --lima-cl:     #e8f5c8;
+  --naranja:     #e07820;
+  --naranja-cl:  #fdecd5;
+  --rojo:        #c43030;
+  --rojo-cl:     #fae0e0;
+  --gris-az:     #3a4260;
+  --papel:       #f5f4f0;
+  --papel-m:     #eae8e0;
+  --papel-d:     #dddad0;
+  --negro:       #141820;
+  --texto:       #1e2238;
+  --texto-2:     #404870;
+  --texto-3:     #7880a8;
+  --borde:       #ccd0e4;
+  --blanco:      #ffffff;
+  --sombra:      0 3px 18px rgba(20,24,32,.09);
+  --sombra-m:    0 8px 40px rgba(20,24,32,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Syne',sans-serif;
+  background:var(--papel);
+  color:var(--texto);
+  line-height:1.72;
+  font-size:15px;
+}
+
+/* ══════════════ BARRA INSTITUCIONAL ═══════════════════════ */
+.barra{
+  background:var(--negro);
+  padding:8px 28px;
+  display:flex;align-items:center;gap:14px;
+}
+.barra img{height:38px;width:auto}
+.barra-txt{flex:1}
+.barra-txt .nom{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85)}
+.barra-txt .sub{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.38);
+}
+.barra-nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.barra-nav a{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.48);text-decoration:none;padding:4px 10px;
+  border:1px solid rgba(255,255,255,.14);border-radius:1px;transition:all .2s;white-space:nowrap;
+}
+.barra-nav a:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* ══════════════ HERO ═══════════════════════════════════════ */
+.hero{
+  background:var(--indigo);
+  position:relative;overflow:hidden;
+}
+.hero-dec{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 25%,rgba(122,179,23,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(224,120,32,.10) 0%,transparent 65%);
+}
+/* Grid de puntos gestáltico */
+.hero-dots{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle, rgba(255,255,255,.06) 1.5px, transparent 1.5px);
+  background-size:28px 28px;
+}
+.hero-wrap{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 280px;
+  align-items:center;gap:40px;
+  padding:54px 36px 46px;
+  position:relative;z-index:1;
+}
+.hero-kicker{
+  font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--lima-m);margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.1rem,4.2vw,3.4rem);
+  font-weight:400;color:var(--blanco);
+  line-height:1.05;margin-bottom:10px;
+}
+.hero h1 em{color:var(--lima-m);font-style:italic}
+.hero-sub{
+  font-family:'Instrument Serif',serif;font-size:1.12rem;
+  font-style:italic;color:rgba(255,255,255,.52);margin-bottom:20px;
+}
+.hero-desc{
+  font-size:.88rem;color:rgba(255,255,255,.5);
+  max-width:500px;line-height:1.7;margin-bottom:24px;
+}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-family:'Fira Code',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 12px;border-radius:1px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);
+}
+.chip.lima{border-color:var(--lima);color:var(--lima-m)}
+
+/* Ilustración gestalt SVG en hero */
+.hero-ilu{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;padding:20px 16px;flex-shrink:0;
+}
+.hero-ilu-label{
+  font-family:'Fira Code',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);text-align:center;margin-top:10px;line-height:1.6;
+}
+.hero-ilu-label strong{color:var(--lima-m);display:block;font-size:7.5px;margin-bottom:2px}
+
+/* ══════════════ LAYOUT ════════════════════════════════════ */
+.page{max-width:1100px;margin:0 auto;padding:0 22px}
+.layout{
+  display:grid;grid-template-columns:195px 1fr;
+  gap:26px;align-items:start;padding:42px 0 80px;
+}
+.sidebar{position:sticky;top:82px}
+.side-kicker{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--lima);margin-bottom:10px;padding-left:10px;
+}
+.side-list{list-style:none}
+.side-list li{border-left:2px solid var(--borde);transition:border-color .2s}
+.side-list li.on{border-left-color:var(--lima)}
+.side-list a{
+  display:block;padding:6px 10px;font-size:.8rem;font-weight:500;
+  color:var(--texto-2);text-decoration:none;line-height:1.3;transition:color .2s;
+}
+.side-list a:hover,.side-list li.on a{color:var(--lima);font-weight:700}
+.s-sep{height:1px;background:var(--borde);margin:7px 0}
+
+/* ══════════════ CARDS ════════════════════════════════════ */
+.card{
+  background:var(--blanco);border:1px solid var(--borde);
+  border-radius:4px;margin-bottom:28px;overflow:hidden;box-shadow:var(--sombra);
+}
+.card-head{padding:16px 26px;display:flex;align-items:center;gap:12px}
+.card-head.indigo{background:var(--indigo)}
+.card-head.lima{background:var(--lima)}
+.card-head.naranja{background:var(--naranja)}
+.card-head.rojo{background:var(--rojo)}
+.card-head.negro{background:var(--negro)}
+.card-head.papel{background:var(--papel-m)}
+.card-head.gris{background:var(--gris-az)}
+
+.ch-i{
+  font-family:'Instrument Serif',serif;font-size:1.7rem;font-weight:400;
+  color:rgba(255,255,255,.18);line-height:1;min-width:34px;
+}
+.ch-i.dark{color:rgba(0,0,0,.12)}
+.ch-t h2{
+  font-family:'Instrument Serif',serif;font-size:1.15rem;font-weight:400;
+  color:var(--blanco);line-height:1.2;font-style:italic;
+}
+.ch-t h2.dark{color:var(--negro)}
+.ch-t .sub{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px;
+}
+.ch-t .sub.dark{color:var(--texto-3)}
+
+.card-body{padding:28px 32px}
+
+/* ══════════════ TIPOGRAFÍA ════════════════════════════════ */
+h3{
+  font-family:'Instrument Serif',serif;font-size:1.1rem;font-style:italic;
+  color:var(--indigo);margin:26px 0 10px;
+}
+h3:first-child{margin-top:0}
+h4{
+  font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;
+  color:var(--texto);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 8px;
+}
+h4:first-child{margin-top:0}
+p{color:var(--texto-2);margin-bottom:12px;font-size:.92rem;line-height:1.73}
+p:last-child{margin-bottom:0}
+strong{color:var(--texto);font-weight:700}
+em{font-style:italic}
+
+/* ══════════════ CAJAS ════════════════════════════════════ */
+.caja{padding:14px 18px;border-radius:3px;margin:14px 0;font-size:.9rem}
+.caja.in{background:var(--indigo-xs);border-left:3px solid var(--indigo-m)}
+.caja.li{background:var(--lima-cl);border-left:3px solid var(--lima)}
+.caja.na{background:var(--naranja-cl);border-left:3px solid var(--naranja)}
+.caja.ro{background:var(--rojo-cl);border-left:3px solid var(--rojo)}
+.caja.warn{background:#fff9e2;border:1px solid #d8b820;border-radius:3px}
+.caja-tit{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+.caja.in .caja-tit{color:var(--indigo-m)}
+.caja.li .caja-tit{color:var(--lima)}
+.caja.na .caja-tit{color:var(--naranja)}
+.caja.ro .caja-tit{color:var(--rojo)}
+
+.cita{
+  font-family:'Instrument Serif',serif;font-size:1.06rem;font-style:italic;
+  color:var(--texto);border-left:3px solid var(--naranja);
+  padding:12px 18px;background:var(--naranja-cl);border-radius:0 3px 3px 0;margin:16px 0;
+}
+.cita cite{
+  display:block;font-style:normal;font-family:'Fira Code',monospace;
+  font-size:8.5px;color:var(--naranja);margin-top:6px;letter-spacing:.08em;
+}
+
+/* ══════════════ LEYES GESTALT — grid visual ════════════════ */
+.leyes-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;margin:16px 0;
+}
+.ley-card{
+  border:1px solid var(--borde);border-radius:4px;overflow:hidden;
+}
+.ley-vis{
+  height:80px;display:flex;align-items:center;justify-content:center;
+  background:var(--indigo-xs);
+}
+.ley-body{padding:11px 13px}
+.ley-nombre{
+  font-family:'Fira Code',monospace;font-size:8.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--lima);margin-bottom:4px;font-weight:500;
+}
+.ley-desc{font-size:.82rem;color:var(--texto-2);line-height:1.5}
+
+/* ══════════════ TABLA ════════════════════════════════════ */
+.tw{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead tr{background:var(--indigo);color:var(--blanco)}
+thead th{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.1em;
+  text-transform:uppercase;padding:10px 14px;text-align:left;font-weight:400;
+}
+tbody tr:nth-child(even){background:var(--indigo-xs)}
+tbody tr:hover{background:var(--lima-cl)}
+td{padding:9px 14px;border-bottom:1px solid var(--borde);color:var(--texto-2);vertical-align:top;font-size:.86rem}
+td strong{color:var(--indigo)}
+
+/* ══════════════ PASOS ════════════════════════════════════ */
+.pasos{counter-reset:p;list-style:none;margin:12px 0}
+.pasos li{display:flex;gap:12px;margin-bottom:10px;counter-increment:p;align-items:flex-start}
+.pasos li::before{
+  content:counter(p);background:var(--indigo);color:var(--blanco);
+  font-family:'Instrument Serif',serif;font-size:.9rem;
+  min-width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.pasos.li li::before{background:var(--lima)}
+.pasos.na li::before{background:var(--naranja)}
+.pasos.ro li::before{background:var(--rojo)}
+.pasos li p{margin:0;font-size:.9rem}
+
+/* ══════════════ BOTONES ══════════════════════════════════ */
+.btn{
+  display:inline-block;padding:8px 20px;
+  font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer;transition:all .2s;
+}
+.btn.in{background:var(--indigo);color:var(--blanco)}
+.btn.in:hover{background:var(--negro)}
+.btn.li{background:var(--lima);color:var(--negro)}
+.btn.li:hover{background:#5e8a10}
+.btn.na{background:var(--naranja);color:var(--blanco)}
+.btn.na:hover{background:#b35c10}
+.btn.ro{background:var(--rojo);color:var(--blanco)}
+.btn.ro:hover{background:#8c2020}
+.btn.ne{background:var(--negro);color:var(--blanco)}
+.btn.ne:hover{background:#000}
+.btn.out{background:transparent;color:var(--indigo);border:1.5px solid var(--borde)}
+.btn.out:hover{background:var(--indigo-xs);border-color:var(--indigo)}
+
+.class-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#1a73e8;color:var(--blanco);
+  font-family:'Fira Code',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 14px;border-radius:2px;margin:10px 0 14px;
+}
+.class-tag::before{content:'▶';font-size:7px}
+
+/* ══════════════ RÚBRICA ══════════════════════════════════ */
+.rubrica{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin:14px 0}
+.crit{border:1px solid var(--borde);border-radius:3px;padding:12px 14px;background:var(--blanco)}
+.crit .cn{font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-3);margin-bottom:4px}
+.crit .cp{font-family:'Instrument Serif',serif;font-size:1.9rem;color:var(--indigo);line-height:1;margin-bottom:5px}
+.crit .cp span{font-size:.88rem;font-family:'Syne',sans-serif;color:var(--texto-3)}
+.crit p{font-size:.82rem;margin:0;color:var(--texto-2)}
+
+/* ══════════════ PREVIOS ══════════════════════════════════ */
+.prev-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:13px 0}
+.prev-item{border:1.5px solid var(--borde);border-radius:3px;padding:13px;background:var(--papel)}
+.prev-item label{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.prev-item textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px 11px;
+  font-family:'Syne',sans-serif;font-size:.87rem;color:var(--texto);
+  background:var(--blanco);outline:none;resize:vertical;min-height:78px;transition:border-color .2s;
+}
+.prev-item textarea:focus{border-color:var(--lima);background:var(--blanco)}
+
+/* ══════════════ RECURSOS ══════════════════════════════════ */
+.recursos{display:flex;flex-direction:column;gap:10px;margin:13px 0}
+.rec{
+  display:flex;align-items:flex-start;gap:11px;padding:11px 14px;
+  border:1px solid var(--borde);border-radius:3px;background:var(--blanco);
+  transition:box-shadow .2s,border-color .2s;
+}
+.rec:hover{border-color:var(--lima);box-shadow:var(--sombra)}
+.rec-tipo{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:1px;white-space:nowrap;flex-shrink:0;margin-top:2px;
+}
+.rec-tipo.lib{background:var(--lima-cl);color:#487008}
+.rec-tipo.pdf{background:var(--rojo-cl);color:var(--rojo)}
+.rec-tipo.vid{background:var(--indigo-cl);color:var(--indigo-m)}
+.rec-tipo.web{background:var(--naranja-cl);color:var(--naranja)}
+.rec-info .rec-tit{font-weight:700;font-size:.89rem;color:var(--indigo);margin-bottom:2px}
+.rec-info .rec-desc{font-size:.82rem;color:var(--texto-2)}
+.rec-info .rec-aut{font-family:'Fira Code',monospace;font-size:8px;color:var(--texto-3);margin-top:3px;letter-spacing:.07em}
+
+/* ══════════════ FORO ═════════════════════════════════════ */
+.foro{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;margin:13px 0}
+.foro-head{background:var(--papel-m);padding:10px 18px;border-bottom:1px solid var(--borde)}
+.foro-head span{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);font-weight:500}
+.foro-pq{
+  padding:17px 20px;font-family:'Instrument Serif',serif;font-size:1.02rem;
+  font-style:italic;color:var(--texto);line-height:1.65;
+  background:var(--blanco);border-bottom:1px solid var(--borde);
+}
+.foro-in{padding:13px 18px}
+.foro-in label{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--texto-3);display:block;margin-bottom:7px;
+}
+.foro-in textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:10px;
+  font-family:'Syne',sans-serif;font-size:.88rem;color:var(--texto);
+  resize:vertical;min-height:104px;background:var(--papel);outline:none;transition:border-color .2s;
+}
+.foro-in textarea:focus{border-color:var(--indigo);background:var(--blanco)}
+
+.ej{
+  margin-top:10px;padding:12px 14px;background:var(--indigo-xs);border-radius:3px;
+  border-left:3px solid var(--indigo-m);font-size:.85rem;color:var(--texto-2);display:none;line-height:1.6;
+}
+.ej.vis{display:block}
+
+/* ══════════════ CASO ═════════════════════════════════════ */
+.caso-txt{
+  background:var(--papel);border-left:4px solid var(--naranja);
+  padding:17px 21px;border-radius:0 3px 3px 0;margin:14px 0;
+  font-family:'Instrument Serif',serif;font-size:1rem;line-height:1.8;color:var(--texto);
+}
+.caso-txt em{color:var(--naranja);font-style:normal;font-weight:400;font-family:'Syne',sans-serif;font-size:.88rem}
+
+.caso-qs{margin:14px 0}
+.cq{border:1px solid var(--borde);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.cq-head{
+  background:var(--papel-m);padding:9px 14px;display:flex;align-items:center;gap:9px;
+  font-weight:700;font-size:.87rem;color:var(--texto);
+}
+.cq-n{
+  background:var(--naranja);color:var(--blanco);font-size:.88rem;
+  min-width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cq-body{padding:11px 14px}
+.cq-body textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px;
+  font-family:'Syne',sans-serif;font-size:.86rem;color:var(--texto);
+  resize:vertical;min-height:74px;background:var(--blanco);outline:none;transition:border-color .2s;
+}
+.cq-body textarea:focus{border-color:var(--naranja)}
+
+/* ══════════════ QUIZ ═════════════════════════════════════ */
+.qbar-wrap{
+  display:flex;align-items:center;gap:11px;padding:10px 13px;
+  background:var(--papel-m);border-radius:3px;margin-bottom:13px;
+}
+.qbt{flex:1;height:4px;background:var(--borde);border-radius:2px;overflow:hidden}
+.qbf{height:100%;background:var(--indigo);transition:width .4s;border-radius:2px}
+.qbl{font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.1em;color:var(--texto-3);white-space:nowrap}
+
+.qcard{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;display:none}
+.qcard.on{display:block}
+.qnum{background:var(--gris-az);color:var(--blanco);padding:7px 15px;
+  font-family:'Fira Code',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase}
+.qtxt{padding:16px 20px 10px;font-size:.94rem;font-weight:700;color:var(--texto);line-height:1.5}
+.qopts{padding:0 20px 13px}
+.qopt{
+  display:flex;align-items:flex-start;gap:10px;padding:9px 12px;margin-bottom:6px;
+  border:1.5px solid var(--borde);border-radius:2px;cursor:pointer;transition:all .2s;
+  font-size:.86rem;color:var(--texto-2);user-select:none;
+}
+.qopt:hover:not(.lock){border-color:var(--indigo-m);background:var(--indigo-xs);color:var(--indigo)}
+.qopt.ok{background:var(--lima-cl);border-color:var(--lima);color:#3a6408}
+.qopt.err{background:var(--rojo-cl);border-color:var(--rojo);color:#882020}
+.qopt.lock{cursor:default}
+.qletra{
+  font-family:'Instrument Serif',serif;font-size:.88rem;
+  min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;border:1.5px solid currentColor;flex-shrink:0;margin-top:1px;
+}
+.qfb{margin:4px 20px 12px;padding:10px 13px;border-radius:2px;font-size:.85rem;display:none}
+.qfb.vis{display:block}
+.qfb.ok{background:var(--lima-cl);color:#2a5008;border-left:3px solid var(--lima)}
+.qfb.err{background:var(--rojo-cl);color:#7a1818;border-left:3px solid var(--rojo)}
+.qnav{padding:0 20px 13px;display:flex;justify-content:flex-end}
+
+.qres{display:none;text-align:center;padding:44px 28px;border:1.5px solid var(--borde);border-radius:4px}
+.qres.vis{display:block}
+.rpct{font-family:'Instrument Serif',serif;font-size:5rem;line-height:1;margin-bottom:5px}
+.rpct.ex{color:var(--lima)}.rpct.bn{color:var(--indigo-m)}
+.rpct.rg{color:var(--naranja)}.rpct.bj{color:var(--rojo)}
+.rlbl{font-family:'Fira Code',monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.rmsg{font-size:.92rem;color:var(--texto-2);max-width:460px;margin:0 auto 20px}
+.rstats{display:flex;justify-content:center;gap:28px;margin-bottom:20px}
+.rstat .n{font-family:'Instrument Serif',serif;font-size:2.2rem}
+.rstat .n.v{color:var(--lima)}.rstat .n.r{color:var(--rojo)}
+.rstat .l{font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-3)}
+
+/* ══════════════ REFLEXIÓN ════════════════════════════════ */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:13px 0}
+.ref-campo label{
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--texto-3);display:block;margin-bottom:6px;
+}
+.ref-campo textarea{
+  width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:10px 12px;
+  font-family:'Syne',sans-serif;font-size:.87rem;color:var(--texto);
+  background:var(--papel);outline:none;resize:vertical;min-height:84px;transition:border-color .2s;
+}
+.ref-campo textarea:focus{border-color:var(--lima);background:var(--blanco)}
+
+/* ══════════════ FOOTER ═══════════════════════════════════ */
+footer{
+  background:var(--negro);color:rgba(255,255,255,.28);text-align:center;padding:22px;
+  font-family:'Fira Code',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;
+}
+footer strong{color:rgba(255,255,255,.7)}
+
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .barra-nav{display:none}
+  .hero-wrap{grid-template-columns:1fr}
+  .hero-ilu{display:none}
+  .card-body{padding:18px 16px}
+  .prev-grid,.ref-grid{grid-template-columns:1fr}
+  .rubrica{grid-template-columns:1fr 1fr}
+  .leyes-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+  .leyes-grid{grid-template-columns:1fr}
+}
+/* clase tinta para btn */
+.btn.tinta{background:var(--gris-az);color:var(--blanco)}
+.btn.tinta:hover{background:var(--negro)}
+</style>
+</head>
+<body>
+
+<!-- BARRA INSTITUCIONAL -->
+<header class="barra">
+  <img alt="Universidad de la Ciénega"
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooriPiHql1pPhW6ubJikrbYww4Kh2AJHvjpVRi5NJAbd34l8P2DmK8v7eJx1RpFDD8M5qoPGnhQkD+07bn/AKaL/jXG+GPht4aOkW91qVubmeeNZXZ3YAFxnAAIGBmuh/4V34Oxj+z0/Bm/+KrS1NOzuDZynjOeK48YeGZoHWSNpSVZTkH5l6EcV6xcXVtZxGe7lSGMdWdgoH4mvBNY8N23hrxzokGnlxaTzK6RMxYI28BguecHipNWfS/E3j+5tPEt4tvp2nrtjjaQRhmGARkkckkkkc4GK1dNSSttYR643jLwopwdUtfwlU/1qzaeJvD9/KILO/t5XPRUlUn8s5rhRpHwiHBksD9bn/7OsPxBoPwxl0ud9Lu7SC6jRniaO4DEsoyBgscg1CpwbtqB7lmsHxV/yLOqf9ek3/oBrB+G+rXWr+FoJb1zJLCzQsx5JC/dz77SK3fFf/Isap/16Tf+gGsuXlnZjOb+F3/ImWv+9L/6Ga6W58U+HLOUw3WoW0bqcFTIuR9RmvO/C1nqN78L/smlSrBPL5iiRyVCgyHdyASPlzWfo+g/DPT9Pit9ZubS4u8ZlcTEjd7YIwPwraVNNtsD01fGfhRmCjVLXJ9ZVH9a6CC4guohPbSLLG3KshDA/QjivJRpfwhmPlB7QE+szL+u4VS8KwJ4a8fXHhzT5mewuIPNjUtuw2AwI/DI9xUukmny3+YHtteB6tZf8Jp8SpNGvnY2VjHnYGxkKF3fiWbBPXAr3uvEfDP/ACVbV/8ArnJ/6FHRQ+0+yEd/H4E8IRLtXTYce4J/U81J/wAIR4T/AOgbB/3zXVUVm60+47niXxD8E6LpuitrujRfZbi1dG/dk4ILBemeCM5BFdWLbQ9ct9A1TxDMsd8I45YFMgQvKdjHCnr8wHFeh1498Qv+Rt8L/wDXz/7UjrWE3O0W9e4Hrs00VvE00zqiKMlmOAPqTXnHivWtH1uzXSrbXLS1glbFw4kBcx91XBxz35/rXL+Op7bWPGll4c1a7Ftp0UfmS5cICxBPJOB0AA9MmtlNG+EcUe0SWR9zcZP6vTjTUUpO9/IVzpfDl74K0uBNJ0K8teSOBIpd29Sc5JP/AOqurvL+y0+IT388dvGTt3SsEGfTJxzxXkGp6D8K7qykjtLq0gm2kxulwMhu3BYgj2xXE3+r3Wp/C2AXj+ZJbagsIY9SojYjP0zj6Ch0eb3kFz6NvNY0rTgp1C6ht94yvmOq5+mTzWdH4w8LSnamp2ufeVR/M1zWnfD3RrqFL/xAHvr2ZQ8ju7AZI6KqkAAdBV2f4aeDZkKiy8s44ZHcEe/XH6VHLTWjbGdzHIsqCRCGVuQQcgis++1nStMwNSuobYsMgSOq5+mTXlPgG5n0O48QaG7tLb6YxeLcew3Z+m7AP/165zwhZeFdmin17xrewyXk8jYjlm2FVHcgMDz2HQDGKfsUm77CbPZf+Ez8Kf8AQTtv+/grWsNW0zVFL6dcxXAHUxOHx9cGvOTpHwjP8dh/4Ef/AGdcVr58M+F9X0/WvBt3Hnzds8MMokBTjOeWIBGQfwqo0YvSNwufQtxc29pEZ7qRIox1Z2CgfieK59vGnhRTj+07Y/SRT/I15xrVmfGHxDPh+/kb7DYQiQxqcBiQCfxO4DPoK7cfDrwYBj+z0P1Zyf51HJGKXOM3LLxJoGpSCGxvreaQ8hFkUt+Wc1es9QsdRiM1hPHcIDtLROHAPpkd64i/+G3hlrZ264tJ1G5J42YMjjoeTj8jXN/Cj7Q3hG+FqQszTyCMnoH8tAuT9aXs4uLlFge53viHQtOcxX17BDIOqM4z+WailguRBZ2VtfRLZJCrxrLg7yw5O3+ZqxRWYMSgAAZPAAooooGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFcJ45uQlpBaj/lqxJ+i4/qa7uvKvHDltTij7LEB+ZP+FbYVXmiZuyOWsh5mozrzt3Ej6da+ga8L0j/kKWx/6ar/OvdKvHbxGjnfF/8AyK2p/wDXrL/6Ca+MK+z/ABf/AMirqf8A16y/+gmvjCunAfAy2feIoopaK8sQUUUUAfPXxW0eXSvEcWr25K273mJiO0qDn8xx+Ir07wL8SNI1rSIItQnS31IKqSq/yu2AOVOcHPGQfxrxTxH4K8TeFJGl1O3Jh/hmj+aM/VugPsefatvwT4G1/wAWfNYwiKBCfNmk4C/h1Y+wFejOlCrR5YbkX1Pp9HWRBIhDKwBBHQin1BaW8VpaRWkH+rhjWNPZVGBU9eTLdmYNBRRRSAp6lqVhpNvHc6lMlvHLNHAjOcAu7BVH4kiry14d8UrlvGWm+H5TtjuwY2bptU7mGfwBzVCHwJpsdnJpiSTi0mbdLtbBI9AeoBzzWsaOHk6V9gkz2WXxj4UiJX+1LUkf9NB/jWTqXi/w7ptobmXVIGAPCo25j9AKzW+Fvh1Ii9v9minYDLBWB/8ARi/0p6fCXwpEQTHIR7yv/wDFVCVFO3Mxpzf2TjtK8TyeOfiVpqQ/tFoipJLj5UABIH19a9gvdV0/TWjW+mSAyjKBzgkd+a818E+GtO8I3Gp30TyyXsVwEijcZ2KApJGO5YD8qxfG+tvrmuyyKcwwHyo/Qj+I/j/SumEYRXPe7/IjUi1T4h3FprMtlaaWlzDbMFaXztuSDg4GOnFa1r8TNEuFDSJcQk9Q0ef5Ennj0q14Q8HaFd6RbeIHiluJ7mNZMMxyuRkD2I/SqOs/C7QJ7KS70cSWl2oLAAkqW9DnkGudyi1zaWLlzXSPQoZo7iJJoWDo4ypHcVJXgHhLxzqPhW4MFyHurQnDQseV/3Cen07V6np3jTw7qNkt0mqW6FlB2u4VgfQ5qKlJx2Ey3e6lp+nFBfXEdv5hwvmMFz9M1mSeK/CMKFpNUsQBz/rVJ/LNcb4iv7i+8WwXkkzFYEjIAOAAxBP6101/4e0W30qe7m061SOGFpHxGvIUZPbvS9lBJPmFc5TRbm0sPiNe3+nyLBb6lGFmVepACjd+aNn6Cuub4f8AhR/+YXGPoW/xr5/tBf6z4kks52bMKmMhx93I4/x/MV7v8PPLGgTxxyu7R3ThQ7E4XavoeeM//Xo+sJ24S0Jfhv8A8iVp3+4//obV2tFFZP4mUgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==">
+  <div class="barra-txt">
+    <div class="nom">Universidad de la Ciénega · Plantel Centro</div>
+    <div class="sub">Licenciatura en Pedagogía · Teorías del Aprendizaje · Tema 2.3</div>
+  </div>
+  <nav class="barra-nav">
+    <a href="#intro">Intro</a>
+    <a href="#previos">Previos</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Foro</a>
+    <a href="#act2">Act.2</a>
+    <a href="#act3">Caso</a>
+    <a href="#act4">Quiz</a>
+    <a href="#reflexion">Reflexión</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dec"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-wrap">
+    <div>
+      <div class="hero-kicker">Tema 2 · Subtema 2.3 · Guía de Aprendizaje Activo</div>
+      <h1>Enfoques Psicológicos<br>acerca del Conocimiento<br><em>La Gestalt</em></h1>
+      <div class="hero-sub">2.3 Leyes, principios y aplicaciones pedagógicas</div>
+      <p class="hero-desc">La Gestalt es mucho más que un conjunto de ilusiones ópticas: es una teoría del conocimiento que explica cómo la mente organiza activamente la experiencia en totalidades con sentido, y cómo esa organización determina la comprensión y el aprendizaje. Profundizar en sus leyes te dará herramientas concretas para diseñar clases donde los estudiantes perciban la estructura completa, no fragmentos aislados.</p>
+      <div class="hero-chips">
+        <span class="chip">Lic. en Pedagogía</span>
+        <span class="chip">Teorías del Aprendizaje</span>
+        <span class="chip lima">Pedagogía Activa · ABP</span>
+        <span class="chip">4 Actividades</span>
+      </div>
+    </div>
+    <div class="hero-ilu">
+      <!-- SVG: ilusión del triángulo de Kanizsa — cierre gestáltico -->
+      <svg viewBox="0 0 200 180" width="200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Triángulo de Kanizsa: cierre perceptual -->
+        <circle cx="100" cy="28" r="26" fill="#2d3561"/>
+        <path d="M 100 8 L 118 28 L 82 28 Z" fill="#f0f2fc"/>
+        <circle cx="32" cy="148" r="26" fill="#2d3561"/>
+        <path d="M 32 128 L 50 148 L 14 148 Z" fill="#f0f2fc" transform="rotate(240,32,148)"/>
+        <circle cx="168" cy="148" r="26" fill="#2d3561"/>
+        <path d="M 168 128 L 186 148 L 150 148 Z" fill="#f0f2fc" transform="rotate(120,168,148)"/>
+        <text x="100" y="108" text-anchor="middle" fill="rgba(255,255,255,.15)" font-family="Fira Code" font-size="9" letter-spacing="3">KANIZSA</text>
+      </svg>
+      <div class="hero-ilu-label">
+        <strong>Triángulo de Kanizsa</strong>
+        Ley de Cierre: la mente completa el triángulo blanco que no existe físicamente en la imagen.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="page">
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="side-kicker">Índice</div>
+    <ul class="side-list">
+      <li><a href="#intro">Introducción</a></li>
+      <li><a href="#previos">Conocimientos previos</a></li>
+      <div class="s-sep"></div>
+      <li><a href="#contenido">Contenido temático</a></li>
+      <li><a href="#materiales">Materiales de consulta</a></li>
+      <div class="s-sep"></div>
+      <li><a href="#act1">Actividad 1 · Foro</a></li>
+      <li><a href="#act2">Actividad 2 · Aprendizaje</a></li>
+      <li><a href="#act3">Actividad 3 · Caso</a></li>
+      <li><a href="#act4">Actividad 4 · Quiz</a></li>
+      <div class="s-sep"></div>
+      <li><a href="#reflexion">Reflexión final</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+  <!-- ══ INTRO ══ -->
+  <div class="card" id="intro">
+    <div class="card-head indigo">
+      <div class="ch-i">I</div>
+      <div class="ch-t"><h2>Introducción al tema</h2><div class="sub">Profundización en la Gestalt · Conexión con los subtemas anteriores</div></div>
+    </div>
+    <div class="card-body">
+      <p>En el subtema 2.2 exploraste el <em>Campo Cognoscitivo</em> como marco general de la psicología de la Gestalt: la idea de que el sujeto percibe y aprende en términos de totalidades organizadas, no de fragmentos aislados. El subtema 2.3 profundiza específicamente en la <strong>teoría Gestalt</strong> como sistema: sus leyes de organización perceptual, sus representantes principales, el debate que generó con el conductismo, y sus aplicaciones pedagógicas precisas y fundamentadas.</p>
+
+      <div class="cita">
+        "La psicología de la Gestalt no es una colección de fenómenos curiosos de percepción: es una teoría del conocimiento que sostiene que toda experiencia mental tiene estructura, y que esa estructura determina el sentido de cada elemento dentro de ella."
+        <cite>— Koffka, Principles of Gestalt Psychology (1935)</cite>
+      </div>
+
+      <p>La Gestalt fue la primera corriente psicológica en proponer que la <strong>comprensión</strong> —no la repetición ni el reforzamiento— es el mecanismo central del aprendizaje genuino. Esta afirmación, radical en su momento, sigue siendo relevante para cualquier pedagogo que busca diseñar experiencias de aprendizaje orientadas a la transferencia y el pensamiento crítico.</p>
+
+      <div class="caja in">
+        <div class="caja-tit">Pregunta orientadora</div>
+        <p style="margin:0;font-size:.94rem;color:var(--texto)"><em>¿De qué manera el conocimiento de las leyes gestálticas puede transformar concretamente el diseño de una clase universitaria, más allá de hacer las presentaciones "más bonitas visualmente"?</em></p>
+      </div>
+
+      <h3>¿Qué aprenderás en esta guía?</h3>
+      <ol class="pasos">
+        <li><p>Las leyes completas de organización perceptual de la Gestalt con sus representaciones visuales y sus implicaciones pedagógicas específicas.</p></li>
+        <li><p>La contribución de Wertheimer al estudio del pensamiento productivo y la diferencia entre aprendizaje por compresión estructural y aprendizaje por repetición ciega.</p></li>
+        <li><p>La concepción gestáltica de la memoria, la transferencia y la solución de problemas, y sus diferencias con los enfoques conductistas y cognitivistas.</p></li>
+        <li><p>Las críticas al modelo gestáltico y su influencia en la psicología cognitiva contemporánea.</p></li>
+      </ol>
+
+      <div class="caja li">
+        <div class="caja-tit">Conexión con los subtemas anteriores</div>
+        <p style="margin:0;font-size:.9rem">Si en 2.1 estudiaste el conductismo (E→R) y en 2.2 el campo cognoscitivo como concepto general, en 2.3 estudiarás la Gestalt como sistema teórico completo con leyes precisas, autores diferenciados y aplicaciones pedagógicas concretas. Esta guía profundiza lo que la anterior introdujo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PREVIOS ══ -->
+  <div class="card" id="previos">
+    <div class="card-head papel">
+      <div class="ch-i dark">?</div>
+      <div class="ch-t"><h2 class="dark">Activación de conocimientos previos</h2><div class="sub dark">Anclaje ausubeliano · Sin respuestas incorrectas</div></div>
+    </div>
+    <div class="card-body">
+      <p>Antes del contenido formal, reflexiona desde tu experiencia y lo que ya sabes de los subtemas anteriores. Esto activa las estructuras cognitivas necesarias para el aprendizaje significativo.</p>
+      <div class="caja warn"><strong>Instrucción:</strong> Responde con sinceridad y desde tu experiencia real. Esta activación no se entrega en Classroom, pero es fundamental para tu aprendizaje.</div>
+      <div class="prev-grid">
+        <div class="prev-item">
+          <label>1. Describe con tus propias palabras qué entendiste por "campo cognoscitivo" en la guía anterior. ¿Qué te quedó claro y qué aún te genera dudas?</label>
+          <textarea placeholder="Tu comprensión actual del tema previo..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>2. Antes de estudiar la Gestalt formalmente, ¿qué leyes o principios perceptuales conocías, aunque fuera de manera intuitiva o de otra materia (arte, diseño, comunicación)?</label>
+          <textarea placeholder="Lo que ya sabías, aunque sea parcial o intuitivo..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>3. ¿Puedes recordar alguna clase universitaria donde el docente presentó el contenido de manera tan fragmentada que era difícil ver la "imagen completa"? ¿Qué efecto tuvo en tu comprensión?</label>
+          <textarea placeholder="Experiencia concreta de aprendizaje fragmentado..."></textarea>
+        </div>
+        <div class="prev-item">
+          <label>4. ¿Has visto alguna vez el triángulo de Kanizsa (ilustración del hero de esta guía)? ¿Qué percibes y qué dice eso sobre cómo funciona tu mente?</label>
+          <textarea placeholder="Tu observación y reflexión sobre esa ilusión perceptual..."></textarea>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:6px">
+        <button class="btn in" onclick="guardarP()">Registrar respuestas (esta sesión)</button>
+      </div>
+      <div id="pok" style="display:none;text-align:center;margin-top:10px;font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--lima)">Respuestas registradas</div>
+    </div>
+  </div>
+
+  <!-- ══ CONTENIDO TEMÁTICO ══ -->
+  <div class="card" id="contenido">
+    <div class="card-head naranja">
+      <div class="ch-i">II</div>
+      <div class="ch-t"><h2>Contenido Temático</h2><div class="sub">Tema 2 · Subtema 2.3 · La Gestalt: leyes, autores y pedagogía</div></div>
+    </div>
+    <div class="card-body">
+
+      <h3>1. ¿Qué es la Gestalt? Definición y contexto histórico</h3>
+      <p>La <strong>Gestalt</strong> (del alemán: forma, figura, configuración) es una escuela psicológica fundada en Berlín a principios del siglo XX que propone que la mente humana organiza activamente la experiencia en <strong>totalidades estructuradas</strong>. Su lema fundacional — "el todo es diferente de la suma de sus partes" — condensa una crítica radical tanto al atomismo de la psicología introspectiva como al empirismo asociacionista y al conductismo behaviorista.</p>
+      <p>Los tres fundadores son <strong>Max Wertheimer</strong> (1880–1943), <strong>Wolfgang Köhler</strong> (1887–1967) y <strong>Kurt Koffka</strong> (1886–1941). Con la llegada del nazismo al poder en Alemania, los tres emigraron a los Estados Unidos, donde influyeron profundamente en el desarrollo de la psicología cognitiva y de la psicología social.</p>
+
+      <h3>2. Las leyes de la organización perceptual</h3>
+      <p>La Gestalt formuló un sistema de leyes que describe cómo la mente organiza los estímulos en totalidades coherentes. Estas leyes no son hipótesis especulativas: surgieron de investigaciones experimentales sistemáticas sobre la percepción visual, auditiva y del movimiento.</p>
+
+      <div class="leyes-grid">
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <circle cx="18" cy="30" r="7" fill="var(--indigo)"/>
+              <circle cx="34" cy="30" r="7" fill="var(--indigo)"/>
+              <circle cx="50" cy="30" r="7" fill="var(--indigo)"/>
+              <circle cx="78" cy="30" r="7" fill="var(--lima)"/>
+              <circle cx="94" cy="30" r="7" fill="var(--lima)"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Proximidad</div>
+            <div class="ley-desc">Elementos cercanos se perciben como grupo. Los 3 círculos azules y los 2 verdes forman grupos por distancia, no por decisión consciente.</div>
+          </div>
+        </div>
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <circle cx="22" cy="20" r="7" fill="var(--indigo)"/>
+              <circle cx="55" cy="20" r="7" fill="var(--lima)"/>
+              <circle cx="88" cy="20" r="7" fill="var(--indigo)"/>
+              <circle cx="22" cy="45" r="7" fill="var(--indigo)"/>
+              <circle cx="55" cy="45" r="7" fill="var(--lima)"/>
+              <circle cx="88" cy="45" r="7" fill="var(--indigo)"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Semejanza</div>
+            <div class="ley-desc">Elementos similares se agrupan perceptualmente. Los verdes forman una "columna", aunque la proximidad no lo indique.</div>
+          </div>
+        </div>
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <path d="M 20 30 Q 55 5 90 30" fill="none" stroke="var(--indigo)" stroke-width="3.5"/>
+              <path d="M 20 30 Q 55 55 90 30" fill="none" stroke="var(--lima)" stroke-width="3.5"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Continuidad</div>
+            <div class="ley-desc">Elementos alineados en una dirección continua se perciben como pertenecientes a la misma figura, aunque se crucen con otros.</div>
+          </div>
+        </div>
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <path d="M 15 50 A 35 35 0 1 1 14 49" fill="none" stroke="var(--indigo)" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Cierre</div>
+            <div class="ley-desc">La mente completa formas incompletas. Percibes un círculo aunque la línea tenga una brecha; el cerebro "cierra" la figura.</div>
+          </div>
+        </div>
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <rect x="15" y="10" width="38" height="40" fill="var(--indigo)" rx="2"/>
+              <rect x="57" y="10" width="38" height="40" fill="none" stroke="var(--lima)" stroke-width="2.5" rx="2"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Figura y Fondo</div>
+            <div class="ley-desc">La percepción siempre diferencia una figura que se destaca y un fondo que retrocede. El "fondo" cambia lo que se percibe como "figura".</div>
+          </div>
+        </div>
+        <div class="ley-card">
+          <div class="ley-vis">
+            <svg viewBox="0 0 110 60" width="100">
+              <ellipse cx="55" cy="30" rx="40" ry="22" fill="none" stroke="var(--indigo)" stroke-width="2.5"/>
+              <circle cx="55" cy="30" r="8" fill="var(--lima)"/>
+              <circle cx="25" cy="22" r="4" fill="var(--naranja)"/>
+              <circle cx="85" cy="22" r="4" fill="var(--naranja)"/>
+              <circle cx="25" cy="38" r="4" fill="var(--naranja)"/>
+              <circle cx="85" cy="38" r="4" fill="var(--naranja)"/>
+            </svg>
+          </div>
+          <div class="ley-body">
+            <div class="ley-nombre">Pregnancia</div>
+            <div class="ley-desc">Ley de la "buena forma": la mente prefiere percibir las formas más simples, regulares y simétricas disponibles en el campo perceptual.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caja in">
+        <div class="caja-tit">Implicación pedagógica directa de las leyes</div>
+        <p style="margin:0;font-size:.9rem">Cada ley tiene una traducción directa al diseño de materiales educativos: <strong>proximidad</strong> → agrupar visualmente conceptos relacionados; <strong>semejanza</strong> → usar codificación cromática consistente para categorías; <strong>cierre</strong> → plantear problemas incompletos que el estudiante deba completar para favorecer el engagement cognitivo; <strong>figura-fondo</strong> → destacar la información esencial sobre un fondo que no compita; <strong>pregnancia</strong> → privilegiar la simplicidad y la simetría en diagramas complejos.</p>
+      </div>
+
+      <h3>3. Max Wertheimer y el pensamiento productivo</h3>
+      <p><strong>Max Wertheimer</strong> no solo estudió la percepción: extendió los principios gestálticos al pensamiento y a la educación. En su obra <em>Productive Thinking</em> (1945), describió dos modos radicalmente distintos de aprendizaje:</p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Pensamiento reproductivo</th><th>Pensamiento productivo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Aplica mecánicamente procedimientos aprendidos por memorización.</td><td>Comprende la estructura del problema y reorganiza los elementos para encontrar una solución nueva.</td></tr>
+            <tr><td>Resultado: el estudiante resuelve problemas conocidos pero no puede transferirlos.</td><td>Resultado: el estudiante puede resolver problemas nuevos porque comprende el principio subyacente.</td></tr>
+            <tr><td>Corresponde al aprendizaje conductista por ensayo y error o instrucción programada.</td><td>Corresponde al aprendizaje por insight: reestructuración súbita del campo cognoscitivo.</td></tr>
+            <tr><td><strong>Ejemplo:</strong> estudiante que calcula el área de un paralelogramo sin comprender por qué la fórmula funciona.</td><td><strong>Ejemplo:</strong> estudiante que, al ver la figura transformada, descubre que el paralelogramo es un rectángulo reorganizado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4. Köhler y la naturaleza del insight</h3>
+      <p>Los experimentos de Köhler con chimpancés en Tenerife (1913–1917) documentaron el fenómeno del <strong>insight</strong> (comprensión súbita) de manera sistemática. Sus características definitorias son:</p>
+      <ol class="pasos na">
+        <li><p><strong>Aparece de forma súbita</strong>, no de manera gradual. No hay progreso lineal: el chimpancé (o el sujeto humano) pasa de no ver la solución a verla repentinamente.</p></li>
+        <li><p><strong>Requiere reestructuración del campo cognoscitivo</strong>: los elementos que antes se percibían de una manera son percibidos de una nueva manera, revelando sus relaciones funcionales.</p></li>
+        <li><p><strong>Produce aprendizaje sin repetición</strong>: una vez que ocurre el insight, la solución se retiene y puede aplicarse a situaciones equivalentes sin necesidad de práctica adicional.</p></li>
+        <li><p><strong>Antecede a la acción</strong>: el sujeto no actúa hasta que no ha comprendido la estructura del problema. Esto contrasta con el ensayo y error conductista, donde la acción precede a la comprensión.</p></li>
+      </ol>
+
+      <h3>5. Koffka y la memoria gestáltica</h3>
+      <p><strong>Kurt Koffka</strong> aplicó los principios de la Gestalt al estudio de la memoria, introduciendo el concepto de <strong>traza de memoria</strong> (memory trace): la memoria no almacena copias exactas de las experiencias, sino representaciones estructuradas y simplificadas que siguen las leyes de la buena forma. Esto explica por qué recordamos la <em>esencia</em> de algo mejor que los detalles literales, y por qué los errores de memoria tienden a seguir patrones regulares.</p>
+
+      <div class="caja na">
+        <div class="caja-tit">Implicación para la evaluación universitaria</div>
+        <p style="margin:0;font-size:.9rem">La concepción gestáltica de la memoria tiene consecuencias directas para el diseño de evaluaciones. Si la memoria no almacena datos literales sino estructuras, evaluar la memorización de definiciones textuales mide algo muy diferente a evaluar la comprensión estructural. Las evaluaciones orientadas a la comprensión deberían pedir al estudiante que reorganice, aplique y transfiera el conocimiento, no que lo reproduzca literalmente.</p>
+      </div>
+
+      <h3>6. Críticas a la Gestalt y su legado</h3>
+      <p>La psicología de la Gestalt recibió críticas importantes que es necesario conocer para una comprensión equilibrada:</p>
+      <ol class="pasos ro">
+        <li><p><strong>Falta de precisión operacional:</strong> conceptos como "insight" y "campo cognoscitivo" fueron difíciles de operacionalizar y medir de manera experimental rigurosa, lo que limitó su desarrollo como programa de investigación científica.</p></li>
+        <li><p><strong>Escasa atención al desarrollo evolutivo:</strong> a diferencia de Piaget, la Gestalt no elaboró una teoría sistemática de cómo cambia la percepción y el aprendizaje a lo largo del desarrollo del individuo.</p></li>
+        <li><p><strong>Subestimación del aprendizaje previo:</strong> la Gestalt tendía a presentar el insight como un fenómeno independiente del conocimiento previo, cuando en realidad la investigación posterior mostró que el insight requiere una base de conocimiento estructurado sobre el que operar.</p></li>
+        <li><p><strong>Legado positivo:</strong> a pesar de estas críticas, la Gestalt preparó el terreno para la revolución cognitiva de los años 50–60, influyendo en la psicología cognitiva (memoria, resolución de problemas), el diseño gráfico y de interfaces, y el diseño instruccional contemporáneo.</p></li>
+      </ol>
+
+      <div class="caja li">
+        <div class="caja-tit">Gestalt y psicología cognitiva: el legado</div>
+        <p style="margin:0;font-size:.9rem">La distinción de la Gestalt entre <em>aprendizaje reproductivo</em> y <em>pensamiento productivo</em> (Wertheimer) anticipó directamente conceptos centrales de la psicología cognitiva contemporánea: la diferencia entre recuperación de información (retrieval) y transferencia creativa, y entre memoria declarativa y procedimental. La Gestalt fue el puente entre el conductismo y el cognitivismo en la historia de la psicología.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MATERIALES ══ -->
+  <div class="card" id="materiales">
+    <div class="card-head indigo">
+      <div class="ch-i">III</div>
+      <div class="ch-t"><h2>Materiales de Consulta Formales</h2><div class="sub">Fuentes académicas · Consultar antes de las actividades</div></div>
+    </div>
+    <div class="card-body">
+      <p>Se presentan fuentes académicas seleccionadas para profundizar en la Gestalt y sus aplicaciones. Se recomienda revisar al menos dos antes de realizar las actividades prácticas.</p>
+      <div class="recursos">
+        <div class="rec">
+          <span class="rec-tipo lib">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Productive Thinking — Edición completa</div>
+            <div class="rec-desc">Obra póstuma de Wertheimer donde aplica los principios gestálticos al estudio del pensamiento matemático y científico. Incluye el análisis clásico de cómo Gauss resolvió la suma de una serie aritmética por comprensión estructural.</div>
+            <div class="rec-aut">Wertheimer, M. (1945). Productive Thinking. Harper & Brothers. Nueva York.</div>
+          </div>
+        </div>
+        <div class="rec">
+          <span class="rec-tipo lib">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Principles of Gestalt Psychology — Partes I y II</div>
+            <div class="rec-desc">Obra fundacional de Koffka que sistematiza todas las leyes gestálticas, las aplica al desarrollo y al aprendizaje, y discute la concepción gestáltica de la memoria y la motivación.</div>
+            <div class="rec-aut">Koffka, K. (1935). Principles of Gestalt Psychology. Harcourt, Brace & Company. Nueva York.</div>
+          </div>
+        </div>
+        <div class="rec">
+          <span class="rec-tipo lib">Libro</span>
+          <div class="rec-info">
+            <div class="rec-tit">Psicología educativa — Capítulo 8: La psicología de la Gestalt</div>
+            <div class="rec-desc">Exposición accesible y actualizada de las contribuciones gestálticas al aprendizaje, con ejemplos aplicados a la educación superior contemporánea y comparación con otros enfoques.</div>
+            <div class="rec-aut">Woolfolk, A. (2014). Psicología educativa (12.ª ed.). Pearson. México.</div>
+          </div>
+        </div>
+        <div class="rec">
+          <span class="rec-tipo pdf">Artículo</span>
+          <div class="rec-info">
+            <div class="rec-tit">La Gestalt y el diseño de materiales didácticos en educación superior</div>
+            <div class="rec-desc">Revisión de la aplicación de las leyes gestálticas al diseño instruccional universitario, con evidencia sobre su efecto en la comprensión y la retención de contenidos complejos.</div>
+            <div class="rec-aut">Buscar en Redalyc · Latindex · ERIC: "Gestalt leyes diseño instruccional educación superior".</div>
+          </div>
+        </div>
+        <div class="rec">
+          <span class="rec-tipo vid">Video</span>
+          <div class="rec-info">
+            <div class="rec-tit">Las leyes de la Gestalt aplicadas a la educación — Conferencias universitarias</div>
+            <div class="rec-desc">Series académicas sobre los principios de la Gestalt y su aplicación al diseño instruccional, la comunicación visual educativa y el pensamiento productivo.</div>
+            <div class="rec-aut">YouTube · Filtro: "Gestalt psicología educación leyes conferencia académica".</div>
+          </div>
+        </div>
+        <div class="rec">
+          <span class="rec-tipo web">Web</span>
+          <div class="rec-info">
+            <div class="rec-tit">Stanford Encyclopedia of Philosophy — "Gestalt Theory"</div>
+            <div class="rec-desc">Referencia enciclopédica de acceso libre sobre los fundamentos filosóficos y psicológicos de la Gestalt, con análisis crítico de su legado en la ciencia cognitiva contemporánea.</div>
+            <div class="rec-aut">plato.stanford.edu — Acceso libre en inglés.</div>
+          </div>
+        </div>
+      </div>
+      <div class="caja warn" style="margin-top:12px"><strong>Citación:</strong> Usa APA 7.ª edición al referenciar estas fuentes en tus actividades. Consulta las bases de datos institucionales o la biblioteca universitaria para el acceso a los textos.</div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 1: FORO ══ -->
+  <div class="card" id="act1">
+    <div class="card-head indigo">
+      <div class="ch-i">A1</div>
+      <div class="ch-t"><h2>Actividad 1 · Foro de Mediación</h2><div class="sub">Reflexión crítica · Intercambio argumentado · Construcción colaborativa</div></div>
+    </div>
+    <div class="card-body">
+      <div class="class-tag">Entregable en Google Classroom · Foro de discusión</div>
+      <h4>Propósito</h4>
+      <p>Esta actividad busca que construyas, con tus compañeros, una comprensión crítica sobre la relevancia actual de las leyes gestálticas en la práctica docente universitaria. El foro requiere argumentación fundamentada y anclada en experiencias universitarias verificables.</p>
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos">
+        <li><p>Ingresa a Classroom y localiza el foro <strong>"Gestalt en el aula: leyes que los docentes aplican sin saberlo"</strong></p></li>
+        <li><p>Lee la pregunta detonadora. Dedica al menos 15 minutos a reflexionar antes de escribir. Usa el espacio de práctica de esta guía.</p></li>
+        <li><p>Redacta tu participación inicial con mínimo <strong>220 palabras</strong>, incluyendo: (a) postura clara, (b) referencia a al menos una ley gestáltica específica, (c) ejemplo concreto y verificable de tu experiencia universitaria.</p></li>
+        <li><p>Responde a al menos <strong>dos compañeros</strong> con comentarios de mínimo 90 palabras cada uno que amplíen o cuestionen el argumento.</p></li>
+        <li><p>Guarda capturas de pantalla de tu participación y comentarios para entregar en Classroom.</p></li>
+      </ol>
+      <h4>Pregunta detonadora</h4>
+      <div class="foro">
+        <div class="foro-head"><span>Foro · Teorías del Aprendizaje · Tema 2.3 · Gestalt</span></div>
+        <div class="foro-pq">
+          Las leyes gestálticas de organización perceptual (proximidad, semejanza, cierre, figura-fondo, pregnancia) están presentes en el diseño de cada presentación, esquema o material didáctico que usamos en la universidad, aunque los docentes rara vez las conozcan como tales. <strong>¿Puedes identificar en alguna de tus clases actuales un material o práctica docente que viole o que respete alguna de estas leyes? ¿Qué consecuencias tiene esa violación o cumplimiento en tu comprensión del contenido? ¿Debería la formación docente universitaria incluir explícitamente el estudio de las leyes gestálticas como competencia profesional?</strong>
+        </div>
+        <div class="foro-in">
+          <label>Espacio de práctica — elabora tu borrador aquí</label>
+          <textarea id="f1" placeholder="Describe un material o práctica docente real. Identifica la ley gestáltica implicada (cítala por nombre). Argumenta las consecuencias en tu comprensión y toma postura sobre si la Gestalt debería estar en la formación docente. Esta reflexión requiere tu experiencia personal específica."></textarea>
+          <br>
+          <button class="btn in" onclick="gF()">Guardar borrador</button>
+          <button class="btn out" style="margin-left:8px" onclick="tE('ej1')">Ver ejemplo orientativo</button>
+          <div class="ej" id="ej1">
+            <strong>Ejemplo orientativo (no reproducir):</strong><br><br>
+            En mi materia de Contabilidad, el profesor utiliza diapositivas con 8 columnas de números sin ninguna agrupación visual. Desde la perspectiva gestáltica, esto viola el principio de proximidad y pregnancia simultáneamente: los datos no están agrupados en función de su relación conceptual, y la forma general es altamente compleja e irregular, lo que dificulta que mi sistema perceptual organice la información en unidades coherentes. El resultado: memorizo los procedimientos pero no entiendo la lógica del sistema contable como un todo.<br><br>
+            En contraste, en Estadística, la profesora usa códigos de color consistentes para cada tipo de distribución (verde para normal, azul para binomial), aplicando el principio de semejanza: mi mente agrupa automáticamente los procedimientos de la misma distribución, aunque estén separados en distintas diapositivas.<br><br>
+            Sostengo que la formación docente universitaria sí debería incluir las leyes gestálticas, al menos como parte del diseño instruccional. No se trata de hacer materiales "más estéticos", sino de diseñar entornos perceptuales que faciliten la organización cognitiva del contenido.
+          </div>
+        </div>
+      </div>
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Postura fundamentada</div><div class="cp">30 <span>pts</span></div><p>Postura clara respaldada con referencia a al menos una ley gestáltica específica.</p></div>
+        <div class="crit"><div class="cn">Conexión experiencial</div><div class="cp">25 <span>pts</span></div><p>Argumento anclado en materiales o prácticas universitarias concretas y verificables.</p></div>
+        <div class="crit"><div class="cn">Calidad de comentarios</div><div class="cp">25 <span>pts</span></div><p>Comentarios a pares que amplían el debate con nuevos elementos; no solo acuerdo.</p></div>
+        <div class="crit"><div class="cn">Redacción académica</div><div class="cp">20 <span>pts</span></div><p>Escritura clara, vocabulario psicológico apropiado, extensión mínima cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 2 ══ -->
+  <div class="card" id="act2">
+    <div class="card-head lima">
+      <div class="ch-i" style="color:rgba(0,0,0,.15)">A2</div>
+      <div class="ch-t"><h2 style="color:var(--negro)">Actividad 2 · Análisis Gestáltico de una Presentación Docente</h2><div class="sub" style="color:rgba(0,0,0,.45)">Aprendizaje significativo · Aplicación directa · Producción fundamentada</div></div>
+    </div>
+    <div class="card-body">
+      <div class="class-tag" style="background:var(--lima);color:var(--negro)">Entregable en Google Classroom · Informe de análisis</div>
+      <h4>Propósito</h4>
+      <p>Esta actividad aplica directamente las leyes gestálticas al análisis crítico de una presentación o material visual real de una de tus materias universitarias actuales, produciendo un informe fundamentado que articula teoría y práctica.</p>
+      <h4>Instrucciones paso a paso</h4>
+      <ol class="pasos li">
+        <li><p><strong>Selecciona una presentación.</strong> Elige una presentación de diapositivas (PowerPoint, Canva, PDF) de cualquier materia actual que hayas recibido recientemente. Necesitarás poder capturar pantallas de ella.</p></li>
+        <li><p><strong>Sección A — Análisis ley por ley.</strong> Examina la presentación buscando evidencias de aplicación o violación de al menos cuatro de las seis leyes gestálticas estudiadas (proximidad, semejanza, continuidad, cierre, figura-fondo, pregnancia). Para cada ley: cita o captura una diapositiva específica como evidencia y describe qué ocurre en términos gestálticos.</p></li>
+        <li><p><strong>Sección B — Evaluación del impacto cognitivo.</strong> Para cada ley identificada, explica qué efecto tuvo (o tiene) esa aplicación o violación en tu organización cognitiva del contenido: ¿facilitó la comprensión estructural o la dificultó? ¿Por qué, en términos gestálticos?</p></li>
+        <li><p><strong>Sección C — Propuestas de mejora.</strong> Propone al menos dos modificaciones concretas a la presentación, basadas en las leyes gestálticas, que mejorarían la comprensión del campo cognoscitivo del estudiante. Justifica cada propuesta con la ley específica que aplica.</p></li>
+        <li><p><strong>Entrega.</strong> Informe de 650–950 palabras con imágenes o capturas incluidas. Entrega en Classroom en PDF o Word con imágenes.</p></li>
+      </ol>
+      <div class="caja li">
+        <div class="caja-tit">Ejemplo de análisis en Sección A</div>
+        <p style="font-size:.87rem;margin:0"><strong>Ley evaluada:</strong> Figura y fondo.<br><strong>Evidencia:</strong> Diapositiva 4 del curso de Administración — texto negro sobre fondo gris oscuro con una imagen de fondo compleja que compite visualmente con el texto principal.<br><strong>Análisis gestáltico:</strong> El principio figura-fondo establece que la figura debe distinguirse claramente del fondo. En esta diapositiva, el contraste insuficiente y la imagen competitiva hacen que el texto (figura) no se destaque adecuadamente del fondo, dificultando su percepción como elemento central. El resultado es que el sistema perceptual invierte esfuerzo en determinar qué es figura y qué es fondo, en lugar de procesar el contenido semántico.</p>
+      </div>
+      <div class="caja warn"><strong>Autenticidad requerida:</strong> Esta actividad necesita capturas o descripciones precisas de una presentación real, con identificación de materia y diapositiva específica. Esa especificidad es lo que la convierte en aprendizaje situado genuino.</div>
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Análisis ley por ley</div><div class="cp">30 <span>pts</span></div><p>Cuatro leyes identificadas correctamente con evidencia visual específica.</p></div>
+        <div class="crit"><div class="cn">Evaluación cognitiva</div><div class="cp">30 <span>pts</span></div><p>Explica con fundamento el impacto de cada ley en la organización cognitiva del contenido.</p></div>
+        <div class="crit"><div class="cn">Propuestas de mejora</div><div class="cp">25 <span>pts</span></div><p>Dos propuestas específicas y realizables con justificación gestáltica explícita.</p></div>
+        <div class="crit"><div class="cn">Presentación y redacción</div><div class="cp">15 <span>pts</span></div><p>Evidencias visuales incluidas, escritura académica, extensión cumplida.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 3: CASO ══ -->
+  <div class="card" id="act3">
+    <div class="card-head naranja">
+      <div class="ch-i">A3</div>
+      <div class="ch-t"><h2>Actividad 3 · Caso: "El Mapa de Marco"</h2><div class="sub">ABP · Análisis gestáltico profundo · Propuesta pedagógica</div></div>
+    </div>
+    <div class="card-body">
+      <div class="class-tag" style="background:var(--naranja)">Entregable en Google Classroom · Análisis integrado</div>
+      <h4>Presentación del caso</h4>
+      <div class="caso-txt">
+        <p><em>Marco</em> cursa el segundo semestre de la Licenciatura en Comunicación. En su materia de Teoría de la Comunicación, el profesor <em>Eduardo</em> tiene fama de ser riguroso y preparado. Sus clases siguen siempre la misma estructura: durante 80 minutos, Eduardo dicta definiciones y exemplifica cada concepto con un ejemplo breve. Las diapositivas contienen entre 12 y 15 líneas de texto compacto, sin jerarquía visual, sin imágenes y con una paleta de colores uniforme: fondo blanco, texto negro, sin diferenciación tipográfica.</p>
+        <p>Marco estudia diligentemente: transcribe las definiciones, las memoriza antes del examen y obtiene calificaciones de 8 y 9. Sin embargo, cuando en un seminario externo le presentan un problema real de comunicación y le piden aplicar las teorías del curso, Marco no puede articular los conceptos entre sí ni identificar qué teoría aplica mejor al caso.</p>
+        <p>En una conversación con su tutora, Marco describe su situación: <em>"Sé las definiciones de memoria. Pero cuando intento pensar en el problema, los conceptos no se conectan. Es como si tuviera todas las piezas del rompecabezas pero no pudiera ver la imagen del paquete."</em></p>
+        <p>La tutora le sugiere que intente construir un <em>mapa visual</em> de los conceptos, agrupando los que considera relacionados. Marco pasa dos horas construyendo el mapa y, al terminarlo, experimenta lo que describe como "entender de pronto por primera vez de qué va la materia".</p>
+      </div>
+      <h4>Preguntas de análisis</h4>
+      <div class="caso-qs">
+        <div class="cq">
+          <div class="cq-head"><span class="cq-n">1</span>La metáfora de Marco ("las piezas del rompecabezas sin la imagen del paquete") describe con precisión el resultado del aprendizaje reproductivo que describe Wertheimer. Explica esta metáfora en términos gestálticos: ¿qué leyes de organización perceptual están ausentes en el diseño de las clases del profesor Eduardo?</div>
+          <div class="cq-body"><textarea placeholder="Análisis gestáltico de la situación de Marco..."></textarea></div>
+        </div>
+        <div class="cq">
+          <div class="cq-head"><span class="cq-n">2</span>¿Por qué la construcción del mapa visual produjo en Marco el fenómeno que describe como "entender de pronto por primera vez"? Explica este momento en términos de: (a) reestructuración del campo cognoscitivo, (b) las leyes gestálticas que el mapa activa y (c) la diferencia entre pensamiento reproductivo y productivo (Wertheimer).</div>
+          <div class="cq-body"><textarea placeholder="Análisis del momento de insight de Marco..."></textarea></div>
+        </div>
+        <div class="cq">
+          <div class="cq-head"><span class="cq-n">3</span>¿Qué violaciones específicas a las leyes gestálticas comete el profesor Eduardo en su diseño de diapositivas? Identifica al menos tres leyes específicas y describe cómo cada violación impide la organización cognitiva del contenido.</div>
+          <div class="cq-body"><textarea placeholder="Diagnóstico gestáltico del diseño docente de Eduardo..."></textarea></div>
+        </div>
+        <div class="cq">
+          <div class="cq-head"><span class="cq-n">4</span>Como pedagogo asesor del profesor Eduardo, diseña una propuesta de rediseño para una de sus sesiones que aplique explícitamente las leyes gestálticas identificadas. Incluye: (a) tres cambios concretos en el diseño de materiales, (b) una estrategia de enseñanza que favorezca el pensamiento productivo y (c) una propuesta de evaluación que mida comprensión estructural en lugar de memorización.</div>
+          <div class="cq-body"><textarea placeholder="Propuesta de rediseño gestáltico de la sesión..."></textarea></div>
+        </div>
+      </div>
+      <div class="caja na" style="margin-top:13px">
+        <div class="caja-tit">Instrucción de entrega</div>
+        <p style="margin:0;font-size:.9rem">Redacta tu análisis como texto integrado de 600–850 palabras, articulando coherentemente las cuatro preguntas. No es un cuestionario: es un dictamen pedagógico. Entrega en Classroom en PDF o Word.</p>
+      </div>
+      <h4>Criterios de evaluación</h4>
+      <div class="rubrica">
+        <div class="crit"><div class="cn">Análisis metáfora</div><div class="cp">25 <span>pts</span></div><p>Explica la metáfora de Marco en términos gestálticos precisos.</p></div>
+        <div class="crit"><div class="cn">Análisis del insight</div><div class="cp">25 <span>pts</span></div><p>Articula los tres elementos pedidos (campo, leyes, pensamiento productivo) con precisión.</p></div>
+        <div class="crit"><div class="cn">Diagnóstico docente</div><div class="cp">25 <span>pts</span></div><p>Identifica tres violaciones gestálticas con descripción precisa de su efecto cognitivo.</p></div>
+        <div class="crit"><div class="cn">Propuesta pedagógica</div><div class="cp">25 <span>pts</span></div><p>Tres cambios + estrategia + evaluación, todos fundamentados gestálticamente.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACTIVIDAD 4: QUIZ ══ -->
+  <div class="card" id="act4">
+    <div class="card-head negro">
+      <div class="ch-i">A4</div>
+      <div class="ch-t"><h2>Actividad 4 · Quiz de Comprensión</h2><div class="sub">5 preguntas · Retroalimentación inmediata · Puntaje final</div></div>
+    </div>
+    <div class="card-body">
+      <div class="class-tag" style="background:var(--negro)">Entregable en Google Classroom · Captura de pantalla del resultado</div>
+      <p>Responde las cinco preguntas. Retroalimentación inmediata por pregunta. Al finalizar, toma captura del resultado y súbela a Classroom. Puedes reiniciar para practicar.</p>
+
+      <div id="quiz-wrap">
+        <div class="qbar-wrap">
+          <span class="qbl" id="qlbl">Pregunta 1 de 5</span>
+          <div class="qbt"><div class="qbf" id="qbar" style="width:20%"></div></div>
+          <span class="qbl" id="qscore">0 correctas</span>
+        </div>
+
+        <!-- Q1 -->
+        <div class="qcard on" id="q1">
+          <div class="qnum">Pregunta 1 de 5</div>
+          <div class="qtxt">El triángulo de Kanizsa (donde se percibe un triángulo blanco que no tiene bordes físicos trazados) es el ejemplo clásico de la ley gestáltica de:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="rQ(this,'q1','fb1',false)"><span class="qletra">A</span>Proximidad: los vértices del triángulo están cerca unos de otros y se perciben como grupo.</div>
+            <div class="qopt" onclick="rQ(this,'q1','fb1',false)"><span class="qletra">B</span>Semejanza: los elementos que conforman el triángulo tienen forma similar entre sí.</div>
+            <div class="qopt" onclick="rQ(this,'q1','fb1',true)"><span class="qletra">C</span>Cierre: la mente completa el contorno faltante del triángulo percibiendo una forma completa que no existe físicamente.</div>
+            <div class="qopt" onclick="rQ(this,'q1','fb1',false)"><span class="qletra">D</span>Continuidad: los bordes del triángulo siguen una dirección lineal percibida como continua.</div>
+          </div>
+          <div class="qfb" id="fb1"></div>
+          <div class="qnav"><button class="btn tinta" id="n1" style="display:none" onclick="nQ(2)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qcard" id="q2">
+          <div class="qnum">Pregunta 2 de 5</div>
+          <div class="qtxt">Según Wertheimer, la diferencia fundamental entre pensamiento reproductivo y pensamiento productivo es que:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="rQ(this,'q2','fb2',false)"><span class="qletra">A</span>El pensamiento reproductivo es más creativo porque genera soluciones nuevas a cada problema.</div>
+            <div class="qopt" onclick="rQ(this,'q2','fb2',true)"><span class="qletra">B</span>El pensamiento productivo comprende la estructura del problema y puede generar soluciones nuevas; el reproductivo aplica mecánicamente procedimientos memorizados sin comprensión estructural.</div>
+            <div class="qopt" onclick="rQ(this,'q2','fb2',false)"><span class="qletra">C</span>El pensamiento reproductivo es superior porque produce aprendizaje más duradero y transferible a nuevos contextos.</div>
+            <div class="qopt" onclick="rQ(this,'q2','fb2',false)"><span class="qletra">D</span>Ambos tipos de pensamiento producen el mismo nivel de comprensión; solo difieren en la velocidad con que se alcanzan las soluciones.</div>
+          </div>
+          <div class="qfb" id="fb2"></div>
+          <div class="qnav"><button class="btn tinta" id="n2" style="display:none" onclick="nQ(3)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qcard" id="q3">
+          <div class="qnum">Pregunta 3 de 5</div>
+          <div class="qtxt">Koffka propuso que la memoria almacena representaciones "estructuradas y simplificadas" que siguen las leyes de la buena forma. ¿Cuál es la implicación más directa de esta concepción para el diseño de evaluaciones universitarias?</div>
+          <div class="qopts">
+            <div class="qopt" onclick="rQ(this,'q3','fb3',false)"><span class="qletra">A</span>Las evaluaciones deben medir la capacidad de reproducir definiciones textuales literales, ya que eso es lo que la memoria almacena.</div>
+            <div class="qopt" onclick="rQ(this,'q3','fb3',true)"><span class="qletra">B</span>Las evaluaciones deben medir la comprensión estructural y la capacidad de transferir principios, no la reproducción literal de datos, ya que la memoria almacena estructuras, no copias exactas.</div>
+            <div class="qopt" onclick="rQ(this,'q3','fb3',false)"><span class="qletra">C</span>Las evaluaciones deben evitar cualquier tipo de pregunta que requiera recordar información previa, porque la memoria gestáltica es inherentemente poco confiable.</div>
+            <div class="qopt" onclick="rQ(this,'q3','fb3',false)"><span class="qletra">D</span>Las evaluaciones deben basarse exclusivamente en imágenes y estímulos visuales, ya que la Gestalt solo estudia la percepción visual.</div>
+          </div>
+          <div class="qfb" id="fb3"></div>
+          <div class="qnav"><button class="btn tinta" id="n3" style="display:none" onclick="nQ(4)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="qcard" id="q4">
+          <div class="qnum">Pregunta 4 de 5</div>
+          <div class="qtxt">Un docente usa el mismo color azul para resaltar todos los conceptos que pertenecen al paradigma cualitativo de investigación, y el color naranja para todos los del paradigma cuantitativo, en todas sus diapositivas del semestre. Esta práctica aplica la ley gestáltica de:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="rQ(this,'q4','fb4',false)"><span class="qletra">A</span>Cierre: el uso de colores ayuda a completar la percepción de conceptos incompletos.</div>
+            <div class="qopt" onclick="rQ(this,'q4','fb4',false)"><span class="qletra">B</span>Continuidad: los colores crean una línea continua de percepción a lo largo del semestre.</div>
+            <div class="qopt" onclick="rQ(this,'q4','fb4',true)"><span class="qletra">C</span>Semejanza: los elementos del mismo color (misma "forma" visual) son percibidos como pertenecientes al mismo grupo conceptual.</div>
+            <div class="qopt" onclick="rQ(this,'q4','fb4',false)"><span class="qletra">D</span>Figura y fondo: el color diferencia lo que es figura (concepto principal) de lo que es fondo (información secundaria).</div>
+          </div>
+          <div class="qfb" id="fb4"></div>
+          <div class="qnav"><button class="btn tinta" id="n4" style="display:none" onclick="nQ(5)">Siguiente &rarr;</button></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="qcard" id="q5">
+          <div class="qnum">Pregunta 5 de 5</div>
+          <div class="qtxt">Una crítica legítima a la psicología de la Gestalt como programa de investigación científica es que:</div>
+          <div class="qopts">
+            <div class="qopt" onclick="rQ(this,'q5','fb5',false)"><span class="qletra">A</span>Sus conclusiones sobre la percepción han sido completamente refutadas por la neurociencia contemporánea.</div>
+            <div class="qopt" onclick="rQ(this,'q5','fb5',true)"><span class="qletra">B</span>Conceptos centrales como "insight" y "campo cognoscitivo" resultaron difíciles de operacionalizar y medir experimentalmente, lo que limitó su desarrollo como ciencia rigurosa.</div>
+            <div class="qopt" onclick="rQ(this,'q5','fb5',false)"><span class="qletra">C</span>La Gestalt nunca tuvo ninguna influencia en la psicología cognitiva posterior ni en el diseño instruccional contemporáneo.</div>
+            <div class="qopt" onclick="rQ(this,'q5','fb5',false)"><span class="qletra">D</span>Los tres fundadores (Wertheimer, Köhler y Koffka) no realizaron investigaciones experimentales: sus teorías eran puramente especulativas.</div>
+          </div>
+          <div class="qfb" id="fb5"></div>
+          <div class="qnav"><button class="btn tinta" id="n5" style="display:none" onclick="mR()">Ver resultado &rarr;</button></div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="qres" id="qres">
+          <div class="rpct" id="rpct"></div>
+          <div class="rlbl" id="rlbl"></div>
+          <div class="rmsg" id="rmsg"></div>
+          <div class="rstats">
+            <div class="rstat"><div class="n v" id="rcorr"></div><div class="l">Correctas</div></div>
+            <div class="rstat"><div class="n r" id="rincorr"></div><div class="l">Incorrectas</div></div>
+            <div class="rstat"><div class="n" style="color:var(--indigo-m)">5</div><div class="l">Total</div></div>
+          </div>
+          <div class="caja warn" style="text-align:left;max-width:460px;margin:0 auto 18px">
+            <strong>Para Classroom:</strong> Toma captura de pantalla con la fecha visible en tu dispositivo y súbela como evidencia.
+          </div>
+          <button class="btn tinta" onclick="reinQ()">Reiniciar quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REFLEXIÓN ══ -->
+  <div class="card" id="reflexion">
+    <div class="card-head rojo">
+      <div class="ch-i">R</div>
+      <div class="ch-t"><h2>Reflexión Final y Plan de Aplicación</h2><div class="sub">Metacognición · Transferencia · Compromiso profesional</div></div>
+    </div>
+    <div class="card-body">
+      <h3>Por qué importa haber estudiado la Gestalt en profundidad</h3>
+      <p>La Gestalt no es solo una colección de principios perceptuales: es una manera de entender que el diseño del entorno de aprendizaje tiene consecuencias directas en cómo el estudiante organiza cognitivamente el conocimiento. Un docente que conoce las leyes gestálticas toma decisiones de diseño instruccional que son, literalmente, decisiones sobre cómo funcionará la mente de sus estudiantes al percibir y procesar el contenido.</p>
+
+      <div class="cita">
+        "El maestro que enseña partes sin mostrar el todo, produce estudiantes que saben las partes sin entender nada."
+        <cite>— Paráfrasis de Max Wertheimer, Productive Thinking (1945)</cite>
+      </div>
+
+      <h4>Completa tu plan de aplicación</h4>
+      <div class="ref-grid">
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>1. Ahora que conoces las seis leyes gestálticas, ¿cuál de ellas describe mejor la principal debilidad pedagógica que has observado en los materiales que recibes en la universidad? Describe un ejemplo específico y actual.</label>
+          <textarea placeholder="Nombra la ley, describe el ejemplo con precisión y explica el efecto cognitivo..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>2. ¿Qué diferencia hay, según Wertheimer, entre lo que aprendiste en esta guía y lo que aprendes cuando memorizas para un examen? ¿Cuál de los dos tipos de pensamiento te parece más frecuente en tu universidad?</label>
+          <textarea placeholder="Aplica la distinción pensamiento productivo/reproductivo a tu experiencia concreta..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>3. ¿Has experimentado el insight al estudiar algún tema de esta materia o de otra? Descríbelo ahora en términos gestálticos precisos (reestructuración del campo, ley implicada, etc.).</label>
+          <textarea placeholder="Describe el momento de insight con vocabulario gestáltico correcto..."></textarea>
+        </div>
+        <div class="ref-campo">
+          <label>4. Como futuro docente, ¿cuál será tu práctica más consistente respecto a las leyes gestálticas en el diseño de tus clases? Sé específico: ¿qué harás diferente a lo que has recibido?</label>
+          <textarea placeholder="Compromiso pedagógico concreto y fundamentado en la Gestalt..."></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>5. Síntesis integradora: ¿cómo articulas el conductismo (2.1), el campo cognoscitivo (2.2) y la Gestalt (2.3) en una comprensión integrada? ¿Cuál es tu postura sobre cuál de estos enfoques tiene mayor relevancia para la educación universitaria contemporánea?</label>
+          <textarea placeholder="Síntesis propia de los tres subtemas con tu postura argumentada..."></textarea>
+        </div>
+        <div class="ref-campo" style="grid-column:1/-1">
+          <label>6. Plan de acción a 30 días: ¿qué harás concretamente para profundizar en este tema y aplicarlo a tu práctica universitaria?</label>
+          <textarea placeholder="Acción específica: texto a leer, material a rediseñar, clase a observar con mirada gestáltica..."></textarea>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <button class="btn naranja" onclick="gR()">Guardar reflexión (esta sesión)</button>
+      </div>
+      <div id="rok" style="display:none;text-align:center;margin-top:10px;font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--lima)">Reflexión guardada</div>
+      <div style="height:16px"></div>
+      <div class="caja in">
+        <div class="caja-tit">Lecturas de cierre</div>
+        <ul style="margin:8px 0 0;padding-left:16px;font-size:.87rem;color:var(--texto-2)">
+          <li style="margin-bottom:5px">Wertheimer, M. (1945). <em>Productive Thinking</em>. Harper & Brothers. — Capítulos 2 y 3.</li>
+          <li style="margin-bottom:5px">Koffka, K. (1935). <em>Principles of Gestalt Psychology</em>. Harcourt. — Capítulos 1 y 5.</li>
+          <li style="margin-bottom:5px">Woolfolk, A. (2014). <em>Psicología educativa</em> (12.ª ed.). Pearson. — Capítulo 8.</li>
+          <li>Köhler, W. (1969). <em>The Task of Gestalt Psychology</em>. Princeton University Press. — Conferencias sobre el legado de la Gestalt en la ciencia cognitiva.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Licenciatura en Pedagogía · Teorías del Aprendizaje<br>
+  Guía de Aprendizaje Activo — Tema 2: Enfoques Psicológicos · 2.3 Gestalt<br>
+  Metodología: Constructivismo · Pedagogía Activa · Aprendizaje Basado en Problemas
+</footer>
+
+<script>
+/* PREVIOS */
+function guardarP(){
+  const cc=document.querySelectorAll('#previos textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor responde todas las preguntas.');return}
+  document.getElementById('pok').style.display='block';
+}
+/* FORO */
+function gF(){
+  const t=document.getElementById('f1').value.trim();
+  if(!t){alert('Escribe tu borrador antes de guardar.');return}
+  const b=event.target;b.textContent='Borrador guardado';b.style.background='var(--lima)';b.style.color='var(--negro)';b.disabled=true;
+}
+function tE(id){
+  const el=document.getElementById(id);el.classList.toggle('vis');
+  event.target.textContent=el.classList.contains('vis')?'Ocultar ejemplo':'Ver ejemplo orientativo';
+}
+/* QUIZ */
+let sc=0;
+const FBS={
+  fb1:{ok:'Correcto. El triángulo de Kanizsa es el ejemplo paradigmático del cierre gestáltico: la mente completa el contorno del triángulo que no existe físicamente en la imagen, percibiendo una forma completa. Esto demuestra que la percepción es un proceso activo de organización, no una recepción pasiva de estímulos.',
+       err:'Incorrecto. El triángulo de Kanizsa ejemplifica la ley de cierre: la mente completa el contorno faltante percibiendo una figura completa inexistente. No es proximidad (distancia entre elementos), ni semejanza (similitud), ni continuidad (dirección de líneas).'},
+  fb2:{ok:'Correcto. Wertheimer distinguió entre pensamiento reproductivo (aplicación mecánica de procedimientos memorizados, sin comprensión de su estructura) y pensamiento productivo (comprensión de la estructura del problema que permite generar soluciones nuevas y transferibles). Esta distinción anticipa directamente el debate entre memorización y comprensión en educación.',
+       err:'Incorrecto. El pensamiento reproductivo no es más creativo. Wertheimer establece exactamente lo contrario: el pensamiento productivo comprende la estructura y puede transferirla; el reproductivo aplica procedimientos mecánicos sin comprensión. Ambos no producen el mismo nivel de comprensión.'},
+  fb3:{ok:'Correcto. Si la memoria no almacena copias literales sino estructuras organizadas (Koffka), entonces evaluar la reproducción textual mide algo diferente a evaluar la comprensión estructural. Las evaluaciones deberían pedir al estudiante reorganizar, aplicar y transferir el conocimiento — no reproducirlo.',
+       err:'Incorrecto. La concepción gestáltica de la memoria implica que debe evaluarse la comprensión estructural y la transferencia, no la reproducción textual. La Gestalt no descarta la memoria ni la evalúa solo con imágenes visuales.'},
+  fb4:{ok:'Correcto. El uso consistente del mismo color para elementos del mismo grupo conceptual aplica la ley de semejanza: los elementos visualmente similares (mismo color) son percibidos automáticamente como pertenecientes al mismo grupo, facilitando la organización cognitiva del campo de conocimiento.',
+       err:'Incorrecto. Usar el mismo color para elementos del mismo grupo conceptual es un ejemplo de semejanza: elementos similares (en color) se perciben como del mismo grupo. No es cierre (completar formas), continuidad (dirección de líneas), ni exactamente figura-fondo.'},
+  fb5:{ok:'Correcto. La dificultad de operacionalizar y medir experimentalmente conceptos como "insight" y "campo cognoscitivo" fue una crítica metodológica real y legítima a la Gestalt. Esto limitó su desarrollo como programa científico riguroso, aunque no invalidó sus aportaciones teóricas y aplicadas.',
+       err:'Incorrecto. La Gestalt sí tuvo influencia enorme en la psicología cognitiva posterior. Sus fundadores sí realizaron investigaciones experimentales. La crítica legítima fue la dificultad de operacionalizar conceptos como "insight" para investigación experimental rigurosa.'}
+};
+function rQ(el,qid,fbid,corr){
+  document.getElementById(qid).querySelectorAll('.qopt').forEach(o=>{o.classList.add('lock');o.onclick=null});
+  const fb=document.getElementById(fbid);fb.classList.add('vis');
+  if(corr){el.classList.add('ok');fb.classList.add('ok');fb.innerHTML='<strong>Correcto.</strong> '+FBS[fbid].ok;sc++}
+  else{el.classList.add('err');fb.classList.add('err');fb.innerHTML='<strong>Incorrecto.</strong> '+FBS[fbid].err}
+  const n=parseInt(qid.replace('q',''));
+  document.getElementById('n'+n).style.display='inline-block';
+  document.getElementById('qscore').textContent=sc+' correcta'+(sc!==1?'s':'');
+}
+function nQ(n){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q'+n).classList.add('on');
+  document.getElementById('qbar').style.width=(n*20)+'%';
+  document.getElementById('qlbl').textContent='Pregunta '+n+' de 5';
+}
+function mR(){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  const r=document.getElementById('qres');r.classList.add('vis');
+  const pct=Math.round(sc/5*100);
+  const rp=document.getElementById('rpct');rp.textContent=pct+'%';
+  document.getElementById('rcorr').textContent=sc;
+  document.getElementById('rincorr').textContent=5-sc;
+  let cls,lbl,msg;
+  if(sc===5){cls='ex';lbl='Desempeño sobresaliente';msg='Dominas las leyes gestálticas, el pensamiento productivo de Wertheimer y las críticas al modelo. Estás preparado para aplicar estos principios en el diseño de materiales y clases universitarias.'}
+  else if(sc>=4){cls='bn';lbl='Buen desempeño';msg='Comprensión sólida. Revisa las preguntas donde tuviste dificultad antes de subir tu evidencia a Classroom.'}
+  else if(sc>=3){cls='rg';lbl='Desempeño suficiente';msg='Comprensión parcial. Regresa a las secciones 2 a 6 del contenido y consulta las fuentes recomendadas.'}
+  else{cls='bj';lbl='Requiere reforzamiento';msg='Necesitas revisar el contenido con mayor detenimiento antes de continuar.'}
+  rp.className='rpct '+cls;
+  document.getElementById('rlbl').textContent=lbl;
+  document.getElementById('rmsg').textContent=msg;
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qlbl').textContent='Quiz completado';
+}
+function reinQ(){
+  sc=0;
+  document.getElementById('qres').classList.remove('vis');
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qlbl').textContent='Pregunta 1 de 5';
+  document.getElementById('qscore').textContent='0 correctas';
+  for(let i=1;i<=5;i++){
+    const q=document.getElementById('q'+i);
+    q.querySelectorAll('.qopt').forEach(o=>o.classList.remove('ok','err','lock'));
+    const fb=document.getElementById('fb'+i);fb.classList.remove('vis','ok','err');fb.innerHTML='';
+    const n=document.getElementById('n'+i);if(n)n.style.display='none';
+  }
+  reattachQ();
+}
+function reattachQ(){
+  const d=[
+    {id:'q1',fb:'fb1',a:[false,false,true,false]},
+    {id:'q2',fb:'fb2',a:[false,true,false,false]},
+    {id:'q3',fb:'fb3',a:[false,true,false,false]},
+    {id:'q4',fb:'fb4',a:[false,false,true,false]},
+    {id:'q5',fb:'fb5',a:[false,true,false,false]}
+  ];
+  d.forEach(x=>{
+    document.getElementById(x.id).querySelectorAll('.qopt').forEach((o,i)=>{
+      const c=x.a[i];const q=x.id;const f=x.fb;
+      o.onclick=function(){rQ(this,c,q,f)};
+    });
+  });
+}
+/* REFLEXIÓN */
+function gR(){
+  const cc=document.querySelectorAll('#reflexion textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor completa todos los campos.');return}
+  const b=event.target;b.textContent='Reflexión guardada';
+  b.style.background='var(--lima)';b.style.color='var(--negro)';b.disabled=true;
+  document.getElementById('rok').style.display='block';
+}
+</script>
+</body>
+</html>
