@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guia Interactiva | Caracteristicas de un Liderazgo Funcional | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --az:#2b3a7a; --azm:#3d52a0; --azl:#6b80c4; --azxl:#dce3f5; --azbg:#f0f3fb;
+  --do:#c49a28; --dol:#f6eccc; --doxl:#fdf8ec;
+  --cr:#faf9f6; --bl:#ffffff; --tx:#18192a; --tx2:#444460; --tx3:#757590;
+  /* acento de esta guia: verde esmeralda */
+  --em:#0f7a5a; --eml:#e4f5ef; --emb:#93cfba; --emd:#0a5d44;
+  --ve:#1f7a4f; --vel:#e6f5ee; --veb:#9ecdb4;
+  --ro:#b82a2a; --rol:#fdecea;
+  --na:#d4730a; --nal:#fef0e0;
+  --sh:0 1px 8px rgba(43,58,122,.08); --shm:0 3px 18px rgba(43,58,122,.11);
+  --r:6px; --rg:14px; --max:980px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cr);color:var(--tx);line-height:1.78;}
+#pgbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--em),var(--do));z-index:9999;transition:width .1s linear;}
+.topbar{background:var(--az);color:rgba(255,255,255,.7);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;}
+.topbar strong{color:rgba(255,255,255,.92);}
+header{background:linear-gradient(135deg,#0a5d44 0%,#0f7a5a 50%,#13906c 100%);position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 50%,rgba(255,255,255,.08) 0%,transparent 60%),repeating-linear-gradient(90deg,transparent,transparent 100px,rgba(255,255,255,.014) 100px,rgba(255,255,255,.014) 101px);pointer-events:none;}
+.hdr{max-width:var(--max);margin:0 auto;padding:42px 40px 54px;display:grid;grid-template-columns:160px 1fr;gap:36px;align-items:center;position:relative;}
+.logo-wrap{background:var(--bl);border-radius:var(--rg);padding:16px 18px;box-shadow:0 0 0 3px rgba(196,154,40,.45),var(--shm);display:flex;align-items:center;justify-content:center;}
+.logo-wrap img{width:100%;height:auto;display:block;}
+.hdr-meta .bc{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);margin-bottom:10px;display:block;}
+.hdr-meta h1{font-family:'Playfair Display',serif;font-size:2.15rem;font-weight:900;color:var(--bl);line-height:1.15;margin-bottom:6px;}
+.hdr-meta .sub{font-size:1rem;color:rgba(255,255,255,.8);font-style:italic;margin-bottom:22px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);color:rgba(255,255,255,.92);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:4px 12px;border-radius:99px;}
+nav{background:var(--emd);position:sticky;top:0;z-index:200;box-shadow:0 2px 14px rgba(0,0,0,.22);}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-i::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.76);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:13px 15px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;display:block;}
+nav a:hover{color:var(--bl);border-bottom-color:var(--do);}
+main{max-width:var(--max);margin:0 auto;padding:56px 40px 100px;}
+section{margin-bottom:72px;scroll-margin-top:56px;}
+.slbl{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:4px;padding-left:20px;}
+h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--az);margin-bottom:22px;padding-left:20px;position:relative;line-height:1.2;}
+h2::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--em);border-radius:2px;}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--emd);margin:30px 0 12px;}
+h4{font-size:.88rem;font-weight:600;color:var(--tx);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 8px;}
+p{margin-bottom:14px;color:var(--tx2);font-size:.97rem;}
+strong{color:var(--tx);}
+code{font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--eml);padding:2px 7px;border-radius:4px;}
+.card{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:26px 30px;margin-bottom:20px;box-shadow:var(--sh);}
+.card-b{background:var(--eml);border-color:var(--emb);}
+.card-g{background:var(--doxl);border-color:var(--do);border-left:5px solid var(--do);}
+.card-v{background:var(--eml);border-color:var(--emb);border-left:5px solid var(--em);}
+.obj{background:var(--emd);color:var(--bl);border-radius:var(--rg);padding:30px 36px;margin-bottom:32px;position:relative;overflow:hidden;}
+.obj::after{content:'OBJETIVO';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.05);pointer-events:none;white-space:nowrap;}
+.obj .elbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:8px;}
+.obj p{color:rgba(255,255,255,.9);font-size:1rem;margin:0;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px;}
+.citem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--em);}
+.citem .ctipo{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:6px;}
+.citem p{font-size:.88rem;margin:0;color:var(--tx2);}
+.def{border-left:4px solid var(--em);background:var(--eml);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0;}
+.def .fte{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--em);margin-top:8px;display:block;}
+.tw{overflow-x:auto;margin:20px 0;border-radius:var(--r);box-shadow:var(--sh);}
+table{width:100%;border-collapse:collapse;font-size:.9rem;}
+thead th{background:var(--emd);color:var(--bl);padding:12px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;}
+tbody td{padding:11px 16px;border-bottom:1px solid var(--azxl);color:var(--tx2);}
+tbody tr:nth-child(even) td{background:var(--azbg);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--eml);}
+.steps{list-style:none;counter-reset:sc;margin:16px 0;}
+.steps li{counter-increment:sc;display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;padding:16px 20px;background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);box-shadow:var(--sh);}
+.steps li::before{content:counter(sc);background:var(--em);color:var(--bl);min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;flex-shrink:0;margin-top:1px;}
+.steps li p{margin:0;font-size:.92rem;}
+.acd{border:1px solid var(--azxl);border-radius:var(--r);margin:14px 0;overflow:hidden;}
+.acdbtn{width:100%;background:var(--eml);border:none;padding:14px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--emd);transition:background .2s;}
+.acdbtn:hover{background:#d3ede4;}
+.acdbtn .ic{font-style:normal;transition:transform .28s;font-size:1.1rem;}
+.acdbtn.open .ic{transform:rotate(45deg);}
+.acdbody{display:none;padding:18px 22px;background:var(--bl);border-top:1px solid var(--azxl);font-size:.93rem;color:var(--tx2);}
+.acdbody.show{display:block;}
+.awrap{margin-bottom:40px;}
+.ahead{background:var(--emd);border-radius:var(--rg) var(--rg) 0 0;padding:20px 28px;display:flex;align-items:center;gap:18px;}
+.anum{background:var(--do);color:var(--bl);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ahtxt .atipo{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:2px;}
+.ahtxt h3{color:var(--bl);margin:0;font-size:1.08rem;}
+.abody{background:var(--bl);border:1px solid var(--azxl);border-top:none;border-radius:0 0 var(--rg) var(--rg);padding:28px 30px;box-shadow:var(--sh);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--em);color:var(--bl);padding:8px 18px;border-radius:var(--r);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-top:22px;}
+.fdemo{background:var(--eml);border:1px solid var(--emb);border-radius:var(--r);overflow:hidden;margin:18px 0;}
+.fhdr{background:var(--emd);color:var(--bl);padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;}
+.fpost{padding:14px 18px;border-bottom:1px solid var(--emb);font-size:.9rem;}
+.fpost:last-child{border-bottom:none;}
+.fpost .fautor{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--emd);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;display:block;}
+.fpost.frep{margin-left:28px;background:var(--bl);}
+.owrap{background:var(--eml);border:1px solid var(--emb);border-radius:var(--r);padding:24px;margin:18px 0;}
+.ocent{background:var(--emd);color:var(--bl);padding:14px 24px;border-radius:var(--r);font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;text-align:center;margin-bottom:18px;}
+.ogrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.onodo{background:var(--bl);border:2px solid var(--emb);border-radius:var(--r);padding:12px;}
+.onodo::before{content:attr(data-l);font-family:'JetBrains Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:5px;}
+.onodo textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:8px;font-family:'Inter',sans-serif;font-size:.85rem;background:var(--eml);resize:vertical;min-height:62px;color:var(--tx);}
+.onodo textarea:focus{outline:2px solid var(--em);background:var(--bl);}
+.btnp{background:var(--em);color:var(--bl);border:none;padding:11px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;transition:background .2s;}
+.btnp:hover{background:var(--emd);}
+.btno{background:transparent;color:var(--em);border:2px solid var(--em);padding:10px 24px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;margin-left:10px;transition:background .2s;}
+.btno:hover{background:var(--eml);}
+.qwrap{margin-top:8px;}
+.preg{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:22px 26px;margin-bottom:16px;box-shadow:var(--sh);}
+.preg .qn{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:6px;}
+.preg .qt{font-size:.98rem;font-weight:600;color:var(--tx);margin-bottom:14px;}
+.opts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.opts li label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:10px 16px;border:1px solid var(--azxl);border-radius:var(--r);width:100%;transition:background .15s,border-color .15s;font-size:.92rem;color:var(--tx2);}
+.opts li label:hover{background:var(--eml);border-color:var(--emb);}
+.opts li input[type=radio]{accent-color:var(--em);flex-shrink:0;margin-top:2px;}
+.ok label{background:var(--vel)!important;border-color:var(--ve)!important;color:var(--ve)!important;}
+.err label{background:var(--rol)!important;border-color:var(--ro)!important;}
+.qres{background:var(--emd);color:var(--bl);border-radius:var(--rg);padding:32px 36px;text-align:center;margin-top:24px;display:none;}
+.qres.show{display:block;}
+.qres .sn{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--do);line-height:1;display:block;margin:10px 0;}
+.qres .sm{font-size:1.05rem;color:rgba(255,255,255,.9);margin-bottom:10px;}
+.qres .sd{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:rgba(255,255,255,.6);}
+.bprog{width:100%;background:rgba(255,255,255,.18);border-radius:99px;height:8px;margin:14px 0 20px;overflow:hidden;}
+.bfill{height:100%;background:var(--do);border-radius:99px;transition:width .7s ease;width:0;}
+#btnq{background:var(--do);color:var(--bl);border:none;padding:13px 36px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:background .2s;display:block;margin:14px auto 0;}
+#btnq:hover{background:#a07820;}
+#btnq:disabled{opacity:.45;cursor:not-allowed;}
+#btnr{background:rgba(255,255,255,.14);color:var(--bl);border:1px solid rgba(255,255,255,.3);padding:10px 28px;border-radius:var(--r);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-top:14px;transition:background .2s;}
+#btnr:hover{background:rgba(255,255,255,.25);}
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.refitem{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--r);padding:18px 20px;border-top:3px solid var(--em);}
+.refitem label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:8px;}
+.refitem textarea{width:100%;border:1px solid var(--azxl);border-radius:4px;padding:10px;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--eml);resize:vertical;min-height:90px;color:var(--tx);}
+.refitem textarea:focus{outline:none;border-color:var(--em);background:var(--bl);}
+.planprev{background:var(--bl);border:2px solid var(--em);border-radius:var(--rg);padding:24px 28px;margin-top:20px;display:none;}
+.planprev.show{display:block;}
+.planprev h4{color:var(--emd);margin-bottom:14px;}
+.quote{border-left:4px solid var(--do);background:var(--doxl);padding:18px 22px;border-radius:0 var(--r) var(--r) 0;margin:20px 0;font-style:italic;font-size:.97rem;color:var(--tx2);}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:.8rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;}
+.msg{padding:12px 18px;border-radius:var(--r);font-size:.88rem;margin-top:12px;display:none;}
+.msg.show{display:block;}
+.msg-ok{background:var(--vel);color:var(--ve);border:1px solid var(--veb);}
+hr.div{border:none;border-top:1px solid var(--azxl);margin:32px 0;}
+.glos dt{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--emd);margin-bottom:4px;}
+.glos dd{font-size:.9rem;color:var(--tx2);padding-left:16px;margin-bottom:16px;}
+/* caracteristicas: cuadricula numerada */
+.carac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:22px 0;}
+.carac-item{background:var(--bl);border:1px solid var(--azxl);border-radius:var(--rg);padding:22px 20px;border-top:4px solid var(--em);display:flex;flex-direction:column;gap:8px;position:relative;}
+.carac-item .cnum{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--emb);line-height:1;}
+.carac-item h4{margin:0;font-size:.95rem;color:var(--emd);}
+.carac-item p{margin:0;font-size:.86rem;color:var(--tx2);}
+/* funcional vs disfuncional */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0;}
+.vs-card{border-radius:var(--rg);padding:22px 24px;border:1px solid;}
+.vs-card h4{margin:0 0 12px;font-size:1.05rem;}
+.vs-card ul{list-style:none;padding:0;margin:0;}
+.vs-card ul li{font-size:.87rem;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--tx2);padding-left:18px;position:relative;}
+.vs-card ul li:last-child{border-bottom:none;}
+.vs-card ul li::before{position:absolute;left:0;top:7px;font-weight:700;}
+.vs-func{background:var(--vel);border-color:var(--veb);}
+.vs-func h4{color:var(--ve);}
+.vs-func ul li::before{content:'+';color:var(--ve);}
+.vs-dis{background:var(--rol);border-color:#e4a0a0;}
+.vs-dis h4{color:var(--ro);}
+.vs-dis ul li::before{content:'\2212';color:var(--ro);}
+footer{background:var(--emd);color:rgba(255,255,255,.65);padding:36px 40px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
+.fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.fi .fn{font-size:.75rem;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:3px;display:block;}
+@media(max-width:720px){
+  .hdr{grid-template-columns:1fr;text-align:center;}
+  .logo-wrap{width:120px;margin:0 auto;}
+  main{padding:36px 20px 60px;}
+  .refgrid,.ogrid,.vs-grid{grid-template-columns:1fr;}
+  nav a{padding:12px 10px;font-size:.58rem;}
+  h2{font-size:1.5rem;}
+  .topbar{font-size:.55rem;padding:6px 16px;}
+}
+</style>
+</head>
+<body>
+<div id="pgbar"></div>
+<div class="topbar">
+  <span><strong>Universidad de la Cienega</strong> &mdash; Licenciatura en Pedagogia</span>
+  <span>Tecnicas de Conduccion de Grupos &mdash; Ciclo 2024&ndash;2025</span>
+</div>
+<header>
+  <div class="hdr">
+    <div class="logo-wrap"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Logo Universidad de la Cienega"></div>
+    <div class="hdr-meta">
+      <span class="bc">Pedagogia &nbsp;|&nbsp; Tecnicas de Conduccion de Grupos &nbsp;|&nbsp; Unidad III &nbsp;|&nbsp; Tema 3.3</span>
+      <h1>Caracteristicas de un Liderazgo Funcional</h1>
+      <p class="sub">3.3 Rasgos que hacen que un liderazgo sirva realmente al grupo y a sus objetivos</p>
+      <div class="chips">
+        <span class="chip">Constructivismo</span>
+        <span class="chip">Pedagogia Activa</span>
+        <span class="chip">ABP</span>
+        <span class="chip">3 Actividades</span>
+        <span class="chip">Nivel Licenciatura</span>
+      </div>
+    </div>
+  </div>
+</header>
+<nav>
+  <div class="nav-i">
+    <a href="#intro">Introduccion</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aprendizaje</a>
+    <a href="#act3">Act. 3 Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+</nav>
+<main>
+<!-- INTRODUCCION -->
+<section id="intro">
+  <span class="slbl">Seccion 01</span>
+  <h2>Introduccion al Tema</h2>
+  <div class="obj">
+    <span class="elbl">Objetivo de Aprendizaje</span>
+    <p>El estudiante identificara y comprendera las caracteristicas que definen a un liderazgo funcional, distinguira entre un liderazgo que sirve efectivamente al grupo y uno disfuncional, y aplicara estos criterios para evaluar y mejorar su propio ejercicio del liderazgo en sus equipos universitarios y en su futura practica profesional como pedagogo.</p>
+  </div>
+  <p>A lo largo de esta unidad se han estudiado el concepto de liderazgo, los estilos clasicos de Lewin y las figuras del lider afectivo e intelectual. Este tema integra y culmina esos aprendizajes con una pregunta practica y decisiva: ¿que hace que un liderazgo sea realmente <strong>funcional</strong>, es decir, que cumpla su proposito de servir al grupo y facilitar el logro de sus objetivos?</p>
+  <p>Un liderazgo funcional no se define por el carisma del lider, por su posicion jerarquica ni por un estilo unico, sino por sus <strong>efectos reales</strong> sobre el grupo: si genera cohesion, si impulsa el logro de metas, si desarrolla la autonomia de los miembros y si sostiene un clima que favorece la participacion y el aprendizaje. El liderazgo funcional se reconoce por lo que produce, no por lo que aparenta.</p>
+  <div class="quote">
+    "El liderazgo funcional no consiste en que el grupo dependa del lider, sino en que el lider haga cada vez menos necesaria su propia intervencion, porque ha desarrollado la capacidad del grupo para conducirse a si mismo."
+    <cite>&mdash; Adaptado de los principios del liderazgo centrado en el grupo, Cartwright, D. y Zander, A. (1968). Group Dynamics.</cite>
+  </div>
+  <p>Para el pedagogo, comprender las caracteristicas del liderazgo funcional es una herramienta de autoevaluacion y mejora permanente. Permite responder preguntas como: ¿mi forma de conducir el grupo realmente lo beneficia? ¿Estoy desarrollando la autonomia de mis estudiantes o su dependencia? ¿Mi liderazgo produce los efectos que el grupo necesita?</p>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Constructivismo: el liderazgo funcional desarrolla la autonomia del grupo<span class="ic">+</span></button>
+    <div class="acdbody"><p>Desde el constructivismo, el mejor liderazgo educativo es aquel que, como el andamiaje de Bruner, se retira progresivamente a medida que el grupo desarrolla su propia capacidad. Un liderazgo funcional construye autonomia; uno disfuncional construye dependencia. Esta guia invita al estudiante a evaluar su liderazgo por su capacidad de empoderar al grupo.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Aprendizaje Basado en Problemas: evaluar la funcionalidad del liderazgo<span class="ic">+</span></button>
+    <div class="acdbody"><p>El ABP plantea problemas autenticos. Aqui el problema es: ¿como distinguir un liderazgo que realmente sirve al grupo de uno que solo lo aparenta? Las actividades situan al estudiante ante la tarea de evaluar liderazgos reales con criterios rigurosos y de mejorar el propio.</p></div>
+  </div>
+  <div class="acd">
+    <button class="acdbtn" onclick="tog(this)">Pedagogia Activa: del criterio a la practica<span class="ic">+</span></button>
+    <div class="acdbody"><p>Cada actividad exige que el estudiante haga algo con el conocimiento: aplicar criterios de funcionalidad, autoevaluarse y proyectar mejoras concretas. Las caracteristicas del liderazgo funcional no son una lista para memorizar, sino un instrumento para diagnosticar y transformar la propia practica.</p></div>
+  </div>
+  <div class="cgrid">
+    <div class="citem"><span class="ctipo">Competencia Conceptual</span><p>Identificar y definir las caracteristicas que distinguen a un liderazgo funcional de uno disfuncional.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Analitica</span><p>Evaluar la funcionalidad de un liderazgo real a partir de criterios rigurosos y sus efectos sobre el grupo.</p></div>
+    <div class="citem"><span class="ctipo">Competencia Aplicada</span><p>Autoevaluar el propio liderazgo y disenar acciones concretas para hacerlo mas funcional.</p></div>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<section id="contenido">
+  <span class="slbl">Seccion 02</span>
+  <h2>Contenido Tematico</h2>
+
+  <h3>3.3 ¿Que es un Liderazgo Funcional?</h3>
+  <div class="def">
+    <p><strong>Liderazgo funcional:</strong> Aquel que cumple efectivamente su proposito de servir al grupo, entendido como el liderazgo que logra articular el cumplimiento de los objetivos (dimension de tarea) con el mantenimiento de la cohesion y el bienestar del grupo (dimension socioafectiva), desarrollando ademas la autonomia y la capacidad de autorregulacion de sus miembros. Se define por sus efectos reales, no por la personalidad o la posicion del lider.</p>
+    <span class="fte">Ref: Cartwright, D. y Zander, A. (1968). Group Dynamics: Research and Theory. Harper & Row.</span>
+  </div>
+  <p>El adjetivo "funcional" proviene de "funcion": un liderazgo es funcional cuando cumple la funcion para la que existe, que es facilitar que el grupo logre sus objetivos y se mantenga como una colectividad sana. Su contrario, el <strong>liderazgo disfuncional</strong>, es aquel que, aunque exista formalmente, no sirve al grupo o incluso lo perjudica: genera dependencia, deteriora el clima, obstaculiza el logro o divide a los miembros.</p>
+
+  <h3>Las Caracteristicas de un Liderazgo Funcional</h3>
+  <p>La investigacion sobre liderazgo eficaz (Cartwright y Zander; Yukl; Goleman, entre otros) permite identificar un conjunto de caracteristicas que distinguen a un liderazgo funcional. No se trata de rasgos de personalidad, sino de conductas y efectos observables:</p>
+
+  <div class="carac-grid">
+    <div class="carac-item">
+      <div class="cnum">01</div>
+      <h4>Orientacion a objetivos claros</h4>
+      <p>Mantiene al grupo enfocado en metas definidas y compartidas, dando direccion y sentido al trabajo colectivo.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">02</div>
+      <h4>Equilibrio tarea&ndash;relaciones</h4>
+      <p>Articula la atencion al logro de objetivos con el cuidado del clima y los vinculos, sin sacrificar uno por el otro.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">03</div>
+      <h4>Comunicacion eficaz</h4>
+      <p>Escucha activamente, transmite con claridad y promueve una comunicacion abierta y bidireccional en el grupo.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">04</div>
+      <h4>Fomento de la participacion</h4>
+      <p>Involucra a los miembros en las decisiones, distribuye responsabilidades y valora las aportaciones de todos.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">05</div>
+      <h4>Desarrollo de la autonomia</h4>
+      <p>Empodera al grupo para que se conduzca a si mismo, reduciendo progresivamente la dependencia del lider.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">06</div>
+      <h4>Adaptabilidad (flexibilidad)</h4>
+      <p>Ajusta su estilo y su nivel de direccion segun la madurez del grupo y las exigencias de cada situacion.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">07</div>
+      <h4>Coherencia y ejemplo</h4>
+      <p>Actua de acuerdo con lo que promueve; su conducta es congruente y sirve de modelo para el grupo.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">08</div>
+      <h4>Gestion constructiva del conflicto</h4>
+      <p>Aborda las tensiones y desacuerdos de manera abierta y los transforma en oportunidades de mejora.</p>
+    </div>
+    <div class="carac-item">
+      <div class="cnum">09</div>
+      <h4>Reconocimiento y motivacion</h4>
+      <p>Valora los logros, ofrece retroalimentacion constructiva y sostiene la motivacion del grupo.</p>
+    </div>
+  </div>
+
+  <h4>La prueba definitiva: los efectos sobre el grupo</h4>
+  <p>Mas alla de las caracteristicas conductuales, el criterio ultimo para reconocer un liderazgo funcional son sus efectos. Un liderazgo es funcional si el grupo, bajo su influencia, presenta indicadores positivos:</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Indicador</th><th>Liderazgo funcional produce</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Logro de objetivos</strong></td><td>El grupo alcanza sus metas de manera sostenida, con productos de calidad.</td></tr>
+        <tr><td><strong>Clima grupal</strong></td><td>Ambiente de confianza, seguridad para participar y satisfaccion de pertenecer.</td></tr>
+        <tr><td><strong>Cohesion</strong></td><td>Sentido de pertenencia solido y relaciones de colaboracion entre los miembros.</td></tr>
+        <tr><td><strong>Autonomia</strong></td><td>El grupo mantiene su desempeno incluso en ausencia del lider.</td></tr>
+        <tr><td><strong>Desarrollo de los miembros</strong></td><td>Las personas crecen, aprenden y desarrollan sus capacidades dentro del grupo.</td></tr>
+        <tr><td><strong>Participacion</strong></td><td>Los miembros se involucran activamente y asumen responsabilidades.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Liderazgo Funcional frente a Liderazgo Disfuncional</h3>
+  <p>Contrastar ambos polos ayuda a comprender con precision que caracteriza a un liderazgo funcional:</p>
+  <div class="vs-grid">
+    <div class="vs-card vs-func">
+      <h4>Liderazgo Funcional</h4>
+      <ul>
+        <li>Desarrolla la autonomia del grupo</li>
+        <li>Equilibra la tarea y las relaciones</li>
+        <li>Fomenta la participacion de todos</li>
+        <li>Comunica de forma abierta y clara</li>
+        <li>Adapta su estilo a la situacion</li>
+        <li>Gestiona el conflicto de forma constructiva</li>
+        <li>El grupo funciona incluso sin el lider</li>
+      </ul>
+    </div>
+    <div class="vs-card vs-dis">
+      <h4>Liderazgo Disfuncional</h4>
+      <ul>
+        <li>Genera dependencia del lider</li>
+        <li>Prioriza solo la tarea o solo el clima</li>
+        <li>Concentra decisiones y excluye a los miembros</li>
+        <li>Comunica de forma cerrada o ambigua</li>
+        <li>Aplica un unico estilo rigido</li>
+        <li>Evita o agrava los conflictos</li>
+        <li>El grupo se paraliza sin el lider</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-b">
+    <h4>El liderazgo funcional es contextual</h4>
+    <p>Una caracteristica esencial del liderazgo funcional es que no existe una formula unica valida para todo grupo y toda situacion. Lo que hace funcional a un liderazgo es su capacidad de responder adecuadamente a lo que el grupo necesita en cada momento: mas direccion cuando el grupo es inmaduro, mas autonomia cuando ha madurado. Por ello, la adaptabilidad es una de sus caracteristicas centrales y conecta este tema con el enfoque del liderazgo situacional estudiado previamente.</p>
+  </div>
+
+  <div class="card card-v">
+    <h4>Sintesis para el pedagogo</h4>
+    <p>Un liderazgo funcional se reconoce por sus efectos: un grupo que logra sus objetivos, mantiene buen clima, desarrolla autonomia y crece como colectividad. Para el pedagogo, las caracteristicas del liderazgo funcional constituyen tanto un criterio de autoevaluacion permanente como una meta de desarrollo profesional. El mejor conductor de grupos no es el que se hace indispensable, sino el que desarrolla en el grupo la capacidad de conducirse a si mismo.</p>
+  </div>
+</section>
+<!-- ACTIVIDAD 1: FORO -->
+<section id="act1">
+  <span class="slbl">Actividad 01 de 03</span>
+  <h2>Actividad de Foro: Reflexion Critica y Debate</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">1</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Foro de Discusion Asincrono en Google Classroom</span>
+        <h3>El Mejor Lider es el que se Hace Innecesario</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Foro asincrono</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Plazo</strong><br>48 a 72 horas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Participaciones</strong><br>1 aportacion + 2 respuestas</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <h3>Pregunta Detonadora</h3>
+      <div style="background:var(--emd);color:var(--bl);border-radius:var(--rg);padding:26px 30px;margin:16px 0 22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:10px;">Pregunta para el Foro</span>
+        <p style="color:var(--bl);font-size:1.05rem;font-style:italic;margin:0;line-height:1.85;">"Se afirma que un liderazgo funcional es aquel que desarrolla la autonomia del grupo, hasta el punto de que el grupo funcione bien incluso en ausencia del lider. ¿Esta de acuerdo con que 'el mejor lider es el que se hace innecesario'? A partir de su experiencia universitaria, describa un liderazgo (de un docente o companiero) que haya sido funcional o disfuncional, e identifique cuales de las caracteristicas del liderazgo funcional estaban presentes o ausentes. ¿Puede un lider muy carismatico y admirado ser, al mismo tiempo, disfuncional para el grupo? Fundamente su postura."</p>
+      </div>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Acceso al foro:</strong> Ingrese a Google Classroom con su cuenta institucional. Localice la materia "Tecnicas de Conduccion de Grupos" y abra la actividad "Foro Unidad III: Liderazgo Funcional".</p></li>
+        <li><p><strong>Preparacion:</strong> Identifique la situacion concreta que analizara. Revise las nueve caracteristicas del liderazgo funcional y la tabla de contraste funcional/disfuncional para fundamentar su analisis.</p></li>
+        <li><p><strong>Redaccion de su aportacion (180 a 280 palabras):</strong> Estructure su texto en tres partes: (a) su postura sobre la afirmacion "el mejor lider es el que se hace innecesario", (b) descripcion de un liderazgo real e identificacion de las caracteristicas funcionales presentes o ausentes, y (c) respuesta argumentada sobre si el carisma garantiza la funcionalidad.</p></li>
+        <li><p><strong>Interaccion con pares:</strong> Lea al menos dos participaciones de companieros y responda de forma sustantiva a cada una, aportando nuevos argumentos o planteando contra-preguntas. Evite respuestas de validacion superficial.</p></li>
+        <li><p><strong>Entrega:</strong> Tome una captura de pantalla de su aportacion y al menos una respuesta. Subala en la tarea correspondiente de Classroom.</p></li>
+      </ol>
+      <h3>Ejemplo Orientador</h3>
+      <div class="fdemo">
+        <div class="fhdr">Foro: El Mejor Lider es el que se Hace Innecesario (ejemplo ilustrativo)</div>
+        <div class="fpost">
+          <span class="fautor">Estudiante A &mdash; Lunes, 19:10 hrs</span>
+          <p>Coincido en parte con la afirmacion, aunque con un matiz. Un liderazgo funcional no significa que el lider desaparezca, sino que desarrolla la autonomia del grupo hasta que su presencia constante deja de ser indispensable. Vivi un ejemplo claro con un companiero que coordino nuestro proyecto de servicio social. Al inicio nos organizaba de cerca, pero deliberadamente fue delegando responsabilidades, ensenandonos a tomar decisiones y confiando en nuestro criterio. Cuando el tuvo que ausentarse tres semanas, el equipo siguio funcionando sin problema: habia desarrollado nuestra autonomia. De las caracteristicas del tema, reconozco claramente el desarrollo de la autonomia, el fomento de la participacion y la comunicacion abierta. En contraste, quiero responder a la ultima pregunta: si, creo que un lider carismatico puede ser disfuncional. Tuve un profesor muy admirado, brillante y elocuente, pero que centralizaba todo: sin el, nadie sabia que hacer. Su carisma ocultaba que generaba dependencia. Esto me ensena que la funcionalidad no se mide por la admiracion que despierta el lider, sino por lo que deja instalado en el grupo.</p>
+        </div>
+        <div class="fpost frep">
+          <span class="fautor">Estudiante B &mdash; responde a Estudiante A &mdash; Martes, 11:20 hrs</span>
+          <p>Tu distincion entre carisma y funcionalidad me parece muy potente y poco intuitiva. Quiero problematizarla: ¿no podria el carisma ser tambien una caracteristica funcional si el lider lo usa para motivar y luego empoderar al grupo? Es decir, quiza el problema no es el carisma en si, sino el uso que se le da: para crear dependencia o para impulsar autonomia. En tu ejemplo del profesor admirado, ¿crees que el problema era su carisma, o mas bien que ese carisma no venia acompanado de las otras caracteristicas, como el desarrollo de la autonomia y el fomento de la participacion?</p>
+        </div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Sustento teorico</td><td>Aplica 3 o mas caracteristicas del liderazgo funcional con precision</td><td>Aplica 2 caracteristicas pertinentes</td><td>Menciona caracteristicas sin aplicarlas</td></tr>
+            <tr><td>Experiencia concreta</td><td>Describe con detalle verificable un liderazgo real</td><td>Describe con algunos detalles</td><td>Descripcion vaga o generica</td></tr>
+            <tr><td>Postura fundamentada</td><td>Toma postura con argumentacion solida y matizada</td><td>Toma postura con argumentacion basica</td><td>No toma postura o es superficial</td></tr>
+            <tr><td>Interaccion con pares</td><td>2 respuestas con nuevos argumentos o preguntas</td><td>2 respuestas breves pertinentes</td><td>1 respuesta o ausente</td></tr>
+            <tr><td>Redaccion</td><td>Lenguaje academico, claro, sin errores</td><td>Apropiado con errores menores</td><td>Errores que dificultan la comprension</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO -->
+<section id="act2">
+  <span class="slbl">Actividad 02 de 03</span>
+  <h2>Actividad de Aprendizaje Significativo</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">2</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Rubrica de Autoevaluacion + Plan de Mejora</span>
+        <h3>Termometro de mi Liderazgo: Autoevaluacion de Funcionalidad</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion de la Actividad</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Modalidad</strong><br>Individual</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Duracion estimada</strong><br>60 a 80 minutos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>PDF o imagen en Classroom</div>
+        </div>
+      </div>
+      <p>Esta actividad aplica el aprendizaje significativo: las nueve caracteristicas del liderazgo funcional se convierten en una rubrica que el estudiante usa para autoevaluar su propio liderazgo en un equipo universitario real. El resultado es un diagnostico personal y un plan de mejora concreto.</p>
+      <h3>Instrucciones Paso a Paso</h3>
+      <ol class="steps">
+        <li><p><strong>Elija una experiencia de liderazgo real:</strong> Identifique una ocasion reciente en que usted haya conducido un equipo universitario. Escriba la situacion en el campo correspondiente del organizador.</p></li>
+        <li><p><strong>Autoevalue cada caracteristica:</strong> Para cada una de las nueve caracteristicas del liderazgo funcional, asignese un nivel (Alto, Medio o Bajo) en el organizador y justifique con un ejemplo concreto de su conducta. Sea honesto: el objetivo es aprender.</p></li>
+        <li><p><strong>Identifique fortalezas y areas de mejora:</strong> En el campo de sintesis, senale sus dos caracteristicas mas fuertes y las dos que mas necesita desarrollar, con base en su autoevaluacion.</p></li>
+        <li><p><strong>Disenie su plan de mejora:</strong> En el campo de cierre, redacte un plan concreto de 4 a 6 oraciones: ¿que hara especificamente para fortalecer sus dos caracteristicas mas debiles en su proximo trabajo en equipo?</p></li>
+        <li><p><strong>Entrega:</strong> Tome captura o exporte a documento. Nombre el archivo <code>Act2_LiderazgoFuncional_NombreApellido.pdf</code> y subalo en Classroom.</p></li>
+      </ol>
+      <h3>Organizador Interactivo: Termometro de mi Liderazgo</h3>
+      <div class="owrap">
+        <div class="ocent">Autoevaluacion de Liderazgo Funcional &mdash; <span id="sitnm">_______________</span></div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:6px;">Experiencia de liderazgo analizada</label>
+          <input type="text" id="sitinp" placeholder="Ej: Coordine el equipo de 6 personas para el proyecto final de Tecnicas de Conduccion de Grupos, 3er semestre" style="width:100%;padding:10px 14px;border:1px solid var(--emb);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:.92rem;background:var(--bl);color:var(--tx);" oninput="document.getElementById('sitnm').textContent=this.value||'_______________'">
+        </div>
+        <div class="ogrid">
+          <div class="onodo" data-l="1. Orientacion a objetivos (Alto/Medio/Bajo)"><textarea id="n1" placeholder="Mantuve al grupo enfocado en metas claras? Nivel y ejemplo concreto..."></textarea></div>
+          <div class="onodo" data-l="2. Equilibrio tarea-relaciones (A/M/B)"><textarea id="n2" placeholder="Equilibre el logro con el cuidado del clima? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="3. Comunicacion eficaz (A/M/B)"><textarea id="n3" placeholder="Escuche y comunique con claridad? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="4. Fomento de la participacion (A/M/B)"><textarea id="n4" placeholder="Involucre a todos en las decisiones? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="5. Desarrollo de la autonomia (A/M/B)"><textarea id="n5" placeholder="Empodere al grupo o genere dependencia? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="6. Adaptabilidad (A/M/B)"><textarea id="n6" placeholder="Ajuste mi estilo a la situacion del grupo? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="7. Coherencia y ejemplo (A/M/B)"><textarea id="n7" placeholder="Actue de acuerdo con lo que pedia al grupo? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="8. Gestion del conflicto (A/M/B)"><textarea id="n8" placeholder="Aborde las tensiones de forma constructiva? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="9. Reconocimiento y motivacion (A/M/B)"><textarea id="n9" placeholder="Valore los logros y sostuve la motivacion? Nivel y ejemplo..."></textarea></div>
+          <div class="onodo" data-l="Sintesis: 2 fortalezas y 2 areas de mejora"><textarea id="nsint" placeholder="Mis 2 caracteristicas mas fuertes y las 2 que mas necesito desarrollar..."></textarea></div>
+        </div>
+        <div style="margin-top:20px;">
+          <label style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:6px;">Mi plan de mejora para el proximo trabajo en equipo</label>
+          <textarea id="nplan" style="width:100%;border:1px solid var(--emb);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:100px;background:var(--bl);resize:vertical;color:var(--tx);" placeholder="Que hare especificamente para fortalecer mis dos caracteristicas mas debiles? Acciones concretas y observables, fundamentadas en los conceptos del tema..."></textarea>
+        </div>
+        <div><button class="btnp" onclick="guardarOrg()">Guardar Organizador</button><button class="btno" onclick="limpiarOrg()">Reiniciar</button></div>
+        <div id="msgorg" class="msg msg-ok">Organizador guardado. Tome una captura de pantalla para entregar en Classroom.</div>
+      </div>
+      <h3>Criterios de Evaluacion</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En Proceso</th></tr></thead>
+          <tbody>
+            <tr><td>Experiencia analizada</td><td>Real, especifica, con datos suficientes</td><td>Real con pocos detalles</td><td>Vaga o hipotetica</td></tr>
+            <tr><td>Autoevaluacion</td><td>Evalua las 9 caracteristicas con honestidad y ejemplos concretos</td><td>Evalua la mayoria con sustento parcial</td><td>Evaluacion incompleta o sin ejemplos</td></tr>
+            <tr><td>Identificacion de areas</td><td>Fortalezas y areas de mejora claras y fundamentadas</td><td>Identificacion pertinente pero general</td><td>Identificacion vaga o ausente</td></tr>
+            <tr><td>Plan de mejora</td><td>Concreto, viable y fundamentado en el tema</td><td>Pertinente pero general</td><td>Ausente o superficial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="badge">Subir evidencia a Google Classroom</span>
+    </div>
+  </div>
+</section>
+<!-- ACTIVIDAD 3: QUIZ -->
+<section id="act3">
+  <span class="slbl">Actividad 03 de 03</span>
+  <h2>Quiz de Autoevaluacion</h2>
+  <div class="awrap">
+    <div class="ahead">
+      <div class="anum">3</div>
+      <div class="ahtxt">
+        <span class="atipo">Modalidad: Quiz Interactivo con Retroalimentacion Inmediata</span>
+        <h3>Evaluacion: Caracteristicas de un Liderazgo Funcional</h3>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="card card-g" style="margin-bottom:22px;">
+        <h4>Informacion del Quiz</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px;">
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Preguntas</strong><br>5 reactivos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Formato</strong><br>Opcion multiple</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Puntaje maximo</strong><br>10 puntos</div>
+          <div><strong style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);">Entrega</strong><br>Captura en Classroom</div>
+        </div>
+      </div>
+      <p>Responda cada pregunta y presione "Calificar" al finalizar. Tome una captura del resultado y subala a Classroom.</p>
+      <div class="qwrap" id="qc">
+
+        <div class="preg">
+          <span class="qn">Pregunta 01 de 05</span>
+          <div class="qt">¿Que define fundamentalmente a un liderazgo funcional?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p1" value="a"><span>El carisma, la elocuencia y la capacidad del lider para despertar admiracion entre los miembros del grupo.</span></label></li>
+            <li><label><input type="radio" name="p1" value="b"><span>Sus efectos reales sobre el grupo: que logre articular el cumplimiento de objetivos con el mantenimiento de la cohesion y que desarrolle la autonomia de los miembros.</span></label></li>
+            <li><label><input type="radio" name="p1" value="c"><span>La posicion jerarquica del lider y la autoridad formal que la institucion le ha conferido oficialmente.</span></label></li>
+            <li><label><input type="radio" name="p1" value="d"><span>La aplicacion estricta y permanente de un unico estilo de liderazgo, sin importar el contexto ni la madurez del grupo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 02 de 05</span>
+          <div class="qt">Una de las caracteristicas centrales del liderazgo funcional es el desarrollo de la autonomia del grupo. ¿Que indicador refleja mejor que esta caracteristica se ha logrado?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p2" value="a"><span>El grupo depende del lider para cualquier decision y se paraliza cuando este no esta presente.</span></label></li>
+            <li><label><input type="radio" name="p2" value="b"><span>El lider concentra toda la informacion y las decisiones para mantener el control absoluto del grupo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="c"><span>El grupo mantiene su desempeno y su capacidad de tomar decisiones incluso en ausencia del lider, porque ha desarrollado la capacidad de conducirse a si mismo.</span></label></li>
+            <li><label><input type="radio" name="p2" value="d"><span>El grupo obedece sin cuestionar todas las instrucciones que el lider transmite de manera vertical.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 03 de 05</span>
+          <div class="qt">¿Cual de las siguientes situaciones describe un liderazgo DISFUNCIONAL?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p3" value="a"><span>Un lider que involucra a los miembros en las decisiones, distribuye responsabilidades y valora las aportaciones de todos.</span></label></li>
+            <li><label><input type="radio" name="p3" value="b"><span>Un lider que ajusta su nivel de direccion segun la madurez del grupo y las exigencias de cada situacion.</span></label></li>
+            <li><label><input type="radio" name="p3" value="c"><span>Un lider que aborda las tensiones de manera abierta y las transforma en oportunidades de mejora.</span></label></li>
+            <li><label><input type="radio" name="p3" value="d"><span>Un lider muy admirado que concentra todas las decisiones, de modo que el grupo se paraliza y no sabe que hacer cuando el no esta presente.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 04 de 05</span>
+          <div class="qt">Se afirma que "el liderazgo funcional es contextual". ¿Que significa esta afirmacion?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p4" value="a"><span>Que existe una unica formula de liderazgo funcional valida para todos los grupos y todas las situaciones por igual.</span></label></li>
+            <li><label><input type="radio" name="p4" value="b"><span>Que lo que hace funcional a un liderazgo es su capacidad de responder adecuadamente a lo que el grupo necesita en cada momento, por lo que la adaptabilidad es una de sus caracteristicas centrales.</span></label></li>
+            <li><label><input type="radio" name="p4" value="c"><span>Que el liderazgo funcional solo puede ejercerse en contextos empresariales y nunca en contextos educativos.</span></label></li>
+            <li><label><input type="radio" name="p4" value="d"><span>Que la funcionalidad del liderazgo depende exclusivamente de la personalidad innata del lider y no de la situacion del grupo.</span></label></li>
+          </ul>
+        </div>
+
+        <div class="preg">
+          <span class="qn">Pregunta 05 de 05</span>
+          <div class="qt">Desde la perspectiva pedagogica y constructivista, ¿por que se afirma que "el mejor conductor de grupos no es el que se hace indispensable, sino el que desarrolla en el grupo la capacidad de conducirse a si mismo"?</div>
+          <ul class="opts">
+            <li><label><input type="radio" name="p5" value="a"><span>Porque un liderazgo funcional, al igual que el andamiaje educativo, busca desarrollar la autonomia del grupo y retirarse progresivamente, evitando generar dependencia y favoreciendo el crecimiento de los miembros.</span></label></li>
+            <li><label><input type="radio" name="p5" value="b"><span>Porque el lider debe abandonar al grupo lo antes posible para que aprenda a sobrevivir sin ninguna orientacion ni apoyo.</span></label></li>
+            <li><label><input type="radio" name="p5" value="c"><span>Porque hacerse indispensable es el objetivo maximo de todo buen lider, ya que asegura que el grupo nunca pueda prescindir de el.</span></label></li>
+            <li><label><input type="radio" name="p5" value="d"><span>Porque el desarrollo de la autonomia del grupo es irrelevante para el aprendizaje y solo importa el cumplimiento inmediato de las tareas.</span></label></li>
+          </ul>
+        </div>
+
+        <button id="btnq" onclick="calificar()">Calificar Quiz</button>
+        <div class="qres" id="qr">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:6px;">Resultado Final</span>
+          <span class="sn" id="snm">0 / 10</span>
+          <div class="bprog"><div class="bfill" id="bf"></div></div>
+          <p class="sm" id="smsg"></p>
+          <p class="sd" id="sdet"></p>
+          <br><button id="btnr" onclick="reiniciar()">Intentar de Nuevo</button>
+        </div>
+      </div>
+      <div class="card card-b" style="margin-top:22px;">
+        <h4>Instruccion de Entrega</h4>
+        <ol style="margin-left:18px;color:var(--tx2);font-size:.92rem;">
+          <li style="margin-bottom:7px;">Complete el quiz hasta obtener la pantalla de resultados con el puntaje final.</li>
+          <li style="margin-bottom:7px;">Tome una captura que incluya el puntaje, la barra de progreso y las respuestas marcadas.</li>
+          <li style="margin-bottom:7px;">Nombre el archivo: <code>Quiz_LiderazgoFuncional_NombreApellido.png</code></li>
+          <li>Subalo en la tarea "Quiz Unidad III - Tema 3.3" de Google Classroom.</li>
+        </ol>
+      </div>
+      <span class="badge">Subir captura de pantalla a Google Classroom</span>
+    </div>
+  </div>
+</section>
+
+<!-- REFLEXION -->
+<section id="reflexion">
+  <span class="slbl">Seccion 06</span>
+  <h2>Reflexion y Plan de Aplicacion</h2>
+  <p>Esta seccion cierra el ciclo de aprendizaje. La metacognicion &mdash;reflexionar sobre lo aprendido, como se aprendio y para que sirve&mdash; consolida el conocimiento y facilita su transferencia a nuevos contextos.</p>
+  <div class="card card-g" style="margin-bottom:26px;">
+    <h4>Condicion Previa</h4>
+    <p>Esta seccion tiene mayor valor si se completa despues de realizar las tres actividades. La experiencia acumulada es el insumo principal de su reflexion.</p>
+  </div>
+  <h3>Cuadro de Reflexion Personal</h3>
+  <div class="refgrid">
+    <div class="refitem"><label>1. Concepto que transformo mi comprension</label><textarea id="r1" placeholder="Cual de las caracteristicas del liderazgo funcional cambio o matizo una idea previa que tenia sobre el buen liderazgo?"></textarea></div>
+    <div class="refitem"><label>2. Lo que reconoci sobre mi propio liderazgo</label><textarea id="r2" placeholder="Que descubrio sobre la funcionalidad de su liderazgo al autoevaluarlo con las nueve caracteristicas?"></textarea></div>
+    <div class="refitem"><label>3. Tension o dificultad conceptual</label><textarea id="r3" placeholder="Que aspecto del tema le resulto mas dificil de comprender o le genero mayor tension intelectual?"></textarea></div>
+    <div class="refitem"><label>4. Preguntas abiertas</label><textarea id="r4" placeholder="Que preguntas nuevas surgieron? Que le gustaria explorar en las proximas unidades?"></textarea></div>
+  </div>
+  <hr class="div">
+  <h3>Plan de Aplicacion Profesional</h3>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como aplicare este conocimiento en mi vida universitaria inmediata</h4>
+    <textarea id="p1" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--eml);resize:vertical;color:var(--tx);" placeholder="Ej: En mi proximo trabajo en equipo, usare las nueve caracteristicas como lista de verificacion de mi liderazgo, poniendo especial atencion en desarrollar la autonomia del grupo en lugar de centralizar las decisiones..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <h4>Como transferire este conocimiento a mi futura practica pedagogica o docente</h4>
+    <textarea id="p2" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:80px;background:var(--eml);resize:vertical;color:var(--tx);" placeholder="Ej: Cuando sea docente, evaluare mi liderazgo por sus efectos reales sobre el grupo, buscando desarrollar la autonomia de mis estudiantes y no su dependencia, y ajustando mi nivel de direccion segun la madurez del grupo..."></textarea>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h4>Mi compromiso de aprendizaje para las proximas dos semanas</h4>
+    <textarea id="p3" style="width:100%;border:1px solid var(--azxl);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:.92rem;min-height:70px;background:var(--eml);resize:vertical;color:var(--tx);" placeholder="Me comprometo a... (accion concreta, observable y realizable)"></textarea>
+  </div>
+  <button class="btnp" onclick="genPlan()">Generar mi Plan de Aplicacion</button>
+  <div class="planprev" id="planp">
+    <h4>Mi Plan de Aplicacion &mdash; Caracteristicas de un Liderazgo Funcional</h4>
+    <div id="planpc"></div>
+    <div class="card card-g" style="margin-top:16px;"><p style="margin:0;font-size:.88rem;">Tome una captura de este plan como referencia personal para las proximas semanas del curso.</p></div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <span class="slbl">Seccion 07</span>
+  <h2>Glosario de Terminos Clave</h2>
+  <div class="card">
+    <dl class="glos">
+      <div><dt>Adaptabilidad del liderazgo</dt><dd>Caracteristica del liderazgo funcional consistente en ajustar el estilo y el nivel de direccion segun la madurez del grupo y las exigencias de cada situacion. Conecta con el enfoque del liderazgo situacional.</dd></div>
+      <div><dt>Autonomia del grupo</dt><dd>Capacidad de un grupo para conducirse, organizarse y tomar decisiones por si mismo. Su desarrollo es una de las caracteristicas centrales del liderazgo funcional y el indicador de que el lider no genera dependencia.</dd></div>
+      <div><dt>Coherencia del lider</dt><dd>Congruencia entre lo que el lider promueve y lo que hace. Un lider coherente actua como modelo y genera credibilidad, elemento clave del liderazgo funcional.</dd></div>
+      <div><dt>Dependencia del lider</dt><dd>Situacion, propia del liderazgo disfuncional, en que el grupo no puede funcionar sin la presencia y las decisiones del lider, lo que refleja que este no ha desarrollado la autonomia del grupo.</dd></div>
+      <div><dt>Efectos del liderazgo</dt><dd>Resultados observables que produce un liderazgo sobre el grupo (logro de objetivos, clima, cohesion, autonomia, desarrollo de los miembros). Son el criterio ultimo para juzgar la funcionalidad de un liderazgo.</dd></div>
+      <div><dt>Gestion constructiva del conflicto</dt><dd>Caracteristica del liderazgo funcional consistente en abordar las tensiones y desacuerdos de manera abierta, transformandolos en oportunidades de mejora en lugar de evitarlos o agravarlos.</dd></div>
+      <div><dt>Liderazgo disfuncional</dt><dd>Liderazgo que, aunque exista formalmente, no sirve al grupo o lo perjudica: genera dependencia, deteriora el clima, obstaculiza el logro de objetivos o divide a los miembros.</dd></div>
+      <div><dt>Liderazgo funcional</dt><dd>Liderazgo que cumple efectivamente su proposito de servir al grupo, articulando el logro de objetivos con la cohesion y desarrollando la autonomia de los miembros. Se define por sus efectos reales, no por la personalidad o la posicion del lider.</dd></div>
+      <div><dt>Equilibrio tarea-relaciones</dt><dd>Caracteristica del liderazgo funcional consistente en articular la atencion al logro de objetivos (tarea) con el cuidado del clima y los vinculos (relaciones), sin sacrificar una dimension por la otra.</dd></div>
+      <div><dt>Fomento de la participacion</dt><dd>Caracteristica del liderazgo funcional consistente en involucrar a los miembros en las decisiones, distribuir responsabilidades y valorar las aportaciones de todos.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="fi">
+    <div>
+      <span class="fn">Universidad de la Cienega &mdash; Plantel Centro</span>
+      <span>Licenciatura en Pedagogia &mdash; Tecnicas de Conduccion de Grupos</span>
+    </div>
+    <div style="text-align:right;">
+      <span>Guia Interactiva Unidad III &mdash; Tema 3.3 &mdash; Ciclo 2024&ndash;2025</span><br>
+      <span style="color:rgba(255,255,255,.4);margin-top:3px;display:block;">Material de uso educativo &mdash; version web para GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){
+  var s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('pgbar').style.width=(s/h*100)+'%';
+});
+function tog(b){b.classList.toggle('open');b.nextElementSibling.classList.toggle('show');}
+function guardarOrg(){var m=document.getElementById('msgorg');m.classList.add('show');setTimeout(function(){m.classList.remove('show');},4500);}
+function limpiarOrg(){
+  if(!confirm('Desea reiniciar todos los campos del organizador?'))return;
+  ['sitinp','n1','n2','n3','n4','n5','n6','n7','n8','n9','nsint','nplan'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('sitnm').textContent='_______________';
+}
+var RC={p1:'b',p2:'c',p3:'d',p4:'b',p5:'a'};
+var MS=[
+  "Es necesario revisar el contenido nuevamente. Regrese especialmente a las nueve caracteristicas del liderazgo funcional y a la tabla de contraste funcional/disfuncional.",
+  "Ha comprendido algunos conceptos. Revise las preguntas incorrectas y los apartados correspondientes antes de continuar.",
+  "Desempeno aceptable. Domina la mayoria de los conceptos. Revise la retroalimentacion de las preguntas incorrectas.",
+  "Buen desempeno. Revise la pregunta incorrecta para alcanzar dominio completo del tema.",
+  "Excelente. Dominio completo del tema. Ha culminado con solidez la unidad de liderazgo."
+];
+function calificar(){
+  var ps=['p1','p2','p3','p4','p5'],ok=0,todo=true;
+  ps.forEach(function(p){
+    var sel=document.querySelector('input[name="'+p+'"]:checked');
+    if(!sel){todo=false;return;}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.closest('li').classList.remove('ok','err');});
+    if(sel.value===RC[p]){ok++;sel.closest('li').classList.add('ok');}
+    else{sel.closest('li').classList.add('err');var c=document.querySelector('input[name="'+p+'"][value="'+RC[p]+'"]');if(c)c.closest('li').classList.add('ok');}
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.disabled=true;});
+  });
+  if(!todo){alert('Por favor responda todas las preguntas antes de calificar.');return;}
+  var pts=(ok/5)*10;
+  document.getElementById('snm').textContent=pts.toFixed(0)+' / 10';
+  document.getElementById('bf').style.width=(pts*10)+'%';
+  document.getElementById('smsg').textContent=MS[ok];
+  document.getElementById('sdet').textContent=ok+' de 5 respuestas correctas. Puntaje: '+pts.toFixed(0)+'/10.';
+  var r=document.getElementById('qr');r.classList.add('show');
+  document.getElementById('btnq').disabled=true;
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function reiniciar(){
+  ['p1','p2','p3','p4','p5'].forEach(function(p){
+    document.querySelectorAll('input[name="'+p+'"]').forEach(function(r){r.checked=false;r.disabled=false;r.closest('li').classList.remove('ok','err');});
+  });
+  document.getElementById('qr').classList.remove('show');
+  document.getElementById('bf').style.width='0';
+  document.getElementById('btnq').disabled=false;
+  document.getElementById('qc').scrollIntoView({behavior:'smooth'});
+}
+function genPlan(){
+  var p1=document.getElementById('p1').value.trim(),p2=document.getElementById('p2').value.trim(),p3=document.getElementById('p3').value.trim();
+  if(!p1&&!p2&&!p3){alert('Complete al menos un campo del plan antes de generarlo.');return;}
+  var h='';
+  if(p1)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--eml);border-radius:var(--r);border-left:3px solid var(--em);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--em);display:block;margin-bottom:5px;">Aplicacion Inmediata</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p1+'</p></div>';
+  if(p2)h+='<div style="margin-bottom:14px;padding:14px 18px;background:var(--vel);border-radius:var(--r);border-left:3px solid var(--ve);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ve);display:block;margin-bottom:5px;">Practica Pedagogica Futura</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p2+'</p></div>';
+  if(p3)h+='<div style="padding:14px 18px;background:var(--doxl);border-radius:var(--r);border-left:3px solid var(--do);"><strong style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--do);display:block;margin-bottom:5px;">Mi Compromiso</strong><p style="margin:0;font-size:.92rem;color:var(--tx2);">'+p3+'</p></div>';
+  document.getElementById('planpc').innerHTML=h;
+  var pp=document.getElementById('planp');pp.classList.add('show');
+  pp.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
