@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema 3 · Análisis comparativo de las teorías revisadas · Universidad de la Ciénega</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A6B;
+    --navy-dark:#101A47;
+    --blue-mid:#3E5C9A;
+    --paper:#EAEDF3;
+    --paper-deep:#DEE3EC;
+    --card:#FFFFFF;
+    --ink:#20263A;
+    --muted:#5B6479;
+    --er:#A85024;
+    --er-soft:#F3E3D8;
+    --campo:#276E5E;
+    --campo-soft:#DCEBE6;
+    --gestalt:#5F3F92;
+    --gestalt-soft:#E7E0F2;
+    --gold:#B77E1F;
+    --gold-soft:#F3E6CC;
+    --line:#CDD4E0;
+    --radius:14px;
+    --shadow: 0 1px 2px rgba(16,26,71,0.06), 0 8px 24px rgba(16,26,71,0.07);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Literata', Georgia, serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', 'Literata', serif;
+    color:var(--navy-dark);
+    line-height:1.15;
+    margin:0 0 0.5em 0;
+    font-weight:600;
+  }
+  a{color:var(--blue-mid);}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue-mid);
+    font-weight:600;
+    display:block;
+    margin-bottom:0.6em;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--navy-dark);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .site-top{
+    max-width:920px; margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; gap:16px; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:14px; min-width:0;}
+  .brand img{height:40px; width:auto; background:#fff; border-radius:8px; padding:4px 8px; flex-shrink:0;}
+  .brand-text{color:#EDEFF6; min-width:0;}
+  .brand-text .uni{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:#AEB9DE; display:block;}
+  .brand-text .course{font-size:0.86rem; color:#F3F4FA; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  nav.toc{display:flex; gap:2px; overflow-x:auto; scrollbar-width:none;}
+  nav.toc::-webkit-scrollbar{display:none;}
+  nav.toc a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.03em;
+    color:#C3CBE6; text-decoration:none; white-space:nowrap;
+    padding:8px 10px; border-radius:8px; transition:background 0.15s, color 0.15s;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{background:rgba(255,255,255,0.09); color:#fff;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 40px;}
+  .hero .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--blue-mid); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .hero h1{font-size:clamp(2rem, 4.4vw, 2.9rem); max-width:16ch;}
+  .hero .subtitle{font-size:1.08rem; color:var(--muted); max-width:56ch; margin-top:14px;}
+  .hero .unit-line{
+    margin-top:22px; padding:14px 18px; background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--muted);
+    display:flex; flex-wrap:wrap; gap:6px 16px;
+  }
+  .unit-line b{color:var(--navy-dark); font-weight:600;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:52px 0;}
+  section.alt{background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:28px;}
+  .section-head h2{font-size:clamp(1.5rem, 3vw, 2rem);}
+  .section-head p{color:var(--muted); max-width:62ch; margin-top:8px;}
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 26px; box-shadow:var(--shadow);
+  }
+
+  /* ---------- DIAGRAM (signature element) ---------- */
+  .diagram{margin:36px 0 8px;}
+  .diagram svg{width:100%; height:auto; display:block;}
+  .diagram-caption{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--muted); text-align:center; margin-top:10px;}
+
+  /* ---------- RECAP GRID (temas 1 y 2) ---------- */
+  .recap-grid{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media(min-width:720px){ .recap-grid{grid-template-columns:1fr 1fr;} }
+  .recap-card{border-left:4px solid var(--blue-mid); padding-left:16px;}
+  .recap-card .tag{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--blue-mid); font-weight:600;}
+  .recap-card h4{font-size:1.05rem; margin:4px 0 6px;}
+  .recap-card p{color:var(--muted); font-size:0.95rem; margin:0;}
+  details.subpoint{margin-top:8px;}
+  details.subpoint summary{cursor:pointer; font-size:0.86rem; color:var(--navy); font-weight:500;}
+  details.subpoint p{margin:8px 0 0; font-size:0.9rem;}
+
+  /* ---------- COMPARATIVE TABLE ---------- */
+  .table-scroll{overflow-x:auto; border-radius:var(--radius); border:1px solid var(--line);}
+  table.compare{border-collapse:collapse; width:100%; min-width:680px; background:var(--card);}
+  table.compare th, table.compare td{padding:14px 16px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; font-size:0.92rem;}
+  table.compare thead th{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--navy-dark); color:#fff; position:sticky; top:0;
+  }
+  table.compare tbody th{background:var(--paper); font-family:'Fraunces', serif; font-weight:600; color:var(--navy-dark); width:180px;}
+  table.compare td.er{border-left:3px solid var(--er);}
+  table.compare td.campo{border-left:3px solid var(--campo);}
+  table.compare td.gestalt{border-left:3px solid var(--gestalt);}
+  table.compare tbody tr:last-child td, table.compare tbody tr:last-child th{border-bottom:none;}
+  .legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; font-size:0.82rem; color:var(--muted);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .dot{width:10px; height:10px; border-radius:50%; display:inline-block;}
+
+  /* ---------- PILL / LABEL ---------- */
+  .pill{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.05em;
+    text-transform:uppercase; font-weight:600; padding:4px 10px; border-radius:999px; margin-bottom:10px;
+  }
+  .pill.er{background:var(--er-soft); color:var(--er);}
+  .pill.campo{background:var(--campo-soft); color:var(--campo);}
+  .pill.gestalt{background:var(--gestalt-soft); color:var(--gestalt);}
+  .pill.gold{background:var(--gold-soft); color:var(--gold);}
+
+  /* ---------- TRANSFERENCIA ---------- */
+  .transfer-grid{display:grid; grid-template-columns:1fr; gap:16px; margin-top:20px;}
+  @media(min-width:720px){ .transfer-grid{grid-template-columns:repeat(3,1fr);} }
+  .transfer-card{padding:20px; border-radius:var(--radius); background:var(--card); border:1px solid var(--line);}
+  .transfer-card h4{font-size:1rem; margin-bottom:8px;}
+  .transfer-card p{font-size:0.9rem; color:var(--muted); margin:0;}
+
+  /* ---------- KNOWLEDGE CHECK / REFLECTION BOXES ---------- */
+  .prompt-box{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 100%);
+    color:#F2F4FA; border-radius:var(--radius); padding:26px 28px; margin-top:28px;
+  }
+  .prompt-box .eyebrow{color:#C7D0EF;}
+  .prompt-box h3{color:#fff; font-size:1.2rem;}
+  .prompt-box p{color:#DCE2F4;}
+  textarea.response{
+    width:100%; margin-top:14px; min-height:110px; border-radius:10px; border:1px solid var(--line);
+    padding:14px; font-family:'Literata', serif; font-size:0.95rem; resize:vertical; background:#fff; color:var(--ink);
+  }
+  .helper-note{font-size:0.8rem; color:var(--muted); margin-top:8px; font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- MATERIALES ---------- */
+  ul.sources{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
+  ul.sources li{
+    padding:14px 16px; background:var(--card); border:1px solid var(--line); border-radius:10px; font-size:0.92rem;
+  }
+  ul.sources li .src-type{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; color:var(--blue-mid); letter-spacing:0.05em;}
+
+  /* ---------- ACTIVITIES ---------- */
+  .activity{border:1px solid var(--line); border-radius:var(--radius); background:var(--card); margin-bottom:24px; overflow:hidden;}
+  .activity-head{padding:20px 26px; display:flex; align-items:flex-start; gap:16px; border-bottom:1px solid var(--line);}
+  .activity-num{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:600; color:var(--navy); line-height:1;
+    flex-shrink:0; width:44px; text-align:center;
+  }
+  .activity-head h3{font-size:1.15rem; margin-bottom:4px;}
+  .activity-head .meta{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
+  .activity-body{padding:22px 26px;}
+  .steps{margin:0; padding-left:0; list-style:none; counter-reset:step;}
+  .steps li{counter-increment:step; position:relative; padding-left:38px; margin-bottom:14px; font-size:0.94rem;}
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:0.05em; width:26px; height:26px; border-radius:50%;
+    background:var(--paper-deep); color:var(--navy-dark); font-family:'IBM Plex Mono', monospace; font-size:0.75rem;
+    font-weight:600; display:flex; align-items:center; justify-content:center;
+  }
+  .example-box{
+    margin-top:14px; padding:14px 16px; background:var(--paper); border-left:3px solid var(--gold); border-radius:8px;
+    font-size:0.9rem; color:var(--ink);
+  }
+  .example-box .lbl{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; color:var(--gold); letter-spacing:0.05em; display:block; margin-bottom:6px;}
+  .upload-flag{
+    margin-top:16px; display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; color:var(--navy-dark); background:var(--gold-soft); border:1px solid #E3CE9C; padding:8px 12px; border-radius:8px;
+  }
+
+  /* ---------- QUIZ ---------- */
+  .quiz-item{margin-bottom:22px; padding-bottom:22px; border-bottom:1px dashed var(--line);}
+  .quiz-item:last-of-type{border-bottom:none; margin-bottom:0; padding-bottom:0;}
+  .quiz-item p.q{font-weight:600; color:var(--navy-dark); margin-bottom:10px; font-family:'Fraunces', serif; font-size:1.02rem;}
+  .quiz-options{display:grid; gap:8px;}
+  .quiz-options label{
+    display:flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--line); border-radius:9px;
+    cursor:pointer; font-size:0.92rem; transition:border-color 0.15s, background 0.15s;
+  }
+  .quiz-options label:hover{border-color:var(--blue-mid);}
+  .quiz-options input{accent-color:var(--navy);}
+  .quiz-submit{
+    margin-top:12px; background:var(--navy); color:#fff; border:none; padding:12px 22px; border-radius:9px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    cursor:pointer; font-weight:600;
+  }
+  .quiz-submit:hover{background:var(--navy-dark);}
+  #quiz-result{margin-top:18px; padding:18px 20px; border-radius:10px; display:none;}
+  #quiz-result.show{display:block;}
+  #quiz-result h4{margin-bottom:6px;}
+  .quiz-item.correct label.right-answer{border-color:var(--campo); background:var(--campo-soft);}
+  .quiz-item.incorrect label.chosen-wrong{border-color:var(--er); background:var(--er-soft);}
+  .quiz-item .feedback{margin-top:8px; font-size:0.85rem; color:var(--muted); display:none;}
+  .quiz-item.answered .feedback{display:block;}
+
+  /* ---------- CASE STUDY ---------- */
+  .case-scenario{background:var(--paper); border-radius:10px; padding:18px 20px; font-size:0.94rem; margin-bottom:16px;}
+  .case-scenario p{margin:0 0 10px;}
+  .case-scenario p:last-child{margin-bottom:0;}
+  ol.case-questions{padding-left:20px; margin:0;}
+  ol.case-questions li{margin-bottom:10px; font-size:0.94rem;}
+
+  /* ---------- REFLECTION / CLOSING ---------- */
+  .plan-grid{display:grid; gap:18px; margin-top:20px;}
+  .plan-field label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--blue-mid); display:block; margin-bottom:8px;}
+
+  footer.site{background:var(--navy-dark); color:#C7D0EF; padding:36px 0; margin-top:20px;}
+  footer.site .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;}
+  footer.site img{height:32px; background:#fff; border-radius:6px; padding:3px 6px;}
+  footer.site p{margin:0; font-size:0.82rem; color:#AEB9DE;}
+
+  @media (max-width:640px){
+    .hero{padding:44px 0 28px;}
+    section{padding:38px 0;}
+    .activity-head{flex-direction:column; gap:6px;}
+    .activity-num{width:auto;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-top">
+    <div class="brand">
+      <img src="data:image/png;base64,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" alt="Escudo de la Universidad de la Ciénega">
+      <div class="brand-text">
+        <span class="uni">Universidad de la Ciénega · Plantel Centro</span>
+        <span class="course">Psicología del Aprendizaje — Guía de Tema 3</span>
+      </div>
+    </div>
+    <nav class="toc" aria-label="Navegación de la guía">
+      <a href="#inicio">Inicio</a>
+      <a href="#marco">Marco previo</a>
+      <a href="#comparativo">Comparativo</a>
+      <a href="#transferencia">Transferencia</a>
+      <a href="#materiales">Materiales</a>
+      <a href="#actividades">Actividades</a>
+      <a href="#reflexion">Reflexión</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HERO / INTRODUCCIÓN ===================== -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <span class="kicker">Guía interactiva de estudio · Nivel licenciatura</span>
+    <h1>Análisis comparativo de las teorías revisadas</h1>
+    <p class="subtitle">Tema 3 del bloque sobre el problema del conocimiento y los enfoques psicológicos del aprendizaje. Esta guía integra lo estudiado sobre estímulo–respuesta, campo cognoscitivo y Gestalt para construir una lectura comparativa y avanzar hacia el concepto de transferencia del aprendizaje.</p>
+    <div class="unit-line">
+      <span><b>Unidad:</b> El problema del conocimiento</span>
+      <span><b>Temas previos:</b> 1. El problema del conocimiento · 2. Enfoques psicológicos</span>
+      <span><b>Tema actual:</b> 3. Análisis comparativo · 3.1 Transferencia</span>
+    </div>
+
+    <div class="diagram" aria-hidden="false">
+      <svg viewBox="0 0 900 300" role="img" aria-labelledby="diagTitle diagDesc">
+        <title id="diagTitle">Convergencia de las tres teorías hacia el análisis comparativo y la transferencia</title>
+        <desc id="diagDesc">Estímulo-Respuesta, Campo cognoscitivo y Gestalt convergen en un análisis comparativo que conduce al concepto de transferencia del aprendizaje.</desc>
+
+        <line x1="150" y1="70" x2="450" y2="170" stroke="#A85024" stroke-width="2" opacity="0.55"/>
+        <line x1="450" y1="70" x2="450" y2="170" stroke="#276E5E" stroke-width="2" opacity="0.55"/>
+        <line x1="750" y1="70" x2="450" y2="170" stroke="#5F3F92" stroke-width="2" opacity="0.55"/>
+
+        <rect x="70" y="30" width="160" height="56" rx="10" fill="#F3E3D8" stroke="#A85024" stroke-width="1.4"/>
+        <text x="150" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#A85024" font-weight="600" letter-spacing="0.5">2.1 EST&#237;MULO&#8211;RESPUESTA</text>
+        <text x="150" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8a4019">Asociacionismo</text>
+
+        <rect x="370" y="30" width="160" height="56" rx="10" fill="#DCEBE6" stroke="#276E5E" stroke-width="1.4"/>
+        <text x="450" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#276E5E" font-weight="600">2.2 CAMPO COGNOSCITIVO</text>
+        <text x="450" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#1f5747">Espacio vital</text>
+
+        <rect x="670" y="30" width="160" height="56" rx="10" fill="#E7E0F2" stroke="#5F3F92" stroke-width="1.4"/>
+        <text x="750" y="55" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5F3F92" font-weight="600">2.3 GESTALT</text>
+        <text x="750" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4a2f70">Insight / totalidad</text>
+
+        <rect x="330" y="165" width="240" height="60" rx="12" fill="#1B2A6B"/>
+        <text x="450" y="192" text-anchor="middle" font-family="Fraunces, serif" font-size="14" fill="#fff" font-weight="600">3. An&#225;lisis</text>
+        <text x="450" y="210" text-anchor="middle" font-family="Fraunces, serif" font-size="14" fill="#fff" font-weight="600">comparativo</text>
+
+        <line x1="450" y1="225" x2="450" y2="260" stroke="#B77E1F" stroke-width="2.5" marker-end="url(#arrow)"/>
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L6,3 L0,6 z" fill="#B77E1F"/>
+          </marker>
+        </defs>
+        <text x="450" y="285" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#B77E1F" font-weight="600" letter-spacing="0.4">3.1 TRANSFERENCIA DEL APRENDIZAJE</text>
+      </svg>
+      <p class="diagram-caption">Figura 1. Las tres teorías revisadas convergen en un ejercicio comparativo que desemboca en el estudio de la transferencia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARCO PREVIO (recapitulación 1 y 2) ===================== -->
+<section class="alt" id="marco">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Marco de referencia</span>
+      <h2>Lo que ya hemos revisado</h2>
+      <p>Antes de comparar, conviene tener presente, de forma sintética, el contenido de los temas 1 y 2. Si necesitas profundizar en alguno, despliega los detalles.</p>
+    </div>
+
+    <div class="recap-grid">
+      <div class="card recap-card">
+        <span class="tag">Tema 1</span>
+        <h4>El problema del conocimiento</h4>
+        <p>Pregunta por cómo es posible conocer, qué relación guardan el sujeto y el objeto de conocimiento, y cómo esa relación se traduce en formas de enseñar y aprender.</p>
+        <details class="subpoint">
+          <summary>1.1 Aspectos filosóficos</summary>
+          <p>Analiza el conocimiento desde el racionalismo, el empirismo y las posturas críticas que discuten el origen, los límites y la validez de lo que llamamos conocer.</p>
+        </details>
+        <details class="subpoint">
+          <summary>1.2 Aspectos psicológicos</summary>
+          <p>Estudia los procesos mentales —percepción, memoria, pensamiento— mediante los cuales el sujeto construye representaciones del mundo.</p>
+        </details>
+        <details class="subpoint">
+          <summary>1.3 Aspectos pedagógicos</summary>
+          <p>Traduce la concepción filosófica y psicológica del conocimiento en decisiones didácticas: qué enseñar, cómo enseñarlo y qué papel asignar a docentes y estudiantes.</p>
+        </details>
+      </div>
+
+      <div class="card recap-card">
+        <span class="tag">Tema 2</span>
+        <h4>Enfoques psicológicos acerca del conocimiento</h4>
+        <p>Tres tradiciones que explican, desde supuestos distintos, cómo se produce el aprendizaje.</p>
+        <details class="subpoint">
+          <summary>2.1 Estímulo–Respuesta</summary>
+          <p>El aprendizaje se explica como asociación entre estímulos y respuestas observables, fortalecida por el refuerzo y la repetición (Pavlov, Watson, Thorndike, Skinner).</p>
+        </details>
+        <details class="subpoint">
+          <summary>2.2 Campo cognoscitivo</summary>
+          <p>Retoma la teoría del campo de Kurt Lewin: la conducta depende de la totalidad de fuerzas presentes en el espacio vital del sujeto en un momento dado, no de estímulos aislados.</p>
+        </details>
+        <details class="subpoint">
+          <summary>2.3 Gestalt</summary>
+          <p>El todo tiene propiedades que no se explican por la simple suma de las partes; el aprendizaje ocurre por insight, una reorganización súbita del campo perceptual.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. ANÁLISIS COMPARATIVO ===================== -->
+<section id="comparativo">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Tema 3</span>
+      <h2>Análisis comparativo de las teorías revisadas</h2>
+      <p>Comparar no busca decidir cuál teoría es "correcta", sino identificar qué explica mejor cada una, dónde se complementan y qué implicaciones tiene cada postura para el trabajo en el aula universitaria.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">Dimensión</th>
+            <th scope="col">Estímulo–Respuesta</th>
+            <th scope="col">Campo cognoscitivo</th>
+            <th scope="col">Gestalt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Concepción del conocimiento</th>
+            <td class="er">Producto de asociaciones entre estímulos y respuestas, formadas por repetición y refuerzo.</td>
+            <td class="campo">Reorganización del espacio vital: el sujeto conoce en función de la totalidad de fuerzas psicológicas presentes.</td>
+            <td class="gestalt">Captación de estructuras y relaciones significativas; el todo organiza y da sentido a las partes.</td>
+          </tr>
+          <tr>
+            <th scope="row">Mecanismo del aprendizaje</th>
+            <td class="er">Condicionamiento y refuerzo; ensayo y error hasta consolidar la respuesta correcta.</td>
+            <td class="campo">Reestructuración cognitiva del campo ante tensiones o necesidades del sujeto.</td>
+            <td class="gestalt">Insight: comprensión súbita de la relación entre los elementos de una situación.</td>
+          </tr>
+          <tr>
+            <th scope="row">Papel del estudiante</th>
+            <td class="er">Receptor que responde a estímulos externos y consolida hábitos mediante la práctica.</td>
+            <td class="campo">Sujeto activo dentro de un campo psicológico propio, con metas, tensiones y percepciones particulares.</td>
+            <td class="gestalt">Perceptor activo que organiza la información en totalidades con sentido.</td>
+          </tr>
+          <tr>
+            <th scope="row">Papel del docente</th>
+            <td class="er">Diseña estímulos, secuencia la práctica y administra el refuerzo.</td>
+            <td class="campo">Modifica el campo (contexto, metas, obstáculos) para orientar la reestructuración del alumno.</td>
+            <td class="gestalt">Presenta la información de manera que la estructura y las relaciones relevantes sean perceptibles.</td>
+          </tr>
+          <tr>
+            <th scope="row">Evaluación coherente</th>
+            <td class="er">Medición de conductas observables frente a criterios previamente definidos.</td>
+            <td class="campo">Valoración de la comprensión de la situación en su conjunto y de la capacidad de reorganizarla.</td>
+            <td class="gestalt">Valoración de la capacidad de transferir la estructura comprendida a nuevas configuraciones.</td>
+          </tr>
+          <tr>
+            <th scope="row">Aportación pedagógica</th>
+            <td class="er">Precisión en el diseño instruccional, secuenciación de contenidos y uso del refuerzo.</td>
+            <td class="campo">Atención al contexto, la motivación y las metas del estudiante como parte del aprendizaje.</td>
+            <td class="gestalt">Valor de la comprensión global y del descubrimiento frente a la memorización mecánica.</td>
+          </tr>
+          <tr>
+            <th scope="row">Principal limitación señalada</th>
+            <td class="er">Explica conductas observables, pero atiende poco a procesos internos de comprensión.</td>
+            <td class="campo">Dificultad para operacionalizar y medir con precisión el "campo" en su totalidad.</td>
+            <td class="gestalt">Menor precisión sobre cómo se consolidan y automatizan los aprendizajes ya comprendidos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:#A85024"></span> Estímulo–Respuesta</span>
+      <span><span class="dot" style="background:#276E5E"></span> Campo cognoscitivo</span>
+      <span><span class="dot" style="background:#5F3F92"></span> Gestalt</span>
+    </div>
+
+    <div class="card" style="margin-top:26px;">
+      <h3 style="font-size:1.1rem;">Puntos de convergencia y divergencia</h3>
+      <p style="color:var(--muted); margin-top:10px;">Las tres teorías coinciden en reconocer que el aprendizaje transforma al sujeto de algún modo, ya sea por asociación, reestructuración del campo o reorganización perceptual. Divergen, sin embargo, en la unidad de análisis: mientras el enfoque E–R centra la mirada en unidades mínimas y observables, el campo cognoscitivo y la Gestalt privilegian totalidades —el espacio vital y la estructura perceptual, respectivamente— como punto de partida para explicar el aprendizaje. Esta diferencia tiene consecuencias directas en el diseño didáctico: enseñar por partes y reforzar cada logro no es lo mismo que diseñar situaciones completas que permitan al estudiante descubrir relaciones por sí mismo.</p>
+    </div>
+
+    <div class="prompt-box">
+      <span class="eyebrow">Pregunta de conocimiento previo</span>
+      <h3>Antes de continuar, reflexiona</h3>
+      <p>¿Alguna vez has aprendido algo de golpe, como si "de repente todo tuviera sentido", frente a otras ocasiones en que aprendiste por práctica repetida hasta dominarlo? Describe brevemente ambas experiencias e identifica qué teoría de las revisadas explica mejor cada una.</p>
+      <textarea class="response" placeholder="Escribe aquí tu respuesta antes de leer el resto de la guía..." aria-label="Respuesta a la pregunta de conocimiento previo"></textarea>
+      <p class="helper-note">Esta respuesta es personal y no se envía automáticamente: consérvala para retomarla en la actividad de foro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3.1 TRANSFERENCIA ===================== -->
+<section class="alt" id="transferencia">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Tema 3.1</span>
+      <h2>Transferencia del aprendizaje</h2>
+      <p>La transferencia es la capacidad de aplicar lo aprendido en un contexto a situaciones nuevas y distintas de aquella en que se adquirió. Cada una de las teorías revisadas ofrece una explicación diferente de por qué y cómo ocurre.</p>
+    </div>
+
+    <div class="transfer-grid">
+      <div class="transfer-card">
+        <span class="pill er">Elementos idénticos</span>
+        <h4>Thorndike</h4>
+        <p>La transferencia ocurre en la medida en que la situación nueva comparte elementos concretos —estímulos, procedimientos— con la situación de aprendizaje original. A mayor similitud, mayor transferencia.</p>
+      </div>
+      <div class="transfer-card">
+        <span class="pill campo">Generalización</span>
+        <h4>Judd</h4>
+        <p>Lo que se transfiere no son elementos específicos, sino principios generales que el sujeto ha logrado abstraer. Comprender el principio permite aplicarlo aunque la situación superficial cambie.</p>
+      </div>
+      <div class="transfer-card">
+        <span class="pill gestalt">Transposición</span>
+        <h4>Gestalt</h4>
+        <p>Se transfiere la estructura de relaciones captada por insight en una situación, y se reconoce esa misma estructura en configuraciones distintas, aunque los elementos concretos cambien por completo.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h3 style="font-size:1.05rem;">Tipos de transferencia</h3>
+      <div class="recap-grid" style="margin-top:14px;">
+        <div>
+          <p style="margin:0 0 8px;"><b>Positiva y negativa.</b> Un aprendizaje previo puede facilitar (positiva) u obstaculizar (negativa) uno nuevo, según qué tan compatibles sean los procedimientos o principios involucrados.</p>
+          <p style="margin:0;"><b>Cercana y lejana.</b> La transferencia cercana ocurre entre contextos muy similares; la lejana, entre contextos con poca semejanza superficial pero con principios comunes.</p>
+        </div>
+        <div>
+          <p style="margin:0 0 8px;"><b>Vertical.</b> Lo aprendido sirve de base para aprendizajes de mayor complejidad dentro de la misma área.</p>
+          <p style="margin:0;"><b>Lateral.</b> Lo aprendido en un dominio se aplica a otro dominio de complejidad comparable, distinto al original.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3 style="font-size:1.05rem;">Por qué importa para la docencia universitaria</h3>
+      <p style="color:var(--muted); margin-top:8px;">Diseñar exclusivamente para la repetición de procedimientos favorece la transferencia cercana; diseñar para la comprensión de principios y la práctica en contextos variados favorece la transferencia lejana, que es la que más se necesita cuando el estudiante debe resolver problemas que no ha visto antes en su vida profesional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MATERIALES ===================== -->
+<section id="materiales">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para profundizar</span>
+      <h2>Materiales externos de consulta</h2>
+      <p>Referencias formales para ampliar el contenido revisado en esta guía. Se recomienda consultarlas antes de participar en las actividades.</p>
+    </div>
+    <ul class="sources">
+      <li><span class="src-type">Libro</span><br>Hilgard, E. R. y Bower, G. H. <i>Teorías del aprendizaje.</i> Editorial Trillas.</li>
+      <li><span class="src-type">Libro</span><br>Pozo, J. I. <i>Teorías cognitivas del aprendizaje.</i> Ediciones Morata.</li>
+      <li><span class="src-type">Libro</span><br>Woolfolk, A. <i>Psicología educativa.</i> Pearson Educación.</li>
+      <li><span class="src-type">Libro</span><br>Schunk, D. H. <i>Teorías del aprendizaje: una perspectiva educativa.</i> Pearson Educación.</li>
+      <li><span class="src-type">Capítulo / artículo académico</span><br>Perkins, D. N. y Salomon, G. "Teaching for Transfer." <i>Educational Leadership.</i> Association for Supervision and Curriculum Development.</li>
+      <li><span class="src-type">Libro</span><br>Köhler, W. <i>Psicología de la Gestalt.</i> Editorial Paidós.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== ACTIVIDADES ===================== -->
+<section class="alt" id="actividades">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Trabajo práctico</span>
+      <h2>Actividades para subir a Classroom</h2>
+      <p>Cuatro actividades complementarias que van de la reflexión colectiva a la aplicación individual. Cada una indica los pasos a seguir y un ejemplo de referencia.</p>
+    </div>
+
+    <!-- ACTIVIDAD 1: FORO -->
+    <div class="activity" id="actividad-1">
+      <div class="activity-head">
+        <span class="activity-num">1</span>
+        <div>
+          <span class="meta">Mediación en foro · Trabajo colaborativo</span>
+          <h3>Foro de discusión: teorías implícitas en el aula</h3>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p><b>Pregunta detonadora:</b> ¿En qué medida el enfoque de estímulo–respuesta, el campo cognoscitivo o la Gestalt siguen presentes —aunque no se nombren explícitamente— en las estrategias que usan tus profesores, o que tú mismo emplearías, para enseñar en la universidad? ¿Es posible enseñar sin situarse, consciente o inconscientemente, en alguna de estas teorías?</p>
+        <ol class="steps">
+          <li>Publica en el foro de Classroom una respuesta inicial de al menos ocho líneas, identificando al menos una teoría revisada y justificando tu elección con un ejemplo concreto de tu experiencia como estudiante.</li>
+          <li>Lee las respuestas de al menos tres compañeros antes de responder.</li>
+          <li>Comenta de forma argumentada al menos dos publicaciones distintas a la tuya, señalando coincidencias, diferencias o matices no considerados.</li>
+          <li>Cierra tu participación con una idea que te lleves de la discusión colectiva, distinta a tu aportación inicial.</li>
+        </ol>
+        <div class="example-box">
+          <span class="lbl">Ejemplo de respuesta inicial</span>
+          "En mi experiencia como estudiante de primer semestre, la forma en que se enseñan las tablas de derivadas se acerca al enfoque de estímulo–respuesta: se presentan ejercicios repetidos hasta automatizar el procedimiento. Sin embargo, cuando finalmente comprendí por qué la regla funcionaba geométricamente, el aprendizaje se pareció más a un insight de la Gestalt: de pronto todo el procedimiento tuvo sentido como un conjunto."
+        </div>
+        <span class="upload-flag">Entregable: participación en el foro de Classroom (mínimo 1 aportación inicial y 2 réplicas)</span>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO -->
+    <div class="activity" id="actividad-2">
+      <div class="activity-head">
+        <span class="activity-num">2</span>
+        <div>
+          <span class="meta">Aplicación individual · Aprendizaje significativo</span>
+          <h3>Diseño de una situación didáctica fundamentada</h3>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p>Elabora el diseño breve de una situación de enseñanza para una materia que curses o que imaginas impartir en el futuro, fundamentándola explícitamente en una o más de las teorías revisadas.</p>
+        <ol class="steps">
+          <li>Elige un contenido concreto de alguna asignatura (por ejemplo, un concepto, procedimiento o tema).</li>
+          <li>Redacta el objetivo de aprendizaje de esa situación en una sola oración.</li>
+          <li>Describe la estrategia didáctica que emplearías, indicando qué teoría o teorías la sustentan y por qué.</li>
+          <li>Explica cómo evaluarías si el aprendizaje ocurrió, de forma coherente con la teoría elegida.</li>
+          <li>Redacta un párrafo final donde expliques qué esperas que el estudiante transfiera a otras situaciones, y qué tipo de transferencia sería (cercana, lejana, vertical o lateral).</li>
+        </ol>
+        <div class="example-box">
+          <span class="lbl">Ejemplo breve</span>
+          Contenido: función lineal. Objetivo: que el estudiante reconozca la función lineal en situaciones cotidianas de costo y tiempo. Estrategia: presentar tres problemas con estructura idéntica pero contextos distintos (tarifa de taxi, renta de equipo, plan telefónico), fundamentada en la teoría de la generalización de Judd, buscando que el estudiante abstraiga el principio común antes que memorizar un procedimiento.
+        </div>
+        <span class="upload-flag">Entregable: documento de una a dos cuartillas subido a Classroom</span>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD 3: CASO PRÁCTICO -->
+    <div class="activity" id="actividad-3">
+      <div class="activity-head">
+        <span class="activity-num">3</span>
+        <div>
+          <span class="meta">Análisis de caso · Pensamiento crítico</span>
+          <h3>Caso práctico: dos formas de enseñar el mismo tema</h3>
+        </div>
+      </div>
+      <div class="activity-body">
+        <div class="case-scenario">
+          <p><b>El caso.</b> Dos profesores enseñan el mismo tema de introducción a las funciones matemáticas en dos grupos paralelos de primer semestre.</p>
+          <p>El profesor A divide el tema en pasos mínimos: presenta la definición, muestra un ejemplo, pide a los estudiantes resolver ejercicios idénticos al ejemplo y corrige cada error de inmediato, repitiendo la secuencia hasta que el grupo responde correctamente de manera consistente.</p>
+          <p>La profesora B presenta primero una situación real sin resolver —el costo de un servicio de streaming según los meses contratados— y pide a los estudiantes explorar libremente distintas formas de representarla (tabla, gráfica, expresión algebraica) antes de introducir el término "función". Solo después de que los estudiantes proponen sus propias representaciones, la profesora nombra y formaliza los conceptos.</p>
+          <p>Al final del semestre, los estudiantes del grupo A resuelven con más rapidez ejercicios idénticos a los vistos en clase, pero muestran dificultad ante problemas con formato distinto. Los estudiantes del grupo B tardan más en los ejercicios mecánicos, pero identifican funciones en contextos que no habían visto antes.</p>
+        </div>
+        <p><b>Instrucciones:</b></p>
+        <ol class="steps">
+          <li>Identifica qué teoría o teorías revisadas explican mejor la estrategia del profesor A y cuáles explican mejor la de la profesora B.</li>
+          <li>Responde por escrito las preguntas de análisis siguientes.</li>
+          <li>Redacta una conclusión de al menos cinco líneas sobre qué combinación de ambas estrategias recomendarías y por qué.</li>
+        </ol>
+        <ol class="case-questions">
+          <li>¿Qué tipo de transferencia —cercana o lejana— parece favorecer cada estrategia docente, y con qué evidencia del caso lo sustentas?</li>
+          <li>¿Qué papel juega el estudiante en cada uno de los dos salones, de acuerdo con las teorías revisadas?</li>
+          <li>¿Qué perdería y qué ganaría el grupo A si su profesor incorporara elementos del enfoque de la profesora B, y viceversa?</li>
+          <li>Desde tu propia experiencia como estudiante universitario, ¿con cuál de los dos estilos aprendes mejor, y qué dice eso sobre el papel del contexto y no solo de la teoría?</li>
+        </ol>
+        <span class="upload-flag">Entregable: análisis escrito subido a Classroom (una cuartilla aproximadamente)</span>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD 4: QUIZ -->
+    <div class="activity" id="actividad-4">
+      <div class="activity-head">
+        <span class="activity-num">4</span>
+        <div>
+          <span class="meta">Autoevaluación · Cinco preguntas</span>
+          <h3>Quiz de comprobación de lectura</h3>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p>Responde las siguientes preguntas para verificar tu comprensión del tema antes de participar en las demás actividades. Al finalizar, obtendrás tu puntaje.</p>
+
+        <form id="quiz-form">
+          <div class="quiz-item" data-correct="b">
+            <p class="q">1. ¿Qué elemento distingue principalmente al enfoque de estímulo–respuesta de los otros dos enfoques revisados?</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q1" value="a"> Centra su explicación en totalidades y estructuras perceptuales.</label>
+              <label><input type="radio" name="q1" value="b"> Centra su explicación en unidades mínimas y observables, asociadas mediante refuerzo.</label>
+              <label><input type="radio" name="q1" value="c"> Centra su explicación en el espacio vital del sujeto.</label>
+            </div>
+            <p class="feedback"></p>
+          </div>
+
+          <div class="quiz-item" data-correct="c">
+            <p class="q">2. La teoría del campo cognoscitivo retoma principalmente las ideas de:</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q2" value="a"> Watson y Skinner.</label>
+              <label><input type="radio" name="q2" value="b"> Köhler y Wertheimer.</label>
+              <label><input type="radio" name="q2" value="c"> Kurt Lewin.</label>
+            </div>
+            <p class="feedback"></p>
+          </div>
+
+          <div class="quiz-item" data-correct="a">
+            <p class="q">3. El "insight" o discernimiento súbito es un concepto central de:</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q3" value="a"> La Gestalt.</label>
+              <label><input type="radio" name="q3" value="b"> El estímulo–respuesta.</label>
+              <label><input type="radio" name="q3" value="c"> El campo cognoscitivo.</label>
+            </div>
+            <p class="feedback"></p>
+          </div>
+
+          <div class="quiz-item" data-correct="b">
+            <p class="q">4. La teoría de la transferencia por "elementos idénticos" fue propuesta por:</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q4" value="a"> Judd.</label>
+              <label><input type="radio" name="q4" value="b"> Thorndike.</label>
+              <label><input type="radio" name="q4" value="c"> Köhler.</label>
+            </div>
+            <p class="feedback"></p>
+          </div>
+
+          <div class="quiz-item" data-correct="c">
+            <p class="q">5. Cuando un estudiante aplica un principio aprendido en matemáticas para resolver un problema de física con formato muy distinto, se habla de una transferencia:</p>
+            <div class="quiz-options">
+              <label><input type="radio" name="q5" value="a"> Cercana.</label>
+              <label><input type="radio" name="q5" value="b"> Vertical.</label>
+              <label><input type="radio" name="q5" value="c"> Lejana.</label>
+            </div>
+            <p class="feedback"></p>
+          </div>
+
+          <button type="submit" class="quiz-submit">Calcular puntaje</button>
+        </form>
+        <div id="quiz-result" role="status"></div>
+        <span class="upload-flag" style="margin-top:16px;">Entregable: captura de pantalla del puntaje obtenido, subida a Classroom</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REFLEXIÓN Y APLICACIÓN ===================== -->
+<section id="reflexion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Cierre</span>
+      <h2>Reflexión y aplicación</h2>
+      <p>Toda teoría revisada tiene valor en la medida en que orienta la práctica. Concluye la guía planificando cómo incorporarás lo aprendido en tu vida académica y, eventualmente, profesional.</p>
+    </div>
+
+    <div class="card">
+      <div class="plan-grid">
+        <div class="plan-field">
+          <label for="plan1">¿Qué idea de esta guía te resultó más útil para pensar tu propio aprendizaje?</label>
+          <textarea class="response" id="plan1" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+        </div>
+        <div class="plan-field">
+          <label for="plan2">¿En qué materia o situación académica aplicarás, en las próximas semanas, alguna estrategia basada en las teorías revisadas?</label>
+          <textarea class="response" id="plan2" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+        </div>
+        <div class="plan-field">
+          <label for="plan3">Si en el futuro impartes clases, ¿qué harías distinto a partir de lo revisado en este tema?</label>
+          <textarea class="response" id="plan3" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+        </div>
+      </div>
+      <p class="helper-note" style="margin-top:16px;">Conserva tus respuestas: pueden integrarse como evidencia de reflexión final del tema en Classroom, según lo indique tu profesora.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <img src="data:image/png;base64,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" alt="Escudo de la Universidad de la Ciénega">
+    <p>Universidad de la Ciénega · Plantel Centro — Material de apoyo docente. Elaborado con fines educativos para la asignatura de Psicología del Aprendizaje.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('quiz-form');
+  var result = document.getElementById('quiz-result');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var items = document.querySelectorAll('.quiz-item');
+    var score = 0;
+    var unanswered = 0;
+
+    items.forEach(function(item){
+      var name = item.querySelector('input').name;
+      var selected = item.querySelector('input[name="'+name+'"]:checked');
+      var correctValue = item.getAttribute('data-correct');
+      var labels = item.querySelectorAll('.quiz-options label');
+      var feedback = item.querySelector('.feedback');
+
+      labels.forEach(function(lbl){ lbl.classList.remove('right-answer','chosen-wrong'); });
+      item.classList.remove('correct','incorrect','answered');
+
+      if(!selected){
+        unanswered++;
+        feedback.textContent = 'No se seleccionó respuesta para esta pregunta.';
+        item.classList.add('answered');
+        return;
+      }
+
+      item.classList.add('answered');
+      var correctLabel = item.querySelector('input[value="'+correctValue+'"]').closest('label');
+      correctLabel.classList.add('right-answer');
+
+      if(selected.value === correctValue){
+        score++;
+        item.classList.add('correct');
+        feedback.textContent = 'Correcto.';
+      } else {
+        item.classList.add('incorrect');
+        selected.closest('label').classList.add('chosen-wrong');
+        feedback.textContent = 'La respuesta correcta se resalta en la opción marcada en verde.';
+      }
+    });
+
+    var total = items.length;
+    result.classList.add('show');
+    var pct = Math.round((score/total)*100);
+    var bg = pct >= 60 ? 'var(--campo-soft)' : 'var(--er-soft)';
+    var color = pct >= 60 ? 'var(--campo)' : 'var(--er)';
+    result.style.background = bg;
+    result.style.color = color;
+
+    var msg = '';
+    if(unanswered > 0){
+      msg = '<h4>Faltan preguntas por responder (' + unanswered + ')</h4><p>Responde todas las preguntas antes de registrar tu puntaje final.</p>';
+    } else {
+      msg = '<h4>Puntaje obtenido: ' + score + ' de ' + total + ' (' + pct + '%)</h4><p>Toma una captura de pantalla de este resultado y súbela a la actividad correspondiente en Classroom.</p>';
+    }
+    result.innerHTML = msg;
+    result.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
+</script>
+
+</body>
+</html>
