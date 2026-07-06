@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | El Docente como Transmisor de Valores | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carbon:#1c2526;
+  --carbon-m:#2d3e40;
+  --teal:#1a7a6e;
+  --teal-s:#e6f5f3;
+  --oro:#c49a2e;
+  --oro-s:#fdf8ea;
+  --bordo:#7a2040;
+  --bordo-s:#f8edf1;
+  --oliva:#5e6e2a;
+  --oliva-s:#f1f4e6;
+  --gris:#555;
+  --gc:#f4f5f2;
+  --crema:#faf9f6;
+  --borde:#d6dbd6;
+  --blanco:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",sans-serif;background:var(--crema);color:#1a1e1a;font-size:15.5px;line-height:1.78}
+
+/* HEADER */
+header{background:var(--carbon);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(26,122,110,0.06) 60px,rgba(26,122,110,0.06) 61px)}
+header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--oro),var(--teal))}
+.hi{max-width:1000px;margin:0 auto;padding:38px 34px 50px;position:relative;z-index:1}
+.htop{display:flex;align-items:center;gap:22px;padding-bottom:28px;margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.logo-b{background:var(--blanco);border-radius:12px;padding:10px;width:88px;height:88px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 24px rgba(0,0,0,0.35)}
+.logo-b img{width:100%;height:100%;object-fit:contain;display:block}
+.hbrand .uni{font-family:"Libre Baskerville",serif;font-size:1.2rem;color:rgba(255,255,255,0.94);font-weight:700}
+.hbrand .dep{font-size:0.73rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.09em;margin-top:4px}
+.htags{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.htag{padding:4px 13px;border-radius:20px;font-size:0.69rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.htag.tl{background:rgba(26,122,110,0.28);border:1px solid rgba(26,122,110,0.55);color:#7ee8d8}
+.htag.or{background:rgba(196,154,46,0.22);border:1px solid rgba(196,154,46,0.48);color:#e8c870}
+.hbody h1{font-family:"Libre Baskerville",serif;font-size:2.5rem;color:var(--blanco);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hbody h1 em{color:#7ee8d8;font-style:italic}
+.hpills{display:flex;gap:9px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:14px;font-size:0.72rem;white-space:nowrap}
+
+/* NAV */
+nav.ns{background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(28,37,38,0.08)}
+.nw{max-width:1000px;margin:0 auto;padding:0 34px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nw::-webkit-scrollbar{display:none}
+.nw a{color:var(--gris);text-decoration:none;font-size:0.78rem;font-weight:600;padding:13px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nw a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+
+/* MAIN */
+main{max-width:1000px;margin:0 auto;padding:44px 34px 80px}
+
+/* BLOQUES */
+.bloque{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:44px;margin-bottom:26px;position:relative;overflow:hidden;animation:up 0.4s ease both}
+.bloque::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;border-radius:14px 0 0 14px}
+.bloque.tl::before{background:linear-gradient(to bottom,var(--teal),#40b0a0)}
+.bloque.or::before{background:linear-gradient(to bottom,var(--oro),#e0c060)}
+.bloque.bd::before{background:linear-gradient(to bottom,var(--bordo),#b05070)}
+.bloque.ol::before{background:linear-gradient(to bottom,var(--oliva),#8a9e5a)}
+.bloque.gr::before{background:linear-gradient(to bottom,#888,#bbb)}
+.bloque.ca::before{background:linear-gradient(to bottom,var(--carbon-m),#5a6e70)}
+.bh{display:flex;align-items:flex-start;gap:18px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--borde)}
+.bicon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"Libre Baskerville",serif;font-size:1.15rem;font-weight:700;flex-shrink:0}
+.bicon.tl{background:var(--teal-s);color:var(--teal)}
+.bicon.or{background:var(--oro-s);color:#7a5e00}
+.bicon.bd{background:var(--bordo-s);color:var(--bordo)}
+.bicon.ol{background:var(--oliva-s);color:var(--oliva)}
+.bicon.gr{background:var(--gc);color:var(--gris)}
+.bicon.ca{background:var(--teal-s);color:var(--carbon-m)}
+.btit .sup{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gris);margin-bottom:4px}
+.btit h2{font-family:"Libre Baskerville",serif;font-size:1.45rem;font-weight:700;color:var(--carbon);line-height:1.2}
+
+/* TIPOGRAFIA */
+h3{font-family:"Libre Baskerville",serif;font-size:1.1rem;font-weight:700;color:var(--carbon);margin:26px 0 10px}
+h3:first-child{margin-top:0}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--teal);font-weight:700}
+em{color:var(--gris);font-style:italic}
+
+/* CAJAS */
+.caja{border-radius:8px;padding:17px 22px;margin:17px 0;border-left:4px solid}
+.caja.tl{background:var(--teal-s);border-color:var(--teal)}
+.caja.or{background:var(--oro-s);border-color:var(--oro)}
+.caja.bd{background:var(--bordo-s);border-color:var(--bordo)}
+.caja.ol{background:var(--oliva-s);border-color:var(--oliva)}
+.caja.gr{background:var(--gc);border-color:#aaa}
+.caja-tag{font-size:0.69rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:7px}
+.caja.tl .caja-tag{color:var(--teal)}
+.caja.or .caja-tag{color:#7a5e00}
+.caja.bd .caja-tag{color:var(--bordo)}
+.caja.ol .caja-tag{color:var(--oliva)}
+.caja.gr .caja-tag{color:#666}
+
+/* TABLA */
+table.t{width:100%;border-collapse:collapse;font-size:0.87rem;margin:16px 0}
+table.t th{background:var(--carbon);color:var(--blanco);padding:11px 14px;text-align:left;font-weight:700;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.04em}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--borde);vertical-align:top;line-height:1.55}
+table.t tr:nth-child(even) td{background:#f8faf8}
+
+/* LISTAS */
+ul.l,ol.l{list-style:none;padding:0}
+ul.l li{padding:9px 0 9px 28px;position:relative;border-bottom:1px solid var(--gc);font-size:0.93rem}
+ul.l li:last-child{border-bottom:none}
+ul.l li::before{content:"";position:absolute;left:8px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+ol.l{counter-reset:cnt}
+ol.l li{padding:10px 0 10px 42px;position:relative;border-bottom:1px solid var(--gc);counter-increment:cnt;font-size:0.93rem}
+ol.l li:last-child{border-bottom:none}
+ol.l li::before{content:counter(cnt);position:absolute;left:0;top:10px;background:var(--teal);color:var(--blanco);width:26px;height:26px;border-radius:6px;font-size:0.76rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* CANALES DE TRANSMISION */
+.can-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin:22px 0}
+.can-card{border-radius:10px;padding:22px;border:1px solid var(--borde);background:var(--gc);border-top:4px solid var(--teal);transition:transform 0.2s,box-shadow 0.2s;cursor:default}
+.can-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,37,38,0.1)}
+.can-card.c2{border-top-color:var(--oro)}
+.can-card.c3{border-top-color:var(--bordo)}
+.can-card.c4{border-top-color:var(--oliva)}
+.can-card.c5{border-top-color:#6a4a9a}
+.can-card.c6{border-top-color:#2a6a8a}
+.can-card .cc-ic{font-size:1.4rem;font-family:"Libre Baskerville",serif;font-weight:700;margin-bottom:8px}
+.can-card.c1 .cc-ic{color:var(--teal)}
+.can-card.c2 .cc-ic{color:#7a5e00}
+.can-card.c3 .cc-ic{color:var(--bordo)}
+.can-card.c4 .cc-ic{color:var(--oliva)}
+.can-card.c5 .cc-ic{color:#6a4a9a}
+.can-card.c6 .cc-ic{color:#2a6a8a}
+.can-card .cc-tit{font-weight:700;font-size:0.96rem;color:var(--carbon);margin-bottom:7px}
+.can-card .cc-desc{font-size:0.82rem;color:var(--gris);line-height:1.55}
+
+/* CURRICULO OCULTO VISUAL */
+.curr-row{display:flex;gap:0;margin:10px 0;align-items:stretch;border-radius:10px;overflow:hidden;border:1px solid var(--borde)}
+.curr-lab{background:var(--carbon);color:rgba(255,255,255,0.88);padding:14px 18px;font-weight:700;font-size:0.84rem;min-width:160px;display:flex;align-items:center;flex-shrink:0;line-height:1.4}
+.curr-cont{background:var(--gc);padding:14px 18px;flex:1;font-size:0.87rem;line-height:1.6}
+.curr-ej{font-size:0.8rem;font-style:italic;color:var(--teal);margin-top:5px}
+
+/* CONOCIMIENTO PREVIO */
+.kprev{background:linear-gradient(135deg,var(--carbon) 0%,var(--carbon-m) 100%);border-radius:12px;padding:34px;position:relative;overflow:hidden}
+.kprev::after{content:"?";position:absolute;right:24px;bottom:-28px;font-family:"Libre Baskerville",serif;font-size:160px;color:rgba(255,255,255,0.04);line-height:1}
+.kprev h3{color:#7ee8d8;margin-bottom:12px}
+.kprev p{color:rgba(255,255,255,0.84);font-size:1.03rem;font-style:italic;margin-bottom:20px;position:relative;z-index:1}
+.kp-opts{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.kp-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.88);padding:12px 18px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:0.88rem;text-align:left;transition:all 0.2s}
+.kp-btn:hover:not(:disabled){background:rgba(255,255,255,0.15);border-color:#7ee8d8}
+.kp-btn.ok{background:rgba(94,110,42,0.45);border-color:#a8c878;color:#d0f0a8}
+.kp-btn.no{background:rgba(122,32,64,0.38);border-color:#e88a9a;color:#f7c0c8}
+.kp-fb{display:none;margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.88rem;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18)}
+.kp-fb.show{display:block}
+
+/* RECURSOS */
+.rec-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde)}
+.rec-item:last-child{border-bottom:none}
+.rec-tipo{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:12px;white-space:nowrap;margin-top:2px;flex-shrink:0;color:var(--blanco)}
+.rt-l{background:var(--teal)}
+.rt-a{background:var(--carbon-m)}
+.rt-w{background:var(--bordo)}
+.rt-v{background:var(--oliva)}
+.rec-tit{font-weight:700;color:var(--carbon);margin-bottom:2px;font-size:0.91rem}
+.rec-aut{font-size:0.79rem;color:var(--gris);line-height:1.5}
+
+/* ACTIVIDADES */
+.act-badge{display:inline-flex;align-items:center;padding:6px 16px;border-radius:20px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:22px;color:var(--blanco)}
+.ab-f{background:var(--teal)}
+.ab-i{background:var(--carbon-m)}
+.ab-q{background:var(--oro)}
+.cita{background:var(--carbon);color:var(--blanco);border-radius:10px;padding:28px 32px;position:relative;margin:20px 0}
+.cita::before{content:"\201C";position:absolute;top:4px;left:18px;font-family:"Libre Baskerville",serif;font-size:5.5rem;color:rgba(255,255,255,0.07);line-height:1}
+.cita p{color:rgba(255,255,255,0.88);font-size:1.03rem;font-style:italic;position:relative;z-index:1;margin-bottom:0;line-height:1.7}
+.paso{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--gc);align-items:flex-start;font-size:0.92rem}
+.paso:last-child{border-bottom:none}
+.paso-n{background:var(--teal-s);border:1px solid var(--borde);color:var(--teal);font-weight:700;font-size:0.8rem;min-width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rubr{display:grid;grid-template-columns:1fr 76px;gap:10px;padding:11px 0;border-bottom:1px solid var(--gc);align-items:center;font-size:0.9rem}
+.rubr:last-child{border-bottom:none}
+.pts{background:var(--carbon);color:var(--blanco);text-align:center;border-radius:6px;padding:6px 8px;font-weight:700;font-size:0.86rem}
+.escenario{background:var(--teal-s);border:1px solid #b0d8d4;border-radius:10px;padding:24px;margin:18px 0}
+.esc-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--teal);margin-bottom:10px}
+.cta{display:flex;align-items:center;gap:14px;background:#1a6e4a;color:var(--blanco);padding:15px 20px;border-radius:8px;margin-top:22px;font-size:0.88rem;font-weight:700}
+
+/* QUIZ */
+.quiz-wrap{background:var(--gc);border-radius:12px;padding:28px}
+.q-prog{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.q-bc{flex:1;height:4px;background:var(--borde);border-radius:3px;overflow:hidden}
+.q-bf{height:100%;background:var(--teal);border-radius:3px;transition:width 0.4s}
+.qt{font-size:0.77rem;color:var(--gris);font-weight:600;white-space:nowrap}
+.qb{display:none}
+.qb.act{display:block}
+.qb h4{font-family:"Inter",sans-serif;font-size:0.95rem;font-weight:700;color:var(--carbon);margin-bottom:18px;line-height:1.55}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.qo{display:flex;align-items:flex-start;gap:12px;padding:12px 15px;background:var(--blanco);border:2px solid var(--borde);border-radius:8px;cursor:pointer;transition:all 0.2s;text-align:left}
+.qo:hover{border-color:var(--teal);background:var(--teal-s)}
+.qo.sel{border-color:var(--teal);background:var(--teal-s)}
+.qo.ok{border-color:var(--oliva);background:var(--oliva-s);cursor:default}
+.qo.fail{border-color:var(--bordo);background:var(--bordo-s);cursor:default}
+.qo.show-ok{border-color:var(--oliva);background:var(--oliva-s);cursor:default}
+.ql{width:26px;height:26px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.qo.sel .ql{background:var(--teal);color:var(--blanco)}
+.qo.ok .ql{background:var(--oliva);color:var(--blanco)}
+.qo.fail .ql{background:var(--bordo);color:var(--blanco)}
+.qo.show-ok .ql{background:var(--oliva);color:var(--blanco)}
+.qot{font-size:0.9rem;line-height:1.5}
+.qr{display:none;padding:12px 16px;border-radius:8px;margin-bottom:14px;font-size:0.87rem;line-height:1.5}
+.qr.ok{background:var(--oliva-s);border:1px solid var(--oliva);color:var(--oliva)}
+.qr.fail{background:var(--bordo-s);border:1px solid var(--bordo);color:var(--bordo)}
+.qr.show{display:block}
+.q-res{display:none;text-align:center;padding:36px 20px}
+.q-res.show{display:block}
+.q-sc{font-family:"Libre Baskerville",serif;font-size:5.5rem;color:var(--carbon);line-height:1;margin-bottom:6px}
+.q-sc span{font-size:2.2rem;color:var(--gris)}
+.q-niv{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.q-msg{color:var(--gris);font-size:0.91rem;max-width:440px;margin:0 auto 24px}
+
+/* BOTONES */
+.btn{padding:11px 22px;border-radius:7px;font-family:"Inter",sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.btn-p{background:var(--teal);color:var(--blanco)}
+.btn-p:hover{background:var(--carbon);transform:translateY(-1px);box-shadow:0 4px 14px rgba(28,37,38,0.25)}
+.btn-p:disabled{background:var(--borde);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+.btn-s:hover{background:var(--teal-s)}
+
+/* REFLEXION */
+.refl{background:#fafbf8;border:1px solid var(--borde);border-radius:8px;padding:20px;margin-bottom:14px}
+.refl label{display:block;font-weight:700;font-size:0.87rem;color:var(--carbon);margin-bottom:10px}
+.refl textarea{width:100%;min-height:80px;padding:11px;border:1.5px solid var(--borde);border-radius:6px;font-family:"Inter",sans-serif;font-size:0.89rem;line-height:1.6;resize:vertical;background:var(--blanco);color:#1a1e1a;transition:border-color 0.2s}
+.refl textarea:focus{outline:none;border-color:var(--teal)}
+
+/* FOOTER */
+footer{background:var(--carbon);color:rgba(255,255,255,0.44);text-align:center;padding:30px 34px;font-size:0.77rem;line-height:1.9}
+footer strong{color:rgba(255,255,255,0.82)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.bloque:nth-child(1){animation-delay:.04s}.bloque:nth-child(2){animation-delay:.08s}.bloque:nth-child(3){animation-delay:.12s}.bloque:nth-child(4){animation-delay:.16s}.bloque:nth-child(5){animation-delay:.2s}.bloque:nth-child(6){animation-delay:.24s}.bloque:nth-child(7){animation-delay:.28s}.bloque:nth-child(8){animation-delay:.32s}.bloque:nth-child(9){animation-delay:.36s}
+@media(max-width:680px){
+  .hi{padding:22px 16px 28px}
+  .hbody h1{font-size:1.8rem}
+  main{padding:24px 14px 56px}
+  .bloque{padding:22px 16px}
+  .nw{padding:0 14px}
+  .can-grid{grid-template-columns:1fr 1fr}
+  .curr-row{flex-direction:column}
+  .curr-lab{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="htop">
+      <div class="logo-b">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="hbrand">
+        <div class="uni">Universidad de la Cienega</div>
+        <div class="dep">Licenciatura en Pedagogia &middot; Valores y Educacion</div>
+      </div>
+      <div class="htags">
+        <span class="htag tl">Tema 5</span>
+        <span class="htag or">Constructivismo &middot; ABP</span>
+      </div>
+    </div>
+    <div class="hbody">
+      <h1>El Docente como<br><em>Transmisor de Valores</em></h1>
+      <div class="hpills">
+        <span class="hpill">Tema 5</span>
+        <span class="hpill">Licenciatura en Pedagogia</span>
+        <span class="hpill">Foro &middot; Actividad Aplicada &middot; Quiz</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="ns">
+  <div class="nw">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#rol">El rol del docente</a>
+    <a href="#canales">Canales de transmision</a>
+    <a href="#curriculo">Curriculo oculto</a>
+    <a href="#tension">Tensiones eticas</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRODUCCION -->
+<section class="bloque tl" id="intro">
+  <div class="bh">
+    <div class="bicon tl">I</div>
+    <div class="btit">
+      <div class="sup">Punto de partida &middot; Tema 5</div>
+      <h2>Introduccion: El Docente en el Centro de la Formacion Axiologica</h2>
+    </div>
+  </div>
+  <p>A lo largo de este curso se han explorado las dimensiones fundamentales de la axiologia educativa: que son los valores, como se clasifican y jerarquizan, como se operativizan en actitudes y conductas, y como se forman a traves de los procesos de introyeccion, personalizacion y toma de conciencia. Toda esa arquitectura conceptual converge ahora en una figura central e inevitable: <strong>el docente</strong>.</p>
+  <p>El docente no es un simple transmisor de contenidos curriculares. Por la naturaleza misma de su funcion, por el tiempo de convivencia que comparte con sus estudiantes, por la asimetria de poder que caracteriza la relacion pedagogica y por la influencia que ejerce incluso cuando no es consciente de ella, <strong>el docente es inevitablemente un transmisor de valores</strong>. La pregunta no es si el docente transmite valores, sino <em>cuales transmite</em>, <em>como los transmite</em> y <em>con que grado de conciencia y responsabilidad</em> lo hace.</p>
+  <p>Para el estudiante de Pedagogia en formacion, este tema tiene una dimension urgente y personal: en pocos anios, usted ejercera esa misma influencia sobre estudiantes reales. Comprender los mecanismos por los cuales un docente transmite valores, las tensiones eticas que esto implica y las responsabilidades que conlleva, es parte fundamental de su propia formacion como educador.</p>
+  <div class="caja or">
+    <div class="caja-tag">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> explicar por que el docente es un transmisor de valores de manera inevitable; <strong>(2)</strong> identificar y analizar los principales canales a traves de los cuales se transmiten valores en el aula; <strong>(3)</strong> reconocer el papel del curriculo oculto en la transmision axiologica; <strong>(4)</strong> examinar criticamente las tensiones eticas que surgen del rol docente como transmisor de valores; y <strong>(5)</strong> disenar estrategias para ejercer esa transmision de manera consciente, critica y pedagogicamente responsable.</p>
+  </div>
+  <div class="caja tl">
+    <div class="caja-tag">Metodologia</div>
+    <p>Esta guia integra <strong>constructivismo</strong>, <strong>pedagogia activa</strong> y <strong>aprendizaje basado en problemas</strong>. La comprension del rol del docente como transmisor de valores emerge del analisis critico de situaciones reales, del examen de la propia experiencia como estudiantes y de la reflexion sobre la responsabilidad que asumiran como futuros educadores.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque or" id="previo">
+  <div class="bh">
+    <div class="bicon or">?</div>
+    <div class="btit">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Responda la siguiente pregunta con base en su comprension actual, sin consultar fuentes. El objetivo es identificar el punto de partida de su comprension para construir sobre ella.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Un docente universitario afirma: "Yo solo enseniio contenidos de mi materia y no tengo ninguna responsabilidad en la formacion de valores de mis estudiantes: eso es tarea de la familia y de las materias de etica." Desde la perspectiva axiologica estudiada en este curso, esta afirmacion es:</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpR(this,false)">A) Correcta: la transmision de valores es una funcion especifica de ciertas materias y docentes, no de todos los educadores independientemente de la asignatura que impartan.</button>
+      <button class="kp-btn" onclick="kpR(this,true)">B) Incorrecta: todo docente transmite valores de manera inevitable a traves de su lenguaje, sus decisiones, su relacion con el conocimiento, su trato con los estudiantes y su propia conducta en el aula, independientemente de la materia que imparte.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">C) Parcialmente correcta: el docente solo transmite valores cuando disenya deliberadamente actividades de educacion en valores; si no lo hace de manera explicita, su influencia axiologica es nula.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">D) Irrelevante: en la educacion universitaria los estudiantes ya tienen valores formados y la influencia del docente sobre ellos es estadisticamente insignificante en comparacion con la del grupo de pares.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- ROL DEL DOCENTE -->
+<section class="bloque tl" id="rol">
+  <div class="bh">
+    <div class="bicon tl">5</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico central</div>
+      <h2>El Docente como Transmisor de Valores: Fundamentos</h2>
+    </div>
+  </div>
+
+  <h3>1. La inevitabilidad de la transmision axiologica docente</h3>
+  <p>Ninguna accion humana es axiologicamente neutra, y la ensenanza, por ser una de las acciones humanas mas intencionales y mas relacionales, lo es menos que ninguna. Cuando un docente selecciona que contenidos incluye y cuales omite, cuando elige como evaluar, cuando decide como responder a una pregunta, cuando trata de cierta manera a cierto tipo de estudiante, cuando expresa entusiasmo por un tema y aburrimiento por otro, cuando llega puntual o impuntual a clase, cuando acepta o rechaza el disenso: en todos esos momentos, consciente o inconscientemente, <strong>transmite valores</strong>.</p>
+  <p>Esta inevitabilidad no es un defecto del sistema educativo: es la condicion de posibilidad de la educacion misma. La formacion es, por naturaleza, una relacion humana que implica asimetria, influencia y transferencia de contenidos culturales, entre ellos los valores. El problema no es si ocurre, sino <em>como ocurre</em> y con que grado de consciencia y responsabilidad.</p>
+
+  <h3>2. El docente como modelo axiologico: el curriculo viviente</h3>
+  <p>Diversos autores han senyalado que el docente no transmite valores principalmente a traves de lo que dice, sino a traves de lo que <em>es</em> y de lo que <em>hace</em>. El pedagogo brasilenyo Paulo Freire senialaba que el educador educa por su presencia, por su coherencia entre palabra y accion, por su modo de estar en el mundo. Lawrence Kohlberg, desde la psicologia del desarrollo moral, demostro empiricamente que los estudiantes son altamente sensibles a las incongruencias entre el discurso moral de sus educadores y sus conductas reales.</p>
+  <p>Esta idea ha sido conceptualizada de distintas maneras: el <strong>curriculo viviente del educador</strong>, el <strong>modelado axiologico</strong>, o simplemente la ensenanza por testimonio. Lo que todas estas nociones comparten es la conviccion de que <em>el docente es, en si mismo, el mensaje</em>: los valores que practica con autenticidad son los que tienen mas probabilidad de ser internalizados por sus estudiantes.</p>
+
+  <h3>3. Por que la universidad no es la excepcion</h3>
+  <p>Podria argumentarse que en la educacion superior, con estudiantes adultos y supuestamente autonomos, la influencia axiologica del docente es menor que en niveles basicos. La evidencia sugiere lo contrario. Los estudiantes universitarios estan en plena formacion de su identidad profesional y personal; son especialmente sensibles a los modelos que observan en las personas que los forman en su campo de saber; y tienen una mayor capacidad para percibir, articular y reaccionar ante las incoherencias entre los valores que sus docentes declaran y los que practican efectivamente.</p>
+
+  <div class="caja or">
+    <div class="caja-tag">Idea central</div>
+    <p>La responsabilidad axiologica del docente universitario no es menor que la del docente de niveles basicos: es diferente en sus formas pero igual de significativa en su impacto. La diferencia es que los estudiantes universitarios tienen mayor capacidad para detectar la brecha entre discurso y practica, y esa deteccion tiene consecuencias formativas mas profundas en ambas direcciones.</p>
+  </div>
+</section>
+
+<!-- CANALES DE TRANSMISION -->
+<section class="bloque or" id="canales">
+  <div class="bh">
+    <div class="bicon or">C</div>
+    <div class="btit">
+      <div class="sup">Mecanismos de influencia axiologica</div>
+      <h2>Canales de Transmision de Valores en el Aula</h2>
+    </div>
+  </div>
+  <p>La transmision de valores por parte del docente ocurre a traves de multiples canales simultaneos, la mayoria de los cuales opera de manera implicita y no deliberada. Identificar estos canales es el primer paso para ejercer la transmision axiologica de manera consciente y responsable.</p>
+
+  <div class="can-grid">
+    <div class="can-card c1">
+      <div class="cc-ic">1</div>
+      <div class="cc-tit">El lenguaje y el discurso</div>
+      <div class="cc-desc">Las palabras que el docente elige, los ejemplos que usa, los grupos que menciona o invisibiliza, el tono con que se refiere a distintos temas, las metaforas que emplea. El lenguaje no es un contenedor neutro: siempre porta una vision del mundo.</div>
+    </div>
+    <div class="can-card c2">
+      <div class="cc-ic">2</div>
+      <div class="cc-tit">El diseno de la evaluacion</div>
+      <div class="cc-desc">Que se evalua y que no, con que criterios, con que peso relativo, con que retroalimentacion. El sistema de evaluacion comunica de manera poderosa que es lo que realmente se valora en el proceso de aprendizaje.</div>
+    </div>
+    <div class="can-card c3">
+      <div class="cc-ic">3</div>
+      <div class="cc-tit">Las relaciones interpersonales en el aula</div>
+      <div class="cc-desc">Como trata el docente a cada estudiante, si existe equidad en el trato, como gestiona el conflicto, si escucha o ignora, si valida o descalifica. Las relaciones son el espacio donde mas visceralmente se transmiten los valores de respeto, justicia y cuidado.</div>
+    </div>
+    <div class="can-card c4">
+      <div class="cc-ic">4</div>
+      <div class="cc-tit">La seleccion y organizacion del contenido</div>
+      <div class="cc-desc">Que autores se incluyen, cuales se excluyen, que perspectivas se presentan como centrales y cuales como perifericas o marginales. El curriculo explicito nunca es neutral: siempre refleja jerarquias valorativas respecto al conocimiento valido.</div>
+    </div>
+    <div class="can-card c5">
+      <div class="cc-ic">5</div>
+      <div class="cc-tit">La conducta del docente fuera de clase</div>
+      <div class="cc-desc">La puntualidad, la respuesta a los correos, la preparacion de las sesiones, el modo de relacionarse con colegas en presencia de los estudiantes, el trato al personal administrativo. La conducta no curricular es observada y evaluada axiologicamente por los estudiantes.</div>
+    </div>
+    <div class="can-card c6">
+      <div class="cc-ic">6</div>
+      <div class="cc-tit">La gestion de la participacion y el disenso</div>
+      <div class="cc-desc">Como reacciona el docente cuando un estudiante disenite, cuando plantea una perspectiva no esperada, cuando cuestiona al docente mismo. Este canal comunica de manera especialmente potente los valores de respeto intelectual, apertura y pluralismo.</div>
+    </div>
+  </div>
+
+  <h3>El canal mas poderoso: la coherencia entre discurso y practica</h3>
+  <p>Por encima de todos los canales anteriores, existe uno que los integra y les da o les quita autoridad: la <strong>coherencia</strong> entre lo que el docente dice que valora y lo que efectivamente practica. Un docente que predica la puntualidad y llega tarde, que invoca la honestidad y evalua con criterios inconsistentes, que proclama el respeto a la diversidad y silencia voces disidentes, no solo falla en la transmision de esos valores: transmite activamente el valor contrario, con una potencia pedagogica extraordinaria, porque la incoherencia observada es mucho mas memorable y formativa que la consistencia.</p>
+
+  <table class="t">
+    <thead><tr><th>Canal</th><th>Valor transmitido positivamente</th><th>Valor transmitido negativamente (incoherencia)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Puntualidad</strong></td><td>Respeto al tiempo del otro; responsabilidad.</td><td>Que las normas no aplican a quienes tienen autoridad.</td></tr>
+      <tr><td><strong>Retroalimentacion cualitativa</strong></td><td>El aprendizaje importa mas que la calificacion; cada estudiante es atendido.</td><td>Los estudiantes son homogeneos y sus procesos individuales no tienen valor.</td></tr>
+      <tr><td><strong>Apertura al disenso</strong></td><td>El pensamiento critico es valioso; la verdad se construye dialogicamente.</td><td>La autoridad no se cuestiona; el disenso es peligroso o inapropiado.</td></tr>
+      <tr><td><strong>Equidad en el trato</strong></td><td>Todos los estudiantes merecen atencion y respeto por igual.</td><td>Algunos estudiantes valen mas que otros segun su rendimiento o su visibilidad.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CURRICULO OCULTO -->
+<section class="bloque ca" id="curriculo">
+  <div class="bh">
+    <div class="bicon ca">CO</div>
+    <div class="btit">
+      <div class="sup">Dimension implicita de la transmision axiologica</div>
+      <h2>El Curriculo Oculto: Los Valores que no se Ensenan pero se Aprenden</h2>
+    </div>
+  </div>
+
+  <h3>1. Definicion y alcance</h3>
+  <p>El concepto de <strong>curriculo oculto</strong>, acuniado por Philip Jackson en su obra <em>Life in Classrooms</em> (1968) y desarrollado posteriormente por Henry Giroux y Michael Apple desde una perspectiva critica, designa el conjunto de valores, normas, actitudes y disposiciones que los estudiantes aprenden en la escuela sin que estos formen parte del programa oficial declarado. Son los aprendizajes que ocurren "por debajo" del curriculo formal, en los espacios intersticiales de la vida escolar.</p>
+  <p>A diferencia del curriculo formal (que se declara, se planifica y se evalua), el curriculo oculto opera de manera implicita, a menudo sin que ni el docente ni los estudiantes sean conscientes de el. Precisamente por esta razon, puede ser extraordinariamente poderoso: los valores que se aprenden sin que se declare que se estan aprendiendo son con frecuencia los que se internalizan con mayor profundidad.</p>
+
+  <h3>2. Manifestaciones del curriculo oculto en el aula universitaria</h3>
+
+  <div class="curr-row">
+    <div class="curr-lab">Organizacion del espacio</div>
+    <div class="curr-cont">Un aula con sillas fijas mirando al frente transmite: el conocimiento fluye del docente a los estudiantes; la participacion entre pares no es central; la autoridad se ubica al frente. Un circulo o disposicion flexible transmite lo contrario.
+      <div class="curr-ej">Valor transmitido: jerarquia del conocimiento, estructura del poder en el aula.</div>
+    </div>
+  </div>
+
+  <div class="curr-row">
+    <div class="curr-lab">Reglas implicitas de participacion</div>
+    <div class="curr-cont">Si siempre participan los mismos estudiantes y el docente no interviene para abrir la voz a otros, se aprende que: algunos tienen mas derecho a la palabra que otros; participar es para quien tiene confianza, no para quien tiene ideas.
+      <div class="curr-ej">Valor transmitido: desigualdad en el acceso al conocimiento y la participacion.</div>
+    </div>
+  </div>
+
+  <div class="curr-row">
+    <div class="curr-lab">Tipo de preguntas que se valoran</div>
+    <div class="curr-cont">Si el docente responde entusiastamente a las preguntas que confirman sus planteamientos y brevemente a las que los cuestionan, se aprende que: la funcion del estudiante es comprender, no cuestionar; el conocimiento del docente no esta abierto a revision.
+      <div class="curr-ej">Valor transmitido: conformidad intelectual sobre pensamiento critico.</div>
+    </div>
+  </div>
+
+  <div class="curr-row">
+    <div class="curr-lab">Gestion del error</div>
+    <div class="curr-cont">Si el docente trata el error como una falla (con verguenza o sancion implicita) o como una oportunidad de aprendizaje (con exploracion y comprension), transmite una vision radicalmente distinta del conocimiento y del proceso de aprender.
+      <div class="curr-ej">Valor transmitido: el conocimiento como certeza perfecta vs. proceso de construccion.</div>
+    </div>
+  </div>
+
+  <div class="curr-row">
+    <div class="curr-lab">Relacion con el tiempo</div>
+    <div class="curr-cont">Puntualidad del docente, respeto a los horarios de inicio y cierre, atencion a las sesiones o distraccion con el movil: todo esto comunica el valor que el docente le asigna al tiempo propio y al de sus estudiantes.
+      <div class="curr-ej">Valor transmitido: responsabilidad y respeto mutuo, o su ausencia.</div>
+    </div>
+  </div>
+
+  <h3>3. Curriculo oculto y curriculo nulo</h3>
+  <p>Junto al curriculo oculto, Elliot Eisner identifico el <strong>curriculo nulo</strong>: lo que la escuela no ensenya pero podria y deberia ensenar. Las omisiones del curriculo tambien transmiten valores: cuando un programa de Pedagogia no incluye ninguna obra escrita por mujeres, transmite un valor sobre quien produce conocimiento valido. Cuando un curso de etica no aborda las condiciones laborales de los propios docentes, comunica algo sobre los limites de la reflexion critica permitida.</p>
+</section>
+
+<!-- TENSIONES ETICAS -->
+<section class="bloque bd" id="tension">
+  <div class="bh">
+    <div class="bicon bd">T</div>
+    <div class="btit">
+      <div class="sup">Dimension etica del rol docente</div>
+      <h2>Tensiones Eticas del Docente Transmisor de Valores</h2>
+    </div>
+  </div>
+
+  <h3>1. La tension entre influencia y autonomia</h3>
+  <p>Si el docente transmite valores de manera inevitable, y si ademas tiene la responsabilidad de hacerlo bien, surge de inmediato una tension etica fundamental: <strong>la tension entre la influencia que ejerce y la autonomia moral del estudiante</strong>. Una formacion en valores que se limite a la transmision directa de los valores del docente o de la institucion puede convertirse en adoctrinamiento, no en educacion. Una educacion autentica en valores debe aspirar a formar sujetos moralmente autonomos, capaces de examinar critica y libremente los valores que reciben, no solo de reproducirlos.</p>
+  <p>El pedagogo tiene el deber de transmitir los valores que considera fundamentados y de modelarlos en su practica, pero debe hacerlo de una manera que abra espacios para el cuestionamiento, el dialogo y la decision libre del estudiante, no que los cierre.</p>
+
+  <h3>2. La tension entre coherencia y autenticidad</h3>
+  <p>Se espera que el docente sea coherente entre sus valores declarados y su practica. Pero esa expectativa puede generar otra forma de inautenticidad: la performance de la coherencia, el fingimiento de una virtud que no se posee para no defraudar la imagen esperada. La formacion autentica en valores requiere que el docente tenga el valor de mostrar tambien sus propias luchas, sus brechas y sus procesos inconclusos, sin que esto se convierta en una exposicion inapropiada de su vida privada.</p>
+
+  <h3>3. La tension entre pluralismo y compromiso</h3>
+  <p>En una universidad laica y pluralista, el docente debe respetar la diversidad de valores de sus estudiantes. Pero el pluralismo sin compromiso puede derivar en un relativismo vacio donde ningun valor se sostenga con conviccion. El educador no puede ni debe ser un mero facilitador neutral: tiene la responsabilidad de sostener posiciones valorativas fundamentadas y de expresarlas con honestidad, al mismo tiempo que garantiza el espacio para que los estudiantes las examinen criticamente.</p>
+
+  <h3>4. La tension entre el mandato institucional y la conciencia propia</h3>
+  <p>Las instituciones educativas tienen sus propios sistemas de valores declarados, que no siempre coinciden con los valores que el docente considera genuinos o con las condiciones reales de la vida institucional. El docente enfrenta con frecuencia la tension entre cumplir con el mandato institucional y actuar conforme a su propia conciencia moral. Gestionar esta tension con integridad, sin cinismo pero tampoco sin ingenuidad, es una de las competencias eticas mas complejas de la profesion docente.</p>
+
+  <div class="caja bd">
+    <div class="caja-tag">Punto de problematizacion ABP</div>
+    <p>Un docente universitario de Estadistica Aplicada afirma que "su materia no tiene nada que ver con los valores: es matematica pura y objetiva." Sin embargo, en sus clases: utiliza siempre ejemplos relacionados con el rendimiento economico y nunca con el bienestar social; evalua exclusivamente con examen escrito individual sin retroalimentacion; responde las preguntas de los estudiantes mas aventajados y pasa por alto las de quienes tienen mas dificultades; y llega entre 5 y 10 minutos tarde a cada sesion sin mencionarlo. ¿Que valores esta transmitiendo este docente a traves de sus canales implicitos? ¿Es posible que alguien que "no ensenia valores" sea, en la practica, uno de los transmisores axiologicos mas potentes de su generacion de estudiantes? Esta situacion es el punto de partida del analisis en la Actividad 2.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque gr" id="materiales">
+  <div class="bh">
+    <div class="bicon gr">M</div>
+    <div class="btit">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes academicas de acceso libre o disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Pedagogia del oprimido</div><div class="rec-aut">Freire, P. (2005). Siglo XXI. Obra fundamental sobre el rol politico y axiologico del educador, la imposibilidad de la neutralidad pedagogica y la coherencia entre palabra y accion.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Life in Classrooms</div><div class="rec-aut">Jackson, P. (1968). Teachers College Press. Obra original donde se acunia y desarrolla el concepto de curriculo oculto y su impacto en la formacion de valores de los estudiantes.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Ideologia y curriculo</div><div class="rec-aut">Apple, M. (1986). Akal. Analisis critico del curriculo oculto como mecanismo de reproduccion de valores e ideologias dominantes en el sistema educativo.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">El docente como transmisor de valores: entre el curriculo oficial y el oculto</div><div class="rec-aut">Bolivar, A. (2005). Revista de Educacion, (336), 91-111. Disponible en Dialnet. Analisis aplicado del rol axiologico del docente en distintos niveles educativos y sus implicaciones pedagogicas.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El profesional reflexivo</div><div class="rec-aut">Schon, D. (1998). Paidos. Marco conceptual sobre la reflexividad del docente y la relacion entre practica, conocimiento tacito y valores profesionales en la ensenanza.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-w">Web</div><div><div class="rec-tit">Banco de recursos: Etica docente y formacion en valores (OEI)</div><div class="rec-aut">Organizacion de Estados Iberoamericanos. Disponible en: www.oei.es/etica-docente. Recursos sobre la responsabilidad axiologica del educador en contextos latinoamericanos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-v">Video</div><div><div class="rec-tit">El maestro que transforma: valores, etica y presencia docente</div><div class="rec-aut">Canal Educacion Publica YouTube. Busqueda sugerida: "educacion publica docente valores transformacion". Perspectiva latinoamericana sobre el compromiso axiologico del educador.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">Etica docente y curriculo oculto en la universidad</div><div class="rec-aut">Buxarrais, M. R. y Vilafranca, I. (2013). Revista de Educacion Superior, 42(165), 9-24. Disponible en Redalyc. Analisis especifico del curriculo oculto y su impacto axiologico en el nivel universitario.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque ol" id="act1">
+  <div class="bh">
+    <div class="bicon ol">1</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-f">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja or">
+    <div class="caja-tag">Proposito</div>
+    <p>Generar un espacio de dialogo critico y argumentado donde los estudiantes identifiquen, desde su experiencia real como universitarios, la influencia axiologica que han recibido de distintos docentes a lo largo de su formacion, y reflexionen sobre las implicaciones de esa influencia para su propia practica futura como pedagogos.</p>
+  </div>
+
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>A lo largo de su trayectoria universitaria, ha tenido docentes que, independientemente de la materia que impartian, le transmitieron valores de manera significativa, ya sea de forma positiva o negativa. Piense en un docente concreto (puede anonimizarlo como "el docente de X materia") cuya influencia axiologica sobre usted haya sido especialmente notable. Describa: que valores le transmitio, a traves de que canales lo hizo (su lenguaje, su trato, su evaluacion, su coherencia, su manera de gestionar el aula), si esa transmision fue deliberada o implicita, y que impacto tuvo en su propia formacion como futuro pedagogo. Y reflexione: que le ensenia ese caso sobre la responsabilidad axiologica que usted mismo asumira cuando ejerza la docencia?</p>
+  </div>
+
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro en Google Classroom</strong> con el titulo "Foro 5: El Docente como Transmisor de Valores: Mi Experiencia". Acceda mediante el enlace proporcionado por el docente en la plataforma.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Dedique al menos 10 minutos a recordar docentes especificos de su trayectoria universitaria que le hayan transmitido valores de manera significativa. No use ejemplos hipoteticos: el caso debe ser real y de su propia experiencia.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial</strong> incluyendo: (a) descripcion del docente y su materia (anonimizado si lo prefiere); (b) identificacion de los valores transmitidos con referencia a al menos dos canales especificos de la guia; (c) analisis de si la transmision fue deliberada o parte del curriculo oculto; (d) reflexion sobre el impacto en su propia formacion y sobre la responsabilidad que asumira como futuro pedagogo. Extension: 240-390 palabras, registro academico formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea al menos dos participaciones de companieros</strong> e identifique: patrones comunes en los canales implicitos de transmision mas frecuentes, diferencias entre influencias positivas y negativas, y lo que estas experiencias sugieren sobre la formacion de pedagogos.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> (90-130 palabras cada una): profundice en el analisis del caso de su companiero identificando algun canal de transmision que no haya mencionado, o conecte su experiencia con algun concepto especifico de la guia (curriculo oculto, coherencia, canales de transmision, tensiones eticas).</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y entregue en Classroom:</strong> captura en imagen o PDF de su participacion y las dos replicas en la tarea "Actividad 1: Foro" antes de la fecha indicada por el docente.</div></div>
+
+  <div class="caja tl">
+    <div class="caja-tag">Ejemplo orientador (extracto)</div>
+    <p>"En cuarto semestre, en la materia de Didactica General, tuve un docente que transmitia valores de manera poderosa, principalmente a traves del canal de las relaciones interpersonales. A diferencia de otros profesores, el llegaba siempre 5 minutos antes, recordaba el nombre de todos los estudiantes y, cuando alguien planteaba una pregunta que contradecia su explicacion, en lugar de ignorarla o minimizarla, la escribia en el pizarron y la exploraba junto con el grupo. Esto me enseniio, sin que el lo dijera nunca explicitamente, que el conocimiento es provisional y que el docente no tiene por que tenerlo todo resuelto. Tambien observaba como trataba al personal de limpieza con el mismo respeto con que trataba a los directivos de la institucion. Esa coherencia en el trato, independientemente del estatus, fue para mi un modelo de lo que significa el valor del respeto como practica cotidiana y no como discurso..."</p>
+  </div>
+
+  <div class="caja bd">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La pregunta detonadora requiere una experiencia <strong>real, concreta y personal</strong> con un docente especifico de su trayectoria universitaria. Ningun sistema de inteligencia artificial conoce esa experiencia. El docente podra solicitar que precise cualquier detalle de la situacion narrada.</p>
+  </div>
+
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad y concrecion del caso narrado</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Identificacion precisa de canales de transmision con referencia a la guia</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Analisis de la dimension deliberada vs. curriculo oculto</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad argumentativa de las dos replicas dialogicas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque tl" id="act2">
+  <div class="bh">
+    <div class="bicon tl">2</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Auditoria Axiologica de una Practica Docente</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-i">Actividad individual &middot; Analisis y diseno aplicado</div>
+  <div class="caja or">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de analisis axiologico critico de practicas docentes reales, mediante el estudio de la situacion presentada en el punto de problematizacion ABP, identificando los valores transmitidos a traves del curriculo oculto y elaborando una propuesta concreta de transformacion pedagogica responsable.</p>
+  </div>
+
+  <h3>Situacion de analisis (retomada del punto ABP)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Caso de analisis: el docente de Estadistica</div>
+    <p>Un docente universitario de Estadistica Aplicada afirma que "su materia no tiene nada que ver con los valores". Sin embargo, en sus practicas cotidianas se observan los siguientes patrones: utiliza exclusivamente ejemplos relacionados con maximizacion de utilidad economica, nunca con bienestar social o justicia distributiva; evalua unicamente con examen individual escrito sin retroalimentacion posterior; durante las clases, dedica notoriamente mas atencion a los estudiantes que participan activamente y pasa brevemente por encima de las preguntas de quienes tienen mas dificultades; llega entre 5 y 10 minutos tarde a cada sesion sin mencionarlo ni justificarlo; y cuando un estudiante cuestiona alguno de sus planteamientos, responde brevemente y pasa al siguiente tema sin explorar el cuestionamiento.</p>
+  </div>
+
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Realice la auditoria axiologica del caso:</strong> para cada uno de los cinco patrones de conducta descritos, identifique: (a) que canal de transmision de valores de la guia opera; (b) que valor especifico se transmite a traves de ese canal (puede ser un valor o un contravalor); (c) si opera como curriculo oculto o como curriculo nulo. Presente su analisis en una tabla de cinco filas con estas tres columnas.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Redacte un diagnostico axiologico integrado:</strong> en 200-250 palabras, sintetice el perfil axiologico que este docente esta transmitiendo a sus estudiantes a traves del conjunto de sus practicas. Use el concepto de curriculo oculto y al menos uno de los canales de transmision desarrollados en la guia.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Disene cinco transformaciones concretas:</strong> para cada uno de los cinco patrones identificados, proponga una transformacion especifica y viable de la practica docente que, sin alterar el contenido disciplinar de la materia (Estadistica), cambie el valor que se transmite a traves de ese canal. Cada propuesta debe incluir: descripcion concreta de la nueva practica, justificacion axiologica con referencia al contenido de la guia, y valor que se transmitira con el cambio.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Reflexione sobre la tension entre influencia y autonomia:</strong> en 120-150 palabras adicionales, responda: ¿puede el docente de Estadistica transformar su curriculo oculto sin comprometer la autonomia moral de sus estudiantes? ¿Como gestionar esa tension segun los principios eticos estudiados?</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Prepare el documento final</strong> con portada completa, la tabla de auditoria, el diagnostico integrado, las cinco propuestas de transformacion y la reflexion sobre la tension etica. Suba en Classroom.</div></div>
+
+  <div class="caja bd">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>El analisis y las propuestas deben aplicar de manera especifica y fundamentada los conceptos del contenido tematico de esta guia. El docente puede solicitar que explique verbalmente el fundamento de cualquier elemento de la auditoria o de las propuestas de transformacion.</p>
+  </div>
+
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Completitud y precision de la tabla de auditoria (5 filas, 3 columnas)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad y coherencia del diagnostico axiologico integrado</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad y viabilidad de las cinco propuestas de transformacion</strong></div><div class="pts">30 pts</div></div>
+  <div class="rubr"><div><strong>Reflexion fundamentada sobre la tension influencia-autonomia</strong></div><div class="pts">15 pts</div></div>
+  <div class="rubr"><div><strong>Formato, portada y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Auditoria Axiologica" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 3: QUIZ -->
+<section class="bloque or" id="act3">
+  <div class="bh">
+    <div class="bicon or">3</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-q">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja tl">
+    <div class="caja-tag">Instrucciones</div>
+    <p>Seleccione la opcion correcta en cada pregunta. Recibira retroalimentacion inmediata. Al finalizar, capture su resultado y subalo a Google Classroom como evidencia.</p>
+  </div>
+
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bc"><div class="q-bf" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="qb act" id="q1">
+      <h4>1. La afirmacion de que el docente es un transmisor de valores "de manera inevitable" se fundamenta principalmente en que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">Todos los docentes reciben formacion especifica en axiologia durante su carrera, lo que los capacita para transmitir valores de manera deliberada y sistematica en cualquier materia.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">Ninguna accion humana es axiologicamente neutra, y la ensenanza, por ser una de las acciones mas intencionales y relacionales, transmite valores a traves de multiples canales simultaneos, independientemente de si el docente lo hace conscientemente o no.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">La legislacion educativa obliga a todos los docentes a incluir explicitamente la educacion en valores en sus planificaciones didacticas, independientemente de la materia que impartan.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">Los estudiantes universitarios son especialmente susceptibles a la influencia de sus docentes debido a la etapa de desarrollo psicologico en la que se encuentran durante los anios universitarios.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. La inevitabilidad de la transmision axiologica docente no se basa en formacion especifica, obligaciones legales ni en la susceptibilidad psicologica de los estudiantes. Se basa en la naturaleza misma de la accion humana: ninguna accion es axiologicamente neutra, y la ensenanza opera siempre a traves de multiples canales (lenguaje, evaluacion, relaciones, seleccion de contenidos, conducta) que portan valores inevitablemente.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. La inevitabilidad no depende de formacion especifica (A), de mandatos legales (C), ni exclusivamente de la etapa de desarrollo de los estudiantes (D). Depende de la naturaleza de la accion humana: toda ensenanza porta valores a traves de sus multiples canales, con o sin conciencia del docente.</div>
+      <button class="btn btn-p" id="btn1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qb" id="q2">
+      <h4>2. El concepto de "curriculo viviente del educador" se refiere a que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">El docente debe actualizar constantemente el contenido de sus cursos para mantenerlos vigentes y relevantes en funcion de los cambios en su campo disciplinar especifico.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">B</div><div class="qot">El curriculo escolar es un documento vivo que cambia segun las necesidades de los estudiantes y las decisiones colectivas de la comunidad educativa de cada institucion.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">C</div><div class="qot">El docente transmite valores principalmente a traves de lo que es y de lo que hace, no solo de lo que dice: su presencia, su coherencia y su modo de estar en el mundo constituyen en si mismos un mensaje axiologico.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">Los valores que se transmiten en la educacion son aquellos que el propio docente ha construido a partir de sus experiencias de vida, sin que la institucion educativa pueda intervenir en esa construccion personal.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. El curriculo viviente del educador es la nocion de que el docente mismo, con su presencia, su coherencia entre palabra y accion y su modo de relacionarse, constituye un mensaje axiologico de primer orden. Los valores que practica con autenticidad tienen mas probabilidad de ser internalizados por sus estudiantes que los que solo predica.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es C. La actualizacion del contenido disciplinar (A) no tiene relacion con este concepto. El curriculo viviente no es un documento institucional (B). Y el concepto no se refiere a la construccion personal de valores al margen de la institucion (D), sino a la ensenanza por presencia y testimonio personal del educador.</div>
+      <button class="btn btn-p" id="btn2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qb" id="q3">
+      <h4>3. El curriculo oculto se distingue del curriculo formal principalmente porque:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">El curriculo oculto contiene los valores mas importantes para la formacion de los estudiantes, mientras que el curriculo formal se limita a la transmision de conocimientos disciplinares sin dimension axiologica.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">B</div><div class="qot">El curriculo oculto es disenadoa deliberadamente por el docente para complementar la formacion explicita en valores que ofrece el curriculo formal de cada materia.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">C</div><div class="qot">Opera de manera implicita, sin ser declarado ni planificado formalmente; los aprendizajes que genera ocurren en los espacios intersticiales de la vida escolar, a menudo sin que ni el docente ni los estudiantes sean conscientes de ellos.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">Es un fenomeno exclusivo de los niveles educativos basicos y no opera en la educacion superior, donde los estudiantes tienen la madurez suficiente para identificar y cuestionar los mensajes implicitos.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. La caracteristica definitoria del curriculo oculto es su operacion implicita: los aprendizajes que genera no estan declarados en ninguna planificacion formal, ocurren en los espacios intersticiales de la vida escolar (disposicion del espacio, reglas implicitas, gestion del error, relaciones de poder), y frecuentemente operan sin que ni el docente ni los estudiantes sean conscientes de ellos.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es C. El curriculo formal tampoco es axiologicamente neutro (A). El curriculo oculto no es planificado deliberadamente (B): precisamente su caracter oculto radica en que opera sin planificacion consciente. Y opera en todos los niveles educativos, incluida la universidad (D): la madurez de los estudiantes universitarios no lo elimina, aunque si les da mayor capacidad para articularlo.</div>
+      <button class="btn btn-p" id="btn3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qb" id="q4">
+      <h4>4. Segun la guia, cuando un docente responde entusiastamente a las preguntas que confirman sus planteamientos y brevemente a las que los cuestionan, el valor que se transmite a traves del curriculo oculto es principalmente:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">El valor del rigor academico: el docente enseniia a los estudiantes a distinguir entre preguntas pertinentes (que confirman la teoria) y preguntas irrelevantes (que la cuestionan sin fundamento).</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">B</div><div class="qot">La conformidad intelectual sobre el pensamiento critico: se aprende que la funcion del estudiante es comprender y confirmar el conocimiento del docente, no cuestionarlo ni construir perspectivas propias.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">C</div><div class="qot">El valor de la eficiencia pedagogica: el docente administra el tiempo de la sesion dando prioridad a las preguntas que hacen avanzar el contenido planificado sobre las que lo interrumpen.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">El valor de la honestidad academica: el docente demuestra que solo las preguntas bien fundamentadas merecen una respuesta detallada, mientras que las preguntas superficiales reciben respuestas breves.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. Cuando el docente responde de manera diferenciada segun si las preguntas confirman o cuestionan sus planteamientos, transmite a traves del curriculo oculto una vision del conocimiento como certeza que pertenece al docente y del rol del estudiante como receptor y confirmador de esa certeza. Se aprende que el pensamiento critico y el cuestionamiento son comportamientos no deseados en el aula.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es B. El rigor academico (A) implicaria precisamente atender con mas cuidado las preguntas que cuestionan, no ignorarlas. La eficiencia pedagogica (C) podria invocarse, pero el patron descrito va mas alla de la administracion del tiempo: es diferencial segun el contenido de la pregunta. La honestidad academica (D) tampoco corresponde a este patron de respuesta diferencial.</div>
+      <button class="btn btn-p" id="btn4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qb" id="q5">
+      <h4>5. La "tension entre influencia y autonomia" que enfrenta el docente como transmisor de valores consiste en que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">El docente debe elegir entre influir activamente en los valores de sus estudiantes o respetar su autonomia, ya que ambos objetivos son incompatibles y no pueden perseguirse simultaneamente.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">Los docentes con mayor experiencia tienen mas influencia sobre los valores de sus estudiantes, lo que paradojicamente reduce la autonomia moral de estos a medida que avanzan en su formacion universitaria.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">El docente tiene la responsabilidad de transmitir y modelar valores, pero debe hacerlo de una manera que abra espacios para el cuestionamiento y la decision libre del estudiante, sin derivar en adoctrinamiento ni en un relativismo que no sostenga ninguna posicion valorativa.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">El docente debe renunciar a toda transmision de valores propios y limitarse a presentar con neutralidad todas las posiciones valorativas disponibles para que los estudiantes elijan libremente sin ninguna influencia externa.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La tension no implica que influencia y autonomia sean incompatibles (A). Tampoco es una cuestion de experiencia docente (B). Y la solucion no es la neutralidad total (D), que la guia considera imposible e indeseable. La respuesta correcta describe el equilibrio que el docente debe gestionar: transmitir y modelar valores con conviccion, al mismo tiempo que crea condiciones para el examen critico y la decision libre del estudiante.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. La guia no plantea que influencia y autonomia sean incompatibles (A), ni que la experiencia docente reduzca la autonomia de los estudiantes (B), ni que la solucion sea la neutralidad total del docente (D), que ademas es axiologicamente imposible. La tension se gestiona, no se elimina, mediante un equilibrio entre conviccion y apertura critica.</div>
+      <button class="btn btn-p" id="btn5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--teal-s);border-radius:8px;font-size:0.87rem;color:var(--teal);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura en la tarea "Actividad 3: Quiz El Docente como Transmisor de Valores".</div>
+</section>
+
+<!-- REFLEXION FINAL -->
+<section class="bloque ol" id="reflexion">
+  <div class="bh">
+    <div class="bicon ol">R</div>
+    <div class="btit">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>Esta seccion integra los aprendizajes de la guia mediante un ejercicio de metacognicion y proyeccion profesional. Las respuestas deben ser autenticas, personales y ancladas en su experiencia real y en su futuro como educador.</p>
+
+  <div class="refl"><label>1. De los seis canales de transmision de valores descritos en la guia (lenguaje, evaluacion, relaciones interpersonales, seleccion de contenido, conducta fuera de clase, gestion del disenso), cual considera que sera su canal mas vulnerable, es decir, el que mas le costara ejercer de manera coherente con sus valores cuando ejerza la docencia? Argumente por que y describa una situacion concreta donde anticipa que esa vulnerabilidad podria manifestarse.</label><textarea placeholder="Identifique su canal mas vulnerable, argumente con honestidad y anticipe una situacion concreta donde esta vulnerabilidad podria aparecer..."></textarea></div>
+
+  <div class="refl"><label>2. Piense en una practica docente que usted observa frecuentemente en su universidad y que genera un curriculo oculto que considera negativo o inconsistente con los valores que la institucion declara. Describa la practica, el valor que transmite implicitamente y proponga una alternativa concreta que podria transformarla.</label><textarea placeholder="Describa la practica con precision, identifique el valor del curriculo oculto y proponga una transformacion especifica y viable..."></textarea></div>
+
+  <div class="refl"><label>3. Cuando usted sea docente, en una materia especifica que imagine en su futuro profesional como pedagogo, que tres practicas concretas implementara deliberadamente para ejercer su rol de transmisor de valores de manera consciente, critica y respetuosa de la autonomia de sus estudiantes? Justifique cada una con referencia al contenido de esta guia.</label><textarea placeholder="Nombre la materia imaginada y describa tres practicas concretas con su justificacion axiologica..."></textarea></div>
+
+  <div class="refl"><label>4. La guia afirma que el canal mas poderoso de transmision de valores es la coherencia entre discurso y practica. Piense en su vida universitaria actual como estudiante: en que dimension de su vida academica identifica la mayor brecha entre los valores que declara y los que practica efectivamente? Que hara en los proximos 15 dias para reducir esa brecha?</label><textarea placeholder="Identifique la brecha con honestidad y proponga una accion concreta para los proximos 15 dias..."></textarea></div>
+
+  <div class="caja or">
+    <div class="caja-tag">Instrucciones para la entrega</div>
+    <p>Las respuestas se entregaran como documento independiente en la tarea "Reflexion Final: El Docente como Transmisor de Valores" en Google Classroom. Extension minima por respuesta: 130 palabras. Se evaluaran la profundidad reflexiva, la autenticidad y la coherencia con los contenidos de la guia.</p>
+  </div>
+
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Apple, M. (1986). <em>Ideologia y curriculo</em>. Akal.</li>
+    <li>Bolivar, A. (2005). El lugar de la etica profesional en la formacion universitaria. <em>Revista de Educacion</em>, (336), 91-111.</li>
+    <li>Buxarrais, M. R. y Vilafranca, I. (2013). Etica docente y curriculo oculto en la universidad. <em>Revista de Educacion Superior, 42</em>(165), 9-24.</li>
+    <li>Freire, P. (2005). <em>Pedagogia del oprimido</em>. Siglo XXI. (Obra original publicada en 1968).</li>
+    <li>Jackson, P. W. (1968). <em>Life in Classrooms</em>. Teachers College Press.</li>
+    <li>Schon, D. (1998). <em>El profesional reflexivo: como piensan los profesionales cuando actuan</em>. Paidos.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 5: El Docente como Transmisor de Valores<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpR(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Exactamente: la afirmacion del docente es incorrecta porque ninguna accion pedagogica es axiologicamente neutra. El docente transmite valores a traves de su lenguaje, sus decisiones de evaluacion, su trato a los estudiantes, la seleccion de contenidos, su puntualidad y su modo de gestionar el disenso, independientemente de si la materia es Estadistica, Filosofia o cualquier otra."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es B.</strong> La transmision de valores no es una funcion exclusiva de ciertas materias (A). No requiere actividades deliberadas: ocurre de manera inevitable a traves de canales implicitos (C). Y en la universidad la influencia axiologica del docente no es insignificante: los estudiantes son especialmente sensibles a la coherencia o incoherencia entre discurso y practica de sus formadores (D)."; }
+}
+var qE={pts:0,resp:{}};
+function qS(el,qid,ok){
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  el.parentElement.querySelectorAll(".qo").forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){el.classList.add("ok");qE.pts++;}
+  else{el.classList.add("fail");}
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn"+n).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur,next,num){
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+function qRes(){
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida e integrada del rol axiologico del docente, sus canales de transmision y las tensiones eticas que implica. Esta preparado para asumir esta responsabilidad con conciencia critica en su futura practica.";col="var(--teal)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos de las preguntas donde recibio retroalimentacion de mejora.";col="var(--oliva)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren mayor profundizacion. Se recomienda releer las secciones vinculadas a los errores.";col="var(--oro)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido completo y retome el quiz tras el repaso.";col="var(--bordo)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>
