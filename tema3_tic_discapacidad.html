@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema 3 · Las TIC en la Educación de Personas con Discapacidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2450;
+    --navy-deep:#101632;
+    --paper:#F7F5EF;
+    --paper-raised:#FFFFFF;
+    --gold:#A6742C;
+    --gold-deep:#7F5A20;
+    --teal:#2F6F63;
+    --teal-deep:#20504A;
+    --ink:#1F2430;
+    --ink-soft:#454B5C;
+    --line:#D8D3C4;
+    --focus:#0F62FE;
+    --radius:14px;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'Atkinson Hyperlegible', Arial, sans-serif;
+    --font-alt: var(--font-body);
+    --scale:1;
+  }
+
+  html[data-contrast="alto"]{
+    --navy:#000000;
+    --navy-deep:#000000;
+    --paper:#FFFFFF;
+    --paper-raised:#FFFFFF;
+    --gold:#7A4A00;
+    --gold-deep:#5C3800;
+    --teal:#00514A;
+    --teal-deep:#00332E;
+    --ink:#000000;
+    --ink-soft:#000000;
+    --line:#000000;
+  }
+
+  html[data-font="lectura"]{ --font-display: var(--font-alt); }
+  html[data-font="lectura"] body{ --font-body:'Lexend', Arial, sans-serif; }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:calc(17px * var(--scale));
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--teal-deep);}
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:3px solid var(--focus);
+    outline-offset:2px;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--navy); color:#fff;
+    padding:.75rem 1.25rem; z-index:200; border-radius:0 0 8px 0; font-weight:700;
+  }
+  .skip-link:focus{ left:0; }
+
+  /* ===== Barra de accesibilidad ===== */
+  .a11y-bar{
+    position:sticky; top:0; z-index:100;
+    background:var(--navy-deep); color:#fff;
+    border-bottom:3px solid var(--gold);
+  }
+  .a11y-bar__inner{
+    max-width:1180px; margin:0 auto; padding:.5rem 1.25rem;
+    display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem;
+    font-size:.85rem;
+  }
+  .a11y-bar__label{ font-weight:700; letter-spacing:.02em; white-space:nowrap; }
+  .a11y-group{ display:flex; gap:.4rem; flex-wrap:wrap; }
+  .a11y-bar button{
+    background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.55);
+    border-radius:999px; padding:.3rem .8rem; font-family:var(--font-body);
+    font-size:.82rem; cursor:pointer; transition:background .15s, transform .1s;
+  }
+  .a11y-bar button:hover{ background:rgba(255,255,255,.15); }
+  .a11y-bar button[aria-pressed="true"]{ background:var(--gold); border-color:var(--gold); color:#20180a; font-weight:700; }
+
+  /* ===== Encabezado ===== */
+  header.hero{
+    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff; padding:3rem 1.25rem 3.5rem;
+  }
+  .hero__inner{ max-width:1180px; margin:0 auto; }
+  .brand-row{
+    display:flex; align-items:center; gap:1rem; margin-bottom:2.2rem; flex-wrap:wrap;
+  }
+  .brand-row img{
+    height:58px; width:auto; background:#fff; padding:8px 12px; border-radius:10px;
+  }
+  .brand-row .plantel{
+    font-family:var(--font-body); font-size:.85rem; color:#D9DCEC; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .eyebrow{
+    font-family:var(--font-body); text-transform:uppercase; letter-spacing:.12em; font-size:.78rem;
+    color:var(--gold); font-weight:700; margin:0 0 .8rem;
+  }
+  h1{
+    font-family:var(--font-display); font-weight:600; font-size:clamp(1.9rem, 4vw, 3rem);
+    line-height:1.12; margin:0 0 1rem; max-width:22ch;
+  }
+  .hero__lead{ max-width:62ch; color:#E7E9F5; font-size:1.05rem; }
+  .hero__objetivo{
+    margin-top:2rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25);
+    border-left:5px solid var(--gold); border-radius:10px; padding:1.2rem 1.4rem; max-width:70ch;
+  }
+  .hero__objetivo h2{
+    font-family:var(--font-body); font-size:.78rem; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--gold); margin:0 0 .5rem;
+  }
+  .hero__objetivo p{ margin:0; color:#F1F2FA; }
+
+  /* ===== Contenedor general ===== */
+  main{ max-width:1180px; margin:0 auto; padding:0 1.25rem; }
+  section{ padding:3.2rem 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{ max-width:78ch; margin-bottom:1.8rem; }
+  .section-head .kicker{
+    display:inline-block; font-size:.75rem; text-transform:uppercase; letter-spacing:.12em;
+    font-weight:700; color:var(--teal-deep); background:rgba(47,111,99,.1); padding:.25rem .7rem;
+    border-radius:999px; margin-bottom:.7rem;
+  }
+  .section-head h2{
+    font-family:var(--font-display); font-size:clamp(1.5rem, 2.6vw, 2.1rem); margin:.2rem 0 .6rem; color:var(--navy);
+  }
+  .section-head p{ color:var(--ink-soft); margin:0; }
+
+  /* ===== Nav TOC ===== */
+  nav.toc{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.4rem 1.6rem; margin:2.4rem 0 0;
+  }
+  nav.toc h2{ font-family:var(--font-body); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--navy); margin:0 0 .8rem;}
+  nav.toc ol{ columns:2; column-gap:2rem; margin:0; padding-left:1.2rem; }
+  nav.toc li{ break-inside:avoid; margin-bottom:.5rem; }
+  nav.toc a{ text-decoration:none; font-weight:600; }
+  nav.toc a:hover{ text-decoration:underline; }
+  @media (max-width:640px){ nav.toc ol{ columns:1; } }
+
+  /* ===== Pregunta de saberes previos ===== */
+  .prompt-box{
+    background:#FBF3E4; border:1px solid #E7D2A4; border-left:6px solid var(--gold);
+    border-radius:12px; padding:1.5rem 1.7rem; max-width:78ch;
+  }
+  .prompt-box h3{ font-family:var(--font-display); margin:0 0 .6rem; color:var(--gold-deep); font-size:1.15rem; }
+  .prompt-box p{ margin:0 0 0.6rem; }
+  .prompt-box textarea{
+    width:100%; min-height:110px; border:1px solid var(--line); border-radius:8px; padding:.8rem;
+    font-family:var(--font-body); font-size:1rem; margin-top:.6rem; resize:vertical;
+  }
+  .prompt-box .hint{ font-size:.85rem; color:var(--ink-soft); margin-top:.4rem; }
+
+  /* ===== Tarjetas de contenido temático ===== */
+  .topic-list{ display:flex; flex-direction:column; gap:1rem; }
+  details.topic{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  details.topic > summary{
+    list-style:none; cursor:pointer; padding:1.2rem 1.5rem; display:flex; align-items:center;
+    gap:1rem; font-family:var(--font-display); font-weight:600; font-size:1.1rem; color:var(--navy);
+  }
+  details.topic > summary::-webkit-details-marker{ display:none; }
+  details.topic > summary .num{
+    flex:0 0 auto; width:2.4rem; height:2.4rem; border-radius:50%; background:var(--navy);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--font-body);
+    font-weight:700; font-size:1rem;
+  }
+  details.topic > summary .chev{ margin-left:auto; transition:transform .2s; color:var(--gold-deep); font-weight:700; }
+  details.topic[open] > summary .chev{ transform:rotate(180deg); }
+  .topic-body{ padding:0 1.5rem 1.6rem 4.9rem; color:var(--ink-soft); }
+  .topic-body p{ margin:0 0 .8rem; }
+  .topic-body ul{ margin:.3rem 0 .8rem 1.2rem; padding:0; }
+  .topic-body li{ margin-bottom:.4rem; }
+  .topic-body strong{ color:var(--ink); }
+  @media (max-width:640px){ .topic-body{ padding-left:1.5rem; } }
+
+  /* ===== Materiales de consulta ===== */
+  .resource-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.1rem; }
+  .resource-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.3rem 1.4rem; display:flex; flex-direction:column; gap:.5rem;
+  }
+  .resource-card .tag{
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; font-weight:700; color:var(--teal-deep);
+  }
+  .resource-card h3{ font-family:var(--font-display); font-size:1.05rem; margin:0; color:var(--navy); }
+  .resource-card p{ margin:0; color:var(--ink-soft); font-size:.94rem; }
+  .resource-card a{ font-weight:700; font-size:.92rem; }
+
+  /* ===== Actividades ===== */
+  .activity{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.8rem 1.9rem; margin-bottom:1.6rem;
+  }
+  .activity__head{ display:flex; align-items:flex-start; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .activity__badge{
+    flex:0 0 auto; background:var(--teal); color:#fff; font-weight:700; font-size:.78rem;
+    text-transform:uppercase; letter-spacing:.06em; padding:.35rem .8rem; border-radius:999px;
+  }
+  .activity__badge.badge-gold{ background:var(--gold); color:#2b1c00; }
+  .activity h3{ font-family:var(--font-display); margin:.1rem 0 0; font-size:1.3rem; color:var(--navy); flex:1 1 260px; }
+  .activity .classroom-note{
+    font-size:.85rem; color:var(--teal-deep); font-weight:700; margin:0 0 1rem;
+  }
+  .steps{ margin:0 0 1.1rem; padding-left:1.3rem; }
+  .steps li{ margin-bottom:.55rem; }
+  .example-box{
+    background:#EEF4F2; border:1px solid #CBDED9; border-radius:10px; padding:1rem 1.2rem; margin-top:1rem;
+  }
+  .example-box h4{ margin:0 0 .4rem; font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--teal-deep); }
+  .example-box p, .example-box li{ margin:0 0 .4rem; color:var(--ink-soft); }
+  .case-text{
+    background:#F3F1E7; border-left:5px solid var(--navy); border-radius:8px; padding:1.1rem 1.3rem; margin-bottom:1.1rem;
+  }
+  .case-text p{ margin:0 0 .7rem; font-style:italic; color:var(--ink); }
+  .case-text p:last-child{ margin-bottom:0; }
+
+  /* ===== Quiz ===== */
+  .quiz-item{ border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.3rem; margin-bottom:1rem; background:var(--paper); }
+  .quiz-item p.q{ font-weight:700; margin:0 0 .7rem; }
+  .quiz-item label{
+    display:flex; align-items:flex-start; gap:.6rem; padding:.45rem .3rem; border-radius:8px; cursor:pointer;
+  }
+  .quiz-item label:hover{ background:rgba(27,36,80,.05); }
+  .quiz-item input[type="radio"]{ margin-top:.25rem; }
+  .quiz-actions{ display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1rem; }
+  .btn{
+    display:inline-block; background:var(--navy); color:#fff; border:none; border-radius:999px;
+    padding:.75rem 1.6rem; font-family:var(--font-body); font-weight:700; font-size:.95rem; cursor:pointer;
+    transition:transform .1s, background .15s;
+  }
+  .btn:hover{ background:var(--navy-deep); }
+  .btn:active{ transform:scale(.97); }
+  .btn.secondary{ background:transparent; color:var(--navy); border:2px solid var(--navy); padding:.65rem 1.4rem; }
+  #quiz-result{
+    font-weight:700; font-size:1.05rem; padding:.8rem 1.1rem; border-radius:10px; display:none;
+  }
+  #quiz-result.show{ display:block; }
+  #quiz-result.pass{ background:#E4F1EC; color:var(--teal-deep); border:1px solid #B9DACB; }
+  #quiz-result.retry{ background:#FBEAE4; color:#8A3A20; border:1px solid #EAC3B4; }
+  .quiz-item.correct{ border-color:var(--teal); background:#F2F9F6; }
+  .quiz-item.incorrect{ border-color:#C4674A; background:#FCF1EC; }
+  .quiz-item .feedback{ display:none; margin-top:.6rem; font-size:.9rem; padding:.5rem .7rem; border-radius:8px; }
+  .quiz-item.correct .feedback{ display:block; background:#DCEFE7; color:var(--teal-deep); }
+  .quiz-item.incorrect .feedback{ display:block; background:#F6DED4; color:#8A3A20; }
+
+  /* ===== Reflexión final ===== */
+  .reflect{
+    background:var(--navy); color:#fff; border-radius:var(--radius); padding:2.2rem 2.3rem;
+  }
+  .reflect h2{ font-family:var(--font-display); color:#fff; }
+  .reflect .section-head p{ color:#D9DCEC; }
+  .reflect-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.2rem; margin-top:1.4rem; }
+  .reflect-card{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); border-radius:10px; padding:1.2rem 1.3rem; }
+  .reflect-card h3{ font-family:var(--font-body); font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); margin:0 0 .6rem; }
+  .reflect-card p{ margin:0; color:#EDEEF6; font-size:.94rem; }
+  .reflect textarea{
+    width:100%; min-height:130px; margin-top:1.4rem; border-radius:8px; border:none; padding:.9rem;
+    font-family:var(--font-body); font-size:1rem;
+  }
+
+  footer{
+    background:var(--navy-deep); color:#C9CBDD; padding:2rem 1.25rem; text-align:center; font-size:.85rem;
+  }
+  footer strong{ color:#fff; }
+
+  .badge-inline{
+    display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    background:var(--teal); color:#fff; padding:.2rem .6rem; border-radius:999px; margin-left:.5rem;
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+<div class="a11y-bar" role="region" aria-label="Panel de accesibilidad de la página">
+  <div class="a11y-bar__inner">
+    <span class="a11y-bar__label">Panel de accesibilidad:</span>
+    <div class="a11y-group" role="group" aria-label="Tamaño del texto">
+      <button type="button" id="btn-font-dec" aria-label="Disminuir tamaño del texto">A−</button>
+      <button type="button" id="btn-font-reset" aria-label="Tamaño de texto normal">A</button>
+      <button type="button" id="btn-font-inc" aria-label="Aumentar tamaño del texto">A+</button>
+    </div>
+    <div class="a11y-group" role="group" aria-label="Contraste de color">
+      <button type="button" id="btn-contrast" aria-pressed="false">Alto contraste</button>
+    </div>
+    <div class="a11y-group" role="group" aria-label="Tipografía de lectura">
+      <button type="button" id="btn-readfont" aria-pressed="false">Fuente de lectura fácil</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero__inner">
+    <div class="brand-row">
+      <img src="data:image/png;base64,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" alt="Logotipo de la Universidad de la Ciénega, Plantel Centro">
+      <span class="plantel">Plantel Centro · Formación Docente</span>
+    </div>
+    <p class="eyebrow">Tema 3 · Guía interactiva para estudiantes de licenciatura</p>
+    <h1>Las TIC en la Educación de las Personas con Discapacidad</h1>
+    <p class="hero__lead">Un recorrido constructivista por las tecnologías de apoyo, el Diseño Universal para el Aprendizaje y las prácticas docentes que hacen posible una educación superior verdaderamente accesible.</p>
+    <div class="hero__objetivo">
+      <h2>Objetivo del tema</h2>
+      <p>Analizar el papel de las Tecnologías de la Información y la Comunicación (TIC) como herramientas de apoyo, accesibilidad e inclusión educativa para estudiantes con discapacidad, y diseñar estrategias didácticas fundamentadas en el Diseño Universal para el Aprendizaje (DUA) que puedan implementarse en el aula universitaria.</p>
+    </div>
+  </div>
+</header>
+
+<main id="contenido-principal">
+
+  <nav class="toc" aria-label="Índice de la guía">
+    <h2>Contenido de la guía</h2>
+    <ol>
+      <li><a href="#introduccion">1. Introducción</a></li>
+      <li><a href="#saberes-previos">2. Pregunta de conocimiento previo</a></li>
+      <li><a href="#contenido">3. Contenido temático</a></li>
+      <li><a href="#materiales">4. Materiales de consulta</a></li>
+      <li><a href="#actividades">5. Actividades prácticas</a></li>
+      <li><a href="#foro">&nbsp;&nbsp;5.1 Foro de mediación</a></li>
+      <li><a href="#significativa">&nbsp;&nbsp;5.2 Actividad de aprendizaje significativo</a></li>
+      <li><a href="#caso">&nbsp;&nbsp;5.3 Caso práctico</a></li>
+      <li><a href="#quiz">&nbsp;&nbsp;5.4 Quiz de autoevaluación</a></li>
+      <li><a href="#reflexion">6. Reflexión y aplicación</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===================== INTRODUCCIÓN ===================== -->
+  <section id="introduccion" aria-labelledby="intro-h">
+    <div class="section-head">
+      <span class="kicker">Punto de partida</span>
+      <h2 id="intro-h">Introducción</h2>
+    </div>
+    <div style="max-width:78ch; color:var(--ink-soft);">
+      <p>Durante mucho tiempo, la incorporación de estudiantes con discapacidad a la educación superior dependió casi por completo de la voluntad individual de cada docente para adaptar materiales, tiempos y evaluaciones. Las Tecnologías de la Información y la Comunicación han transformado ese escenario: hoy existen herramientas capaces de convertir un texto en voz, una voz en texto, una imagen en descripción sonora o un gesto en palabra escrita, ampliando de manera significativa las posibilidades reales de participación de todo el estudiantado.</p>
+      <p>Sin embargo, contar con tecnología no garantiza por sí mismo una educación inclusiva. El uso pedagógico de las TIC en favor de la inclusión exige que el profesorado universitario comprenda los tipos de discapacidad y las barreras que enfrentan sus estudiantes, conozca las tecnologías de apoyo disponibles y, sobre todo, adopte un enfoque de diseño instruccional que contemple la diversidad desde la planeación misma del curso, y no como una adaptación posterior.</p>
+      <p>Esta guía propone abordar el tema desde una perspectiva constructivista y de aprendizaje activo: usted analizará conceptos y tecnologías, los contrastará con casos reales de la vida universitaria y diseñará, de manera colaborativa, estrategias concretas para hacer más accesibles sus propias clases.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SABERES PREVIOS ===================== -->
+  <section id="saberes-previos" aria-labelledby="previos-h">
+    <div class="section-head">
+      <span class="kicker">Antes de comenzar</span>
+      <h2 id="previos-h">Pregunta de conocimiento previo</h2>
+    </div>
+    <div class="prompt-box">
+      <h3>Reflexione antes de avanzar</h3>
+      <p>¿Qué diferencia existe, en su opinión, entre <strong>integrar</strong> a un estudiante con discapacidad en un aula universitaria y <strong>incluirlo</strong> plenamente en el proceso de aprendizaje? Piense en alguna experiencia propia, como estudiante o como docente, en la que haya identificado una barrera de acceso al conocimiento —no necesariamente tecnológica— y anótela brevemente.</p>
+      <textarea aria-label="Espacio para responder la pregunta de conocimiento previo" placeholder="Escriba aquí sus ideas iniciales. Podrá compararlas con sus conclusiones al finalizar la guía..."></textarea>
+      <p class="hint">Esta respuesta es personal y de trabajo individual; no se envía ni se califica, pero le servirá como punto de comparación en la sección final de reflexión.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTENIDO TEMÁTICO ===================== -->
+  <section id="contenido" aria-labelledby="contenido-h">
+    <div class="section-head">
+      <span class="kicker">Desarrollo temático</span>
+      <h2 id="contenido-h">Contenido temático</h2>
+      <p>Explore cada apartado. Los contenidos avanzan de lo conceptual a lo aplicado, siguiendo la lógica de un diseño instruccional accesible.</p>
+    </div>
+
+    <div class="topic-list">
+
+      <details class="topic" open>
+        <summary><span class="num">1</span><span>Discapacidad, accesibilidad e inclusión educativa: conceptos clave</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>En el ámbito educativo conviene distinguir tres nociones que suelen confundirse. La <strong>discapacidad</strong> se entiende como la interacción entre una condición de salud o funcional de la persona y las barreras del entorno, y no como un atributo exclusivamente individual. La <strong>accesibilidad</strong> se refiere a que un entorno, un material o una tecnología pueda ser utilizado por la mayor diversidad posible de personas, sin necesidad de adaptación posterior. La <strong>inclusión educativa</strong>, por su parte, es el proceso institucional y pedagógico orientado a que ningún estudiante quede al margen del aprendizaje por razón de sus condiciones personales.</p>
+          <p>Un principio orientador útil para el aula universitaria es que la discapacidad no reside únicamente en la persona, sino también en un diseño curricular rígido que no contempló, desde el inicio, la diversidad de quienes aprenden.</p>
+        </div>
+      </details>
+
+      <details class="topic">
+        <summary><span class="num">2</span><span>Marco de referencia internacional</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>La Convención sobre los Derechos de las Personas con Discapacidad de la Organización de las Naciones Unidas reconoce el acceso a la educación en igualdad de condiciones como un derecho humano, y establece la obligación de los Estados de garantizar ajustes razonables y entornos accesibles, incluidos los digitales.</p>
+          <p>En el ámbito educativo, la UNESCO ha impulsado guías y marcos de política para el aprendizaje digital inclusivo, promoviendo que las tecnologías se diseñen y utilicen bajo un enfoque centrado en las personas y orientado a cerrar —y no ampliar— las brechas de acceso al conocimiento.</p>
+          <p>Estos marcos son relevantes para el profesorado universitario porque trasladan la responsabilidad de la accesibilidad del estudiante hacia la institución y el diseño del curso.</p>
+        </div>
+      </details>
+
+      <details class="topic">
+        <summary><span class="num">3</span><span>Tipos de discapacidad y barreras de aprendizaje asociadas</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>Cada tipo de discapacidad plantea barreras distintas frente a los materiales y actividades típicas de una clase universitaria:</p>
+          <ul>
+            <li><strong>Discapacidad visual:</strong> dificultad para acceder a texto impreso, presentaciones con solo imágenes, videos sin descripción.</li>
+            <li><strong>Discapacidad auditiva:</strong> barreras frente a exposiciones orales, videos sin subtítulos y discusiones grupales rápidas.</li>
+            <li><strong>Discapacidad motriz:</strong> limitaciones para el manejo de teclado o mouse convencionales, para tomar notas a mano o para desplazarse a ciertos espacios.</li>
+            <li><strong>Discapacidad intelectual o cognitiva:</strong> necesidad de instrucciones claras, tiempos flexibles y múltiples formas de explicar un mismo contenido.</li>
+            <li><strong>Discapacidad múltiple o de baja prevalencia:</strong> requiere combinar varias de las estrategias anteriores de forma personalizada.</li>
+          </ul>
+          <p>Identificar la barrera concreta —y no solo la etiqueta diagnóstica— es lo que permite elegir la tecnología o estrategia pedagógica adecuada.</p>
+        </div>
+      </details>
+
+      <details class="topic">
+        <summary><span class="num">4</span><span>Tecnologías de apoyo y recursos TIC por tipo de barrera</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>Existe un ecosistema amplio de tecnologías de apoyo (TA) que el profesorado puede conocer y recomendar, aun sin ser experto técnico en cada una:</p>
+          <ul>
+            <li><strong>Lectores de pantalla</strong> (como NVDA o VoiceOver), que convierten texto e interfaces en voz para estudiantes con discapacidad visual.</li>
+            <li><strong>Subtitulado y transcripción automática</strong> para videos y clases grabadas, útiles para estudiantes con discapacidad auditiva y también para quienes aprenden en una segunda lengua.</li>
+            <li><strong>Software de reconocimiento de voz</strong>, que permite dictar texto en lugar de escribirlo, de utilidad para estudiantes con discapacidad motriz.</li>
+            <li><strong>Teclados, mouse y superficies adaptadas</strong>, así como control por voz o por movimiento ocular, para quienes tienen limitaciones en la motricidad fina.</li>
+            <li><strong>Sistemas de Comunicación Aumentativa y Alternativa (CAA)</strong>, incluidos tableros pictográficos digitales, que apoyan a estudiantes con dificultades en el habla o el lenguaje.</li>
+            <li><strong>Materiales en braille digital y líneas braille</strong>, complementarias a los lectores de pantalla para usuarios avanzados.</li>
+          </ul>
+          <p>Un principio práctico: no es necesario dominar cada herramienta; basta con diseñar materiales compatibles con ellas —por ejemplo, documentos con estructura de encabezados, texto alternativo en imágenes y videos subtitulados— para que la tecnología de apoyo del estudiante funcione correctamente.</p>
+        </div>
+      </details>
+
+      <details class="topic">
+        <summary><span class="num">5</span><span>Diseño Universal para el Aprendizaje (DUA)</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>El Diseño Universal para el Aprendizaje, desarrollado por CAST, propone planear los cursos desde el inicio para la diversidad del estudiantado, en lugar de crear adaptaciones individuales posteriores. Se organiza en tres principios:</p>
+          <ul>
+            <li><strong>Múltiples formas de representación</strong> (el "qué" del aprendizaje): ofrecer el contenido en más de un formato —texto, audio, imagen, ejemplo práctico— para que cada estudiante acceda a la información por la vía que mejor le funcione.</li>
+            <li><strong>Múltiples formas de acción y expresión</strong> (el "cómo"): permitir que el estudiante demuestre lo aprendido de distintas maneras —un ensayo, un audio, un esquema, una presentación oral— y no solo mediante un único formato de evaluación.</li>
+            <li><strong>Múltiples formas de motivación e implicación</strong> (el "por qué"): ofrecer opciones de reto, relevancia y autonomía que sostengan el interés de estudiantes con trayectorias e intereses distintos.</li>
+          </ul>
+          <p>Diseñar con base en el DUA beneficia no solo a los estudiantes con discapacidad, sino a la totalidad del grupo, incluyendo a quienes enfrentan barreras temporales o circunstanciales.</p>
+        </div>
+      </details>
+
+      <details class="topic">
+        <summary><span class="num">6</span><span>El papel del docente universitario: buenas prácticas de accesibilidad digital</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <div class="topic-body">
+          <p>Algunas prácticas concretas, de bajo costo y alto impacto, que el profesorado puede incorporar de inmediato:</p>
+          <ul>
+            <li>Usar estilos de encabezado (Título 1, Título 2) en los documentos, en lugar de solo aumentar el tamaño o negrita del texto.</li>
+            <li>Añadir texto alternativo descriptivo a imágenes, gráficas y diagramas incluidos en materiales y presentaciones.</li>
+            <li>Activar o incluir subtítulos en videos y grabaciones de clase, y compartir la transcripción cuando sea posible.</li>
+            <li>Evitar comunicar información únicamente por color (por ejemplo, "los elementos en rojo son obligatorios") y usar también texto o íconos.</li>
+            <li>Ofrecer más de una forma de entrega o de evaluación para un mismo objetivo de aprendizaje, cuando la naturaleza de la actividad lo permita.</li>
+            <li>Consultar de manera oportuna, y con respeto a la privacidad del estudiante, los servicios institucionales de apoyo a la inclusión de la propia universidad.</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ===================== MATERIALES DE CONSULTA ===================== -->
+  <section id="materiales" aria-labelledby="materiales-h">
+    <div class="section-head">
+      <span class="kicker">Para profundizar</span>
+      <h2 id="materiales-h">Materiales externos de consulta formal</h2>
+      <p>Fuentes institucionales y académicas para ampliar cada apartado del tema.</p>
+    </div>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <span class="tag">UDL Guidelines · CAST</span>
+        <h3>Universal Design for Learning Guidelines</h3>
+        <p>Marco de referencia completo del Diseño Universal para el Aprendizaje, con sus tres principios y organizadores gráficos descargables en varios idiomas.</p>
+        <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener">udlguidelines.cast.org</a>
+      </div>
+      <div class="resource-card">
+        <span class="tag">UNESCO · IIPE</span>
+        <h3>Educación inclusiva: superar las barreras de la tecnología</h3>
+        <p>Artículo institucional sobre aprendizaje digital inclusivo y casos de política pública en América Latina.</p>
+        <a href="https://www.iiep.unesco.org/es/articles/educacion-inclusiva-superar-las-barreras-de-la-tecnologia" target="_blank" rel="noopener">iiep.unesco.org</a>
+      </div>
+      <div class="resource-card">
+        <span class="tag">UNESCO</span>
+        <h3>Aprendizaje digital y transformación educativa</h3>
+        <p>Panorama general del enfoque de la UNESCO sobre inclusión digital, dirigido a poblaciones históricamente marginadas, incluidas las personas con discapacidad.</p>
+        <a href="https://www.unesco.org/es/digital-education/need-know" target="_blank" rel="noopener">unesco.org</a>
+      </div>
+      <div class="resource-card">
+        <span class="tag">Naciones Unidas</span>
+        <h3>Convención sobre los Derechos de las Personas con Discapacidad</h3>
+        <p>Texto normativo internacional que reconoce el derecho a la educación inclusiva y a la accesibilidad, incluida la digital.</p>
+        <a href="https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf" target="_blank" rel="noopener">un.org</a>
+      </div>
+      <div class="resource-card">
+        <span class="tag">W3C</span>
+        <h3>Pautas de Accesibilidad para el Contenido Web (WCAG)</h3>
+        <p>Estándar internacional de referencia para diseñar materiales y sitios web accesibles, aplicable a la elaboración de contenidos de curso.</p>
+        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">w3.org/WAI</a>
+      </div>
+      <div class="resource-card">
+        <span class="tag">CEPAL</span>
+        <h3>Biblioguía: TIC, discapacidad e inclusión social</h3>
+        <p>Repositorio de informes y estudios de organismos internacionales sobre tecnología y discapacidad en América Latina.</p>
+        <a href="https://biblioguias.cepal.org/discapacidad/TIC" target="_blank" rel="noopener">biblioguias.cepal.org</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ACTIVIDADES ===================== -->
+  <section id="actividades" aria-labelledby="actividades-h">
+    <div class="section-head">
+      <span class="kicker">Aprendizaje activo</span>
+      <h2 id="actividades-h">Actividades prácticas para Classroom</h2>
+      <p>Las siguientes cuatro actividades deberán entregarse en la plataforma Google Classroom del curso, conforme a las fechas indicadas por su docente.</p>
+    </div>
+
+    <!-- Actividad 1: Foro -->
+    <article class="activity" id="foro">
+      <div class="activity__head">
+        <span class="activity__badge">Actividad 1 · Foro de mediación</span>
+        <h3>Foro: "¿Tecnología neutral o tecnología incluyente?"</h3>
+      </div>
+      <p class="classroom-note">Entregable en Classroom: participación escrita en el foro (mínimo una intervención inicial y una réplica a un compañero o compañera).</p>
+      <p><strong>Pregunta detonadora:</strong> ¿Puede una plataforma educativa considerarse "neutral" si no fue diseñada pensando en estudiantes con discapacidad, aun cuando funcione correctamente para la mayoría del grupo?</p>
+      <ol class="steps">
+        <li>Lea nuevamente el apartado 5 del contenido temático (Diseño Universal para el Aprendizaje) antes de responder.</li>
+        <li>Redacte una intervención inicial de entre 150 y 200 palabras que responda a la pregunta detonadora, apoyándose en al menos un concepto revisado en la guía (por ejemplo, barrera, accesibilidad o principio del DUA).</li>
+        <li>Publique su intervención en el foro habilitado en Classroom, dentro del plazo establecido.</li>
+        <li>Lea al menos dos intervenciones de sus compañeros y responda a una de ellas con una réplica argumentada (60 a 100 palabras), que aporte una idea nueva o un matiz, no solo una opinión de acuerdo o desacuerdo.</li>
+      </ol>
+      <div class="example-box">
+        <h4>Ejemplo de intervención inicial (modelo, no para copiar)</h4>
+        <p>"Considero que ninguna tecnología es neutral por sí misma, porque toda herramienta refleja las decisiones de quienes la diseñaron. Una plataforma que no permite navegación por teclado, por ejemplo, no es neutral: excluye de facto a estudiantes con discapacidad motriz, aunque quienes la desarrollaron no lo hayan hecho de forma intencional. El principio de representación múltiple del DUA nos recuerda que la responsabilidad de anticipar estas barreras corresponde a quien diseña el curso, no solo a quien fabrica la plataforma."</p>
+      </div>
+    </article>
+
+    <!-- Actividad 2: Aprendizaje significativo -->
+    <article class="activity" id="significativa">
+      <div class="activity__head">
+        <span class="activity__badge badge-gold">Actividad 2 · Aprendizaje significativo</span>
+        <h3>Auditoría breve de accesibilidad de un material propio</h3>
+      </div>
+      <p class="classroom-note">Entregable en Classroom: documento breve (una a dos páginas) con la auditoría y la propuesta de mejora.</p>
+      <p>Esta actividad busca que usted aplique lo aprendido a un material real de su propia práctica como estudiante universitario o, si ya funge como docente en formación, de una clase que haya impartido o apoyado.</p>
+      <ol class="steps">
+        <li>Seleccione un material didáctico real y breve: una presentación, una lectura en PDF, un video de clase o una actividad de una de sus asignaturas.</li>
+        <li>Revise el material contra tres criterios de accesibilidad vistos en la guía: uso de encabezados y estructura, texto alternativo en imágenes, y disponibilidad de subtítulos o transcripción si aplica.</li>
+        <li>Elabore una tabla breve con dos columnas: "Barrera identificada" y "Ajuste propuesto", con al menos tres filas.</li>
+        <li>Redacte un párrafo final explicando qué principio del DUA (representación, acción y expresión, o motivación) atiende cada ajuste propuesto.</li>
+        <li>Suba el documento a Classroom en formato PDF o Word.</li>
+      </ol>
+      <div class="example-box">
+        <h4>Ejemplo de fila de la tabla</h4>
+        <p><strong>Barrera identificada:</strong> el video de la clase no cuenta con subtítulos.<br>
+        <strong>Ajuste propuesto:</strong> activar el subtitulado automático de la plataforma y revisar manualmente los términos técnicos mal transcritos.<br>
+        <strong>Principio del DUA:</strong> múltiples formas de representación.</p>
+      </div>
+    </article>
+
+    <!-- Actividad 3: Caso práctico -->
+    <article class="activity" id="caso">
+      <div class="activity__head">
+        <span class="activity__badge">Actividad 3 · Caso práctico</span>
+        <h3>Caso: Daniela y el curso de estadística</h3>
+      </div>
+      <p class="classroom-note">Entregable en Classroom: respuestas escritas al caso (máximo una página).</p>
+      <div class="case-text">
+        <p>Daniela es estudiante de segundo semestre y tiene baja visión. Puede leer pantallas con un aumento considerable de zoom y con alto contraste, pero no puede leer materiales impresos en tamaño estándar. Su profesor de estadística proyecta cada semana diapositivas con tablas de datos muy densas, en letra pequeña, y comparte los ejercicios en fotografías escaneadas de un libro impreso.</p>
+        <p>Daniela ha solicitado los materiales con anticipación, pero suele recibirlos el mismo día de la clase o un día después, cuando ya se discutió el tema en el aula. Como consecuencia, ha comenzado a llegar tarde a la clase de manera deliberada, para evitar la sensación de no poder seguir el ritmo del grupo.</p>
+      </div>
+      <p>Responda de manera individual, y en caso de que la actividad se realice en equipo, discuta sus respuestas antes de entregarlas:</p>
+      <ol class="steps">
+        <li>Identifique al menos dos barreras —no solo la discapacidad de Daniela— presentes en este caso.</li>
+        <li>Proponga dos ajustes concretos y de bajo costo que el profesor podría implementar la próxima semana, distintos entre sí.</li>
+        <li>Explique cómo el hecho de recibir los materiales de manera anticipada beneficiaría también a otros estudiantes del grupo que no tienen discapacidad, y no solo a Daniela.</li>
+        <li>A partir de este caso, redacte una recomendación de una sola oración para incluir en una guía de buenas prácticas docentes de su universidad.</li>
+      </ol>
+    </article>
+
+    <!-- Actividad 4: Quiz -->
+    <article class="activity" id="quiz">
+      <div class="activity__head">
+        <span class="activity__badge badge-gold">Actividad 4 · Autoevaluación</span>
+        <h3>Quiz de comprensión del tema</h3>
+      </div>
+      <p class="classroom-note">Entregable en Classroom: captura de pantalla del resultado obtenido al finalizar el quiz.</p>
+      <p>Responda las cinco preguntas y presione "Calificar quiz" para conocer su puntaje. Puede intentarlo más de una vez antes de tomar la captura de pantalla final.</p>
+
+      <form id="quiz-form">
+        <div class="quiz-item" data-correct="c">
+          <p class="q">1. Según el enfoque revisado en esta guía, la discapacidad se entiende principalmente como:</p>
+          <label><input type="radio" name="q1" value="a"> Una condición exclusivamente médica de la persona.</label>
+          <label><input type="radio" name="q1" value="b"> Una limitación que impide cualquier forma de aprendizaje.</label>
+          <label><input type="radio" name="q1" value="c"> La interacción entre una condición personal y las barreras del entorno.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="b">
+          <p class="q">2. ¿Cuál de las siguientes tecnologías apoya principalmente a estudiantes con discapacidad visual?</p>
+          <label><input type="radio" name="q2" value="a"> El software de reconocimiento de voz para dictar texto.</label>
+          <label><input type="radio" name="q2" value="b"> El lector de pantalla que convierte texto en voz.</label>
+          <label><input type="radio" name="q2" value="c"> El teclado adaptado de una sola mano.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="a">
+          <p class="q">3. El Diseño Universal para el Aprendizaje (DUA) propone, entre otros principios, ofrecer:</p>
+          <label><input type="radio" name="q3" value="a"> Múltiples formas de representación, de acción y expresión, y de motivación.</label>
+          <label><input type="radio" name="q3" value="b"> Un único formato de evaluación para garantizar equidad entre estudiantes.</label>
+          <label><input type="radio" name="q3" value="c"> Adaptaciones individuales que se diseñan solo después de iniciado el curso.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="c">
+          <p class="q">4. Una buena práctica docente de accesibilidad digital de bajo costo es:</p>
+          <label><input type="radio" name="q4" value="a"> Comunicar la información obligatoria únicamente resaltándola en color rojo.</label>
+          <label><input type="radio" name="q4" value="b"> Enviar los materiales del curso el mismo día de la clase.</label>
+          <label><input type="radio" name="q4" value="c"> Usar estilos de encabezado y agregar texto alternativo a las imágenes.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="b">
+          <p class="q">5. De acuerdo con la guía, diseñar cursos bajo los principios del DUA beneficia principalmente a:</p>
+          <label><input type="radio" name="q5" value="a"> Únicamente a los estudiantes que cuentan con un diagnóstico formal de discapacidad.</label>
+          <label><input type="radio" name="q5" value="b"> A la totalidad del grupo, incluyendo a quienes enfrentan barreras temporales o circunstanciales.</label>
+          <label><input type="radio" name="q5" value="c"> Solo a la institución, en términos de cumplimiento normativo.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button type="button" class="btn" id="btn-grade">Calificar quiz</button>
+          <button type="button" class="btn secondary" id="btn-reset-quiz">Reiniciar</button>
+          <div id="quiz-result" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </article>
+  </section>
+
+  <!-- ===================== REFLEXIÓN Y APLICACIÓN ===================== -->
+  <section id="reflexion" aria-labelledby="reflexion-h">
+    <div class="reflect">
+      <div class="section-head">
+        <span class="kicker" style="background:rgba(255,255,255,.15); color:var(--gold);">Cierre</span>
+        <h2 id="reflexion-h">Reflexión y aplicación</h2>
+        <p>Antes de concluir, retome su respuesta inicial de la sección "Pregunta de conocimiento previo" y compárela con lo que ha analizado a lo largo de la guía.</p>
+      </div>
+      <div class="reflect-grid">
+        <div class="reflect-card">
+          <h3>En su vida académica</h3>
+          <p>¿Qué cambiaría en la forma en que usted, como estudiante, prepara o presenta sus propios trabajos, para que resulten accesibles a un compañero con discapacidad visual, auditiva o motriz?</p>
+        </div>
+        <div class="reflect-card">
+          <h3>En su futura práctica docente</h3>
+          <p>Piense en una asignatura que imparta o que probablemente imparta en el futuro. ¿Qué principio del DUA aplicaría primero y por qué?</p>
+        </div>
+        <div class="reflect-card">
+          <h3>En su institución</h3>
+          <p>¿Qué acción, por pequeña que sea, podría proponer a su departamento académico para avanzar hacia una educación más inclusiva?</p>
+        </div>
+      </div>
+      <label for="plan-final" style="display:block; margin-top:1.6rem; font-weight:700;">Plan personal de aplicación (borrador)</label>
+      <textarea id="plan-final" aria-label="Plan personal de aplicación" placeholder="Redacte aquí un breve plan de tres a cinco líneas sobre cómo incorporará lo aprendido en su vida académica y profesional. Traslade después esta reflexión a la entrega correspondiente en Classroom, según lo indique su docente."></textarea>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>Universidad de la Ciénega · Plantel Centro</strong><br>
+  Guía interactiva elaborada con fines de formación docente y desarrollo instruccional. Tema 3: Las TIC en la Educación de las Personas con Discapacidad.</p>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+
+  // Tamaño de texto
+  var scale = 1;
+  function applyScale(){ root.style.setProperty('--scale', scale.toFixed(2)); }
+  document.getElementById('btn-font-inc').addEventListener('click', function(){
+    scale = Math.min(1.4, scale + 0.1); applyScale();
+  });
+  document.getElementById('btn-font-dec').addEventListener('click', function(){
+    scale = Math.max(0.85, scale - 0.1); applyScale();
+  });
+  document.getElementById('btn-font-reset').addEventListener('click', function(){
+    scale = 1; applyScale();
+  });
+
+  // Alto contraste
+  var contrastBtn = document.getElementById('btn-contrast');
+  contrastBtn.addEventListener('click', function(){
+    var on = root.getAttribute('data-contrast') === 'alto';
+    if(on){ root.removeAttribute('data-contrast'); contrastBtn.setAttribute('aria-pressed','false'); }
+    else { root.setAttribute('data-contrast','alto'); contrastBtn.setAttribute('aria-pressed','true'); }
+  });
+
+  // Fuente de lectura fácil
+  var fontBtn = document.getElementById('btn-readfont');
+  fontBtn.addEventListener('click', function(){
+    var on = root.getAttribute('data-font') === 'lectura';
+    if(on){ root.removeAttribute('data-font'); fontBtn.setAttribute('aria-pressed','false'); }
+    else { root.setAttribute('data-font','lectura'); fontBtn.setAttribute('aria-pressed','true'); }
+  });
+
+  // Quiz
+  var form = document.getElementById('quiz-form');
+  var items = form.querySelectorAll('.quiz-item');
+  var resultBox = document.getElementById('quiz-result');
+
+  document.getElementById('btn-grade').addEventListener('click', function(){
+    var score = 0;
+    var answered = 0;
+    items.forEach(function(item){
+      var name = item.querySelector('input[type="radio"]').name;
+      var selected = form.querySelector('input[name="'+name+'"]:checked');
+      var fb = item.querySelector('.feedback');
+      item.classList.remove('correct','incorrect');
+      if(!selected){
+        fb.textContent = 'No se seleccionó respuesta para esta pregunta.';
+        item.classList.add('incorrect');
+        return;
+      }
+      answered++;
+      var correct = item.getAttribute('data-correct');
+      if(selected.value === correct){
+        score++;
+        item.classList.add('correct');
+        fb.textContent = 'Respuesta correcta.';
+      } else {
+        item.classList.add('incorrect');
+        fb.textContent = 'Respuesta incorrecta. Revise nuevamente el apartado correspondiente del contenido temático.';
+      }
+    });
+    var total = items.length;
+    resultBox.textContent = 'Puntaje obtenido: ' + score + ' de ' + total + ' (' + Math.round(score/total*100) + '%).';
+    resultBox.classList.remove('pass','retry');
+    resultBox.classList.add('show', score === total ? 'pass' : 'retry');
+  });
+
+  document.getElementById('btn-reset-quiz').addEventListener('click', function(){
+    form.reset();
+    items.forEach(function(item){ item.classList.remove('correct','incorrect'); item.querySelector('.feedback').textContent=''; });
+    resultBox.classList.remove('show','pass','retry');
+    resultBox.textContent = '';
+  });
+})();
+</script>
+</body>
+</html>
