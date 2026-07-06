@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La penetración de las TIC en el ámbito educativo | Universidad de la Ciénega</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,18..144,400;0,18..144,500;0,18..144,600;1,18..144,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF1F7;
+    --surface: #FFFFFF;
+    --surface-2: #F5F7FC;
+    --ink: #172142;
+    --ink-soft: #46527A;
+    --ink-faint: #7683A6;
+    --accent-tech: #1E7F86;
+    --accent-tech-soft: #E3F1F1;
+    --accent-signal: #C97A1E;
+    --accent-signal-soft: #FBEEDC;
+    --line: #CCD5E8;
+    --radius: 14px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Literata', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+  }
+  ::selection{background:var(--accent-tech-soft);color:var(--ink);}
+
+  a{color:var(--accent-tech);}
+
+  h1,h2,h3,h4{font-family:var(--display); color:var(--ink); margin:0 0 .5em 0; letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent-tech); font-weight:600; margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--accent-tech);display:inline-block;}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width: 920px){
+    .shell{grid-template-columns:1fr;}
+    .rail{position:static !important; height:auto !important; order:2; padding-bottom:40px;}
+  }
+
+  /* ---------- Rail / signature progress-network ---------- */
+  .rail{
+    position:sticky; top:0; height:100vh; padding:36px 18px 36px 28px;
+    display:flex; flex-direction:column; gap:28px;
+  }
+  .rail-brand{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; text-align:center;
+  }
+  .rail-brand img{max-width:100%; height:auto; display:block; margin:0 auto;}
+  .rail-brand .plantel{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px;}
+
+  .network-nav{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 16px; flex:1; overflow-y:auto;
+  }
+  .network-nav h4{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:16px; font-weight:600;}
+  .node-list{list-style:none; margin:0; padding:0; position:relative;}
+  .node-list::before{
+    content:""; position:absolute; left:6px; top:8px; bottom:8px; width:2px; background:var(--line);
+  }
+  .node-item{position:relative; padding:0 0 22px 26px;}
+  .node-item:last-child{padding-bottom:0;}
+  .node-dot{
+    position:absolute; left:0; top:2px; width:14px; height:14px; border-radius:50%;
+    background:var(--surface); border:2px solid var(--line); transition:all .25s ease;
+  }
+  .node-item.active .node-dot{border-color:var(--accent-tech); background:var(--accent-tech); box-shadow:0 0 0 4px var(--accent-tech-soft);}
+  .node-item a{
+    display:block; font-family:var(--display); font-size:13.5px; font-weight:500; color:var(--ink-soft);
+    text-decoration:none; transition:color .2s ease;
+  }
+  .node-item.active a{color:var(--ink); font-weight:600;}
+  .node-item a:hover{color:var(--accent-tech);}
+
+  /* ---------- Main column ---------- */
+  main{padding:48px 40px 100px 40px;}
+  @media (max-width:920px){ main{padding:32px 20px 80px;} }
+
+  section{padding:56px 0; border-bottom:1px solid var(--line); scroll-margin-top:24px;}
+  section:last-of-type{border-bottom:none;}
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px 30px;
+  }
+
+  /* ---------- Hero / signature network diagram ---------- */
+  .hero{border-bottom:none; padding-top:12px;}
+  .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center;}
+  @media (max-width:920px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(28px,4vw,42px); line-height:1.1;}
+  .hero p.lead{font-size:18px; color:var(--ink-soft); max-width:52ch;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+  .pill{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; padding:6px 12px; border-radius:99px;
+    background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft);
+  }
+
+  .diagram-wrap{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px;}
+  .diagram-wrap svg{width:100%; height:auto; display:block;}
+  .node-pulse{animation:pulse 3s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.55;} 50%{opacity:1;}}
+  @media (prefers-reduced-motion: reduce){ .node-pulse{animation:none; opacity:.9;} }
+
+  /* ---------- Typographic content ---------- */
+  h2.section-title{font-size:26px;}
+  h3{font-size:19px; margin-top:28px;}
+  p{margin:0 0 16px 0; color:var(--ink-soft);}
+  .kicker-num{font-family:var(--mono); font-size:13px; color:var(--accent-tech); font-weight:600;}
+
+  ul.content-list, ol.content-list{padding-left:22px; color:var(--ink-soft);}
+  ul.content-list li, ol.content-list li{margin-bottom:10px;}
+
+  .concept-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;}
+  @media (max-width:760px){ .concept-grid{grid-template-columns:1fr;} }
+  .concept-card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .concept-card .tag{font-family:var(--mono); font-size:11px; color:var(--accent-tech); text-transform:uppercase; letter-spacing:.08em; font-weight:600;}
+  .concept-card h4{font-size:16px; margin:8px 0 6px;}
+  .concept-card p{font-size:14.5px; margin:0;}
+
+  /* ---------- Resource list ---------- */
+  .resource{
+    display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line);
+  }
+  .resource:first-of-type{border-top:none;}
+  .resource .idx{font-family:var(--mono); color:var(--accent-tech); font-weight:600; font-size:14px; min-width:26px;}
+  .resource h4{font-size:16px; margin:0 0 4px 0;}
+  .resource p{margin:0; font-size:14.5px;}
+  .resource a{font-family:var(--mono); font-size:12.5px; word-break:break-all;}
+
+  /* ---------- Prior knowledge box ---------- */
+  .prior-box{background:var(--accent-tech-soft); border:1px solid #BFE0DF; border-radius:var(--radius); padding:26px 28px;}
+  .prior-box .eyebrow{color:var(--accent-tech);}
+  textarea{
+    width:100%; min-height:110px; margin-top:14px; padding:14px; border-radius:10px; border:1px solid var(--line);
+    font-family:var(--body); font-size:15px; resize:vertical; background:var(--surface); color:var(--ink);
+  }
+  textarea:focus{outline:2px solid var(--accent-tech); outline-offset:1px;}
+  .hint{font-size:13px; color:var(--ink-faint); margin-top:8px; font-family:var(--mono);}
+
+  /* ---------- Activities ---------- */
+  .activity{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:30px 32px; margin-top:26px;
+    border-left:4px solid var(--accent-signal);
+  }
+  .activity-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px;}
+  .activity-head .act-num{font-family:var(--mono); font-size:13px; color:var(--accent-signal); font-weight:700; background:var(--accent-signal-soft); padding:3px 9px; border-radius:6px;}
+  .activity-head h3{margin:0; font-size:20px;}
+  .activity .subtitle{color:var(--ink-faint); font-family:var(--mono); font-size:12.5px; margin-bottom:18px; text-transform:uppercase; letter-spacing:.06em;}
+
+  .steps{counter-reset:step; list-style:none; padding:0; margin:18px 0;}
+  .steps li{
+    counter-increment:step; position:relative; padding:10px 0 10px 40px; border-top:1px dashed var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:10px; width:24px; height:24px; border-radius:6px;
+    background:var(--ink); color:#fff; font-family:var(--mono); font-size:12px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .steps strong{color:var(--ink);}
+
+  .example-box{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-top:16px;
+  }
+  .example-box .tag{font-family:var(--mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em; font-weight:600; margin-bottom:6px; display:block;}
+  .example-box p{margin:0; font-size:14.5px;}
+
+  .submit-note{
+    display:flex; align-items:center; gap:10px; margin-top:20px; padding:12px 16px; background:var(--surface-2);
+    border-radius:10px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); border:1px solid var(--line);
+  }
+  .submit-note svg{flex-shrink:0;}
+
+  /* ---------- Quiz ---------- */
+  .quiz-q{margin-bottom:22px; padding-bottom:22px; border-bottom:1px dashed var(--line);}
+  .quiz-q:last-of-type{border-bottom:none;}
+  .quiz-q p.q-text{font-family:var(--display); font-weight:500; color:var(--ink); font-size:16px; margin-bottom:12px;}
+  .options{display:flex; flex-direction:column; gap:8px;}
+  .option{
+    display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid var(--line); border-radius:9px;
+    cursor:pointer; transition:all .15s ease; background:var(--surface);
+  }
+  .option:hover{border-color:var(--accent-tech);}
+  .option input{accent-color:var(--accent-tech);}
+  .option.correct-answer{border-color:var(--accent-tech); background:var(--accent-tech-soft);}
+  .option.wrong-answer{border-color:#C9553F; background:#FBECE8;}
+  #quiz-submit{
+    font-family:var(--mono); font-size:13.5px; font-weight:600; letter-spacing:.03em; background:var(--ink); color:#fff;
+    border:none; padding:13px 26px; border-radius:9px; cursor:pointer; margin-top:12px;
+  }
+  #quiz-submit:hover{background:var(--accent-tech);}
+  #quiz-result{margin-top:18px; padding:18px 20px; border-radius:10px; font-family:var(--mono); display:none;}
+  #quiz-result.show{display:block;}
+  #quiz-result .score{font-size:24px; font-weight:700; color:var(--ink); display:block; margin-bottom:6px;}
+
+  /* ---------- Reflection ---------- */
+  .reflect-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:22px;}
+  @media (max-width:760px){ .reflect-grid{grid-template-columns:1fr;} }
+  .reflect-card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px;}
+  .reflect-card h4{font-size:15px; margin-bottom:10px;}
+
+  footer{
+    text-align:center; padding:36px 20px; font-family:var(--mono); font-size:12px; color:var(--ink-faint);
+  }
+
+  .top-badge{
+    position:fixed; top:16px; right:16px; background:var(--ink); color:#fff; font-family:var(--mono); font-size:11px;
+    padding:8px 14px; border-radius:99px; z-index:50; letter-spacing:.03em; box-shadow:0 4px 14px rgba(23,33,66,.25);
+  }
+  @media (max-width:920px){ .top-badge{display:none;} }
+</style>
+</head>
+<body>
+
+<div class="top-badge" id="scroll-badge">INICIO</div>
+
+<div class="shell">
+  <!-- RAIL: signature progress network -->
+  <aside class="rail">
+    <div class="rail-brand">
+      <img src="data:image/png;base64,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" alt="Universidad de la Ciénega">
+      <div class="plantel">Plantel Centro · Lic. en Pedagogía</div>
+    </div>
+    <nav class="network-nav" aria-label="Progreso de la unidad">
+      <h4>Ruta de la unidad</h4>
+      <ul class="node-list" id="node-list">
+        <li class="node-item" data-target="intro"><span class="node-dot"></span><a href="#intro">Introducción</a></li>
+        <li class="node-item" data-target="contenido"><span class="node-dot"></span><a href="#contenido">Contenido general</a></li>
+        <li class="node-item" data-target="recursos"><span class="node-dot"></span><a href="#recursos">Recursos externos</a></li>
+        <li class="node-item" data-target="previo"><span class="node-dot"></span><a href="#previo">Conocimiento previo</a></li>
+        <li class="node-item" data-target="act1"><span class="node-dot"></span><a href="#act1">Actividad 1 · Foro</a></li>
+        <li class="node-item" data-target="act2"><span class="node-dot"></span><a href="#act2">Actividad 2 · Aplicación</a></li>
+        <li class="node-item" data-target="act3"><span class="node-dot"></span><a href="#act3">Actividad 3 · Caso práctico</a></li>
+        <li class="node-item" data-target="act4"><span class="node-dot"></span><a href="#act4">Actividad 4 · Quiz</a></li>
+        <li class="node-item" data-target="reflexion"><span class="node-dot"></span><a href="#reflexion">Reflexión y aplicación</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="intro-hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Unidad temática</div>
+          <h1>La penetración de las TIC en el ámbito educativo</h1>
+          <p class="lead">Un recorrido constructivista y basado en problemas para comprender cómo las tecnologías de la información y la comunicación se integran —con oportunidades y tensiones— en la práctica docente universitaria.</p>
+          <div class="meta-row">
+            <span class="pill">Licenciatura en Pedagogía</span>
+            <span class="pill">Modalidad: autogestiva + Classroom</span>
+            <span class="pill">4 actividades evaluables</span>
+            <span class="pill">Duración estimada: 3 horas</span>
+          </div>
+        </div>
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de red que representa dispositivos y plataformas tecnológicas conectándose con el aula">
+            <line x1="60" y1="60" x2="180" y2="160" stroke="#CCD5E8" stroke-width="2"/>
+            <line x1="300" y1="50" x2="180" y2="160" stroke="#CCD5E8" stroke-width="2"/>
+            <line x1="50" y1="220" x2="180" y2="160" stroke="#CCD5E8" stroke-width="2"/>
+            <line x1="300" y1="230" x2="180" y2="160" stroke="#CCD5E8" stroke-width="2"/>
+            <line x1="180" y1="60" x2="180" y2="160" stroke="#CCD5E8" stroke-width="2"/>
+            <circle class="node-pulse" cx="60" cy="60" r="26" fill="#E3F1F1" stroke="#1E7F86" stroke-width="2"/>
+            <text x="60" y="65" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#172142">Datos</text>
+            <circle class="node-pulse" cx="300" cy="50" r="26" fill="#E3F1F1" stroke="#1E7F86" stroke-width="2" style="animation-delay:.4s"/>
+            <text x="300" y="55" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#172142">Nube</text>
+            <circle class="node-pulse" cx="180" cy="60" r="26" fill="#E3F1F1" stroke="#1E7F86" stroke-width="2" style="animation-delay:.8s"/>
+            <text x="180" y="65" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="#172142">Plataformas</text>
+            <circle class="node-pulse" cx="50" cy="220" r="26" fill="#E3F1F1" stroke="#1E7F86" stroke-width="2" style="animation-delay:1.2s"/>
+            <text x="50" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#172142">Redes</text>
+            <circle class="node-pulse" cx="300" cy="230" r="26" fill="#E3F1F1" stroke="#1E7F86" stroke-width="2" style="animation-delay:1.6s"/>
+            <text x="300" y="235" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#172142">Dispositivos</text>
+            <circle cx="180" cy="160" r="42" fill="#172142"/>
+            <text x="180" y="156" text-anchor="middle" font-family="Space Grotesk" font-weight="600" font-size="13" fill="#fff">AULA</text>
+            <text x="180" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="8.5" fill="#E3F1F1">nodo central</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRODUCCIÓN -->
+    <section id="intro">
+      <span class="kicker-num">05.1</span>
+      <h2 class="section-title">Introducción</h2>
+      <p>Durante las últimas tres décadas, las tecnologías de la información y la comunicación (TIC) han dejado de ser un recurso auxiliar para convertirse en un componente estructural de los procesos educativos. Su penetración no ocurre de manera uniforme ni neutral: se filtra en los planes de estudio, en la organización del tiempo escolar, en las formas de evaluar y, de manera decisiva, en el rol que el docente asume frente al conocimiento.</p>
+      <p>Comprender este fenómeno exige superar la idea de la tecnología como simple herramienta y analizarla como un entramado que transforma la relación entre quien enseña, quien aprende y el saber mismo. Esta unidad propone abordar dicho entramado desde una perspectiva constructivista: el estudiante de Pedagogía no solo describirá el fenómeno, sino que lo problematizará a partir de casos reales y lo aplicará en decisiones didácticas concretas para su futura práctica docente.</p>
+      <div class="card">
+        <p style="margin-bottom:0;"><strong>Propósito de la unidad:</strong> que el estudiante analice críticamente los procesos, modelos y tensiones asociados a la incorporación de las TIC en la educación superior, y diseñe estrategias de mediación pedagógica coherentes con un uso significativo de la tecnología.</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO GENERAL -->
+    <section id="contenido">
+      <span class="kicker-num">05.2</span>
+      <h2 class="section-title">Contenido general del tema</h2>
+
+      <h3>1. ¿Qué entendemos por "penetración de las TIC"?</h3>
+      <p>El concepto refiere al proceso mediante el cual los dispositivos, plataformas, redes y lenguajes digitales se incorporan progresivamente a las prácticas educativas, modificando tanto la infraestructura material de las instituciones como las representaciones que docentes y estudiantes tienen sobre la enseñanza y el aprendizaje. No se trata únicamente de equipamiento, sino de una transformación cultural y epistemológica.</p>
+
+      <h3>2. Modelos para comprender la integración tecnológica</h3>
+      <p>Distintos marcos conceptuales permiten analizar con mayor precisión el grado y la calidad de esa integración:</p>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="tag">Modelo SAMR</span>
+          <h4>Sustitución → Redefinición</h4>
+          <p>Describe cuatro niveles de uso tecnológico en el aula: Sustitución, Aumento, Modificación y Redefinición, desde el reemplazo simple de una herramienta hasta la creación de tareas antes inconcebibles sin tecnología.</p>
+        </div>
+        <div class="concept-card">
+          <span class="tag">Marco TPACK</span>
+          <h4>Conocimiento tecnológico-pedagógico-disciplinar</h4>
+          <p>Plantea que la enseñanza efectiva con TIC surge de la intersección entre el conocimiento del contenido, el conocimiento pedagógico y el conocimiento tecnológico, y no de dominar la herramienta de forma aislada.</p>
+        </div>
+        <div class="concept-card">
+          <span class="tag">DigCompEdu</span>
+          <h4>Competencia digital docente</h4>
+          <p>Marco europeo que describe las competencias digitales que un docente debe desarrollar, organizadas en áreas como la enseñanza, la evaluación y el empoderamiento de los estudiantes.</p>
+        </div>
+      </div>
+
+      <h3>3. Oportunidades asociadas a la incorporación de las TIC</h3>
+      <ul class="content-list">
+        <li>Ampliación del acceso a fuentes de información y materiales educativos abiertos.</li>
+        <li>Posibilidad de personalizar rutas de aprendizaje según el ritmo del estudiante.</li>
+        <li>Diversificación de formatos de mediación: foros, simulaciones, entornos colaborativos, evaluación formativa automatizada.</li>
+        <li>Fortalecimiento de la comunicación entre docente y estudiante fuera del horario presencial.</li>
+      </ul>
+
+      <h3>4. Tensiones y desafíos</h3>
+      <ul class="content-list">
+        <li><strong>Brecha digital:</strong> desigualdad en el acceso a conectividad, dispositivos y competencias digitales entre instituciones, docentes y estudiantes.</li>
+        <li><strong>Tecnocentrismo:</strong> riesgo de priorizar la herramienta sobre la intención pedagógica, incorporando tecnología sin un propósito didáctico claro.</li>
+        <li><strong>Sobrecarga informacional</strong> y dificultad para el pensamiento crítico frente al exceso de estímulos digitales.</li>
+        <li><strong>Formación docente insuficiente</strong> para transitar del uso instrumental al uso pedagógico transformador de la tecnología.</li>
+      </ul>
+
+      <h3>5. El papel del docente frente a este proceso</h3>
+      <p>Frente a la penetración de las TIC, el docente universitario deja de ser el único poseedor de la información para asumir un rol de mediador, curador y diseñador de experiencias de aprendizaje. Esta unidad invita a pensar la tecnología no como un fin, sino como un medio al servicio de una intención pedagógica constructivista, en la que el estudiante construye conocimiento a partir de la interacción, la resolución de problemas y la reflexión colaborativa.</p>
+    </section>
+
+    <!-- RECURSOS EXTERNOS -->
+    <section id="recursos">
+      <span class="kicker-num">05.3</span>
+      <h2 class="section-title">Materiales externos de consulta formal</h2>
+      <p>Se recomienda revisar al menos dos de las siguientes fuentes antes de desarrollar las actividades prácticas.</p>
+      <div class="card">
+        <div class="resource">
+          <span class="idx">01</span>
+          <div>
+            <h4>UNESCO — Tecnologías de la información y la comunicación en la educación</h4>
+            <p>Panorama institucional sobre políticas, programas y desafíos globales en la integración de TIC en sistemas educativos.</p>
+            <a href="https://www.unesco.org/en/digital-education" target="_blank" rel="noopener">unesco.org/en/digital-education</a>
+          </div>
+        </div>
+        <div class="resource">
+          <span class="idx">02</span>
+          <div>
+            <h4>Comisión Europea — Marco DigCompEdu</h4>
+            <p>Documento técnico que describe las competencias digitales docentes organizadas por áreas de desempeño profesional.</p>
+            <a href="https://joint-research-centre.ec.europa.eu/digcompedu_en" target="_blank" rel="noopener">joint-research-centre.ec.europa.eu/digcompedu_en</a>
+          </div>
+        </div>
+        <div class="resource">
+          <span class="idx">03</span>
+          <div>
+            <h4>OCDE — Educación y competencias digitales</h4>
+            <p>Reportes comparativos sobre el uso de tecnología en sistemas educativos y su relación con resultados de aprendizaje.</p>
+            <a href="https://www.oecd.org/en/topics/digital-education.html" target="_blank" rel="noopener">oecd.org/en/topics/digital-education</a>
+          </div>
+        </div>
+        <div class="resource">
+          <span class="idx">04</span>
+          <div>
+            <h4>Modelo SAMR (Puentedura) — síntesis conceptual</h4>
+            <p>Explora los cuatro niveles de integración tecnológica en el diseño de actividades de aprendizaje.</p>
+            <a href="https://www.google.com/search?q=modelo+SAMR+Puentedura+integración+tecnológica" target="_blank" rel="noopener">Buscar: "Modelo SAMR Puentedura"</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONOCIMIENTO PREVIO -->
+    <section id="previo">
+      <span class="kicker-num">05.4</span>
+      <h2 class="section-title">Pregunta de conocimiento previo</h2>
+      <div class="prior-box">
+        <div class="eyebrow">Antes de continuar</div>
+        <p style="color:var(--ink); font-weight:500; font-size:17px;">Desde tu experiencia como estudiante universitario, ¿qué tecnologías han estado presentes en tu formación académica y qué rol crees que ha tenido el docente en la manera en que se usaron —como simple sustituto de un recurso tradicional o como una herramienta que transformó realmente la forma de aprender?</p>
+        <textarea placeholder="Escribe aquí tu respuesta inicial. No hay respuestas incorrectas: este ejercicio activa lo que ya sabes antes de avanzar en el contenido."></textarea>
+        <div class="hint">Esta respuesta es un ejercicio de activación individual y no se envía a Classroom.</div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 1: FORO -->
+    <section id="act1">
+      <span class="kicker-num">05.5</span>
+      <h2 class="section-title">Actividades prácticas</h2>
+      <div class="activity">
+        <div class="activity-head">
+          <span class="act-num">Actividad 1</span>
+          <h3>Mediación en foro: pregunta detonadora</h3>
+        </div>
+        <div class="subtitle">Trabajo colaborativo · Foro de Classroom</div>
+        <p><strong>Pregunta detonadora:</strong> "Si la tecnología estuviera ausente por completo de las universidades durante un semestre, ¿qué se perdería realmente del proceso educativo y qué permanecería intacto?"</p>
+        <p>Esta pregunta busca provocar una discusión crítica sobre qué elementos de la educación dependen genuinamente de la tecnología y cuáles corresponden a la mediación humana y pedagógica, independientemente del medio.</p>
+        <ol class="steps">
+          <li><strong>Publica</strong> tu respuesta inicial en el foro de Classroom (mínimo 120 palabras), argumentando tu postura con al menos una idea del contenido revisado.</li>
+          <li><strong>Lee</strong> las aportaciones de al menos tres compañeros antes de responder.</li>
+          <li><strong>Comenta</strong> de forma argumentada dos publicaciones distintas a la tuya, identificando un punto de acuerdo y uno de desacuerdo razonado.</li>
+          <li><strong>Cierra</strong> tu participación con una síntesis breve de cómo cambió o se reafirmó tu postura tras leer al grupo.</li>
+        </ol>
+        <div class="example-box">
+          <span class="tag">Ejemplo de participación</span>
+          <p>"Considero que se perdería la inmediatez del acceso a fuentes de consulta, pero permanecería la capacidad del docente para generar preguntas que movilicen el pensamiento. La tecnología amplifica la mediación pedagógica, pero no la sustituye por sí sola."</p>
+        </div>
+        <div class="submit-note">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="#46527A" stroke-width="1.4"/><path d="M4 8L7 11L12 5" stroke="#1E7F86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Entregable en Classroom: captura o enlace de tu participación en el foro (publicación + dos comentarios).
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO -->
+    <section id="act2">
+      <div class="activity">
+        <div class="activity-head">
+          <span class="act-num">Actividad 2</span>
+          <h3>Diseño de una micro-estrategia con TIC</h3>
+        </div>
+        <div class="subtitle">Trabajo individual · Aplicación directa a tu práctica docente</div>
+        <p>Esta actividad busca que transformes el contenido teórico en una decisión didáctica concreta, aplicable a una asignatura que impartirías o hayas observado en tu formación como pedagogo.</p>
+        <ol class="steps">
+          <li><strong>Elige</strong> un tema académico breve de cualquier asignatura universitaria (por ejemplo, un tema de tu propia carrera).</li>
+          <li><strong>Diseña</strong> una actividad de máximo 30 minutos que incorpore una herramienta digital (formulario interactivo, tablero colaborativo, video breve, simulador, entre otros), ubicándola en el nivel del modelo SAMR que consideres pertinente y justificando tu elección.</li>
+          <li><strong>Redacta</strong> el objetivo de aprendizaje, la instrucción para el estudiante y el criterio de evaluación de la actividad.</li>
+          <li><strong>Explica</strong> en un párrafo por qué la tecnología elegida genera una transformación real del aprendizaje y no una simple sustitución.</li>
+        </ol>
+        <div class="example-box">
+          <span class="tag">Ejemplo de aplicación</span>
+          <p>Tema: "Tipos de falacias argumentativas". Actividad: los estudiantes graban un video de 60 segundos identificando una falacia en un discurso público real y lo suben a un tablero colaborativo donde el grupo la clasifica y discute. Nivel SAMR: Modificación, pues la tarea rediseña sustancialmente la forma tradicional de identificar falacias en papel.</p>
+        </div>
+        <div class="submit-note">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="#46527A" stroke-width="1.4"/><path d="M4 8L7 11L12 5" stroke="#1E7F86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Entregable en Classroom: documento breve (máximo una cuartilla) con el diseño de tu micro-estrategia.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 3: CASO PRÁCTICO -->
+    <section id="act3">
+      <div class="activity">
+        <div class="activity-head">
+          <span class="act-num">Actividad 3</span>
+          <h3>Análisis de caso práctico</h3>
+        </div>
+        <div class="subtitle">Trabajo individual o en parejas · Pensamiento crítico aplicado</div>
+        <div class="example-box" style="margin-top:0;">
+          <span class="tag">Caso: "La plataforma que nadie pidió"</span>
+          <p>Una universidad adquiere una plataforma de aprendizaje adaptativo de alto costo y obliga a todos los docentes a utilizarla desde el siguiente semestre, sin capacitación previa ni consulta a la planta docente. Varios profesores continúan usando sus métodos tradicionales dentro de la plataforma, simplemente subiendo documentos en PDF como antes lo hacían en fotocopias. Los estudiantes reportan que "la clase no cambió, solo cambió dónde se sube la tarea".</p>
+        </div>
+        <p>A partir del caso, responde de forma argumentada:</p>
+        <ol class="steps">
+          <li><strong>Identifica</strong> en qué nivel del modelo SAMR se ubica el uso real que hicieron los docentes de la plataforma.</li>
+          <li><strong>Explica</strong> qué factores institucionales y pedagógicos impidieron una integración tecnológica significativa.</li>
+          <li><strong>Propone</strong> tres acciones concretas que la institución debió implementar antes de adoptar la plataforma.</li>
+          <li><strong>Relaciona</strong> el caso con el concepto de tecnocentrismo revisado en el contenido general.</li>
+        </ol>
+        <div class="submit-note">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="#46527A" stroke-width="1.4"/><path d="M4 8L7 11L12 5" stroke="#1E7F86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Entregable en Classroom: análisis escrito de una cuartilla con las cuatro respuestas desarrolladas.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 4: QUIZ -->
+    <section id="act4">
+      <div class="activity" style="border-left-color:var(--accent-tech);">
+        <div class="activity-head">
+          <span class="act-num" style="color:var(--accent-tech); background:var(--accent-tech-soft);">Actividad 4</span>
+          <h3>Quiz de comprensión</h3>
+        </div>
+        <div class="subtitle">Evaluación individual · 5 reactivos</div>
+        <p>Responde las siguientes preguntas para verificar tu comprensión del tema. Al finalizar podrás ver tu puntaje.</p>
+
+        <form id="quiz-form">
+          <div class="quiz-q" data-correct="b">
+            <p class="q-text">1. El modelo SAMR describe principalmente:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="q1" value="a"> Las competencias digitales que debe tener un docente.</label>
+              <label class="option"><input type="radio" name="q1" value="b"> Los niveles de transformación en el uso educativo de la tecnología.</label>
+              <label class="option"><input type="radio" name="q1" value="c"> Los tipos de dispositivos usados en el aula.</label>
+              <label class="option"><input type="radio" name="q1" value="d"> Las políticas públicas de conectividad escolar.</label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-correct="c">
+            <p class="q-text">2. El marco TPACK plantea que la enseñanza efectiva con TIC surge de la intersección entre:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="q2" value="a"> El acceso, la conectividad y el equipamiento.</label>
+              <label class="option"><input type="radio" name="q2" value="b"> El docente, el estudiante y la institución.</label>
+              <label class="option"><input type="radio" name="q2" value="c"> El conocimiento tecnológico, pedagógico y disciplinar.</label>
+              <label class="option"><input type="radio" name="q2" value="d"> La evaluación, la planeación y la certificación.</label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-correct="a">
+            <p class="q-text">3. La "brecha digital" se refiere principalmente a:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="q3" value="a"> La desigualdad en el acceso a conectividad, dispositivos y competencias digitales.</label>
+              <label class="option"><input type="radio" name="q3" value="b"> La diferencia entre plataformas educativas de pago y gratuitas.</label>
+              <label class="option"><input type="radio" name="q3" value="c"> El tiempo que tarda una institución en comprar equipo nuevo.</label>
+              <label class="option"><input type="radio" name="q3" value="d"> La distancia física entre el docente y el estudiante.</label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-correct="d">
+            <p class="q-text">4. El "tecnocentrismo" en la práctica docente ocurre cuando:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="q4" value="a"> El docente evita usar cualquier tecnología en clase.</label>
+              <label class="option"><input type="radio" name="q4" value="b"> La institución capacita ampliamente a su planta docente.</label>
+              <label class="option"><input type="radio" name="q4" value="c"> Los estudiantes proponen el uso de nuevas herramientas.</label>
+              <label class="option"><input type="radio" name="q4" value="d"> Se prioriza la herramienta tecnológica sobre la intención pedagógica.</label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-correct="b">
+            <p class="q-text">5. Frente a la penetración de las TIC, el rol constructivista del docente universitario se orienta principalmente a:</p>
+            <div class="options">
+              <label class="option"><input type="radio" name="q5" value="a"> Transmitir contenidos digitalizados sin modificar su metodología.</label>
+              <label class="option"><input type="radio" name="q5" value="b"> Mediar, curar y diseñar experiencias de aprendizaje con sentido pedagógico.</label>
+              <label class="option"><input type="radio" name="q5" value="c"> Sustituir por completo la evaluación presencial por evaluación automatizada.</label>
+              <label class="option"><input type="radio" name="q5" value="d"> Delegar en la plataforma tecnológica la planeación didáctica.</label>
+            </div>
+          </div>
+
+          <button type="button" id="quiz-submit">Calcular puntaje</button>
+        </form>
+        <div id="quiz-result"></div>
+        <div class="submit-note">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="#46527A" stroke-width="1.4"/><path d="M4 8L7 11L12 5" stroke="#1E7F86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Entregable en Classroom: captura de pantalla de tu resultado final del quiz.
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLEXIÓN Y APLICACIÓN -->
+    <section id="reflexion">
+      <span class="kicker-num">05.6</span>
+      <h2 class="section-title">Reflexión y aplicación</h2>
+      <p>Cierra esta unidad tomando una decisión sobre cómo incorporarás lo aprendido, tanto en tu formación actual como en tu futura práctica docente.</p>
+      <div class="reflect-grid">
+        <div class="reflect-card">
+          <h4>Como estudiante universitario</h4>
+          <textarea placeholder="¿Qué cambiarías en tu forma de usar la tecnología para estudiar a partir de lo revisado en esta unidad?"></textarea>
+        </div>
+        <div class="reflect-card">
+          <h4>Como futuro docente</h4>
+          <textarea placeholder="Describe una acción concreta que aplicarás la próxima vez que diseñes una clase, para que la tecnología transforme el aprendizaje y no solo lo sustituya."></textarea>
+        </div>
+      </div>
+      <div class="card" style="margin-top:22px;">
+        <p style="margin-bottom:0;"><strong>Cierre de unidad:</strong> guarda tus reflexiones y las cuatro evidencias solicitadas (foro, micro-estrategia, análisis de caso y resultado del quiz) y súbelas a la sección correspondiente en Google Classroom antes de la fecha límite indicada por tu docente.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Universidad de la Ciénega · Plantel Centro · Licenciatura en Pedagogía · Valores y Educación / TIC en el ámbito educativo
+</footer>
+
+<script>
+  // Scroll-spy for the signature network navigation
+  const sections = document.querySelectorAll('main section[id]');
+  const navItems = document.querySelectorAll('.node-item');
+  const badge = document.getElementById('scroll-badge');
+  const labels = {
+    'intro':'Introducción','contenido':'Contenido general','recursos':'Recursos externos',
+    'previo':'Conocimiento previo','act1':'Actividad 1','act2':'Actividad 2',
+    'act3':'Actividad 3','act4':'Actividad 4','reflexion':'Reflexión y aplicación'
+  };
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item=>item.classList.toggle('active', item.dataset.target === id));
+        if(labels[id]) badge.textContent = labels[id].toUpperCase();
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s=>observer.observe(s));
+
+  // Quiz scoring
+  document.getElementById('quiz-submit').addEventListener('click', function(){
+    const questions = document.querySelectorAll('.quiz-q');
+    let score = 0;
+    questions.forEach(q=>{
+      const correct = q.dataset.correct;
+      const selected = q.querySelector('input:checked');
+      const options = q.querySelectorAll('.option');
+      options.forEach(opt=>{
+        opt.classList.remove('correct-answer','wrong-answer');
+        const input = opt.querySelector('input');
+        if(input.value === correct){ opt.classList.add('correct-answer'); }
+        if(selected && input.value === selected.value && selected.value !== correct){
+          opt.classList.add('wrong-answer');
+        }
+      });
+      if(selected && selected.value === correct) score++;
+    });
+    const result = document.getElementById('quiz-result');
+    result.classList.add('show');
+    let message = '';
+    if(score === 5){ message = 'Dominio sólido del tema. Estás listo para aplicar estos conceptos en el diseño de tus propias clases.'; result.style.background = 'var(--accent-tech-soft)'; }
+    else if(score >= 3){ message = 'Buen manejo general del tema. Se sugiere reforzar los conceptos de los reactivos incorrectos antes de la siguiente sesión.'; result.style.background = 'var(--surface-2)'; }
+    else { message = 'Se recomienda revisar nuevamente el contenido general y los recursos externos antes de continuar con las siguientes actividades.'; result.style.background = '#FBECE8'; }
+    result.innerHTML = '<span class="score">'+score+' / 5</span>' + message;
+    result.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+</script>
+
+</body>
+</html>
