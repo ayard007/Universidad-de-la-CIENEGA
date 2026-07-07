@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manejo de Datos · Estadística para Psicología · Unidad III · Guía interactiva 10 horas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@400;600;700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1530;
+    --ink-soft:#3d3354;
+    --paper:#f4ead5;
+    --paper-warm:#ebdfc4;
+    --accent:#e85d3c;
+    --accent-deep:#b8421f;
+    --grid:#217346;
+    --grid-dark:#0e5c32;
+    --highlight:#f5c518;
+    --violet:#6a3d9a;
+    --violet-deep:#4a2670;
+    --violet-soft:#b08fd0;
+    --amber:#c9691c;
+    --cell-line:rgba(26,21,48,0.12);
+    --shadow:0 2px 0 var(--ink), 6px 8px 0 rgba(26,21,48,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter Tight', sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.65;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(106,61,154,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(201,105,28,0.04) 0%, transparent 40%);
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:800; letter-spacing:-0.01em; color:var(--ink)}
+  code, .mono{font-family:'JetBrains Mono', monospace}
+  header.hero{
+    border-bottom:3px solid var(--ink); background:var(--paper-warm);
+    padding:3rem 2rem 2.5rem; position:relative; overflow:hidden;
+  }
+  header.hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--cell-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cell-line) 1px, transparent 1px);
+    background-size:48px 28px; opacity:0.55; pointer-events:none;
+  }
+  .hero-inner{max-width:1100px; margin:0 auto; position:relative; z-index:1}
+  .pill{
+    display:inline-block; background:var(--violet); color:var(--paper);
+    padding:0.3rem 0.9rem; font-size:0.78rem; font-weight:600;
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem;
+  }
+  h1.title{font-size:clamp(2.2rem, 5.5vw, 4rem); line-height:1.05; max-width:22ch}
+  h1.title em{font-style:italic; color:var(--violet-deep); font-weight:600}
+  .subtitle{margin-top:1rem; font-size:1.1rem; max-width:62ch; color:var(--ink-soft)}
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.5rem 2.5rem;
+    margin-top:1.8rem; padding-top:1.5rem;
+    border-top:1px dashed var(--ink); font-size:0.9rem;
+  }
+  .hero-meta div{display:flex; flex-direction:column; gap:0.2rem}
+  .hero-meta span.label{font-weight:700; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.1em; color:var(--violet-deep)}
+  .progress-wrap{
+    position:sticky; top:0; z-index:100;
+    background:var(--paper); border-bottom:2px solid var(--ink);
+    padding:0.8rem 2rem;
+  }
+  .progress-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:1rem; flex-wrap:wrap}
+  .progress-label{font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em}
+  .progress-bar{
+    flex:1; min-width:180px; height:14px;
+    background:var(--paper-warm); border:1.5px solid var(--ink); overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--violet) 0%, var(--amber) 100%);
+    transition:width 0.4s ease;
+  }
+  .progress-text{font-size:0.82rem; font-weight:700; min-width:75px; text-align:right; color:var(--violet-deep)}
+  main{max-width:1100px; margin:0 auto; padding:3rem 2rem}
+  .metodologia{
+    background:white; border:2px solid var(--ink); box-shadow:var(--shadow);
+    padding:1.8rem; margin-bottom:3rem;
+  }
+  .metodologia h3{font-size:1.3rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem}
+  .metodologia h3::before{
+    content:""; width:14px; height:14px; background:var(--violet);
+    display:inline-block; transform:rotate(45deg);
+  }
+  .abp-banner{
+    background:linear-gradient(135deg, var(--amber), var(--violet));
+    color:white; padding:1.2rem 1.5rem;
+    border-radius:6px; margin-top:1rem;
+    border:2px solid var(--ink);
+  }
+  .abp-banner h4{color:white; font-size:1.1rem; margin-bottom:0.4rem}
+  .abp-banner p{font-size:0.92rem; opacity:0.95}
+  .ciclo-pedagogico{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:1rem; margin-top:1rem;
+  }
+  .ciclo-item{
+    background:var(--paper-warm); border:1.5px solid var(--ink);
+    padding:1rem; text-align:center; border-radius:4px;
+  }
+  .ciclo-item .num{
+    background:var(--accent); color:var(--paper);
+    width:30px; height:30px; border:2px solid var(--ink); border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:800; margin-bottom:0.4rem;
+  }
+  .ciclo-item strong{display:block; font-size:0.92rem; margin-bottom:0.3rem}
+  .ciclo-item small{font-size:0.78rem; color:var(--ink-soft); line-height:1.3; display:block}
+  .intro-grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem}
+  @media (max-width:800px){.intro-grid{grid-template-columns:1fr}}
+  .intro-card{background:white; border:2px solid var(--ink); padding:1.8rem; box-shadow:var(--shadow)}
+  .intro-card h3{font-size:1.25rem; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.6rem}
+  .intro-card h3::before{content:""; width:14px; height:14px; background:var(--accent); display:inline-block; transform:rotate(45deg)}
+  .intro-card ul{list-style:none}
+  .intro-card ul li{padding:0.45rem 0 0.45rem 1.6rem; position:relative; border-bottom:1px dashed var(--cell-line); font-size:0.95rem}
+  .intro-card ul li::before{content:"→"; position:absolute; left:0; color:var(--violet-deep); font-weight:700}
+  .intro-card ul li:last-child{border-bottom:none}
+  .ai-notice{
+    background:var(--ink); color:var(--paper);
+    padding:2rem 2rem 1.8rem; margin-bottom:3rem;
+    position:relative; border:2px solid var(--ink);
+  }
+  .ai-notice::after{
+    content:"¡RAZONA!"; position:absolute; top:-14px; right:20px;
+    background:var(--highlight); color:var(--ink);
+    padding:0.3rem 0.8rem; font-family:'Fraunces', serif;
+    font-weight:800; font-size:0.85rem;
+    transform:rotate(3deg); border:2px solid var(--ink);
+  }
+  .ai-notice h3{color:var(--paper); margin-bottom:0.8rem; font-size:1.4rem}
+  .ai-notice p{margin-bottom:0.7rem; font-size:0.98rem}
+  .ai-notice p:last-child{margin-bottom:0}
+  .ai-notice strong{color:var(--highlight)}
+  .indice{background:white; border:2px solid var(--ink); padding:1.8rem; margin-bottom:3rem; box-shadow:var(--shadow)}
+  .indice h3{font-size:1.3rem; margin-bottom:1rem}
+  .indice-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:0.8rem}
+  .indice-item{
+    display:flex; gap:0.8rem; align-items:flex-start;
+    padding:0.7rem 0.9rem; border:1.5px solid var(--cell-line);
+    background:var(--paper); text-decoration:none; color:var(--ink);
+    transition:all 0.2s ease;
+  }
+  .indice-item:hover{background:var(--highlight); border-color:var(--ink); transform:translateY(-2px)}
+  .indice-item .n{
+    background:var(--violet); color:var(--paper);
+    width:28px; height:28px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:800; font-size:0.9rem;
+  }
+  .indice-item .t{font-size:0.9rem; line-height:1.3}
+  .indice-item .t strong{display:block; font-size:0.96rem}
+  .indice-item .t small{color:var(--ink-soft); font-size:0.78rem}
+  section.fase{
+    margin-bottom:4rem; border:2px solid var(--ink); background:white;
+    box-shadow:var(--shadow); scroll-margin-top:80px;
+  }
+  .fase-header{
+    background:var(--violet); color:var(--paper);
+    padding:1.5rem 2rem;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:1rem; border-bottom:2px solid var(--ink);
+  }
+  .fase-num{font-family:'Fraunces', serif; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.15em; opacity:0.85}
+  .fase-header h2{color:var(--paper); font-size:1.8rem; margin-top:0.2rem}
+  .fase-time{
+    background:var(--highlight); color:var(--ink);
+    padding:0.5rem 1rem; font-size:0.85rem; font-weight:700;
+    border:2px solid var(--ink); white-space:nowrap;
+  }
+  .fase-body{padding:2rem}
+  .problema-abp{
+    background:linear-gradient(135deg, #fff4e6, #ffe9d6);
+    border:2px solid var(--accent);
+    padding:1.5rem; margin-bottom:1.8rem;
+    border-radius:6px; position:relative;
+  }
+  .problema-abp::before{
+    content:"PROBLEMA A RESOLVER";
+    position:absolute; top:-12px; left:15px;
+    background:var(--accent); color:white;
+    padding:0.2rem 0.8rem; font-size:0.72rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .problema-abp h3{margin-top:0.3rem; margin-bottom:0.6rem; font-size:1.2rem; color:var(--accent-deep)}
+  .problema-abp p{margin-bottom:0.6rem}
+  .problema-abp p:last-child{margin-bottom:0}
+  .objetivo{
+    background:var(--paper-warm); border-left:4px solid var(--violet);
+    padding:1rem 1.3rem; margin-bottom:1.5rem;
+    font-family:'Fraunces', serif; font-style:italic;
+  }
+  .objetivo strong{
+    font-style:normal; display:block;
+    font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--violet-deep); margin-bottom:0.3rem;
+    font-family:'Inter Tight', sans-serif;
+  }
+  .activacion{
+    background:#fff9e6; border-left:4px solid var(--highlight);
+    padding:1rem 1.3rem; margin-bottom:1.5rem; border-radius:0 4px 4px 0;
+  }
+  .activacion strong.titulo{
+    display:block; font-size:0.75rem; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--accent-deep); margin-bottom:0.3rem;
+  }
+  .activacion textarea{
+    width:100%; min-height:60px; padding:0.6rem;
+    font-family:'Inter Tight', sans-serif; font-size:0.92rem;
+    border:1.5px solid var(--ink); background:white;
+    margin-top:0.5rem; border-radius:3px; resize:vertical;
+  }
+  .paso{
+    margin-bottom:2rem; padding:1.5rem;
+    border:1.5px solid var(--cell-line); background:var(--paper);
+    border-radius:4px;
+  }
+  .paso-header{
+    display:flex; align-items:center; gap:0.8rem;
+    margin-bottom:0.9rem; padding-bottom:0.7rem;
+    border-bottom:1.5px dashed var(--ink-soft);
+  }
+  .paso-num{
+    background:var(--accent); color:var(--paper);
+    width:36px; height:36px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:800; font-size:1.05rem;
+    border:2px solid var(--ink);
+  }
+  .paso-header h3{font-size:1.15rem}
+  .paso p{margin-bottom:0.7rem}
+  .paso ul, .paso ol{margin:0.6rem 0 0.8rem 1.5rem}
+  .paso ul li, .paso ol li{margin-bottom:0.4rem}
+  .ejemplo{
+    background:#f0e8f8; border:2px solid var(--violet);
+    padding:1.3rem 1.5rem; margin:1.3rem 0;
+    border-radius:4px; position:relative;
+  }
+  .ejemplo::before{
+    content:"CONCEPTO EXPLICADO";
+    position:absolute; top:-11px; left:15px;
+    background:var(--violet); color:var(--paper);
+    padding:0.15rem 0.7rem; font-size:0.72rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .ejemplo h4{font-size:1.05rem; margin-bottom:0.6rem; margin-top:0.3rem}
+  .ejemplo p{margin-bottom:0.6rem}
+  .excel-demo{margin:1rem 0; border:2px solid var(--grid-dark); overflow-x:auto}
+  table.excel{
+    border-collapse:collapse; width:100%;
+    font-family:'JetBrains Mono', monospace; font-size:0.85rem;
+    background:white;
+  }
+  table.excel th, table.excel td{
+    border:1px solid #c5c5c5;
+    padding:0.4rem 0.6rem; text-align:left;
+  }
+  table.excel thead th{
+    background:var(--grid); color:var(--paper);
+    font-family:'Inter Tight', sans-serif; font-weight:600; text-align:center;
+  }
+  table.excel .col-letter, table.excel .row-num{
+    background:#d8d8d8; color:var(--ink);
+    text-align:center; font-weight:700;
+  }
+  table.excel .col-letter{width:50px}
+  table.excel .row-num{width:32px}
+  table.excel td.hl{background:var(--highlight); font-weight:700}
+  table.excel td.hl-g{background:#c8e6c9; font-weight:700}
+  table.excel td.hl-r{background:#ffccbc; font-weight:700}
+  table.excel td.hl-v{background:#e1bee7; font-weight:700}
+  .excel-caption{font-size:0.82rem; color:var(--ink-soft); font-style:italic; margin-top:0.4rem}
+  .formula{
+    background:var(--ink); color:var(--paper);
+    padding:0.85rem 1.1rem;
+    font-family:'JetBrains Mono', monospace; font-size:0.92rem;
+    margin:0.8rem 0; border-left:4px solid var(--violet-soft);
+    overflow-x:auto; white-space:pre-wrap;
+  }
+  .formula .kw{color:var(--highlight); font-weight:700}
+  .formula .arg{color:#c5b3e3}
+  .formula .comment{color:#88a099; font-style:italic; display:block; margin-top:0.4rem; font-size:0.82rem}
+  code.inline{
+    background:var(--paper-warm); padding:0.15rem 0.45rem;
+    border:1px solid var(--cell-line); font-size:0.88em;
+    border-radius:3px; font-family:'JetBrains Mono', monospace;
+  }
+  .reflexion{
+    background:#fff4e6; border:2px dashed var(--accent-deep);
+    padding:1.4rem 1.5rem 1.3rem; margin:1.5rem 0;
+    border-radius:6px; position:relative;
+  }
+  .reflexion::before{
+    content:"REFLEXIÓN · CONSTRUYE TU CONOCIMIENTO";
+    position:absolute; top:-11px; left:15px;
+    background:var(--accent-deep); color:var(--paper);
+    padding:0.15rem 0.7rem; font-size:0.7rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .reflexion p{margin-bottom:0.6rem}
+  .reflexion ol{margin-left:1.4rem; margin-top:0.6rem}
+  .reflexion ol li{margin-bottom:0.5rem}
+  .reflexion textarea{
+    width:100%; min-height:90px; padding:0.7rem;
+    font-family:'Inter Tight', sans-serif; font-size:0.92rem;
+    border:1.5px solid var(--ink); background:white;
+    resize:vertical; margin-top:0.5rem; border-radius:3px;
+  }
+  .reto{
+    background:#e8f5e9; border:2px solid var(--grid);
+    padding:1.3rem 1.5rem; margin:1.3rem 0;
+    border-radius:4px; position:relative;
+  }
+  .reto::before{
+    content:"RETO PRÁCTICO";
+    position:absolute; top:-11px; left:15px;
+    background:var(--grid); color:var(--paper);
+    padding:0.15rem 0.7rem; font-size:0.72rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .reto h4{margin-top:0.3rem; margin-bottom:0.5rem; font-size:1.05rem}
+  .reto p{margin-bottom:0.5rem; font-size:0.95rem}
+  .hipotesis{
+    background:#f3e5f5; border:2px solid var(--violet);
+    padding:1.2rem 1.4rem; margin:1.2rem 0;
+    border-radius:4px; position:relative;
+  }
+  .hipotesis::before{
+    content:"PLANTEA TU HIPÓTESIS";
+    position:absolute; top:-11px; left:15px;
+    background:var(--violet); color:white;
+    padding:0.15rem 0.7rem; font-size:0.72rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .hipotesis p{margin-top:0.4rem; font-size:0.95rem}
+  .hipotesis textarea{
+    width:100%; min-height:60px; padding:0.6rem;
+    font-family:'Inter Tight', sans-serif; font-size:0.92rem;
+    border:1.5px solid var(--ink); background:white;
+    resize:vertical; margin-top:0.4rem; border-radius:3px;
+  }
+  .entregable{
+    background:var(--grid); color:var(--paper);
+    padding:1.4rem 1.5rem 1.3rem; margin:1.5rem 0;
+    border-radius:4px; position:relative;
+  }
+  .entregable::before{
+    content:"ENTREGA";
+    position:absolute; top:-11px; left:15px;
+    background:var(--highlight); color:var(--ink);
+    padding:0.15rem 0.7rem; font-size:0.7rem;
+    font-weight:700; letter-spacing:0.1em;
+    border:1.5px solid var(--ink);
+  }
+  .entregable h4{color:var(--paper); margin-bottom:0.5rem; font-size:1.1rem}
+  .entregable ul{margin-left:1.4rem; margin-top:0.4rem}
+  .entregable ul li{margin-bottom:0.3rem}
+  .check-done{
+    margin-top:1.2rem; padding-top:1rem;
+    border-top:1px dashed var(--ink);
+    display:flex; align-items:center; gap:0.7rem;
+    font-weight:600; font-size:0.95rem;
+    cursor:pointer; user-select:none;
+  }
+  .check-done input[type="checkbox"]{
+    width:22px; height:22px; accent-color:var(--violet); cursor:pointer;
+  }
+  .tip{
+    background:#fff9e6; border-left:4px solid var(--highlight);
+    padding:0.8rem 1.1rem; margin:1rem 0; font-size:0.93rem;
+    border-radius:0 4px 4px 0;
+  }
+  .tip strong{color:var(--violet-deep)}
+  .ruta-clics{
+    background:white; border:1.5px dashed var(--violet);
+    padding:0.9rem 1.2rem; margin:1rem 0;
+    border-radius:4px; font-size:0.93rem;
+  }
+  .ruta-clics strong.titulo{
+    display:block; font-size:0.75rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--violet-deep); margin-bottom:0.4rem;
+  }
+  .ruta-clics .ruta{
+    font-family:'JetBrains Mono', monospace;
+    background:var(--paper-warm); padding:0.4rem 0.6rem;
+    border-radius:3px; display:inline-block; margin:0.2rem 0;
+  }
+  .ruta-clics .ruta span{color:var(--violet-deep); font-weight:700}
+  .comparativa{
+    display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0;
+  }
+  @media (max-width:700px){.comparativa{grid-template-columns:1fr}}
+  .compara-card{
+    background:white; border:2px solid var(--ink);
+    padding:1.2rem; border-radius:4px;
+  }
+  .compara-card h4{
+    font-size:1.05rem; padding-bottom:0.5rem;
+    border-bottom:2px solid; margin-bottom:0.7rem;
+  }
+  .compara-card.a{border-color:var(--violet)}
+  .compara-card.a h4{border-color:var(--violet); color:var(--violet-deep)}
+  .compara-card.b{border-color:var(--amber)}
+  .compara-card.b h4{border-color:var(--amber); color:var(--amber)}
+  .compara-card ul{margin:0; padding-left:1.2rem}
+  .compara-card ul li{font-size:0.9rem; margin-bottom:0.4rem}
+  .glosario{
+    background:white; border:2px solid var(--violet);
+    padding:1.2rem 1.4rem; margin:1.2rem 0; border-radius:6px;
+    position:relative;
+  }
+  .glosario::before{
+    content:"VOCABULARIO CLAVE";
+    position:absolute; top:-11px; left:15px;
+    background:var(--violet); color:white;
+    padding:0.15rem 0.7rem; font-size:0.72rem;
+    font-weight:700; letter-spacing:0.1em;
+  }
+  .glosario dl{margin-top:0.4rem}
+  .glosario dt{font-weight:700; color:var(--violet-deep); margin-top:0.7rem; font-size:0.95rem}
+  .glosario dt:first-child{margin-top:0}
+  .glosario dd{margin-left:0; padding-left:1rem; font-size:0.92rem; color:var(--ink-soft); border-left:2px solid var(--violet-soft)}
+  .distribucion-visual{
+    display:flex; align-items:flex-end; justify-content:space-around;
+    height:120px; padding:0 1rem; gap:2px;
+    border-left:2px solid var(--ink); border-bottom:2px solid var(--ink);
+    margin:1rem 0;
+    background:white;
+  }
+  .barra-vis{
+    flex:1; background:var(--violet); border:1px solid var(--ink);
+    min-width:15px; position:relative;
+  }
+  .distribucion-label{
+    text-align:center; font-size:0.82rem; color:var(--ink-soft);
+    font-style:italic; margin-top:0.4rem;
+  }
+  .proyecto-final{
+    margin-top:4rem; background:var(--ink); color:var(--paper);
+    padding:2.5rem; border:3px solid var(--ink);
+    position:relative; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .proyecto-final::before{
+    content:""; position:absolute; top:-60px; right:-60px;
+    width:220px; height:220px;
+    background:var(--violet); transform:rotate(45deg); opacity:0.25;
+  }
+  .proyecto-final h2{color:var(--paper); font-size:2.2rem; margin-bottom:0.8rem}
+  .proyecto-final h3{color:var(--highlight); font-size:1.2rem; margin:1.4rem 0 0.6rem}
+  .proyecto-final p, .proyecto-final li{color:var(--paper)}
+  .proyecto-final ul{margin-left:1.5rem; margin-bottom:1rem}
+  .proyecto-final ul li{margin-bottom:0.4rem}
+  .proyecto-final .rubrica{
+    background:var(--paper); color:var(--ink);
+    padding:1.5rem; margin-top:1.5rem; border:2px solid var(--highlight);
+  }
+  .proyecto-final .rubrica h4{color:var(--ink); margin-bottom:0.8rem; font-size:1.1rem}
+  .proyecto-final .rubrica table{width:100%; border-collapse:collapse; font-size:0.9rem}
+  .proyecto-final .rubrica th, .proyecto-final .rubrica td{
+    border:1px solid var(--ink); padding:0.5rem 0.7rem; text-align:left;
+  }
+  .proyecto-final .rubrica th{background:var(--violet); color:var(--paper)}
+  footer{
+    margin-top:4rem; padding:2rem;
+    background:var(--paper-warm); border-top:3px solid var(--ink);
+    text-align:center; font-size:0.9rem; color:var(--ink-soft);
+  }
+  @media (max-width:600px){
+    header.hero{padding:2rem 1.2rem}
+    main{padding:2rem 1.2rem}
+    .fase-header{padding:1.2rem 1.3rem}
+    .fase-body{padding:1.3rem}
+    .paso{padding:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="pill">Unidad III · Licenciatura en Psicología</span>
+    <h1 class="title">Manejo de <em>Datos</em> en Psicología con Excel</h1>
+    <p class="subtitle">Guía interactiva de 10 horas con Aprendizaje Basado en Problemas (ABP). Aprenderás a medir variables psicológicas, diseñar bases de datos y aplicar estadística descriptiva completa: medidas de tendencia central, dispersión, posición y forma.</p>
+    <div class="hero-meta">
+      <div><span class="label">Duración</span>10 horas (5 fases)</div>
+      <div><span class="label">Contenido</span>Temas 3.1 y 3.2 completos</div>
+      <div><span class="label">Modalidad</span>Plataforma + Excel</div>
+      <div><span class="label">Metodología</span>ABP + construcción activa</div>
+    </div>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Tu progreso</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">0 / 21</span>
+  </div>
+</div>
+
+<main>
+
+  <div class="metodologia">
+    <h3>Cómo aprenderás en esta guía</h3>
+    <p>Esta unidad III combina el <strong>manejo técnico de datos</strong> (medir, capturar, organizar) con el <strong>análisis estadístico descriptivo</strong> (resumir, comparar, interpretar). Como en las unidades anteriores, cada fase parte de un <em>problema real</em> que necesitas resolver, y desde ahí construyes los conceptos y herramientas.</p>
+    <div class="abp-banner">
+      <h4>Recuerda el método ABP</h4>
+      <p>Primero el <strong>problema</strong>, después los conceptos. No memorizas fórmulas: descubres para qué sirven mientras las usas. Cada medida estadística que aprendas responderá una pregunta psicológica concreta.</p>
+    </div>
+    <p style="margin-top:1.2rem">En cada concepto importante seguirás este ciclo:</p>
+    <div class="ciclo-pedagogico">
+      <div class="ciclo-item"><div class="num">1</div><strong>Problema</strong><small>Conoces una situación real de investigación psicológica</small></div>
+      <div class="ciclo-item"><div class="num">2</div><strong>Activa</strong><small>Formulas hipótesis con lo que ya sabes</small></div>
+      <div class="ciclo-item"><div class="num">3</div><strong>Construye</strong><small>Adquieres los conceptos técnicos y estadísticos</small></div>
+      <div class="ciclo-item"><div class="num">4</div><strong>Experimenta</strong><small>Aplicas en Excel con datos reales</small></div>
+      <div class="ciclo-item"><div class="num">5</div><strong>Reflexiona</strong><small>Interpretas los hallazgos como psicóloga profesional</small></div>
+    </div>
+  </div>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <h3>¿Qué vas a aprender?</h3>
+      <ul>
+        <li>Definir variables psicológicas de manera operativa y medible</li>
+        <li>Diferenciar variables cualitativas y cuantitativas con sus subtipos</li>
+        <li>Seleccionar muestras representativas y formar grupos de estudio</li>
+        <li>Levantar (recolectar) datos siguiendo protocolos rigurosos</li>
+        <li>Diseñar bases de datos limpias y funcionales en Excel</li>
+        <li>Calcular medidas de tendencia central: media, mediana, moda</li>
+        <li>Calcular medidas de dispersión: rango, varianza, desviación estándar, coeficiente de variación</li>
+        <li>Calcular medidas de posición: cuartiles, deciles, percentiles</li>
+        <li>Interpretar medidas de forma: asimetría y curtosis</li>
+        <li>Aplicar todo en un análisis descriptivo profesional completo</li>
+      </ul>
+    </div>
+    <div class="intro-card">
+      <h3>¿Qué necesitas?</h3>
+      <ul>
+        <li>Microsoft Excel <strong>2019, 2021 o Microsoft 365</strong></li>
+        <li>Haber cursado las Unidades I y II (o conocer conceptos básicos de investigación en psicología)</li>
+        <li>Excel básico: capturar datos, fórmulas simples (SUMA, PROMEDIO)</li>
+        <li>Esta guía abierta como referencia paso a paso</li>
+        <li>Un cuaderno o documento para tus reflexiones e interpretaciones</li>
+        <li>Aproximadamente 10 horas distribuidas en sesiones de 1.5 a 2 horas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ai-notice">
+    <h3>Sobre el uso de la Inteligencia Artificial</h3>
+    <p>Puedes pedirle a una IA que calcule una media, una desviación estándar o un percentil. Pero cuando llegue el momento de <strong>interpretar</strong> qué significan esos números para un paciente, un grupo escolar o una organización, sólo tú puedes hacerlo. Ese es el trabajo del psicólogo.</p>
+    <p>El objetivo de esta guía es que aprendas a <strong>razonar con datos</strong>, no sólo a calcularlos. Por eso cada paso incluye momentos de hipótesis previa (predice antes de calcular) y de interpretación posterior (¿qué me dice este número sobre el fenómeno psicológico?).</p>
+    <p>Usa la IA sólo para verificar conceptos, aclarar dudas o pedir ejemplos adicionales. Nunca para saltarte el razonamiento. <strong>La estadística sin interpretación psicológica es sólo aritmética.</strong></p>
+  </div>
+
+  <div class="indice">
+    <h3>Ruta de aprendizaje · Unidad III</h3>
+    <div class="indice-grid">
+      <a href="#fase1" class="indice-item">
+        <span class="n">1</span>
+        <span class="t"><strong>Medición y variables</strong><small>2 h · Temas 3.1.1 y 3.1.2</small></span>
+      </a>
+      <a href="#fase2" class="indice-item">
+        <span class="n">2</span>
+        <span class="t"><strong>Levantamiento y bases de datos</strong><small>2 h · Temas 3.1.3 y 3.1.4</small></span>
+      </a>
+      <a href="#fase3" class="indice-item">
+        <span class="n">3</span>
+        <span class="t"><strong>Tendencia central y dispersión</strong><small>2.5 h · Temas 3.2.1 y 3.2.2</small></span>
+      </a>
+      <a href="#fase4" class="indice-item">
+        <span class="n">4</span>
+        <span class="t"><strong>Posición y forma</strong><small>2 h · Temas 3.2.3 y 3.2.4</small></span>
+      </a>
+      <a href="#fase5" class="indice-item">
+        <span class="n">5</span>
+        <span class="t"><strong>Proyecto integrador</strong><small>1.5 h · Análisis descriptivo completo</small></span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ============== FASE 1: MEDICIÓN Y VARIABLES (2h) ============== -->
+  <section class="fase" id="fase1">
+    <div class="fase-header">
+      <div>
+        <div class="fase-num">Fase 1 · Temas 3.1.1 y 3.1.2</div>
+        <h2>Medición: variables, muestras y grupos</h2>
+      </div>
+      <div class="fase-time">⏱ 2 horas</div>
+    </div>
+    <div class="fase-body">
+
+      <div class="problema-abp">
+        <h3>El problema con el que vas a trabajar</h3>
+        <p>Un director escolar te pide investigar el <strong>bienestar emocional</strong> de sus estudiantes. Cuando le preguntas "¿cómo lo definiría usted?" te responde: <em>"pues... que estén bien".</em></p>
+        <p style="font-weight:600; color:var(--accent-deep);">Tu reto: no puedes medir "que estén bien". Necesitas convertir esa idea abstracta en algo <strong>concreto, observable y cuantificable</strong>. Además necesitas decidir a quiénes vas a estudiar: ¿a todos? ¿a unos cuantos? ¿cómo los eliges?</p>
+      </div>
+
+      <div class="objetivo">
+        <strong>Objetivo de esta fase</strong>
+        Vas a aprender qué es la medición en psicología (tema 3.1.1), cómo definir y clasificar variables, cómo seleccionar muestras representativas y formar grupos de estudio (tema 3.1.2). Usarás Excel para organizar tus decisiones metodológicas.
+      </div>
+
+      <div class="activacion">
+        <strong class="titulo">Activa tus conocimientos previos</strong>
+        <p>Responde con tus propias palabras antes de continuar:</p>
+        <ol style="margin-left:1.3rem; font-size:0.93rem">
+          <li>Si te pidieran medir la "inteligencia" de tus compañeros, ¿cómo lo harías?</li>
+          <li>¿Se puede medir un sentimiento como el miedo? Si no, ¿qué se mide realmente?</li>
+          <li>Si tu universidad tiene 8,000 estudiantes y sólo puedes entrevistar a 100, ¿cómo los eliges para que representen a los demás?</li>
+        </ol>
+        <textarea placeholder="Tus respuestas honestas antes de comenzar..."></textarea>
+      </div>
+
+      <!-- PASO 1 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">1</div><h3>Tema 3.1.1 · ¿Qué significa "medir" en psicología?</h3></div>
+
+        <p>En psicología no medimos como en física. No hay una "regla" para la ansiedad ni un "termómetro" para la felicidad. Lo que hacemos es <strong>traducir conceptos abstractos en indicadores observables</strong> a los que asignamos números o categorías.</p>
+
+        <div class="glosario">
+          <dl>
+            <dt>Medición (definición operativa)</dt>
+            <dd>Proceso de asignar números o categorías a objetos, personas o conductas siguiendo reglas específicas, para representar cuánto poseen de una característica.</dd>
+            <dt>Constructo psicológico</dt>
+            <dd>Concepto abstracto que no se observa directamente pero se infiere a través de indicadores. Ejemplos: inteligencia, autoestima, motivación, ansiedad.</dd>
+            <dt>Definición operativa</dt>
+            <dd>Descripción concreta de cómo se va a medir un constructo. Ejemplo: "la ansiedad se medirá con el puntaje obtenido en la escala GAD-7".</dd>
+            <dt>Indicador</dt>
+            <dd>Elemento observable que refleja parte de un constructo. Ejemplo: "no puedo dejar de preocuparme" es un indicador de ansiedad.</dd>
+          </dl>
+        </div>
+
+        <div class="ejemplo">
+          <h4>De lo abstracto a lo medible: el caso del "bienestar emocional"</h4>
+          <p>Volvamos al problema inicial. El director dijo "que estén bien". Esto no es medible. Pero podemos <strong>operacionalizarlo</strong> así:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Bienestar emocional</strong> = ausencia relativa de malestar + presencia de emociones positivas + satisfacción con la vida</li>
+            <li><strong>Se medirá con:</strong> Escala de ansiedad GAD-7 + Escala de satisfacción con la vida SWLS + Autoevaluación de estado de ánimo (0-10)</li>
+            <li>Ahora cada estudiante tendrá 3 números que representan su bienestar emocional</li>
+          </ul>
+          <p>Ese proceso de traducir un concepto abstracto en un procedimiento concreto de medición es la <strong>operacionalización</strong>. Es el corazón del método científico en psicología.</p>
+        </div>
+
+        <div class="hipotesis">
+          <p><strong>Practica la operacionalización</strong>:</p>
+          <p>Elige uno de estos constructos y escribe una definición operativa: <em>autoestima</em>, <em>motivación escolar</em>, <em>estrés académico</em>, <em>calidad del sueño</em>. Menciona con qué instrumentos concretos lo medirías.</p>
+          <textarea placeholder="Yo elegí ___ y lo mediría con... porque..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Entendí qué significa medir en psicología</div>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">2</div><h3>Tema 3.1.1 · Clasificación de variables</h3></div>
+
+        <p>Una vez que decides qué medir, cada característica se convierte en una <strong>variable</strong>. Las variables se clasifican de varias formas: por su naturaleza, por su función en el estudio y por su nivel de medición.</p>
+
+        <div class="comparativa">
+          <div class="compara-card a">
+            <h4>Variables cualitativas</h4>
+            <ul>
+              <li>Expresan <strong>categorías o cualidades</strong></li>
+              <li>No se pueden hacer operaciones matemáticas con ellas</li>
+              <li>Se cuentan (frecuencias), no se promedian</li>
+              <li><strong>Nominales:</strong> sin orden (sexo, religión, carrera)</li>
+              <li><strong>Ordinales:</strong> con orden pero sin distancia exacta (nivel socioeconómico bajo/medio/alto)</li>
+            </ul>
+          </div>
+          <div class="compara-card b">
+            <h4>Variables cuantitativas</h4>
+            <ul>
+              <li>Expresan <strong>cantidades numéricas</strong></li>
+              <li>Se pueden hacer operaciones matemáticas</li>
+              <li>Se promedian y calculan medidas estadísticas</li>
+              <li><strong>Discretas:</strong> valores enteros contables (número de hijos, aciertos en un examen)</li>
+              <li><strong>Continuas:</strong> pueden tomar cualquier valor dentro de un rango (edad, peso, puntaje en escala)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ejemplo">
+          <h4>Los cuatro niveles de medición (recordatorio de la Unidad II)</h4>
+          <p>Cada variable, además, tiene un <strong>nivel de medición</strong>. Es indispensable identificarlo antes de elegir análisis estadísticos:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Nominal:</strong> categorías sin orden. Ejemplo: sexo (F/M), tipo de trastorno. Solo se cuenta frecuencia.</li>
+            <li><strong>Ordinal:</strong> categorías con orden pero sin distancia exacta. Ejemplo: nivel socioeconómico, escala Likert 1-5.</li>
+            <li><strong>De intervalo:</strong> distancia exacta entre valores pero sin cero absoluto. Ejemplo: temperatura, CI.</li>
+            <li><strong>De razón:</strong> distancia exacta y cero absoluto. Ejemplo: edad, peso, horas de sueño, número de aciertos.</li>
+          </ul>
+        </div>
+
+        <p>Además, según su <strong>función en el estudio</strong>, las variables pueden ser (recordatorio Unidad II):</p>
+        <ul style="margin-left:1.5rem">
+          <li><strong>Variable independiente (VI):</strong> la que manipulas o comparas (causa hipotética)</li>
+          <li><strong>Variable dependiente (VD):</strong> la que mides (efecto esperado)</li>
+          <li><strong>Variables controladas (VC):</strong> las que mantienes constantes para que no contaminen los resultados</li>
+        </ul>
+
+        <div class="hipotesis">
+          <p><strong>Clasifica estas variables psicológicas</strong>:</p>
+          <p>Para cada una, indica su tipo (cualitativa/cuantitativa), subtipo (nominal, ordinal, discreta, continua) y nivel de medición:</p>
+          <ol style="margin-left:1.3rem; font-size:0.93rem">
+            <li>Puntaje en la Escala Rosenberg de autoestima (10-40)</li>
+            <li>Estado civil (soltero, casado, divorciado, viudo)</li>
+            <li>Número de sesiones de terapia realizadas</li>
+            <li>Grado de satisfacción con el tratamiento (muy insatisfecho a muy satisfecho)</li>
+            <li>Tiempo (en segundos) de reacción a un estímulo visual</li>
+            <li>Tipo de apego (seguro, ansioso, evitativo, desorganizado)</li>
+          </ol>
+          <textarea placeholder="1) Cuantitativa continua, nivel intervalo... 2) Cualitativa nominal... etc."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Identifiqué tipos, subtipos y niveles de medición de variables</div>
+      </div>
+
+      <!-- PASO 3 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">3</div><h3>Tema 3.1.2 · Muestras y población</h3></div>
+
+        <p>Los psicólogos casi nunca podemos estudiar a toda una población (todos los universitarios de México, todos los niños con TDAH). Estudiamos una <strong>muestra</strong> y esperamos que represente al conjunto. Elegir bien la muestra es tan importante como diseñar bien el instrumento.</p>
+
+        <div class="glosario">
+          <dl>
+            <dt>Población</dt>
+            <dd>Conjunto completo de personas u objetos sobre los que quieres concluir. Ejemplo: todos los estudiantes universitarios de Jalisco.</dd>
+            <dt>Muestra</dt>
+            <dd>Subconjunto de la población al que realmente accedes para tu estudio. Ejemplo: 200 estudiantes de tres universidades de Guadalajara.</dd>
+            <dt>Muestra representativa</dt>
+            <dd>Muestra que tiene características similares a la población en las variables relevantes (edad, sexo, carrera, etc.).</dd>
+            <dt>Tamaño de muestra (n)</dt>
+            <dd>Número de participantes que incluyes. Se representa con la letra n. Ejemplo: n=200.</dd>
+            <dt>Marco muestral</dt>
+            <dd>Lista o base de datos de la población desde la cual se elige la muestra. Ejemplo: padrón universitario.</dd>
+          </dl>
+        </div>
+
+        <div class="ejemplo">
+          <h4>Tipos de muestreo en psicología</h4>
+          <p>Hay dos grandes familias de muestreo, según si usan azar o no:</p>
+          <p><strong>Muestreo probabilístico</strong> (todos tienen probabilidad conocida de ser elegidos):</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Aleatorio simple:</strong> como una lotería. Cada participante tiene la misma probabilidad de ser elegido.</li>
+            <li><strong>Estratificado:</strong> divides la población en subgrupos (estratos) y eliges aleatoriamente de cada uno. Útil cuando quieres asegurar representación de minorías.</li>
+            <li><strong>Sistemático:</strong> eliges cada k-ésimo caso (por ejemplo, cada quinto en una lista).</li>
+            <li><strong>Por conglomerados:</strong> eliges grupos completos (por ejemplo, salones enteros) al azar.</li>
+          </ul>
+          <p><strong>Muestreo no probabilístico</strong> (útil en estudios exploratorios pero no permite generalizar):</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Por conveniencia:</strong> los que están disponibles. Ejemplo: tus compañeros de clase.</li>
+            <li><strong>Intencional o de juicio:</strong> el investigador elige casos específicos por su relevancia.</li>
+            <li><strong>Bola de nieve:</strong> un participante te refiere a otros. Útil para poblaciones difíciles de contactar.</li>
+          </ul>
+        </div>
+
+        <div class="hipotesis">
+          <p><strong>Elige el mejor tipo de muestreo para cada caso:</strong></p>
+          <ol style="margin-left:1.3rem; font-size:0.93rem">
+            <li>Quieres estudiar el bienestar de los estudiantes de tu universidad, asegurando que cada carrera esté representada.</li>
+            <li>Investigas experiencias de personas con un trastorno raro que apenas tiene 20 pacientes en tu ciudad.</li>
+            <li>Aplicas una encuesta rápida a tus compañeros de clase para un ejercicio.</li>
+            <li>Estudias la ansiedad en una escuela primaria; el director te dice "elige 3 salones cualquiera".</li>
+          </ol>
+          <textarea placeholder="1) Estratificado, porque... 2) Bola de nieve, porque... etc."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Conozco tipos de muestreo y cuándo aplicar cada uno</div>
+      </div>
+
+      <!-- PASO 4 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">4</div><h3>Tema 3.1.2 · Grupos de estudio · Práctica en Excel</h3></div>
+
+        <p>Cuando tu diseño requiere comparar personas, formas <strong>grupos</strong>. Los grupos se distinguen de la muestra general porque tienen una función específica de comparación.</p>
+
+        <div class="ejemplo">
+          <h4>Tipos de grupos en investigación psicológica</h4>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Grupo experimental:</strong> recibe el tratamiento o intervención</li>
+            <li><strong>Grupo control:</strong> no recibe el tratamiento (sirve de comparación)</li>
+            <li><strong>Grupo placebo:</strong> recibe una intervención "falsa" para controlar el efecto de la expectativa</li>
+            <li><strong>Grupos naturales:</strong> ya existen antes del estudio (por ejemplo, hombres vs mujeres, con vs sin trastorno)</li>
+            <li><strong>Grupos por asignación aleatoria:</strong> los formas al azar para eliminar diferencias sistemáticas</li>
+          </ul>
+        </div>
+
+        <p>Vas a crear tu libro de trabajo para toda la unidad. Sigue estos pasos:</p>
+        <ol>
+          <li>Abre Microsoft Excel y crea un libro nuevo</li>
+          <li>Guárdalo como <code class="inline">Manejo_Datos_TuNombre.xlsx</code></li>
+          <li>Renombra "Hoja1" como <code class="inline">Muestreo</code> con pestaña <strong>morada</strong></li>
+        </ol>
+
+        <p>Vas a diseñar el marco muestral de un estudio ficticio. Imagina que investigas el estrés académico en tu universidad. La universidad tiene 5 carreras y quieres una <strong>muestra estratificada</strong> de 40 estudiantes que represente a cada carrera proporcionalmente. Captura:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">A</td><td class="col-letter">B</td><td class="col-letter">C</td><td class="col-letter">D</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Carrera</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Total estudiantes</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Proporción</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Muestra a elegir (n=40)</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Psicología</td><td>400</td><td class="hl">=B2/$B$7</td><td class="hl">=REDONDEAR(C2*40,0)</td></tr>
+            <tr><td class="row-num">3</td><td>Medicina</td><td>320</td><td class="hl">=B3/$B$7</td><td class="hl">=REDONDEAR(C3*40,0)</td></tr>
+            <tr><td class="row-num">4</td><td>Derecho</td><td>280</td><td class="hl">=B4/$B$7</td><td class="hl">=REDONDEAR(C4*40,0)</td></tr>
+            <tr><td class="row-num">5</td><td>Ingeniería</td><td>500</td><td class="hl">=B5/$B$7</td><td class="hl">=REDONDEAR(C5*40,0)</td></tr>
+            <tr><td class="row-num">6</td><td>Administración</td><td>500</td><td class="hl">=B6/$B$7</td><td class="hl">=REDONDEAR(C6*40,0)</td></tr>
+            <tr><td class="row-num">7</td><td style="font-weight:700">TOTAL</td><td class="hl-g">=SUMA(B2:B6)</td><td class="hl-g">=SUMA(C2:C6)</td><td class="hl-g">=SUMA(D2:D6)</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados que deberías obtener:</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>Total de estudiantes: 2000</li>
+          <li>Proporción total: 1.00 (100%)</li>
+          <li>Muestra: Psicología 8, Medicina 6, Derecho 6, Ingeniería 10, Administración 10, TOTAL 40</li>
+        </ul>
+
+        <div class="tip"><strong>Formato para la columna Proporción:</strong> selecciona C2:C7 → Inicio → Formato de número → Porcentaje con 1 decimal. Verás 20.0%, 16.0%, etc.</div>
+
+        <p>Ahora crea un gráfico de columnas comparando las carreras. Selecciona <code class="inline">A2:B6</code> → Insertar → Columna agrupada. Título: <code class="inline">Distribución de estudiantes por carrera (N=2,000)</code>.</p>
+
+        <div class="reflexion">
+          <p><strong>Reflexión integradora de la Fase 1</strong>:</p>
+          <ol>
+            <li>Vuelve al problema inicial: ¿cómo operacionalizarías ahora el "bienestar emocional" que pidió el director? Describe brevemente el estudio que le propondrías.</li>
+            <li>Si sólo tuvieras tiempo de encuestar a 30 estudiantes de tu universidad, ¿qué método de muestreo usarías y por qué?</li>
+            <li>Los muestreos no probabilísticos son criticados por no permitir generalizar. Sin embargo, se usan mucho en psicología clínica. ¿Por qué crees que sea así?</li>
+            <li>Si el director te dijera "quiero que estudies sólo a estudiantes que ya vienen a mi oficina con problemas", ¿qué sesgo estarías introduciendo?</li>
+          </ol>
+          <textarea placeholder="Tus reflexiones..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Diseñé un plan de muestreo estratificado en Excel</div>
+      </div>
+
+      <div class="entregable">
+        <h4>Entrega de la Fase 1</h4>
+        <ul>
+          <li>Archivo <code class="inline" style="color:var(--ink)">Manejo_Datos_TuNombre.xlsx</code> con hoja Muestreo</li>
+          <li>Tabla de muestreo estratificado con proporciones y gráfico</li>
+          <li>Definición operativa escrita del bienestar emocional</li>
+          <li>Clasificación de las 6 variables del paso 2</li>
+          <li>Elección justificada de tipos de muestreo del paso 3</li>
+          <li>Reflexión final de la fase</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============== FASE 2: LEVANTAMIENTO Y BASE DE DATOS (2h) ============== -->
+  <section class="fase" id="fase2">
+    <div class="fase-header">
+      <div>
+        <div class="fase-num">Fase 2 · Temas 3.1.3 y 3.1.4</div>
+        <h2>Levantamiento de datos y diseño de bases de datos</h2>
+      </div>
+      <div class="fase-time">⏱ 2 horas</div>
+    </div>
+    <div class="fase-body">
+
+      <div class="problema-abp">
+        <h3>El problema con el que vas a trabajar</h3>
+        <p>Después de aplicar tu instrumento, llegas a la oficina con <strong>100 encuestas en papel</strong>. Están en desorden, algunas con letras ilegibles, otras con respuestas dobles o campos vacíos.</p>
+        <p style="font-weight:600; color:var(--accent-deep);">Tu reto: convertir esa pila de papel en una <strong>base de datos digital limpia</strong> que puedas analizar. Un error en este paso arruinará todos los análisis que hagas después. ¿Cómo lo haces sin equivocarte?</p>
+      </div>
+
+      <div class="objetivo">
+        <strong>Objetivo de esta fase</strong>
+        Vas a aprender protocolos de levantamiento de datos (tema 3.1.3), codificación de respuestas y diseño de bases de datos limpias y funcionales en Excel (tema 3.1.4). Aplicarás formato de tabla, validación de datos y controles de calidad.
+      </div>
+
+      <!-- PASO 5 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">5</div><h3>Tema 3.1.3 · Levantamiento de datos</h3></div>
+
+        <p>El <strong>levantamiento de datos</strong> es el proceso de recolectar la información. Aunque parezca la parte "más simple" del estudio, es donde ocurren muchos errores que después no se pueden corregir.</p>
+
+        <div class="glosario">
+          <dl>
+            <dt>Levantamiento de datos</dt>
+            <dd>Proceso de aplicar los instrumentos de medición a los participantes y recolectar sus respuestas. También llamado "trabajo de campo".</dd>
+            <dt>Protocolo de aplicación</dt>
+            <dd>Instrucciones detalladas para que todos los aplicadores hagan exactamente lo mismo. Reduce la varianza por diferencias entre aplicadores.</dd>
+            <dt>Consentimiento informado</dt>
+            <dd>Documento firmado donde el participante acepta voluntariamente participar tras conocer los objetivos, riesgos y su derecho a retirarse.</dd>
+            <dt>Datos primarios vs secundarios</dt>
+            <dd>Primarios = tú los recolectaste directamente. Secundarios = ya estaban recolectados (bases de datos gubernamentales, otros estudios).</dd>
+          </dl>
+        </div>
+
+        <div class="ejemplo">
+          <h4>Checklist de un buen levantamiento de datos</h4>
+          <ol style="margin-left:1.3rem">
+            <li><strong>Antes:</strong> pilotea el instrumento con 5-10 personas para detectar preguntas confusas.</li>
+            <li><strong>Antes:</strong> obtén consentimientos informados y ten copia física o digital.</li>
+            <li><strong>Antes:</strong> capacita a todos los aplicadores con el mismo protocolo.</li>
+            <li><strong>Durante:</strong> registra fecha, hora y contexto de aplicación (los datos aplicados a las 8am difieren de los de las 8pm).</li>
+            <li><strong>Durante:</strong> resguarda la confidencialidad. Cada participante tiene un ID, no su nombre en la base de datos.</li>
+            <li><strong>Después:</strong> revisa cada encuesta antes de capturar; si hay dudas, marca el caso como "revisar".</li>
+            <li><strong>Después:</strong> nunca desechas datos "raros" sin justificarlo. Documenta las decisiones.</li>
+          </ol>
+        </div>
+
+        <p><strong>Errores comunes en el levantamiento (y cómo evitarlos):</strong></p>
+
+        <div class="comparativa">
+          <div class="compara-card a">
+            <h4>Errores frecuentes</h4>
+            <ul>
+              <li>Preguntas dobles o negaciones confusas</li>
+              <li>Aplicadores que "ayudan" con las respuestas</li>
+              <li>Ambientes ruidosos o con presión de tiempo</li>
+              <li>No registrar datos faltantes (encuesta parcial)</li>
+              <li>Perder consentimientos informados</li>
+              <li>Aplicar sin capacitar al equipo</li>
+            </ul>
+          </div>
+          <div class="compara-card b">
+            <h4>Buenas prácticas</h4>
+            <ul>
+              <li>Prueba piloto obligatoria</li>
+              <li>Instrucciones neutrales y estandarizadas</li>
+              <li>Ambiente tranquilo y privado</li>
+              <li>Codificar sistemáticamente los faltantes (ejemplo: 999)</li>
+              <li>Archivo físico y digital de consentimientos</li>
+              <li>Manual de aplicación por escrito</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Conozco protocolos y buenas prácticas de levantamiento</div>
+      </div>
+
+      <!-- PASO 6 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">6</div><h3>Tema 3.1.4 · Codificación de datos</h3></div>
+
+        <p>Antes de capturar la información en Excel, hay que <strong>codificarla</strong>. Codificar significa asignar un número o etiqueta corta a cada respuesta para que sea manejable.</p>
+
+        <div class="ejemplo">
+          <h4>¿Por qué codificar?</h4>
+          <p>En una encuesta, un participante puede responder "Femenino", "femenino", "F", "mujer", "mujeres", "muj." Todas significan lo mismo pero Excel las trataría como categorías distintas. Codificar unifica: <strong>1 = Femenino, 2 = Masculino</strong>. Ahora sólo hay dos categorías.</p>
+        </div>
+
+        <p>Vas a crear tu <strong>libro de códigos</strong>. Es un documento que explica qué significa cada valor en tu base de datos. Sin él, en 6 meses no vas a recordar qué era 3 en la columna "estado civil".</p>
+
+        <p>Crea una hoja nueva llamada <code class="inline">Libro_codigos</code> con pestaña <strong>naranja</strong>. Captura:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">A</td><td class="col-letter">B</td><td class="col-letter">C</td><td class="col-letter">D</td><td class="col-letter">E</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Variable</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Nombre corto</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Tipo</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Valores válidos</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Código faltante</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Identificador</td><td>ID</td><td>Numérica</td><td>1 a 999</td><td>-</td></tr>
+            <tr><td class="row-num">3</td><td>Edad</td><td>edad</td><td>Numérica</td><td>17 a 60</td><td>999</td></tr>
+            <tr><td class="row-num">4</td><td>Sexo</td><td>sexo</td><td>Nominal</td><td>1=Femenino, 2=Masculino</td><td>9</td></tr>
+            <tr><td class="row-num">5</td><td>Carrera</td><td>carrera</td><td>Nominal</td><td>1=Psi, 2=Med, 3=Der, 4=Ing, 5=Adm</td><td>9</td></tr>
+            <tr><td class="row-num">6</td><td>Ansiedad GAD-7</td><td>ans</td><td>Escala</td><td>0 a 21</td><td>99</td></tr>
+            <tr><td class="row-num">7</td><td>Satisfacción vida</td><td>satisf</td><td>Ordinal</td><td>1=Muy insat., 5=Muy satisf.</td><td>9</td></tr>
+            <tr><td class="row-num">8</td><td>Horas sueño</td><td>sueno</td><td>Numérica</td><td>0 a 12</td><td>99</td></tr>
+          </table>
+        </div>
+
+        <div class="tip"><strong>Regla de oro:</strong> los códigos de faltantes (missing) siempre deben estar fuera del rango de valores válidos. Si la edad va de 17 a 60, un 999 nunca se confundirá con dato real. Un 0 o -1 sí podría confundirse.</div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Creé el libro de códigos con variables, tipos y valores válidos</div>
+      </div>
+
+      <!-- PASO 7 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">7</div><h3>Diseña la base de datos en Excel</h3></div>
+
+        <p>Una <strong>base de datos limpia</strong> sigue reglas estrictas. Si las respetas, cualquier análisis posterior será fácil. Si las rompes, cada análisis te dará pesadillas.</p>
+
+        <div class="ejemplo">
+          <h4>Los 5 principios de una base de datos limpia</h4>
+          <ol style="margin-left:1.3rem">
+            <li><strong>Una fila = un caso.</strong> Cada participante ocupa exactamente una fila.</li>
+            <li><strong>Una columna = una variable.</strong> Cada característica medida está en su propia columna.</li>
+            <li><strong>Una celda = un valor.</strong> Nunca combines dos datos en una celda (por ejemplo, "F/25" para sexo y edad).</li>
+            <li><strong>Encabezados cortos y consistentes.</strong> Usa nombres sin espacios ni acentos: "edad", "sexo", "ans" no "Edad (años)".</li>
+            <li><strong>Sin celdas combinadas ni formatos decorativos.</strong> El formato bonito viene después, en el análisis.</li>
+          </ol>
+        </div>
+
+        <p>Crea una nueva hoja llamada <code class="inline">Base_datos</code> con pestaña <strong>verde</strong>. Captura estos 15 casos de una encuesta piloto:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">A</td><td class="col-letter">B</td><td class="col-letter">C</td><td class="col-letter">D</td><td class="col-letter">E</td><td class="col-letter">F</td><td class="col-letter">G</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">ID</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">edad</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">sexo</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">carrera</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">ans</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">satisf</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">sueno</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>1</td><td>19</td><td>1</td><td>1</td><td>14</td><td>3</td><td>6.5</td></tr>
+            <tr><td class="row-num">3</td><td>2</td><td>22</td><td>2</td><td>2</td><td>8</td><td>4</td><td>7.5</td></tr>
+            <tr><td class="row-num">4</td><td>3</td><td>20</td><td>1</td><td>1</td><td>17</td><td>2</td><td>5.5</td></tr>
+            <tr><td class="row-num">5</td><td>4</td><td>21</td><td>2</td><td>4</td><td>11</td><td>3</td><td>7</td></tr>
+            <tr><td class="row-num">6</td><td>5</td><td>19</td><td>1</td><td>3</td><td>16</td><td>2</td><td>6</td></tr>
+            <tr><td class="row-num">7</td><td>6</td><td>23</td><td>2</td><td>5</td><td>6</td><td>5</td><td>8</td></tr>
+            <tr><td class="row-num">8</td><td>7</td><td>18</td><td>1</td><td>1</td><td>19</td><td>2</td><td>5</td></tr>
+            <tr><td class="row-num">9</td><td>8</td><td>20</td><td>2</td><td>2</td><td>13</td><td>3</td><td>6.5</td></tr>
+            <tr><td class="row-num">10</td><td>9</td><td>21</td><td>1</td><td>3</td><td>15</td><td>3</td><td>6</td></tr>
+            <tr><td class="row-num">11</td><td>10</td><td>19</td><td>2</td><td>4</td><td>9</td><td>4</td><td>7.5</td></tr>
+            <tr><td class="row-num">12</td><td>11</td><td>22</td><td>1</td><td>1</td><td>18</td><td>2</td><td>5.5</td></tr>
+            <tr><td class="row-num">13</td><td>12</td><td>20</td><td>2</td><td>5</td><td>7</td><td>4</td><td>8</td></tr>
+            <tr><td class="row-num">14</td><td>13</td><td>999</td><td>1</td><td>1</td><td>13</td><td>3</td><td>6.5</td></tr>
+            <tr><td class="row-num">15</td><td>14</td><td>19</td><td>2</td><td>2</td><td>10</td><td>99</td><td>7</td></tr>
+            <tr><td class="row-num">16</td><td>15</td><td>23</td><td>1</td><td>3</td><td>20</td><td>1</td><td>4.5</td></tr>
+          </table>
+          <p class="excel-caption">Nota: fila 13 tiene edad codificada como faltante (999), fila 14 tiene satisfacción faltante (99). Son casos reales que aparecen en levantamientos.</p>
+        </div>
+
+        <p><strong>Aplica formato de tabla profesional:</strong></p>
+        <ol>
+          <li>Selecciona el rango <code class="inline">A1:G16</code></li>
+          <li>Ve a Inicio → <strong>Dar formato como tabla</strong></li>
+          <li>Elige un estilo (recomiendo tonos morados para mantener identidad de tu proyecto)</li>
+          <li>Confirma que "La tabla tiene encabezados" esté marcada</li>
+          <li>Excel activará automáticamente los filtros en cada columna</li>
+        </ol>
+
+        <div class="check-done"><input type="checkbox" class="check"> Diseñé una base de datos limpia con formato de tabla</div>
+      </div>
+
+      <!-- PASO 8 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">8</div><h3>Validación de datos y controles de calidad</h3></div>
+
+        <p>Ahora vas a aplicar <strong>validación de datos</strong>, una función de Excel que impide capturar valores fuera de rango. Es como poner un guardián en cada columna.</p>
+
+        <p><strong>Aplica validación a la columna "edad":</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">B2:B100</code> (deja espacio para más filas)</li>
+          <li>Ve a la pestaña <strong>Datos</strong> → <strong>Validación de datos</strong></li>
+          <li>En "Permitir" elige <strong>Número entero</strong></li>
+          <li>En "Datos" elige <strong>entre</strong>. Mínimo: 17, Máximo: 60</li>
+          <li>En la pestaña "Mensaje de entrada" escribe: <em>Edad en años cumplidos (17-60)</em></li>
+          <li>En "Mensaje de error" escribe: <em>La edad debe estar entre 17 y 60 años</em></li>
+          <li>Da clic en Aceptar</li>
+        </ol>
+
+        <p><strong>Aplica validación a la columna "sexo" (lista desplegable):</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">C2:C100</code></li>
+          <li>Datos → Validación de datos</li>
+          <li>Permitir → <strong>Lista</strong></li>
+          <li>Origen: escribe <code class="inline">1,2,9</code> (los códigos válidos)</li>
+          <li>Aceptar. Ahora en la columna sexo verás una flechita de desplegable</li>
+        </ol>
+
+        <p><strong>Ahora aplica un control de calidad</strong> para detectar valores atípicos usando fórmulas:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">I</td><td class="col-letter">J</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Control de calidad</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Valor</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Total de casos</td><td class="hl">=CONTARA(A2:A16)</td></tr>
+            <tr><td class="row-num">3</td><td>Edad promedio (excluyendo 999)</td><td class="hl">=PROMEDIO.SI(B2:B16,"&lt;100")</td></tr>
+            <tr><td class="row-num">4</td><td>Casos con edad faltante (999)</td><td class="hl">=CONTAR.SI(B2:B16,999)</td></tr>
+            <tr><td class="row-num">5</td><td>Casos con satisfacción faltante (99)</td><td class="hl">=CONTAR.SI(F2:F16,99)</td></tr>
+            <tr><td class="row-num">6</td><td>Mujeres</td><td class="hl">=CONTAR.SI(C2:C16,1)</td></tr>
+            <tr><td class="row-num">7</td><td>Hombres</td><td class="hl">=CONTAR.SI(C2:C16,2)</td></tr>
+            <tr><td class="row-num">8</td><td>Estudiantes de Psicología</td><td class="hl">=CONTAR.SI(D2:D16,1)</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados:</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>Total de casos: 15</li>
+          <li>Edad promedio: 20.4 (excluye el 999)</li>
+          <li>Faltantes en edad: 1</li>
+          <li>Faltantes en satisfacción: 1</li>
+          <li>Mujeres: 8, Hombres: 7</li>
+          <li>Estudiantes de Psicología: 5</li>
+        </ul>
+
+        <div class="reflexion">
+          <p><strong>Reflexión integradora de la Fase 2</strong>:</p>
+          <ol>
+            <li>¿Por qué crees que es importante usar códigos numéricos en vez de texto ("Femenino", "Masculino")? Da al menos 2 razones.</li>
+            <li>La fila 13 tiene edad codificada como 999. ¿Qué opciones tienes al analizar los datos? ¿Los excluyes, los imputas (rellenas con la media), los reportas por separado?</li>
+            <li>Volviendo al problema inicial: si recibieras 100 encuestas en papel, ¿cuáles serían tus primeros 3 pasos antes de capturar el primer dato en Excel?</li>
+            <li>Un colega te muestra su base de datos con celdas combinadas, encabezados con colores decorativos y notas manuscritas al margen. ¿Qué le sugerirías?</li>
+          </ol>
+          <textarea placeholder="Tus reflexiones..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Apliqué validación de datos y controles de calidad</div>
+      </div>
+
+      <div class="entregable">
+        <h4>Entrega de la Fase 2</h4>
+        <ul>
+          <li>Hoja <code class="inline" style="color:var(--ink)">Libro_codigos</code> completa</li>
+          <li>Hoja <code class="inline" style="color:var(--ink)">Base_datos</code> con formato de tabla y 15 casos</li>
+          <li>Validación de datos aplicada a las columnas edad y sexo</li>
+          <li>Panel de control de calidad con las 7 métricas calculadas</li>
+          <li>Reflexión escrita sobre buenas prácticas de manejo de datos</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============== FASE 3: TENDENCIA CENTRAL Y DISPERSIÓN (2.5h) ============== -->
+  <section class="fase" id="fase3">
+    <div class="fase-header">
+      <div>
+        <div class="fase-num">Fase 3 · Temas 3.2.1 y 3.2.2</div>
+        <h2>Medidas de tendencia central y dispersión</h2>
+      </div>
+      <div class="fase-time">⏱ 2.5 horas</div>
+    </div>
+    <div class="fase-body">
+
+      <div class="problema-abp">
+        <h3>El problema con el que vas a trabajar</h3>
+        <p>Aplicaste una escala de ansiedad a 30 estudiantes. Tienes 30 puntajes en tu Excel. El coordinador de servicios estudiantiles te pregunta:</p>
+        <p style="font-weight:600; color:var(--accent-deep);"><em>"En una frase: ¿cómo están los estudiantes de ansiosos?"</em></p>
+        <p>No puedes leerle los 30 números. Necesitas <strong>resumir</strong> esa información en pocas cifras. Pero no cualquier cifra: tienes que elegir la que mejor represente al grupo y sepa expresar tanto lo típico (dónde se concentran los datos) como lo diverso (qué tanto varían entre sí).</p>
+      </div>
+
+      <div class="objetivo">
+        <strong>Objetivo de esta fase</strong>
+        Vas a dominar las medidas de tendencia central (media, mediana, moda) del tema 3.2.1 y las medidas de dispersión (rango, varianza, desviación estándar, coeficiente de variación) del tema 3.2.2. Aprenderás cuándo usar cada una y qué te dice sobre el fenómeno psicológico.
+      </div>
+
+      <!-- PASO 9 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">9</div><h3>Tema 3.2.1 · La media aritmética</h3></div>
+
+        <p>La <strong>media aritmética</strong> (también llamada promedio) es la medida de tendencia central más conocida. Se calcula sumando todos los valores y dividiendo entre el número de casos.</p>
+
+        <div class="ejemplo">
+          <h4>¿Qué te dice la media?</h4>
+          <p>La media es el "punto de equilibrio" de los datos. Si imaginaras cada dato como un peso sobre una regla, la media es el punto donde la regla se balancea perfectamente. Representa el valor <em>típico</em> del grupo cuando los datos son simétricos.</p>
+          <p><strong>Ventajas:</strong> usa toda la información (todos los valores influyen), es fácil de calcular, permite operaciones estadísticas avanzadas.</p>
+          <p><strong>Desventajas:</strong> se ve afectada por valores extremos (outliers). Si tienes puntajes 15, 16, 17, 18, 90, la media sube a 31.2 aunque cuatro de cinco están cerca de 16.</p>
+        </div>
+
+        <p>Crea una nueva hoja llamada <code class="inline">Descriptivas</code> con pestaña <strong>amarilla</strong>. Captura estos puntajes de ansiedad de 30 estudiantes:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">A</td><td class="col-letter">B</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">ID</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">Ansiedad</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>1</td><td>12</td></tr>
+            <tr><td class="row-num">3</td><td>2</td><td>15</td></tr>
+            <tr><td class="row-num">4</td><td>3</td><td>18</td></tr>
+            <tr><td class="row-num">5</td><td>4</td><td>10</td></tr>
+            <tr><td class="row-num">6</td><td>5</td><td>14</td></tr>
+            <tr><td class="row-num">7</td><td>6</td><td>16</td></tr>
+            <tr><td class="row-num">8</td><td>7</td><td>13</td></tr>
+            <tr><td class="row-num">9</td><td>8</td><td>17</td></tr>
+            <tr><td class="row-num">10</td><td>9</td><td>11</td></tr>
+            <tr><td class="row-num">11</td><td>10</td><td>15</td></tr>
+            <tr><td class="row-num">12</td><td>11</td><td>19</td></tr>
+            <tr><td class="row-num">13</td><td>12</td><td>14</td></tr>
+            <tr><td class="row-num">14</td><td>13</td><td>16</td></tr>
+            <tr><td class="row-num">15</td><td>14</td><td>12</td></tr>
+            <tr><td class="row-num">16</td><td>15</td><td>15</td></tr>
+            <tr><td class="row-num">17</td><td>16</td><td>13</td></tr>
+            <tr><td class="row-num">18</td><td>17</td><td>17</td></tr>
+            <tr><td class="row-num">19</td><td>18</td><td>15</td></tr>
+            <tr><td class="row-num">20</td><td>19</td><td>18</td></tr>
+            <tr><td class="row-num">21</td><td>20</td><td>14</td></tr>
+            <tr><td class="row-num">22</td><td>21</td><td>16</td></tr>
+            <tr><td class="row-num">23</td><td>22</td><td>15</td></tr>
+            <tr><td class="row-num">24</td><td>23</td><td>13</td></tr>
+            <tr><td class="row-num">25</td><td>24</td><td>17</td></tr>
+            <tr><td class="row-num">26</td><td>25</td><td>15</td></tr>
+            <tr><td class="row-num">27</td><td>26</td><td>14</td></tr>
+            <tr><td class="row-num">28</td><td>27</td><td>16</td></tr>
+            <tr><td class="row-num">29</td><td>28</td><td>15</td></tr>
+            <tr><td class="row-num">30</td><td>29</td><td>18</td></tr>
+            <tr><td class="row-num">31</td><td>30</td><td>15</td></tr>
+          </table>
+        </div>
+
+        <p>En la columna D calcula la media:</p>
+
+        <div class="formula"><span class="kw">=PROMEDIO</span>(<span class="arg">B2:B31</span>)<span class="comment">Resultado esperado: 15.03</span></div>
+
+        <div class="hipotesis">
+          <p><strong>Predice antes de calcular:</strong></p>
+          <p>Si mentalmente estimas: ¿el promedio de ansiedad de estos 30 estudiantes está cerca de 12, 15 o 18?</p>
+          <textarea placeholder="Mi predicción es..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé y entendí la media aritmética</div>
+      </div>
+
+      <!-- PASO 10 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">10</div><h3>Tema 3.2.1 · Mediana y moda</h3></div>
+
+        <p>La <strong>mediana</strong> es el valor que queda exactamente en el medio cuando ordenas los datos de menor a mayor. Es una alternativa robusta a la media.</p>
+
+        <div class="ejemplo">
+          <h4>¿Por qué la mediana es útil?</h4>
+          <p>La mediana <strong>no se ve afectada por valores extremos</strong>. En el ejemplo de los puntajes 15, 16, 17, 18, 90:</p>
+          <ul style="margin-left:1.3rem">
+            <li>Media = 31.2 (distorsionada por el 90)</li>
+            <li>Mediana = 17 (representa mejor al grupo)</li>
+          </ul>
+          <p>Por eso los sueldos en las estadísticas suelen reportarse como <strong>mediana</strong>: si Bill Gates entra a un salón de clase con 30 estudiantes, la media del ingreso del salón sube millonariamente, pero la mediana casi no cambia.</p>
+        </div>
+
+        <p>La <strong>moda</strong> es el valor que más se repite. Es la única medida de tendencia central que se puede usar con variables cualitativas nominales (ejemplo: la carrera "más común" en un grupo).</p>
+
+        <p>En Excel, calcula ambas debajo de la media:</p>
+
+        <div class="formula"><span class="kw">=MEDIANA</span>(<span class="arg">B2:B31</span>)<span class="comment">Resultado esperado: 15</span></div>
+
+        <div class="formula"><span class="kw">=MODA</span>(<span class="arg">B2:B31</span>)<span class="comment">Resultado esperado: 15 (aparece más veces)</span></div>
+
+        <div class="tip"><strong>Cuando las 3 medidas coinciden (media = mediana = moda),</strong> tienes una distribución simétrica y "normal". Cuando difieren mucho, tienes asimetría, un tema que trabajaremos en la Fase 4.</div>
+
+        <div class="ejemplo">
+          <h4>Regla práctica para elegir la medida de tendencia central</h4>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Variable numérica simétrica sin outliers:</strong> usa la <strong>media</strong></li>
+            <li><strong>Variable numérica con outliers o asimetría fuerte:</strong> usa la <strong>mediana</strong></li>
+            <li><strong>Variable ordinal (Likert, nivel socioeconómico):</strong> usa la <strong>mediana</strong> o <strong>moda</strong></li>
+            <li><strong>Variable nominal (carrera, sexo, estado civil):</strong> usa sólo la <strong>moda</strong></li>
+          </ul>
+        </div>
+
+        <div class="reflexion">
+          <p><strong>Interpretación</strong>:</p>
+          <ol>
+            <li>Para tu muestra de ansiedad, media = 15.03, mediana = 15, moda = 15. ¿Qué te dice esto sobre la distribución?</li>
+            <li>Si le tuvieras que reportar al coordinador un solo número que resumiera la ansiedad del grupo, ¿cuál usarías y por qué?</li>
+            <li>En el GAD-7, puntajes 10-14 = ansiedad moderada. ¿En qué nivel se encuentra "el estudiante típico" de tu muestra?</li>
+          </ol>
+          <textarea placeholder="Tus interpretaciones..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé mediana y moda; sé cuándo usar cada medida</div>
+      </div>
+
+      <!-- PASO 11 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">11</div><h3>Tema 3.2.2 · Medidas de dispersión: rango y desviación estándar</h3></div>
+
+        <p>Con las medidas de tendencia central sabemos <em>dónde</em> está el centro de los datos. Pero necesitamos saber también <strong>qué tan dispersos están</strong>. ¿Todos los estudiantes se parecen (baja dispersión) o son muy distintos entre sí (alta dispersión)?</p>
+
+        <div class="ejemplo">
+          <h4>¿Por qué la dispersión importa en psicología?</h4>
+          <p>Imagina que aplicas una prueba de inteligencia a dos grupos:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Grupo A:</strong> 98, 99, 100, 101, 102 (media = 100)</li>
+            <li><strong>Grupo B:</strong> 70, 85, 100, 115, 130 (media = 100)</li>
+          </ul>
+          <p>Ambos tienen la <strong>misma media</strong>, pero son grupos totalmente distintos. El A es homogéneo, el B es heterogéneo. Sin medidas de dispersión no notarías esta diferencia clave.</p>
+        </div>
+
+        <div class="glosario">
+          <dl>
+            <dt>Rango</dt>
+            <dd>Diferencia entre el valor máximo y el mínimo. Es la medida más simple pero muy sensible a outliers.</dd>
+            <dt>Varianza (σ²)</dt>
+            <dd>Promedio de las diferencias al cuadrado de cada dato respecto a la media. Se expresa en unidades al cuadrado, por eso a menudo se prefiere la desviación estándar.</dd>
+            <dt>Desviación estándar (σ o DE)</dt>
+            <dd>Raíz cuadrada de la varianza. Se expresa en la misma unidad que los datos. Indica en promedio cuánto se alejan los valores de la media.</dd>
+            <dt>Coeficiente de variación (CV)</dt>
+            <dd>Desviación estándar dividida entre la media, expresada en porcentaje. Permite comparar dispersión entre variables con distintas unidades.</dd>
+          </dl>
+        </div>
+
+        <p>Calcula las medidas de dispersión para tu muestra de ansiedad:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">D</td><td class="col-letter">E</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Medida</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Valor</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Media</td><td class="hl">=PROMEDIO(B2:B31)</td></tr>
+            <tr><td class="row-num">3</td><td>Mediana</td><td class="hl">=MEDIANA(B2:B31)</td></tr>
+            <tr><td class="row-num">4</td><td>Moda</td><td class="hl">=MODA(B2:B31)</td></tr>
+            <tr><td class="row-num">5</td><td>Mínimo</td><td class="hl">=MIN(B2:B31)</td></tr>
+            <tr><td class="row-num">6</td><td>Máximo</td><td class="hl">=MAX(B2:B31)</td></tr>
+            <tr><td class="row-num">7</td><td>Rango</td><td class="hl">=E6-E5</td></tr>
+            <tr><td class="row-num">8</td><td>Varianza</td><td class="hl">=VAR.M(B2:B31)</td></tr>
+            <tr><td class="row-num">9</td><td>Desviación estándar</td><td class="hl">=DESVEST.M(B2:B31)</td></tr>
+            <tr><td class="row-num">10</td><td>Coeficiente de variación</td><td class="hl">=E9/E2*100</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados:</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>Mínimo: 10, Máximo: 19, Rango: 9</li>
+          <li>Varianza ≈ 4.86</li>
+          <li>Desviación estándar ≈ 2.20</li>
+          <li>Coeficiente de variación ≈ 14.7%</li>
+        </ul>
+
+        <div class="ejemplo">
+          <h4>¿Cómo interpretar una desviación estándar?</h4>
+          <p>Si tu media es 15.03 y tu desviación estándar es 2.20, significa que en promedio los puntajes de ansiedad se desvían aproximadamente 2 puntos de la media. La mayoría de estudiantes está entre 12.83 y 17.23 (media ± 1 DE).</p>
+          <p><strong>Regla empírica</strong> (aplicable a distribuciones aproximadamente normales):</p>
+          <ul style="margin-left:1.3rem">
+            <li>El <strong>68%</strong> de los datos está entre media ± 1 DE</li>
+            <li>El <strong>95%</strong> de los datos está entre media ± 2 DE</li>
+            <li>El <strong>99.7%</strong> de los datos está entre media ± 3 DE</li>
+          </ul>
+        </div>
+
+        <div class="tip"><strong>Sobre DESVEST.M vs DESVEST.P:</strong> DESVEST.M se usa cuando trabajas con una <em>muestra</em> (lo más común en psicología). DESVEST.P se usa cuando tienes toda la <em>población</em>. Como casi nunca tenemos toda la población, usa siempre DESVEST.M salvo indicación contraria.</div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé todas las medidas de dispersión</div>
+      </div>
+
+      <!-- PASO 12 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">12</div><h3>Compara dos grupos usando medidas descriptivas</h3></div>
+
+        <p>Vas a aplicar lo aprendido para <strong>comparar dos grupos</strong>. Debajo de tu tabla anterior, en la hoja Descriptivas, agrega datos de un segundo grupo (por ejemplo, estudiantes de otra carrera):</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">G</td><td class="col-letter">H</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#0e5c32;color:white;font-weight:700;text-align:center">ID</td>
+              <td style="background:#0e5c32;color:white;font-weight:700;text-align:center">Ansiedad (Grupo 2)</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>1</td><td>5</td></tr>
+            <tr><td class="row-num">3</td><td>2</td><td>19</td></tr>
+            <tr><td class="row-num">4</td><td>3</td><td>8</td></tr>
+            <tr><td class="row-num">5</td><td>4</td><td>21</td></tr>
+            <tr><td class="row-num">6</td><td>5</td><td>3</td></tr>
+            <tr><td class="row-num">7</td><td>6</td><td>16</td></tr>
+            <tr><td class="row-num">8</td><td>7</td><td>10</td></tr>
+            <tr><td class="row-num">9</td><td>8</td><td>18</td></tr>
+            <tr><td class="row-num">10</td><td>9</td><td>7</td></tr>
+            <tr><td class="row-num">11</td><td>10</td><td>20</td></tr>
+            <tr><td class="row-num">12</td><td>11</td><td>4</td></tr>
+            <tr><td class="row-num">13</td><td>12</td><td>17</td></tr>
+            <tr><td class="row-num">14</td><td>13</td><td>11</td></tr>
+            <tr><td class="row-num">15</td><td>14</td><td>19</td></tr>
+            <tr><td class="row-num">16</td><td>15</td><td>6</td></tr>
+            <tr><td class="row-num">17</td><td>16</td><td>21</td></tr>
+            <tr><td class="row-num">18</td><td>17</td><td>9</td></tr>
+            <tr><td class="row-num">19</td><td>18</td><td>18</td></tr>
+            <tr><td class="row-num">20</td><td>19</td><td>12</td></tr>
+            <tr><td class="row-num">21</td><td>20</td><td>16</td></tr>
+            <tr><td class="row-num">22</td><td>21</td><td>8</td></tr>
+            <tr><td class="row-num">23</td><td>22</td><td>20</td></tr>
+            <tr><td class="row-num">24</td><td>23</td><td>13</td></tr>
+            <tr><td class="row-num">25</td><td>24</td><td>17</td></tr>
+            <tr><td class="row-num">26</td><td>25</td><td>7</td></tr>
+            <tr><td class="row-num">27</td><td>26</td><td>15</td></tr>
+            <tr><td class="row-num">28</td><td>27</td><td>19</td></tr>
+            <tr><td class="row-num">29</td><td>28</td><td>4</td></tr>
+            <tr><td class="row-num">30</td><td>29</td><td>21</td></tr>
+            <tr><td class="row-num">31</td><td>30</td><td>10</td></tr>
+          </table>
+        </div>
+
+        <p>Construye una tabla comparativa. En la columna J:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">J</td><td class="col-letter">K</td><td class="col-letter">L</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Medida</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Grupo 1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Grupo 2</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Media</td><td class="hl">=PROMEDIO(B2:B31)</td><td class="hl">=PROMEDIO(H2:H31)</td></tr>
+            <tr><td class="row-num">3</td><td>Mediana</td><td class="hl">=MEDIANA(B2:B31)</td><td class="hl">=MEDIANA(H2:H31)</td></tr>
+            <tr><td class="row-num">4</td><td>Desv. Estándar</td><td class="hl">=DESVEST.M(B2:B31)</td><td class="hl">=DESVEST.M(H2:H31)</td></tr>
+            <tr><td class="row-num">5</td><td>Rango</td><td class="hl">=MAX(B2:B31)-MIN(B2:B31)</td><td class="hl">=MAX(H2:H31)-MIN(H2:H31)</td></tr>
+            <tr><td class="row-num">6</td><td>Coef. Variación (%)</td><td class="hl">=K4/K2*100</td><td class="hl">=L4/L2*100</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados:</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>Grupo 1: Media ≈ 15.03, Desv. Est. ≈ 2.20, CV ≈ 14.7%</li>
+          <li>Grupo 2: Media ≈ 12.77, Desv. Est. ≈ 6.11, CV ≈ 47.9%</li>
+        </ul>
+
+        <div class="hipotesis">
+          <p><strong>Antes de interpretar, observa:</strong></p>
+          <p>Las medias son parecidas (15 vs 13). Pero las desviaciones estándar son muy diferentes (2.2 vs 6.1). ¿Qué te dice esto sobre los dos grupos?</p>
+          <textarea placeholder="Mi hipótesis..."></textarea>
+        </div>
+
+        <div class="reflexion">
+          <p><strong>Interpretación comparativa</strong>:</p>
+          <ol>
+            <li>Si sólo miraras las medias, ¿pensarías que los dos grupos son parecidos?</li>
+            <li>Pero al mirar la desviación estándar, ¿qué grupo tiene <em>estudiantes más parecidos entre sí</em>? ¿Cuál es más heterogéneo?</li>
+            <li>El coeficiente de variación permite comparar dispersión "relativa". El Grupo 2 tiene CV de casi 48%, tres veces más que el Grupo 1. ¿Qué implicaciones prácticas tendría esto si fueras a diseñar un programa de intervención?</li>
+            <li>La lección clave: <em>media sin desviación estándar es información incompleta</em>. Cita un ejemplo cotidiano donde este principio se aplique.</li>
+          </ol>
+          <textarea placeholder="Tus reflexiones..."></textarea>
+        </div>
+
+        <p>Ahora crea un <strong>gráfico comparativo</strong>: selecciona <code class="inline">J1:L4</code> → Insertar → Columna agrupada. Título: <code class="inline">Comparación descriptiva de dos grupos (n=30 cada uno)</code>.</p>
+
+        <div class="check-done"><input type="checkbox" class="check"> Comparé descriptivos de dos grupos e interpreté las diferencias</div>
+      </div>
+
+      <!-- PASO 13 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">13</div><h3>Cuándo usar cada medida · Guía práctica</h3></div>
+
+        <p>Ahora que conoces todas las medidas, esta es la guía práctica para decidir cuál reportar:</p>
+
+        <div class="comparativa">
+          <div class="compara-card a">
+            <h4>Datos numéricos simétricos</h4>
+            <ul>
+              <li>Reporta: <strong>Media ± Desviación estándar</strong></li>
+              <li>Ejemplo: "Los estudiantes obtuvieron M = 15.03, DE = 2.20 en la escala de ansiedad GAD-7"</li>
+              <li>Es la forma estándar en artículos APA</li>
+            </ul>
+          </div>
+          <div class="compara-card b">
+            <h4>Datos con outliers o asimétricos</h4>
+            <ul>
+              <li>Reporta: <strong>Mediana (Q1-Q3)</strong> o mediana con rango</li>
+              <li>Ejemplo: "La mediana del tiempo de reacción fue 550 ms (RIC: 480-620)"</li>
+              <li>Común en variables como ingresos, tiempos, número de sesiones</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="comparativa">
+          <div class="compara-card a">
+            <h4>Datos ordinales (Likert)</h4>
+            <ul>
+              <li>Reporta: <strong>Mediana + Moda</strong> o distribución de frecuencias</li>
+              <li>Aunque muchos autores usan media, técnicamente no es lo más correcto</li>
+              <li>Ejemplo: "La mediana de satisfacción fue 4 (de acuerdo)"</li>
+            </ul>
+          </div>
+          <div class="compara-card b">
+            <h4>Datos nominales</h4>
+            <ul>
+              <li>Reporta: <strong>Moda + frecuencias / porcentajes</strong></li>
+              <li>No tienen sentido las medias ni las desviaciones</li>
+              <li>Ejemplo: "La carrera más frecuente fue Psicología (35%)"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Sé qué medida reportar según el tipo de dato</div>
+      </div>
+
+      <div class="entregable">
+        <h4>Entrega de la Fase 3</h4>
+        <ul>
+          <li>Hoja <code class="inline" style="color:var(--ink)">Descriptivas</code> con los dos grupos capturados</li>
+          <li>Panel individual del Grupo 1 con todas las medidas</li>
+          <li>Panel comparativo entre Grupo 1 y Grupo 2</li>
+          <li>Gráfico comparativo de las medias y desviaciones</li>
+          <li>Reflexión escrita sobre interpretación de medidas</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============== FASE 4: MEDIDAS DE POSICIÓN Y FORMA (2h) ============== -->
+  <section class="fase" id="fase4">
+    <div class="fase-header">
+      <div>
+        <div class="fase-num">Fase 4 · Temas 3.2.3 y 3.2.4</div>
+        <h2>Medidas de posición y de forma</h2>
+      </div>
+      <div class="fase-time">⏱ 2 horas</div>
+    </div>
+    <div class="fase-body">
+
+      <div class="problema-abp">
+        <h3>El problema con el que vas a trabajar</h3>
+        <p>Estás en tu servicio de prácticas en un centro psicopedagógico. Llega una madre con la ansiedad de su hija: <em>"Sacó 82 puntos en la prueba de lectura. ¿Está bien o mal?"</em></p>
+        <p style="font-weight:600; color:var(--accent-deep);">Tu reto: un puntaje aislado no significa nada. 82 puede ser excelente si la mayoría sacó 60, o preocupante si la mayoría sacó 95. Necesitas saber la <strong>posición</strong> de ese puntaje respecto al resto. Y necesitas entender la <strong>forma</strong> en que se distribuyen los datos para interpretar correctamente. Ahí entran los percentiles, la asimetría y la curtosis.</p>
+      </div>
+
+      <div class="objetivo">
+        <strong>Objetivo de esta fase</strong>
+        Vas a dominar las medidas de posición (cuartiles, deciles, percentiles) del tema 3.2.3 y las medidas de forma (asimetría y curtosis) del tema 3.2.4. Con ellas podrás decir dónde se encuentra un caso individual respecto al grupo, y describir la forma general de una distribución.
+      </div>
+
+      <div class="activacion">
+        <strong class="titulo">Activa tus conocimientos previos</strong>
+        <p>Antes de continuar, responde:</p>
+        <ol style="margin-left:1.3rem; font-size:0.93rem">
+          <li>Cuando en una prueba estandarizada tu hijo saca "percentil 85", ¿qué significa exactamente?</li>
+          <li>Si la mayoría de los estudiantes tienen puntajes altos y muy pocos bajos, ¿la distribución sería simétrica?</li>
+          <li>¿Has escuchado la expresión "distribución normal" o "campana de Gauss"? ¿Qué imagen te evoca?</li>
+        </ol>
+        <textarea placeholder="Tus respuestas antes de comenzar..."></textarea>
+      </div>
+
+      <!-- PASO 14 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">14</div><h3>Tema 3.2.3 · Cuartiles y rango intercuartil</h3></div>
+
+        <p>Las <strong>medidas de posición</strong> dividen los datos ordenados en partes iguales. Los <strong>cuartiles</strong> dividen los datos en 4 partes iguales, cada una con el 25% de los casos.</p>
+
+        <div class="glosario">
+          <dl>
+            <dt>Cuartil 1 (Q1)</dt>
+            <dd>Valor que deja por debajo al 25% de los datos. También llamado percentil 25.</dd>
+            <dt>Cuartil 2 (Q2)</dt>
+            <dd>Valor que deja por debajo al 50% de los datos. <strong>Es igual a la mediana</strong>. También llamado percentil 50.</dd>
+            <dt>Cuartil 3 (Q3)</dt>
+            <dd>Valor que deja por debajo al 75% de los datos. También llamado percentil 75.</dd>
+            <dt>Rango intercuartil (RIC o IQR)</dt>
+            <dd>Diferencia entre Q3 y Q1. Contiene al 50% central de los datos. Es una medida de dispersión robusta (no le afectan valores extremos).</dd>
+          </dl>
+        </div>
+
+        <div class="ejemplo">
+          <h4>Visualiza los cuartiles</h4>
+          <p>Imagina que tienes las estaturas de 20 estudiantes ordenadas de menor a mayor. Los cuartiles serían:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Q1:</strong> la estatura que separa a los 5 más bajos del resto (25% inferior)</li>
+            <li><strong>Q2 (mediana):</strong> la estatura que separa a la mitad más baja de la mitad más alta</li>
+            <li><strong>Q3:</strong> la estatura que separa al 75% del resto (25% superior)</li>
+          </ul>
+          <p>Un estudiante con estatura en Q3 es "más alto que el 75% de sus compañeros". Un estudiante en Q1 es "más bajo que el 75% de sus compañeros".</p>
+        </div>
+
+        <p>Vas a trabajar sobre la hoja Descriptivas que creaste en la Fase 3. En columnas nuevas, calcula los cuartiles de tu Grupo 1:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">N</td><td class="col-letter">O</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Medida</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700">Valor</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>Cuartil 1 (Q1)</td><td class="hl">=CUARTIL.INC(B2:B31,1)</td></tr>
+            <tr><td class="row-num">3</td><td>Cuartil 2 (Q2 = mediana)</td><td class="hl">=CUARTIL.INC(B2:B31,2)</td></tr>
+            <tr><td class="row-num">4</td><td>Cuartil 3 (Q3)</td><td class="hl">=CUARTIL.INC(B2:B31,3)</td></tr>
+            <tr><td class="row-num">5</td><td>Rango intercuartil (RIC)</td><td class="hl">=O4-O2</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados (para el Grupo 1 de ansiedad):</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>Q1 ≈ 13.25 (el 25% inferior tiene puntajes ≤ 13.25)</li>
+          <li>Q2 = 15 (la mediana)</li>
+          <li>Q3 ≈ 16.75 (el 25% superior tiene puntajes ≥ 16.75)</li>
+          <li>RIC ≈ 3.5 (el 50% central de los datos abarca un rango de 3.5 puntos)</li>
+        </ul>
+
+        <div class="tip"><strong>Sobre CUARTIL.INC vs CUARTIL.EXC:</strong> CUARTIL.INC (inclusiva) es la forma clásica que se enseña en la mayoría de libros. CUARTIL.EXC (exclusiva) es una versión más conservadora. Para reportes académicos en psicología, usa <code class="inline">CUARTIL.INC</code>.</div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé cuartiles y rango intercuartil</div>
+      </div>
+
+      <!-- PASO 15 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">15</div><h3>Tema 3.2.3 · Percentiles y deciles</h3></div>
+
+        <p>Los <strong>percentiles</strong> dividen los datos en 100 partes iguales. Son la extensión natural de los cuartiles y son extremadamente usados en psicología, especialmente en pruebas estandarizadas.</p>
+
+        <div class="ejemplo">
+          <h4>Aplicación del percentil en psicología</h4>
+          <p>Cuando aplicas una prueba de CI y el reporte dice "percentil 85", significa que el evaluado obtuvo un puntaje <strong>igual o superior al 85% de las personas de su edad</strong> en la muestra normativa.</p>
+          <p>Volviendo al problema inicial: la niña sacó 82 puntos en lectura. Si esa prueba tiene un baremo donde 82 corresponde al <strong>percentil 40</strong>, significa que está por debajo del promedio del grupo de referencia. Ese percentil te da la interpretación clínica correcta.</p>
+          <p>Casos especiales:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Percentil 25 = Q1</strong> (primer cuartil)</li>
+            <li><strong>Percentil 50 = Q2</strong> (mediana)</li>
+            <li><strong>Percentil 75 = Q3</strong> (tercer cuartil)</li>
+          </ul>
+        </div>
+
+        <p>Los <strong>deciles</strong> dividen los datos en 10 partes iguales. Cada decil equivale a un percentil múltiplo de 10 (D1 = P10, D5 = P50, etc.).</p>
+
+        <p>Continúa el panel en tu Excel. Agrega:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">N</td><td class="col-letter">O</td></tr>
+            <tr><td class="row-num">7</td><td style="background:#6a3d9a;color:white;font-weight:700">Percentiles clave</td><td style="background:#6a3d9a;color:white;font-weight:700">Valor</td></tr>
+            <tr><td class="row-num">8</td><td>Percentil 10</td><td class="hl">=PERCENTIL.INC(B2:B31,0.1)</td></tr>
+            <tr><td class="row-num">9</td><td>Percentil 25 (= Q1)</td><td class="hl">=PERCENTIL.INC(B2:B31,0.25)</td></tr>
+            <tr><td class="row-num">10</td><td>Percentil 50 (= mediana)</td><td class="hl">=PERCENTIL.INC(B2:B31,0.5)</td></tr>
+            <tr><td class="row-num">11</td><td>Percentil 75 (= Q3)</td><td class="hl">=PERCENTIL.INC(B2:B31,0.75)</td></tr>
+            <tr><td class="row-num">12</td><td>Percentil 90</td><td class="hl">=PERCENTIL.INC(B2:B31,0.9)</td></tr>
+          </table>
+        </div>
+
+        <p>Ahora usa la función inversa para responder: <strong>"¿En qué percentil está un puntaje específico?"</strong></p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">N</td><td class="col-letter">O</td></tr>
+            <tr><td class="row-num">14</td><td style="background:#6a3d9a;color:white;font-weight:700">Rango del puntaje</td><td style="background:#6a3d9a;color:white;font-weight:700">Percentil</td></tr>
+            <tr><td class="row-num">15</td><td>Un puntaje de 12 está en el percentil</td><td class="hl">=RANGO.PERCENTIL.INC(B2:B31,12)*100</td></tr>
+            <tr><td class="row-num">16</td><td>Un puntaje de 18 está en el percentil</td><td class="hl">=RANGO.PERCENTIL.INC(B2:B31,18)*100</td></tr>
+          </table>
+        </div>
+
+        <div class="hipotesis">
+          <p><strong>Aplica al problema inicial:</strong></p>
+          <p>Imagina que el puntaje de 12 y el puntaje de 18 son de dos hijos de padres distintos que te consultan. Sin ver el resultado numérico, predice: ¿cuál está por debajo del promedio y cuál por encima? ¿Cómo se lo explicarías a cada padre en lenguaje simple?</p>
+          <textarea placeholder="Al padre del puntaje 12 le diría... Al padre del puntaje 18 le diría..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé percentiles y su función inversa</div>
+      </div>
+
+      <!-- PASO 16 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">16</div><h3>Tema 3.2.4 · Asimetría (skewness)</h3></div>
+
+        <p>Las <strong>medidas de forma</strong> describen cómo se distribuyen los datos. Son fundamentales porque te dicen si tu distribución es simétrica, si tiene una cola larga a algún lado, o si es "picuda" o "aplanada". Son la última pieza para entender completamente tus datos.</p>
+
+        <p>La <strong>asimetría</strong> (o sesgo, o <em>skewness</em> en inglés) mide qué tan "torcida" está una distribución respecto a la simetría perfecta.</p>
+
+        <div class="ejemplo">
+          <h4>Las 3 formas posibles de una distribución</h4>
+          <p><strong>Simétrica (asimetría ≈ 0):</strong> los datos se distribuyen igual a ambos lados de la media. La media, mediana y moda coinciden. Ejemplo: estatura, CI.</p>
+        </div>
+
+        <div class="distribucion-visual">
+          <div class="barra-vis" style="height:15%"></div>
+          <div class="barra-vis" style="height:30%"></div>
+          <div class="barra-vis" style="height:55%"></div>
+          <div class="barra-vis" style="height:80%"></div>
+          <div class="barra-vis" style="height:95%"></div>
+          <div class="barra-vis" style="height:80%"></div>
+          <div class="barra-vis" style="height:55%"></div>
+          <div class="barra-vis" style="height:30%"></div>
+          <div class="barra-vis" style="height:15%"></div>
+        </div>
+        <p class="distribucion-label">Distribución simétrica · Media = Mediana = Moda</p>
+
+        <div class="ejemplo">
+          <p><strong>Asimetría positiva (sesgo a la derecha, asimetría &gt; 0):</strong> la cola larga se extiende hacia los valores <em>altos</em>. La mayoría de casos están en valores bajos y hay pocos casos muy altos. Ejemplos: ingresos económicos, tiempo de reacción, puntajes en escalas clínicas donde la mayoría es sana.</p>
+        </div>
+
+        <div class="distribucion-visual">
+          <div class="barra-vis" style="height:40%"></div>
+          <div class="barra-vis" style="height:75%"></div>
+          <div class="barra-vis" style="height:95%"></div>
+          <div class="barra-vis" style="height:80%"></div>
+          <div class="barra-vis" style="height:55%"></div>
+          <div class="barra-vis" style="height:35%"></div>
+          <div class="barra-vis" style="height:25%"></div>
+          <div class="barra-vis" style="height:15%"></div>
+          <div class="barra-vis" style="height:8%"></div>
+        </div>
+        <p class="distribucion-label">Asimetría positiva · Media &gt; Mediana &gt; Moda</p>
+
+        <div class="ejemplo">
+          <p><strong>Asimetría negativa (sesgo a la izquierda, asimetría &lt; 0):</strong> la cola larga se extiende hacia los valores <em>bajos</em>. La mayoría de casos están en valores altos. Ejemplos: edad de jubilación en un asilo, promedios académicos en una universidad selectiva.</p>
+        </div>
+
+        <div class="distribucion-visual">
+          <div class="barra-vis" style="height:8%"></div>
+          <div class="barra-vis" style="height:15%"></div>
+          <div class="barra-vis" style="height:25%"></div>
+          <div class="barra-vis" style="height:35%"></div>
+          <div class="barra-vis" style="height:55%"></div>
+          <div class="barra-vis" style="height:80%"></div>
+          <div class="barra-vis" style="height:95%"></div>
+          <div class="barra-vis" style="height:75%"></div>
+          <div class="barra-vis" style="height:40%"></div>
+        </div>
+        <p class="distribucion-label">Asimetría negativa · Media &lt; Mediana &lt; Moda</p>
+
+        <p>En Excel calcula la asimetría con la función <code class="inline">COEFICIENTE.ASIMETRIA</code>:</p>
+
+        <div class="formula"><span class="kw">=COEFICIENTE.ASIMETRIA</span>(<span class="arg">B2:B31</span>)<span class="comment">Interpretación:
+· Valor cercano a 0 (entre -0.5 y 0.5): distribución simétrica
+· Valor entre 0.5 y 1 (o -0.5 y -1): asimetría moderada
+· Valor mayor a 1 (o menor a -1): asimetría fuerte</span></div>
+
+        <div class="hipotesis">
+          <p><strong>Aplica al Grupo 1 de tu Fase 3:</strong></p>
+          <p>Sabes que en el Grupo 1: media = 15.03, mediana = 15, moda = 15. Sin calcular todavía, predice: ¿el coeficiente de asimetría estará cerca de 0, será positivo o negativo? ¿Por qué?</p>
+          <textarea placeholder="Mi predicción..."></textarea>
+        </div>
+
+        <p><strong>Ahora calcula y verifica:</strong> el resultado debería estar muy cerca de 0 (aprox. -0.16), confirmando que la distribución es prácticamente simétrica.</p>
+
+        <div class="check-done"><input type="checkbox" class="check"> Entendí y calculé el coeficiente de asimetría</div>
+      </div>
+
+      <!-- PASO 17 -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">17</div><h3>Tema 3.2.4 · Curtosis</h3></div>
+
+        <p>La <strong>curtosis</strong> mide qué tan "picuda" o "aplanada" es una distribución en comparación con una distribución normal. Es un poco menos intuitiva que la asimetría, pero también importante.</p>
+
+        <div class="glosario">
+          <dl>
+            <dt>Curtosis mesocúrtica (≈ 0)</dt>
+            <dd>Distribución con "altura" similar a la normal (campana de Gauss). Es el punto de referencia.</dd>
+            <dt>Curtosis leptocúrtica (&gt; 0)</dt>
+            <dd>Distribución más "picuda" que la normal. Los datos se concentran fuertemente cerca de la media y hay más valores extremos (colas más pesadas) que en la normal.</dd>
+            <dt>Curtosis platicúrtica (&lt; 0)</dt>
+            <dd>Distribución más "aplanada" que la normal. Los datos están más dispersos, sin una concentración clara alrededor de la media.</dd>
+          </dl>
+        </div>
+
+        <div class="ejemplo">
+          <h4>¿Por qué importa la curtosis en psicología?</h4>
+          <p>Muchas pruebas estadísticas asumen que los datos siguen una distribución normal (asimetría y curtosis cercanas a 0). Si tu variable tiene curtosis muy alta o muy baja, tal vez necesites usar pruebas no paramétricas alternativas.</p>
+          <p>Además, la curtosis te dice algo sobre la <em>homogeneidad</em> del grupo:</p>
+          <ul style="margin-left:1.3rem">
+            <li><strong>Leptocúrtica (picuda):</strong> el grupo es muy homogéneo en el centro pero con algunos casos extremos que hay que atender</li>
+            <li><strong>Platicúrtica (aplanada):</strong> el grupo es diverso, no hay un "perfil típico" claro</li>
+          </ul>
+        </div>
+
+        <p>Calcula la curtosis en Excel:</p>
+
+        <div class="formula"><span class="kw">=CURTOSIS</span>(<span class="arg">B2:B31</span>)<span class="comment">Interpretación:
+· Valor cercano a 0 (entre -1 y 1): mesocúrtica (similar a normal)
+· Valor mayor a 1: leptocúrtica (más picuda)
+· Valor menor a -1: platicúrtica (más aplanada)</span></div>
+
+        <p>Agrega estas dos medidas de forma a tu panel:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">N</td><td class="col-letter">O</td></tr>
+            <tr><td class="row-num">18</td><td style="background:#6a3d9a;color:white;font-weight:700">Medidas de forma</td><td style="background:#6a3d9a;color:white;font-weight:700">Valor</td></tr>
+            <tr><td class="row-num">19</td><td>Asimetría</td><td class="hl">=COEFICIENTE.ASIMETRIA(B2:B31)</td></tr>
+            <tr><td class="row-num">20</td><td>Curtosis</td><td class="hl">=CURTOSIS(B2:B31)</td></tr>
+          </table>
+        </div>
+
+        <div class="reto">
+          <h4>Reto interpretativo · Compara los dos grupos completos</h4>
+          <p>Agrega columnas P y Q para el Grupo 2 (columna H) con sus propias medidas de posición y forma. Después contesta:</p>
+          <ol style="margin-left:1.3rem; font-size:0.93rem">
+            <li>¿Cuál grupo tiene mayor asimetría? ¿En qué dirección?</li>
+            <li>¿Cuál grupo tiene mayor curtosis? ¿Es más "picudo" o más "aplanado" que el Grupo 1?</li>
+            <li>Si tuvieras que atender clínicamente a uno de estos grupos, ¿cuál te preocuparía más y por qué?</li>
+          </ol>
+        </div>
+
+        <p><strong>Crea un gráfico visual de las distribuciones:</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">B2:B31</code> (Grupo 1)</li>
+          <li>Insertar → Gráficos → busca <strong>Histograma</strong></li>
+          <li>Título: <code class="inline">Distribución de ansiedad · Grupo 1 (n=30)</code></li>
+          <li>Repite con <code class="inline">H2:H31</code> para el Grupo 2</li>
+          <li>Compara visualmente ambos histogramas</li>
+        </ol>
+
+        <div class="reflexion">
+          <p><strong>Reflexión integradora de la Fase 4</strong>:</p>
+          <ol>
+            <li>Vuelve al problema inicial: la madre te preguntó si 82 puntos era bueno. Explica en un párrafo qué información adicional necesitarías para responderle con criterio profesional.</li>
+            <li>Los cuartiles y percentiles son muy usados en pruebas psicométricas estandarizadas (WISC, MMPI, etc.). ¿Por qué crees que se prefieren sobre reportar el puntaje bruto?</li>
+            <li>Si tuvieras una distribución con asimetría positiva fuerte (por ejemplo, número de sesiones que asisten los pacientes antes de abandonar la terapia), ¿reportarías la media o la mediana? Justifica.</li>
+            <li>La curtosis alta indica que los datos están muy concentrados en el centro. ¿Qué implicaciones tiene esto para diseñar programas de intervención universales vs individualizados?</li>
+          </ol>
+          <textarea placeholder="Tus reflexiones..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Calculé y entendí la curtosis; comparé distribuciones</div>
+      </div>
+
+      <div class="entregable">
+        <h4>Entrega de la Fase 4</h4>
+        <ul>
+          <li>Panel completo de medidas de posición del Grupo 1 (cuartiles, percentiles)</li>
+          <li>Panel de medidas de forma para Grupo 1 y Grupo 2</li>
+          <li>Cálculo de rango percentil para dos puntajes específicos</li>
+          <li>Dos histogramas comparativos</li>
+          <li>Reflexión escrita con las 4 preguntas de cierre</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============== FASE 5: PROYECTO INTEGRADOR (1.5h) ============== -->
+  <section class="fase" id="fase5">
+    <div class="fase-header">
+      <div>
+        <div class="fase-num">Fase 5 · Proyecto integrador</div>
+        <h2>Análisis descriptivo completo · Estrés académico 2026</h2>
+      </div>
+      <div class="fase-time">⏱ 1.5 horas</div>
+    </div>
+    <div class="fase-body">
+
+      <div class="problema-abp">
+        <h3>El gran problema integrador</h3>
+        <p>El Centro de Bienestar Universitario de una universidad mexicana está preocupado. Los profesores reportan estudiantes agotados, con dificultades para dormir y bajo rendimiento. Antes de invertir en un programa de intervención, necesitan datos concretos.</p>
+        <p style="font-size:1.05rem; font-weight:600; color:var(--accent-deep); padding:0.6rem 0;">"¿Cuál es el nivel actual de estrés académico en nuestros estudiantes, cómo se distribuye, y qué grupos están más afectados?"</p>
+        <p>Vas a resolver este problema aplicando <strong>todo lo que aprendiste en la Unidad III</strong>: capturarás un dataset real, calcularás todas las medidas descriptivas (tendencia central, dispersión, posición y forma), harás comparaciones por grupo, visualizarás los resultados y redactarás un reporte profesional.</p>
+      </div>
+
+      <div class="objetivo">
+        <strong>Objetivo del proyecto</strong>
+        Integrar los temas 3.1.1 al 3.2.4 en un análisis descriptivo profesional completo, sobre datos reales de estrés académico en universitarios mexicanos 2026. Producto: dashboard estadístico y reporte de hallazgos.
+      </div>
+
+      <!-- PASO 18: CAPTURA DE DATASET -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">18</div><h3>Captura el dataset del proyecto</h3></div>
+
+        <p>Crea una nueva hoja llamada <code class="inline">Proyecto_Estres</code> con pestaña <strong>roja</strong>. Vas a trabajar con 32 estudiantes universitarios reales (datos simulados sobre la base de estudios recientes). Las variables incluyen datos demográficos, la variable objetivo (estrés académico medido con escala validada), y variables asociadas.</p>
+
+        <div class="ejemplo">
+          <h4>Libro de códigos del proyecto</h4>
+          <ul style="margin-left:1.3rem; font-size:0.92rem">
+            <li><strong>ID:</strong> identificador único (1-32)</li>
+            <li><strong>edad:</strong> años cumplidos, numérica de razón</li>
+            <li><strong>sexo:</strong> nominal (F/M)</li>
+            <li><strong>carrera:</strong> nominal (5 categorías)</li>
+            <li><strong>estres:</strong> escala 0-40, mayor puntaje = mayor estrés académico</li>
+            <li><strong>horas_est:</strong> horas semanales de estudio</li>
+            <li><strong>horas_sue:</strong> horas de sueño promedio por noche</li>
+            <li><strong>carga:</strong> escala Likert 1-5 de percepción de carga académica</li>
+            <li><strong>promedio:</strong> promedio académico general (escala 6.0-10.0)</li>
+          </ul>
+        </div>
+
+        <p>Captura los 32 casos:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">A</td><td class="col-letter">B</td><td class="col-letter">C</td><td class="col-letter">D</td><td class="col-letter">E</td><td class="col-letter">F</td><td class="col-letter">G</td><td class="col-letter">H</td><td class="col-letter">I</td></tr>
+            <tr><td class="row-num">1</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">ID</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">edad</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">sexo</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">carrera</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">estres</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">horas_est</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">horas_sue</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">carga</td>
+              <td style="background:#6a3d9a;color:white;font-weight:700;text-align:center">promedio</td>
+            </tr>
+            <tr><td class="row-num">2</td><td>1</td><td>19</td><td>M</td><td>Administración</td><td>33</td><td>33.7</td><td>7.0</td><td>5</td><td>8.6</td></tr>
+            <tr><td class="row-num">3</td><td>2</td><td>20</td><td>M</td><td>Administración</td><td>20</td><td>19.9</td><td>6.6</td><td>1</td><td>7.3</td></tr>
+            <tr><td class="row-num">4</td><td>3</td><td>19</td><td>M</td><td>Psicología</td><td>28</td><td>26.3</td><td>6.3</td><td>3</td><td>7.9</td></tr>
+            <tr><td class="row-num">5</td><td>4</td><td>20</td><td>M</td><td>Administración</td><td>14</td><td>25.2</td><td>8.2</td><td>1</td><td>8.4</td></tr>
+            <tr><td class="row-num">6</td><td>5</td><td>20</td><td>M</td><td>Ingeniería</td><td>30</td><td>27.3</td><td>6.3</td><td>3</td><td>7.9</td></tr>
+            <tr><td class="row-num">7</td><td>6</td><td>20</td><td>F</td><td>Ingeniería</td><td>31</td><td>32.1</td><td>6.6</td><td>2</td><td>8.1</td></tr>
+            <tr><td class="row-num">8</td><td>7</td><td>24</td><td>M</td><td>Ingeniería</td><td>28</td><td>19.3</td><td>7.4</td><td>3</td><td>8.3</td></tr>
+            <tr><td class="row-num">9</td><td>8</td><td>24</td><td>F</td><td>Administración</td><td>21</td><td>14.1</td><td>6.7</td><td>1</td><td>9.4</td></tr>
+            <tr><td class="row-num">10</td><td>9</td><td>21</td><td>F</td><td>Administración</td><td>20</td><td>31.9</td><td>8.0</td><td>1</td><td>8.6</td></tr>
+            <tr><td class="row-num">11</td><td>10</td><td>21</td><td>M</td><td>Administración</td><td>25</td><td>14.8</td><td>6.8</td><td>3</td><td>8.4</td></tr>
+            <tr><td class="row-num">12</td><td>11</td><td>22</td><td>M</td><td>Ingeniería</td><td>18</td><td>15.3</td><td>6.8</td><td>3</td><td>9.4</td></tr>
+            <tr><td class="row-num">13</td><td>12</td><td>24</td><td>M</td><td>Derecho</td><td>26</td><td>32.9</td><td>6.5</td><td>3</td><td>8.2</td></tr>
+            <tr><td class="row-num">14</td><td>13</td><td>24</td><td>M</td><td>Ingeniería</td><td>9</td><td>30.4</td><td>8.0</td><td>1</td><td>8.1</td></tr>
+            <tr><td class="row-num">15</td><td>14</td><td>23</td><td>M</td><td>Ingeniería</td><td>18</td><td>32.9</td><td>7.1</td><td>2</td><td>9.1</td></tr>
+            <tr><td class="row-num">16</td><td>15</td><td>21</td><td>F</td><td>Derecho</td><td>29</td><td>13.3</td><td>7.3</td><td>3</td><td>8.1</td></tr>
+            <tr><td class="row-num">17</td><td>16</td><td>18</td><td>F</td><td>Psicología</td><td>20</td><td>20.2</td><td>7.5</td><td>1</td><td>8.5</td></tr>
+            <tr><td class="row-num">18</td><td>17</td><td>20</td><td>F</td><td>Psicología</td><td>15</td><td>33.8</td><td>8.1</td><td>1</td><td>7.4</td></tr>
+            <tr><td class="row-num">19</td><td>18</td><td>20</td><td>M</td><td>Medicina</td><td>15</td><td>22.7</td><td>7.8</td><td>1</td><td>9.4</td></tr>
+            <tr><td class="row-num">20</td><td>19</td><td>23</td><td>M</td><td>Psicología</td><td>20</td><td>11.7</td><td>7.9</td><td>3</td><td>7.8</td></tr>
+            <tr><td class="row-num">21</td><td>20</td><td>20</td><td>M</td><td>Medicina</td><td>26</td><td>22.0</td><td>6.4</td><td>2</td><td>9.4</td></tr>
+            <tr><td class="row-num">22</td><td>21</td><td>20</td><td>F</td><td>Psicología</td><td>29</td><td>33.2</td><td>7.4</td><td>2</td><td>8.3</td></tr>
+            <tr><td class="row-num">23</td><td>22</td><td>20</td><td>M</td><td>Ingeniería</td><td>15</td><td>16.8</td><td>7.2</td><td>1</td><td>8.4</td></tr>
+            <tr><td class="row-num">24</td><td>23</td><td>24</td><td>F</td><td>Medicina</td><td>19</td><td>24.8</td><td>7.4</td><td>2</td><td>8.7</td></tr>
+            <tr><td class="row-num">25</td><td>24</td><td>19</td><td>M</td><td>Psicología</td><td>21</td><td>13.3</td><td>8.0</td><td>1</td><td>8.6</td></tr>
+            <tr><td class="row-num">26</td><td>25</td><td>18</td><td>M</td><td>Medicina</td><td>13</td><td>8.6</td><td>8.2</td><td>1</td><td>9.0</td></tr>
+            <tr><td class="row-num">27</td><td>26</td><td>21</td><td>F</td><td>Medicina</td><td>25</td><td>25.9</td><td>6.5</td><td>3</td><td>8.1</td></tr>
+            <tr><td class="row-num">28</td><td>27</td><td>20</td><td>F</td><td>Ingeniería</td><td>21</td><td>15.1</td><td>7.3</td><td>2</td><td>7.7</td></tr>
+            <tr><td class="row-num">29</td><td>28</td><td>19</td><td>M</td><td>Administración</td><td>30</td><td>21.0</td><td>6.0</td><td>4</td><td>9.0</td></tr>
+            <tr><td class="row-num">30</td><td>29</td><td>19</td><td>F</td><td>Medicina</td><td>27</td><td>20.3</td><td>6.6</td><td>4</td><td>9.0</td></tr>
+            <tr><td class="row-num">31</td><td>30</td><td>22</td><td>F</td><td>Psicología</td><td>24</td><td>17.5</td><td>6.5</td><td>4</td><td>8.7</td></tr>
+            <tr><td class="row-num">32</td><td>31</td><td>24</td><td>F</td><td>Psicología</td><td>19</td><td>28.3</td><td>7.8</td><td>3</td><td>7.7</td></tr>
+            <tr><td class="row-num">33</td><td>32</td><td>20</td><td>F</td><td>Psicología</td><td>20</td><td>29.1</td><td>6.8</td><td>2</td><td>7.4</td></tr>
+          </table>
+          <p class="excel-caption">Estudio simulado, n=32 universitarios mexicanos, semestre primavera 2026.</p>
+        </div>
+
+        <p>Aplica formato de tabla al rango <code class="inline">A1:I33</code> y filtros. Sugerencia: usa un estilo con tonos morados coherente con toda tu carpeta de trabajo.</p>
+
+        <div class="check-done"><input type="checkbox" class="check"> Capturé los 32 casos del dataset del proyecto</div>
+      </div>
+
+      <!-- PASO 19: PANEL DESCRIPTIVO COMPLETO -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">19</div><h3>Panel descriptivo integrador</h3></div>
+
+        <p>Construye el panel completo de medidas descriptivas. Comienza en la columna K:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">K</td><td class="col-letter">L</td><td class="col-letter">M</td><td class="col-letter">N</td></tr>
+            <tr><td class="row-num">1</td><td colspan="4" style="background:#6a3d9a;color:white;font-weight:800;text-align:center">PANEL DESCRIPTIVO COMPLETO</td></tr>
+            <tr><td class="row-num">2</td>
+              <td style="background:#f0e8f8;font-weight:700">Medida</td>
+              <td style="background:#f0e8f8;font-weight:700">Estrés</td>
+              <td style="background:#f0e8f8;font-weight:700">Horas sueño</td>
+              <td style="background:#f0e8f8;font-weight:700">Promedio</td>
+            </tr>
+            <tr><td class="row-num">3</td><td>n</td><td class="hl">=CONTAR(E2:E33)</td><td class="hl">=CONTAR(G2:G33)</td><td class="hl">=CONTAR(I2:I33)</td></tr>
+            <tr><td class="row-num">4</td><td>Media</td><td class="hl">=PROMEDIO(E2:E33)</td><td class="hl">=PROMEDIO(G2:G33)</td><td class="hl">=PROMEDIO(I2:I33)</td></tr>
+            <tr><td class="row-num">5</td><td>Mediana</td><td class="hl">=MEDIANA(E2:E33)</td><td class="hl">=MEDIANA(G2:G33)</td><td class="hl">=MEDIANA(I2:I33)</td></tr>
+            <tr><td class="row-num">6</td><td>Moda</td><td class="hl">=MODA(E2:E33)</td><td class="hl">=MODA(G2:G33)</td><td class="hl">=MODA(I2:I33)</td></tr>
+            <tr><td class="row-num">7</td><td>Mínimo</td><td class="hl">=MIN(E2:E33)</td><td class="hl">=MIN(G2:G33)</td><td class="hl">=MIN(I2:I33)</td></tr>
+            <tr><td class="row-num">8</td><td>Máximo</td><td class="hl">=MAX(E2:E33)</td><td class="hl">=MAX(G2:G33)</td><td class="hl">=MAX(I2:I33)</td></tr>
+            <tr><td class="row-num">9</td><td>Rango</td><td class="hl">=L8-L7</td><td class="hl">=M8-M7</td><td class="hl">=N8-N7</td></tr>
+            <tr><td class="row-num">10</td><td>Desv. Estándar</td><td class="hl">=DESVEST.M(E2:E33)</td><td class="hl">=DESVEST.M(G2:G33)</td><td class="hl">=DESVEST.M(I2:I33)</td></tr>
+            <tr><td class="row-num">11</td><td>Coef. Variación (%)</td><td class="hl">=L10/L4*100</td><td class="hl">=M10/M4*100</td><td class="hl">=N10/N4*100</td></tr>
+            <tr><td class="row-num">12</td><td>Q1 (P25)</td><td class="hl">=CUARTIL.INC(E2:E33,1)</td><td class="hl">=CUARTIL.INC(G2:G33,1)</td><td class="hl">=CUARTIL.INC(I2:I33,1)</td></tr>
+            <tr><td class="row-num">13</td><td>Q3 (P75)</td><td class="hl">=CUARTIL.INC(E2:E33,3)</td><td class="hl">=CUARTIL.INC(G2:G33,3)</td><td class="hl">=CUARTIL.INC(I2:I33,3)</td></tr>
+            <tr><td class="row-num">14</td><td>Rango intercuartil</td><td class="hl">=L13-L12</td><td class="hl">=M13-M12</td><td class="hl">=N13-N12</td></tr>
+            <tr><td class="row-num">15</td><td>Asimetría</td><td class="hl">=COEFICIENTE.ASIMETRIA(E2:E33)</td><td class="hl">=COEFICIENTE.ASIMETRIA(G2:G33)</td><td class="hl">=COEFICIENTE.ASIMETRIA(I2:I33)</td></tr>
+            <tr><td class="row-num">16</td><td>Curtosis</td><td class="hl">=CURTOSIS(E2:E33)</td><td class="hl">=CURTOSIS(G2:G33)</td><td class="hl">=CURTOSIS(I2:I33)</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados clave</strong> (verifica que tus cálculos coincidan):</p>
+        <ul style="margin-left:1.3rem">
+          <li>Estrés: Media ≈ 22.16, Mediana = 21, Moda = 20, DE ≈ 5.99</li>
+          <li>Estrés: Q1 = 18.5, Q3 = 27.5, RIC = 9</li>
+          <li>Estrés: Asimetría ≈ -0.05 (prácticamente simétrica)</li>
+          <li>Horas sueño: Media ≈ 7.11, Mediana = 7.0</li>
+          <li>Promedio académico: Media ≈ 8.40, Mediana = 8.4</li>
+        </ul>
+
+        <p>Ahora construye el <strong>comparativo por sexo</strong> en la fila 19:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">K</td><td class="col-letter">L</td><td class="col-letter">M</td><td class="col-letter">N</td></tr>
+            <tr><td class="row-num">19</td><td colspan="4" style="background:#c9691c;color:white;font-weight:800;text-align:center">COMPARATIVO POR SEXO</td></tr>
+            <tr><td class="row-num">20</td>
+              <td style="background:#fff4e6;font-weight:700">Indicador</td>
+              <td style="background:#fff4e6;font-weight:700">Mujeres</td>
+              <td style="background:#fff4e6;font-weight:700">Hombres</td>
+              <td style="background:#fff4e6;font-weight:700">Diferencia</td>
+            </tr>
+            <tr><td class="row-num">21</td><td>n</td><td class="hl">=CONTAR.SI(C2:C33,"F")</td><td class="hl">=CONTAR.SI(C2:C33,"M")</td><td>-</td></tr>
+            <tr><td class="row-num">22</td><td>Estrés promedio</td><td class="hl">=PROMEDIO.SI(C2:C33,"F",E2:E33)</td><td class="hl">=PROMEDIO.SI(C2:C33,"M",E2:E33)</td><td class="hl">=L22-M22</td></tr>
+            <tr><td class="row-num">23</td><td>Horas sueño promedio</td><td class="hl">=PROMEDIO.SI(C2:C33,"F",G2:G33)</td><td class="hl">=PROMEDIO.SI(C2:C33,"M",G2:G33)</td><td class="hl">=L23-M23</td></tr>
+            <tr><td class="row-num">24</td><td>Promedio académico</td><td class="hl">=PROMEDIO.SI(C2:C33,"F",I2:I33)</td><td class="hl">=PROMEDIO.SI(C2:C33,"M",I2:I33)</td><td class="hl">=L24-M24</td></tr>
+          </table>
+        </div>
+
+        <p>Y el <strong>análisis por niveles de estrés</strong> (basado en cuartiles):</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td class="col-letter"></td><td class="col-letter">K</td><td class="col-letter">L</td></tr>
+            <tr><td class="row-num">27</td><td colspan="2" style="background:#217346;color:white;font-weight:800;text-align:center">CLASIFICACIÓN POR NIVEL DE ESTRÉS</td></tr>
+            <tr><td class="row-num">28</td><td style="background:#e8f5e9;font-weight:700">Nivel</td><td style="background:#e8f5e9;font-weight:700">Frecuencia</td></tr>
+            <tr><td class="row-num">29</td><td>Bajo (≤ Q1: 18.5)</td><td class="hl">=CONTAR.SI(E2:E33,"&lt;=18.5")</td></tr>
+            <tr><td class="row-num">30</td><td>Medio-bajo (18.6 - 21)</td><td class="hl">=CONTAR.SI.CONJUNTO(E2:E33,"&gt;18.5",E2:E33,"&lt;=21")</td></tr>
+            <tr><td class="row-num">31</td><td>Medio-alto (21.1 - 27.5)</td><td class="hl">=CONTAR.SI.CONJUNTO(E2:E33,"&gt;21",E2:E33,"&lt;=27.5")</td></tr>
+            <tr><td class="row-num">32</td><td>Alto (&gt; Q3: 27.5)</td><td class="hl">=CONTAR.SI(E2:E33,"&gt;27.5")</td></tr>
+          </table>
+        </div>
+
+        <p><strong>Resultados esperados:</strong></p>
+        <ul style="margin-left:1.3rem">
+          <li>n mujeres = 14, n hombres = 18</li>
+          <li>Estrés promedio mujeres ≈ 22.86, hombres ≈ 21.61 (diferencia ≈ 1.25)</li>
+          <li>Los cuartiles dividen a los 32 estudiantes aproximadamente en cuartos de 8 personas</li>
+        </ul>
+
+        <div class="check-done"><input type="checkbox" class="check"> Construí el panel descriptivo completo integrando todo lo aprendido</div>
+      </div>
+
+      <!-- PASO 20: DASHBOARD -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">20</div><h3>Dashboard de visualización</h3></div>
+
+        <p>Un análisis descriptivo profesional necesita visualización. Vas a crear <strong>4 gráficos clave</strong> que cuenten la historia de los datos.</p>
+
+        <p><strong>Gráfico 1 · Histograma del estrés académico</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">E2:E33</code> (puntajes de estrés)</li>
+          <li>Insertar → Gráficos → Histograma</li>
+          <li>Título: <code class="inline">Distribución del estrés académico (n=32)</code></li>
+          <li>Ancho del contenedor: 5</li>
+          <li>Color: morado</li>
+        </ol>
+
+        <p><strong>Gráfico 2 · Distribución por niveles de estrés (pastel)</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">K28:L32</code></li>
+          <li>Insertar → Circular 2D</li>
+          <li>Título: <code class="inline">Estudiantes por nivel de estrés</code></li>
+          <li>Colores semánticos: verde (bajo), amarillo (medio-bajo), naranja (medio-alto), rojo (alto)</li>
+          <li>Agrega etiquetas de porcentaje</li>
+        </ol>
+
+        <p><strong>Gráfico 3 · Comparativo por sexo (columnas agrupadas)</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">K20:M24</code> (sin la columna diferencia)</li>
+          <li>Insertar → Columna agrupada</li>
+          <li>Título: <code class="inline">Comparación de indicadores por sexo</code></li>
+        </ol>
+
+        <p><strong>Gráfico 4 · Relación horas de sueño vs estrés (dispersión)</strong></p>
+        <ol>
+          <li>Selecciona <code class="inline">G2:G33</code> y con Ctrl también <code class="inline">E2:E33</code></li>
+          <li>Insertar → Dispersión (sólo puntos)</li>
+          <li>Título: <code class="inline">Relación entre horas de sueño y estrés académico</code></li>
+          <li>Eje X: Horas de sueño | Eje Y: Puntaje de estrés</li>
+          <li>Agrega línea de tendencia con R² visible</li>
+        </ol>
+
+        <p>Organiza los 4 gráficos en un espacio limpio de la hoja, con un título general grande y el nombre del estudio:</p>
+
+        <div class="excel-demo">
+          <table class="excel">
+            <tr><td colspan="6" style="background:#6a3d9a;color:white;font-weight:800;text-align:center;font-size:1.1rem;padding:0.8rem">DASHBOARD · ESTRÉS ACADÉMICO EN UNIVERSITARIOS MEXICANOS · 2026</td></tr>
+          </table>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Construí el dashboard con los 4 gráficos</div>
+      </div>
+
+      <!-- PASO 21: REPORTE FINAL -->
+      <div class="paso">
+        <div class="paso-header"><div class="paso-num">21</div><h3>Reporte de hallazgos y cierre integrador</h3></div>
+
+        <p>Redacta un <strong>reporte descriptivo</strong> de 1 página en Word o documento aparte, dirigido al Centro de Bienestar Universitario. Estructura:</p>
+
+        <div class="ejemplo">
+          <h4>Estructura del reporte descriptivo profesional</h4>
+          <ol style="margin-left:1.3rem">
+            <li><strong>Título:</strong> Debe incluir tema, población, año.</li>
+            <li><strong>Método:</strong> muestra (n=32, universitarios mexicanos 2026), instrumento (escala de estrés académico 0-40), variables medidas.</li>
+            <li><strong>Resultados descriptivos generales:</strong> reporta media ± DE del estrés, mediana, RIC. Menciona la forma de la distribución (asimetría y curtosis).</li>
+            <li><strong>Distribución por niveles:</strong> qué porcentaje está en nivel alto vs bajo.</li>
+            <li><strong>Comparación por sexo:</strong> ¿hay diferencias notorias en las medias?</li>
+            <li><strong>Hallazgo más relevante:</strong> lo más importante que descubriste.</li>
+            <li><strong>Limitaciones:</strong> menciona al menos 3 (tamaño de muestra, una sola aplicación, autoreporte, muestra no aleatoria, etc.).</li>
+            <li><strong>Recomendaciones al Centro:</strong> ¿qué debería hacer con esta información?</li>
+          </ol>
+        </div>
+
+        <div class="reflexion">
+          <p><strong>Reflexión final del curso de la Unidad III</strong>:</p>
+          <ol>
+            <li>Al inicio (Fase 1) te presentamos el problema del director escolar que no sabía cómo medir el "bienestar". Después de esta unidad, ¿qué le responderías si te dice "quiero medir la felicidad de mis estudiantes"?</li>
+            <li>La estadística descriptiva puede parecer "sólo números". Pero: ¿cuál fue el momento en esta guía en que sentiste que los números <em>contaban una historia</em> sobre las personas?</li>
+            <li>El proyecto integrador reveló que la asimetría del estrés es cercana a 0. Si en tu propio grupo escolar hicieras el mismo estudio, ¿esperarías el mismo resultado? ¿Qué variables afectarían la respuesta?</li>
+            <li>La lección que quedará: describe con tus palabras qué es un "análisis descriptivo bien hecho". ¿Qué medidas debe incluir? ¿Qué preguntas debe responder? ¿Qué lo hace útil?</li>
+          </ol>
+          <textarea placeholder="Tu reflexión final integradora..."></textarea>
+        </div>
+
+        <div class="check-done"><input type="checkbox" class="check"> Redacté el reporte final del proyecto integrador</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROYECTO FINAL · ENTREGA Y RÚBRICA ============ -->
+  <div class="proyecto-final">
+    <h2>Entrega final del curso</h2>
+    <p>Al terminar las 10 horas de actividad, debes entregar en la plataforma:</p>
+
+    <h3>1. Libro de Excel completo</h3>
+    <ul>
+      <li><code class="inline" style="color:var(--ink)">Manejo_Datos_TuNombre.xlsx</code> con las 5 hojas:</li>
+      <li>Muestreo (Fase 1) · Diseño de plan de muestreo estratificado</li>
+      <li>Libro_codigos (Fase 2) · Diccionario de variables del estudio</li>
+      <li>Base_datos (Fase 2) · Base limpia con formato de tabla y validaciones</li>
+      <li>Descriptivas (Fase 3 y 4) · Paneles descriptivos comparados de dos grupos con medidas de tendencia central, dispersión, posición y forma</li>
+      <li>Proyecto_Estres (Fase 5) · Dataset completo, panel integrador y dashboard de 4 gráficos</li>
+    </ul>
+
+    <h3>2. Documento de reflexiones</h3>
+    <ul>
+      <li>Word o PDF con todas las reflexiones de las 5 fases</li>
+      <li>Definiciones operativas construidas (Paso 1)</li>
+      <li>Clasificación de variables (Paso 2)</li>
+      <li>Elección justificada de tipos de muestreo (Paso 3)</li>
+      <li>Interpretaciones psicológicas de cada medida estadística</li>
+    </ul>
+
+    <h3>3. Reporte de hallazgos del proyecto</h3>
+    <ul>
+      <li>1 página con la estructura profesional del Paso 21</li>
+      <li>Reporte con estilo académico dirigido al Centro de Bienestar Universitario</li>
+      <li>Debe citar valores específicos del panel descriptivo</li>
+    </ul>
+
+    <div class="rubrica">
+      <h4>Rúbrica de evaluación (100 puntos)</h4>
+      <table>
+        <thead>
+          <tr><th>Criterio</th><th>Puntos</th><th>Qué se evalúa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Diseño de muestreo</strong></td><td>6</td><td>Plan de muestreo estratificado correctamente calculado con proporciones</td></tr>
+          <tr><td><strong>Definición operativa</strong></td><td>6</td><td>Constructo elegido operacionalizado con instrumentos concretos</td></tr>
+          <tr><td><strong>Clasificación de variables</strong></td><td>6</td><td>Las 6 variables del Paso 2 clasificadas correctamente (tipo, subtipo, nivel)</td></tr>
+          <tr><td><strong>Libro de códigos</strong></td><td>6</td><td>Diccionario completo con variables, tipos y valores válidos</td></tr>
+          <tr><td><strong>Base de datos limpia</strong></td><td>8</td><td>Formato de tabla aplicado, validación de datos, controles de calidad</td></tr>
+          <tr><td><strong>Medidas de tendencia central</strong></td><td>8</td><td>Media, mediana y moda correctamente calculadas para ambos grupos</td></tr>
+          <tr><td><strong>Medidas de dispersión</strong></td><td>8</td><td>Rango, varianza, DE y CV calculados y comparados entre grupos</td></tr>
+          <tr><td><strong>Medidas de posición</strong></td><td>8</td><td>Cuartiles, percentiles y rango intercuartil calculados correctamente</td></tr>
+          <tr><td><strong>Medidas de forma</strong></td><td>8</td><td>Asimetría y curtosis calculadas e interpretadas apropiadamente</td></tr>
+          <tr><td><strong>Dataset del proyecto</strong></td><td>4</td><td>Los 32 casos capturados sin errores de transcripción</td></tr>
+          <tr><td><strong>Panel descriptivo integrador</strong></td><td>10</td><td>Panel completo con todas las medidas para 3 variables + comparativo por sexo + clasificación por cuartiles</td></tr>
+          <tr><td><strong>Dashboard de visualización</strong></td><td>10</td><td>Los 4 gráficos con títulos, ejes etiquetados y colores adecuados</td></tr>
+          <tr><td><strong>Reporte de hallazgos</strong></td><td>10</td><td>Reporte de 1 página con estructura profesional completa</td></tr>
+          <tr><td><strong>Reflexiones integrales</strong></td><td>10</td><td>Reflexiones sustanciales que demuestran construcción de conocimiento</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p><strong>Manejo de Datos · Estadística para Psicología</strong> · Guía interactiva de 10 horas · Unidad III completa</p>
+  <p style="margin-top:0.5rem; font-size:0.82rem">El ciclo Problema-Activa-Construye-Experimenta-Reflexiona genera aprendizaje significativo. La IA es tu apoyo, no tu sustituto. Tu juicio profesional es insustituible.</p>
+</footer>
+
+<script>
+  const checks = document.querySelectorAll('input.check[type="checkbox"]');
+  const fill = document.getElementById('progressFill');
+  const text = document.getElementById('progressText');
+  const total = checks.length;
+
+  function updateProgress(){
+    const done = document.querySelectorAll('input.check[type="checkbox"]:checked').length;
+    const pct = total > 0 ? (done/total)*100 : 0;
+    fill.style.width = pct + '%';
+    text.textContent = done + ' / ' + total;
+    const states = Array.from(checks).map(c => c.checked);
+    try { sessionStorage.setItem('manejoDatosProgress', JSON.stringify(states)); } catch(e){}
+    const areas = document.querySelectorAll('textarea');
+    const texts = Array.from(areas).map(t => t.value);
+    try { sessionStorage.setItem('manejoDatosTexts', JSON.stringify(texts)); } catch(e){}
+  }
+
+  try {
+    const saved = sessionStorage.getItem('manejoDatosProgress');
+    if (saved) {
+      const states = JSON.parse(saved);
+      checks.forEach((c,i) => { if(states[i]) c.checked = true; });
+    }
+    const savedTexts = sessionStorage.getItem('manejoDatosTexts');
+    if (savedTexts) {
+      const texts = JSON.parse(savedTexts);
+      document.querySelectorAll('textarea').forEach((t,i) => { if(texts[i]) t.value = texts[i]; });
+    }
+  } catch(e){}
+
+  checks.forEach(c => c.addEventListener('change', updateProgress));
+  document.querySelectorAll('textarea').forEach(t => t.addEventListener('input', updateProgress));
+
+  updateProgress();
+</script>
+
+</body>
+</html>
