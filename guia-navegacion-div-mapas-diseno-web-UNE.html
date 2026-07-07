@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | Navegacion, DIV y Mapas | Diseno Web</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
+  :root {
+    --azul-une: #1e2c6e;
+    --rojo-une: #d62b2b;
+    --azul-medio: #2a3a8c;
+    --azul-claro: #e8eaf6;
+    --gris-suave: #f4f6fb;
+    --gris-linea: #dfe3ee;
+    --texto-principal: #16182b;
+    --texto-secundario: #494f6b;
+    --codigo-fondo: #14172a;
+    --acento-cian: #0d9488;
+    --acento-ambar: #d97706;
+    --acento-magenta: #be185d;
+    --mapa-verde: #3f7d58;
+    --blanco: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--gris-suave);
+    color: var(--texto-principal);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  #progress-bar {
+    position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+    background: linear-gradient(90deg, var(--rojo-une), var(--acento-cian), var(--azul-une));
+    z-index: 9999; transition: width 0.2s ease;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--azul-une); color: var(--blanco);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 16px rgba(30,44,110,0.18);
+  }
+  .header-inner {
+    max-width: 1140px; margin: 0 auto; display: flex;
+    align-items: center; justify-content: space-between;
+    padding: 14px 32px; gap: 20px;
+  }
+  .header-logo { display: flex; align-items: center; gap: 16px; }
+  .header-logo img { height: 48px; background: white; padding: 6px 10px; border-radius: 6px; }
+  .header-text h1 { font-size: 1rem; font-weight: 700; line-height: 1.2; }
+  .header-text p { font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 300; margin-top: 2px; }
+  .header-badge {
+    background: var(--acento-cian); color: white; font-size: 0.7rem; font-weight: 600;
+    padding: 4px 12px; border-radius: 20px; letter-spacing: 0.06em;
+    text-transform: uppercase; white-space: nowrap;
+  }
+
+  /* NAV (demostrativo tambien: es una barra de navegacion real) */
+  nav.guia-nav { background: var(--azul-medio); overflow-x: auto; scrollbar-width: none; }
+  nav.guia-nav::-webkit-scrollbar { display: none; }
+  .nav-inner { display: flex; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  nav.guia-nav a {
+    color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.78rem; font-weight: 500;
+    padding: 12px 15px; white-space: nowrap; display: block; transition: all 0.2s;
+    border-bottom: 3px solid transparent; letter-spacing: 0.01em;
+  }
+  nav.guia-nav a:hover { color: white; border-bottom-color: var(--acento-cian); background: rgba(255,255,255,0.07); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--azul-une) 0%, #10162e 55%, #0a2b28 100%);
+    color: white; padding: 74px 32px 58px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-block; background: rgba(13,148,136,0.22); border: 1px solid rgba(13,148,136,0.5);
+    color: #5eead4; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 18px; border-radius: 30px; margin-bottom: 20px;
+  }
+  .hero h2 {
+    font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 600;
+    line-height: 1.15; margin-bottom: 16px; max-width: 780px; margin-left: auto; margin-right: auto;
+  }
+  .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.74); max-width: 640px; margin: 0 auto 28px; font-weight: 300; }
+  .hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px; }
+  .chip {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85); font-size: 0.75rem; padding: 5px 14px; border-radius: 20px; font-weight: 400;
+  }
+
+  .main-wrap { max-width: 1140px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* MODULO */
+  .modulo {
+    border-radius: 14px; margin-bottom: 40px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(30,44,110,0.07); border: 1px solid var(--gris-linea); background: white;
+  }
+  .modulo-header { padding: 30px 36px 22px; display: flex; align-items: center; gap: 18px; color: white; position: relative; }
+  .modulo-header.m0 { background: linear-gradient(120deg, var(--azul-une), var(--azul-medio)); }
+  .modulo-header.m1 { background: linear-gradient(120deg, #0a5d54, var(--acento-cian)); }
+  .modulo-header.m2 { background: linear-gradient(120deg, #9a4a06, var(--acento-ambar)); }
+  .modulo-header.m3 { background: linear-gradient(120deg, #2c5c40, var(--mapa-verde)); }
+  .modulo-header.pf { background: linear-gradient(120deg, #1a1d2e, #0a2b28); }
+
+  .modulo-num {
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+    width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 600; flex-shrink: 0;
+  }
+  .modulo-title-wrap h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+  .modulo-title-wrap p { font-size: 0.85rem; color: rgba(255,255,255,0.78); margin-top: 4px; font-weight: 400; }
+
+  .modulo-body { padding: 30px 36px; }
+  .modulo-intro {
+    background: var(--gris-suave); border-left: 4px solid var(--azul-une); border-radius: 8px;
+    padding: 16px 20px; margin-bottom: 24px; font-size: 0.92rem; color: var(--texto-secundario);
+  }
+
+  .subtema { margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--gris-linea); }
+  .subtema:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .subtema-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .subtema-marker { width: 8px; height: 8px; border-radius: 50%; background: var(--acento-cian); flex-shrink: 0; }
+  .subtema h3 { font-size: 1.05rem; font-weight: 600; color: var(--azul-une); }
+  .subtema p { color: var(--texto-secundario); margin-bottom: 12px; font-size: 0.94rem; }
+
+  .inline-h3 { margin-top: 24px; font-size: 1rem; font-weight: 600; color: var(--azul-une); padding-bottom: 6px; border-bottom: 2px solid var(--azul-claro); }
+
+  /* CALLOUT */
+  .callout { border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-size: 0.9rem; display: flex; gap: 12px; align-items: flex-start; }
+  .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .callout.info { background: #e8eaf6; border-left: 4px solid var(--azul-une); color: var(--azul-une); }
+  .callout.tip { background: #d1faf4; border-left: 4px solid var(--acento-cian); color: #0a5d54; }
+  .callout.warn { background: #fff3e0; border-left: 4px solid var(--acento-ambar); color: #7a4405; }
+  .callout.abp { background: #fce4ec; border-left: 4px solid var(--rojo-une); color: #880e1f; }
+
+  /* CODIGO */
+  .code-block { background: var(--codigo-fondo); border-radius: 10px; overflow: hidden; margin: 16px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+  .code-header { background: #21243c; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dots span { width: 11px; height: 11px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+  .code-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; }
+  .copy-btn {
+    background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6); font-size: 0.68rem;
+    padding: 3px 10px; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-family: 'Sora', sans-serif; letter-spacing: 0.03em;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.2); color: white; }
+  pre { padding: 20px; overflow-x: auto; font-family: 'DM Mono', monospace; font-size: 0.81rem; line-height: 1.7; color: #cdd6f4; white-space: pre; }
+  .kw { color: #89b4fa; } .attr { color: #a6e3a1; } .val { color: #f9e2af; }
+  .com { color: #6c7086; font-style: italic; } .tag { color: #f38ba8; } .sel { color: #f5c2e7; } .prop { color: #94e2d5; } .cval { color: #fab387; }
+
+  /* TABLAS */
+  .tabla-html { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin: 16px 0; }
+  .tabla-html th { background: var(--azul-une); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.03em; }
+  .tabla-html th:first-child { border-radius: 8px 0 0 0; }
+  .tabla-html th:last-child { border-radius: 0 8px 0 0; }
+  .tabla-html td { padding: 9px 14px; border-bottom: 1px solid var(--gris-linea); color: var(--texto-secundario); vertical-align: top; }
+  .tabla-html tr:nth-child(even) td { background: var(--gris-suave); }
+  .tabla-html tr:last-child td { border-bottom: none; }
+  .tabla-html code { font-family: 'DM Mono', monospace; background: var(--azul-claro); color: var(--azul-une); padding: 2px 7px; border-radius: 4px; font-size: 0.78rem; }
+
+  /* GRID CARDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .card { background: var(--gris-suave); border: 1px solid var(--gris-linea); border-radius: 10px; padding: 18px; }
+  .card h4 { font-weight: 600; font-size: 0.86rem; color: var(--azul-une); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid var(--azul-claro); }
+  .card p, .card li { font-size: 0.82rem; color: var(--texto-secundario); line-height: 1.6; }
+  .card ul { padding-left: 16px; } .card li { margin-bottom: 4px; }
+  .card code { font-family: 'DM Mono', monospace; background: white; border: 1px solid var(--gris-linea); color: var(--azul-une); padding: 1px 6px; border-radius: 4px; font-size: 0.76rem; }
+
+  /* PASOS */
+  .steps { display: flex; flex-direction: column; gap: 14px; margin: 16px 0; }
+  .step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: var(--gris-suave); border-radius: 10px; border: 1px solid var(--gris-linea); }
+  .step-num { background: var(--acento-cian); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.76rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .step-content h4 { font-weight: 600; font-size: 0.88rem; color: var(--texto-principal); margin-bottom: 4px; }
+  .step-content p { font-size: 0.83rem; color: var(--texto-secundario); margin: 0; }
+  .step-content code { font-family: 'DM Mono', monospace; background: white; border: 1px solid var(--gris-linea); color: var(--azul-une); padding: 1px 7px; border-radius: 4px; font-size: 0.78rem; }
+
+  /* DEMO */
+  .demo-box { background: white; border: 2px dashed var(--gris-linea); border-radius: 10px; padding: 22px; margin: 16px 0; }
+  .demo-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-secundario); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .demo-label::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--acento-cian); }
+
+  /* Demo de barra de navegacion */
+  .demo-navbar { display: flex; gap: 4px; background: var(--azul-une); border-radius: 8px; padding: 8px; flex-wrap: wrap; }
+  .demo-navbar a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.82rem; padding: 8px 16px; border-radius: 6px; transition: all 0.2s; }
+  .demo-navbar a:hover { background: rgba(255,255,255,0.15); color: white; }
+  .demo-navbar a.activo { background: var(--acento-cian); color: white; }
+
+  .demo-navbar.vertical { flex-direction: column; max-width: 200px; }
+
+  /* Demo de DIV boxes */
+  .demo-div-container { display: flex; gap: 12px; flex-wrap: wrap; }
+  .demo-div { border-radius: 8px; padding: 18px; color: white; font-family: 'DM Mono', monospace; font-size: 0.78rem; text-align: center; flex: 1; min-width: 120px; }
+  .demo-div.a { background: var(--acento-cian); } .demo-div.b { background: var(--acento-ambar); } .demo-div.c { background: var(--acento-magenta); }
+
+  /* EJERCICIO PROGRESIVO */
+  .ejercicio-box { background: linear-gradient(135deg, #12233a 0%, #0a2e2a 100%); border-radius: 12px; padding: 26px 28px; margin-top: 24px; color: white; position: relative; overflow: hidden; }
+  .ejercicio-box::after { content: attr(data-tag); position: absolute; right: 18px; top: 14px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
+  .ejercicio-label { display: inline-flex; align-items: center; gap: 8px; background: rgba(13,148,136,0.25); border: 1px solid rgba(13,148,136,0.5); color: #5eead4; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 14px; }
+  .ejercicio-box h4 { font-family: 'Fraunces', serif; font-size: 1.15rem; margin-bottom: 8px; font-weight: 600; }
+  .ejercicio-box > p { color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-bottom: 16px; }
+  .ejercicio-box ul { padding-left: 18px; }
+  .ejercicio-box li { font-size: 0.85rem; color: rgba(255,255,255,0.72); margin-bottom: 6px; line-height: 1.6; }
+  .ejercicio-box code { font-family: 'DM Mono', monospace; background: rgba(255,255,255,0.1); color: #7dd3fc; padding: 1px 7px; border-radius: 4px; font-size: 0.78rem; }
+
+  /* PROYECTO */
+  .proyecto-wrap { background: linear-gradient(135deg, #16182b 0%, #0f1a3d 50%, #0a2b28 100%); border-radius: 14px; padding: 38px; color: white; position: relative; overflow: hidden; }
+  .proyecto-wrap::after { content: 'ABP'; position: absolute; right: -10px; top: -10px; font-size: 8rem; font-weight: 700; color: rgba(255,255,255,0.03); pointer-events: none; font-family: 'Fraunces', serif; }
+  .proyecto-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(214,43,43,0.25); border: 1px solid rgba(214,43,43,0.5); color: #ff9090; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 18px; }
+  .proyecto-wrap h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 10px; line-height: 1.2; }
+  .proyecto-wrap > p.lead { color: rgba(255,255,255,0.7); font-size: 0.94rem; margin-bottom: 28px; max-width: 760px; }
+  .proy-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .meta-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 0.75rem; padding: 5px 14px; border-radius: 20px; }
+  .fase { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
+  .fase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .fase-num { background: var(--rojo-une); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+  .fase-title { font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.92); }
+  .fase-time { margin-left: auto; font-size: 0.72rem; color: rgba(255,255,255,0.45); font-family: 'DM Mono', monospace; }
+  .fase p, .fase li { font-size: 0.84rem; color: rgba(255,255,255,0.68); line-height: 1.65; }
+  .fase ul { padding-left: 18px; margin-top: 6px; } .fase li { margin-bottom: 5px; }
+  .fase code { font-family: 'DM Mono', monospace; background: rgba(255,255,255,0.1); color: #7dd3fc; padding: 1px 7px; border-radius: 4px; font-size: 0.8rem; }
+
+  /* RUBRICA */
+  .rubrica-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.6fr; gap: 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); margin-top: 20px; }
+  .rub-header { background: rgba(255,255,255,0.1); padding: 10px 14px; font-size: 0.74rem; font-weight: 700; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.05em; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .rub-cell { padding: 10px 14px; font-size: 0.76rem; color: rgba(255,255,255,0.62); border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); line-height: 1.5; }
+  .rub-cell:last-child { border-right: none; }
+
+  /* QUIZ */
+  .quiz-area { background: var(--azul-claro); border-radius: 10px; padding: 22px; margin: 16px 0; }
+  .quiz-question { font-weight: 600; font-size: 0.9rem; color: var(--azul-une); margin-bottom: 12px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt { display: flex; align-items: center; gap: 10px; background: white; border: 2px solid var(--gris-linea); border-radius: 8px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 0.86rem; color: var(--texto-secundario); text-align: left; width: 100%; }
+  .quiz-opt:hover { border-color: var(--azul-une); color: var(--azul-une); background: var(--azul-claro); }
+  .quiz-opt.correct { border-color: var(--acento-cian); background: #d1faf4; color: #0a5d54; }
+  .quiz-opt.wrong { border-color: var(--rojo-une); background: #fce8e8; color: #8b0000; }
+  .quiz-feedback { margin-top: 10px; font-size: 0.83rem; font-weight: 500; display: none; }
+
+  /* DIAGRAMA */
+  .diagrama { background: var(--codigo-fondo); border-radius: 10px; padding: 24px; margin: 16px 0; display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .diag-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 22px; color: #cdd6f4; font-family: 'DM Mono', monospace; font-size: 0.8rem; text-align: center; min-width: 240px; }
+  .diag-box.highlight { border-color: #5eead4; background: rgba(94,234,212,0.1); color: #5eead4; }
+  .diag-box.red { border-color: #f38ba8; background: rgba(243,139,168,0.1); color: #f38ba8; }
+  .diag-box.green { border-color: #a6e3a1; background: rgba(166,227,161,0.1); color: #a6e3a1; }
+  .diag-arrow { color: rgba(255,255,255,0.25); font-size: 1.1rem; padding: 4px 0; font-family: 'DM Mono', monospace; }
+
+  /* TIMELINE */
+  .timeline-mini { display: flex; align-items: center; gap: 6px; margin: 24px 0 0; flex-wrap: wrap; }
+  .timeline-mini .tl-step { font-size: 0.7rem; padding: 5px 12px; border-radius: 14px; background: var(--gris-suave); color: var(--texto-secundario); border: 1px solid var(--gris-linea); font-weight: 500; }
+  .timeline-mini .tl-step.done { background: var(--azul-une); color: white; border-color: var(--azul-une); }
+  .timeline-mini .tl-arrow { color: var(--gris-linea); font-size: 0.8rem; }
+
+  /* REFLEXION */
+  .reflexion-area { background: var(--gris-suave); border-radius: 10px; padding: 24px; border: 1px dashed var(--gris-linea); }
+  .reflexion-area h3 { font-size: 1rem; font-weight: 600; color: var(--azul-une); margin-bottom: 14px; border: none !important; padding: 0 !important; }
+  .pregunta-reflex { background: white; border: 1px solid var(--gris-linea); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; font-size: 0.87rem; color: var(--texto-secundario); display: flex; gap: 10px; align-items: flex-start; }
+  .pregunta-reflex span { background: var(--azul-une); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; flex-shrink: 0; }
+
+  /* MAPA EMBEBIDO */
+  .mapa-embed { border-radius: 10px; overflow: hidden; margin: 16px 0; border: 1px solid var(--gris-linea); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .mapa-embed iframe { display: block; width: 100%; border: 0; }
+
+  footer { background: var(--azul-une); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 24px; font-size: 0.8rem; margin-top: 24px; }
+  footer strong { color: white; }
+
+  @media (max-width: 760px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .rubrica-grid { grid-template-columns: 1fr 1fr; }
+    .modulo-body { padding: 22px; }
+    .modulo-header { padding: 22px; flex-direction: column; align-items: flex-start; }
+    .proyecto-wrap { padding: 22px; }
+    .header-inner { padding: 12px 16px; }
+    .hero { padding: 48px 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="data:image/png;base64,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flrOlIvlVxIvfT/Q8L9DbpR4efnHco7Ep/GPlUNkb4lXDDaQZl8+J4T0O67/Z2eLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAABacu8//T+wJF0i54bpgwAAAABJRU5ErkJggg==" alt="Logo UNE">
+      <div class="header-text">
+        <h1>Universidad de Especialidades</h1>
+        <p>Licenciatura en Diseno Grafico &nbsp;|&nbsp; Diseno Web</p>
+      </div>
+    </div>
+    <span class="header-badge">Navegacion, DIV y Mapas</span>
+  </div>
+</header>
+
+<nav class="guia-nav">
+  <div class="nav-inner">
+    <a href="#intro">Introduccion</a>
+    <a href="#m1">Tema 1 · Barras de navegacion</a>
+    <a href="#m2">Tema 2 · Estructura con DIV</a>
+    <a href="#m3">Tema 3 · Insercion de mapas</a>
+    <a href="#proyecto">Proyecto Final</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Guia de Aprendizaje Interactiva</div>
+    <h2>Navegacion, Estructura con DIV e Insercion de Mapas</h2>
+    <p>Aprende a organizar y guiar la experiencia visual de un sitio web: construye barras de navegacion funcionales, estructura el contenido con contenedores y ubica tu proyecto en el mundo real mediante mapas embebidos.</p>
+    <div class="hero-chips">
+      <span class="chip">Pedagogia Activa</span>
+      <span class="chip">Metodologia Constructivista</span>
+      <span class="chip">ABP</span>
+      <span class="chip">HTML + CSS</span>
+      <span class="chip">Google Maps</span>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+<!-- ===================== INTRO ===================== -->
+<section id="intro" class="modulo">
+  <div class="modulo-header m0">
+    <div class="modulo-num">00</div>
+    <div class="modulo-title-wrap">
+      <h2>Activacion de Conocimientos Previos</h2>
+      <p>Reflexion inicial — Metodologia constructivista</p>
+    </div>
+  </div>
+  <div class="modulo-body">
+    <div class="callout info">
+      <span class="callout-icon">&#9432;</span>
+      <div>Antes de iniciar el recorrido por los tres temas, responde en tu bitacora de curso las siguientes preguntas. El objetivo es reconocer lo que ya sabes sobre la organizacion visual de los sitios web, para construir sobre ello durante la unidad.</div>
+    </div>
+    <div class="reflexion-area">
+      <h3>Preguntas detonadoras</h3>
+      <div class="pregunta-reflex"><span>1</span>Cuando visitas un sitio web, como sabes a donde ir o que secciones estan disponibles? Que elemento visual te orienta?</div>
+      <div class="pregunta-reflex"><span>2</span>Piensa en un sitio web que consideres bien organizado. Como crees que se logra que cada bloque de contenido (encabezado, menu, cuerpo, pie) ocupe su lugar?</div>
+      <div class="pregunta-reflex"><span>3</span>Has visto mapas interactivos dentro de paginas web (de negocios, escuelas, eventos)? Que utilidad crees que aportan al usuario?</div>
+      <div class="pregunta-reflex"><span>4</span>Como estudiante de Diseno Grafico, que papel juega la jerarquia visual y la orientacion del usuario en la calidad de un sitio web?</div>
+    </div>
+
+    <h3 class="inline-h3">Recorrido de la unidad</h3>
+    <p style="margin-top:10px;">Esta guia se organiza en tres temas progresivos. Cada tema introduce nuevas etiquetas y propiedades, y al finalizar encontraras un <strong>ejercicio progresivo</strong> que se construye sobre el trabajo del tema anterior, hasta integrarse en el <strong>Proyecto Final</strong>: un sitio web visual de una sola pagina, con barra de navegacion funcional, estructura basada en contenedores y un mapa embebido, sobre un tema academico elegido por ti.</p>
+
+    <div class="diagrama" style="margin-top:18px;">
+      <div class="diag-box highlight">Tema 1 — Barras de navegacion: propiedades y caracteristicas</div>
+      <div class="diag-arrow">&#8595;</div>
+      <div class="diag-box highlight">Tema 2 — Estructura del contenido con la etiqueta DIV</div>
+      <div class="diag-arrow">&#8595;</div>
+      <div class="diag-box highlight">Tema 3 — Insercion de mapas desde la web</div>
+      <div class="diag-arrow">&#8595;</div>
+      <div class="diag-box green">Proyecto Final — Sitio web visual integrador</div>
+    </div>
+  </div>
+</section>
+<!-- ===================== TEMA 1 ===================== -->
+<section id="m1" class="modulo">
+  <div class="modulo-header m1">
+    <div class="modulo-num">01</div>
+    <div class="modulo-title-wrap">
+      <h2>Barras de Navegacion</h2>
+      <p>Estructura, propiedades y caracteristicas</p>
+    </div>
+  </div>
+  <div class="modulo-body">
+    <div class="modulo-intro">La barra de navegacion es el sistema de orientacion de un sitio web: guia al usuario entre las distintas secciones y comunica visualmente la estructura del contenido. Es uno de los elementos de interfaz mas importantes desde la perspectiva del diseno y la experiencia de usuario.</div>
+
+    <!-- SUBTEMA 1 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Estructura basica de una barra de navegacion</h3></div>
+      <p>Una barra de navegacion se construye tipicamente combinando tres elementos: la etiqueta semantica <code>&lt;nav&gt;</code> como contenedor, una lista no ordenada <code>&lt;ul&gt;</code> con sus elementos <code>&lt;li&gt;</code>, y enlaces <code>&lt;a&gt;</code> dentro de cada elemento de lista.</p>
+
+      <div class="diagrama">
+        <div class="diag-box highlight">&lt;nav&gt; — contenedor semantico de navegacion</div>
+        <div class="diag-arrow">&#8595; contiene</div>
+        <div class="diag-box">&lt;ul&gt; — lista de enlaces</div>
+        <div class="diag-arrow">&#8595; contiene</div>
+        <div class="diag-box">&lt;li&gt; — cada elemento de la lista</div>
+        <div class="diag-arrow">&#8595; contiene</div>
+        <div class="diag-box green">&lt;a&gt; — el enlace navegable</div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">navbar-estructura.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;nav&gt;</span>
+  <span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"#inicio"</span><span class="tag">&gt;</span>Inicio<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"#nosotros"</span><span class="tag">&gt;</span>Nosotros<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"#servicios"</span><span class="tag">&gt;</span>Servicios<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"#contacto"</span><span class="tag">&gt;</span>Contacto<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/nav&gt;</span></pre>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">&#9432;</span>
+        <div>El uso de <code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code> no es casual: semanticamente, un menu es una lista de opciones. Esta estructura mejora la accesibilidad y permite que lectores de pantalla anuncien la cantidad de elementos de navegacion disponibles.</div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 2 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Propiedades CSS para dar forma a la barra</h3></div>
+      <p>Sin estilos, la lista se muestra en vertical y con vinetas. Las siguientes propiedades CSS transforman esa lista en una barra de navegacion profesional.</p>
+
+      <table class="tabla-html">
+        <thead><tr><th>Propiedad</th><th>Funcion</th><th>Valor tipico</th></tr></thead>
+        <tbody>
+          <tr><td><code>list-style</code></td><td>Elimina las vinetas de la lista</td><td><code>none</code></td></tr>
+          <tr><td><code>display: flex</code></td><td>Alinea los elementos en una fila horizontal</td><td><code>flex</code></td></tr>
+          <tr><td><code>gap</code></td><td>Define el espacio entre enlaces</td><td><code>24px</code></td></tr>
+          <tr><td><code>background-color</code></td><td>Color de fondo de la barra</td><td><code>#1e2c6e</code></td></tr>
+          <tr><td><code>padding</code></td><td>Espacio interno de la barra y de cada enlace</td><td><code>12px 24px</code></td></tr>
+          <tr><td><code>text-decoration</code></td><td>Elimina el subrayado de los enlaces</td><td><code>none</code></td></tr>
+          <tr><td><code>:hover</code></td><td>Efecto visual al pasar el cursor sobre un enlace</td><td>Pseudo-clase</td></tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">navbar-estilos.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;style&gt;</span>
+  <span class="sel">nav ul</span> {
+    <span class="prop">list-style</span>: <span class="cval">none</span>;
+    <span class="prop">display</span>: <span class="cval">flex</span>;
+    <span class="prop">gap</span>: <span class="cval">24px</span>;
+    <span class="prop">background-color</span>: <span class="cval">#1e2c6e</span>;
+    <span class="prop">padding</span>: <span class="cval">12px 24px</span>;
+    <span class="prop">margin</span>: <span class="cval">0</span>;
+  }
+  <span class="sel">nav a</span> {
+    <span class="prop">color</span>: <span class="cval">white</span>;
+    <span class="prop">text-decoration</span>: <span class="cval">none</span>;
+    <span class="prop">font-family</span>: <span class="cval">sans-serif</span>;
+    <span class="prop">padding</span>: <span class="cval">8px 12px</span>;
+    <span class="prop">border-radius</span>: <span class="cval">6px</span>;
+  }
+  <span class="sel">nav a:hover</span> {
+    <span class="prop">background-color</span>: <span class="cval">#0d9488</span>;
+  }
+<span class="tag">&lt;/style&gt;</span></pre>
+      </div>
+
+      <!-- DEMO NAVBAR -->
+      <div class="demo-box">
+        <div class="demo-label">Vista previa interactiva — pasa el cursor sobre los enlaces</div>
+        <div class="demo-navbar">
+          <a href="#" class="activo">Inicio</a>
+          <a href="#">Nosotros</a>
+          <a href="#">Servicios</a>
+          <a href="#">Contacto</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 3 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Caracteristicas y variantes de navegacion</h3></div>
+      <p>Segun el diseno del sitio, la barra de navegacion puede presentar distintas orientaciones y comportamientos.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Navegacion horizontal</h4>
+          <p>La mas comun en encabezados de sitios. Se logra con <code>display: flex</code>. Ideal para menus de pocas opciones ubicados en la parte superior.</p>
+        </div>
+        <div class="card">
+          <h4>Navegacion vertical</h4>
+          <p>Los enlaces se apilan uno debajo de otro (sin <code>display: flex</code> o con <code>flex-direction: column</code>). Comun en barras laterales o menus de paneles.</p>
+        </div>
+        <div class="card">
+          <h4>Navegacion fija (sticky)</h4>
+          <p>Con <code>position: sticky</code> o <code>fixed</code>, la barra permanece visible al desplazarse. Mejora la orientacion en paginas largas.</p>
+        </div>
+        <div class="card">
+          <h4>Enlace activo (activo)</h4>
+          <p>Se resalta la seccion actual con una clase CSS (ej. <code>.activo</code>) para indicar al usuario donde se encuentra dentro del sitio.</p>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <div class="demo-label">Comparativa: horizontal vs vertical</div>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+          <div>
+            <p style="font-size:0.76rem; color:var(--texto-secundario); margin-bottom:8px;">Horizontal</p>
+            <div class="demo-navbar">
+              <a href="#" class="activo">Inicio</a>
+              <a href="#">Galeria</a>
+              <a href="#">Blog</a>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:0.76rem; color:var(--texto-secundario); margin-bottom:8px;">Vertical</p>
+            <div class="demo-navbar vertical">
+              <a href="#" class="activo">Inicio</a>
+              <a href="#">Galeria</a>
+              <a href="#">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="inline-h3">Paso a paso: construye tu primera barra de navegacion</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><h4>Abre el Bloc de Notas</h4><p>Crea un documento nuevo y guardalo como <code>tema1-navegacion.html</code> con la estructura base de HTML5.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><h4>Escribe la estructura de navegacion</h4><p>Dentro del <code>&lt;body&gt;</code>, crea un <code>&lt;nav&gt;</code> con un <code>&lt;ul&gt;</code> y al menos 4 enlaces <code>&lt;a&gt;</code> dentro de sus <code>&lt;li&gt;</code>.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><h4>Agrega los estilos en el head</h4><p>Dentro de <code>&lt;style&gt;</code>, elimina las vinetas, aplica <code>display: flex</code>, un color de fondo y estilos a los enlaces.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><h4>Anade el efecto hover</h4><p>Define <code>nav a:hover</code> con un color distinto para dar retroalimentacion visual al usuario.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content"><h4>Guarda y prueba en el navegador</h4><p>Verifica que la barra se muestre horizontal y que los enlaces cambien de color al pasar el cursor.</p></div>
+      </div>
+    </div>
+
+    <div class="quiz-area">
+      <div class="quiz-question">Verifica tu comprension: Que propiedad CSS convierte una lista vertical en una barra de navegacion horizontal?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m1')">text-decoration: none</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, true, 'qf-m1')">display: flex</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m1')">list-style: none</button>
+      </div>
+      <div class="quiz-feedback" id="qf-m1"></div>
+    </div>
+
+    <!-- EJERCICIO PROGRESIVO -->
+    <div class="ejercicio-box" data-tag="paso 1 de 3">
+      <span class="ejercicio-label">Ejercicio progresivo — Etapa 1</span>
+      <h4>El esqueleto de navegacion de tu sitio</h4>
+      <p>A lo largo de esta unidad construiras un mismo ejercicio integral que crecera con cada tema hasta convertirse en tu Proyecto Final. Elige desde ahora un tema academico aplicable a tu vida universitaria (ejemplos: un sitio sobre un movimiento de diseno, la promocion de un evento de tu facultad, un mini portafolio, una guia de un espacio del campus).</p>
+      <p>Crea un archivo llamado <code>ejercicio-integral.html</code> y desarrolla lo siguiente:</p>
+      <ul>
+        <li>Una barra de navegacion con <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code> y <code>&lt;a&gt;</code>, con minimo 4 enlaces que apunten a anclas internas (<code>href="#seccion"</code>).</li>
+        <li>Estilos CSS que la conviertan en una barra horizontal con color de fondo coherente a tu tema.</li>
+        <li>Un efecto <code>:hover</code> en los enlaces.</li>
+        <li>Marca visualmente el enlace de la seccion inicial con una clase <code>activo</code>.</li>
+      </ul>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.5); font-size:0.78rem;">Conserva este archivo: lo retomaras y ampliaras en el Tema 2.</p>
+    </div>
+
+    <div class="timeline-mini">
+      <span class="tl-step done">Tema 1 completado</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Tema 2</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Tema 3</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Proyecto Final</span>
+    </div>
+  </div>
+</section>
+<!-- ===================== TEMA 2 ===================== -->
+<section id="m2" class="modulo">
+  <div class="modulo-header m2">
+    <div class="modulo-num">02</div>
+    <div class="modulo-title-wrap">
+      <h2>Estructura con la Etiqueta DIV</h2>
+      <p>Organizacion y maquetacion del contenido en contenedores</p>
+    </div>
+  </div>
+  <div class="modulo-body">
+    <div class="modulo-intro">La etiqueta <code>&lt;div&gt;</code> es un contenedor generico de bloque que agrupa elementos para organizarlos, posicionarlos y estilizarlos como una unidad. Es la herramienta fundamental para maquetar la estructura visual de una pagina web.</div>
+
+    <!-- SUBTEMA 1 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Que es la etiqueta div y para que sirve</h3></div>
+      <p>Un <code>&lt;div&gt;</code> (division) no aporta significado semantico por si mismo: su funcion es agrupar contenido para aplicarle estilos o posicionarlo en conjunto. Se comporta como un bloque, es decir, ocupa todo el ancho disponible y provoca un salto de linea antes y despues.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">div-basico.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"tarjeta"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Titulo de la seccion<span class="tag">&lt;/h2&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Contenido agrupado dentro del contenedor.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">&#9432;</span>
+        <div>Los atributos <code>class</code> e <code>id</code> son la clave para trabajar con contenedores: permiten "nombrar" un <code>&lt;div&gt;</code> para aplicarle estilos CSS especificos. <code>class</code> puede repetirse en varios elementos; <code>id</code> debe ser unico en toda la pagina.</div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 2 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Div frente a etiquetas semanticas</h3></div>
+      <p>HTML5 introdujo etiquetas semanticas que cumplen la funcion de un <code>&lt;div&gt;</code> pero con significado. Conviene conocer ambas y elegir la mas adecuada.</p>
+
+      <table class="tabla-html">
+        <thead><tr><th>Etiqueta</th><th>Significado</th><th>Cuando usarla</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;div&gt;</code></td><td>Contenedor generico sin significado</td><td>Agrupaciones puramente visuales o de maquetacion</td></tr>
+          <tr><td><code>&lt;header&gt;</code></td><td>Encabezado</td><td>Parte superior con logo y navegacion</td></tr>
+          <tr><td><code>&lt;main&gt;</code></td><td>Contenido principal</td><td>Cuerpo central de la pagina (unico)</td></tr>
+          <tr><td><code>&lt;section&gt;</code></td><td>Seccion tematica</td><td>Bloques de contenido diferenciados</td></tr>
+          <tr><td><code>&lt;footer&gt;</code></td><td>Pie de pagina</td><td>Informacion final, creditos, contacto</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <span class="callout-icon">&#10003;</span>
+        <div>Buena practica: usa etiquetas semanticas cuando el bloque tenga un rol claro (header, footer, section) y reserva <code>&lt;div&gt;</code> para agrupaciones de maquetacion sin significado propio, como una fila de tarjetas o una columna.</div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 3 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Maquetacion con div: el modelo de caja</h3></div>
+      <p>Cada <code>&lt;div&gt;</code> se comporta como una caja rectangular. El modelo de caja (box model) define cuatro capas que controlan su tamano y espaciado.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Propiedades del modelo de caja</h4>
+          <ul>
+            <li><code>width</code> / <code>height</code>: dimensiones del contenido</li>
+            <li><code>padding</code>: espacio interno (entre borde y contenido)</li>
+            <li><code>border</code>: borde de la caja</li>
+            <li><code>margin</code>: espacio externo (entre cajas)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Propiedades de organizacion</h4>
+          <ul>
+            <li><code>display: flex</code>: coloca divs en fila o columna</li>
+            <li><code>gap</code>: separacion entre contenedores</li>
+            <li><code>background-color</code>: color de fondo</li>
+            <li><code>border-radius</code>: esquinas redondeadas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">div-columnas.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;style&gt;</span>
+  <span class="sel">.contenedor</span> {
+    <span class="prop">display</span>: <span class="cval">flex</span>;
+    <span class="prop">gap</span>: <span class="cval">16px</span>;
+  }
+  <span class="sel">.columna</span> {
+    <span class="prop">flex</span>: <span class="cval">1</span>;
+    <span class="prop">background-color</span>: <span class="cval">#e8eaf6</span>;
+    <span class="prop">padding</span>: <span class="cval">20px</span>;
+    <span class="prop">border-radius</span>: <span class="cval">8px</span>;
+  }
+<span class="tag">&lt;/style&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"contenedor"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"columna"</span><span class="tag">&gt;</span>Columna 1<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"columna"</span><span class="tag">&gt;</span>Columna 2<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"columna"</span><span class="tag">&gt;</span>Columna 3<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+      </div>
+
+      <!-- DEMO DIV -->
+      <div class="demo-box">
+        <div class="demo-label">Vista previa interactiva — tres div en fila con flex</div>
+        <div class="demo-div-container">
+          <div class="demo-div a">.columna 1</div>
+          <div class="demo-div b">.columna 2</div>
+          <div class="demo-div c">.columna 3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 4 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Estructura completa de una pagina con div</h3></div>
+      <p>Combinando contenedores se construye el esqueleto visual completo de un sitio: encabezado con navegacion, cuerpo con secciones y pie de pagina.</p>
+
+      <div class="diagrama">
+        <div class="diag-box highlight" style="min-width:280px;">div.header (logo + nav)</div>
+        <div class="diag-arrow">&#8595;</div>
+        <div class="diag-box" style="min-width:280px;">div.contenido (secciones principales)</div>
+        <div class="diag-arrow">&#8595;</div>
+        <div class="diag-box green" style="min-width:280px;">div.footer (creditos y contacto)</div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">estructura-pagina.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"header"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Nombre del Sitio<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;nav&gt;</span> ... <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"contenido"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"seccion"</span> <span class="attr">id</span>=<span class="val">"inicio"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h2&gt;</span>Inicio<span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Contenido de la seccion.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"footer"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Derechos reservados 2025.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+      </div>
+    </div>
+
+    <h3 class="inline-h3">Paso a paso: estructura tu pagina con contenedores</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><h4>Define los bloques principales</h4><p>Identifica tres zonas: encabezado, contenido y pie de pagina.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><h4>Crea un div para cada zona</h4><p>Asigna a cada uno una <code>class</code> descriptiva: <code>header</code>, <code>contenido</code>, <code>footer</code>.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><h4>Agrega secciones internas</h4><p>Dentro de <code>contenido</code>, crea varios <code>&lt;div class="seccion"&gt;</code> con un <code>id</code> unico que coincida con los enlaces de tu barra de navegacion.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><h4>Aplica estilos en el head</h4><p>Da color de fondo, <code>padding</code> y <code>margin</code> a cada bloque para diferenciarlos visualmente.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content"><h4>Prueba la navegacion interna</h4><p>Haz clic en los enlaces de tu barra y verifica que la pagina se desplace a la seccion correspondiente.</p></div>
+      </div>
+    </div>
+
+    <div class="quiz-area">
+      <div class="quiz-question">Verifica tu comprension: Cual es la principal diferencia entre class e id en un div?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m2')">class define el color y id define el tamano</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, true, 'qf-m2')">class puede repetirse en varios elementos; id debe ser unico en la pagina</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m2')">No existe diferencia, son intercambiables</button>
+      </div>
+      <div class="quiz-feedback" id="qf-m2"></div>
+    </div>
+
+    <!-- EJERCICIO PROGRESIVO -->
+    <div class="ejercicio-box" data-tag="paso 2 de 3">
+      <span class="ejercicio-label">Ejercicio progresivo — Etapa 2</span>
+      <h4>Tu sitio adquiere estructura</h4>
+      <p>Retoma el archivo <code>ejercicio-integral.html</code> del Tema 1 y organiza su contenido con contenedores:</p>
+      <ul>
+        <li>Envuelve tu barra de navegacion dentro de un <code>&lt;div class="header"&gt;</code> junto a un titulo principal.</li>
+        <li>Crea un <code>&lt;div class="contenido"&gt;</code> con al menos 3 secciones internas (<code>&lt;div class="seccion" id="..."&gt;</code>), cuyos <code>id</code> coincidan con los enlaces de tu barra.</li>
+        <li>Agrega un <code>&lt;div class="footer"&gt;</code> con tu nombre, carrera y grupo.</li>
+        <li>Aplica estilos con <code>padding</code>, <code>margin</code> y colores de fondo para diferenciar visualmente cada bloque.</li>
+        <li>Verifica que los enlaces de la barra lleven correctamente a cada seccion.</li>
+      </ul>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.5); font-size:0.78rem;">En el Tema 3 anadiras un mapa embebido a una de tus secciones.</p>
+    </div>
+
+    <div class="timeline-mini">
+      <span class="tl-step done">Tema 1</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step done">Tema 2 completado</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Tema 3</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Proyecto Final</span>
+    </div>
+  </div>
+</section>
+<!-- ===================== TEMA 3 ===================== -->
+<section id="m3" class="modulo">
+  <div class="modulo-header m3">
+    <div class="modulo-num">03</div>
+    <div class="modulo-title-wrap">
+      <h2>Insercion de Mapas desde la Web</h2>
+      <p>Integracion de mapas interactivos mediante iframe</p>
+    </div>
+  </div>
+  <div class="modulo-body">
+    <div class="modulo-intro">Insertar un mapa interactivo permite ubicar geograficamente un negocio, una institucion o un evento dentro de un sitio web. Se logra mediante la etiqueta <code>&lt;iframe&gt;</code>, que incrusta contenido externo (como Google Maps) dentro de nuestra pagina.</div>
+
+    <!-- SUBTEMA 1 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Que es un iframe</h3></div>
+      <p>La etiqueta <code>&lt;iframe&gt;</code> (inline frame o marco en linea) permite incrustar una pagina web o un recurso externo dentro de otra pagina. Es el mecanismo estandar para insertar mapas, videos de YouTube y otros contenidos de terceros.</p>
+
+      <div class="diagrama">
+        <div class="diag-box highlight">Tu pagina HTML</div>
+        <div class="diag-arrow">contiene un</div>
+        <div class="diag-box">&lt;iframe&gt; con la URL del mapa</div>
+        <div class="diag-arrow">que carga</div>
+        <div class="diag-box green">El mapa interactivo de Google Maps</div>
+      </div>
+
+      <table class="tabla-html">
+        <thead><tr><th>Atributo de iframe</th><th>Funcion</th></tr></thead>
+        <tbody>
+          <tr><td><code>src</code></td><td>URL del contenido a incrustar (el mapa)</td></tr>
+          <tr><td><code>width</code> / <code>height</code></td><td>Dimensiones del marco</td></tr>
+          <tr><td><code>style</code></td><td>Estilos CSS aplicados al marco (bordes, esquinas)</td></tr>
+          <tr><td><code>allowfullscreen</code></td><td>Permite ver el mapa en pantalla completa</td></tr>
+          <tr><td><code>loading="lazy"</code></td><td>Carga el mapa solo cuando el usuario se acerca a el (optimizacion)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SUBTEMA 2 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Como obtener el codigo de un mapa de Google Maps</h3></div>
+      <p>Google Maps ofrece un codigo de insercion listo para copiar. No requiere cuenta ni clave de programador para el uso basico de incrustacion.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content"><h4>Abre Google Maps</h4><p>Ingresa a <code>maps.google.com</code> y busca la ubicacion que deseas mostrar (tu universidad, un evento, un lugar de interes).</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content"><h4>Haz clic en "Compartir"</h4><p>En el panel de la ubicacion, localiza y presiona el boton <code>Compartir</code>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content"><h4>Selecciona "Insertar un mapa"</h4><p>En la ventana emergente, cambia de la pestana "Enviar un vinculo" a la pestana <code>Insertar un mapa</code>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content"><h4>Copia el codigo HTML</h4><p>Google mostrara un codigo <code>&lt;iframe&gt;</code> completo. Presiona <code>Copiar HTML</code>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content"><h4>Pega el codigo en tu archivo</h4><p>Coloca ese <code>&lt;iframe&gt;</code> dentro de la seccion de tu pagina donde quieras que aparezca el mapa.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 3 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Estructura del codigo de un mapa embebido</h3></div>
+      <p>El codigo que proporciona Google tiene esta estructura. Puedes ajustar <code>width</code>, <code>height</code> y <code>style</code> segun el diseno de tu sitio.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <span class="code-label">mapa-embebido.html</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><span class="tag">&lt;iframe</span>
+  <span class="attr">src</span>=<span class="val">"https://www.google.com/maps/embed?pb=..."</span>
+  <span class="attr">width</span>=<span class="val">"600"</span>
+  <span class="attr">height</span>=<span class="val">"450"</span>
+  <span class="attr">style</span>=<span class="val">"border:0; border-radius:10px;"</span>
+  <span class="attr">allowfullscreen</span>
+  <span class="attr">loading</span>=<span class="val">"lazy"</span>
+  <span class="attr">referrerpolicy</span>=<span class="val">"no-referrer-when-downgrade"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/iframe&gt;</span></pre>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-icon">&#9888;</span>
+        <div>El valor de <code>src</code> que empieza con <code>?pb=</code> es una cadena larga y unica generada por Google para cada ubicacion. No la escribas manualmente: siempre copiala directamente desde la opcion "Insertar un mapa" de Google Maps.</div>
+      </div>
+
+      <!-- MAPA REAL EMBEBIDO COMO EJEMPLO -->
+      <div class="demo-box">
+        <div class="demo-label">Ejemplo real — mapa embebido y funcional</div>
+        <p style="font-size:0.82rem; color:var(--texto-secundario); margin-bottom:12px;">El siguiente mapa esta insertado con la misma tecnica que aprenderas a aplicar. Puedes interactuar con el: acercarte, alejarte y desplazarte.</p>
+        <div class="mapa-embed">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-103.45%2C20.62%2C-103.32%2C20.72&amp;layer=mapnik"
+            height="360"
+            style="border:0; border-radius:10px;"
+            loading="lazy"
+            title="Mapa de ejemplo">
+          </iframe>
+        </div>
+        <p style="font-size:0.76rem; color:var(--texto-secundario); margin-top:10px;">Nota tecnica: este ejemplo usa OpenStreetMap, una alternativa libre a Google Maps que tambien se inserta mediante iframe. Para tu proyecto puedes usar cualquiera de las dos plataformas.</p>
+      </div>
+    </div>
+
+    <!-- SUBTEMA 4 -->
+    <div class="subtema">
+      <div class="subtema-header"><span class="subtema-marker"></span><h3>Buenas practicas al insertar mapas</h3></div>
+      <div class="grid-2">
+        <div class="card">
+          <h4>Diseno responsivo</h4>
+          <p>Para que el mapa se adapte a pantallas moviles, usa <code>width: 100%</code> en lugar de un ancho fijo en pixeles, y envuelvelo en un contenedor <code>&lt;div&gt;</code>.</p>
+        </div>
+        <div class="card">
+          <h4>Rendimiento</h4>
+          <p>Agrega <code>loading="lazy"</code> para que el mapa no ralentice la carga inicial de la pagina. Se cargara cuando el usuario se acerque a el.</p>
+        </div>
+        <div class="card">
+          <h4>Contexto para el usuario</h4>
+          <p>Acompana siempre el mapa con texto: la direccion escrita, referencias cercanas o instrucciones de acceso. El mapa complementa, no sustituye la informacion.</p>
+        </div>
+        <div class="card">
+          <h4>Coherencia visual</h4>
+          <p>Aplica <code>border-radius</code> y, si corresponde, un borde que combine con la identidad visual de tu sitio para que el mapa se integre al diseno.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-area">
+      <div class="quiz-question">Verifica tu comprension: Que etiqueta HTML se utiliza para insertar un mapa de Google en una pagina web?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m3')">La etiqueta &lt;map&gt;</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, true, 'qf-m3')">La etiqueta &lt;iframe&gt;</button>
+        <button class="quiz-opt" onclick="evalQuiz(this, false, 'qf-m3')">La etiqueta &lt;img&gt;</button>
+      </div>
+      <div class="quiz-feedback" id="qf-m3"></div>
+    </div>
+
+    <!-- EJERCICIO PROGRESIVO -->
+    <div class="ejercicio-box" data-tag="paso 3 de 3">
+      <span class="ejercicio-label">Ejercicio progresivo — Etapa 3 (final)</span>
+      <h4>Tu sitio se ubica en el mundo real</h4>
+      <p>Completa tu archivo <code>ejercicio-integral.html</code> con un mapa embebido:</p>
+      <ul>
+        <li>Elige una ubicacion coherente con tu tema (tu campus, la sede de un evento, un lugar de interes relacionado).</li>
+        <li>Obten el codigo <code>&lt;iframe&gt;</code> desde la opcion "Insertar un mapa" de Google Maps (o desde OpenStreetMap).</li>
+        <li>Insertalo dentro de una de las secciones de tu sitio (por ejemplo, una seccion "Ubicacion" o "Contacto").</li>
+        <li>Aplica <code>width: 100%</code>, <code>border-radius</code> y <code>loading="lazy"</code> para integrarlo al diseno.</li>
+        <li>Acompana el mapa con la direccion escrita y una breve referencia de acceso.</li>
+      </ul>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.5); font-size:0.78rem;">Con esto tu ejercicio integral queda completo: navegacion, estructura con contenedores y mapa. Es la base directa de tu Proyecto Final.</p>
+    </div>
+
+    <div class="timeline-mini">
+      <span class="tl-step done">Tema 1</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step done">Tema 2</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step done">Tema 3 completado</span>
+      <span class="tl-arrow">&#8594;</span>
+      <span class="tl-step">Proyecto Final</span>
+    </div>
+  </div>
+</section>
+<!-- ===================== PROYECTO FINAL ===================== -->
+<section id="proyecto" class="modulo">
+  <div class="modulo-header pf">
+    <div class="modulo-num">PF</div>
+    <div class="modulo-title-wrap">
+      <h2>Proyecto Final</h2>
+      <p>Aprendizaje Basado en Problemas — Entregable Integrador de Unidad</p>
+    </div>
+  </div>
+  <div class="modulo-body" style="padding:0;">
+    <div class="proyecto-wrap">
+      <div class="proyecto-badge">Proyecto Final &nbsp;|&nbsp; ABP</div>
+      <h2>Sitio Web Visual de una Pagina</h2>
+      <p class="lead">Disenaras, construiras y publicaras en linea un sitio web visual de una sola pagina sobre un tema academico de tu eleccion, integrando los tres temas de la unidad: una barra de navegacion funcional, una estructura de contenido organizada con contenedores y un mapa embebido que ubique el proyecto en el mundo real.</p>
+
+      <div class="proy-meta">
+        <span class="meta-pill">Herramienta: Bloc de Notas + GitHub</span>
+        <span class="meta-pill">Formato: Sitio web publicado (GitHub Pages)</span>
+        <span class="meta-pill">Trabajo: Individual o equipos de 2</span>
+        <span class="meta-pill">Nivel: Licenciatura</span>
+      </div>
+
+      <!-- PROBLEMA -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">P</div>
+          <span class="fase-title">Planteamiento del Problema</span>
+        </div>
+        <p>Como estudiante de Diseno Grafico, necesitas presentar un tema academico o cultural de manera profesional en un sitio web navegable, bien estructurado y con orientacion geografica. El sitio debe permitir al usuario moverse con facilidad entre secciones, comprender la jerarquia del contenido y ubicar fisicamente el tema tratado (una sede, un evento, un lugar de interes).</p>
+        <p style="margin-top:10px;"><strong style="color:rgba(255,255,255,0.85);">Temas sugeridos (el alumno elige uno aplicable a su vida universitaria):</strong></p>
+        <ul>
+          <li>Promocion de un evento academico o cultural de tu facultad</li>
+          <li>Guia visual de un museo, galeria o espacio de diseno de tu ciudad</li>
+          <li>Mini portafolio personal con seccion de ubicacion de contacto</li>
+          <li>Sitio informativo sobre un movimiento de diseno y un lugar historico asociado</li>
+          <li>Presentacion de un proyecto o taller estudiantil con su sede</li>
+        </ul>
+      </div>
+
+      <!-- FASE 1 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">1</div>
+          <span class="fase-title">Investigacion y Boceto</span>
+          <span class="fase-time">20 min</span>
+        </div>
+        <p>Antes de escribir codigo, planifica la arquitectura de tu sitio:</p>
+        <ul>
+          <li>Selecciona el tema y redacta el titulo principal del sitio.</li>
+          <li>Define las secciones de tu pagina (minimo 4): por ejemplo Inicio, Acerca de, Galeria, Ubicacion.</li>
+          <li>Dibuja un boceto en papel de la distribucion: donde ira la barra de navegacion, el contenido y el pie.</li>
+          <li>Elige una paleta cromatica en formato hexadecimal coherente con el tema.</li>
+          <li>Identifica la ubicacion geografica que insertaras con el mapa.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">2</div>
+          <span class="fase-title">Construccion de la Barra de Navegacion</span>
+          <span class="fase-time">25 min</span>
+        </div>
+        <p>Retoma tu archivo <code>ejercicio-integral.html</code> o inicia uno nuevo integrando lo aprendido en el Tema 1:</p>
+        <ul>
+          <li>Construye una barra con <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code> y <code>&lt;a&gt;</code>, con minimo 4 enlaces hacia anclas internas.</li>
+          <li>Aplica estilos CSS: <code>list-style: none</code>, <code>display: flex</code>, color de fondo, <code>padding</code> y efecto <code>:hover</code>.</li>
+          <li>Marca el enlace activo con una clase distintiva.</li>
+          <li>Opcional avanzado: haz la barra fija con <code>position: sticky</code> para que permanezca visible al desplazarse.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">3</div>
+          <span class="fase-title">Estructura del Contenido con DIV</span>
+          <span class="fase-time">40 min</span>
+        </div>
+        <p>Organiza todo el sitio con contenedores, aplicando lo aprendido en el Tema 2:</p>
+        <ul>
+          <li>Envuelve la navegacion en un <code>&lt;div class="header"&gt;</code> junto al titulo principal.</li>
+          <li>Crea un <code>&lt;div class="contenido"&gt;</code> con minimo 4 secciones internas (<code>&lt;div class="seccion" id="..."&gt;</code>), cuyos <code>id</code> coincidan con los enlaces de la barra.</li>
+          <li>Cada seccion debe incluir un encabezado (<code>&lt;h2&gt;</code>), texto (<code>&lt;p&gt;</code>) y al menos una imagen relevante.</li>
+          <li>Cierra con un <code>&lt;div class="footer"&gt;</code> con tu nombre, carrera, grupo y anio.</li>
+          <li>Aplica el modelo de caja (<code>padding</code>, <code>margin</code>, <code>border-radius</code>) y colores de fondo para dar identidad visual a cada bloque.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 4 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">4</div>
+          <span class="fase-title">Insercion del Mapa</span>
+          <span class="fase-time">15 min</span>
+        </div>
+        <p>Integra la ubicacion geografica siguiendo el Tema 3:</p>
+        <ul>
+          <li>Obten el codigo <code>&lt;iframe&gt;</code> desde "Insertar un mapa" en Google Maps u OpenStreetMap.</li>
+          <li>Insertalo dentro de tu seccion de Ubicacion o Contacto.</li>
+          <li>Aplica <code>width: 100%</code>, <code>border-radius</code> y <code>loading="lazy"</code>.</li>
+          <li>Acompana el mapa con la direccion escrita y una referencia de acceso.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 5 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">5</div>
+          <span class="fase-title">Publicacion en GitHub Pages</span>
+          <span class="fase-time">15 min</span>
+        </div>
+        <p>Pon tu sitio en vivo con una URL publica:</p>
+        <ul>
+          <li>Crea un repositorio publico en GitHub (ej. <code>sitio-web-[tu-apellido]</code>).</li>
+          <li>Sube tu archivo nombrandolo <code>index.html</code>.</li>
+          <li>Activa GitHub Pages desde <code>Settings &gt; Pages</code>, seleccionando la rama principal.</li>
+          <li>Verifica que el sitio, la navegacion y el mapa funcionen desde la URL publica en otro dispositivo.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 6 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-num">6</div>
+          <span class="fase-title">Reflexion Critica y Construccion Colaborativa</span>
+          <span class="fase-time">20 min</span>
+        </div>
+        <p>Intercambia tu URL publicada con un companero de clase y completen lo siguiente:</p>
+        <ul>
+          <li>Navega el sitio de tu companero y evalua: es facil orientarse con la barra? La estructura es clara? El mapa aporta valor?</li>
+          <li>Redacta una retroalimentacion constructiva de al menos tres observaciones.</li>
+          <li>En tu propio sitio, agrega una seccion final con un parrafo de reflexion: que decisiones de jerarquia visual y navegacion tomaste, que dificultad tecnica enfrentaste y como la resolviste, y de que manera este sitio podria aplicarse de forma real en tu contexto universitario.</li>
+        </ul>
+      </div>
+
+      <!-- RUBRICA -->
+      <div style="margin-top:24px;">
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; font-weight:600;">Criterios de evaluacion</div>
+        <div class="rubrica-grid">
+          <div class="rub-header">Criterio</div>
+          <div class="rub-header">Excelente</div>
+          <div class="rub-header">Suficiente</div>
+          <div class="rub-header">Puntaje</div>
+
+          <div class="rub-cell">Barra de navegacion (Tema 1)</div>
+          <div class="rub-cell">Funcional, estilizada, con hover y enlace activo; todos los enlaces operan</div>
+          <div class="rub-cell">Presente y funcional con estilos basicos</div>
+          <div class="rub-cell">20 pts</div>
+
+          <div class="rub-cell">Estructura con DIV (Tema 2)</div>
+          <div class="rub-cell">Header, contenido y footer bien definidos; secciones organizadas y estilizadas</div>
+          <div class="rub-cell">Estructura basica presente con inconsistencias menores</div>
+          <div class="rub-cell">25 pts</div>
+
+          <div class="rub-cell">Insercion de mapa (Tema 3)</div>
+          <div class="rub-cell">Mapa embebido, responsivo, integrado al diseno y acompanado de contexto</div>
+          <div class="rub-cell">Mapa presente pero sin optimizacion visual</div>
+          <div class="rub-cell">20 pts</div>
+
+          <div class="rub-cell">Publicacion y funcionamiento</div>
+          <div class="rub-cell">Sitio en GitHub Pages, accesible y funcional desde cualquier dispositivo</div>
+          <div class="rub-cell">Publicado con fallas menores</div>
+          <div class="rub-cell">15 pts</div>
+
+          <div class="rub-cell">Diseno visual y coherencia</div>
+          <div class="rub-cell">Paleta y jerarquia coherentes, legibilidad optima, identidad clara</div>
+          <div class="rub-cell">Diseno funcional con inconsistencias visuales</div>
+          <div class="rub-cell">10 pts</div>
+
+          <div class="rub-cell">Reflexion y colaboracion entre pares</div>
+          <div class="rub-cell">Reflexion sustantiva propia y retroalimentacion constructiva documentada</div>
+          <div class="rub-cell">Reflexion presente pero superficial</div>
+          <div class="rub-cell">10 pts</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REFLEXION FINAL ===================== -->
+<section id="reflexion" class="modulo">
+  <div class="modulo-header m0">
+    <div class="modulo-num">RF</div>
+    <div class="modulo-title-wrap">
+      <h2>Reflexion Final de Unidad</h2>
+      <p>Metacognicion y cierre del proceso de aprendizaje</p>
+    </div>
+  </div>
+  <div class="modulo-body">
+    <div class="callout abp">
+      <span class="callout-icon">&#9679;</span>
+      <div>La reflexion metacognitiva es parte fundamental del aprendizaje constructivista. Responde las siguientes preguntas en tu bitacora o cuaderno de curso, con base en tu experiencia durante esta unidad.</div>
+    </div>
+    <div class="reflexion-area">
+      <h3>Preguntas de cierre</h3>
+      <div class="pregunta-reflex"><span>1</span>Compara tu respuesta inicial sobre como te orientas en un sitio web con lo que ahora comprendes tecnicamente sobre las barras de navegacion. Que cambio?</div>
+      <div class="pregunta-reflex"><span>2</span>Como diseñador grafico, que relacion encuentras entre la estructura con contenedores (div) y los principios de composicion y reticula que estudias en tu carrera?</div>
+      <div class="pregunta-reflex"><span>3</span>Que aporta un mapa embebido a la experiencia del usuario que no aporta una simple direccion escrita? En que casos lo considerarias imprescindible?</div>
+      <div class="pregunta-reflex"><span>4</span>Si tuvieras que enseñarle a un companero a estructurar un sitio web desde cero, cuales serian los tres conceptos que priorizarias y por que?</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <img src="data:image/png;base64,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flrOlIvlVxIvfT/Q8L9DbpR4efnHco7Ep/GPlUNkb4lXDDaQZl8+J4T0O67/Z2eLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAADaYosAAKAttggAANpiiwAAoC22CAAA2mKLAACgLbYIAABacu8//T+wJF0i54bpgwAAAABJRU5ErkJggg==" alt="Logo UNE" style="height:40px; background:white; padding:5px 10px; border-radius:5px; margin-bottom:14px; display:block; margin-left:auto; margin-right:auto;">
+  <p><strong>Universidad de Especialidades (UNE)</strong></p>
+  <p>Licenciatura en Diseno Grafico &nbsp;|&nbsp; Diseno Web &nbsp;|&nbsp; Navegacion, Estructura con DIV e Insercion de Mapas</p>
+  <p style="margin-top:10px; font-size:0.74rem; color:rgba(255,255,255,0.4);">Guia de aprendizaje elaborada con metodologia constructivista y pedagogia activa basada en problemas.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('progress-bar').style.width = progress + '%';
+});
+
+function evalQuiz(btn, isCorrect, feedbackId) {
+  var opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(function(o) { o.disabled = true; o.style.cursor = 'default'; });
+  var fb = document.getElementById(feedbackId);
+  if (isCorrect) {
+    btn.classList.add('correct');
+    fb.style.display = 'block';
+    fb.style.color = '#0a5d54';
+    fb.textContent = 'Correcto. Continua revisando el resto de las secciones del tema.';
+  } else {
+    btn.classList.add('wrong');
+    fb.style.display = 'block';
+    fb.style.color = '#8b0000';
+    fb.textContent = 'Respuesta incorrecta. Revisa nuevamente el contenido del tema correspondiente.';
+  }
+}
+
+function copyCode(btn) {
+  var pre = btn.closest('.code-block').querySelector('pre');
+  var text = pre.innerText || pre.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copiado';
+    btn.style.background = 'rgba(40,200,100,0.25)';
+    btn.style.color = '#a8d8a8';
+    setTimeout(function() {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 1800);
+  });
+}
+</script>
+</body>
+</html>

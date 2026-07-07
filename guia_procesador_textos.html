@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procesador de Textos Aplicado a la Psicología | Tecnologías de la Información</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700;800&family=Public+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pizarra:       #1F3A5F;
+    --pizarra-medio: #2E5A88;
+    --azul-acero:    #4A7BB5;
+    --salvia:        #3F8E7C;
+    --salvia-claro:  #A8D5C8;
+    --terracota:     #C25E4A;
+    --ambar-doc:     #D99A3D;
+    --fondo:         #F4F6F8;
+    --card:          #FFFFFF;
+    --gris-texto:    #4E5A66;
+    --tinta:         #17222E;
+    --borde:         #DCE3EA;
+    --verde-ok:      #2E7D5B;
+    --sombra:        0 4px 24px rgba(31,58,95,0.09);
+    --sombra-hover:  0 10px 34px rgba(31,58,95,0.16);
+    --radio:         12px;
+    --f-display:     'Spectral', Georgia, serif;
+    --f-body:        'Public Sans', 'Segoe UI', sans-serif;
+    --f-mono:        'Roboto Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--f-body); background: var(--fondo); color: var(--tinta); font-size: 16px; line-height: 1.75; }
+
+  #progreso-barra { position: fixed; top: 0; left: 0; height: 4px; width: 0%; background: linear-gradient(90deg, var(--salvia), var(--azul-acero), var(--ambar-doc)); z-index: 9999; transition: width 0.2s ease; }
+
+  /* ── NAV ── */
+  nav { position: sticky; top: 0; z-index: 900; background: var(--pizarra); border-bottom: 3px solid var(--salvia); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 56px; }
+  nav .nav-marca { font-family: var(--f-display); color: #fff; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+  nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.1rem; }
+  nav ul li a { display: block; padding: 0.5rem 0.7rem; color: rgba(255,255,255,0.75); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; border-radius: 5px; transition: background 0.2s, color 0.2s; }
+  nav ul li a:hover, nav ul li a.activo { background: var(--salvia); color: #fff; }
+
+  /* ── HEADER ── */
+  header { background: radial-gradient(circle at 82% 22%, rgba(63,142,124,0.22), transparent 46%), linear-gradient(135deg, var(--pizarra) 0%, #24466E 60%, var(--pizarra-medio) 100%); color: #fff; padding: 3.5rem 2rem 3rem; position: relative; overflow: hidden; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--salvia), var(--azul-acero) 50%, var(--ambar-doc)); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; gap: 2.5rem; position: relative; z-index: 1; }
+  .header-logo { flex-shrink: 0; background: #fff; border-radius: 12px; padding: 0.7rem; box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+  .header-logo img { display: block; width: 90px; height: auto; }
+  .header-texto { flex: 1; }
+  .header-etiqueta { display: inline-block; background: var(--salvia); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.8rem; border-radius: 3px; margin-bottom: 0.8rem; }
+  .header-subtitulo-inst { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.62); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  header h1 { font-family: var(--f-display); font-size: clamp(1.7rem, 3.6vw, 2.7rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.8rem; }
+  header h1 span { color: var(--salvia-claro); }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: 0.82rem; color: rgba(255,255,255,0.72); margin-top: 1.2rem; }
+  .header-meta span { display: flex; align-items: center; gap: 0.4rem; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ambar-doc); display: inline-block; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .tarjeta { background: var(--card); border-radius: var(--radio); box-shadow: var(--sombra); padding: 2.2rem 2.5rem; margin-bottom: 2.5rem; border-top: 4px solid transparent; transition: box-shadow 0.3s; }
+  .tarjeta:hover { box-shadow: var(--sombra-hover); }
+  .tarjeta.borde-azul   { border-top-color: var(--azul-acero); }
+  .tarjeta.borde-salvia { border-top-color: var(--salvia); }
+  .tarjeta.borde-ambar  { border-top-color: var(--ambar-doc); }
+
+  .seccion-titulo { font-family: var(--f-display); font-size: clamp(1.25rem, 2.5vw, 1.7rem); color: var(--pizarra); font-weight: 800; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.7rem; }
+  .seccion-titulo .num { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; background: var(--pizarra); color: #fff; padding: 0.2rem 0.55rem; border-radius: 4px; letter-spacing: 0.06em; }
+  .seccion-desc { font-size: 0.92rem; color: var(--gris-texto); margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--borde); }
+
+  h2 { font-family: var(--f-display); font-size: 1.4rem; font-weight: 700; color: var(--pizarra); margin: 1.8rem 0 0.8rem; }
+  h3 { font-family: var(--f-display); font-size: 1.15rem; font-weight: 600; color: var(--pizarra-medio); margin: 1.4rem 0 0.5rem; }
+  p { margin-bottom: 0.9rem; color: var(--gris-texto); font-size: 0.96rem; }
+  strong { color: var(--tinta); font-weight: 700; }
+  a.enlace-ext { color: var(--azul-acero); font-weight: 600; text-decoration: underline; }
+  a.enlace-ext:hover { color: var(--salvia); }
+
+  /* ── ACORDEÓN ── */
+  .acordeon { margin: 1rem 0; }
+  .acord-item { border: 1px solid var(--borde); border-radius: 8px; margin-bottom: 0.6rem; overflow: hidden; }
+  .acord-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.3rem; font-family: var(--f-body); font-size: 0.95rem; font-weight: 600; color: var(--pizarra); text-align: left; background: linear-gradient(90deg, #FAFBFC, #FFFFFF); transition: background 0.2s; }
+  .acord-btn:hover { background: #EEF2F6; }
+  .acord-btn.abierto { background: var(--pizarra); color: #fff; }
+  .acord-icono { font-size: 1.1rem; font-weight: 700; transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+  .acord-btn.abierto .acord-icono { transform: rotate(45deg); }
+  .acord-body { display: none; padding: 1.3rem 1.5rem; background: var(--card); font-size: 0.93rem; color: var(--gris-texto); border-top: 1px solid var(--borde); animation: fadeIn 0.25s ease; }
+  .acord-body.visible { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+
+  /* ── PESTAÑAS ── */
+  .pestanas { margin: 1.5rem 0; }
+  .pest-nav { display: flex; flex-wrap: wrap; gap: 0.4rem; border-bottom: 2px solid var(--borde); }
+  .pest-btn { padding: 0.6rem 1.2rem; border: none; background: none; cursor: pointer; font-family: var(--f-body); font-size: 0.87rem; font-weight: 600; color: var(--gris-texto); border-radius: 6px 6px 0 0; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
+  .pest-btn.activo { color: var(--pizarra); border-bottom-color: var(--salvia); background: var(--card); }
+  .pest-panel { display: none; padding: 1.5rem 0.5rem; animation: fadeIn 0.25s ease; }
+  .pest-panel.visible { display: block; }
+
+  /* ── CONCEPTOS ── */
+  .concepto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .concepto-card { background: var(--fondo); border-left: 4px solid var(--azul-acero); border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; }
+  .concepto-card.salvia { border-left-color: var(--salvia); }
+  .concepto-card.ambar  { border-left-color: var(--ambar-doc); }
+  .concepto-titulo { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; color: var(--pizarra); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .concepto-def { font-size: 0.88rem; color: var(--gris-texto); margin: 0; }
+
+  /* ── TABLAS ── */
+  .tabla-wrap { overflow-x: auto; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  thead tr { background: var(--pizarra); color: #fff; }
+  thead th { padding: 0.8rem 1rem; text-align: left; font-weight: 600; }
+  tbody tr:nth-child(odd) { background: var(--fondo); }
+  tbody tr:nth-child(even) { background: var(--card); }
+  tbody td { padding: 0.75rem 1rem; color: var(--gris-texto); vertical-align: top; }
+  tbody tr:hover { background: #EEF2F6; }
+  .tecla { font-family: var(--f-mono); font-size: 0.82rem; background: var(--pizarra); color: #fff; padding: 0.1rem 0.5rem; border-radius: 4px; white-space: nowrap; }
+
+  /* ── CAJAS ── */
+  .caja { border-radius: 8px; padding: 1.1rem 1.4rem; margin: 1.1rem 0; font-size: 0.92rem; }
+  .caja-info   { background: #E9F0F7; border-left: 4px solid var(--azul-acero); }
+  .caja-alerta { background: #FBF0DF; border-left: 4px solid var(--ambar-doc); }
+  .caja-logro  { background: #E4F2EC; border-left: 4px solid var(--verde-ok); }
+  .caja-etica  { background: #F7EAE6; border-left: 4px solid var(--terracota); }
+  .caja p, .caja ul { margin-bottom: 0.4rem; color: inherit; }
+  .caja strong { color: inherit; }
+  .caja-titulo { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; display: block; }
+  .caja-info .caja-titulo   { color: var(--azul-acero); }
+  .caja-alerta .caja-titulo { color: #9A6A1A; }
+  .caja-logro .caja-titulo  { color: var(--verde-ok); }
+  .caja-etica .caja-titulo  { color: var(--terracota); }
+  ul.lista, ol.lista { padding-left: 1.5rem; margin: 0.6rem 0; }
+  ul.lista li, ol.lista li { margin-bottom: 0.4rem; font-size: 0.92rem; color: var(--gris-texto); }
+
+  /* ── PASOS ── */
+  .pasos-lista { counter-reset: paso; margin: 1rem 0; }
+  .paso { counter-increment: paso; display: flex; gap: 1rem; padding: 0.9rem 1rem; margin-bottom: 0.6rem; background: var(--fondo); border-radius: 8px; align-items: flex-start; }
+  .paso::before { content: counter(paso); font-family: var(--f-mono); font-size: 0.75rem; font-weight: 500; color: #fff; background: var(--azul-acero); min-width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.05rem; }
+  .paso p { margin: 0; font-size: 0.92rem; }
+
+  /* ── PREGUNTA DETONADORA ── */
+  .pregunta-detonadora { background: linear-gradient(135deg, var(--pizarra), var(--azul-acero)); color: #fff; border-radius: 10px; padding: 1.8rem 2rem; margin: 1.2rem 0; position: relative; overflow: hidden; }
+  .pregunta-detonadora::before { content: '?'; position: absolute; right: 1.5rem; top: 0.5rem; font-family: var(--f-display); font-size: 8rem; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1; }
+  .pregunta-detonadora .pd-etiq { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--salvia-claro); margin-bottom: 0.7rem; display: block; }
+  .pregunta-detonadora p { font-family: var(--f-display); font-size: 1.15rem; font-weight: 600; color: #fff; line-height: 1.5; position: relative; z-index: 1; }
+
+  /* ── ACTIVIDADES ── */
+  .actividad-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--borde); }
+  .act-num { font-family: var(--f-display); font-size: 2rem; font-weight: 800; color: var(--salvia); line-height: 1; flex-shrink: 0; min-width: 2rem; }
+  .act-tipo { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--salvia); display: block; margin-bottom: 0.1rem; }
+  .act-nombre { font-family: var(--f-display); font-size: 1.2rem; font-weight: 800; color: var(--pizarra); }
+
+  /* ── RUBRICA ── */
+  .rubrica { margin: 1.2rem 0; }
+  .rubrica-item { display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--borde); align-items: center; font-size: 0.88rem; }
+  .rubrica-item:last-child { border-bottom: none; }
+  .rubrica-item:nth-child(odd) { background: var(--fondo); }
+  .rubrica-header { background: var(--pizarra) !important; color: #fff; font-weight: 700; border-radius: 6px 6px 0 0; }
+  .puntos { font-family: var(--f-mono); font-weight: 500; color: var(--azul-acero); text-align: right; }
+  .rubrica-header .puntos { color: var(--salvia-claro); }
+
+  /* ── FUNCIÓN CARD ── */
+  .func-card { background: var(--fondo); border: 1px solid var(--borde); border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: 1rem; display: flex; gap: 1.1rem; align-items: flex-start; }
+  .func-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-weight: 500; font-size: 0.9rem; color: #fff; }
+  .func-icon.azul   { background: var(--azul-acero); }
+  .func-icon.salvia { background: var(--salvia); }
+  .func-icon.ambar  { background: var(--ambar-doc); }
+  .func-icon.pizarra{ background: var(--pizarra); }
+  .func-nombre { font-family: var(--f-display); font-weight: 700; font-size: 1.02rem; color: var(--pizarra); margin-bottom: 0.3rem; }
+  .func-desc { font-size: 0.9rem; color: var(--gris-texto); margin: 0; }
+
+  /* ── QUIZ ── */
+  #quiz { counter-reset: pregunta; }
+  .quiz-pregunta { counter-increment: pregunta; background: var(--fondo); border-radius: 8px; padding: 1.3rem 1.5rem; margin-bottom: 1rem; border: 2px solid transparent; transition: border-color 0.3s; }
+  .quiz-pregunta.correcta   { border-color: var(--verde-ok); background: #E4F2EC; }
+  .quiz-pregunta.incorrecta { border-color: var(--terracota); background: #F7EAE6; }
+  .quiz-enun { font-weight: 700; font-size: 0.95rem; color: var(--pizarra); margin-bottom: 0.9rem; }
+  .quiz-enun::before { content: counter(pregunta) '. '; font-family: var(--f-mono); color: var(--salvia); }
+  .quiz-opciones { display: flex; flex-direction: column; gap: 0.5rem; }
+  .quiz-opcion { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.9rem; background: var(--card); border-radius: 6px; cursor: pointer; border: 1.5px solid var(--borde); font-size: 0.9rem; color: var(--gris-texto); transition: border-color 0.2s, background 0.2s; user-select: none; }
+  .quiz-opcion:hover { border-color: var(--azul-acero); background: #EEF2F6; }
+  .quiz-opcion input[type=radio] { accent-color: var(--azul-acero); }
+  .quiz-feedback { margin-top: 0.7rem; padding: 0.6rem 0.9rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; display: none; }
+  .feedback-bien { background: #E4F2EC; color: var(--verde-ok); }
+  .feedback-mal  { background: #F7EAE6; color: #A83E2A; }
+  .quiz-controles { text-align: center; margin-top: 1.5rem; }
+  .btn { display: inline-block; padding: 0.75rem 2rem; border: none; border-radius: 7px; cursor: pointer; font-family: var(--f-body); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .btn-primario { background: var(--pizarra); color: #fff; }
+  .btn-salvia   { background: var(--salvia); color: #fff; }
+  #resultado-quiz { display: none; margin-top: 1.5rem; border-radius: 10px; padding: 1.8rem 2rem; text-align: center; }
+  #resultado-quiz.alto  { background: #E4F2EC; border: 2px solid var(--verde-ok); }
+  #resultado-quiz.medio { background: #FBF0DF; border: 2px solid var(--ambar-doc); }
+  #resultado-quiz.bajo  { background: #F7EAE6; border: 2px solid var(--terracota); }
+  .resultado-puntaje { font-family: var(--f-display); font-size: 3.5rem; font-weight: 800; line-height: 1; margin-bottom: 0.3rem; }
+  .alto  .resultado-puntaje { color: var(--verde-ok); }
+  .medio .resultado-puntaje { color: #9A6A1A; }
+  .bajo  .resultado-puntaje { color: var(--terracota); }
+  .resultado-msg { font-size: 1rem; font-weight: 600; }
+
+  /* ── PLANIFICADOR ── */
+  .plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .plan-area { background: var(--fondo); border: 1px solid var(--borde); border-radius: 8px; padding: 1rem; }
+  .plan-area label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--azul-acero); margin-bottom: 0.5rem; }
+  .plan-area textarea, .plan-area input { width: 100%; border: 1px solid var(--borde); border-radius: 6px; padding: 0.6rem 0.8rem; font-family: var(--f-body); font-size: 0.88rem; color: var(--tinta); background: var(--card); resize: vertical; transition: border-color 0.2s; }
+  .plan-area textarea:focus, .plan-area input:focus { outline: none; border-color: var(--azul-acero); }
+  #plan-guardado { display: none; margin-top: 1rem; background: #E4F2EC; border: 1px solid var(--verde-ok); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; color: var(--verde-ok); font-weight: 600; }
+
+  /* ── SIMULACIÓN DOCUMENTO APA ── */
+  .doc-apa { background: #fff; border: 1px solid var(--borde); border-radius: 6px; padding: 1.8rem 2rem; margin: 1rem 0; font-family: var(--f-display); font-size: 0.85rem; line-height: 2; color: var(--tinta); box-shadow: inset 0 0 0 1px #f0f0f0; }
+  .doc-apa .doc-titulo { text-align: center; font-weight: 700; margin-bottom: 1rem; }
+  .doc-apa .doc-sangria { text-indent: 2.5em; text-align: justify; }
+  .doc-apa .doc-ref { padding-left: 2.5em; text-indent: -2.5em; text-align: justify; font-size: 0.8rem; }
+  .doc-marca { display: inline-block; background: var(--salvia-claro); color: var(--pizarra); padding: 0 0.3em; border-radius: 3px; }
+
+  footer { background: var(--pizarra); color: rgba(255,255,255,0.65); text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  footer .footer-linea { margin-bottom: 0.3rem; }
+
+  .chip { display: inline-block; padding: 0.2rem 0.65rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
+  .chip-azul   { background: #DCE8F4; color: var(--pizarra); }
+  .chip-salvia { background: #D5EBE3; color: var(--verde-ok); }
+  .chip-terra  { background: #F4DDD6; color: #A83E2A; }
+  .mt-1 { margin-top: 0.5rem; } .mt-2 { margin-top: 1rem; } .mb-1 { margin-bottom: 0.5rem; }
+  .divider { border: none; border-top: 1px solid var(--borde); margin: 1.5rem 0; }
+
+  @media (max-width: 680px) {
+    nav ul { gap: 0; }
+    nav ul li a { font-size: 0.7rem; padding: 0.4rem 0.45rem; }
+    .header-inner { flex-direction: column; gap: 1.2rem; }
+    .tarjeta { padding: 1.5rem 1.2rem; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .concepto-grid { grid-template-columns: 1fr; }
+    .func-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progreso-barra"></div>
+
+<nav>
+  <span class="nav-marca">Procesador de Textos en Psicología</span>
+  <ul>
+    <li><a href="#introduccion" onclick="marcarActivo(this)">Introducción</a></li>
+    <li><a href="#fundamentos" onclick="marcarActivo(this)">Fundamentos</a></li>
+    <li><a href="#herramientas" onclick="marcarActivo(this)">Herramientas</a></li>
+    <li><a href="#apa" onclick="marcarActivo(this)">Formato APA</a></li>
+    <li><a href="#actividad-1" onclick="marcarActivo(this)">Act. 1</a></li>
+    <li><a href="#actividad-2" onclick="marcarActivo(this)">Act. 2</a></li>
+    <li><a href="#actividad-3" onclick="marcarActivo(this)">Quiz</a></li>
+    <li><a href="#reflexion" onclick="marcarActivo(this)">Reflexión</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="data:image/jpeg;base64,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" alt="Logo Universidad UNE" style="width:90px;height:auto;">
+    </div>
+    <div class="header-texto">
+      <span class="header-subtitulo-inst">Universidad de Especialidades UNE</span>
+      <span class="header-etiqueta">Licenciatura en Psicología</span>
+      <h1>Procesador de Textos<br><span>Aplicado a la Psicología</span></h1>
+      <p style="color:rgba(255,255,255,0.72);font-size:0.92rem;margin:0.5rem 0 0;">Guía de aprendizaje interactiva &mdash; Tecnologías de la Información Aplicadas a la Psicología</p>
+      <div class="header-meta">
+        <span><span class="dot"></span> Tema: Procesador de textos</span>
+        <span><span class="dot"></span> Nivel: Licenciatura</span>
+        <span><span class="dot"></span> Metodología: Constructivista / ABP</span>
+        <span><span class="dot"></span> 3 Actividades evaluables</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- INTRODUCCIÓN -->
+<section id="introduccion">
+  <div class="tarjeta borde-azul">
+    <div class="seccion-titulo"><span class="num">INTRO</span> Introducción</div>
+    <p class="seccion-desc">Presentación del tema, objetivos de aprendizaje y enfoque pedagógico.</p>
+
+    <p>El <strong>procesador de textos</strong> es una de las herramientas informáticas más utilizadas en la vida universitaria y profesional, y sin embargo suele emplearse solo en una mínima parte de sus capacidades. Para el estudiante de psicología, dominar un procesador de textos no se limita a "escribir en la computadora": significa producir documentos académicos y profesionales con estructura, coherencia visual, formato normalizado y rigor, tales como ensayos, reportes de investigación, historias clínicas, informes psicológicos y protocolos.</p>
+
+    <p>Esta guía aborda el uso avanzado del procesador de textos &mdash;con referencia principal a <strong>Microsoft Word</strong> y <strong>Google Docs</strong>&mdash; aplicado a las necesidades específicas de la formación y el ejercicio de la psicología, con especial atención a la elaboración de documentos conforme a las <strong>normas APA</strong>, estándar de la disciplina.</p>
+
+    <div class="caja caja-info">
+      <span class="caja-titulo">Propósito de la guía</span>
+      <p>Que el estudiante de la Licenciatura en Psicología desarrolle competencias en el uso avanzado del procesador de textos para producir documentos académicos y profesionales estructurados, normalizados y de calidad, aplicables tanto en sus materias universitarias como en su futuro ejercicio profesional.</p>
+    </div>
+
+    <h3>Objetivos de aprendizaje</h3>
+    <ul class="lista">
+      <li>Reconocer las funciones fundamentales y avanzadas de un procesador de textos.</li>
+      <li>Aplicar estilos, formato de párrafo y herramientas de estructura para producir documentos académicos coherentes.</li>
+      <li>Elaborar documentos conforme a las normas APA (portada, interlineado, sangrías, citas y referencias).</li>
+      <li>Utilizar funciones de revisión, control de cambios y comentarios para el trabajo colaborativo.</li>
+      <li>Generar automáticamente tablas de contenido, referencias y elementos de navegación en documentos extensos.</li>
+      <li>Integrar estas competencias en la producción de documentos propios de la práctica psicológica.</li>
+    </ul>
+
+    <h3>Enfoque pedagógico</h3>
+    <div class="concepto-grid">
+      <div class="concepto-card">
+        <div class="concepto-titulo">Constructivismo</div>
+        <p class="concepto-def">El estudiante construye su dominio del procesador de textos mediante la práctica directa sobre documentos reales de su formación en psicología.</p>
+      </div>
+      <div class="concepto-card salvia">
+        <div class="concepto-titulo">Aprendizaje Basado en Problemas</div>
+        <p class="concepto-def">Cada función se introduce a partir de una necesidad concreta: dar formato a un ensayo, colaborar en un reporte, normalizar un documento según APA.</p>
+      </div>
+      <div class="concepto-card ambar">
+        <div class="concepto-titulo">Pedagogia activa</div>
+        <p class="concepto-def">Las actividades exigen producir documentos, colaborar con compañeros y aplicar de inmediato lo aprendido en tareas universitarias reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FUNDAMENTOS -->
+<section id="fundamentos">
+  <div class="tarjeta borde-azul">
+    <div class="seccion-titulo"><span class="num">1</span> Fundamentos del Procesador de Textos</div>
+    <p class="seccion-desc">Conceptos esenciales para pasar del uso básico al uso profesional de la herramienta.</p>
+
+    <p>Un <strong>procesador de textos</strong> es una aplicación informática diseñada para crear, editar, dar formato y almacenar documentos de texto. Los más utilizados en el ámbito académico son Microsoft Word (de escritorio y en línea) y Google Docs (basado en la nube). Aunque difieren en algunos aspectos, comparten los mismos principios fundamentales.</p>
+
+    <div class="acordeon">
+      <div class="acord-item">
+        <button class="acord-btn" onclick="toggleAcord(this)">Diferencia entre formato manual y formato con estilos<span class="acord-icono">+</span></button>
+        <div class="acord-body">
+          <p>Una distinción fundamental que separa al usuario básico del avanzado:</p>
+          <div class="concepto-grid">
+            <div class="concepto-card ambar">
+              <div class="concepto-titulo">Formato manual</div>
+              <p class="concepto-def">Aplicar negrita, tamaño y color a cada título de forma individual. Es lento, inconsistente y difícil de modificar en documentos largos.</p>
+            </div>
+            <div class="concepto-card salvia">
+              <div class="concepto-titulo">Formato con estilos</div>
+              <p class="concepto-def">Definir "estilos" (Título 1, Título 2, Normal) que se aplican con un clic. Garantizan consistencia, permiten cambios globales y habilitan la tabla de contenido automática.</p>
+            </div>
+          </div>
+          <div class="caja caja-logro mt-2">
+            <span class="caja-titulo">Principio clave</span>
+            <p>El uso de estilos no es un detalle estético: es la base de la producción profesional de documentos. Un documento bien estructurado con estilos puede reformatearse por completo en segundos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acord-item">
+        <button class="acord-btn" onclick="toggleAcord(this)">Word de escritorio, Word en línea y Google Docs<span class="acord-icono">+</span></button>
+        <div class="acord-body">
+          <div class="tabla-wrap">
+            <table>
+              <thead><tr><th>Característica</th><th>Word (escritorio)</th><th>Google Docs</th></tr></thead>
+              <tbody>
+                <tr><td>Acceso</td><td>Aplicación instalada; versión en línea disponible</td><td>Navegador web, basado en la nube</td></tr>
+                <tr><td>Colaboración en tiempo real</td><td>Sí (con OneDrive)</td><td>Sí, nativa y fluida</td></tr>
+                <tr><td>Funciones avanzadas de formato</td><td>Más completas</td><td>Suficientes para uso académico</td></tr>
+                <tr><td>Trabajo sin conexión</td><td>Sí</td><td>Limitado</td></tr>
+                <tr><td>Gestión de referencias APA</td><td>Herramienta integrada de citas</td><td>Mediante complementos</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="acord-item">
+        <button class="acord-btn" onclick="toggleAcord(this)">Atajos de teclado esenciales<span class="acord-icono">+</span></button>
+        <div class="acord-body">
+          <p>El dominio de los atajos acelera notablemente la producción de documentos:</p>
+          <div class="tabla-wrap">
+            <table>
+              <thead><tr><th>Función</th><th>Atajo (Windows)</th><th>Atajo (Mac)</th></tr></thead>
+              <tbody>
+                <tr><td>Negrita</td><td><span class="tecla">Ctrl + N</span> / <span class="tecla">Ctrl + B</span></td><td><span class="tecla">Cmd + B</span></td></tr>
+                <tr><td>Guardar</td><td><span class="tecla">Ctrl + G</span> / <span class="tecla">Ctrl + S</span></td><td><span class="tecla">Cmd + S</span></td></tr>
+                <tr><td>Deshacer</td><td><span class="tecla">Ctrl + Z</span></td><td><span class="tecla">Cmd + Z</span></td></tr>
+                <tr><td>Buscar y reemplazar</td><td><span class="tecla">Ctrl + L</span> / <span class="tecla">Ctrl + H</span></td><td><span class="tecla">Cmd + Shift + H</span></td></tr>
+                <tr><td>Interlineado y párrafo</td><td>Menú de párrafo</td><td>Menú de párrafo</td></tr>
+                <tr><td>Insertar salto de página</td><td><span class="tecla">Ctrl + Enter</span></td><td><span class="tecla">Cmd + Enter</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="caja caja-info">
+            <span class="caja-titulo">Nota</span>
+            <p>Los atajos varían según el idioma de instalación del programa. Se recomienda verificar los atajos correspondientes a la versión y el idioma que utilices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HERRAMIENTAS AVANZADAS -->
+<section id="herramientas">
+  <div class="tarjeta borde-salvia">
+    <div class="seccion-titulo"><span class="num">2</span> Herramientas Avanzadas para el Trabajo Académico</div>
+    <p class="seccion-desc">Funciones del procesador de textos especialmente útiles en la producción de documentos psicológicos.</p>
+
+    <div class="pestanas">
+      <div class="pest-nav">
+        <button class="pest-btn activo" onclick="mostrarPestana(this,'h-estructura')">Estructura</button>
+        <button class="pest-btn" onclick="mostrarPestana(this,'h-revision')">Revisión</button>
+        <button class="pest-btn" onclick="mostrarPestana(this,'h-colaboracion')">Colaboración</button>
+        <button class="pest-btn" onclick="mostrarPestana(this,'h-elementos')">Elementos</button>
+      </div>
+
+      <div id="h-estructura" class="pest-panel visible">
+        <div class="func-card">
+          <div class="func-icon azul">T1</div>
+          <div>
+            <div class="func-nombre">Estilos y tabla de contenido automática</div>
+            <p class="func-desc">Al aplicar estilos de título (Título 1, Título 2), el procesador puede generar automáticamente una tabla de contenido que se actualiza al modificar el documento. Indispensable para reportes de investigación y tesis extensas.</p>
+          </div>
+        </div>
+        <div class="func-card">
+          <div class="func-icon salvia">SP</div>
+          <div>
+            <div class="func-nombre">Saltos de página y de sección</div>
+            <p class="func-desc">Permiten controlar dónde inicia cada apartado y aplicar formatos distintos (por ejemplo, numeración diferente en la portada). Evitan el uso incorrecto de múltiples saltos de línea.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="h-revision" class="pest-panel">
+        <div class="func-card">
+          <div class="func-icon ambar">RO</div>
+          <div>
+            <div class="func-nombre">Revisión ortográfica y gramatical</div>
+            <p class="func-desc">El corrector integrado señala errores, pero debe usarse con criterio: no reconoce todos los tecnicismos psicológicos ni sustituye una lectura atenta del documento.</p>
+          </div>
+        </div>
+        <div class="func-card">
+          <div class="func-icon pizarra">CC</div>
+          <div>
+            <div class="func-nombre">Control de cambios</div>
+            <p class="func-desc">Registra cada modificación realizada en el documento, permitiendo aceptar o rechazar cambios. Fundamental cuando un docente o supervisor revisa un trabajo, o al corregir un informe clínico en equipo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="h-colaboracion" class="pest-panel">
+        <div class="func-card">
+          <div class="func-icon salvia">CO</div>
+          <div>
+            <div class="func-nombre">Comentarios</div>
+            <p class="func-desc">Permiten insertar notas al margen sin alterar el texto, ideales para retroalimentación entre compañeros o entre docente y estudiante.</p>
+          </div>
+        </div>
+        <div class="func-card">
+          <div class="func-icon azul">ET</div>
+          <div>
+            <div class="func-nombre">Edición en tiempo real</div>
+            <p class="func-desc">Google Docs y Word en línea permiten que varios autores trabajen simultáneamente sobre un mismo documento, viendo los cambios de los demás al instante. Útil para trabajos en equipo.</p>
+          </div>
+        </div>
+        <div class="caja caja-etica">
+          <span class="caja-titulo">Consideracion profesional</span>
+          <p>Al colaborar en documentos que contienen información sensible (por ejemplo, un caso clínico con fines académicos), deben respetarse los principios de confidencialidad: anonimizar los datos y controlar quién tiene acceso al documento compartido.</p>
+        </div>
+      </div>
+
+      <div id="h-elementos" class="pest-panel">
+        <div class="func-card">
+          <div class="func-icon pizarra">TB</div>
+          <div>
+            <div class="func-nombre">Tablas</div>
+            <p class="func-desc">Permiten organizar datos de manera estructurada: comparación de teorías, presentación de resultados, matrices de análisis. En psicología, son frecuentes para presentar datos de evaluaciones o síntesis comparativas.</p>
+          </div>
+        </div>
+        <div class="func-card">
+          <div class="func-icon azul">IM</div>
+          <div>
+            <div class="func-nombre">Imágenes, gráficos y figuras</div>
+            <p class="func-desc">Deben insertarse con su título y numeración correspondiente conforme a APA. Útiles para diagramas de procesos, modelos teóricos y representación de datos.</p>
+          </div>
+        </div>
+        <div class="func-card">
+          <div class="func-icon salvia">NP</div>
+          <div>
+            <div class="func-nombre">Numeración de páginas y encabezados</div>
+            <p class="func-desc">La numeración automática y los encabezados son requisitos del formato APA y de cualquier documento profesional extenso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FORMATO APA -->
+<section id="apa">
+  <div class="tarjeta borde-ambar">
+    <div class="seccion-titulo"><span class="num">3</span> Elaboración de Documentos en Formato APA</div>
+    <p class="seccion-desc">El estándar de presentación de documentos académicos en psicología, paso a paso.</p>
+
+    <p>Las <strong>normas APA</strong> (American Psychological Association), en su séptima edición, constituyen el estándar de presentación de trabajos académicos en psicología y ciencias sociales. Configurar correctamente el procesador de textos para cumplir con estas normas es una competencia esencial del estudiante de psicología.</p>
+
+    <h3>Configuración general de un documento APA</h3>
+    <div class="tabla-wrap">
+      <table>
+        <thead><tr><th>Elemento</th><th>Especificación APA (7ma edición)</th></tr></thead>
+        <tbody>
+          <tr><td>Tipografía</td><td>Times New Roman 12, Calibri 11 o Arial 11 (uniforme en todo el documento)</td></tr>
+          <tr><td>Interlineado</td><td>Doble espacio en todo el texto</td></tr>
+          <tr><td>Márgenes</td><td>2.54 cm (1 pulgada) en los cuatro lados</td></tr>
+          <tr><td>Sangría</td><td>Primera línea de cada párrafo a 1.27 cm</td></tr>
+          <tr><td>Alineación</td><td>Texto alineado a la izquierda (no justificado)</td></tr>
+          <tr><td>Numeración</td><td>Esquina superior derecha, en todas las páginas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Pasos para configurar un documento en formato APA</h3>
+    <div class="pasos-lista">
+      <div class="paso"><p><strong>Configura la tipografía.</strong> Selecciona todo el documento y elige una fuente admitida por APA (por ejemplo, Times New Roman 12), de forma uniforme.</p></div>
+      <div class="paso"><p><strong>Ajusta el interlineado a doble.</strong> En las opciones de párrafo, establece el interlineado en "Doble" y elimina el espaciado adicional antes y después de cada párrafo.</p></div>
+      <div class="paso"><p><strong>Configura los márgenes</strong> a 2.54 cm en los cuatro lados desde las opciones de diseño de página.</p></div>
+      <div class="paso"><p><strong>Aplica la sangría de primera línea</strong> de 1.27 cm en los párrafos del cuerpo, utilizando las opciones de párrafo (no la barra espaciadora ni tabuladores manuales).</p></div>
+      <div class="paso"><p><strong>Inserta la numeración de página</strong> en la esquina superior derecha mediante la herramienta de encabezado.</p></div>
+      <div class="paso"><p><strong>Elabora la portada</strong> conforme a APA: título del trabajo, nombre del autor, afiliación institucional, curso, docente y fecha, centrados y distribuidos según la norma.</p></div>
+      <div class="paso"><p><strong>Aplica el formato de referencias</strong> con sangría francesa (la primera línea al margen y las siguientes con sangría), en orden alfabético.</p></div>
+    </div>
+
+    <h3>Ejemplo visual: documento en formato APA</h3>
+    <div class="doc-apa">
+      <div class="doc-titulo">El Impacto del Estrés Académico en Estudiantes Universitarios</div>
+      <p class="doc-sangria">El estrés académico constituye un fenómeno de creciente interés en la investigación psicológica contemporánea. Diversos estudios han documentado su relación con el rendimiento y el bienestar de los estudiantes <span class="doc-marca">(cita entre paréntesis, Autor, año)</span>. El presente trabajo analiza...</p>
+      <p style="text-align:center;font-weight:700;margin:1rem 0 0.5rem;">Referencias</p>
+      <p class="doc-ref"><span class="doc-marca">Apellido, A. A. (año).</span> Título del trabajo en cursiva. Editorial o revista.</p>
+    </div>
+
+    <div class="caja caja-alerta">
+      <span class="caja-titulo">Error frecuente</span>
+      <p>Un error común es aplicar la sangría con la tecla de espacio o el tabulador de forma manual, lo que produce inconsistencias. La sangría debe configurarse siempre desde las opciones de párrafo, para que se aplique de forma uniforme y automática.</p>
+    </div>
+
+    <div class="caja caja-info">
+      <span class="caja-titulo">Recurso formal de consulta</span>
+      <p>Para la elaboración de documentos conforme a estas normas, se recomienda consultar el <strong>Manual de Publicaciones de la American Psychological Association, 7ma edición</strong>, así como el sitio oficial de estilo APA, referencia obligada en la disciplina.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACTIVIDAD 1 — FORO -->
+<section id="actividad-1">
+  <div class="tarjeta borde-salvia">
+    <div class="actividad-header">
+      <div class="act-num">01</div>
+      <div>
+        <span class="act-tipo">Actividad 1 &mdash; Entrega en Google Classroom</span>
+        <div class="act-nombre">Foro de Mediación: La Forma También Comunica</div>
+      </div>
+    </div>
+
+    <div class="caja caja-info">
+      <span class="caja-titulo">Datos generales</span>
+      <p>
+        <span class="chip chip-azul">Tipo: Foro de discusión</span>&nbsp;
+        <span class="chip chip-salvia">Entrega: Google Classroom</span>&nbsp;
+        <span class="chip chip-terra">Modalidad: Colaborativa</span>
+      </p>
+      <p style="margin-top:0.5rem;margin-bottom:0;"><strong>Propósito:</strong> Promover la reflexión crítica sobre la relación entre la forma de un documento y la percepción de su calidad y credibilidad profesional.</p>
+    </div>
+
+    <h3>Pregunta detonadora</h3>
+    <div class="pregunta-detonadora">
+      <span class="pd-etiq">Pregunta central del foro</span>
+      <p>Dos estudiantes entregan trabajos con contenido de calidad equivalente: uno con formato descuidado, inconsistente y sin normas APA; otro correctamente estructurado y normalizado. ¿Debería la presentación de un documento influir en su evaluación, o solo importa el contenido? En el ejercicio profesional de la psicología, cuando redactes un informe psicológico para un tribunal, una escuela o una empresa, ¿qué comunica la forma de tu documento sobre tu profesionalismo?</p>
+    </div>
+
+    <h3>Instrucciones paso a paso</h3>
+    <div class="pasos-lista">
+      <div class="paso"><p><strong>Revisa los contenidos</strong> de la guía, especialmente las secciones sobre formato con estilos y normas APA.</p></div>
+      <div class="paso"><p><strong>Elabora tu aportación inicial</strong> (mínimo 250 palabras): expón tu postura frente a la pregunta detonadora, fundaméntala con al menos dos argumentos y relaciónala con un contexto profesional real de la psicología (informe clínico, reporte de investigación, documento pericial).</p></div>
+      <div class="paso"><p><strong>Publica tu aportación</strong> en el foro de Google Classroom dentro del plazo establecido por tu docente.</p></div>
+      <div class="paso"><p><strong>Lee las aportaciones</strong> de al menos dos compañeros e identifica coincidencias y diferencias con tu postura.</p></div>
+      <div class="paso"><p><strong>Responde a cada compañero</strong> seleccionado (mínimo 100 palabras por respuesta), aportando una perspectiva nueva, un matiz o una pregunta. No se aceptan respuestas de mero acuerdo.</p></div>
+      <div class="paso"><p><strong>Cierre (opcional):</strong> tras leer al menos cinco participaciones, redacta una síntesis breve (100-150 palabras) de las ideas más relevantes del debate.</p></div>
+    </div>
+
+    <h3>Rúbrica de evaluación</h3>
+    <div class="rubrica">
+      <div class="rubrica-item rubrica-header"><span>Criterio</span><span class="puntos">Puntos</span></div>
+      <div class="rubrica-item"><span>Aportación inicial: postura clara, fundamentada y contextualizada en la práctica profesional</span><span class="puntos">25 pts</span></div>
+      <div class="rubrica-item"><span>Extensión y desarrollo argumental (mín. 250 palabras)</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item"><span>Calidad de las respuestas a compañeros: nueva perspectiva o matiz</span><span class="puntos">30 pts</span></div>
+      <div class="rubrica-item"><span>Relación con los conceptos de la guía</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item"><span>Respeto en el intercambio, claridad y ortografía</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item rubrica-header"><span><strong>Total</strong></span><span class="puntos">100 pts</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACTIVIDAD 2 — APLICACIÓN SIGNIFICATIVA -->
+<section id="actividad-2">
+  <div class="tarjeta borde-azul">
+    <div class="actividad-header">
+      <div class="act-num">02</div>
+      <div>
+        <span class="act-tipo">Actividad 2 &mdash; Entrega en Google Classroom</span>
+        <div class="act-nombre">Taller Práctico: Transforma un Documento a Formato Profesional APA</div>
+      </div>
+    </div>
+
+    <div class="caja caja-info">
+      <span class="caja-titulo">Datos generales</span>
+      <p>
+        <span class="chip chip-azul">Tipo: Trabajo individual</span>&nbsp;
+        <span class="chip chip-salvia">Entrega: Documento Word o PDF</span>&nbsp;
+        <span class="chip chip-terra">Aprendizaje: Significativo y aplicable</span>
+      </p>
+      <p style="margin-top:0.5rem;margin-bottom:0;"><strong>Propósito:</strong> Que el estudiante aplique las funciones del procesador de textos y las normas APA para transformar un documento sin formato en un documento académico profesional, reutilizable en sus demás materias.</p>
+    </div>
+
+    <h3>Descripción de la actividad</h3>
+    <p>Tomarás un texto sin formato &mdash;puede ser un trabajo propio de otra materia, un borrador de ensayo, o el texto de ejemplo que proporcione tu docente&mdash; y lo transformarás en un documento académico completo, correctamente estructurado según las normas APA, aplicando las herramientas avanzadas revisadas en esta guía.</p>
+
+    <h3>Instrucciones paso a paso</h3>
+    <div class="pasos-lista">
+      <div class="paso"><p><strong>Selecciona un texto base</strong> de al menos 500 palabras: puede ser un trabajo que estés desarrollando para otra materia de la licenciatura, lo que hará la actividad directamente aplicable.</p></div>
+      <div class="paso"><p><strong>Configura el documento en formato APA:</strong> tipografía admitida, interlineado doble, márgenes de 2.54 cm, sangría de primera línea y numeración de página, siguiendo los pasos de la Sección 3.</p></div>
+      <div class="paso"><p><strong>Elabora una portada APA</strong> completa con todos los elementos requeridos.</p></div>
+      <div class="paso"><p><strong>Aplica estilos de título</strong> (Título 1, Título 2) a los apartados del documento, en lugar de formato manual.</p></div>
+      <div class="paso"><p><strong>Genera una tabla de contenido automática</strong> a partir de los estilos aplicados.</p></div>
+      <div class="paso"><p><strong>Inserta al menos un elemento estructurado:</strong> una tabla comparativa o una figura con su título y numeración conforme a APA.</p></div>
+      <div class="paso"><p><strong>Incluye una sección de referencias</strong> con al menos dos fuentes en formato APA, con sangría francesa y orden alfabético.</p></div>
+      <div class="paso"><p><strong>Entrega el documento final</strong> (en Word o PDF) en Google Classroom. Acompáñalo de un breve párrafo (mínimo 80 palabras) donde expliques qué funciones del procesador utilizaste y qué dificultades resolviste.</p></div>
+    </div>
+
+    <h3>Ejemplo orientativo</h3>
+    <div class="caja caja-logro">
+      <span class="caja-titulo">Ejemplo de aplicación</span>
+      <p>Una estudiante toma el borrador de su ensayo de Psicología del Desarrollo (un texto de dos páginas sin formato). Le aplica los estilos de título a cada apartado, configura el interlineado doble y los márgenes, crea la portada APA, genera la tabla de contenido automática, inserta una tabla que compara dos teorías del desarrollo, y ordena sus referencias con sangría francesa. El resultado es un documento que puede entregar directamente en su otra materia, cumpliendo simultáneamente los objetivos de ambas asignaturas.</p>
+    </div>
+
+    <h3>Rúbrica de evaluación</h3>
+    <div class="rubrica">
+      <div class="rubrica-item rubrica-header"><span>Criterio</span><span class="puntos">Puntos</span></div>
+      <div class="rubrica-item"><span>Configuración correcta del formato APA (tipografía, interlineado, márgenes, sangría, numeración)</span><span class="puntos">25 pts</span></div>
+      <div class="rubrica-item"><span>Portada APA completa y correcta</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item"><span>Uso de estilos y tabla de contenido automática</span><span class="puntos">20 pts</span></div>
+      <div class="rubrica-item"><span>Inserción correcta de elemento estructurado (tabla o figura con numeración)</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item"><span>Referencias en formato APA con sangría francesa</span><span class="puntos">15 pts</span></div>
+      <div class="rubrica-item"><span>Párrafo reflexivo sobre el proceso</span><span class="puntos">10 pts</span></div>
+      <div class="rubrica-item rubrica-header"><span><strong>Total</strong></span><span class="puntos">100 pts</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACTIVIDAD 3 — QUIZ -->
+<section id="actividad-3">
+  <div class="tarjeta borde-salvia">
+    <div class="actividad-header">
+      <div class="act-num">03</div>
+      <div>
+        <span class="act-tipo">Actividad 3 &mdash; Entrega en Google Classroom</span>
+        <div class="act-nombre">Quiz Interactivo: Procesador de Textos Aplicado a la Psicología</div>
+      </div>
+    </div>
+
+    <div class="caja caja-info">
+      <span class="caja-titulo">Instrucciones</span>
+      <p>Responde las 5 preguntas seleccionando la opción correcta. Al finalizar, haz clic en "Revisar respuestas" para obtener tu puntuación y retroalimentación. <strong>Toma una captura de pantalla de tu resultado y súbela a la tarea correspondiente en Google Classroom.</strong> Se acepta un máximo de dos intentos.</p>
+    </div>
+
+    <div id="quiz">
+
+      <div class="quiz-pregunta" id="q1">
+        <div class="quiz-enun">¿Cuál es la principal ventaja de usar "estilos" (Título 1, Título 2) en lugar de aplicar formato manual a cada título?</div>
+        <div class="quiz-opciones">
+          <label class="quiz-opcion"><input type="radio" name="q1" value="a"> Hacen el documento más pesado.</label>
+          <label class="quiz-opcion"><input type="radio" name="q1" value="b"> Garantizan consistencia, permiten cambios globales y habilitan la tabla de contenido automática.</label>
+          <label class="quiz-opcion"><input type="radio" name="q1" value="c"> Impiden que otras personas editen el documento.</label>
+          <label class="quiz-opcion"><input type="radio" name="q1" value="d"> Cambian automáticamente el idioma del texto.</label>
+        </div>
+        <div class="quiz-feedback feedback-bien" id="fb1-bien">Correcto. Los estilos aseguran consistencia, permiten reformatear todo el documento con un cambio y son la base de la tabla de contenido automática.</div>
+        <div class="quiz-feedback feedback-mal" id="fb1-mal">Incorrecto. La respuesta correcta es la segunda opción. Los estilos garantizan consistencia, permiten cambios globales y habilitan la tabla de contenido automática.</div>
+      </div>
+
+      <div class="quiz-pregunta" id="q2">
+        <div class="quiz-enun">Según las normas APA (7ma edición), el interlineado de un documento académico debe ser:</div>
+        <div class="quiz-opciones">
+          <label class="quiz-opcion"><input type="radio" name="q2" value="a"> Sencillo (espacio simple).</label>
+          <label class="quiz-opcion"><input type="radio" name="q2" value="b"> De 1.5 líneas.</label>
+          <label class="quiz-opcion"><input type="radio" name="q2" value="c"> Doble espacio en todo el texto.</label>
+          <label class="quiz-opcion"><input type="radio" name="q2" value="d"> Variable según cada apartado.</label>
+        </div>
+        <div class="quiz-feedback feedback-bien" id="fb2-bien">Correcto. Las normas APA establecen doble espacio (interlineado doble) en todo el documento.</div>
+        <div class="quiz-feedback feedback-mal" id="fb2-mal">Incorrecto. La respuesta correcta es la tercera opción. APA requiere doble espacio en todo el texto.</div>
+      </div>
+
+      <div class="quiz-pregunta" id="q3">
+        <div class="quiz-enun">¿Cuál es la forma correcta de aplicar la sangría de primera línea en un documento APA?</div>
+        <div class="quiz-opciones">
+          <label class="quiz-opcion"><input type="radio" name="q3" value="a"> Presionando la barra espaciadora varias veces al inicio de cada párrafo.</label>
+          <label class="quiz-opcion"><input type="radio" name="q3" value="b"> Configurándola desde las opciones de párrafo para que se aplique de forma uniforme y automática.</label>
+          <label class="quiz-opcion"><input type="radio" name="q3" value="c"> Insertando una imagen en blanco al inicio del párrafo.</label>
+          <label class="quiz-opcion"><input type="radio" name="q3" value="d"> No se utiliza sangría en formato APA.</label>
+        </div>
+        <div class="quiz-feedback feedback-bien" id="fb3-bien">Correcto. La sangría debe configurarse desde las opciones de párrafo (1.27 cm), nunca con la barra espaciadora o tabuladores manuales, para asegurar uniformidad.</div>
+        <div class="quiz-feedback feedback-mal" id="fb3-mal">Incorrecto. La respuesta correcta es la segunda opción. La sangría se configura desde las opciones de párrafo para que sea uniforme y automática.</div>
+      </div>
+
+      <div class="quiz-pregunta" id="q4">
+        <div class="quiz-enun">¿Qué función del procesador de textos es más adecuada cuando un docente revisa un trabajo y necesita que el estudiante vea exactamente qué modificaciones propone, con la posibilidad de aceptarlas o rechazarlas?</div>
+        <div class="quiz-opciones">
+          <label class="quiz-opcion"><input type="radio" name="q4" value="a"> La numeración de páginas.</label>
+          <label class="quiz-opcion"><input type="radio" name="q4" value="b"> La tabla de contenido automática.</label>
+          <label class="quiz-opcion"><input type="radio" name="q4" value="c"> El control de cambios.</label>
+          <label class="quiz-opcion"><input type="radio" name="q4" value="d"> El corrector ortográfico.</label>
+        </div>
+        <div class="quiz-feedback feedback-bien" id="fb4-bien">Correcto. El control de cambios registra cada modificación y permite aceptarla o rechazarla, siendo ideal para procesos de revisión y retroalimentación.</div>
+        <div class="quiz-feedback feedback-mal" id="fb4-mal">Incorrecto. La respuesta correcta es la tercera opción. El control de cambios registra las modificaciones y permite aceptarlas o rechazarlas.</div>
+      </div>
+
+      <div class="quiz-pregunta" id="q5">
+        <div class="quiz-enun">Al colaborar en un documento académico que analiza un caso clínico real, ¿qué consideración profesional es indispensable?</div>
+        <div class="quiz-opciones">
+          <label class="quiz-opcion"><input type="radio" name="q5" value="a"> Usar la mayor cantidad de colores posible en el texto.</label>
+          <label class="quiz-opcion"><input type="radio" name="q5" value="b"> Anonimizar los datos del caso y controlar quién tiene acceso al documento, respetando la confidencialidad.</label>
+          <label class="quiz-opcion"><input type="radio" name="q5" value="c"> Compartir el documento públicamente para recibir más opiniones.</label>
+          <label class="quiz-opcion"><input type="radio" name="q5" value="d"> Incluir el nombre completo del paciente para mayor precisión.</label>
+        </div>
+        <div class="quiz-feedback feedback-bien" id="fb5-bien">Correcto. La confidencialidad es un principio ético fundamental: los datos deben anonimizarse y el acceso al documento debe controlarse.</div>
+        <div class="quiz-feedback feedback-mal" id="fb5-mal">Incorrecto. La respuesta correcta es la segunda opción. Debe anonimizarse la información y controlarse el acceso, respetando la confidencialidad del caso.</div>
+      </div>
+
+    </div>
+
+    <div class="quiz-controles">
+      <button class="btn btn-primario" onclick="revisarQuiz()">Revisar respuestas y ver puntuación</button>
+      <button class="btn btn-salvia" onclick="reiniciarQuiz()" style="margin-left:0.8rem;">Reiniciar quiz</button>
+    </div>
+
+    <div id="resultado-quiz">
+      <div class="resultado-puntaje" id="puntaje-texto"></div>
+      <div class="resultado-msg" id="resultado-msg-texto"></div>
+      <p id="resultado-detalle" style="margin-top:0.8rem;font-size:0.88rem;color:var(--gris-texto);"></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- REFLEXIÓN -->
+<section id="reflexion">
+  <div class="tarjeta borde-ambar">
+    <div class="seccion-titulo"><span class="num">REF</span> Reflexión y Aplicación</div>
+    <p class="seccion-desc">Planificación de la incorporación de los aprendizajes a la vida académica y profesional.</p>
+
+    <p>El dominio del procesador de textos es una competencia que acompañará al estudiante durante toda su formación y su ejercicio profesional. El propósito de esta sección es que articules un plan concreto para incorporar lo aprendido en tu trabajo académico cotidiano y en tu futuro desempeño como psicólogo.</p>
+
+    <h3>Planificador de incorporación del aprendizaje</h3>
+    <p>Completa los campos y guarda tu reflexión. Puedes copiar el texto generado y pegarlo en la tarea de reflexión en Google Classroom.</p>
+
+    <div class="plan-grid">
+      <div class="plan-area">
+        <label>¿Qué función del procesador de textos aprendida en esta guía aplicarás de inmediato en tus trabajos universitarios?</label>
+        <textarea rows="4" id="plan-funcion" placeholder="Por ejemplo: aplicaré estilos de título y generaré tablas de contenido automáticas en mis ensayos largos, en lugar de dar formato manual..."></textarea>
+      </div>
+      <div class="plan-area">
+        <label>¿Cómo mejorará tu trabajo académico el uso correcto de las normas APA?</label>
+        <textarea rows="4" id="plan-apa" placeholder="Por ejemplo: mis trabajos tendrán una presentación profesional y consistente, lo que mejorará su evaluación y me preparará para..."></textarea>
+      </div>
+      <div class="plan-area">
+        <label>En tu futuro ejercicio profesional, ¿qué documentos producirás y cómo te beneficiará dominar el procesador de textos?</label>
+        <textarea rows="4" id="plan-profesional" placeholder="Por ejemplo: elaboraré informes psicológicos y reportes clínicos; un buen dominio me permitirá producirlos con rapidez, orden y profesionalismo..."></textarea>
+      </div>
+      <div class="plan-area">
+        <label>¿Qué hábito de trabajo con documentos te comprometes a mejorar a partir de ahora?</label>
+        <textarea rows="4" id="plan-habito" placeholder="Por ejemplo: guardaré versiones de mis documentos, usaré control de cambios al recibir retroalimentación y dejaré de aplicar formato manual..."></textarea>
+      </div>
+    </div>
+
+    <div class="quiz-controles mt-2">
+      <button class="btn btn-primario" onclick="guardarPlan()">Guardar mi planificación</button>
+      <button class="btn btn-salvia" onclick="copiarPlan()" style="margin-left:0.8rem;">Copiar texto para Classroom</button>
+    </div>
+    <div id="plan-guardado">Tu planificación ha sido guardada. Puedes copiarla y pegarla en la tarea de reflexión de Google Classroom.</div>
+
+    <hr class="divider">
+
+    <h3>Síntesis conceptual del tema</h3>
+    <div class="concepto-grid">
+      <div class="concepto-card">
+        <div class="concepto-titulo">Del uso basico al profesional</div>
+        <p class="concepto-def">Dominar el procesador de textos significa pasar del formato manual al trabajo con estilos, estructura y automatización.</p>
+      </div>
+      <div class="concepto-card salvia">
+        <div class="concepto-titulo">APA como estandar</div>
+        <p class="concepto-def">Las normas APA son el lenguaje formal de presentación de la psicología; su correcta aplicación es una competencia profesional.</p>
+      </div>
+      <div class="concepto-card ambar">
+        <div class="concepto-titulo">La forma comunica</div>
+        <p class="concepto-def">Un documento bien estructurado transmite rigor y profesionalismo, cualidades esenciales en el ejercicio de la psicología.</p>
+      </div>
+      <div class="concepto-card">
+        <div class="concepto-titulo">Colaboracion responsable</div>
+        <p class="concepto-def">Las herramientas de colaboración potencian el trabajo en equipo, siempre respetando la confidencialidad de la información sensible.</p>
+      </div>
+    </div>
+
+    <div class="caja caja-logro mt-2">
+      <span class="caja-titulo">Cierre de la guía</span>
+      <p>Has concluido el estudio del tema "Procesador de Textos Aplicado a la Psicología". Esta competencia, aparentemente técnica, es en realidad una herramienta profesional de primer orden: te permitirá producir documentos académicos de calidad durante tu formación y comunicar con rigor y profesionalismo en tu futuro ejercicio como psicólogo, ya sea en informes clínicos, reportes de investigación o documentos institucionales.</p>
+      <p style="margin-bottom:0;">Recuerda entregar las tres actividades en Google Classroom dentro de los plazos establecidos por tu docente: el foro de mediación (Actividad 1), el taller práctico de formato APA (Actividad 2) y la captura del quiz (Actividad 3).</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-linea"><strong>Universidad de Especialidades UNE</strong></div>
+  <div class="footer-linea">Licenciatura en Psicología &nbsp;|&nbsp; Tecnologías de la Información Aplicadas a la Psicología</div>
+  <div class="footer-linea">Procesador de Textos Aplicado a la Psicología &mdash; Guía de aprendizaje interactiva</div>
+  <div class="footer-linea" style="margin-top:0.8rem;font-size:0.75rem;">Diseñada con metodología constructivista, pedagogía activa y Aprendizaje Basado en Problemas (ABP)</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progreso-barra').style.width = pct + '%';
+  });
+
+  function marcarActivo(el) {
+    document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('activo'));
+    el.classList.add('activo');
+  }
+
+  function toggleAcord(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('abierto');
+    const parent = btn.closest('.acordeon');
+    parent.querySelectorAll('.acord-btn.abierto').forEach(b => {
+      b.classList.remove('abierto');
+      b.nextElementSibling.classList.remove('visible');
+    });
+    if (!isOpen) { btn.classList.add('abierto'); body.classList.add('visible'); }
+  }
+
+  function mostrarPestana(btn, idPanel) {
+    const contenedor = btn.closest('.pestanas');
+    contenedor.querySelectorAll('.pest-btn').forEach(b => b.classList.remove('activo'));
+    contenedor.querySelectorAll('.pest-panel').forEach(p => p.classList.remove('visible'));
+    btn.classList.add('activo');
+    document.getElementById(idPanel).classList.add('visible');
+  }
+
+  const respuestas = { q1: 'b', q2: 'c', q3: 'b', q4: 'c', q5: 'b' };
+
+  function revisarQuiz() {
+    let correctas = 0;
+    for (const [num, correcta] of Object.entries(respuestas)) {
+      const sel = document.querySelector(`input[name="${num}"]:checked`);
+      const qDiv = document.getElementById(num);
+      const fbBien = document.getElementById('fb' + num.replace('q','') + '-bien');
+      const fbMal  = document.getElementById('fb' + num.replace('q','') + '-mal');
+      fbBien.style.display = 'none'; fbMal.style.display = 'none';
+      qDiv.classList.remove('correcta', 'incorrecta');
+      if (!sel) { qDiv.classList.add('incorrecta'); fbMal.style.display = 'block'; continue; }
+      if (sel.value === correcta) { correctas++; qDiv.classList.add('correcta'); fbBien.style.display = 'block'; }
+      else { qDiv.classList.add('incorrecta'); fbMal.style.display = 'block'; }
+    }
+    const pct = (correctas / 5) * 100;
+    const divRes = document.getElementById('resultado-quiz');
+    const puntajeEl = document.getElementById('puntaje-texto');
+    const msgEl = document.getElementById('resultado-msg-texto');
+    const detEl = document.getElementById('resultado-detalle');
+    divRes.classList.remove('alto','medio','bajo');
+    divRes.style.display = 'block';
+    puntajeEl.textContent = correctas + ' / 5';
+    detEl.textContent = 'Porcentaje de aciertos: ' + pct + '%. Recuerda tomar una captura de pantalla de este resultado para subirla a Google Classroom.';
+    if (pct >= 80) { divRes.classList.add('alto'); msgEl.textContent = 'Excelente desempeño. Demuestras una comprensión sólida del tema.'; }
+    else if (pct >= 60) { divRes.classList.add('medio'); msgEl.textContent = 'Desempeño aceptable. Revisa las preguntas incorrectas antes de tu segundo intento.'; }
+    else { divRes.classList.add('bajo'); msgEl.textContent = 'Es necesario reforzar los contenidos. Revisa las secciones de la guía y vuelve a intentarlo.'; }
+    divRes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function reiniciarQuiz() {
+    document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+    document.querySelectorAll('.quiz-pregunta').forEach(q => q.classList.remove('correcta','incorrecta'));
+    document.querySelectorAll('.quiz-feedback').forEach(f => f.style.display = 'none');
+    const divRes = document.getElementById('resultado-quiz');
+    divRes.style.display = 'none'; divRes.classList.remove('alto','medio','bajo');
+  }
+
+  function guardarPlan() {
+    const campos = ['plan-funcion','plan-apa','plan-profesional','plan-habito'];
+    const lleno = campos.some(id => document.getElementById(id).value.trim() !== '');
+    const aviso = document.getElementById('plan-guardado');
+    if (lleno) { aviso.style.display = 'block'; setTimeout(() => aviso.style.display = 'none', 5000); }
+    else { alert('Por favor, completa al menos uno de los campos del planificador antes de guardar.'); }
+  }
+
+  function copiarPlan() {
+    const etiquetas = ['Función que aplicaré de inmediato','Beneficio del formato APA','Aplicación profesional','Hábito de trabajo a mejorar'];
+    const ids = ['plan-funcion','plan-apa','plan-profesional','plan-habito'];
+    let texto = 'PLANIFICACIÓN DE INCORPORACIÓN DEL APRENDIZAJE\nProcesador de Textos Aplicado a la Psicología\n\n';
+    ids.forEach((id, i) => { const val = document.getElementById(id).value.trim(); if (val) texto += etiquetas[i] + ':\n' + val + '\n\n'; });
+    if (texto.length < 110) { alert('Por favor completa al menos un campo antes de copiar.'); return; }
+    navigator.clipboard.writeText(texto)
+      .then(() => alert('Texto copiado al portapapeles. Pégalo en Google Classroom.'))
+      .catch(() => alert('No se pudo copiar automáticamente. Selecciona el texto manualmente.'));
+  }
+</script>
+</body>
+</html>
