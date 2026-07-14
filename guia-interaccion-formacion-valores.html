@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Interactiva | La Interaccion y su Importancia en la Formacion de Valores | Universidad de la Cienega</title>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ind:#1b3a5c;
+  --ind-m:#2c5f8a;
+  --ind-s:#e8f1f8;
+  --siena:#a84420;
+  --siena-s:#fbeee9;
+  --bosque:#2a5e3a;
+  --bosque-s:#e9f5ed;
+  --amati:#8a5e10;
+  --amati-s:#fdf4e3;
+  --purp:#5a2e7a;
+  --purp-s:#f2eef8;
+  --gris:#575757;
+  --gc:#f3f4f1;
+  --crema:#faf9f6;
+  --borde:#d4dde8;
+  --blanco:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Outfit",sans-serif;background:var(--crema);color:#141e2a;font-size:15.5px;line-height:1.8}
+
+/* HEADER */
+header{background:var(--ind);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--ind-m),var(--siena),var(--bosque),var(--ind-m))}
+header::after{content:"";position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(44,95,138,0.28) 0%,transparent 70%)}
+.hi{max-width:1000px;margin:0 auto;padding:38px 34px 50px;position:relative;z-index:1}
+.htop{display:flex;align-items:center;gap:22px;padding-bottom:28px;margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.logo-b{background:var(--blanco);border-radius:12px;padding:10px;width:88px;height:88px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 24px rgba(0,0,0,0.35)}
+.logo-b img{width:100%;height:100%;object-fit:contain;display:block}
+.hbrand .uni{font-family:"Cardo",serif;font-size:1.22rem;color:rgba(255,255,255,0.94);font-weight:700}
+.hbrand .dep{font-size:0.73rem;color:rgba(255,255,255,0.42);text-transform:uppercase;letter-spacing:0.09em;margin-top:4px}
+.htags{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.htag{padding:4px 12px;border-radius:20px;font-size:0.69rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.htag.in{background:rgba(44,95,138,0.3);border:1px solid rgba(44,95,138,0.6);color:#90c8f0}
+.htag.si{background:rgba(168,68,32,0.22);border:1px solid rgba(168,68,32,0.5);color:#f0a888}
+.hbody h1{font-family:"Cardo",serif;font-size:2.45rem;color:var(--blanco);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hbody h1 em{color:#90c8f0;font-style:italic}
+.hpills{display:flex;gap:8px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.6);padding:5px 14px;border-radius:14px;font-size:0.72rem;white-space:nowrap}
+
+/* NAV */
+nav.ns{background:var(--blanco);border-bottom:1px solid var(--borde);position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(27,58,92,0.08)}
+.nw{max-width:1000px;margin:0 auto;padding:0 34px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nw::-webkit-scrollbar{display:none}
+.nw a{color:var(--gris);text-decoration:none;font-size:0.79rem;font-weight:600;padding:13px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nw a:hover{color:var(--ind-m);border-bottom-color:var(--ind-m)}
+
+/* MAIN */
+main{max-width:1000px;margin:0 auto;padding:44px 34px 80px}
+
+/* BLOQUES */
+.bloque{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:44px;margin-bottom:26px;position:relative;overflow:hidden;animation:up 0.4s ease both}
+.bloque::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;border-radius:14px 0 0 14px}
+.bloque.in::before{background:linear-gradient(to bottom,var(--ind-m),#6aaad8)}
+.bloque.si::before{background:linear-gradient(to bottom,var(--siena),#e08060)}
+.bloque.bo::before{background:linear-gradient(to bottom,var(--bosque),#60b080)}
+.bloque.am::before{background:linear-gradient(to bottom,var(--amati),#c09030)}
+.bloque.pu::before{background:linear-gradient(to bottom,var(--purp),#9060c0)}
+.bloque.gr::before{background:linear-gradient(to bottom,#888,#bbb)}
+.bh{display:flex;align-items:flex-start;gap:18px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--borde)}
+.bicon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"Cardo",serif;font-size:1.2rem;font-weight:700;flex-shrink:0}
+.bicon.in{background:var(--ind-s);color:var(--ind-m)}
+.bicon.si{background:var(--siena-s);color:var(--siena)}
+.bicon.bo{background:var(--bosque-s);color:var(--bosque)}
+.bicon.am{background:var(--amati-s);color:var(--amati)}
+.bicon.pu{background:var(--purp-s);color:var(--purp)}
+.bicon.gr{background:var(--gc);color:var(--gris)}
+.btit .sup{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gris);margin-bottom:4px}
+.btit h2{font-family:"Cardo",serif;font-size:1.48rem;font-weight:700;color:var(--ind);line-height:1.2}
+
+h3{font-family:"Cardo",serif;font-size:1.12rem;font-weight:700;color:var(--ind);margin:26px 0 10px}
+h3:first-child{margin-top:0}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--ind-m);font-weight:700}
+em{color:var(--gris);font-style:italic}
+
+/* CAJAS */
+.caja{border-radius:8px;padding:17px 22px;margin:17px 0;border-left:4px solid}
+.caja.in{background:var(--ind-s);border-color:var(--ind-m)}
+.caja.si{background:var(--siena-s);border-color:var(--siena)}
+.caja.bo{background:var(--bosque-s);border-color:var(--bosque)}
+.caja.am{background:var(--amati-s);border-color:var(--amati)}
+.caja.pu{background:var(--purp-s);border-color:var(--purp)}
+.caja.gr{background:var(--gc);border-color:#aaa}
+.caja-tag{font-size:0.69rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:7px}
+.caja.in .caja-tag{color:var(--ind-m)}
+.caja.si .caja-tag{color:var(--siena)}
+.caja.bo .caja-tag{color:var(--bosque)}
+.caja.am .caja-tag{color:var(--amati)}
+.caja.pu .caja-tag{color:var(--purp)}
+.caja.gr .caja-tag{color:#666}
+
+/* TABLA */
+table.t{width:100%;border-collapse:collapse;font-size:0.87rem;margin:16px 0}
+table.t th{background:var(--ind);color:var(--blanco);padding:11px 14px;text-align:left;font-weight:700;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.04em}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--borde);vertical-align:top;line-height:1.55}
+table.t tr:nth-child(even) td{background:#f8fafc}
+
+/* LISTAS */
+ul.l,ol.l{list-style:none;padding:0}
+ul.l li{padding:9px 0 9px 28px;position:relative;border-bottom:1px solid var(--gc);font-size:0.93rem}
+ul.l li:last-child{border-bottom:none}
+ul.l li::before{content:"";position:absolute;left:8px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--ind-m)}
+ol.l{counter-reset:cnt}
+ol.l li{padding:10px 0 10px 42px;position:relative;border-bottom:1px solid var(--gc);counter-increment:cnt;font-size:0.93rem}
+ol.l li:last-child{border-bottom:none}
+ol.l li::before{content:counter(cnt);position:absolute;left:0;top:10px;background:var(--ind-m);color:var(--blanco);width:26px;height:26px;border-radius:6px;font-size:0.76rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* INTERACCION - GRID TIPOS */
+.tipo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px;margin:22px 0}
+.tipo-card{border-radius:10px;padding:20px;border:1px solid var(--borde);background:var(--gc);transition:transform 0.2s,box-shadow 0.2s}
+.tipo-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,58,92,0.1)}
+.tipo-card.t1{border-top:4px solid var(--ind-m)}
+.tipo-card.t2{border-top:4px solid var(--siena)}
+.tipo-card.t3{border-top:4px solid var(--bosque)}
+.tipo-card.t4{border-top:4px solid var(--purp)}
+.tipo-card.t5{border-top:4px solid var(--amati)}
+.tipo-card .tc-tit{font-weight:700;font-size:0.97rem;color:var(--ind);margin-bottom:7px}
+.tipo-card .tc-desc{font-size:0.82rem;color:var(--gris);line-height:1.55}
+.tipo-card .tc-ej{font-size:0.77rem;font-style:italic;color:var(--ind-m);margin-top:6px}
+
+/* INTERACCION AXIOLOGICA - FLUJO */
+.flujo{display:flex;flex-direction:column;gap:0;margin:22px 0}
+.flujo-item{display:flex;align-items:stretch;gap:16px}
+.flujo-izq{display:flex;flex-direction:column;align-items:center;width:50px;flex-shrink:0}
+.flujo-circulo{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Cardo",serif;font-size:1.1rem;font-weight:700;color:var(--blanco);flex-shrink:0}
+.flujo-linea{width:2px;flex:1;background:var(--borde);margin:4px auto}
+.flujo-cont{flex:1;padding:14px 18px 20px;border-radius:10px;margin-bottom:12px;border:1px solid var(--borde)}
+.fi1 .flujo-circulo{background:var(--ind-m)}
+.fi1 .flujo-cont{background:var(--ind-s)}
+.fi2 .flujo-circulo{background:var(--bosque)}
+.fi2 .flujo-cont{background:var(--bosque-s)}
+.fi3 .flujo-circulo{background:var(--siena)}
+.fi3 .flujo-cont{background:var(--siena-s)}
+.fi4 .flujo-circulo{background:var(--purp)}
+.fi4 .flujo-cont{background:var(--purp-s)}
+.fi5 .flujo-circulo{background:var(--amati)}
+.fi5 .flujo-cont{background:var(--amati-s)}
+.flujo-tit{font-weight:700;font-size:0.96rem;color:var(--ind);margin-bottom:5px}
+.flujo-desc{font-size:0.85rem;color:var(--gris);line-height:1.6}
+.flujo-ej{font-size:0.78rem;font-style:italic;margin-top:5px;color:var(--ind-m)}
+
+/* CONOCIMIENTO PREVIO */
+.kprev{background:linear-gradient(135deg,var(--ind) 0%,var(--ind-m) 100%);border-radius:12px;padding:34px;position:relative;overflow:hidden}
+.kprev::after{content:"?";position:absolute;right:22px;bottom:-28px;font-family:"Cardo",serif;font-size:150px;color:rgba(255,255,255,0.04);line-height:1}
+.kprev h3{color:#90c8f0;margin-bottom:12px}
+.kprev p{color:rgba(255,255,255,0.84);font-size:1.02rem;font-style:italic;margin-bottom:20px;position:relative;z-index:1}
+.kp-opts{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.kp-btn{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.88);padding:12px 18px;border-radius:8px;cursor:pointer;font-family:"Outfit",sans-serif;font-size:0.88rem;text-align:left;transition:all 0.2s}
+.kp-btn:hover:not(:disabled){background:rgba(255,255,255,0.15);border-color:#90c8f0}
+.kp-btn.ok{background:rgba(42,94,58,0.45);border-color:#80d0a0;color:#c0f0c8}
+.kp-btn.no{background:rgba(168,68,32,0.36);border-color:#e09070;color:#f7c8b0}
+.kp-fb{display:none;margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.88rem;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18)}
+.kp-fb.show{display:block}
+
+/* RECURSOS */
+.rec-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde)}
+.rec-item:last-child{border-bottom:none}
+.rec-tipo{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:11px;white-space:nowrap;margin-top:2px;flex-shrink:0;color:var(--blanco)}
+.rt-l{background:var(--ind-m)}
+.rt-a{background:var(--bosque)}
+.rt-w{background:var(--siena)}
+.rt-v{background:var(--amati)}
+.rec-tit{font-weight:700;color:var(--ind);margin-bottom:2px;font-size:0.91rem}
+.rec-aut{font-size:0.79rem;color:var(--gris);line-height:1.5}
+
+/* ACTIVIDADES */
+.act-badge{display:inline-flex;align-items:center;padding:6px 16px;border-radius:20px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:22px;color:var(--blanco)}
+.ab-f{background:var(--bosque)}
+.ab-i{background:var(--ind-m)}
+.ab-q{background:var(--amati)}
+.cita{background:var(--ind);color:var(--blanco);border-radius:10px;padding:28px 32px;position:relative;margin:20px 0}
+.cita::before{content:"\201C";position:absolute;top:4px;left:18px;font-family:"Cardo",serif;font-size:5.5rem;color:rgba(255,255,255,0.07);line-height:1}
+.cita p{color:rgba(255,255,255,0.88);font-size:1.02rem;font-style:italic;position:relative;z-index:1;margin-bottom:0;line-height:1.7}
+.paso{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--gc);align-items:flex-start;font-size:0.92rem}
+.paso:last-child{border-bottom:none}
+.paso-n{background:var(--ind-s);border:1px solid var(--borde);color:var(--ind-m);font-weight:700;font-size:0.8rem;min-width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rubr{display:grid;grid-template-columns:1fr 76px;gap:10px;padding:11px 0;border-bottom:1px solid var(--gc);align-items:center;font-size:0.9rem}
+.rubr:last-child{border-bottom:none}
+.pts{background:var(--ind);color:var(--blanco);text-align:center;border-radius:6px;padding:6px 8px;font-weight:700;font-size:0.86rem}
+.escenario{background:var(--ind-s);border:1px solid #b8cfe0;border-radius:10px;padding:24px;margin:18px 0}
+.esc-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--ind-m);margin-bottom:10px}
+.cta{display:flex;align-items:center;gap:14px;background:#1a6e4a;color:var(--blanco);padding:15px 20px;border-radius:8px;margin-top:22px;font-size:0.88rem;font-weight:700}
+
+/* QUIZ */
+.quiz-wrap{background:var(--gc);border-radius:12px;padding:28px}
+.q-prog{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.q-bc{flex:1;height:4px;background:var(--borde);border-radius:3px;overflow:hidden}
+.q-bf{height:100%;background:var(--ind-m);border-radius:3px;transition:width 0.4s}
+.qt{font-size:0.77rem;color:var(--gris);font-weight:600;white-space:nowrap}
+.qb{display:none}
+.qb.act{display:block}
+.qb h4{font-size:0.95rem;font-weight:700;color:var(--ind);margin-bottom:18px;line-height:1.55}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.qo{display:flex;align-items:flex-start;gap:12px;padding:12px 15px;background:var(--blanco);border:2px solid var(--borde);border-radius:8px;cursor:pointer;transition:all 0.2s;text-align:left}
+.qo:hover{border-color:var(--ind-m);background:var(--ind-s)}
+.qo.sel{border-color:var(--ind-m);background:var(--ind-s)}
+.qo.ok{border-color:var(--bosque);background:var(--bosque-s);cursor:default}
+.qo.fail{border-color:var(--siena);background:var(--siena-s);cursor:default}
+.qo.show-ok{border-color:var(--bosque);background:var(--bosque-s);cursor:default}
+.ql{width:26px;height:26px;border-radius:50%;background:var(--borde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:1px;transition:all 0.2s}
+.qo.sel .ql{background:var(--ind-m);color:var(--blanco)}
+.qo.ok .ql{background:var(--bosque);color:var(--blanco)}
+.qo.fail .ql{background:var(--siena);color:var(--blanco)}
+.qo.show-ok .ql{background:var(--bosque);color:var(--blanco)}
+.qot{font-size:0.9rem;line-height:1.5}
+.qr{display:none;padding:12px 16px;border-radius:8px;margin-bottom:14px;font-size:0.87rem;line-height:1.5}
+.qr.ok{background:var(--bosque-s);border:1px solid var(--bosque);color:var(--bosque)}
+.qr.fail{background:var(--siena-s);border:1px solid var(--siena);color:var(--siena)}
+.qr.show{display:block}
+.q-res{display:none;text-align:center;padding:36px 20px}
+.q-res.show{display:block}
+.q-sc{font-family:"Cardo",serif;font-size:5.5rem;color:var(--ind);line-height:1;margin-bottom:6px}
+.q-sc span{font-size:2.2rem;color:var(--gris)}
+.q-niv{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.q-msg{color:var(--gris);font-size:0.91rem;max-width:440px;margin:0 auto 24px}
+
+/* BOTONES */
+.btn{padding:11px 22px;border-radius:7px;font-family:"Outfit",sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.btn-p{background:var(--ind-m);color:var(--blanco)}
+.btn-p:hover{background:var(--ind);transform:translateY(-1px);box-shadow:0 4px 14px rgba(27,58,92,0.25)}
+.btn-p:disabled{background:var(--borde);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.btn-s{background:transparent;color:var(--ind-m);border:2px solid var(--ind-m)}
+.btn-s:hover{background:var(--ind-s)}
+
+/* REFLEXION */
+.refl{background:#fafbfd;border:1px solid var(--borde);border-radius:8px;padding:20px;margin-bottom:14px}
+.refl label{display:block;font-weight:700;font-size:0.87rem;color:var(--ind);margin-bottom:10px}
+.refl textarea{width:100%;min-height:80px;padding:11px;border:1.5px solid var(--borde);border-radius:6px;font-family:"Outfit",sans-serif;font-size:0.89rem;line-height:1.6;resize:vertical;background:var(--blanco);color:#141e2a;transition:border-color 0.2s}
+.refl textarea:focus{outline:none;border-color:var(--ind-m)}
+
+footer{background:var(--ind);color:rgba(255,255,255,0.44);text-align:center;padding:30px 34px;font-size:0.77rem;line-height:1.9}
+footer strong{color:rgba(255,255,255,0.82)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.bloque:nth-child(1){animation-delay:.04s}.bloque:nth-child(2){animation-delay:.08s}.bloque:nth-child(3){animation-delay:.12s}.bloque:nth-child(4){animation-delay:.16s}.bloque:nth-child(5){animation-delay:.2s}.bloque:nth-child(6){animation-delay:.24s}.bloque:nth-child(7){animation-delay:.28s}.bloque:nth-child(8){animation-delay:.32s}.bloque:nth-child(9){animation-delay:.36s}
+@media(max-width:680px){
+  .hi{padding:22px 16px 28px}
+  .hbody h1{font-size:1.8rem}
+  main{padding:24px 14px 56px}
+  .bloque{padding:22px 16px}
+  .nw{padding:0 14px}
+  .tipo-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="htop">
+      <div class="logo-b">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Cienega">
+      </div>
+      <div class="hbrand">
+        <div class="uni">Universidad de la Cienega</div>
+        <div class="dep">Licenciatura en Pedagogia &middot; Valores y Educacion</div>
+      </div>
+      <div class="htags">
+        <span class="htag in">Tema 5 &middot; Subtema 5.1</span>
+        <span class="htag si">Constructivismo &middot; ABP</span>
+      </div>
+    </div>
+    <div class="hbody">
+      <h1>El Docente como Transmisor de Valores:<br><em>La Interaccion y su Importancia</em><br>en la Formacion de Valores</h1>
+      <div class="hpills">
+        <span class="hpill">Subtema 5.1</span>
+        <span class="hpill">Licenciatura en Pedagogia</span>
+        <span class="hpill">Foro &middot; Actividad Aplicada &middot; Quiz</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="ns">
+  <div class="nw">
+    <a href="#intro">Introduccion</a>
+    <a href="#previo">Conocimiento previo</a>
+    <a href="#interaccion">La interaccion</a>
+    <a href="#tipos">Tipos de interaccion</a>
+    <a href="#proceso">Proceso formativo</a>
+    <a href="#condiciones">Condiciones</a>
+    <a href="#materiales">Materiales</a>
+    <a href="#act1">Act. 1 Foro</a>
+    <a href="#act2">Act. 2 Aplicada</a>
+    <a href="#act3">Quiz</a>
+    <a href="#reflexion">Reflexion</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTRODUCCION -->
+<section class="bloque in" id="intro">
+  <div class="bh">
+    <div class="bicon in">I</div>
+    <div class="btit">
+      <div class="sup">Punto de partida &middot; Tema 5, Subtema 5.1</div>
+      <h2>Introduccion: La Interaccion como Espacio de Formacion Axiologica</h2>
+    </div>
+  </div>
+  <p>El tema anterior establecio que el docente es un transmisor de valores de manera inevitable, a traves de multiples canales: su lenguaje, su sistema de evaluacion, su trato a los estudiantes, la seleccion de contenidos, el curriculo oculto. En este subtema se profundiza en uno de esos canales que, por su naturaleza dialogica y relacional, ocupa un lugar central en la formacion axiologica: <strong>la interaccion</strong>.</p>
+  <p>La interaccion pedagogica no es simplemente el intercambio de informacion entre docente y estudiante. Es el espacio donde se construyen o se destruyen vinculos, donde se practican o se vulneran valores, donde el estudiante aprende no solo lo que el docente dice sino como se relaciona, como escucha, como responde, como gestiona el poder, el conflicto y la diferencia. <strong>La calidad de la interaccion en el aula es, en muchos sentidos, el indicador mas preciso del sistema de valores que el docente opera en la practica.</strong></p>
+  <p>Para el pedagogo en formacion, comprender la importancia de la interaccion en la formacion de valores es urgente y practica: le prepara para ejercer una docencia donde las relaciones con los estudiantes sean deliberadamente formativas, donde cada intercambio sea una oportunidad consciente de modelar los valores que se busca cultivar.</p>
+  <div class="caja am">
+    <div class="caja-tag">Competencias a desarrollar</div>
+    <p>Al concluir esta guia, el estudiante sera capaz de: <strong>(1)</strong> explicar por que la interaccion pedagogica es un espacio privilegiado de transmision de valores; <strong>(2)</strong> identificar los tipos de interaccion que tienen mayor impacto en la formacion axiologica; <strong>(3)</strong> analizar las condiciones que hacen que una interaccion sea autentica y formativa; <strong>(4)</strong> diseniar interacciones pedagogicas intencionales orientadas a la formacion de valores especificos en estudiantes universitarios.</p>
+  </div>
+  <div class="caja in">
+    <div class="caja-tag">Metodologia</div>
+    <p>Esta guia integra <strong>constructivismo</strong> (el conocimiento se construye en interaccion), <strong>pedagogia activa</strong> (el estudiante como protagonista del aprendizaje) y <strong>aprendizaje basado en problemas</strong> (ABP). La comprension de la interaccion como espacio axiologico surge del analisis critico de situaciones reales de la vida universitaria.</p>
+  </div>
+</section>
+
+<!-- CONOCIMIENTO PREVIO -->
+<section class="bloque si" id="previo">
+  <div class="bh">
+    <div class="bicon si">?</div>
+    <div class="btit">
+      <div class="sup">Activacion de saberes previos</div>
+      <h2>Que se antes de comenzar?</h2>
+    </div>
+  </div>
+  <p>Responda con base en su comprension actual, sin consultar fuentes. El objetivo es identificar el punto de partida para construir sobre el a lo largo de la guia.</p>
+  <div class="kprev">
+    <h3>Pregunta de conocimiento previo</h3>
+    <p>Cuando un docente universitario escucha con atencion genuina la pregunta de un estudiante, la toma en serio y explora su respuesta junto con el grupo en lugar de contestarla brevemente y seguir adelante, esta realizando principalmente:</p>
+    <div class="kp-opts">
+      <button class="kp-btn" onclick="kpR(this,false)">A) Una tecnica de manejo de grupo orientada a mantener la atencion y el orden en el aula durante el tiempo de la sesion.</button>
+      <button class="kp-btn" onclick="kpR(this,true)">B) Una interaccion pedagogica formativa: transmite a traves de esa accion concreta los valores de respeto intelectual, apertura y la conviccion de que el conocimiento se construye dialogicamente.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">C) Una estrategia para ganar tiempo frente a contenidos que el docente no domina suficientemente bien para explicar de manera directa y fluida.</button>
+      <button class="kp-btn" onclick="kpR(this,false)">D) Una forma de evaluacion diagnostica informal para identificar cuales son los estudiantes con mayor comprension del tema antes de continuar con la sesion.</button>
+    </div>
+    <div class="kp-fb" id="kp-fb"></div>
+  </div>
+</section>
+
+<!-- LA INTERACCION -->
+<section class="bloque in" id="interaccion">
+  <div class="bh">
+    <div class="bicon in">5.1</div>
+    <div class="btit">
+      <div class="sup">Contenido tematico central</div>
+      <h2>La Interaccion y su Importancia en la Formacion de Valores</h2>
+    </div>
+  </div>
+
+  <h3>1. Que es la interaccion pedagogica?</h3>
+  <p>La <strong>interaccion pedagogica</strong> designa el conjunto de intercambios verbales, gestuales, relacionales y situacionales que ocurren entre los actores del proceso educativo: entre docente y estudiante, entre estudiantes entre si, y entre los sujetos y el entorno material y simbolico del aula. La interaccion no es simplemente la transmision de un mensaje de una persona a otra: es un proceso <em>constitutivamente dialogico</em> que produce significados, relaciones y, inevitablemente, aprendizajes axiologicos.</p>
+  <p>Desde la perspectiva vygotskiana, el aprendizaje es fundamentalmente un fenomeno intersubjetivo: ocurre primero en el espacio entre personas (<em>interpsicologico</em>) antes de internalizarse en el sujeto (<em>intrapsicologico</em>). Esto tiene una consecuencia directa para la formacion de valores: los valores no se transmiten de manera unilateral de un docente que los posee a un estudiante que los recibe, sino que se construyen, se negocian y se practican en el espacio de la interaccion.</p>
+
+  <h3>2. Por que la interaccion es el espacio privilegiado de la formacion axiologica?</h3>
+  <p>Podria argumentarse que los valores se transmiten a traves de muchos medios: libros, programas, discursos, reglamentos. Pero hay razones especificas por las cuales la interaccion directa entre personas ocupa un lugar especialmente potente en la formacion axiologica:</p>
+  <ul class="l">
+    <li><strong>Los valores no son proposiciones: son practicas.</strong> Un valor no se aprende oyendo que "el respeto es importante"; se aprende siendo respetado y siendo testigo de como otros son respetados o irrespetados en situaciones reales. La interaccion es el espacio donde los valores se practican o se vulneran, no solo donde se mencionan.</li>
+    <li><strong>La autenticidad es verificable en la interaccion.</strong> En una conferencia o un texto, un docente puede sostener cualquier posicion valorativa sin que su autenticidad sea verificable. En la interaccion directa, la coherencia entre los valores declarados y los practicados se hace visible de manera inmediata e involuntaria.</li>
+    <li><strong>La interaccion genera vinculo, y el vinculo potencia la influencia axiologica.</strong> Los valores que nos transmiten personas con quienes tenemos una relacion significativa tienen una probabilidad de internalizacion mucho mayor que los que nos transmiten personas con quienes no existe ninguna conexion afectiva o intelectual.</li>
+    <li><strong>La interaccion exige decision en tiempo real.</strong> A diferencia de la planificacion curricular, que puede revisarse y corregirse, la interaccion ocurre en tiempo real y exige del docente decisiones que revelan sus valores reales: como responde a la pregunta inesperada, como gestiona el conflicto, como trata al estudiante que llega tarde.</li>
+  </ul>
+
+  <h3>3. La interaccion como espacio de zona de desarrollo proximo axiologica</h3>
+  <p>Retomando el concepto vygotskiano de <strong>zona de desarrollo proximo</strong> (ZDP), es posible hablar de una <em>zona de desarrollo proximo axiologica</em>: el espacio entre el nivel de desarrollo moral actual del estudiante y el nivel que puede alcanzar con el acompaniamiento adecuado de un adulto o par mas experto. El docente, a traves de la calidad de sus interacciones, puede operar en esa zona: desafiar al estudiante a reflexionar sobre sus propios valores, modelar formas de respuesta etica ante situaciones de tension, y ofrecer el andamiaje necesario para que el estudiante avance hacia niveles de mayor madurez axiologica.</p>
+
+  <div class="caja am">
+    <div class="caja-tag">Idea central</div>
+    <p>La pregunta relevante no es si el docente debe o no interactuar con sus estudiantes, sino <em>que tipo de interacciones establece</em> y <em>que valores transmite a traves de ellas</em>. Una docencia sin interaccion autentica no es pedagogicamente posible; una docencia con interacciones sistematicamente inconsistentes con los valores que se declaran es, en la practica, una docencia con curriculo oculto de signo negativo.</p>
+  </div>
+</section>
+
+<!-- TIPOS DE INTERACCION -->
+<section class="bloque am" id="tipos">
+  <div class="bh">
+    <div class="bicon am">T</div>
+    <div class="btit">
+      <div class="sup">Clasificacion y analisis</div>
+      <h2>Tipos de Interaccion y su Potencial Axiologico</h2>
+    </div>
+  </div>
+  <p>No todas las interacciones que ocurren en el aula tienen el mismo impacto en la formacion de valores. Es posible identificar distintos tipos segun su estructura, sus participantes y el tipo de valor que privilegian o vulneran.</p>
+
+  <div class="tipo-grid">
+    <div class="tipo-card t1">
+      <div class="tc-tit">Interaccion docente-estudiante individual</div>
+      <div class="tc-desc">El intercambio directo y personalizado entre el docente y un estudiante especifico. Tiene un potencial axiologico elevado porque el estudiante se siente visto y reconocido como sujeto individual.</div>
+      <div class="tc-ej">Ejemplo: El docente que recuerda el nombre de cada estudiante y hace referencia a contribuciones anteriores transmite el valor del reconocimiento de la persona.</div>
+    </div>
+    <div class="tipo-card t2">
+      <div class="tc-tit">Interaccion docente-grupo</div>
+      <div class="tc-desc">El intercambio del docente con el grupo como colectivo. Comunica los valores que el docente opera respecto a la comunidad de aprendizaje: inclusion, participacion, normas de convivencia.</div>
+      <div class="tc-ej">Ejemplo: Como gestiona el docente una discusion donde voces diversas entran en tension: quien modera, quien tiene mas tiempo, cuales posiciones se validan.</div>
+    </div>
+    <div class="tipo-card t3">
+      <div class="tc-tit">Interaccion entre estudiantes</div>
+      <div class="tc-desc">Los intercambios que el docente facilita o inhibe entre pares. Cuando el docente disenya experiencias colaborativas autenticas, crea un espacio donde los valores de solidaridad, respeto y participacion son practicados, no solo mencionados.</div>
+      <div class="tc-ej">Ejemplo: Un trabajo colaborativo donde los roles estan disenadaos para que cada estudiante contribuya desde sus fortalezas especificas.</div>
+    </div>
+    <div class="tipo-card t4">
+      <div class="tc-tit">Interaccion con el conocimiento</div>
+      <div class="tc-desc">El modo en que el docente se relaciona con el saber disciplinar transmite valores sobre el conocimiento: si es certeza o proceso, si es de todos o de expertos, si admite cuestionamiento o no.</div>
+      <div class="tc-ej">Ejemplo: Un docente que dice "no se, vamos a buscarlo juntos" transmite humildad intelectual y la idea de que el saber es una construccion colectiva.</div>
+    </div>
+    <div class="tipo-card t5">
+      <div class="tc-tit">Interaccion en situaciones de tension moral</div>
+      <div class="tc-desc">Cuando surge un conflicto, un dilema etico o una situacion inesperada en el aula, la respuesta del docente es extraordinariamente formativa porque ocurre sin planificacion y revela sus valores reales.</div>
+      <div class="tc-ej">Ejemplo: Como responde el docente cuando descubre que un estudiante esta copiando, cuando dos estudiantes tienen un conflicto personal visible, o cuando el mismo comete un error.</div>
+    </div>
+  </div>
+
+  <h3>La interaccion asimetrica y su responsabilidad especifica</h3>
+  <p>Es importante reconocer que la interaccion pedagogica no ocurre entre iguales: existe una <strong>asimetria de poder</strong> entre docente y estudiante que hace que la influencia del docente sea desproporcionadamente mayor. El docente evalua, califica, valida o invalida, tiene autoridad sobre el espacio y el tiempo de la sesion. Esta asimetria no es necesariamente negativa: puede usarse para crear condiciones de seguridad, apertura y crecimiento. Pero exige del docente una responsabilidad especial respecto al tipo de interacciones que establece, porque sus efectos formativos se amplifican precisamente por esa posicion de autoridad.</p>
+
+  <table class="t">
+    <thead><tr><th>Tipo de interaccion</th><th>Cuando es formativa axiologicamente</th><th>Cuando produce un curriculo oculto negativo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Respuesta a preguntas</strong></td><td>El docente explora la pregunta con curiosidad, aun cuando la desconozca; invita al grupo a participar en la busqueda.</td><td>El docente responde brevemente y pasa adelante, o minimiza preguntas que no coinciden con su planteamiento.</td></tr>
+      <tr><td><strong>Correccion de errores</strong></td><td>El docente trata el error como oportunidad de aprendizaje, sin verguenza ni sancion implicita; modela la relacion sana con el fracaso.</td><td>El docente corrige con un tono que provoca verguenza; el grupo aprende que equivocarse es peligroso.</td></tr>
+      <tr><td><strong>Disenso del estudiante</strong></td><td>El docente recibe el disenso con apertura, lo analiza con rigor y, si corresponde, modifica su posicion o explica sus razones.</td><td>El docente ignora o descalifica el disenso; el grupo aprende que cuestionar al docente tiene consecuencias.</td></tr>
+      <tr><td><strong>Trato en situaciones de dificultad</strong></td><td>El docente trata con igual respeto y cuidado al estudiante con dificultades que al que tiene rendimiento sobresaliente.</td><td>El docente dedica mayor atencion y afecto a los estudiantes de alto rendimiento; los demas aprenden que su valor depende de su desempeniio academico.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PROCESO FORMATIVO -->
+<section class="bloque bo" id="proceso">
+  <div class="bh">
+    <div class="bicon bo">P</div>
+    <div class="btit">
+      <div class="sup">Modelo de proceso</div>
+      <h2>El Proceso de Formacion de Valores a Traves de la Interaccion</h2>
+    </div>
+  </div>
+  <p>La formacion de valores a traves de la interaccion no es un proceso inmediato ni lineal. Ocurre de manera acumulativa, a traves de la repeticion de patrones de interaccion que se sedimentan como aprendizajes axiologicos profundos. El siguiente modelo describe como una interaccion pedagogica especifica puede convertirse en formacion axiologica duradera.</p>
+
+  <div class="flujo">
+    <div class="flujo-item fi1">
+      <div class="flujo-izq">
+        <div class="flujo-circulo">1</div>
+        <div class="flujo-linea"></div>
+      </div>
+      <div class="flujo-cont">
+        <div class="flujo-tit">Interaccion concreta y significativa</div>
+        <div class="flujo-desc">Una interaccion especifica entre el docente y el estudiante (o entre estudiantes) que tiene una carga axiologica visible: respeto, indiferencia, apertura, exclusion, cuidado, descalificacion.</div>
+        <div class="flujo-ej">Ejemplo: El docente recuerda la situacion de un estudiante que falto por enfermedad y al retornar le pregunta como se encuentra antes de comenzar la clase.</div>
+      </div>
+    </div>
+    <div class="flujo-item fi2">
+      <div class="flujo-izq">
+        <div class="flujo-circulo">2</div>
+        <div class="flujo-linea"></div>
+      </div>
+      <div class="flujo-cont">
+        <div class="flujo-tit">Percepcion y registro del estudiante</div>
+        <div class="flujo-desc">El estudiante percibe la interaccion y la registra, consciente o inconscientemente, como un dato sobre los valores que el docente practica en la realidad, mas alla de lo que declara.</div>
+        <div class="flujo-ej">Ejemplo: El estudiante registra que "este docente me ve como persona, no solo como numero de matricula".</div>
+      </div>
+    </div>
+    <div class="flujo-item fi3">
+      <div class="flujo-izq">
+        <div class="flujo-circulo">3</div>
+        <div class="flujo-linea"></div>
+      </div>
+      <div class="flujo-cont">
+        <div class="flujo-tit">Resonancia afectiva e intelectual</div>
+        <div class="flujo-desc">La interaccion activa una respuesta afectiva (el estudiante se siente visto, respetado, valorado o lo contrario) que potencia la internalizacion del valor asociado a esa experiencia relacional.</div>
+        <div class="flujo-ej">Ejemplo: El estudiante experimenta lo que significa ser tratado con cuidado genuino, lo que activa la resonancia del valor del cuidado en su propia experiencia.</div>
+      </div>
+    </div>
+    <div class="flujo-item fi4">
+      <div class="flujo-izq">
+        <div class="flujo-circulo">4</div>
+        <div class="flujo-linea"></div>
+      </div>
+      <div class="flujo-cont">
+        <div class="flujo-tit">Acumulacion y sedimentacion del patron</div>
+        <div class="flujo-desc">Una sola interaccion tiene impacto limitado. Lo que forma valores es la repeticion consistente de patrones de interaccion a lo largo del tiempo, que van sedimentando como aprendizajes axiologicos profundos y duraderos.</div>
+        <div class="flujo-ej">Ejemplo: A lo largo del semestre, el docente repite consistentemente este patron de trato personalizado y reconocimiento. El grupo internaliza progresivamente el valor del cuidado como norma relacional.</div>
+      </div>
+    </div>
+    <div class="flujo-item fi5">
+      <div class="flujo-izq">
+        <div class="flujo-circulo">5</div>
+        <div class="flujo-linea" style="opacity:0"></div>
+      </div>
+      <div class="flujo-cont">
+        <div class="flujo-tit">Transferencia y aplicacion por el estudiante</div>
+        <div class="flujo-desc">El valor internalizando a traves de la interaccion comienza a expresarse en las propias interacciones del estudiante: con sus pares, con el docente, en otros espacios de su vida. La formacion axiologica se ha completado cuando el valor se practica, no solo cuando se conoce.</div>
+        <div class="flujo-ej">Ejemplo: El estudiante, en su propio futuro ejercicio docente, trata con cuidado personalizado a sus estudiantes; no porque le hayan "dado clase" sobre el valor del cuidado, sino porque lo vivio en su propia formacion.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDICIONES -->
+<section class="bloque pu" id="condiciones">
+  <div class="bh">
+    <div class="bicon pu">C</div>
+    <div class="btit">
+      <div class="sup">Dimension practica y pedagogica</div>
+      <h2>Condiciones para que la Interaccion Sea Axiologicamente Formativa</h2>
+    </div>
+  </div>
+
+  <h3>1. Autenticidad relacional</h3>
+  <p>La interaccion que transmite valores de manera formativa es <strong>autentica</strong>: no es una tecnica aplicada artificialmente ni una performance de virtud pedagogica. El estudiante universitario es especialmente sensible a la diferencia entre el docente que genuinamente se interesa por su aprendizaje y el que simula ese interes. La autenticidad no exige la exposicion de la vida privada del docente: exige que su manera de relacionarse sea coherente con los valores que declara sostener.</p>
+
+  <h3>2. Consistencia en el tiempo</h3>
+  <p>Como se mostro en el modelo de proceso, los valores se forman a traves de patrones de interaccion repetidos consistentemente. Un docente que es respetuoso en la primera sesion y descalificador en la quinta no transmite el valor del respeto: transmite incertidumbre relacional. La consistencia no exige perfeccion: el docente puede cometer errores en la interaccion, pero si los reconoce y los repara, ese mismo acto de reconocimiento y reparacion es extraordinariamente formativo.</p>
+
+  <h3>3. Apertura al disenso y a la diferencia</h3>
+  <p>Una interaccion formativa en lo axiologico no puede ser unidireccional. El docente que solo acepta confirmacion de sus planteamientos, que gestiona el grupo de manera que todos dicen lo que el espera escuchar, no genera un espacio de formacion axiologica autentica: genera conformidad. La apertura al disenso, a las perspectivas diversas y a las preguntas incomodas es una condicion necesaria para que la interaccion sea genuinamente formativa.</p>
+
+  <h3>4. Equidad en la calidad de la interaccion</h3>
+  <p>No todos los estudiantes interactuan con igual frecuencia ni facilidad con el docente. Una condicion fundamental para la formacion axiologica a traves de la interaccion es que el docente se relacione con todos los estudiantes, no solo con los mas visibles, los mas activos o los de mayor rendimiento. Los estudiantes que nunca son vistos por el docente aprenden algo sobre su propio valor como personas educativas que ningun discurso sobre la dignidad humana puede contrarrestar.</p>
+
+  <h3>5. Intencionalidad reflexiva</h3>
+  <p>La mayoria de las interacciones pedagogicas ocurren de manera implicita y automatica. Una condicion para que la interaccion sea axiologicamente formativa es que el docente desarrolle la capacidad de reflexionar sobre sus propios patrones de interaccion: que tipos de intercambio establece con mayor frecuencia, con quien, como gestiona las situaciones de tension, que valores se manifiestan en sus respuestas espontaneas. Esta reflexividad es la que convierte la interaccion inevitable en interaccion pedagogicamente responsable.</p>
+
+  <div class="caja si">
+    <div class="caja-tag">Punto de problematizacion ABP</div>
+    <p>Una docente universitaria de Literatura planifica sus sesiones con gran detalle y cuidado, prepara materiales excelentes y conoce profundamente su materia. Sin embargo, cuando revisa su diario de practica al finalizar el semestre, nota el siguiente patron: en las discusiones de clase, siempre responde primero a los mismos cinco o seis estudiantes (los mas extrovertidos y con mejor promedio); cuando otro estudiante interviene con una idea interesante pero expresada con menos fluidez verbal, ella la reformula con sus propias palabras sin atribuirsela al estudiante original; y cuando un estudiante disenite de su interpretacion de un texto, ella lo escucha pero siempre cierra la discusion reafirmando su propia lectura. ¿Que valores esta transmitiendo esta docente a traves de sus patrones de interaccion, independientemente de lo que declara en sus presentaciones de clase? ¿Como podria redisenar sus interacciones para hacerlas mas coherentes con los valores que busca promover? Este caso es el punto de partida de la Actividad 2.</p>
+  </div>
+</section>
+
+<!-- MATERIALES -->
+<section class="bloque gr" id="materiales">
+  <div class="bh">
+    <div class="bicon gr">M</div>
+    <div class="btit">
+      <div class="sup">Recursos academicos de consulta formal</div>
+      <h2>Materiales de Consulta Recomendados</h2>
+    </div>
+  </div>
+  <p>Los siguientes materiales permiten profundizar en los contenidos de esta guia. Se priorizan fuentes academicas de acceso libre o disponibles en bibliotecas universitarias.</p>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El desarrollo de los procesos psicologicos superiores</div><div class="rec-aut">Vygotsky, L. S. (1988). Grijalbo. Obra fundamental sobre el caracter intersubjetivo del aprendizaje y el concepto de zona de desarrollo proximo, base teorica de la interaccion formativa.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Pedagogia del oprimido</div><div class="rec-aut">Freire, P. (2005). Siglo XXI. Analisis del dialogo como practica pedagogica fundamentalmente axiologica y de la interaccion como espacio de construccion de la conciencia critica.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">El profesional reflexivo</div><div class="rec-aut">Schon, D. (1998). Paidos. Marco conceptual sobre la reflexividad del docente en la accion, aplicable al analisis de los propios patrones de interaccion axiologica.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-a">Articulo</div><div><div class="rec-tit">Interaccion, vinculo y aprendizaje: la dimension relacional de la ensenanza</div><div class="rec-aut">Rosales, C. (2006). Revista de Educacion, (341), 373-394. Disponible en Dialnet. Analisis de la interaccion docente-estudiante como espacio de construccion de vinculos y de aprendizajes axiologicos.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-l">Libro</div><div><div class="rec-tit">Ser docente hoy: valores y competencias del educador del siglo XXI</div><div class="rec-aut">Bain, K. (2007). Lo que hacen los mejores profesores universitarios. Universitat de Valencia. Investigacion empirica sobre las practicas de interaccion de los docentes universitarios mas formadores.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-w">Web</div><div><div class="rec-tit">Recursos sobre pedagogia dialogica y formacion axiologica (CREFAL)</div><div class="rec-aut">Centro de Cooperacion Regional para la Educacion de Adultos en America Latina y el Caribe. Disponible en: www.crefal.org/recursos. Perspectiva latinoamericana sobre el dialogo como practica formativa.</div></div></div>
+  <div class="rec-item"><div class="rec-tipo rt-v">Video</div><div><div class="rec-tit">Dialogismo y formacion de valores en el aula universitaria</div><div class="rec-aut">Canal UNAM en YouTube. Busqueda sugerida: "UNAM dialogismo valores aula universitaria". Marco teorico sobre la interaccion como espacio de construccion axiologica en educacion superior.</div></div></div>
+</section>
+
+<!-- ACTIVIDAD 1: FORO -->
+<section class="bloque bo" id="act1">
+  <div class="bh">
+    <div class="bicon bo">1</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 1: Foro de Mediacion y Reflexion Critica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-f">Foro colaborativo &middot; Mediacion pedagogica</div>
+  <div class="caja am">
+    <div class="caja-tag">Proposito</div>
+    <p>Generar un espacio de dialogo argumentado donde los estudiantes identifiquen, desde su experiencia real como universitarios, una interaccion con un docente que haya tenido un impacto axiologico significativo en su formacion, y construyan colaborativamente una comprension mas profunda del potencial formativo de la interaccion pedagogica.</p>
+  </div>
+  <h3>Pregunta detonadora del foro</h3>
+  <div class="cita">
+    <p>Piense en una interaccion concreta que tuvo con algun docente universitario y que, en retrospectiva, considere que le formo o le debilito en algun valor especifico: una conversacion, un momento en clase, una respuesta a su pregunta, el modo en que ese docente gestiono una situacion de tension o dificultad. Describa la interaccion con precision (que ocurrio, como respondio el docente, que sintio y penso usted en ese momento). Identifique: que valor se transmitio a traves de esa interaccion, a traves de cual de los tipos de interaccion descritos en la guia ocurrio, y por que consideras que tuvo el impacto que tuvo sobre su formacion axiologica. Finalmente, reflexione: que te ensenia ese caso sobre el tipo de interacciones que quieres establecer cuando seas docente?</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Ingrese al foro en Google Classroom</strong> con el titulo "Foro 5.1: La Interaccion como Formacion de Valores". Acceda mediante el enlace indicado por el docente en la plataforma.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Reflexione antes de escribir.</strong> Dedique al menos 10 minutos a recordar una interaccion real y especifica con un docente de su trayectoria universitaria. Puede ser una interaccion positiva o negativa. Lo importante es que haya tenido un impacto axiologico real en usted.</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Redacte su participacion inicial</strong> incluyendo: (a) descripcion precisa de la interaccion (contexto, que ocurrio, como respondio el docente); (b) identificacion del tipo de interaccion de la guia que corresponde y del valor transmitido; (c) analisis de por que esa interaccion tuvo el impacto que tuvo (resonancia afectiva, autenticidad, consistencia); (d) reflexion sobre las implicaciones para su propia docencia futura. Extension: 230-380 palabras, registro academico formal.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Lea al menos dos participaciones de companieros</strong> e identifique: que tipos de interaccion aparecen con mas frecuencia, que valores se transmitieron con mayor recurrencia (positiva o negativamente), y que patrones comunes emergen de las experiencias del grupo.</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Realice dos replicas argumentadas</strong> (90-130 palabras cada una): identifique en el caso de su companiero algun elemento del proceso de formacion axiologica de la guia que el no menciono explicitamente, o conecte su experiencia con algun concepto del contenido (zona de desarrollo proximo axiologica, autenticidad relacional, curriculo oculto de la interaccion).</div></div>
+  <div class="paso"><div class="paso-n">6</div><div><strong>Exporte y entregue en Classroom:</strong> captura en imagen o PDF de su participacion y las dos replicas en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div></div>
+  <div class="caja in">
+    <div class="caja-tag">Ejemplo orientador (extracto)</div>
+    <p>"En segundo semestre, en la materia de Teoria Educativa, hice una pregunta sobre una contradiccion que habia encontrado entre dos autores del programa. El docente se detuvo, sonrio, dijo 'esa es una observacion excelente y honestamente no tengo una respuesta clara ahora mismo, vamos a explorarla juntos' y dedico los siguientes 20 minutos de la sesion a que el grupo buscara respuestas colectivamente. Esta interaccion, que segun la tipologia de la guia seria una interaccion docente-grupo activada por una pregunta individual, transmitio al menos tres valores de manera simultanea: humildad intelectual (el docente admitio no saber), apertura (el saber es una construccion colectiva), y respeto intelectual (mi pregunta tenia valor suficiente para detener la planificacion y explorarla). El impacto fue duradero porque rompio un patron que habia observado en muchos otros docentes: la tendencia a responder todas las preguntas con certeza, incluso cuando la certeza es fingida..."</p>
+  </div>
+  <div class="caja si">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>La pregunta detonadora solicita una <strong>interaccion real, concreta y personal</strong> de su propia trayectoria universitaria. Ningun sistema de inteligencia artificial conoce esas interacciones. El docente podra solicitar precision sobre cualquier detalle de la situacion narrada.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Autenticidad y concrecion de la interaccion narrada</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Identificacion correcta del tipo de interaccion y del valor transmitido</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Analisis del impacto con referencia al proceso formativo de la guia</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Calidad argumentativa de las dos replicas dialogicas</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Forma, extension y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba captura o PDF en la tarea "Actividad 1: Foro" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 2: APLICADA -->
+<section class="bloque in" id="act2">
+  <div class="bh">
+    <div class="bicon in">2</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 2: Rediseno de Patrones de Interaccion Axiologica</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-i">Actividad individual &middot; Analisis y diseno aplicado</div>
+  <div class="caja am">
+    <div class="caja-tag">Proposito</div>
+    <p>Desarrollar la capacidad de analisis critico y rediseno de patrones de interaccion pedagogica mediante el estudio del caso de la docente de Literatura presentado en el punto de problematizacion ABP, identificando los valores transmitidos implicitamente a traves de sus interacciones y disenando alternativas concretas que transformen esos patrones.</p>
+  </div>
+  <h3>Situacion de analisis (caso de la docente de Literatura)</h3>
+  <div class="escenario">
+    <div class="esc-tag">Recordatorio del caso ABP</div>
+    <p>Una docente universitaria de Literatura altamente competente en su disciplina presenta tres patrones sistematicos de interaccion: <strong>(1)</strong> en las discusiones grupales, responde consistentemente primero a los cinco o seis estudiantes mas extrovertidos y con mejor promedio; <strong>(2)</strong> cuando un estudiante menos fluido verbalmente hace una aportacion interesante, ella la reformula con sus propias palabras sin atribuirsela al estudiante original; y <strong>(3)</strong> cuando un estudiante disenite de su interpretacion de un texto, escucha pero siempre cierra la discusion reafirmando su propia lectura.</p>
+  </div>
+  <h3>Instrucciones paso a paso</h3>
+  <div class="paso"><div class="paso-n">1</div><div><strong>Analice los tres patrones de interaccion</strong> identificando para cada uno: (a) que tipo de interaccion de la guia corresponde; (b) que valor especifico se transmite a traves de ese patron de manera implicita; (c) en que momento del proceso de formacion axiologica (del modelo de 5 etapas de la guia) tiene mayor impacto ese patron sobre los estudiantes del grupo.</div></div>
+  <div class="paso"><div class="paso-n">2</div><div><strong>Redacte un diagnostico de interaccion axiologica</strong> en 180-220 palabras. Sintetice el perfil axiologico que la docente transmite a sus estudiantes a traves del conjunto de sus tres patrones de interaccion, usando los conceptos especificos de la guia (curriculo oculto de la interaccion, tipos de interaccion, autenticidad, asimetria de poder).</div></div>
+  <div class="paso"><div class="paso-n">3</div><div><strong>Disenya tres interacciones alternativas concretas</strong>: para cada patron identificado, proponga una practica especifica y viable de interaccion que transmita un valor diferente (o el mismo valor de manera mas coherente). Cada propuesta debe describir: la situacion concreta, como interactuaria la docente de manera diferente, que valor se transmite con el cambio y a traves de cual condicion de la guia (autenticidad, consistencia, apertura al disenso, equidad, intencionalidad reflexiva) opera.</div></div>
+  <div class="paso"><div class="paso-n">4</div><div><strong>Responda la pregunta transversal</strong> en 120-150 palabras: ¿es posible que la docente de Literatura este transmitiendo estos valores de manera inconsciente, sin que sea su intencion? Si es asi, ¿que implicacion tiene eso para la formacion del pedagogo respecto a la reflexividad sobre sus propios patrones de interaccion?</div></div>
+  <div class="paso"><div class="paso-n">5</div><div><strong>Prepare el documento final</strong> con portada completa (nombre, matricula, materia, semestre, fecha, docente), el analisis de los tres patrones, el diagnostico integrado, las tres propuestas de interaccion alternativa y la respuesta transversal. Suba en Classroom.</div></div>
+  <div class="caja si">
+    <div class="caja-tag">Criterio anti-IA</div>
+    <p>El analisis y las propuestas deben aplicar de manera especifica y fundamentada los conceptos del contenido de esta guia. El docente puede solicitar que explique verbalmente cualquier elemento del analisis o de las propuestas alternativas disenadas.</p>
+  </div>
+  <h3>Rubrica de evaluacion</h3>
+  <div class="rubr"><div><strong>Analisis de los tres patrones con tipo, valor y etapa del proceso (Paso 1)</strong></div><div class="pts">25 pts</div></div>
+  <div class="rubr"><div><strong>Calidad y coherencia del diagnostico de interaccion axiologica (Paso 2)</strong></div><div class="pts">20 pts</div></div>
+  <div class="rubr"><div><strong>Pertinencia y viabilidad de las tres interacciones alternativas (Paso 3)</strong></div><div class="pts">30 pts</div></div>
+  <div class="rubr"><div><strong>Profundidad de la reflexion sobre inconsciencia e intencionalidad (Paso 4)</strong></div><div class="pts">15 pts</div></div>
+  <div class="rubr"><div><strong>Formato, portada y registro academico</strong></div><div class="pts">10 pts</div></div>
+  <div class="cta"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba el documento en la tarea "Actividad 2: Rediseno de Patrones de Interaccion" antes de la fecha indicada.</div>
+</section>
+
+<!-- ACTIVIDAD 3: QUIZ -->
+<section class="bloque am" id="act3">
+  <div class="bh">
+    <div class="bicon am">3</div>
+    <div class="btit">
+      <div class="sup">Para entregar en Google Classroom</div>
+      <h2>Actividad 3: Quiz de Comprension</h2>
+    </div>
+  </div>
+  <div class="act-badge ab-q">Quiz interactivo &middot; 5 preguntas &middot; Con puntaje</div>
+  <div class="caja in">
+    <div class="caja-tag">Instrucciones</div>
+    <p>Seleccione la opcion correcta en cada pregunta. Recibira retroalimentacion inmediata. Al finalizar, capture su resultado y subalo a Google Classroom.</p>
+  </div>
+  <div class="quiz-wrap" id="quiz">
+    <div class="q-prog">
+      <span class="qt" id="qpt">Pregunta 1 de 5</span>
+      <div class="q-bc"><div class="q-bf" id="qbf" style="width:20%"></div></div>
+      <span class="qt" id="qst">0 / 5</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="qb act" id="q1">
+      <h4>1. Desde la perspectiva vygotskiana, la razon por la que la interaccion pedagogica es especialmente importante en la formacion de valores es que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">A</div><div class="qot">Los valores son contenidos curriculares que deben transmitirse con la misma metodologia que cualquier otro conocimiento disciplinar, a traves de la exposicion y la evaluacion sistematica.</div></div>
+        <div class="qo" onclick="qS(this,'q1',true)"><div class="ql">B</div><div class="qot">El aprendizaje ocurre primero en el espacio entre personas (interpsicologico) antes de internalizarse en el sujeto (intrapsicologico); los valores no se reciben unilateralmente sino que se construyen y se practican en el espacio de la interaccion.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">C</div><div class="qot">La interaccion es el unico mecanismo por el que los valores pueden transmitirse; los libros, los reglamentos y los discursos no tienen ningun efecto en la formacion axiologica de los estudiantes.</div></div>
+        <div class="qo" onclick="qS(this,'q1',false)"><div class="ql">D</div><div class="qot">Los docentes universitarios tienen la obligacion legal de interactuar con sus estudiantes un numero minimo de minutos por sesion para garantizar la calidad del proceso de ensenanza-aprendizaje.</div></div>
+      </div>
+      <div class="qr ok" id="r1ok">Correcto. Desde Vygotsky, el aprendizaje es fundamentalmente intersubjetivo: ocurre primero entre personas antes de internalizarse en el sujeto individual. Aplicado a la formacion axiologica, esto significa que los valores no se reciben de manera unilateral sino que se construyen, negocian y practican en el espacio de la interaccion.</div>
+      <div class="qr fail" id="r1fail">Incorrecto. La respuesta correcta es B. Los valores no son contenidos curriculares equivalentes a otros saberes disciplinares (A). La interaccion no es el unico mecanismo: los libros, discursos y reglamentos tambien transmiten valores, aunque con menor potencia (C). Y la base no es legal sino epistemologica (D).</div>
+      <button class="btn btn-p" id="btn1" onclick="qN('q1','q2',1)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qb" id="q2">
+      <h4>2. Cuando la guia habla de "autenticidad relacional" como condicion para que la interaccion sea axiologicamente formativa, se refiere principalmente a que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">A</div><div class="qot">El docente debe compartir informacion personal y privada con sus estudiantes para establecer una relacion genuina de confianza que facilite la transmision de valores.</div></div>
+        <div class="qo" onclick="qS(this,'q2',true)"><div class="ql">B</div><div class="qot">La manera de relacionarse del docente debe ser coherente con los valores que declara sostener, sin que esto implique la exposicion de su vida privada; el estudiante universitario es especialmente sensible a la diferencia entre el interes genuino y la simulacion.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">C</div><div class="qot">El docente debe actuar siempre de manera espontanea en el aula, sin preparacion previa, para que sus interacciones con los estudiantes sean genuinas y no dirigidas por una planificacion artificial.</div></div>
+        <div class="qo" onclick="qS(this,'q2',false)"><div class="ql">D</div><div class="qot">El docente y el estudiante deben tener valores identicos o muy similares para que la interaccion entre ellos sea autentica y tenga un impacto positivo en la formacion axiologica del segundo.</div></div>
+      </div>
+      <div class="qr ok" id="r2ok">Correcto. La autenticidad relacional se refiere a la coherencia entre los valores que el docente declara y su manera real de relacionarse, sin que esto implique la exposicion de la vida privada. Los estudiantes universitarios son especialmente sensibles a la diferencia entre el interes genuino y la simulacion de ese interes.</div>
+      <div class="qr fail" id="r2fail">Incorrecto. La respuesta correcta es B. La autenticidad no exige exposicion de la vida privada (A). La espontaneidad sin preparacion tampoco es autenticidad: un docente puede planificar interacciones y que estas sean genuinas (C). Y la autenticidad no requiere identidad de valores: puede haber interaccion autentica y formativa incluso entre personas con valores muy diferentes (D).</div>
+      <button class="btn btn-p" id="btn2" onclick="qN('q2','q3',2)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qb" id="q3">
+      <h4>3. El modelo de proceso de formacion de valores a traves de la interaccion senala que una sola interaccion tiene un "impacto limitado" y que lo que realmente forma valores es:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">A</div><div class="qot">La intensidad emocional de la interaccion: una sola interaccion muy emotiva tiene mayor impacto formativo que decenas de interacciones rutinarias durante el mismo periodo.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">B</div><div class="qot">La deliberacion pedagogica: solo las interacciones planificadas conscientemente por el docente con proposito axiologico explicito generan aprendizajes valorativos duraderos en los estudiantes.</div></div>
+        <div class="qo" onclick="qS(this,'q3',true)"><div class="ql">C</div><div class="qot">La acumulacion y sedimentacion de patrones de interaccion repetidos consistentemente a lo largo del tiempo, que se internalizan como aprendizajes axiologicos profundos y duraderos.</div></div>
+        <div class="qo" onclick="qS(this,'q3',false)"><div class="ql">D</div><div class="qot">La cantidad total de horas de contacto entre docente y estudiantes: a mayor numero de horas de clase, mayor sera siempre el impacto en la formacion axiologica del grupo.</div></div>
+      </div>
+      <div class="qr ok" id="r3ok">Correcto. El modelo de proceso establece que lo que forma valores a traves de la interaccion es la acumulacion y sedimentacion de patrones de interaccion repetidos consistentemente. Una sola interaccion puede ser poderosa, pero son los patrones sostenidos en el tiempo los que generan aprendizajes axiologicos profundos y duraderos.</div>
+      <div class="qr fail" id="r3fail">Incorrecto. La respuesta correcta es C. La intensidad emocional (A) puede potenciar el impacto de una interaccion, pero el modelo senala la consistencia en el tiempo como factor determinante. Solo las interacciones deliberadas (B) excluye incorrectamente las interacciones implicitas. Y la cantidad de horas (D) no garantiza calidad axiologica de las interacciones.</div>
+      <button class="btn btn-p" id="btn3" onclick="qN('q3','q4',3)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qb" id="q4">
+      <h4>4. Cuando la docente de Literatura reformula con sus propias palabras la aportacion de un estudiante menos fluido verbalmente, sin atribuirsela a ese estudiante, el valor que transmite a traves de esa interaccion a todo el grupo es principalmente:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">A</div><div class="qot">El valor de la eficiencia comunicativa: la docente optimiza el flujo de la discusion reformulando las ideas para que sean mas claras y accesibles para el resto del grupo.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">B</div><div class="qot">El valor del cuidado hacia los estudiantes con dificultades de expresion verbal: al reformular, la docente protege a ese estudiante de quedar expuesto frente al grupo.</div></div>
+        <div class="qo" onclick="qS(this,'q4',true)"><div class="ql">C</div><div class="qot">Un contravalor de la equidad y el reconocimiento: el grupo aprende que las ideas solo tienen valor cuando son expresadas con fluidez o validadas por la autoridad del docente, y que la autoria intelectual de los menos fluidos no merece reconocimiento publico.</div></div>
+        <div class="qo" onclick="qS(this,'q4',false)"><div class="ql">D</div><div class="qot">El valor de la humildad academica: al utilizar las ideas de sus estudiantes en lugar de solo sus propias, la docente demuestra que el conocimiento se construye colectivamente en el aula.</div></div>
+      </div>
+      <div class="qr ok" id="r4ok">Correcto. Al reformular sin atribuir la idea al estudiante que la genero, la docente transmite implicitamente, a traves del curriculo oculto de esa interaccion, que la autoria intelectual de los estudiantes menos fluidos verbalmente no merece reconocimiento publico. El grupo aprende que las ideas solo adquieren valor cuando son mediadas y validadas por la autoridad academica.</div>
+      <div class="qr fail" id="r4fail">Incorrecto. La respuesta correcta es C. La eficiencia comunicativa (A) no explica la omision de la atribucion al estudiante original. El cuidado protector (B) malinterpreta el efecto: el grupo observa que las ideas de ciertos estudiantes no reciben reconocimiento directo. Y la humildad academica (D) requeriria precisamente que la docente atribuyera la idea a su autor original.</div>
+      <button class="btn btn-p" id="btn4" onclick="qN('q4','q5',4)" disabled>Verificar y continuar</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qb" id="q5">
+      <h4>5. La condicion de "equidad en la calidad de la interaccion" implica, segun la guia, que:</h4>
+      <div class="q-opts">
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">A</div><div class="qot">El docente debe interactuar exactamente el mismo numero de minutos con cada estudiante en cada sesion de clase, independientemente de las necesidades y contribuciones individuales.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">B</div><div class="qot">El docente debe evaluar a todos los estudiantes con los mismos criterios y los mismos instrumentos de evaluacion para garantizar la equidad del proceso pedagogico.</div></div>
+        <div class="qo" onclick="qS(this,'q5',true)"><div class="ql">C</div><div class="qot">El docente debe relacionarse con todos los estudiantes, no solo con los mas visibles o de mayor rendimiento, porque los estudiantes que nunca son vistos aprenden algo sobre su propio valor como personas que ningun discurso sobre la dignidad puede contrarrestar.</div></div>
+        <div class="qo" onclick="qS(this,'q5',false)"><div class="ql">D</div><div class="qot">Todos los estudiantes deben tener exactamente las mismas oportunidades de participacion verbal en cada sesion de clase, lo que el docente debe garantizar mediante turnos rotativos obligatorios.</div></div>
+      </div>
+      <div class="qr ok" id="r5ok">Correcto. La equidad en la calidad de la interaccion no es igualdad aritmetica de tiempo (A) ni se refiere exclusivamente a los criterios de evaluacion (B) ni exige turnos rotatorios artificiales (D). Se refiere a que el docente establezca relaciones de reconocimiento y cuidado con todos sus estudiantes, no solo con los mas visibles o activos, porque la invisibilizacion sistematica transmite un mensaje axiologico poderoso sobre el valor de la persona.</div>
+      <div class="qr fail" id="r5fail">Incorrecto. La respuesta correcta es C. La equidad no es igualdad aritmetica de tiempo de interaccion (A). No se refiere a los criterios de evaluacion (B), aunque la equidad evaluativa tambien es importante. Y los turnos rotativos obligatorios (D) son un mecanismo posible pero no la definicion de equidad en la interaccion que la guia propone.</div>
+      <button class="btn btn-p" id="btn5" onclick="qRes()" disabled>Ver resultado final</button>
+    </div>
+
+    <div class="q-res" id="q-res">
+      <div class="q-sc" id="qsd">0<span>/5</span></div>
+      <div class="q-niv" id="qniv"></div>
+      <div class="q-msg" id="qmsg"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-s" onclick="location.reload()">Intentar nuevamente</button>
+        <button class="btn btn-p" onclick="window.print()">Imprimir resultado</button>
+      </div>
+      <div style="margin-top:20px;padding:16px;background:var(--ind-s);border-radius:8px;font-size:0.87rem;color:var(--ind-m);border:1px solid var(--borde);">Capture una imagen de esta pantalla con su puntaje visible y subala a Google Classroom como evidencia.</div>
+    </div>
+  </div>
+  <div class="cta" style="margin-top:24px;"><strong>Entregar en Google Classroom:</strong>&nbsp; Suba la captura en la tarea "Actividad 3: Quiz Interaccion y Formacion de Valores".</div>
+</section>
+
+<!-- REFLEXION FINAL -->
+<section class="bloque bo" id="reflexion">
+  <div class="bh">
+    <div class="bicon bo">R</div>
+    <div class="btit">
+      <div class="sup">Cierre formativo &middot; Metacognicion y proyeccion profesional</div>
+      <h2>Reflexion Final y Plan de Aplicacion</h2>
+    </div>
+  </div>
+  <p>Esta seccion integra los aprendizajes mediante un ejercicio de metacognicion y proyeccion profesional. Las respuestas deben ser autenticas, personales y ancladas en su experiencia real y en su futuro como educador.</p>
+
+  <div class="refl"><label>1. De los cinco tipos de interaccion descritos en la guia (docente-estudiante individual, docente-grupo, entre estudiantes, con el conocimiento, en situaciones de tension moral), cual considera que sera su mayor fortaleza natural cuando ejerza la docencia, y cual sera su mayor desafio? Argumente con base en su experiencia actual como estudiante y como persona.</label><textarea placeholder="Identifique su fortaleza y su desafio, argumente con experiencias concretas y reflexione sobre como trabajara su area de mejora..."></textarea></div>
+
+  <div class="refl"><label>2. Piense en un patron de interaccion que usted observe con frecuencia entre docentes de su universidad que considere axiologicamente negativo (que transmita un valor que no desea reproducir en su futura practica). Describa el patron con precision y proponga una interaccion alternativa concreta que lo transforme positivamente.</label><textarea placeholder="Describa el patron con precision, identifique el valor que transmite y proponga una alternativa concreta y viable..."></textarea></div>
+
+  <div class="refl"><label>3. El modelo de proceso senala que la formacion de valores a traves de la interaccion culmina cuando el valor se transfiere a las propias interacciones del estudiante. Identifique un valor que considere haber internalizado a traves de una interaccion significativa con algun docente de su trayectoria. ¿Como se ha manifestado ese valor en sus propias interacciones como estudiante o en otros contextos de su vida?</label><textarea placeholder="Identifique el valor, la interaccion que lo genero y como se ha manifestado en sus propias relaciones con otros..."></textarea></div>
+
+  <div class="refl"><label>4. En los proximos 15 dias, ¿que accion concreta tomara para mejorar la calidad axiologica de sus propias interacciones como estudiante universitario (con sus companeros, con sus docentes, con el personal de su institucion)? Especifique: que tipo de interaccion mejorara, en que contexto especifico, que hara diferente y como reconocera que avanzo.</label><textarea placeholder="Sea muy especifico: que tipo de interaccion, en que contexto, que hara diferente, como sabra que mejoro..."></textarea></div>
+
+  <div class="caja am">
+    <div class="caja-tag">Instrucciones para la entrega</div>
+    <p>Las respuestas se entregaran como documento independiente en la tarea "Reflexion Final: La Interaccion y la Formacion de Valores" en Google Classroom. Extension minima por respuesta: 130 palabras. Se evaluaran la profundidad reflexiva, la autenticidad del analisis y la coherencia con los contenidos de la guia.</p>
+  </div>
+
+  <h3>Referencias bibliograficas (APA 7.a edicion)</h3>
+  <ul class="l">
+    <li>Bain, K. (2007). <em>Lo que hacen los mejores profesores universitarios</em>. Universitat de Valencia.</li>
+    <li>Freire, P. (2005). <em>Pedagogia del oprimido</em>. Siglo XXI. (Obra original publicada en 1968).</li>
+    <li>Rosales, C. (2006). Interaccion, vinculo y aprendizaje. <em>Revista de Educacion</em>, (341), 373-394.</li>
+    <li>Schon, D. (1998). <em>El profesional reflexivo: como piensan los profesionales cuando actuan</em>. Paidos.</li>
+    <li>Vygotsky, L. S. (1988). <em>El desarrollo de los procesos psicologicos superiores</em>. Grijalbo.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <strong>Universidad de la Cienega &middot; Licenciatura en Pedagogia</strong><br>
+  Materia: Valores y Educacion &middot; Tema 5: El Docente como Transmisor de Valores<br>
+  Subtema 5.1: La Interaccion y su Importancia en la Formacion de Valores<br>
+  Guia disenada con metodologia constructivista, pedagogia activa y aprendizaje basado en problemas<br>
+  Material de uso educativo exclusivo &middot; Para compartir en GitHub Pages sin modificaciones
+</footer>
+
+<script>
+function kpR(btn, ok) {
+  document.querySelectorAll(".kp-btn").forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+  btn.classList.add(ok?"ok":"no");
+  var fb = document.getElementById("kp-fb");
+  fb.classList.add("show");
+  if(ok){ fb.innerHTML="<strong>Respuesta acertada.</strong> Exactamente: en ese momento el docente realiza una interaccion pedagogica formativa. A traves de esa accion concreta transmite, sin necesidad de declararlos, los valores de respeto intelectual, apertura al conocimiento y la conviccion de que el saber se construye dialogicamente. Esto es lo que hace a la interaccion el espacio axiologico mas potente del proceso educativo."; }
+  else { fb.innerHTML="<strong>La respuesta correcta es B.</strong> No es una tecnica de manejo de grupo (A), ni una estrategia para ganar tiempo frente a contenidos desconocidos (C), ni una evaluacion diagnostica informal (D). Es una interaccion formativa que transmite valores de manera autentica y poderosa a traves del comportamiento real del docente, no de sus declaraciones."; }
+}
+var qE={pts:0,resp:{}};
+function qS(el,qid,ok){
+  if(qE.resp[qid]!==undefined) return;
+  qE.resp[qid]=ok;
+  el.parentElement.querySelectorAll(".qo").forEach(function(o){ o.onclick=null; o.style.cursor="default"; });
+  el.classList.add("sel");
+  if(ok){el.classList.add("ok");qE.pts++;}
+  else{el.classList.add("fail");}
+  var n=qid.replace("q","");
+  document.getElementById("r"+n+(ok?"ok":"fail")).classList.add("show");
+  document.getElementById("btn"+n).disabled=false;
+  var c=Object.values(qE.resp).filter(function(v){return v;}).length;
+  document.getElementById("qst").textContent=c+" / "+Object.keys(qE.resp).length;
+}
+function qN(cur,next,num){
+  document.getElementById(cur).classList.remove("act");
+  document.getElementById(next).classList.add("act");
+  document.getElementById("qpt").textContent="Pregunta "+(num+1)+" de 5";
+  document.getElementById("qbf").style.width=((num+1)*20)+"%";
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+function qRes(){
+  document.getElementById("q5").classList.remove("act");
+  var r=document.getElementById("q-res");
+  r.classList.add("show");
+  var p=qE.pts;
+  document.getElementById("qsd").innerHTML=p+"<span>/5</span>";
+  document.getElementById("qpt").textContent="Completado";
+  document.getElementById("qbf").style.width="100%";
+  document.getElementById("qst").textContent=p+" / 5";
+  var niv,msg,col;
+  if(p===5){niv="Dominio sobresaliente";msg="Ha demostrado una comprension solida e integrada de la importancia de la interaccion en la formacion axiologica. Esta preparado para diseniar interacciones pedagogicamente responsables en su futura practica docente.";col="var(--bosque)";}
+  else if(p===4){niv="Dominio satisfactorio";msg="Ha respondido correctamente la mayoria de los planteamientos. Revise los conceptos de las preguntas donde recibio retroalimentacion de mejora.";col="var(--ind-m)";}
+  else if(p===3){niv="Dominio en proceso";msg="Ha comprendido los conceptos centrales, pero algunos requieren mayor profundizacion. Relea las secciones vinculadas a los errores.";col="var(--amati)";}
+  else{niv="Requiere refuerzo";msg="Algunos conceptos fundamentales necesitan revision sistematica. Relea el contenido completo de la guia antes de retomar el quiz.";col="var(--siena)";}
+  var nel=document.getElementById("qniv"); nel.textContent=niv; nel.style.color=col;
+  document.getElementById("qmsg").textContent=msg;
+  window.scrollTo({top:document.getElementById("act3").offsetTop-70,behavior:"smooth"});
+}
+document.querySelectorAll("nav a").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute("href"));
+    if(t) window.scrollTo({top:t.offsetTop-54,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>

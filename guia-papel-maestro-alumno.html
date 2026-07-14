@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papel del Maestro y del Alumno | Analisis Comparativo | UdC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bosque:#1e4d35;--bosque-m:#2e7050;--bosque-cl:#cce8d8;--bosque-xs:#edf7f2;
+  --terra:#8b3a1a;--terra-m:#b54f22;--terra-cl:#f5ddd0;--terra-xs:#fdf4ef;
+  --ocre:#7a5c00;--ocre-cl:#f5e8c0;
+  --indigo:#2a3060;--indigo-cl:#d8dcf0;
+  --arena:#b08040;--arena-cl:#f5ead0;
+  --papel:#f5f2eb;--papel-m:#ece6da;--papel-d:#ddd6c5;
+  --texto:#1a150e;--texto2:#3d3020;--texto3:#7a6850;
+  --borde:#cec5b0;--blanco:#ffffff;
+  --sombra:0 3px 18px rgba(26,21,14,.09);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--papel);color:var(--texto);line-height:1.74;font-size:15px}
+
+/* BARRA */
+.barra{background:var(--indigo);padding:8px 28px;display:flex;align-items:center;gap:14px}
+.barra img{height:38px;width:auto}
+.barra-txt{flex:1}
+.barra-txt .nom{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85)}
+.barra-txt .sub{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.barra-nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.barra-nav a{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.48);text-decoration:none;padding:4px 10px;border:1px solid rgba(255,255,255,.14);border-radius:1px;transition:all .2s;white-space:nowrap}
+.barra-nav a:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* HERO */
+.hero{background:var(--bosque);position:relative;overflow:hidden}
+.hero-tex{position:absolute;inset:0;opacity:.05;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.5) 1px,transparent 1px,transparent 28px),
+  repeating-linear-gradient(-45deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.5) 1px,transparent 1px,transparent 28px)}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 280px;align-items:center;gap:40px;padding:52px 36px 44px;position:relative;z-index:1}
+.hero-kicker{font-family:"Roboto Mono",monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-cl);margin-bottom:14px}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(1.9rem,4vw,3.1rem);font-weight:700;color:var(--blanco);line-height:1.05;margin-bottom:10px}
+.hero h1 em{color:var(--terra-cl);font-style:italic;font-weight:400}
+.hero-sub{font-family:"Playfair Display",serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.52);margin-bottom:20px}
+.hero-desc{font-size:.88rem;color:rgba(255,255,255,.48);max-width:500px;line-height:1.7;margin-bottom:24px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:"Roboto Mono",monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:1px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
+.chip.terra{border-color:var(--terra-cl);color:var(--terra-cl)}
+
+/* Diagram roles hero */
+.roles-diagram{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:20px 16px;flex-shrink:0;width:260px}
+.role-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.role-row:last-child{margin-bottom:0}
+.role-tag{font-family:"Roboto Mono",monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);min-width:52px}
+.role-bar-wrap{flex:1;height:22px;border-radius:2px;overflow:hidden;position:relative}
+.role-bar{height:100%;border-radius:2px;display:flex;align-items:center;padding-left:8px}
+.role-bar span{font-family:"Roboto Mono",monospace;font-size:7px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.roles-caption{font-family:"Roboto Mono",monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:12px;text-align:center}
+
+/* LAYOUT */
+.page{max-width:1100px;margin:0 auto;padding:0 22px}
+.layout{display:grid;grid-template-columns:192px 1fr;gap:26px;align-items:start;padding:40px 0 80px}
+.sidebar{position:sticky;top:82px}
+.side-label{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--bosque);margin-bottom:10px;padding-left:10px}
+.side-list{list-style:none}
+.side-list li{border-left:2px solid var(--borde);transition:border-color .2s}
+.side-list li.on{border-left-color:var(--terra)}
+.side-list a{display:block;padding:6px 10px;font-size:.79rem;font-weight:500;color:var(--texto2);text-decoration:none;line-height:1.3;transition:color .2s}
+.side-list a:hover,.side-list li.on a{color:var(--terra);font-weight:700}
+.s-sep{height:1px;background:var(--borde);margin:7px 0}
+
+/* CARDS */
+.card{background:var(--blanco);border:1px solid var(--borde);border-radius:4px;margin-bottom:26px;overflow:hidden;box-shadow:var(--sombra)}
+.card-head{padding:15px 24px;display:flex;align-items:center;gap:12px}
+.card-head.bosque{background:var(--bosque)}
+.card-head.terra{background:var(--terra)}
+.card-head.ocre{background:var(--ocre)}
+.card-head.indigo{background:var(--indigo)}
+.card-head.arena{background:var(--arena)}
+.card-head.negro{background:var(--texto)}
+.card-head.papel{background:var(--papel-m)}
+
+.ch-i{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:700;color:rgba(255,255,255,.18);line-height:1;min-width:34px}
+.ch-i.dk{color:rgba(0,0,0,.12)}
+.ch-t h2{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:var(--blanco);line-height:1.2}
+.ch-t h2.dk{color:var(--texto)}
+.ch-t .sub{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px}
+.ch-t .sub.dk{color:var(--texto3)}
+
+.card-body{padding:26px 30px}
+
+/* TIPOGRAFIA */
+h3{font-family:"Playfair Display",serif;font-size:1.08rem;font-weight:700;color:var(--bosque);margin:24px 0 10px}
+h3:first-child{margin-top:0}
+h4{font-family:"Plus Jakarta Sans",sans-serif;font-size:.8rem;font-weight:700;color:var(--texto);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 7px}
+h4:first-child{margin-top:0}
+p{color:var(--texto2);margin-bottom:11px;font-size:.91rem;line-height:1.73}
+p:last-child{margin-bottom:0}
+strong{color:var(--texto);font-weight:700}
+
+/* CAJAS */
+.caja{padding:13px 17px;border-radius:3px;margin:13px 0;font-size:.89rem}
+.caja.bo{background:var(--bosque-xs);border-left:3px solid var(--bosque-m)}
+.caja.te{background:var(--terra-xs);border-left:3px solid var(--terra-m)}
+.caja.oc{background:var(--ocre-cl);border-left:3px solid var(--ocre)}
+.caja.in{background:var(--indigo-cl);border-left:3px solid var(--indigo)}
+.caja.warn{background:#fffce0;border:1px solid #d8c020;border-radius:3px}
+.caja-tit{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.caja.bo .caja-tit{color:var(--bosque-m)}.caja.te .caja-tit{color:var(--terra-m)}
+.caja.oc .caja-tit{color:var(--ocre)}.caja.in .caja-tit{color:var(--indigo)}
+
+.cita{font-family:"Playfair Display",serif;font-size:1.04rem;font-style:italic;color:var(--texto);border-left:3px solid var(--terra-m);padding:12px 18px;background:var(--terra-xs);border-radius:0 3px 3px 0;margin:15px 0}
+.cita cite{display:block;font-style:normal;font-family:"Roboto Mono",monospace;font-size:8.5px;color:var(--terra-m);margin-top:6px;letter-spacing:.08em}
+
+/* TABLA COMPARATIVA ROLES */
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+thead tr{background:var(--bosque);color:var(--blanco)}
+thead th{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:10px 12px;text-align:left;font-weight:400}
+tbody tr:nth-child(even){background:var(--bosque-xs)}
+tbody tr:hover{background:var(--terra-xs)}
+td{padding:9px 12px;border-bottom:1px solid var(--borde);color:var(--texto2);vertical-align:top;font-size:.84rem}
+td strong{color:var(--bosque)}
+
+/* GRID ROLES VISUAL */
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.role-card{border-radius:4px;overflow:hidden;border:1px solid var(--borde)}
+.role-card-head{padding:12px 16px;display:flex;align-items:center;gap:10px}
+.role-card-head.maestro{background:var(--bosque)}
+.role-card-head.alumno{background:var(--terra)}
+.role-icon{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:700;color:rgba(255,255,255,.25);min-width:30px}
+.role-title{font-family:"Playfair Display",serif;font-size:.95rem;font-weight:700;color:var(--blanco)}
+.role-sub{font-family:"Roboto Mono",monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px}
+.role-body{padding:14px 16px;background:var(--blanco)}
+.role-item{display:flex;gap:8px;margin-bottom:7px;font-size:.84rem;color:var(--texto2);line-height:1.5}
+.role-item:last-child{margin-bottom:0}
+.role-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.role-dot.bo{background:var(--bosque)}.role-dot.te{background:var(--terra)}
+
+/* CONTINUUM VISUAL */
+.continuum{margin:16px 0;border:1px solid var(--borde);border-radius:3px;overflow:hidden}
+.cont-head{background:var(--papel-m);padding:10px 16px;border-bottom:1px solid var(--borde)}
+.cont-head span{font-family:"Roboto Mono",monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bosque);font-weight:500}
+.cont-body{padding:16px}
+.cont-row{margin-bottom:14px}
+.cont-row:last-child{margin-bottom:0}
+.cont-label{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3);margin-bottom:6px}
+.cont-track{height:28px;border-radius:2px;background:var(--papel-m);position:relative;overflow:hidden}
+.cont-fill{height:100%;border-radius:2px;display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+.cont-fill span{font-family:"Roboto Mono",monospace;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.cont-pole-left{font-size:.75rem;color:var(--bosque);margin-right:4px;font-weight:700}
+.cont-pole-right{font-size:.75rem;color:var(--terra);margin-left:4px;font-weight:700}
+
+/* PASOS */
+.pasos{counter-reset:p;list-style:none;margin:12px 0}
+.pasos li{display:flex;gap:12px;margin-bottom:10px;counter-increment:p;align-items:flex-start}
+.pasos li::before{content:counter(p);background:var(--bosque);color:var(--blanco);font-family:"Playfair Display",serif;font-weight:700;font-size:.88rem;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.pasos.te li::before{background:var(--terra)}.pasos.oc li::before{background:var(--ocre)}.pasos.in li::before{background:var(--indigo)}
+.pasos li p{margin:0;font-size:.9rem}
+
+/* BOTONES */
+.btn{display:inline-block;padding:8px 20px;font-family:"Roboto Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all .2s}
+.btn.bo{background:var(--bosque);color:var(--blanco)}.btn.bo:hover{background:#122e1f}
+.btn.te{background:var(--terra);color:var(--blanco)}.btn.te:hover{background:#6b2610}
+.btn.oc{background:var(--ocre);color:var(--blanco)}.btn.oc:hover{background:#5a4300}
+.btn.in{background:var(--indigo);color:var(--blanco)}.btn.in:hover{background:#181e40}
+.btn.out{background:transparent;color:var(--bosque);border:1.5px solid var(--borde)}.btn.out:hover{background:var(--bosque-xs)}
+
+.class-tag{display:inline-flex;align-items:center;gap:7px;background:#1a73e8;color:var(--blanco);font-family:"Roboto Mono",monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin:10px 0 14px}
+.class-tag::before{content:"\25BA";font-size:7px}
+
+/* RUBRICA */
+.rubrica{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:13px 0}
+.crit{border:1px solid var(--borde);border-radius:3px;padding:11px 13px;background:var(--blanco)}
+.crit .cn{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3);margin-bottom:4px}
+.crit .cp{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;color:var(--bosque);line-height:1;margin-bottom:4px}
+.crit .cp span{font-size:.86rem;font-weight:300;font-family:"Plus Jakarta Sans",sans-serif;color:var(--texto3)}
+.crit p{font-size:.81rem;margin:0;color:var(--texto2)}
+
+/* PREVIOS */
+.prev-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.prev-item{border:1.5px solid var(--borde);border-radius:3px;padding:12px;background:var(--papel)}
+.prev-item label{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto3);display:block;margin-bottom:7px}
+.prev-item textarea{width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px 11px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.87rem;color:var(--texto);background:var(--blanco);outline:none;resize:vertical;min-height:78px;transition:border-color .2s}
+.prev-item textarea:focus{border-color:var(--bosque-m)}
+
+/* RECURSOS */
+.recursos{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+.rec{display:flex;align-items:flex-start;gap:11px;padding:11px 14px;border:1px solid var(--borde);border-radius:3px;background:var(--blanco);transition:box-shadow .2s,border-color .2s}
+.rec:hover{border-color:var(--terra);box-shadow:var(--sombra)}
+.rec-tipo{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:1px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.rec-tipo.lib{background:var(--bosque-cl);color:var(--bosque)}.rec-tipo.pdf{background:var(--terra-cl);color:var(--terra)}.rec-tipo.vid{background:var(--indigo-cl);color:var(--indigo)}.rec-tipo.web{background:var(--ocre-cl);color:var(--ocre)}
+.rec-info .rec-tit{font-weight:700;font-size:.88rem;color:var(--bosque);margin-bottom:2px}
+.rec-info .rec-desc{font-size:.82rem;color:var(--texto2)}
+.rec-info .rec-aut{font-family:"Roboto Mono",monospace;font-size:8px;color:var(--texto3);margin-top:3px;letter-spacing:.07em}
+
+/* FORO */
+.foro{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;margin:12px 0}
+.foro-head{background:var(--papel-m);padding:10px 17px;border-bottom:1px solid var(--borde)}
+.foro-head span{font-family:"Roboto Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--bosque);font-weight:500}
+.foro-pq{padding:16px 19px;font-family:"Playfair Display",serif;font-size:1rem;font-style:italic;color:var(--texto);line-height:1.65;background:var(--blanco);border-bottom:1px solid var(--borde)}
+.foro-in{padding:13px 17px}
+.foro-in label{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto3);display:block;margin-bottom:7px}
+.foro-in textarea{width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:10px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.88rem;color:var(--texto);resize:vertical;min-height:100px;background:var(--papel);outline:none;transition:border-color .2s}
+.foro-in textarea:focus{border-color:var(--bosque);background:var(--blanco)}
+.ej{margin-top:10px;padding:12px 14px;background:var(--bosque-xs);border-radius:3px;border-left:3px solid var(--bosque-m);font-size:.84rem;color:var(--texto2);display:none;line-height:1.6}
+.ej.vis{display:block}
+
+/* CASO */
+.caso-txt{background:var(--papel);border-left:4px solid var(--terra-m);padding:16px 20px;border-radius:0 3px 3px 0;margin:13px 0;font-family:"Playfair Display",serif;font-size:.98rem;line-height:1.8;color:var(--texto)}
+.caso-txt em{color:var(--terra);font-style:normal;font-weight:700;font-family:"Plus Jakarta Sans",sans-serif;font-size:.88rem}
+.caso-qs{margin:13px 0}
+.cq{border:1px solid var(--borde);border-radius:3px;overflow:hidden;margin-bottom:9px}
+.cq-head{background:var(--papel-m);padding:9px 13px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.87rem;color:var(--texto)}
+.cq-n{background:var(--terra);color:var(--blanco);font-size:.88rem;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cq-body{padding:10px 13px}
+.cq-body textarea{width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:9px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.86rem;color:var(--texto);resize:vertical;min-height:74px;background:var(--blanco);outline:none;transition:border-color .2s}
+.cq-body textarea:focus{border-color:var(--terra)}
+
+/* QUIZ */
+.qbar-wrap{display:flex;align-items:center;gap:11px;padding:10px 13px;background:var(--papel-m);border-radius:3px;margin-bottom:12px}
+.qbt{flex:1;height:4px;background:var(--borde);border-radius:2px;overflow:hidden}
+.qbf{height:100%;background:var(--bosque);transition:width .4s;border-radius:2px}
+.qbl{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.1em;color:var(--texto3);white-space:nowrap}
+.qcard{border:1.5px solid var(--borde);border-radius:4px;overflow:hidden;display:none}
+.qcard.on{display:block}
+.qnum{background:var(--ocre);color:var(--blanco);padding:7px 15px;font-family:"Roboto Mono",monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase}
+.qtxt{padding:15px 19px 10px;font-size:.93rem;font-weight:700;color:var(--texto);line-height:1.5}
+.qopts{padding:0 19px 13px}
+.qopt{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;margin-bottom:6px;border:1.5px solid var(--borde);border-radius:2px;cursor:pointer;transition:all .2s;font-size:.85rem;color:var(--texto2);user-select:none}
+.qopt:hover:not(.lock){border-color:var(--bosque-m);background:var(--bosque-xs);color:var(--bosque)}
+.qopt.ok{background:var(--bosque-cl);border-color:var(--bosque);color:var(--bosque)}
+.qopt.err{background:var(--terra-cl);border-color:var(--terra);color:var(--terra)}
+.qopt.lock{cursor:default}
+.qletra{font-family:"Playfair Display",serif;font-weight:700;font-size:.87rem;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid currentColor;flex-shrink:0;margin-top:1px}
+.qfb{margin:4px 19px 12px;padding:10px 13px;border-radius:2px;font-size:.85rem;display:none;line-height:1.55}
+.qfb.vis{display:block}
+.qfb.ok{background:var(--bosque-cl);color:#0f3820;border-left:3px solid var(--bosque)}
+.qfb.err{background:var(--terra-cl);color:#6b1a0a;border-left:3px solid var(--terra)}
+.qnav{padding:0 19px 12px;display:flex;justify-content:flex-end}
+.qres{display:none;text-align:center;padding:44px 28px;border:1.5px solid var(--borde);border-radius:4px}
+.qres.vis{display:block}
+.rpct{font-family:"Playfair Display",serif;font-size:5rem;font-weight:700;line-height:1;margin-bottom:5px}
+.rpct.ex{color:var(--bosque)}.rpct.bn{color:var(--indigo)}.rpct.rg{color:var(--ocre)}.rpct.bj{color:var(--terra)}
+.rlbl{font-family:"Roboto Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.rmsg{font-size:.91rem;color:var(--texto2);max-width:460px;margin:0 auto 20px}
+.rstats{display:flex;justify-content:center;gap:28px;margin-bottom:20px}
+.rstat .n{font-family:"Playfair Display",serif;font-size:2.2rem;font-weight:700}
+.rstat .n.v{color:var(--bosque)}.rstat .n.r{color:var(--terra)}
+.rstat .l{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto3)}
+
+/* REFLEXION */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.ref-campo label{font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--texto3);display:block;margin-bottom:6px}
+.ref-campo textarea{width:100%;border:1.5px solid var(--borde);border-radius:2px;padding:10px 12px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.87rem;color:var(--texto);background:var(--papel);outline:none;resize:vertical;min-height:84px;transition:border-color .2s}
+.ref-campo textarea:focus{border-color:var(--terra-m);background:var(--blanco)}
+
+footer{background:var(--texto);color:rgba(255,255,255,.28);text-align:center;padding:22px;font-family:"Roboto Mono",monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;line-height:2.2}
+footer strong{color:rgba(255,255,255,.7)}
+
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}.sidebar{position:static}
+  .barra-nav{display:none}.hero-inner{grid-template-columns:1fr}.roles-diagram{display:none}
+  .card-body{padding:18px 16px}.prev-grid,.ref-grid{grid-template-columns:1fr}
+  .rubrica{grid-template-columns:1fr 1fr}.roles-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <img alt="UdC" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==">
+  <div class="barra-txt">
+    <div class="nom">Universidad de la Cienega - Plantel Centro</div>
+    <div class="sub">Licenciatura en Pedagogia - Teorias del Aprendizaje - Temas 3.2 y 3.3</div>
+  </div>
+  <nav class="barra-nav">
+    <a href="#intro">Intro</a><a href="#previos">Previos</a>
+    <a href="#contenido">Contenido</a><a href="#materiales">Materiales</a>
+    <a href="#act1">Foro</a><a href="#act2">Act.2</a>
+    <a href="#act3">Caso</a><a href="#act4">Quiz</a><a href="#reflexion">Reflexion</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-tex"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker">Tema 3 - Subtemas 3.2 y 3.3 - Analisis Comparativo - Guia Integradora</div>
+      <h1>Analisis Comparativo:<br><em>Papel del Maestro<br>y Papel del Alumno</em></h1>
+      <div class="hero-sub">3.2 El rol docente y 3.3 el rol del estudiante segun cada teoria</div>
+      <p class="hero-desc">Cada teoria del conocimiento revisada en la unidad define de manera radicalmente diferente quien es el maestro, quien es el alumno, y que tipo de relacion pedagogica debe existir entre ellos. Comparar esas definiciones te permitira fundamentar conscientemente tu propia practica docente futura.</p>
+      <div class="hero-chips">
+        <span class="chip">Lic. en Pedagogia</span>
+        <span class="chip">Guia Integradora</span>
+        <span class="chip terra">Analisis Comparativo - ABP</span>
+        <span class="chip">Temas 3.2 y 3.3</span>
+      </div>
+    </div>
+    <div class="roles-diagram">
+      <div class="role-row">
+        <span class="role-tag">Maestro</span>
+        <div class="role-bar-wrap">
+          <div class="role-bar" style="background:var(--bosque);width:100%"><span>Rol activo</span></div>
+        </div>
+      </div>
+      <div class="role-row">
+        <span class="role-tag">Alumno</span>
+        <div class="role-bar-wrap">
+          <div class="role-bar" style="background:var(--terra-m);width:100%"><span>Rol pasivo</span></div>
+        </div>
+      </div>
+      <div style="height:10px;border-left:1px solid rgba(255,255,255,.15);margin:8px auto;width:1px"></div>
+      <div class="role-row">
+        <span class="role-tag">Maestro</span>
+        <div class="role-bar-wrap">
+          <div class="role-bar" style="background:linear-gradient(90deg,var(--bosque) 50%,var(--terra-m) 100%);width:100%"><span>Facilitador</span></div>
+        </div>
+      </div>
+      <div class="role-row">
+        <span class="role-tag">Alumno</span>
+        <div class="role-bar-wrap">
+          <div class="role-bar" style="background:linear-gradient(90deg,var(--terra-m) 50%,var(--bosque) 100%);width:100%"><span>Constructor</span></div>
+        </div>
+      </div>
+      <div class="roles-caption"><strong>Tension entre roles</strong><br>segun cada enfoque teorico</div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="side-label">Indice</div>
+  <ul class="side-list">
+    <li><a href="#intro">Introduccion</a></li>
+    <li><a href="#previos">Conocimientos previos</a></li>
+    <div class="s-sep"></div>
+    <li><a href="#contenido">Contenido tematico</a></li>
+    <li><a href="#materiales">Materiales de consulta</a></li>
+    <div class="s-sep"></div>
+    <li><a href="#act1">Actividad 1 - Foro</a></li>
+    <li><a href="#act2">Actividad 2 - Aprendizaje</a></li>
+    <li><a href="#act3">Actividad 3 - Caso</a></li>
+    <li><a href="#act4">Actividad 4 - Quiz</a></li>
+    <div class="s-sep"></div>
+    <li><a href="#reflexion">Reflexion final</a></li>
+  </ul>
+</aside>
+
+<main>
+
+<div class="card" id="intro">
+  <div class="card-head bosque">
+    <div class="ch-i">I</div>
+    <div class="ch-t"><h2>Introduccion al tema</h2><div class="sub">Roles pedagogicos - Cierre de la unidad - Articulacion teorico-practica</div></div>
+  </div>
+  <div class="card-body">
+    <p>A lo largo de esta unidad has explorado seis marcos teoricos que explican como los seres humanos conocen y aprenden. En los subtemas 3.1 estudiaste como cada teoria explica la transferencia del aprendizaje. Ahora, los subtemas <strong>3.2 y 3.3</strong> cierran el analisis comparativo con la pregunta mas directamente pedagogica de todas: <strong>segun cada teoria, que debe hacer el maestro y que debe hacer el alumno?</strong></p>
+
+    <div class="cita">
+      "Dime como concibe un docente su propio rol en el salon de clase, y te dire que teoria del conocimiento sostiene implicitamente su practica — aunque nunca haya leido una sola pagina de psicologia educativa."
+      <cite>- Parafrasis de la tradicion del pensamiento pedagogico critico contemporaneo</cite>
+    </div>
+
+    <p>Los roles del maestro y del alumno no son decisiones arbitrarias ni estilos personales: son consecuencias logicas de la postura que se adopte sobre la naturaleza del conocimiento y del aprendizaje. Un docente que cree que el conocimiento se transmite actuara de una manera; uno que cree que el conocimiento se construye actuara de otra completamente diferente. Esta guia hace explicita esa conexion entre teoria y practica.</p>
+
+    <div class="caja bo">
+      <div class="caja-tit">Pregunta orientadora</div>
+      <p style="margin:0;font-size:.93rem;color:var(--texto)"><em>En tu trayectoria como estudiante universitario, has tenido docentes con roles muy diferentes: algunos que exponen y otros que facilitan, algunos que evaluan productos y otros que acompanan procesos. iQue teoria del conocimiento crees que sustenta a cada tipo de docente, aunque ellos mismos no lo sepan?</em></p>
+    </div>
+
+    <h3>iQue aprenderas en esta guia?</h3>
+    <ol class="pasos">
+      <li><p>El papel del maestro (3.2) y el papel del alumno (3.3) segun cada una de las teorias revisadas: aspectos filosoficos, psicologicos, pedagogicos, conductismo, campo cognoscitivo y Gestalt.</p></li>
+      <li><p>Un analisis comparativo sistematico de los roles pedagogicos en un continuum que va desde la transmision pura hasta la construccion autonoma del conocimiento.</p></li>
+      <li><p>Las implicaciones practicas de cada postura para el diseno de clases, la evaluacion y la relacion pedagogica en la universidad contemporanea.</p></li>
+      <li><p>Tu propia postura fundamentada sobre el tipo de docente que quieres ser y como esa postura se articula con las teorias estudiadas.</p></li>
+    </ol>
+
+    <div class="caja te">
+      <div class="caja-tit">Conexion con los subtemas anteriores</div>
+      <p style="margin:0;font-size:.89rem">El subtema 3.1 mostro que cada teoria predice un nivel diferente de transferencia. Esta guia extiende ese analisis: la capacidad de transferencia esta directamente relacionada con el rol que se asigna al alumno. Cuando el alumno es receptor pasivo (conductismo), la transferencia es minima; cuando es constructor activo (Gestalt, constructivismo), la transferencia es maxima. El rol del maestro determina el rol del alumno, y el rol del alumno determina el tipo de aprendizaje producido.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="previos">
+  <div class="card-head papel">
+    <div class="ch-i dk">?</div>
+    <div class="ch-t"><h2 class="dk">Activacion de conocimientos previos</h2><div class="sub dk">Sintesis integradora desde la experiencia estudiantil</div></div>
+  </div>
+  <div class="card-body">
+    <p>Antes del contenido formal, reflexiona desde tu experiencia real como estudiante universitario. Estas preguntas activan la comprension previa que traes sobre los roles pedagogicos.</p>
+    <div class="caja warn"><strong>Instruccion:</strong> Responde desde tu experiencia concreta. Esta activacion no se entrega en Classroom pero es el anclaje que hace significativo el contenido que sigue.</div>
+    <div class="prev-grid">
+      <div class="prev-item">
+        <label>1. Describe brevemente el rol que desempena el docente que consideras que mas ha favorecido tu aprendizaje real en la universidad. iQue hacia exactamente?</label>
+        <textarea placeholder="Describe su rol con precision: que hacia en clase, como evaluaba, como se relacionaba contigo..."></textarea>
+      </div>
+      <div class="prev-item">
+        <label>2. Describe el rol que desempena el docente cuyas clases te han dejado menos aprendizaje real, aunque hayas aprobado. iQue diferencia observas respecto al anterior?</label>
+        <textarea placeholder="Contrasta con el ejemplo anterior. Que hacia diferente, que efecto tuvo en tu aprendizaje..."></textarea>
+      </div>
+      <div class="prev-item">
+        <label>3. En tus clases universitarias actuales, icual es tu propio rol como alumno? iEres receptor, participante, constructor? iCambia segun la materia?</label>
+        <textarea placeholder="Describe tu rol real como estudiante, no el ideal o el que se supone debes tener..."></textarea>
+      </div>
+      <div class="prev-item">
+        <label>4. Antes de estudiar este contenido, icomo describirias el rol del "buen maestro" en pocas palabras? iQue teoria del conocimiento crees que sustenta esa descripcion?</label>
+        <textarea placeholder="Tu definicion previa del buen maestro y su fundamento teorico intuitivo..."></textarea>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:6px">
+      <button class="btn bo" onclick="gP()">Registrar respuestas (esta sesion)</button>
+    </div>
+    <div id="pok" style="display:none;text-align:center;margin-top:10px;font-family:Roboto Mono,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--bosque)">Respuestas registradas</div>
+  </div>
+</div>
+
+<div class="card" id="contenido">
+  <div class="card-head terra">
+    <div class="ch-i">II</div>
+    <div class="ch-t"><h2>Contenido Tematico</h2><div class="sub">Temas 3.2 y 3.3 - Papel del maestro y papel del alumno segun cada teoria</div></div>
+  </div>
+  <div class="card-body">
+
+    <h3>1. La importancia de los roles pedagogicos</h3>
+    <p>Los roles del maestro y del alumno no son elementos superficiales del diseno instruccional: son la expresion mas concreta y visible de la epistemologia que sostiene una practica educativa. Cada respuesta a la pregunta "icomo aprenden los seres humanos?" implica una respuesta a las preguntas "ique debe hacer el maestro?" y "ique debe hacer el alumno?".</p>
+    <p>Comprender esta conexion te permite, como pedagogo en formacion, dos cosas fundamentales: (1) diagnosticar la postura teorica implicita de cualquier practica docente que observes, y (2) fundamentar conscientemente tus propias decisiones pedagogicas en lugar de reproducir irreflexivamente los modelos que recibiste.</p>
+
+    <h3>2. Roles segun cada teoria revisada</h3>
+
+    <div class="continuum">
+      <div class="cont-head"><span>Continuum de roles: de la transmision a la construccion</span></div>
+      <div class="cont-body">
+        <div class="cont-row">
+          <div class="cont-label">Empirismo filosofico (1.1) — Maestro como fuente del saber</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 85%,var(--terra-m) 100%);width:87%"><span>M: transmisor / A: receptor</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+        <div class="cont-row">
+          <div class="cont-label">Conductismo E-R (2.1) — Maestro como disenador de contingencias</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 80%,var(--terra-m) 100%);width:82%"><span>M: controla estimulos / A: responde</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+        <div class="cont-row">
+          <div class="cont-label">Campo cognoscitivo (2.2) — Maestro como organizador del campo</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 55%,var(--terra-m) 100%);width:60%"><span>M: estructura / A: percibe</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+        <div class="cont-row">
+          <div class="cont-label">Gestalt (2.3) — Maestro como creador de condiciones para el insight</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 45%,var(--terra-m) 100%);width:48%"><span>M: facilita / A: reorganiza</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+        <div class="cont-row">
+          <div class="cont-label">Aspecto psicologico (1.2) — Ausubel, Vygotsky, Piaget</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 30%,var(--terra-m) 100%);width:35%"><span>M: andamia / A: construye</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+        <div class="cont-row">
+          <div class="cont-label">Aspecto pedagogico (1.3) — Diseno instruccional activo</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cont-pole-left">M activo</span>
+            <div class="cont-track" style="flex:1"><div class="cont-fill" style="background:linear-gradient(90deg,var(--bosque) 20%,var(--terra-m) 100%);width:25%"><span>M: disenador / A: protagonista</span></div></div>
+            <span class="cont-pole-right">A activo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>3. El papel del maestro (Tema 3.2) segun cada teoria</h3>
+
+    <h4>3.1 Desde el empirismo filosofico (1.1)</h4>
+    <p>La postura empirista concibe al maestro como el <strong>poseedor y transmisor del conocimiento</strong>. Si el conocimiento proviene de la experiencia acumulada y sistematizada, entonces quien ya la ha acumulado (el docente experto) tiene la responsabilidad de transferirla a quien aun no la posee (el estudiante). El maestro es la fuente autorizada del saber, y su funcion es presentar ese saber de la manera mas clara y organizada posible.</p>
+    <p>Esta concepcion fundamenta la clase magistral tradicional: el docente habla, el estudiante escucha y registra. La autoridad epistemica reside en el docente por ser el depositario de la experiencia sistematizada.</p>
+
+    <h4>3.2 Desde el conductismo (2.1)</h4>
+    <p>El conductismo define al maestro como <strong>disenador y controlador de contingencias</strong>. Su funcion no es simplemente transmitir informacion, sino disenar un ambiente de aprendizaje que produzca las conductas deseadas mediante la manipulacion sistematica de estimulos, reforzamientos y sanciones. El maestro conductista:</p>
+    <ol class="pasos">
+      <li><p>Define con precision las conductas observables que el alumno debe emitir al final del proceso (objetivos conductuales operacionalizados).</p></li>
+      <li><p>Diseña secuencias de estimulos que lleven al alumno a emitir esas conductas de manera progresiva.</p></li>
+      <li><p>Proporciona reforzamiento inmediato ante las conductas correctas y correccion ante las incorrectas.</p></li>
+      <li><p>Controla el ambiente para minimizar estimulos que puedan interferir con las conductas deseadas.</p></li>
+    </ol>
+    <p>El maestro conductista no es un simple transmisor: es un ingeniero del comportamiento. Pero su poder radica en el control del ambiente externo, no en el desarrollo de la comprension interna del alumno.</p>
+
+    <h4>3.3 Desde el campo cognoscitivo y la Gestalt (2.2 y 2.3)</h4>
+    <p>La psicologia de la Gestalt transforma radicalmente el rol del maestro: de controlador del ambiente externo a <strong>organizador del campo cognoscitivo</strong> y <strong>creador de condiciones para el insight</strong>. El maestro gestaltico:</p>
+    <ol class="pasos te">
+      <li><p>Presenta los problemas como <strong>totalidades con sentido</strong> antes de fragmentarlos en partes, para que el alumno perciba la estructura completa del dominio.</p></li>
+      <li><p>Crea condiciones que favorezcan la <strong>reorganizacion perceptual</strong>: deja espacio para la exploracion, el silencio productivo y la reflexion, en lugar de proporcionar la solucion inmediata.</p></li>
+      <li><p>Diseña materiales que aplican las leyes gestálticas (proximidad, semejanza, cierre, figura-fondo) para que la organizacion cognitiva del contenido sea lo mas natural posible.</p></li>
+      <li><p>Evalua la <strong>comprension estructural</strong>, no la reproduccion de procedimientos: pregunta "por que funciona esto" mas que "como se hace esto".</p></li>
+    </ol>
+    <p>Desde esta perspectiva, el maestro no puede producir el insight directamente en el alumno — solo puede crear las condiciones que lo hagan posible. Esta es una diferencia fundamental respecto al control conductista.</p>
+
+    <h4>3.4 Desde el aspecto psicologico (1.2): Piaget, Vygotsky y Ausubel</h4>
+    <p>Los psicologos del aprendizaje del subtema 1.2 enriquecen el rol del maestro con mecanismos especificos:</p>
+    <ul style="padding-left:18px;margin:10px 0;font-size:.9rem;color:var(--texto2)">
+      <li style="margin-bottom:8px"><strong>Desde Piaget:</strong> el maestro genera <em>desequilibrios cognitivos</em> — presenta situaciones que los esquemas actuales del alumno no pueden asimilar facilmente, provocando la necesidad de acomodarlos y construir estructuras nuevas.</li>
+      <li style="margin-bottom:8px"><strong>Desde Vygotsky:</strong> el maestro opera en la <em>Zona de Desarrollo Proximo</em> — proporciona andamiaje en el espacio entre lo que el alumno puede hacer solo y lo que puede lograr con apoyo, retirando progresivamente ese apoyo a medida que el alumno gana autonomia.</li>
+      <li style="margin-bottom:0"><strong>Desde Ausubel:</strong> el maestro activa los <em>conocimientos previos relevantes</em> antes de introducir contenido nuevo, para que el nuevo aprendizaje pueda anclarse en estructuras cognitivas preexistentes y producir aprendizaje significativo en lugar de memoristico.</li>
+    </ul>
+
+    <h3>4. El papel del alumno (Tema 3.3) segun cada teoria</h3>
+
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-card-head maestro"><div class="role-icon">E</div><div><div class="role-title">Alumno empirista / conductista</div><div class="role-sub">Enfoques 1.1 y 2.1</div></div></div>
+        <div class="role-body">
+          <div class="role-item"><div class="role-dot bo"></div><div>Receptor pasivo de estimulos e informacion provenientes del exterior.</div></div>
+          <div class="role-item"><div class="role-dot bo"></div><div>Su funcion principal es memorizar, repetir y reproducir lo que el maestro transmite.</div></div>
+          <div class="role-item"><div class="role-dot bo"></div><div>El aprendizaje ocurre en el cuando el ambiente lo modifica, no cuando el actua sobre el ambiente.</div></div>
+          <div class="role-item"><div class="role-dot bo"></div><div>Depende del reforzamiento externo para mantener la motivacion y la conducta de estudio.</div></div>
+          <div class="role-item"><div class="role-dot bo"></div><div>El exito se mide por la fidelidad de la reproduccion: cuanto mas exacta, mayor la calificacion.</div></div>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-head alumno"><div class="role-icon">C</div><div><div class="role-title">Alumno gestaltico / constructivista</div><div class="role-sub">Enfoques 2.2, 2.3 y 1.2</div></div></div>
+        <div class="role-body">
+          <div class="role-item"><div class="role-dot te"></div><div>Organizador activo que estructura perceptualmente su experiencia y construye comprension estructural.</div></div>
+          <div class="role-item"><div class="role-dot te"></div><div>Su funcion principal es comprender, reorganizar y transferir el conocimiento a situaciones nuevas.</div></div>
+          <div class="role-item"><div class="role-dot te"></div><div>El aprendizaje ocurre cuando el reorganiza su campo cognoscitivo — no cuando recibe informacion.</div></div>
+          <div class="role-item"><div class="role-dot te"></div><div>Desarrolla motivacion intrinseca al experimentar el insight y la comprension genuina.</div></div>
+          <div class="role-item"><div class="role-dot te"></div><div>El exito se mide por la capacidad de aplicar lo aprendido en contextos nuevos e imprevistos.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>5. Tabla comparativa sistematica: roles segun cada teoria</h3>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Teoria / Enfoque</th>
+            <th>Rol del Maestro (3.2)</th>
+            <th>Rol del Alumno (3.3)</th>
+            <th>Relacion pedagogica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1.1 Empirismo filosofico</strong></td>
+            <td>Poseedor y transmisor del saber acumulado. Autoridad epistemica central.</td>
+            <td>Receptor pasivo. Asimila la experiencia codificada del docente.</td>
+            <td>Vertical, asimetrica. El saber fluye del maestro al alumno.</td>
+          </tr>
+          <tr>
+            <td><strong>1.2 Psicol. del aprendizaje</strong></td>
+            <td>Organizador, andamiador, activador de conocimientos previos. Opera en la ZDP.</td>
+            <td>Constructor activo. Reorganiza esquemas, asimila, acomoda y construye significado.</td>
+            <td>Interactiva, mediada. El maestro apoya, no sustituye la actividad del alumno.</td>
+          </tr>
+          <tr>
+            <td><strong>1.3 Aspecto pedagogico</strong></td>
+            <td>Disenador de experiencias de aprendizaje autenticas. Evalua procesos, no solo productos.</td>
+            <td>Protagonista del proceso. Aprende haciendo, reflexionando y construyendo con otros.</td>
+            <td>Colaborativa, situada. El aprendizaje ocurre en comunidades de practica.</td>
+          </tr>
+          <tr>
+            <td><strong>2.1 Conductismo (E-R)</strong></td>
+            <td>Ingeniero del comportamiento. Disenador de contingencias: estimulos, reforzadores, castigos.</td>
+            <td>Organismo que responde a contingencias. Acumula asociaciones E-R mediante practica.</td>
+            <td>Vertical, controlada. El maestro controla el ambiente; el alumno responde.</td>
+          </tr>
+          <tr>
+            <td><strong>2.2 Campo Cognoscitivo</strong></td>
+            <td>Organizador del campo perceptual. Presenta totalidades con sentido estructural.</td>
+            <td>Perceptor activo que organiza el campo. Percibe relaciones entre los elementos.</td>
+            <td>Estructurante. El maestro dispone el campo; el alumno lo organiza activamente.</td>
+          </tr>
+          <tr>
+            <td><strong>2.3 Gestalt</strong></td>
+            <td>Creador de condiciones para el insight. Provoca desequilibrio cognitivo productivo.</td>
+            <td>Reorganizador del campo cognoscitivo. Experimenta el insight y lo transfiere.</td>
+            <td>Exploradora. El maestro espera; el alumno descubre con apoyo estructurado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>6. Implicaciones para la practica docente universitaria contemporanea</h3>
+    <p>La pregunta no es si existe un solo rol "correcto" para el maestro y el alumno, sino <strong>cuales roles son adecuados para cuales objetivos de aprendizaje</strong>. Un pedagogo reflexivo sabe que:</p>
+    <ol class="pasos in">
+      <li><p>El rol conductista del maestro puede ser legitimo cuando el objetivo es desarrollar habilidades procedimentales basicas que requieren precision y automatizacion (protocolos, tecnicas instrumentales, uso de software).</p></li>
+      <li><p>El rol gestaltico es imprescindible cuando el objetivo es producir comprension estructural transferible a contextos nuevos — que es, en ultima instancia, el objetivo central de la educacion universitaria.</p></li>
+      <li><p>El rol vygotskiano del andamiaje es especialmente relevante en los primeros semestres, cuando los estudiantes aun no tienen las estructuras cognitivas ni la autonomia para construir solos; va perdiendo relevancia a medida que el estudiante gana competencia.</p></li>
+      <li><p>El rol del alumno como protagonista activo no es un objetivo que se logra de manera espontanea: debe ser disenado, practicado y evaluado explicitamente por el docente que lo promueve.</p></li>
+      <li><p>La coherencia entre la teoria que se declara y el rol que realmente se asume en el aula es el indicador mas confiable de la madurez pedagogica de un docente.</p></li>
+    </ol>
+
+    <div class="caja oc">
+      <div class="caja-tit">Sintesis integradora de la unidad</div>
+      <p style="margin:0;font-size:.89rem">Al cerrar esta unidad, tienes ahora un mapa completo: seis teorias del conocimiento, con sus respectivas concepciones de la transferencia (3.1), del rol del maestro (3.2) y del rol del alumno (3.3). Ese mapa no es un catalogo historico: es una herramienta viva para tomar decisiones pedagogicas conscientes, fundamentadas y coherentes con los objetivos de aprendizaje que propongas a tus futuros estudiantes.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="materiales">
+  <div class="card-head bosque">
+    <div class="ch-i">III</div>
+    <div class="ch-t"><h2>Materiales de Consulta Formales</h2><div class="sub">Fuentes academicas sobre roles pedagogicos y teorias del aprendizaje</div></div>
+  </div>
+  <div class="card-body">
+    <p>Se presentan fuentes academicas seleccionadas para profundizar en el analisis comparativo de roles pedagogicos. Se recomienda revisar al menos dos antes de las actividades.</p>
+    <div class="recursos">
+      <div class="rec"><span class="rec-tipo lib">Libro</span>
+        <div class="rec-info"><div class="rec-tit">Psicologia educativa — Capitulo 12: Ensenanza para el aprendizaje activo</div>
+          <div class="rec-desc">Analisis comparativo de los roles del maestro y del alumno segun las principales teorias del aprendizaje, con estrategias de ensenanza activa para el nivel universitario.</div>
+          <div class="rec-aut">Woolfolk, A. (2014). Psicologia educativa (12.a ed.). Pearson. Mexico.</div>
+        </div>
+      </div>
+      <div class="rec"><span class="rec-tipo lib">Libro</span>
+        <div class="rec-info"><div class="rec-tit">El profesional reflexivo — Capitulos 1 y 2</div>
+          <div class="rec-desc">Schon desarrolla el concepto del docente como practico reflexivo: alguien que reflexiona sobre su propia practica para mejorarla, lo que implica una concepcion activa del rol docente.</div>
+          <div class="rec-aut">Schon, D. A. (1998). El profesional reflexivo. Paidos. Barcelona. (Obra original 1983).</div>
+        </div>
+      </div>
+      <div class="rec"><span class="rec-tipo lib">Libro</span>
+        <div class="rec-info"><div class="rec-tit">Pedagogia del oprimido — Capitulos 2 y 3</div>
+          <div class="rec-desc">Freire desarrolla la critica mas influyente al rol del maestro como transmisor ("educacion bancaria") y propone el dialogo como modelo alternativo de relacion pedagogica.</div>
+          <div class="rec-aut">Freire, P. (2005). Pedagogia del oprimido (50.a ed.). Siglo XXI. Mexico. (Obra original 1970).</div>
+        </div>
+      </div>
+      <div class="rec"><span class="rec-tipo pdf">Articulo</span>
+        <div class="rec-info"><div class="rec-tit">Roles del docente y del estudiante en la educacion superior contemporanea</div>
+          <div class="rec-desc">Revision comparativa de los modelos de roles pedagogicos en educacion superior, con analisis de la tension entre transmision y construccion del conocimiento.</div>
+          <div class="rec-aut">Buscar en Redalyc - ERIC - Latindex: "rol docente alumno educacion superior teorias aprendizaje comparativo".</div>
+        </div>
+      </div>
+      <div class="rec"><span class="rec-tipo lib">Libro</span>
+        <div class="rec-info"><div class="rec-tit">Pensamiento y lenguaje — Capitulo 6: Zona de Desarrollo Proximo</div>
+          <div class="rec-desc">Vygotsky explica el mecanismo del andamiaje y el rol del docente como mediador entre lo que el alumno puede hacer solo y lo que puede lograr con apoyo experto.</div>
+          <div class="rec-aut">Vygotski, L. S. (1995). Pensamiento y lenguaje. Paidos. Barcelona. (Obra original 1934).</div>
+        </div>
+      </div>
+      <div class="rec"><span class="rec-tipo vid">Video</span>
+        <div class="rec-info"><div class="rec-tit">El rol del docente en el siglo XXI — Conferencias academicas</div>
+          <div class="rec-desc">Series de conferencias universitarias sobre la transformacion del rol docente desde la transmision hacia la facilitacion y el acompanamiento del aprendizaje activo.</div>
+          <div class="rec-aut">YouTube - Filtro: "rol docente facilitador constructivismo educacion superior conferencia academica".</div>
+        </div>
+      </div>
+    </div>
+    <div class="caja warn" style="margin-top:12px"><strong>Citacion:</strong> Usa APA 7.a edicion al referenciar estas fuentes. Consulta las bases de datos institucionales para el acceso a los textos.</div>
+  </div>
+</div>
+
+<div class="card" id="act1">
+  <div class="card-head bosque">
+    <div class="ch-i">A1</div>
+    <div class="ch-t"><h2>Actividad 1 - Foro de Mediacion</h2><div class="sub">Reflexion critica integradora - Roles pedagogicos - Debate argumentado</div></div>
+  </div>
+  <div class="card-body">
+    <div class="class-tag">Entregable en Google Classroom - Foro de discusion</div>
+    <h4>Proposito</h4>
+    <p>Este foro promueve el debate fundamentado sobre uno de los temas mas sensibles y relevantes de tu formacion como pedagogo: la naturaleza del rol docente. No se trata de una opinion libre, sino de una postura argumentada en las teorias revisadas a lo largo de la unidad.</p>
+    <h4>Instrucciones paso a paso</h4>
+    <ol class="pasos">
+      <li><p>Ingresa a Classroom y localiza el foro <strong>"El docente del siglo XXI: itransmisor, facilitador o algo diferente?"</strong></p></li>
+      <li><p>Lee la pregunta detonadora. Dedica al menos 20 minutos a reflexionar antes de escribir. Este foro cierra la unidad completa y requiere integracion de todos los temas.</p></li>
+      <li><p>Redacta tu participacion con minimo <strong>240 palabras</strong>: (a) define con claridad el rol del maestro que consideras mas pertinente para la educacion universitaria actual, (b) fundamenta contrastando con al menos dos teorias de la unidad, y (c) conecta con una experiencia concreta y verificable de tu vida universitaria.</p></li>
+      <li><p>Lee las aportaciones de al menos <strong>dos companeros</strong> y responde con comentarios de minimo 90 palabras que profundicen el analisis comparativo.</p></li>
+      <li><p>Toma capturas de pantalla de tu participacion y comentarios para entregar en Classroom.</p></li>
+    </ol>
+    <h4>Pregunta detonadora</h4>
+    <div class="foro">
+      <div class="foro-head"><span>Foro Integrador - Teorias del Aprendizaje - Temas 3.2 y 3.3 - Roles pedagogicos</span></div>
+      <div class="foro-pq">
+        Paulo Freire llamo "educacion bancaria" a la practica de tratar al alumno como recipiente vacio que el maestro llena de conocimiento. Esta critica se dirige directamente al modelo empirista-conductista del maestro como transmisor. Sin embargo, algunos pedagogos argumentan que existe un riesgo opuesto: el maestro que "facilita" tanto que abandona al alumno sin la orientacion estructurada que necesita, especialmente en los primeros semestres universitarios. <strong>iCual crees que es el rol del maestro universitario que mejor equilibra la orientacion estructurada y la autonomia del alumno? iFundamenta tu postura contrastando al menos dos de las teorias revisadas en la unidad y conectala con tu experiencia como estudiante universitario en al menos una materia concreta.</strong>
+      </div>
+      <div class="foro-in">
+        <label>Espacio de practica - elabora tu borrador aqui antes de publicar en Classroom</label>
+        <textarea id="f1" placeholder="Define el rol del maestro que defiendes, fundamentalo en las teorias (conductismo, Gestalt, psicologia del aprendizaje, pedagogia critica), contrasta con la postura que rechazas y conecta con tu experiencia concreta como estudiante. Esta reflexion es personal e intransferible."></textarea>
+        <br>
+        <button class="btn bo" onclick="gF()">Guardar borrador</button>
+        <button class="btn out" style="margin-left:8px" onclick="tE('ej1')">Ver ejemplo orientativo</button>
+        <div class="ej" id="ej1">
+          <strong>Ejemplo orientativo (no reproducir):</strong><br><br>
+          Defiendo el rol del maestro como organizador del campo cognoscitivo y andamiador, articulando la Gestalt con Vygotsky. Mi experiencia en Metodologia de la Investigacion ilustra por que: mi primera profesora presentaba el proceso de investigacion como una lista de pasos aislados (diseno, instrumento, analisis) — un rol claramente conductista. Yo memorizaba los pasos pero no entendia por que cada uno existia. Mi segundo profesor presento el problema de investigacion como una totalidad primero: nos presento una investigacion real con todas sus decisiones metodologicas visibles, y solo despues analizo cada elemento. El insight de comprender por que se elige un diseno especifico fue mucho mas potente que memorizar definiciones.<br><br>
+          Sin embargo, no rechazo totalmente el andamiaje estructurado. En los primeros semestres, el alumno universitario aun no tiene los esquemas cognitivos necesarios para explorar autonomamente sin orientacion. La ZDP de Vygotsky me recuerda que el maestro debe operar en ese espacio: no tan cerca que sustituya el esfuerzo del alumno, pero tampoco tan lejos que lo abandone a un insight que tal vez no llegue solo. El equilibrio no es una formula: es una decision pedagogica consciente y adaptativa.
+        </div>
+      </div>
+    </div>
+    <h4>Criterios de evaluacion</h4>
+    <div class="rubrica">
+      <div class="crit"><div class="cn">Postura fundamentada</div><div class="cp">30 <span>pts</span></div><p>Define un rol del maestro claro y lo fundamenta contrastando al menos dos teorias de la unidad.</p></div>
+      <div class="crit"><div class="cn">Conexion experiencial</div><div class="cp">25 <span>pts</span></div><p>Conecta la postura teorica con una experiencia universitaria concreta y verificable.</p></div>
+      <div class="crit"><div class="cn">Comentarios a pares</div><div class="cp">25 <span>pts</span></div><p>Comentarios que profundizan el analisis comparativo con nuevos elementos teoricos.</p></div>
+      <div class="crit"><div class="cn">Redaccion academica</div><div class="cp">20 <span>pts</span></div><p>Escritura clara, vocabulario pedagogico preciso, extension minima cumplida.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="act2">
+  <div class="card-head ocre">
+    <div class="ch-i">A2</div>
+    <div class="ch-t"><h2>Actividad 2 - Observacion y Diagnostico de Roles en el Aula</h2><div class="sub">Aprendizaje situado - Analisis comparativo aplicado - Produccion fundamentada</div></div>
+  </div>
+  <div class="card-body">
+    <div class="class-tag" style="background:var(--ocre)">Entregable en Google Classroom - Informe de observacion</div>
+    <h4>Proposito</h4>
+    <p>Esta actividad te lleva a observar sistematicamente el rol del maestro y el rol del alumno en una clase universitaria real, usando los conceptos del analisis comparativo como herramienta de diagnostico pedagogico. Convierte la teoria en mirada critica sobre la realidad.</p>
+    <h4>Instrucciones paso a paso</h4>
+    <ol class="pasos oc">
+      <li><p><strong>Selecciona una clase.</strong> Elige una sesion de clase universitaria real a la que puedas asistir en los proximos dias — puede ser de tu propia licenciatura u otro programa. Idealmente, elige una donde el rol del docente sea distinto al de tus clases habituales.</p></li>
+      <li><p><strong>Observa con guia teorica.</strong> Durante la clase, registra: (a) que hace el maestro en cada fase de la sesion (expone, pregunta, retroalimenta, facilita, controla, etc.), (b) que hace el alumno en cada fase (escucha, responde, explora, construye, participa, etc.), y (c) que tipo de interacciones ocurren entre maestro-alumno y entre alumnos.</p></li>
+      <li><p><strong>Seccion A — Diagnostico teorico.</strong> Con base en tus observaciones, identifica que teoria o combinacion de teorias describe mejor los roles que observaste. Aporta cinco evidencias concretas de la clase (cita lo que el docente o los alumnos hicieron exactamente) que justifiquen tu diagnostico.</p></li>
+      <li><p><strong>Seccion B — Analisis de consecuencias.</strong> Reflexiona: ique tipo de aprendizaje producen los roles que observaste? iGeneran transferencia cercana o lejana? iDevelan o inhiben la autonomia del alumno? iComo se relacionan con los roles que cada teoria predice?</p></li>
+      <li><p><strong>Seccion C — Propuesta de ajuste.</strong> Propone dos modificaciones especificas al rol del docente observado que, sin desestructurar completamente su clase, incorporen un principio pedagogico de una teoria diferente a la identificada. Justifica cada propuesta.</p></li>
+      <li><p><strong>Entrega.</strong> Informe de 700-950 palabras. Entrega en Classroom en PDF o Word.</p></li>
+    </ol>
+    <div class="caja oc">
+      <div class="caja-tit">Ejemplo de registro en la observacion (Seccion A)</div>
+      <p style="font-size:.87rem;margin:0"><strong>Clase observada:</strong> Administracion Financiera, 3er semestre, Ingenieria en Gestion Empresarial.<br><strong>Evidencia 1:</strong> El maestro dicto durante 65 de los 90 minutos de clase. Los alumnos tomaron notas.<br><strong>Evidencia 2:</strong> La retroalimentacion fue binaria: "correcto / no, la respuesta es X".<br><strong>Evidencia 3:</strong> No hubo pregunta que exigiera al alumno relacionar el contenido con situaciones nuevas.<br><strong>Diagnostico:</strong> Combinacion de empirismo (maestro como transmisor autorizado) y conductismo (retroalimentacion inmediata binaria). El alumno opera como receptor pasivo.<br><strong>Consecuencia:</strong> El tipo de aprendizaje producido es memoristico y de transferencia cercana.</p>
+    </div>
+    <div class="caja warn"><strong>Autenticidad:</strong> La especificidad de las evidencias (lo que realmente ocurrio en la clase) es lo que hace irrepetible y propio este analisis. Las generalizaciones no sustituyen a las observaciones concretas.</div>
+    <h4>Criterios de evaluacion</h4>
+    <div class="rubrica">
+      <div class="crit"><div class="cn">Diagnostico con evidencias</div><div class="cp">30 <span>pts</span></div><p>Cinco evidencias concretas de la clase con identificacion correcta de la teoria.</p></div>
+      <div class="crit"><div class="cn">Analisis de consecuencias</div><div class="cp">30 <span>pts</span></div><p>Relaciona con fundamento los roles observados con el tipo de aprendizaje producido.</p></div>
+      <div class="crit"><div class="cn">Propuesta de ajuste</div><div class="cp">25 <span>pts</span></div><p>Dos modificaciones especificas, realizables y justificadas en una teoria diferente.</p></div>
+      <div class="crit"><div class="cn">Redaccion y estructura</div><div class="cp">15 <span>pts</span></div><p>Secciones claras, escritura academica, extension cumplida.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="act3">
+  <div class="card-head terra">
+    <div class="ch-i">A3</div>
+    <div class="ch-t"><h2>Actividad 3 - Caso: "Los Cuatro Docentes de Comunicacion"</h2><div class="sub">ABP integrador - Analisis de roles - Propuesta pedagogica fundamentada</div></div>
+  </div>
+  <div class="card-body">
+    <div class="class-tag" style="background:var(--terra)">Entregable en Google Classroom - Analisis integrado</div>
+    <h4>Presentacion del caso</h4>
+    <div class="caso-txt">
+      <p>La Licenciatura en Comunicacion de una universidad publica ofrece la misma materia — Semiotica y Lenguajes — en cuatro grupos diferentes, con cuatro docentes distintos que aplican enfoques pedagogicos contrastantes.</p>
+      <p><em>La maestra Gloria</em> llega a clase, expone durante 80 minutos con diapositivas densas, responde preguntas al final y evalua con examenes de opcion multiple. Los alumnos toman notas en silencio. Gloria dice: "Mi funcion es garantizar que los alumnos dominen los conceptos correctos de la semiotica. Si yo no lo explico bien, ellos no lo aprenderian."</p>
+      <p><em>El maestro Raul</em> comienza cada clase pidiendo a los alumnos que analicen en equipos un anuncio publicitario real. Solo despues de que los equipos comparten sus analisis, Raul sistematiza y complementa con los conceptos teoricos. Evalua con proyectos donde los alumnos crean y analizan sus propios textos semioticos. Raul dice: "Mi funcion es crear las condiciones para que ellos construyan la comprension. Yo no puedo entender por ellos."</p>
+      <p><em>La maestra Sofia</em> diseña cada sesion como una serie de ejercicios con retroalimentacion inmediata: presenta un texto, los alumnos identifican el signo, Sofia confirma o corrige. Los ejercicios aumentan gradualmente en complejidad. Evalua con ejercicios identicos a los practicados. Sofia dice: "Mi funcion es entrenar la mirada semiotica. Como cualquier habilidad, se desarrolla con practica sistematica y retroalimentacion precisa."</p>
+      <p><em>El maestro Andres</em> no expone: publica los textos teoricos en la plataforma y en clase solo discute los problemas que los alumnos no pudieron resolver solos. Evalua con ensayos donde los alumnos deben argumentar una postura semiotica original. Andres dice: "Mi funcion es acompanar. El que aprende o no aprende es el alumno, no yo."</p>
+      <p>Al final del semestre, una evaluacion externa aplica a los cuatro grupos el mismo instrumento: analizar un texto semiotico completamente nuevo, jamas visto en clase. Los grupos de Raul y Andres obtienen resultados significativamente mejores que los de Gloria y Sofia.</p>
+    </div>
+    <h4>Preguntas de analisis</h4>
+    <div class="caso-qs">
+      <div class="cq"><div class="cq-head"><span class="cq-n">1</span>Identifica que teoria del conocimiento fundamenta el rol del maestro en cada uno de los cuatro casos (Gloria, Raul, Sofia y Andres). Justifica cada identificacion con evidencia del texto del caso.</div>
+        <div class="cq-body"><textarea placeholder="Diagnostico teorico de los cuatro docentes con evidencias textuales..."></textarea></div>
+      </div>
+      <div class="cq"><div class="cq-head"><span class="cq-n">2</span>Explica, usando los conceptos del analisis comparativo de la unidad, por que los grupos de Raul y Andres obtienen mejores resultados en el instrumento de evaluacion externa. iQue tipo de transferencia produjo cada docente? iComo se relaciona eso con el rol que asignaron al alumno?</div>
+        <div class="cq-body"><textarea placeholder="Explicacion con fundamento teorico de los resultados diferenciados..."></textarea></div>
+      </div>
+      <div class="cq"><div class="cq-head"><span class="cq-n">3</span>iEn que tiene razon Sofia y en que se equivoca? iHay algun componente del enfoque de Sofia que sea valido y que Raul deberia incorporar? iComo cambiaria el rol del alumno en esa combinacion?</div>
+        <div class="cq-body"><textarea placeholder="Evaluacion critica equilibrada del enfoque de Sofia y posible sintesis con el de Raul..."></textarea></div>
+      </div>
+      <div class="cq"><div class="cq-head"><span class="cq-n">4</span>El maestro Andres dice "mi funcion es acompanar". iEsta afirmacion es una postura gestaltica-constructivista valida o es una abdicacion del rol docente? iCuando el "no intervencionismo" del maestro favorece el aprendizaje y cuando lo perjudica?</div>
+        <div class="cq-body"><textarea placeholder="Analisis critico de la postura de Andres y sus limites pedagogicos..."></textarea></div>
+      </div>
+    </div>
+    <div class="caja te" style="margin-top:12px">
+      <div class="caja-tit">Instruccion de entrega</div>
+      <p style="margin:0;font-size:.89rem">Analisis integrado de 650-900 palabras, articulando coherentemente las cuatro preguntas como un dictamen pedagogico. Entrega en Classroom en PDF o Word.</p>
+    </div>
+    <h4>Criterios de evaluacion</h4>
+    <div class="rubrica">
+      <div class="crit"><div class="cn">Diagnostico teorico</div><div class="cp">25 <span>pts</span></div><p>Identifica correctamente la teoria de cada docente con evidencias textuales.</p></div>
+      <div class="crit"><div class="cn">Explicacion de resultados</div><div class="cp">25 <span>pts</span></div><p>Articula rol del alumno, tipo de transferencia y resultados con precision teorica.</p></div>
+      <div class="crit"><div class="cn">Evaluacion de Sofia</div><div class="cp">25 <span>pts</span></div><p>Evaluacion critica equilibrada con propuesta de sintesis fundamentada.</p></div>
+      <div class="crit"><div class="cn">Analisis de Andres</div><div class="cp">25 <span>pts</span></div><p>Identifica las condiciones de validez y los limites del no intervencionismo pedagogico.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="act4">
+  <div class="card-head negro">
+    <div class="ch-i">A4</div>
+    <div class="ch-t"><h2>Actividad 4 - Quiz de Comprension</h2><div class="sub">5 preguntas - Retroalimentacion inmediata - Puntaje final</div></div>
+  </div>
+  <div class="card-body">
+    <div class="class-tag" style="background:var(--texto)">Entregable en Google Classroom - Captura de pantalla del resultado</div>
+    <p>Responde las cinco preguntas. Recibiras retroalimentacion inmediata por cada opcion seleccionada. Al finalizar, toma captura de pantalla con la fecha visible y subela a Classroom.</p>
+
+    <div id="quiz-wrap">
+      <div class="qbar-wrap">
+        <span class="qbl" id="qlbl">Pregunta 1 de 5</span>
+        <div class="qbt"><div class="qbf" id="qbar" style="width:20%"></div></div>
+        <span class="qbl" id="qscore">0 correctas</span>
+      </div>
+<div class="qcard on" id="q1">
+  <div class="qnum">Pregunta 1 de 5</div>
+  <div class="qtxt">Segun el analisis comparativo de la unidad, iCual de las siguientes descripciones del rol del maestro corresponde al enfoque conductista (Skinner, Thorndike)?</div>
+  <div class="qopts">
+    <div class="qopt" onclick="rQ(this,'q1','fb1',false,0)"><span class="qletra">A</span>El maestro presenta los problemas como totalidades con sentido para que el alumno perciba la estructura completa del dominio antes de analizar las partes.</div>
+    <div class="qopt" onclick="rQ(this,'q1','fb1',true,1)"><span class="qletra">B</span>El maestro disenha y controla el ambiente de estimulos, reforzadores y consecuencias para producir las conductas de aprendizaje deseadas en el alumno.</div>
+    <div class="qopt" onclick="rQ(this,'q1','fb1',false,2)"><span class="qletra">C</span>El maestro opera en la Zona de Desarrollo Proximo del alumno, proporcionando andamiaje que se retira progresivamente a medida que el alumno gana autonomia.</div>
+    <div class="qopt" onclick="rQ(this,'q1','fb1',false,3)"><span class="qletra">D</span>El maestro activa los conocimientos previos del alumno para que el nuevo aprendizaje se ancle en estructuras cognitivas preexistentes y sea significativo.</div>
+  </div>
+  <div class="qfb" id="fb1"></div>
+  <div class="qnav"><button class="btn in" id="n1" style="display:none" onclick="nQ(2)">Siguiente &rarr;</button></div>
+</div>
+
+<div class="qcard " id="q2">
+  <div class="qnum">Pregunta 2 de 5</div>
+  <div class="qtxt">iCual es la diferencia fundamental entre el rol del alumno en el conductismo y el rol del alumno en la psicologia de la Gestalt?</div>
+  <div class="qopts">
+    <div class="qopt" onclick="rQ(this,'q2','fb2',false,0)"><span class="qletra">A</span>En el conductismo el alumno aprende por repeticion; en la Gestalt aprende por memorizacion de procedimientos visuales.</div>
+    <div class="qopt" onclick="rQ(this,'q2','fb2',true,1)"><span class="qletra">B</span>En el conductismo el alumno es receptor y respondedor de estimulos; en la Gestalt es reorganizador activo del campo cognoscitivo que produce comprension estructural transferible.</div>
+    <div class="qopt" onclick="rQ(this,'q2','fb2',false,2)"><span class="qletra">C</span>En el conductismo el alumno recibe retroalimentacion inmediata; en la Gestalt el alumno no recibe ninguna retroalimentacion del docente.</div>
+    <div class="qopt" onclick="rQ(this,'q2','fb2',false,3)"><span class="qletra">D</span>Ambas teorias asignan al alumno exactamente el mismo rol activo; la diferencia es solo en los contenidos que cada una prioriza.</div>
+  </div>
+  <div class="qfb" id="fb2"></div>
+  <div class="qnav"><button class="btn in" id="n2" style="display:none" onclick="nQ(3)">Siguiente &rarr;</button></div>
+</div>
+
+<div class="qcard " id="q3">
+  <div class="qnum">Pregunta 3 de 5</div>
+  <div class="qtxt">Paulo Freire critico la "educacion bancaria" como practica pedagogica. iA que concepcion del rol del maestro se dirige principalmente esa critica?</div>
+  <div class="qopts">
+    <div class="qopt" onclick="rQ(this,'q3','fb3',false,0)"><span class="qletra">A</span>Al maestro gestaltico que crea condiciones para el insight pero no garantiza que todos los alumnos lleguen a la comprension estructural.</div>
+    <div class="qopt" onclick="rQ(this,'q3','fb3',true,1)"><span class="qletra">B</span>Al maestro como transmisor de conocimiento acabado, que considera al alumno un recipiente vacio que debe llenarse con el saber del docente.</div>
+    <div class="qopt" onclick="rQ(this,'q3','fb3',false,2)"><span class="qletra">C</span>Al maestro constructivista que organiza el ambiente de aprendizaje pero delega demasiada responsabilidad al alumno en su proceso de construccion.</div>
+    <div class="qopt" onclick="rQ(this,'q3','fb3',false,3)"><span class="qletra">D</span>Al maestro vygotskiano que opera en la ZDP y proporciona andamiaje, porque eso implica dependencia del alumno respecto al docente.</div>
+  </div>
+  <div class="qfb" id="fb3"></div>
+  <div class="qnav"><button class="btn in" id="n3" style="display:none" onclick="nQ(4)">Siguiente &rarr;</button></div>
+</div>
+
+<div class="qcard " id="q4">
+  <div class="qnum">Pregunta 4 de 5</div>
+  <div class="qtxt">Segun el analisis comparativo de roles de esta guia, iCual es la relacion mas precisa entre el rol que se asigna al alumno y el tipo de transferencia que se produce?</div>
+  <div class="qopts">
+    <div class="qopt" onclick="rQ(this,'q4','fb4',false,0)"><span class="qletra">A</span>El rol del alumno no influye en el tipo de transferencia: la transferencia depende exclusivamente de la complejidad del contenido ensenado.</div>
+    <div class="qopt" onclick="rQ(this,'q4','fb4',true,1)"><span class="qletra">B</span>Cuando el alumno opera como receptor pasivo (conductismo), la transferencia tiende a ser cercana; cuando opera como constructor activo (Gestalt, constructivismo), la transferencia tiende a ser lejana.</div>
+    <div class="qopt" onclick="rQ(this,'q4','fb4',false,2)"><span class="qletra">C</span>El alumno receptor pasivo produce mayor transferencia porque el maestro puede controlar mejor los contenidos que transmite.</div>
+    <div class="qopt" onclick="rQ(this,'q4','fb4',false,3)"><span class="qletra">D</span>El rol del alumno no es relevante para la transferencia; lo que importa es la calidad del material disenado por el maestro.</div>
+  </div>
+  <div class="qfb" id="fb4"></div>
+  <div class="qnav"><button class="btn in" id="n4" style="display:none" onclick="nQ(5)">Siguiente &rarr;</button></div>
+</div>
+
+<div class="qcard " id="q5">
+  <div class="qnum">Pregunta 5 de 5</div>
+  <div class="qtxt">Un docente universitario de quimica organica dice: "Yo explico el mecanismo de cada reaccion mostrando primero por que ocurre a nivel molecular, y solo despues enseho los pasos procedimentales. En los examenes pregunto como aplicarian ese mecanismo a un reactivo que nunca vimos en clase." iCual de los siguientes roles del maestro y del alumno describe mejor este docente?</div>
+  <div class="qopts">
+    <div class="qopt" onclick="rQ(this,'q5','fb5',false,0)"><span class="qletra">A</span>Maestro conductista: diseha estimulos graduados que llevan al alumno a responder correctamente en el examen.</div>
+    <div class="qopt" onclick="rQ(this,'q5','fb5',true,1)"><span class="qletra">B</span>Maestro gestaltico-constructivista: organiza el campo cognoscitivo presentando la estructura subyacente primero, lo que permite al alumno transferir el principio a situaciones nuevas.</div>
+    <div class="qopt" onclick="rQ(this,'q5','fb5',false,2)"><span class="qletra">C</span>Maestro empirista: transmite el conocimiento acumulado de la quimica organica de manera sistematica y organizada.</div>
+    <div class="qopt" onclick="rQ(this,'q5','fb5',false,3)"><span class="qletra">D</span>Maestro vygotskiano puro: opera exclusivamente en la ZDP del alumno, proporcionando andamiaje para cada paso del proceso.</div>
+  </div>
+  <div class="qfb" id="fb5"></div>
+  <div class="qnav"><button class="btn in" id="n5" style="display:none" onclick="mostrarRes()">Ver resultado &rarr;</button></div>
+</div>
+
+
+      <div class="qres" id="qres">
+        <div class="rpct" id="rpct"></div>
+        <div class="rlbl" id="rlbl"></div>
+        <div class="rmsg" id="rmsg"></div>
+        <div class="rstats">
+          <div class="rstat"><div class="n v" id="rcorr"></div><div class="l">Correctas</div></div>
+          <div class="rstat"><div class="n r" id="rincorr"></div><div class="l">Incorrectas</div></div>
+          <div class="rstat"><div class="n" style="color:var(--indigo)">5</div><div class="l">Total</div></div>
+        </div>
+        <div class="caja warn" style="text-align:left;max-width:460px;margin:0 auto 18px"><strong>Para Classroom:</strong> Toma captura de pantalla con la fecha visible en tu dispositivo y subela como evidencia.</div>
+        <button class="btn bo" onclick="reinQ()">Reiniciar quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="reflexion">
+  <div class="card-head terra">
+    <div class="ch-i">R</div>
+    <div class="ch-t"><h2>Reflexion Final y Plan de Aplicacion</h2><div class="sub">Cierre de la unidad - Metacognicion - Compromiso docente</div></div>
+  </div>
+  <div class="card-body">
+    <h3>El cierre del analisis comparativo</h3>
+    <p>Con esta guia completas el analisis comparativo de todas las teorias revisadas desde tres dimensiones: la transferencia (3.1), el papel del maestro (3.2) y el papel del alumno (3.3). Ahora tienes un mapa teorico completo para fundamentar tu propia practica docente futura. La pregunta final no es solo intelectual: es una pregunta de identidad profesional.</p>
+
+    <div class="cita">
+      "Dime que tipo de relacion pedagogica construyes con tus estudiantes y te dire que concepcion del ser humano, del conocimiento y de la educacion sostienes en lo mas profundo de tu practica."
+      <cite>- Sintesis de la tradicion pedagogica critica latinoamericana</cite>
+    </div>
+
+    <h4>Completa tu plan de aplicacion</h4>
+    <div class="ref-grid">
+      <div class="ref-campo" style="grid-column:1/-1">
+        <label>1. Definicion de tu rol docente: ihacia donde apunta tu propia postura sobre el papel que quieres desempenar como maestro/a universitario/a? iComo has cambiado o profundizado esa postura a lo largo de esta unidad?</label>
+        <textarea placeholder="Define tu rol deseado, fundamentalo en las teorias, y senal como ha evolucionado a lo largo de la unidad..."></textarea>
+      </div>
+      <div class="ref-campo">
+        <label>2. iQue tipo de alumno quieres producir con tu practica docente? iReceptor capaz o constructor autonomo? iQue rol del maestro requiere ese objetivo?</label>
+        <textarea placeholder="Define el tipo de alumno que buscas formar y conecta eso con tu rol docente..."></textarea>
+      </div>
+      <div class="ref-campo">
+        <label>3. iEn tu experiencia como alumno universitario, has tenido docentes que te hayan asignado el rol de constructor activo? iQue hicieron diferente? iComo afecto tu aprendizaje?</label>
+        <textarea placeholder="Narra la experiencia con precision y analiza que rol docente la hizo posible..."></textarea>
+      </div>
+      <div class="ref-campo">
+        <label>4. iCuando crees que el rol conductista del maestro tiene legitimidad pedagogica? iY cuando se convierte en un obstaculo para el aprendizaje real? Da un ejemplo especifico de cada caso.</label>
+        <textarea placeholder="Ejemplo donde el conductismo es valido y ejemplo donde es insuficiente, con justificacion..."></textarea>
+      </div>
+      <div class="ref-campo" style="grid-column:1/-1">
+        <label>5. Sintesis integradora final: icomo articulas las seis teorias revisadas (1.1, 1.2, 1.3, 2.1, 2.2, 2.3) en una vision integrada del conocimiento, la transferencia, el rol del maestro y el rol del alumno? iCual es la teoria o combinacion de teorias que mas fundamentara tu practica?</label>
+        <textarea placeholder="Tu sintesis personal de toda la unidad, articulando los seis enfoques desde tu propia postura pedagogica..."></textarea>
+      </div>
+      <div class="ref-campo" style="grid-column:1/-1">
+        <label>6. Plan de accion: iQue cambiara en tu comportamiento como alumno universitario a partir de hoy, como consecuencia de haber estudiado esta unidad? Se especifico y concreto.</label>
+        <textarea placeholder="Un cambio concreto, medible y proximo en tu rol como estudiante, fundamentado en lo aprendido..."></textarea>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:8px">
+      <button class="btn te" onclick="gR()">Guardar reflexion (esta sesion)</button>
+    </div>
+    <div id="rok" style="display:none;text-align:center;margin-top:10px;font-family:Roboto Mono,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--bosque)">Reflexion guardada</div>
+    <div style="height:14px"></div>
+    <div class="caja bo">
+      <div class="caja-tit">Lecturas de cierre</div>
+      <ul style="margin:8px 0 0;padding-left:16px;font-size:.86rem;color:var(--texto2)">
+        <li style="margin-bottom:5px">Freire, P. (2005). <em>Pedagogia del oprimido</em> (50.a ed.). Siglo XXI. — Capitulos 2 y 3 (educacion bancaria vs. dialogica).</li>
+        <li style="margin-bottom:5px">Schon, D. A. (1998). <em>El profesional reflexivo</em>. Paidos. — Capitulos 1 y 2.</li>
+        <li style="margin-bottom:5px">Vygotski, L. S. (1995). <em>Pensamiento y lenguaje</em>. Paidos. — Capitulo 6: ZDP y rol del maestro.</li>
+        <li>Woolfolk, A. (2014). <em>Psicologia educativa</em> (12.a ed.). Pearson. — Capitulo 12: Ensenanza activa.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+</div>
+
+<footer>
+  <strong>Universidad de la Cienega - Plantel Centro</strong><br>
+  Licenciatura en Pedagogia - Teorias del Aprendizaje<br>
+  Guia Integradora - Temas 3.2 y 3.3 - Papel del Maestro y Papel del Alumno<br>
+  Analisis comparativo de: 1.1 - 1.2 - 1.3 - 2.1 - 2.2 - 2.3 - Constructivismo - Pedagogia Activa - ABP
+</footer>
+
+<script>
+function gP(){
+  const cc=document.querySelectorAll('#previos textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor responde todas las preguntas.');return}
+  document.getElementById('pok').style.display='block';
+}
+function gF(){
+  const t=document.getElementById('f1').value.trim();
+  if(!t){alert('Escribe tu borrador antes de guardar.');return}
+  const b=event.target;b.textContent='Borrador guardado';b.style.background='var(--bosque-m)';b.disabled=true;
+}
+function tE(id){
+  const el=document.getElementById(id);el.classList.toggle('vis');
+  event.target.textContent=el.classList.contains('vis')?'Ocultar ejemplo':'Ver ejemplo orientativo';
+}
+const FB_ALL=[
+  [
+    '<strong>Incorrecto.</strong> Presentar el problema como totalidad antes de las partes es el rol gestaltico (Wertheimer, campo cognoscitivo). El conductismo hace exactamente lo contrario: fragmenta el contenido en pequenos pasos secuenciales para maximizar el reforzamiento inmediato.',
+    '<strong>Correcto.</strong> El maestro conductista es un ingeniero del comportamiento: su funcion es disenar las contingencias (estimulos, reforzadores, castigos) que produciran las conductas deseadas. No es un simple transmisor ni un facilitador: es el controlador del ambiente de aprendizaje.',
+    '<strong>Incorrecto.</strong> La ZDP y el andamiaje son conceptos de Vygotsky, no del conductismo. El conductismo no trabaja con el concepto de desarrollo potencial ni con el retiro progresivo del apoyo; trabaja con el reforzamiento sistematico de conductas observables.',
+    '<strong>Incorrecto.</strong> La activacion de conocimientos previos como condicion del aprendizaje es el rol del maestro en el aprendizaje significativo de Ausubel. El conductismo no trabaja con estructuras cognitivas internas: solo con conductas observables y sus consecuencias externas.',
+  ],
+  [
+    '<strong>Incorrecto.</strong> La Gestalt no propone memorizacion de procedimientos visuales: propone comprension estructural que permite transferir a cualquier contexto. La Gestalt no se limita a dominios visuales.',
+    '<strong>Correcto.</strong> Esta es la diferencia fundamental de roles. El alumno conductista responde a estimulos del ambiente (rol reactivo); el alumno gestaltico reorganiza activamente su campo cognoscitivo para comprender la estructura del problema (rol activo). Esa diferencia de rol produce tipos radicalmente diferentes de aprendizaje.',
+    '<strong>Incorrecto.</strong> La Gestalt no propone la eliminacion de la retroalimentacion: propone un tipo diferente de rol del alumno (reorganizador activo). El maestro gestaltico si proporciona orientacion, pero no la solucion: crea las condiciones para que el alumno la descubra.',
+    '<strong>Incorrecto.</strong> Los roles son radicalmente diferentes. El conductismo asigna al alumno un rol pasivo-reactivo (responder a estimulos); la Gestalt le asigna un rol activo-reorganizador (reestructurar el campo cognoscitivo). Esta diferencia de rol es el corazon del debate pedagogico entre ambas teorias.',
+  ],
+  [
+    '<strong>Incorrecto.</strong> La critica de la educacion bancaria no se dirige al maestro gestaltico: se dirige al maestro transmisor. La Gestalt ya implica un rol activo del alumno que no corresponde a la metafora del deposito bancario.',
+    '<strong>Correcto.</strong> La educacion bancaria de Freire critica exactamente la concepcion empirista-transmisiva del maestro como poseedor del saber y del alumno como recipiente pasivo. Esta critica se aplica a los enfoques del subtema 1.1 (empirismo) y 2.1 (conductismo) cuando se llevan al extremo.',
+    '<strong>Incorrecto.</strong> La critica de Freire no se dirige al constructivismo: el constructivismo ya propone la participacion activa del alumno, que es precisamente lo que Freire defiende. La educacion bancaria critica el polo opuesto.',
+    '<strong>Incorrecto.</strong> El andamiaje vygotskiano busca precisamente la autonomia progresiva del alumno, no la dependencia. La critica de Freire no se dirige a quien acompana hacia la autonomia, sino a quien deposita sin dialogar.',
+  ],
+  [
+    '<strong>Incorrecto.</strong> El rol del alumno es una de las variables mas determinantes del tipo de transferencia producida. Un alumno receptor pasivo (conductismo) genera transferencia cercana; un alumno reorganizador activo (Gestalt, constructivismo) genera transferencia lejana.',
+    '<strong>Correcto.</strong> Esta es la articulacion central del analisis comparativo: el rol del alumno determina el tipo de aprendizaje y, con ello, el tipo de transferencia que ese aprendizaje produce. Receptor pasivo = aprendizaje reproductivo = transferencia cercana. Constructor activo = comprension estructural = transferencia lejana.',
+    '<strong>Incorrecto.</strong> Es exactamente al reves. La investigacion educativa documenta sistematicamente que la transmision pasiva produce transferencia limitada (cercana), mientras que la construccion activa produce mayor transferencia (lejana). El control del maestro sobre el contenido no garantiza transferencia.',
+    '<strong>Incorrecto.</strong> Tanto el rol del alumno como el diseno del maestro son variables relevantes. Pero si el alumno opera como receptor pasivo, incluso el mejor material disenado producira transferencia limitada, porque la comprension estructural requiere la actividad cognitiva del propio alumno.',
+  ],
+  [
+    '<strong>Incorrecto.</strong> Un maestro conductista presentaria primero los pasos procedimentales y evaluaria con ejercicios identicos a los practicados. Este docente hace lo opuesto: comienza por el principio estructural (por que ocurre la reaccion) y evalua con situaciones nuevas.',
+    '<strong>Correcto.</strong> Este docente aplica el rol gestaltico: presenta el principio estructural (por que ocurre la reaccion a nivel molecular) antes que los procedimientos. Eso corresponde al pensamiento productivo de Wertheimer. La evaluacion con reactivos nunca vistos mide comprension estructural transferible, coherente con el rol del alumno como reorganizador activo.',
+    '<strong>Incorrecto.</strong> El empirismo transmisivo presentaria el contenido ya sistematizado, no desarrollaria el razonamiento estructural del por que. Ademas, un maestro empirista tipicamente evaluaria reproduccion, no transferencia a situaciones nuevas.',
+    '<strong>Incorrecto.</strong> Aunque hay elementos del andamiaje, el descripcion principal del docente es gestaltica (principio antes que procedimiento) y constructivista (evaluacion de transferencia). El andamiaje vygotskiano se refiere mas al apoyo graduado segun el nivel del alumno.',
+  ],
+];
+const CORRECT=[1,1,1,1,1];
+
+let sc=0;
+function rQ(el,qid,fbid,corr,optIdx){
+  document.getElementById(qid).querySelectorAll('.qopt').forEach(o=>{o.classList.add('lock');o.onclick=null});
+  const fb=document.getElementById(fbid);fb.classList.add('vis');
+  const qnum=parseInt(qid.replace('q',''))-1;
+  fb.innerHTML=FB_ALL[qnum][optIdx];
+  if(corr){el.classList.add('ok');fb.classList.add('ok');sc++}
+  else{el.classList.add('err');fb.classList.add('err')}
+  const n=parseInt(qid.replace('q',''));
+  document.getElementById('n'+n).style.display='inline-block';
+  document.getElementById('qscore').textContent=sc+' correcta'+(sc!==1?'s':'');
+}
+function nQ(n){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q'+n).classList.add('on');
+  document.getElementById('qbar').style.width=(n*20)+'%';
+  document.getElementById('qlbl').textContent='Pregunta '+n+' de 5';
+}
+function mostrarRes(){
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  const r=document.getElementById('qres');r.classList.add('vis');
+  const pct=Math.round(sc/5*100);
+  const rp=document.getElementById('rpct');rp.textContent=pct+'%';
+  document.getElementById('rcorr').textContent=sc;
+  document.getElementById('rincorr').textContent=5-sc;
+  let cls,lbl,msg;
+  if(sc===5){cls='ex';lbl='Desempeno sobresaliente';msg='Dominas el analisis comparativo de roles pedagogicos y su fundamento teorico. Estas en condiciones de fundamentar conscientemente tu propia practica docente futura.'}
+  else if(sc>=4){cls='bn';lbl='Buen desempeno';msg='Comprension solida de los roles pedagogicos segun cada teoria. Revisa las preguntas donde tuviste dificultad antes de subir tu evidencia a Classroom.'}
+  else if(sc>=3){cls='rg';lbl='Desempeno suficiente';msg='Comprension parcial. Se recomienda releer las secciones 2 a 6 del contenido tematico y consultar las fuentes recomendadas.'}
+  else{cls='bj';lbl='Requiere reforzamiento';msg='Necesitas revisar el contenido con mayor detenimiento. Regresa a la guia, consulta las fuentes y solicita orientacion a la docente.'}
+  rp.className='rpct '+cls;
+  document.getElementById('rlbl').textContent=lbl;
+  document.getElementById('rmsg').textContent=msg;
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qlbl').textContent='Quiz completado';
+}
+function reinQ(){
+  sc=0;
+  document.getElementById('qres').classList.remove('vis');
+  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qlbl').textContent='Pregunta 1 de 5';
+  document.getElementById('qscore').textContent='0 correctas';
+  for(let i=1;i<=5;i++){
+    const q=document.getElementById('q'+i);
+    q.querySelectorAll('.qopt').forEach(o=>o.classList.remove('ok','err','lock'));
+    const fb=document.getElementById('fb'+i);fb.classList.remove('vis','ok','err');fb.innerHTML='';
+    const n=document.getElementById('n'+i);if(n)n.style.display='none';
+  }
+  reattach();
+}
+function reattach(){
+  document.getElementById("q1").querySelectorAll(".qopt").forEach((o,i)=>{
+    const c=(i===1);const qi="q1";const fi="fb1";
+    o.onclick=function(){rQ(this,qi,fi,c,i)};
+  });
+  document.getElementById("q2").querySelectorAll(".qopt").forEach((o,i)=>{
+    const c=(i===1);const qi="q2";const fi="fb2";
+    o.onclick=function(){rQ(this,qi,fi,c,i)};
+  });
+  document.getElementById("q3").querySelectorAll(".qopt").forEach((o,i)=>{
+    const c=(i===1);const qi="q3";const fi="fb3";
+    o.onclick=function(){rQ(this,qi,fi,c,i)};
+  });
+  document.getElementById("q4").querySelectorAll(".qopt").forEach((o,i)=>{
+    const c=(i===1);const qi="q4";const fi="fb4";
+    o.onclick=function(){rQ(this,qi,fi,c,i)};
+  });
+  document.getElementById("q5").querySelectorAll(".qopt").forEach((o,i)=>{
+    const c=(i===1);const qi="q5";const fi="fb5";
+    o.onclick=function(){rQ(this,qi,fi,c,i)};
+  });
+}
+function gR(){
+  const cc=document.querySelectorAll('#reflexion textarea');
+  let v=0;cc.forEach(c=>{if(!c.value.trim())v++});
+  if(v>0){alert('Por favor completa todos los campos.');return}
+  const b=event.target;b.textContent='Reflexion guardada';b.style.background='var(--bosque)';b.style.color='#fff';b.disabled=true;
+  document.getElementById('rok').style.display='block';
+}
+</script>
+</body>
+</html>

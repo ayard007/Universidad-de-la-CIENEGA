@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las TIC en la Educación de Personas con Discapacidad | Tecnología y Educación II | Universidad de la Ciénega</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Nota de diseno: esta guia usa Atkinson Hyperlegible (tipografia disenada para alta legibilidad
+   y baja confusion entre caracteres) en coherencia con el tema de accesibilidad. */
+:root{
+  --deep:     #0d3b4f;
+  --deep-mid: #135066;
+  --teal:     #1a7d8c;
+  --teal-lt:  #d4edf1;
+  --ochre:    #b5651d;
+  --ochre-lt: #fbead6;
+  --plum:     #6a3d7a;
+  --plum-lt:  #eee0f2;
+  --grass:    #2e7d47;
+  --grass-lt: #dcf0e2;
+  --crimson:  #b02a37;
+  --crimson-lt:#fbe4e6;
+  --sand:     #f7f4ee;
+  --panel:    #ffffff;
+  --ink:      #16181c;
+  --ink-mid:  #34373f;
+  --ink-soft: #5c606b;
+  --border:   #ddd8ce;
+  --sh-xs:0 1px 6px rgba(13,59,79,.07);
+  --sh-sm:0 4px 16px rgba(13,59,79,.11);
+  --sh-md:0 10px 40px rgba(13,59,79,.16);
+  --r:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Atkinson Hyperlegible',sans-serif;background:var(--sand);color:var(--ink);font-size:17px;line-height:1.75;}
+
+/* Focus visible reforzado para navegacion por teclado (accesibilidad) */
+a:focus-visible,button:focus-visible,textarea:focus-visible,.qz-opt:focus-visible{
+  outline:3px solid var(--ochre);outline-offset:2px;border-radius:4px;
+}
+
+.skip-link{position:absolute;left:-999px;top:0;background:var(--ochre);color:white;padding:10px 18px;z-index:500;border-radius:0 0 8px 0;font-weight:700;}
+.skip-link:focus{left:0;}
+
+.topbar{height:5px;background:linear-gradient(90deg,var(--teal) 0%,var(--plum) 50%,var(--ochre) 100%);}
+
+/* HEADER */
+.site-header{background:var(--deep);position:relative;overflow:hidden;}
+.site-header::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle at 78% 35%,rgba(26,125,140,.35) 0%,transparent 55%),
+  radial-gradient(circle at 92% 78%,rgba(106,61,122,.28) 0%,transparent 50%),
+  radial-gradient(circle at 8% 60%,rgba(181,101,29,.16) 0%,transparent 48%);pointer-events:none;}
+.header-wrap{max-width:1120px;margin:0 auto;padding:46px 56px 54px;display:grid;grid-template-columns:1fr 170px;gap:40px;align-items:center;position:relative;z-index:1;}
+.header-left{color:white;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8fd4de;margin-bottom:14px;}
+.header-h1{font-family:'Bitter',serif;font-size:clamp(25px,3.6vw,42px);font-weight:700;line-height:1.16;margin-bottom:14px;}
+.header-h1 em{font-style:italic;color:#c9a8d8;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.78);line-height:1.6;max-width:590px;}
+.header-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.hchip{background:rgba(255,255,255,.1);border:1px solid rgba(143,212,222,.4);border-radius:100px;padding:5px 14px;font-size:12px;font-family:'IBM Plex Mono',monospace;color:#b8e4ea;}
+.logo-card{background:white;border-radius:14px;padding:18px 16px;box-shadow:0 8px 40px rgba(26,125,140,.35);text-align:center;}
+.logo-card img{display:block;width:120px;height:auto;margin:0 auto 10px;}
+.logo-card .inst{font-size:10.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--deep);line-height:1.5;}
+
+/* NAV */
+.nav-bar{background:var(--deep-mid);position:sticky;top:0;z-index:200;border-bottom:3px solid var(--ochre);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 56px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.ntab{background:none;border:none;color:rgba(255,255,255,.6);font-family:'Atkinson Hyperlegible',sans-serif;font-size:14px;font-weight:700;padding:14px 16px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;}
+.ntab:hover{color:white;}
+.ntab.on{color:white;border-bottom-color:#8fd4de;}
+.prog-strip{height:4px;background:var(--border);}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--plum),var(--ochre));width:0%;transition:width .4s;}
+
+.body-wrap{max-width:1120px;margin:0 auto;padding:0 56px 100px;}
+.panel{display:none;}
+.panel.on{display:block;animation:fadeUp .35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+.phead{padding:50px 0 34px;border-bottom:2px solid var(--border);margin-bottom:38px;}
+.plabel{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);margin-bottom:10px;}
+.ptitle{font-family:'Bitter',serif;font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.22;}
+.ptitle em{font-style:italic;color:var(--teal);}
+.pdesc{margin-top:12px;font-size:16px;color:var(--ink-soft);font-style:italic;}
+
+.text{color:var(--ink-mid);}
+.text h3{font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:36px 0 13px;padding-bottom:7px;border-bottom:1px solid var(--teal-lt);}
+.text h4{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);margin:22px 0 8px;}
+.text p{margin-bottom:18px;line-height:1.85;}
+.text ul,.text ol{margin:0 0 18px 24px;}
+.text li{margin-bottom:8px;line-height:1.75;}
+.text strong{color:var(--ink);font-weight:700;}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0;}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:24px;box-shadow:var(--sh-xs);transition:transform .2s,box-shadow .2s;}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-sm);}
+.ct{font-family:'Bitter',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.card p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;margin:0;}
+.card-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:24px;}
+.card-t{border-top:3px solid var(--teal);}
+.card-p{border-top:3px solid var(--plum);}
+.card-o{border-top:3px solid var(--ochre);}
+.card-g{border-top:3px solid var(--grass);}
+
+.call{border-radius:var(--r);padding:20px 24px;margin:22px 0;}
+.call-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+.call p{margin:0;font-size:15.5px;color:var(--ink-mid);line-height:1.8;}
+.call p+p{margin-top:8px;}
+.call-t{background:var(--teal-lt);border-left:4px solid var(--teal);}
+.call-p{background:var(--plum-lt);border-left:4px solid var(--plum);}
+.call-o{background:var(--ochre-lt);border-left:4px solid var(--ochre);}
+.call-g{background:var(--grass-lt);border-left:4px solid var(--grass);}
+.call-c{background:var(--crimson-lt);border-left:4px solid var(--crimson);}
+
+.tbl{overflow-x:auto;margin:22px 0;border-radius:var(--r);box-shadow:var(--sh-xs);}
+table{width:100%;border-collapse:collapse;background:var(--panel);font-size:14.5px;}
+caption{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);padding:8px 4px;text-transform:uppercase;letter-spacing:.08em;}
+thead tr{background:var(--deep-mid);color:white;}
+th{padding:12px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;font-weight:500;}
+td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--ink-mid);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--sand);}
+.badge{display:inline-block;padding:3px 11px;border-radius:100px;font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.badge-t{background:var(--teal-lt);color:var(--deep-mid);}
+.badge-p{background:var(--plum-lt);color:var(--plum);}
+.badge-o{background:var(--ochre-lt);color:var(--ochre);}
+.badge-g{background:var(--grass-lt);color:var(--grass);}
+
+/* BARRIER-SOLUTION PAIR */
+.bs-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:18px 0;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-xs);border:1px solid var(--border);}
+.bs-barrier{background:var(--crimson-lt);padding:20px 22px;border-right:1px solid var(--border);}
+.bs-solution{background:var(--grass-lt);padding:20px 22px;}
+.bs-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;font-weight:700;}
+.bs-barrier .bs-label{color:var(--crimson);}
+.bs-solution .bs-label{color:var(--grass);}
+.bs-pair p{margin:0;font-size:14.5px;line-height:1.6;color:var(--ink-mid);}
+@media(max-width:640px){.bs-pair{grid-template-columns:1fr;}.bs-barrier{border-right:none;border-bottom:1px solid var(--border);}}
+
+.res-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin:18px 0;}
+.res-row{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:17px 22px;display:flex;gap:16px;align-items:flex-start;box-shadow:var(--sh-xs);transition:box-shadow .2s;}
+.res-row:hover{box-shadow:var(--sh-sm);}
+.res-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--teal);color:white;font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;justify-content:center;}
+.res-info{flex:1;}
+.res-ti{font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:3px;}
+.res-au{font-size:13.5px;color:var(--ink-soft);font-style:italic;margin-bottom:3px;}
+.res-url{font-size:12.5px;font-family:'IBM Plex Mono',monospace;color:var(--teal);word-break:break-all;}
+.res-badge{flex-shrink:0;padding:4px 10px;border-radius:6px;font-size:11.5px;font-family:'IBM Plex Mono',monospace;background:var(--sand);color:var(--ink-soft);align-self:flex-start;border:1px solid var(--border);}
+
+.diag-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--sh-md);margin:24px 0;}
+.diag-head{background:linear-gradient(135deg,var(--teal) 0%,var(--deep-mid) 100%);padding:24px 30px;color:white;}
+.diag-head h3{font-family:'Bitter',serif;font-size:22px;font-weight:600;margin-bottom:5px;}
+.diag-head p{font-size:14.5px;opacity:.88;}
+.diag-body{padding:28px 30px;}
+.diag-q{font-family:'Bitter',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.55;background:var(--teal-lt);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:17px 22px;margin-bottom:18px;}
+textarea{width:100%;min-height:120px;border:1px solid var(--border);border-radius:8px;padding:13px 15px;font-family:'Atkinson Hyperlegible',sans-serif;font-size:15px;color:var(--ink);resize:vertical;outline:none;background:white;transition:border-color .2s;}
+textarea:focus{border-color:var(--teal);}
+textarea::placeholder{color:var(--ink-soft);font-style:italic;}
+.btn-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap;}
+.btn{padding:11px 22px;border-radius:8px;border:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-t{background:var(--teal);color:white;}.btn-t:hover{background:var(--deep-mid);}
+.btn-p{background:var(--plum);color:white;}.btn-p:hover{background:#54305f;}
+.btn-gh{background:transparent;border:1.5px solid var(--border);color:var(--ink-soft);}
+.btn-gh:hover{border-color:var(--ink-soft);color:var(--ink);}
+
+.act{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:36px 0;box-shadow:var(--sh-md);}
+.act-head{padding:28px 36px;color:white;}
+.act-head.at{background:linear-gradient(135deg,var(--teal) 0%,var(--deep-mid) 100%);}
+.act-head.ap{background:linear-gradient(135deg,var(--plum) 0%,#4f2d5c 100%);}
+.act-head.ag{background:linear-gradient(135deg,var(--grass) 0%,#1f5c33 100%);}
+.act-head.ao{background:linear-gradient(135deg,var(--ochre) 0%,#8a4d15 100%);}
+.act-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;opacity:.8;margin-bottom:7px;}
+.act-title{font-family:'Bitter',serif;font-size:24px;font-weight:700;line-height:1.28;margin-bottom:7px;}
+.act-sub{font-size:14.5px;opacity:.88;font-style:italic;}
+.act-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.abadge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);border-radius:100px;padding:4px 12px;font-size:11.5px;font-family:'IBM Plex Mono',monospace;}
+.act-body{padding:36px;}
+
+.slist{list-style:none;}
+.step{display:flex;gap:18px;margin-bottom:20px;align-items:flex-start;}
+.sn{flex-shrink:0;width:34px;height:34px;border-radius:10px;color:white;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.sn-t{background:var(--teal);}.sn-p{background:var(--plum);}.sn-g{background:var(--grass);}.sn-o{background:var(--ochre);}
+.sc{flex:1;}
+.st{font-weight:700;color:var(--ink);margin-bottom:4px;font-size:15.5px;}
+.sd{color:var(--ink-soft);font-size:14.5px;line-height:1.7;}
+
+.ex{border-left:3px solid var(--ochre);background:var(--ochre-lt);padding:15px 20px;border-radius:0 8px 8px 0;margin:17px 0;font-size:14.5px;color:var(--ink-mid);line-height:1.75;}
+.ex-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;}
+
+.forum{background:#f5f7f8;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 0;}
+.forum-bar{background:var(--deep-mid);color:white;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.forum-q{background:white;border:2px solid var(--ochre);border-radius:8px;margin:13px;padding:18px 22px;}
+.forum-q p{font-family:'Bitter',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.6;margin:0;}
+.forum-in{margin:0 13px 13px;}
+.forum-in .note{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:7px;}
+
+.cl-box{background:#1a73e8;color:white;border-radius:10px;padding:20px 26px;margin:22px 0;display:flex;gap:18px;align-items:flex-start;}
+.cl-ico{font-size:28px;flex-shrink:0;}
+.cl-body h4{font-size:15.5px;font-weight:700;margin-bottom:5px;}
+.cl-body p{font-size:14px;opacity:.92;margin:0;line-height:1.5;}
+
+.rub-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);margin:24px 0 11px;}
+
+.case-box{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:22px 0;box-shadow:var(--sh-xs);}
+.case-hd{background:var(--sand);border-bottom:1px solid var(--border);padding:14px 22px;display:flex;align-items:center;gap:14px;}
+.case-hd-lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;}
+.case-bd{padding:26px;}
+.case-story{background:var(--teal-lt);border-left:3px solid var(--teal);padding:18px 22px;border-radius:0 8px 8px 0;margin-bottom:22px;font-size:15px;color:var(--ink-mid);line-height:1.8;}
+.cq-lbl{font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:6px;}
+.cq{margin-bottom:16px;}
+
+.qz-item{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:18px;box-shadow:var(--sh-xs);transition:border-color .3s;}
+.qz-item.ok{border-color:var(--grass);background:var(--grass-lt);}
+.qz-item.fail{border-color:var(--crimson);background:var(--crimson-lt);}
+.qz-seq{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-soft);margin-bottom:8px;}
+.qz-stem{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:17px;line-height:1.5;}
+.qz-opts{display:flex;flex-direction:column;gap:9px;}
+.qz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:14.5px;color:var(--ink-mid);background:white;transition:all .2s;text-align:left;width:100%;font-family:'Atkinson Hyperlegible',sans-serif;}
+.qz-opt:hover:not(.locked){border-color:var(--teal);background:var(--teal-lt);}
+.qz-opt.sel{border-color:var(--teal);background:var(--teal-lt);color:var(--deep-mid);}
+.qz-opt.corr{border-color:var(--grass);background:var(--grass-lt);color:var(--grass);}
+.qz-opt.incr{border-color:var(--crimson);background:var(--crimson-lt);color:var(--crimson);}
+.qz-opt.locked{pointer-events:none;}
+.qz-bul{flex-shrink:0;width:24px;height:24px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px;}
+.qz-fb{margin-top:13px;padding:12px 16px;border-radius:8px;font-size:14.5px;line-height:1.65;display:none;}
+.qz-fb.show{display:block;}
+.qz-fb.ok{background:var(--grass-lt);color:var(--grass);border:1px solid #94ccA4;}
+.qz-fb.fail{background:var(--crimson-lt);color:var(--crimson);border:1px solid #e8a4aa;}
+
+.score{background:linear-gradient(135deg,var(--deep) 0%,var(--teal) 55%,var(--plum) 100%);color:white;border-radius:14px;padding:44px;text-align:center;display:none;margin-top:24px;}
+.score.show{display:block;animation:fadeUp .5s ease;}
+.score-num{font-family:'Bitter',serif;font-size:76px;font-weight:700;line-height:1;margin-bottom:8px;}
+.score-of{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:17px;}
+.score-msg{font-family:'Bitter',serif;font-size:19px;font-style:italic;color:rgba(255,255,255,.95);margin-bottom:22px;line-height:1.5;}
+.score-det{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px;}
+
+.rfx-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:26px 0;}
+.rfx-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:24px;box-shadow:var(--sh-xs);}
+.rfx-card h4{font-family:'Bitter',serif;font-size:18px;font-weight:600;color:var(--deep-mid);margin-bottom:8px;}
+.rfx-card p{font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;}
+
+.tl{position:relative;padding-left:36px;margin:22px 0;}
+.tl::before{content:'';position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--teal),var(--plum),var(--ochre));}
+.tl-it{position:relative;margin-bottom:20px;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:14px;height:14px;border-radius:50%;background:white;border:2.5px solid var(--teal);box-shadow:0 0 0 2px var(--teal-lt);}
+.tl-t{font-weight:700;font-size:15.5px;color:var(--ink);margin-bottom:3px;}
+.tl-d{font-size:14.5px;color:var(--ink-soft);line-height:1.65;}
+
+.rule{height:1px;background:var(--border);margin:36px 0;}
+.footer{background:var(--deep);color:rgba(255,255,255,.55);text-align:center;padding:28px 56px;font-size:13.5px;line-height:1.7;}
+.footer strong{color:white;}
+
+@media(max-width:720px){
+  .header-wrap{grid-template-columns:1fr;padding:28px 24px 36px;gap:20px;}
+  .body-wrap{padding:0 24px 80px;}
+  .nav-inner{padding:0 16px;}
+  .act-body{padding:24px;}
+  .g2,.g3,.rfx-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+<div class="topbar"></div>
+<header class="site-header">
+  <div class="header-wrap">
+    <div class="header-left">
+      <div class="eyebrow">Tecnología y Educación II — Licenciatura en Pedagogía</div>
+      <h1 class="header-h1">Las TIC en la educación de las <em>personas con discapacidad</em></h1>
+      <p class="header-sub">Guía interactiva de aprendizaje activo — Unidad III, Tema 3.1. Barreras y soluciones del uso de las Tecnologías de la Información y la Comunicación por las personas con discapacidad.</p>
+      <div class="header-chips">
+        <span class="hchip">Constructivismo</span>
+        <span class="hchip">Pedagogía Activa</span>
+        <span class="hchip">ABP</span>
+        <span class="hchip">Inclusión</span>
+        <span class="hchip">4 Actividades</span>
+      </div>
+    </div>
+    <div class="logo-card">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Logo de la Universidad de la Ciénega, Plantel Centro">
+      <div class="inst">Universidad<br>de la Ciénega<br>Plantel Centro</div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-bar" aria-label="Navegación de la guía">
+  <div class="nav-inner">
+    <button class="ntab on"  onclick="show('intro')">Introducción</button>
+    <button class="ntab"     onclick="show('contenido')">Contenido</button>
+    <button class="ntab"     onclick="show('recursos')">Fuentes</button>
+    <button class="ntab"     onclick="show('previo')">Conocimiento Previo</button>
+    <button class="ntab"     onclick="show('act1')">Foro</button>
+    <button class="ntab"     onclick="show('act2')">Actividad</button>
+    <button class="ntab"     onclick="show('act3')">Caso Práctico</button>
+    <button class="ntab"     onclick="show('act4')">Quiz</button>
+    <button class="ntab"     onclick="show('reflexion')">Reflexión</button>
+  </div>
+</nav>
+<div class="prog-strip"><div class="prog-bar" id="prog"></div></div>
+
+<main id="main" class="body-wrap">
+
+  <!-- INTRO -->
+  <section id="intro" class="panel on">
+    <div class="phead">
+      <div class="plabel">Presentación</div>
+      <h2 class="ptitle">Introducción: <em>tecnología que incluye o que excluye</em></h2>
+      <p class="pdesc">Las mismas herramientas digitales pueden abrir las puertas del aprendizaje a las personas con discapacidad o levantar nuevas barreras. La diferencia está en cómo se diseñan y se usan.</p>
+    </div>
+
+    <div class="text">
+      <p>Las Tecnologías de la Información y la Comunicación (TIC) han sido descritas como una de las mayores oportunidades de inclusión educativa de la historia. Para una persona con discapacidad visual, un lector de pantalla puede convertir cualquier texto digital en voz; para una persona sorda, el subtitulado automático abre el acceso a un video; para una persona con discapacidad motriz, un teclado adaptado o el control por voz puede ser la diferencia entre participar o quedar excluida.</p>
+      <p>Sin embargo, esta promesa tiene una condición: <strong>la tecnología solo incluye cuando se diseña y se usa pensando en todas las personas</strong>. Una plataforma educativa mal diseñada, un documento sin estructura, un video sin subtítulos o una imagen sin descripción no son neutrales: levantan barreras que excluyen activamente a quienes tienen alguna discapacidad. La misma herramienta puede ser puente o muro.</p>
+      <p>Este tema le invita a comprender esa doble cara de las TIC y, sobre todo, a asumir su papel como futuro pedagogo: usted será responsable de decidir si los materiales y entornos digitales que diseñe incluyen o excluyen. La accesibilidad no es un añadido opcional ni un favor caritativo: es un <strong>derecho</strong> y una condición de calidad educativa.</p>
+    </div>
+
+    <div class="g3">
+      <div class="card card-t">
+        <div class="card-ico" style="background:var(--teal-lt);">&#127919;</div>
+        <div class="ct">Propósito</div>
+        <p>Identificar las barreras que enfrentan las personas con discapacidad al usar las TIC y las soluciones tecnológicas y pedagógicas que las eliminan.</p>
+      </div>
+      <div class="card card-p">
+        <div class="card-ico" style="background:var(--plum-lt);">&#129504;</div>
+        <div class="ct">Competencia central</div>
+        <p>Diseñar y evaluar entornos y materiales digitales accesibles, aplicando los principios del diseño universal para el aprendizaje.</p>
+      </div>
+      <div class="card card-o">
+        <div class="card-ico" style="background:var(--ochre-lt);">&#128101;</div>
+        <div class="ct">Enfoque metodológico</div>
+        <p>Constructivismo, ABP y pedagogía activa: el estudiante analiza barreras reales, propone soluciones y experimenta la accesibilidad de primera mano.</p>
+      </div>
+    </div>
+
+    <div class="call call-o">
+      <div class="call-lbl">Pregunta generadora</div>
+      <p>Si la tecnología puede eliminar tantas barreras para las personas con discapacidad, ¿por qué siguen existiendo tantos entornos digitales educativos que las excluyen? ¿Es un problema de falta de tecnología, de falta de conocimiento o de falta de conciencia? ¿Y qué responsabilidad tiene en esto el pedagogo que diseña los materiales?</p>
+    </div>
+
+    <div class="call call-t">
+      <div class="call-lbl">Nota sobre el lenguaje</div>
+      <p>En esta guía se usa la expresión <strong>"personas con discapacidad"</strong>, terminología recomendada por la Convención sobre los Derechos de las Personas con Discapacidad de la ONU, porque antepone a la persona antes que la condición. Se evitan términos como "discapacitado", "minusválido" o "capacidades diferentes", superados o imprecisos. El lenguaje también incluye o excluye.</p>
+    </div>
+
+    <div class="tl">
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Contenido Temático</div><div class="tl-d">Tipos de discapacidad, barreras al uso de las TIC, soluciones (tecnología de apoyo, accesibilidad, DUA) y marco normativo.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Fuentes de Consulta</div><div class="tl-d">Convención de la ONU, pautas WCAG, reportes de UNESCO y recursos sobre diseño universal.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Conocimiento Previo</div><div class="tl-d">Diagnóstico: ¿qué barreras ha observado en su entorno universitario?</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Actividad 1 — Foro</div><div class="tl-d">Debate sobre la accesibilidad como derecho y no como favor. Entrega en Classroom.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Actividad 2 — Aplicación</div><div class="tl-d">Auditoría de accesibilidad de un material o entorno digital real. Entrega en Classroom.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Actividad 3 — Caso Práctico</div><div class="tl-d">Análisis de un caso de exclusión digital en educación superior. Entrega en Classroom.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Actividad 4 — Quiz</div><div class="tl-d">5 preguntas con retroalimentación y puntaje final. Entrega en Classroom.</div></div></div>
+      <div class="tl-it"><div class="tl-dot"></div><div><div class="tl-t">Reflexión Final</div><div class="tl-d">Plan de aplicación de la accesibilidad en la práctica académica y profesional.</div></div></div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <section id="contenido" class="panel">
+    <div class="phead">
+      <div class="plabel">Unidad III — Tema 3.1</div>
+      <h2 class="ptitle">Barreras y soluciones del uso de las <em>TIC</em></h2>
+      <p class="pdesc">Comprender los obstáculos para poder eliminarlos: de la barrera a la solución accesible.</p>
+    </div>
+
+    <div class="text">
+      <h3>1. La discapacidad desde el modelo social</h3>
+      <p>Para comprender las barreras tecnológicas es necesario partir de una idea fundamental: el <strong>modelo social de la discapacidad</strong>. Según este enfoque —adoptado por la Convención sobre los Derechos de las Personas con Discapacidad de la ONU—, la discapacidad no reside únicamente en la persona, sino en la <em>interacción entre la persona y las barreras del entorno</em>. Una persona en silla de ruedas no está "incapacitada" para entrar a un edificio: el edificio con escaleras y sin rampa es lo que la discapacita.</p>
+      <p>Aplicado a las TIC, esto significa que <strong>una persona con discapacidad no está limitada por su condición, sino por el diseño inaccesible de la tecnología</strong>. Un video no es inaccesible para una persona sorda por culpa de la persona: lo es porque quien lo produjo no le puso subtítulos. Cambiar el foco de la persona al entorno transforma la responsabilidad: no se trata de "ayudar a los que no pueden", sino de eliminar las barreras que nosotros mismos construimos.</p>
+    </div>
+
+    <div class="call call-p">
+      <div class="call-lbl">Idea central del tema</div>
+      <p>La barrera no está en la persona con discapacidad, sino en el diseño del entorno digital. Por tanto, la solución tampoco está en "arreglar" a la persona, sino en <strong>diseñar tecnología y materiales accesibles desde el principio</strong>. Esto convierte al pedagogo en un agente clave de inclusión o de exclusión.</p>
+    </div>
+
+    <div class="text">
+      <h3>2. Tipos de discapacidad y sus barreras tecnológicas</h3>
+      <p>Cada tipo de discapacidad enfrenta barreras específicas en el uso de las TIC. Conocerlas es el primer paso para eliminarlas:</p>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <caption>Tipos de discapacidad y barreras frecuentes en entornos digitales</caption>
+        <thead><tr><th>Tipo de discapacidad</th><th>Barreras frecuentes en las TIC</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-t">Visual</span> (ceguera, baja visión)</td><td>Imágenes sin descripción; textos en imágenes; bajo contraste; contenido que solo funciona con el mouse; documentos no estructurados que confunden al lector de pantalla</td></tr>
+          <tr><td><span class="badge badge-p">Auditiva</span> (sordera, hipoacusia)</td><td>Videos y audios sin subtítulos ni transcripción; información transmitida solo por sonido; ausencia de intérprete de lengua de señas</td></tr>
+          <tr><td><span class="badge badge-o">Motriz</span> (movilidad reducida)</td><td>Interfaces que requieren movimientos precisos del mouse; botones muy pequeños; ausencia de navegación por teclado; tiempos de respuesta muy cortos</td></tr>
+          <tr><td><span class="badge badge-g">Cognitiva</span> (dificultades de aprendizaje, TDAH)</td><td>Lenguaje complejo; interfaces sobrecargadas; instrucciones confusas; exceso de estímulos; falta de estructura clara</td></tr>
+          <tr><td><span class="badge badge-t">Del habla</span></td><td>Sistemas que dependen exclusivamente del reconocimiento de voz; ausencia de alternativas escritas para la comunicación</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text">
+      <h3>3. Las barreras y sus soluciones: de la exclusión a la inclusión</h3>
+      <p>Cada barrera tiene una solución conocida. La accesibilidad no es un misterio técnico: es un conjunto de prácticas bien documentadas. A continuación se presentan las barreras más comunes en la educación con su solución correspondiente:</p>
+    </div>
+
+    <div class="bs-pair">
+      <div class="bs-barrier"><div class="bs-label">Barrera</div><p>Un video educativo sin subtítulos excluye a estudiantes sordos o con hipoacusia, y también a quienes estudian en entornos ruidosos o silenciosos.</p></div>
+      <div class="bs-solution"><div class="bs-label">Solución</div><p>Añadir subtítulos (manuales o generados por IA y revisados) y ofrecer una transcripción del contenido. Beneficia a todos, no solo a personas sordas.</p></div>
+    </div>
+
+    <div class="bs-pair">
+      <div class="bs-barrier"><div class="bs-label">Barrera</div><p>Una imagen o infografía sin texto alternativo es invisible para el lector de pantalla que usa una persona ciega: simplemente no existe para ella.</p></div>
+      <div class="bs-solution"><div class="bs-label">Solución</div><p>Agregar texto alternativo (atributo "alt") que describa el contenido y la función de la imagen, para que el lector de pantalla lo transmita en voz.</p></div>
+    </div>
+
+    <div class="bs-pair">
+      <div class="bs-barrier"><div class="bs-label">Barrera</div><p>Un documento con texto de bajo contraste (gris claro sobre blanco) o letra muy pequeña excluye a personas con baja visión o dificultades visuales.</p></div>
+      <div class="bs-solution"><div class="bs-label">Solución</div><p>Usar suficiente contraste (relación mínima 4.5:1 según las pautas WCAG), tamaños de letra legibles y permitir el ajuste del tamaño sin que se rompa el diseño.</p></div>
+    </div>
+
+    <div class="bs-pair">
+      <div class="bs-barrier"><div class="bs-label">Barrera</div><p>Una plataforma que solo se puede navegar con el mouse excluye a personas con discapacidad motriz que usan solo el teclado o tecnologías de apoyo.</p></div>
+      <div class="bs-solution"><div class="bs-label">Solución</div><p>Garantizar la navegación completa por teclado, con un orden lógico y un foco visible, de modo que toda acción se pueda realizar sin mouse.</p></div>
+    </div>
+
+    <div class="bs-pair">
+      <div class="bs-barrier"><div class="bs-label">Barrera</div><p>Instrucciones con lenguaje complejo, párrafos largos e interfaces sobrecargadas excluyen a personas con discapacidad cognitiva o dificultades de aprendizaje.</p></div>
+      <div class="bs-solution"><div class="bs-label">Solución</div><p>Usar lenguaje claro y sencillo, estructura predecible, apoyos visuales y la posibilidad de "lectura fácil". La claridad beneficia a todo el estudiantado.</p></div>
+    </div>
+
+    <div class="text">
+      <h3>4. Las tecnologías de apoyo (productos de apoyo)</h3>
+      <p>Las <strong>tecnologías de apoyo</strong> (o productos de apoyo) son herramientas específicas que permiten a las personas con discapacidad acceder a las TIC. No sustituyen el diseño accesible, pero lo complementan. Es fundamental que el pedagogo las conozca:</p>
+    </div>
+
+    <div class="g2">
+      <div class="card card-t">
+        <div class="ct">Lectores de pantalla</div>
+        <p>Programas que convierten el texto en voz o en braille. Los más usados son JAWS, NVDA (gratuito) y VoiceOver (Apple). Permiten a personas ciegas navegar por computadoras y dispositivos, siempre que el contenido esté bien estructurado.</p>
+      </div>
+      <div class="card card-p">
+        <div class="ct">Subtitulado y transcripción</div>
+        <p>Herramientas que convierten el audio en texto en tiempo real. Otter.ai, el subtitulado automático de YouTube o de Google Meet permiten a personas sordas acceder a contenido hablado.</p>
+      </div>
+      <div class="card card-o">
+        <div class="ct">Dispositivos de acceso alternativo</div>
+        <p>Teclados adaptados, ratones especiales, pulsadores, punteros, control por voz o por seguimiento ocular. Permiten a personas con discapacidad motriz interactuar con la tecnología.</p>
+      </div>
+      <div class="card card-g">
+        <div class="ct">Herramientas de lectura y comprensión</div>
+        <p>Lectores inmersivos (como el de Microsoft), ajustadores de texto, apoyos de lectura fácil y traductores. Apoyan a personas con dislexia, TDAH o discapacidad cognitiva.</p>
+      </div>
+    </div>
+
+    <div class="text">
+      <h3>5. El Diseño Universal para el Aprendizaje (DUA)</h3>
+      <p>Más allá de resolver barreras una por una, existe un enfoque que las previene desde el origen: el <strong>Diseño Universal para el Aprendizaje (DUA)</strong>. Su principio es diseñar los materiales y entornos pensando desde el inicio en la diversidad de todas las personas, en lugar de crear algo estándar y luego "adaptarlo" para quienes no encajan.</p>
+      <p>El DUA se basa en ofrecer múltiples formas de:</p>
+      <ul>
+        <li><strong>Representación:</strong> presentar la información de varias maneras (texto, audio, imagen, video) para que cada quien acceda por el canal que le funcione.</li>
+        <li><strong>Acción y expresión:</strong> permitir que los estudiantes demuestren lo aprendido de distintas formas (escrito, oral, visual), no de una sola manera obligatoria.</li>
+        <li><strong>Implicación (motivación):</strong> ofrecer diversas formas de despertar el interés y sostener el esfuerzo, reconociendo que no a todos motiva lo mismo.</li>
+      </ul>
+      <p>La ventaja del DUA es que <strong>lo que se diseña para incluir a las personas con discapacidad beneficia a todo el estudiantado</strong>. Los subtítulos ayudan a personas sordas, pero también a quien aprende en un segundo idioma; las rampas ayudan a sillas de ruedas, pero también a carriolas y maletas. Es el "efecto acera": la solución accesible mejora la experiencia de todos.</p>
+    </div>
+
+    <div class="call call-c">
+      <div class="call-lbl">Advertencia frecuente</div>
+      <p>Un error común es pensar que la accesibilidad es "cara", "difícil" o "para muy pocos". La realidad es que la mayoría de las soluciones son gratuitas y sencillas (poner subtítulos, describir imágenes, usar buen contraste), que las personas con discapacidad son millones, y que la accesibilidad, además de ser un derecho, mejora la calidad para todos. Diseñar inaccesible no ahorra: excluye.</p>
+    </div>
+
+    <div class="call call-t">
+      <div class="call-lbl">Síntesis del tema</div>
+      <p>Las TIC pueden ser la mayor herramienta de inclusión o un nuevo muro de exclusión. La diferencia depende de decisiones concretas: subtitular o no, describir las imágenes o no, usar buen contraste o no, permitir el teclado o no. Como futuro pedagogo, cada material que diseñe será una decisión de incluir o excluir. Conocer las barreras y sus soluciones lo convierte en un agente de accesibilidad, y la accesibilidad es, ante todo, una cuestión de justicia y de derechos.</p>
+    </div>
+  </section>
+  <!-- RECURSOS -->
+  <section id="recursos" class="panel">
+    <div class="phead">
+      <div class="plabel">Bibliografía y fuentes</div>
+      <h2 class="ptitle">Materiales de <em>consulta formal</em></h2>
+      <p class="pdesc">Marcos normativos, pautas técnicas y recursos académicos sobre accesibilidad y TIC para personas con discapacidad.</p>
+    </div>
+
+    <div class="call call-o">
+      <div class="call-lbl">Instrucción de uso</div>
+      <p>Consulte al menos dos de estas fuentes antes de iniciar las actividades. Para cada recurso, anote: (a) una barrera que menciona, (b) una solución concreta que propone, y (c) un principio o derecho que fundamenta la accesibilidad. Estas notas serán la base de sus actividades.</p>
+    </div>
+
+    <h3 style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:26px 0 14px;border-bottom:1px solid var(--teal-lt);padding-bottom:7px;">Marcos normativos y de referencia</h3>
+    <ul class="res-list">
+      <li class="res-row"><span class="res-n">1</span><div class="res-info"><div class="res-ti">Convención sobre los Derechos de las Personas con Discapacidad</div><div class="res-au">ONU (2006). Especialmente el Artículo 9 (Accesibilidad) y el Artículo 24 (Educación). Ratificada por México.</div><div class="res-url">https://www.un.org/esa/socdev/enable/documents/tccconvs.pdf</div></div><span class="res-badge">Tratado ONU</span></li>
+      <li class="res-row"><span class="res-n">2</span><div class="res-info"><div class="res-ti">Pautas de Accesibilidad para el Contenido Web (WCAG 2.1)</div><div class="res-au">W3C — World Wide Web Consortium. Norma técnica internacional de referencia sobre accesibilidad digital.</div><div class="res-url">https://www.w3.org/WAI/standards-guidelines/wcag/es</div></div><span class="res-badge">Norma técnica</span></li>
+      <li class="res-row"><span class="res-n">3</span><div class="res-info"><div class="res-ti">Las TIC en la educación de personas con discapacidad</div><div class="res-au">UNESCO (2014). Directrices de políticas para el aprendizaje móvil y la inclusión. París.</div><div class="res-url">https://unesdoc.unesco.org/ark:/48223/pf0000229441</div></div><span class="res-badge">Reporte UNESCO</span></li>
+      <li class="res-row"><span class="res-n">4</span><div class="res-info"><div class="res-ti">Ley General para la Inclusión de las Personas con Discapacidad</div><div class="res-au">Gobierno de México (2011, con reformas posteriores). Marco legal nacional sobre derechos y accesibilidad.</div><div class="res-url">https://www.diputados.gob.mx/LeyesBiblio/pdf/LGIPD.pdf</div></div><span class="res-badge">Ley (México)</span></li>
+    </ul>
+
+    <h3 style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:26px 0 14px;border-bottom:1px solid var(--teal-lt);padding-bottom:7px;">Recursos sobre Diseño Universal para el Aprendizaje y accesibilidad</h3>
+    <ul class="res-list">
+      <li class="res-row"><span class="res-n">5</span><div class="res-info"><div class="res-ti">Pautas sobre el Diseño Universal para el Aprendizaje (DUA)</div><div class="res-au">CAST (Center for Applied Special Technology). Marco de referencia mundial del DUA, con versión en español.</div><div class="res-url">https://udlguidelines.cast.org/?lang=es</div></div><span class="res-badge">Marco DUA</span></li>
+      <li class="res-row"><span class="res-n">6</span><div class="res-info"><div class="res-ti">Tecnologías de apoyo y educación inclusiva</div><div class="res-au">Cabero-Almenara, J. y Ruiz-Palmero, J. (2018). Las TIC para la inclusión educativa del alumnado con discapacidad. Revista Aula Abierta, 47(3).</div><div class="res-url">https://reunido.uniovi.es/index.php/AA</div></div><span class="res-badge">Artículo</span></li>
+      <li class="res-row"><span class="res-n">7</span><div class="res-info"><div class="res-ti">NVDA — Lector de pantalla gratuito y de código abierto</div><div class="res-au">NV Access. Herramienta gratuita para experimentar de primera mano cómo navega una persona ciega.</div><div class="res-url">https://www.nvaccess.org/download/</div></div><span class="res-badge">Herramienta</span></li>
+      <li class="res-row"><span class="res-n">8</span><div class="res-info"><div class="res-ti">Herramientas de evaluación de accesibilidad web (WAVE)</div><div class="res-au">WebAIM. Herramienta gratuita para auditar la accesibilidad de una página web o material digital.</div><div class="res-url">https://wave.webaim.org</div></div><span class="res-badge">Herramienta</span></li>
+    </ul>
+  </section>
+
+  <!-- CONOCIMIENTO PREVIO -->
+  <section id="previo" class="panel">
+    <div class="phead">
+      <div class="plabel">Diagnóstico inicial</div>
+      <h2 class="ptitle">Activación de <em>conocimiento previo</em></h2>
+      <p class="pdesc">¿Qué barreras de accesibilidad ha observado en su entorno universitario?</p>
+    </div>
+
+    <div class="text">
+      <p>Antes de estudiar las barreras y soluciones de forma sistemática, es valioso que usted observe su <strong>propio entorno con nuevos ojos</strong>. Casi con seguridad ha estado en contacto con materiales o entornos digitales que excluyen a personas con discapacidad, aunque quizá no los haya identificado como tales. Este ejercicio activará su conciencia sobre el tema.</p>
+    </div>
+
+    <div class="diag-box">
+      <div class="diag-head">
+        <h3>Pregunta de conocimiento previo</h3>
+        <p>Reflexione desde su experiencia y observación real en la Universidad de la Ciénega.</p>
+      </div>
+      <div class="diag-body">
+        <div class="diag-q">Piense en los materiales y plataformas digitales que se usan en sus clases (presentaciones, videos, documentos, la plataforma institucional). Si un compañero suyo tuviera una discapacidad visual, auditiva o motriz, ¿qué barreras concretas enfrentaría para acceder a esos materiales? ¿Ha presenciado alguna situación donde una persona quedó excluida por un entorno digital inaccesible? ¿Qué cree que se necesitaría para eliminar esas barreras?</div>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:8px;">BORRADOR — PUBLIQUE SU VERSIÓN FINAL EN GOOGLE CLASSROOM</p>
+        <textarea id="prev-ta" placeholder="Describa con detalle materiales o plataformas concretas de su entorno universitario y las barreras que enfrentaría una persona con discapacidad. Sea específico: ¿los videos tienen subtítulos?, ¿las imágenes tienen descripción?, ¿la plataforma se puede usar solo con teclado? Su observación real es lo más valioso."></textarea>
+        <div class="btn-row">
+          <button class="btn btn-t" onclick="sv('prev-ta','prev-msg')">Guardar borrador</button>
+          <button class="btn btn-gh" onclick="cl('prev-ta')">Limpiar</button>
+          <span id="prev-msg" style="font-size:13.5px;color:var(--grass);display:none;">Guardado correctamente.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="call call-t" style="margin-top:18px;">
+      <div class="call-lbl">Entrega en Google Classroom</div>
+      <p>Publique su respuesta en la tarea "Conocimiento Previo — Tema 3.1" en Classroom. Esta respuesta será punto de partida para el foro de la Actividad 1 y le permitirá medir su propio aprendizaje al comparar lo que observaba antes del tema con lo que puede analizar al finalizar la guía.</p>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 1 -->
+  <section id="act1" class="panel">
+    <div class="act">
+      <div class="act-head at">
+        <div class="act-num">Actividad 01 de 04</div>
+        <div class="act-title">Foro de Mediación: ¿Derecho o favor?</div>
+        <div class="act-sub">Reflexión crítica sobre la accesibilidad como derecho humano y no como acto de buena voluntad.</div>
+        <div class="act-badges">
+          <span class="abadge">Foro de discusión</span>
+          <span class="abadge">Participación + interacción</span>
+          <span class="abadge">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="call call-o">
+          <div class="call-lbl">Fundamento pedagógico</div>
+          <p>La forma en que concebimos la accesibilidad determina cómo actuamos: si la vemos como un "favor" que hacemos a algunos, será lo primero que se recorte cuando falte tiempo o dinero; si la entendemos como un "derecho", será una condición innegociable de nuestro trabajo. El foro constructivista permite explorar esta distinción confrontando posturas y experiencias.</p>
+        </div>
+
+        <h3 style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:22px 0 14px;border-bottom:1px solid var(--teal-lt);padding-bottom:7px;">Pregunta detonadora</h3>
+
+        <div class="forum">
+          <div class="forum-bar">FORO — TECNOLOGÍA Y EDUCACIÓN II — UNIVERSIDAD DE LA CIÉNEGA PLANTEL CENTRO</div>
+          <div class="forum-q">
+            <p>Con frecuencia se piensa que hacer accesibles los materiales educativos es "una ayuda" o "un esfuerzo extra" para los pocos estudiantes con discapacidad. Desde su experiencia y lo estudiado en el tema: ¿es la accesibilidad un favor que el docente concede por buena voluntad, o es un derecho que el estudiante posee? Si un docente de la Universidad de la Ciénega decide no subtitular sus videos "porque no tiene tiempo" y con ello excluye a un estudiante sordo, ¿está tomando una decisión legítima o está vulnerando un derecho? Argumente su postura con los conceptos del tema.</p>
+          </div>
+          <div class="forum-in">
+            <div class="note">BORRADOR — LA RESPUESTA DEFINITIVA SE PUBLICA EN GOOGLE CLASSROOM</div>
+            <textarea id="foro-ta" placeholder="Redacte su borrador. La pregunta le pide tomar una postura clara y fundamentada sobre si la accesibilidad es un derecho o un favor. Apóyese en el modelo social de la discapacidad, la Convención de la ONU y los conceptos del tema. Conecte con su experiencia real en la Ciénega."></textarea>
+            <div class="btn-row" style="margin-top:10px;">
+              <button class="btn btn-t" onclick="sv('foro-ta','foro-msg')">Guardar borrador</button>
+              <button class="btn btn-gh" onclick="cl('foro-ta')">Limpiar</button>
+              <span id="foro-msg" style="font-size:13.5px;color:var(--grass);display:none;">Guardado.</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:22px 0 14px;border-bottom:1px solid var(--teal-lt);padding-bottom:7px;">Instrucciones paso a paso</h3>
+
+        <ul class="slist">
+          <li class="step"><span class="sn sn-t">1</span><div class="sc"><div class="st">Revisar el modelo social y el marco normativo</div><div class="sd">Relea las secciones 1 (modelo social) del contenido y consulte el Artículo 9 y 24 de la Convención de la ONU en las fuentes. Su respuesta debe apoyarse en estos fundamentos, no solo en su opinión personal.</div></div></li>
+          <li class="step"><span class="sn sn-t">2</span><div class="sc"><div class="st">Redactar una respuesta argumentada (250-400 palabras)</div><div class="sd">Su respuesta debe incluir: (a) su postura clara sobre si la accesibilidad es derecho o favor; (b) al menos dos argumentos fundamentados en el modelo social y el marco normativo; (c) un análisis del caso del docente que no subtitula, indicando si vulnera un derecho y por qué.</div></div></li>
+          <li class="step"><span class="sn sn-t">3</span><div class="sc"><div class="st">Publicar en Google Classroom</div><div class="sd">Acceda a la tarea "Foro 1 — Accesibilidad: ¿derecho o favor?" en Classroom y publique su respuesta. El foro se discute en clase: las respuestas que solo repiten frases sin postura ni argumento son fácilmente identificables.</div></div></li>
+          <li class="step"><span class="sn sn-t">4</span><div class="sc"><div class="st">Interactuar con dos compañeros</div><div class="sd">Lea las respuestas de dos compañeros e identifique si coinciden o difieren en su postura. Escriba un comentario respetuoso a cada uno que dialogue con su argumento: aporte una idea nueva, un ejemplo o una pregunta que enriquezca el debate.</div></div></li>
+          <li class="step"><span class="sn sn-t">5</span><div class="sc"><div class="st">Captura de pantalla como evidencia</div><div class="sd">Tome una captura que muestre su publicación original y sus dos comentarios a compañeros. Adjúntela en Classroom como evidencia de la actividad.</div></div></li>
+        </ul>
+
+        <div class="ex">
+          <div class="ex-lbl">Ejemplo de respuesta bien estructurada (fragmento)</div>
+          <p>"...Sostengo que la accesibilidad es un derecho, no un favor. El Artículo 9 de la Convención de la ONU establece la accesibilidad como condición para el ejercicio de otros derechos, y el Artículo 24 garantiza el derecho a la educación inclusiva. Desde el <strong>modelo social</strong>, el estudiante sordo no está impedido de aprender: es el video sin subtítulos el que lo excluye. Por tanto, cuando el docente decide no subtitular 'por falta de tiempo', no está tomando una decisión neutral: está construyendo una barrera que vulnera un derecho. Sería equivalente a un edificio público que decide no poner rampa 'por ahorrar': la falta de recursos no justifica la exclusión de un derecho..."</p>
+        </div>
+
+        <div class="rub-lbl">Rúbrica de evaluación — Foro</div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En desarrollo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Fundamentación</strong></td><td>Sostiene su postura con el modelo social y el marco normativo con precisión</td><td>Menciona los conceptos sin desarrollarlos plenamente</td><td>Responde solo desde la opinión sin fundamento del tema</td></tr>
+              <tr><td><strong>Postura y argumentación</strong></td><td>Postura clara con argumentos sólidos y análisis del caso</td><td>Postura presente con argumentación parcial</td><td>Postura vaga o sin analizar el caso</td></tr>
+              <tr><td><strong>Conexión con la realidad</strong></td><td>Conecta con su experiencia y contexto universitario real</td><td>Conexión presente pero general</td><td>Sin conexión con la realidad</td></tr>
+              <tr><td><strong>Interacción</strong></td><td>Dos comentarios que dialogan y aportan al debate</td><td>Dos comentarios con contenido pero sin profundidad</td><td>Sin interacción o superficial</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cl-box"><div class="cl-ico">&#128197;</div><div class="cl-body"><h4>Entrega en Google Classroom</h4><p>Publicación original + 2 comentarios a compañeros + captura de pantalla como evidencia. Use su cuenta institucional. Fecha límite: la indicada por su docente.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <!-- ACTIVIDAD 2 -->
+  <section id="act2" class="panel">
+    <div class="act">
+      <div class="act-head ap">
+        <div class="act-num">Actividad 02 de 04</div>
+        <div class="act-title">Auditoría de accesibilidad de un material real</div>
+        <div class="act-sub">Aprendizaje Basado en Problemas: detectar barreras reales y proponer soluciones concretas.</div>
+        <div class="act-badges">
+          <span class="abadge">Producción individual</span>
+          <span class="abadge">Auditoría práctica</span>
+          <span class="abadge">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="call call-o">
+          <div class="call-lbl">Situación ABP</div>
+          <p>La Universidad de la Ciénega quiere revisar si sus materiales digitales son accesibles para estudiantes con discapacidad, pero no tiene personal especializado. Le piden a usted, como estudiante de Pedagogía con formación en el tema, que <strong>audite un material o entorno digital real</strong>, identifique sus barreras de accesibilidad y proponga soluciones concretas. Esta es exactamente la tarea que realizará como profesional cuando diseñe o evalúe materiales educativos.</p>
+        </div>
+
+        <h3 style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:var(--deep-mid);margin:22px 0 14px;border-bottom:1px solid var(--teal-lt);padding-bottom:7px;">Instrucciones paso a paso</h3>
+
+        <ul class="slist">
+          <li class="step"><span class="sn sn-p">1</span><div class="sc"><div class="st">Seleccionar un material o entorno digital real</div><div class="sd">Elija un material digital real que se use en su formación: una presentación de una materia, un video educativo, un documento PDF, una página de la plataforma institucional, o incluso una app educativa. Debe ser un material real y accesible para usted, no hipotético.</div></div></li>
+          <li class="step"><span class="sn sn-p">2</span><div class="sc"><div class="st">Auditar la accesibilidad con una lista de verificación</div><div class="sd">Revise el material aplicando esta lista de verificación: ¿Los videos tienen subtítulos y transcripción? ¿Las imágenes tienen texto alternativo? ¿El contraste de texto es suficiente? ¿La letra es legible y ajustable? ¿Se puede navegar solo con el teclado? ¿El lenguaje es claro? ¿La estructura es predecible? Para materiales web, puede usar la herramienta gratuita WAVE (wave.webaim.org).</div></div></li>
+          <li class="step"><span class="sn sn-p">3</span><div class="sc"><div class="st">Documentar las barreras encontradas por tipo de discapacidad</div><div class="sd">Elabore una tabla donde registre cada barrera detectada, a qué tipo de discapacidad afecta (visual, auditiva, motriz, cognitiva) y qué gravedad tiene (impide totalmente el acceso / dificulta el acceso / es una molestia menor). Sea concreto: señale exactamente dónde está la barrera.</div></div></li>
+          <li class="step"><span class="sn sn-p">4</span><div class="sc"><div class="st">Proponer una solución concreta para cada barrera</div><div class="sd">Para cada barrera detectada, proponga una solución específica y viable, basada en las soluciones del contenido temático. Por ejemplo: "El video no tiene subtítulos (barrera para personas sordas); solución: activar el subtitulado automático de YouTube y revisarlo para corregir errores."</div></div></li>
+          <li class="step"><span class="sn sn-p">5</span><div class="sc"><div class="st">Redactar una conclusión y compartir en Classroom</div><div class="sd">Escriba una conclusión (150-200 palabras): ¿Qué tan accesible es el material? ¿Cuál fue la barrera más grave? ¿Qué aprendió al mirar el material desde la perspectiva de la accesibilidad? Suba su auditoría (tabla + soluciones + conclusión) en un Google Docs a la tarea "Actividad 2 — Auditoría de Accesibilidad".</div></div></li>
+        </ul>
+
+        <div class="ex">
+          <div class="ex-lbl">Ejemplo de fila de la tabla de auditoría</div>
+          <p><strong>Material auditado:</strong> Presentación de la Unidad 2 de Didáctica (Google Slides).<br>
+          <strong>Barrera detectada:</strong> Las 5 imágenes de la presentación no tienen texto alternativo.<br>
+          <strong>Discapacidad afectada:</strong> Visual (ceguera) — el lector de pantalla no puede describir las imágenes.<br>
+          <strong>Gravedad:</strong> Impide totalmente el acceso a la información visual.<br>
+          <strong>Solución propuesta:</strong> Agregar texto alternativo a cada imagen desde el menú "Alt text" de Google Slides, describiendo el contenido y la función pedagógica de cada una. Tiempo estimado: 10 minutos.</p>
+        </div>
+
+        <div class="rub-lbl">Rúbrica de evaluación — Actividad 2</div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Criterio</th><th>Excelente</th><th>Satisfactorio</th><th>En desarrollo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Detección de barreras</strong></td><td>Identifica múltiples barreras reales y las clasifica por tipo de discapacidad</td><td>Identifica algunas barreras con clasificación parcial</td><td>Detecta pocas barreras o sin clasificar</td></tr>
+              <tr><td><strong>Uso de criterios del tema</strong></td><td>Aplica con precisión los criterios de accesibilidad estudiados</td><td>Aplica algunos criterios de forma general</td><td>No usa los criterios del tema</td></tr>
+              <tr><td><strong>Soluciones propuestas</strong></td><td>Soluciones concretas, viables y correctas para cada barrera</td><td>Soluciones presentes pero poco específicas</td><td>Soluciones ausentes o inviables</td></tr>
+              <tr><td><strong>Conclusión reflexiva</strong></td><td>Reflexión profunda sobre la accesibilidad del material</td><td>Conclusión presente pero general</td><td>Conclusión ausente o superficial</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cl-box"><div class="cl-ico">&#128197;</div><div class="cl-body"><h4>Entrega en Google Classroom</h4><p>Google Docs con: material auditado + tabla de barreras + soluciones + conclusión. Encabezado con nombre completo, materia y fecha. Tarea: "Actividad 2 — Auditoría de Accesibilidad".</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 3 -->
+  <section id="act3" class="panel">
+    <div class="act">
+      <div class="act-head ag">
+        <div class="act-num">Actividad 03 de 04</div>
+        <div class="act-title">Caso práctico: "La estudiante invisible"</div>
+        <div class="act-sub">Análisis de un caso real de exclusión digital en la educación superior.</div>
+        <div class="act-badges">
+          <span class="abadge">Análisis de caso</span>
+          <span class="abadge">Dimensión ética</span>
+          <span class="abadge">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="case-box">
+          <div class="case-hd">
+            <span class="res-n" style="background:var(--grass);">C1</span>
+            <div><div class="case-hd-lbl">Caso para análisis pedagógico</div><div style="font-size:13.5px;color:var(--ink-soft);margin-top:2px;">Nivel: Licenciatura universitaria, educación superior en México</div></div>
+          </div>
+          <div class="case-bd">
+            <div class="case-story">
+              <strong>Contexto:</strong> Mariana es estudiante de segundo semestre de una licenciatura en línea. Tiene baja visión severa y usa un lector de pantalla y un ampliador para estudiar. Al inscribirse, informó a la universidad de su situación y solicitó materiales accesibles.
+              <br><br>
+              <strong>Desarrollo:</strong> Durante el primer semestre, Mariana enfrentó múltiples barreras. La mayoría de los docentes subían las lecturas como imágenes escaneadas de libros (fotografías de las páginas), que su lector de pantalla no podía leer: para el software, eran solo imágenes sin texto. Los videos de clase no tenían subtítulos ni transcripción. La plataforma institucional tenía botones sin etiquetas, por lo que su lector de pantalla solo decía "botón, botón, botón" sin explicar su función. Cuando Mariana pidió ayuda, una coordinadora le respondió: "Es que la plataforma es así para todos, no podemos cambiarla solo por una persona." Mariana reprobó dos materias, no por falta de capacidad, sino porque no pudo acceder a los materiales. Consideró abandonar la carrera.
+              <br><br>
+              <strong>Giro:</strong> Una profesora, al enterarse, convirtió sus lecturas a texto real (con reconocimiento óptico de caracteres), activó subtítulos en sus videos y describió sus imágenes. Mariana aprobó esa materia con una de las calificaciones más altas del grupo. La diferencia no estuvo en Mariana: estuvo en el diseño de los materiales.
+              <br><br>
+              <strong>Dilema:</strong> La universidad debe decidir cómo responder. El director académico le encarga a usted, como estudiante de Pedagogía, un análisis del caso y una propuesta de acción institucional.
+            </div>
+
+            <div class="cq"><div class="cq-lbl">Pregunta 1. Diagnóstico: ¿Qué barreras específicas enfrentó Mariana y a qué solución corresponde cada una?</div><textarea id="c1" placeholder="Identifique cada barrera concreta del caso (lecturas escaneadas, videos sin subtítulos, botones sin etiqueta) y para cada una proponga la solución específica estudiada en el tema. Use el vocabulario técnico correcto..."></textarea></div>
+            <div class="cq"><div class="cq-lbl">Pregunta 2. Análisis desde el modelo social: ¿Dónde estaba realmente la "discapacidad" en este caso?</div><textarea id="c2" placeholder="Aplique el modelo social de la discapacidad al caso. El giro de la historia muestra que Mariana aprobó cuando los materiales fueron accesibles. ¿Qué demuestra esto sobre dónde reside la barrera? Analice la frase de la coordinadora ('la plataforma es así para todos')..."></textarea></div>
+            <div class="cq"><div class="cq-lbl">Pregunta 3. Dimensión de derechos: ¿Se vulneraron los derechos de Mariana? ¿Cuáles?</div><textarea id="c3" placeholder="Analice el caso desde el marco normativo (Convención de la ONU, Ley General para la Inclusión). ¿El hecho de que Mariana reprobara por materiales inaccesibles constituye una vulneración de derechos? Fundamente..."></textarea></div>
+            <div class="cq"><div class="cq-lbl">Pregunta 4. Propuesta y aprendizaje personal: ¿Qué propone a la universidad y qué aprende usted para su práctica?</div><textarea id="c4" placeholder="Proponga una acción institucional concreta (formación docente, política de accesibilidad, revisión de materiales, etc.). Luego reflexione: ¿qué se lleva de este caso para su futura práctica como pedagogo? ¿Qué haría distinto de los primeros docentes de Mariana?"></textarea></div>
+
+            <div class="btn-row" style="margin-top:16px;">
+              <button class="btn btn-t" onclick="saveCaso()">Guardar respuestas</button>
+              <span id="caso-msg" style="font-size:13.5px;color:var(--grass);display:none;">Guardadas localmente.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cl-box"><div class="cl-ico">&#128197;</div><div class="cl-body"><h4>Entrega en Google Classroom</h4><p>Google Docs con las cuatro respuestas. Encabezado: nombre completo, materia, fecha, nombre del caso. Mínimo 100 palabras por respuesta. Tarea: "Actividad 3 — Caso Práctico Accesibilidad".</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVIDAD 4 -->
+  <section id="act4" class="panel">
+    <div class="act">
+      <div class="act-head ao">
+        <div class="act-num">Actividad 04 de 04</div>
+        <div class="act-title">Quiz de autoevaluación</div>
+        <div class="act-sub">Cinco preguntas sobre barreras y soluciones de accesibilidad, con retroalimentación inmediata.</div>
+        <div class="act-badges">
+          <span class="abadge">5 preguntas</span>
+          <span class="abadge">20 pts c/u</span>
+          <span class="abadge">Retroalimentación inmediata</span>
+          <span class="abadge">Entrega en Classroom</span>
+        </div>
+      </div>
+      <div class="act-body">
+
+        <div class="call call-t">
+          <div class="call-lbl">Instrucciones</div>
+          <p>Seleccione la opción correcta en cada pregunta. Recibirá retroalimentación inmediata. Al finalizar las cinco preguntas, se mostrará su puntaje total. Tome una captura de pantalla del panel de resultados para subir en Classroom.</p>
+        </div>
+
+        <div id="quiz">
+
+          <div class="qz-item" id="q1">
+            <div class="qz-seq">PREGUNTA 01 / 05</div>
+            <div class="qz-stem">Según el modelo social de la discapacidad, ¿dónde reside principalmente la barrera cuando una persona con discapacidad no puede usar una tecnología?</div>
+            <div class="qz-opts">
+              <button class="qz-opt" onclick="qans('q1','a','c')"><span class="qz-bul">A</span><span>En la persona con discapacidad, que debe adaptarse a la tecnología existente.</span></button>
+              <button class="qz-opt" onclick="qans('q1','b','c')"><span class="qz-bul">B</span><span>En la naturaleza misma de la discapacidad, que es un impedimento insuperable.</span></button>
+              <button class="qz-opt" onclick="qans('q1','c','c')"><span class="qz-bul">C</span><span>En el diseño inaccesible del entorno o la tecnología, que no consideró a todas las personas.</span></button>
+              <button class="qz-opt" onclick="qans('q1','d','c')"><span class="qz-bul">D</span><span>En la falta de voluntad de la persona para aprender a usar la tecnología.</span></button>
+            </div>
+            <div class="qz-fb" id="q1fb"></div>
+          </div>
+
+          <div class="qz-item" id="q2">
+            <div class="qz-seq">PREGUNTA 02 / 05</div>
+            <div class="qz-stem">Un video educativo sin subtítulos ni transcripción constituye una barrera principalmente para personas con discapacidad:</div>
+            <div class="qz-opts">
+              <button class="qz-opt" onclick="qans('q2','a','b')"><span class="qz-bul">A</span><span>Motriz, porque no pueden manipular los controles del video.</span></button>
+              <button class="qz-opt" onclick="qans('q2','b','b')"><span class="qz-bul">B</span><span>Auditiva (sordera o hipoacusia), porque no pueden acceder a la información transmitida por el sonido.</span></button>
+              <button class="qz-opt" onclick="qans('q2','c','b')"><span class="qz-bul">C</span><span>Visual, porque no pueden ver la pantalla del video.</span></button>
+              <button class="qz-opt" onclick="qans('q2','d','b')"><span class="qz-bul">D</span><span>Del habla, porque no pueden repetir en voz alta el contenido.</span></button>
+            </div>
+            <div class="qz-fb" id="q2fb"></div>
+          </div>
+
+          <div class="qz-item" id="q3">
+            <div class="qz-seq">PREGUNTA 03 / 05</div>
+            <div class="qz-stem">¿Qué solución elimina la barrera de una imagen que no puede ser interpretada por el lector de pantalla de una persona ciega?</div>
+            <div class="qz-opts">
+              <button class="qz-opt" onclick="qans('q3','a','d')"><span class="qz-bul">A</span><span>Aumentar el tamaño de la imagen para que se vea mejor.</span></button>
+              <button class="qz-opt" onclick="qans('q3','b','d')"><span class="qz-bul">B</span><span>Cambiar los colores de la imagen por unos de mayor contraste.</span></button>
+              <button class="qz-opt" onclick="qans('q3','c','d')"><span class="qz-bul">C</span><span>Colocar la imagen en el centro de la página.</span></button>
+              <button class="qz-opt" onclick="qans('q3','d','d')"><span class="qz-bul">D</span><span>Agregar un texto alternativo (alt) que describa el contenido y la función de la imagen para que el lector de pantalla lo transmita en voz.</span></button>
+            </div>
+            <div class="qz-fb" id="q3fb"></div>
+          </div>
+
+          <div class="qz-item" id="q4">
+            <div class="qz-seq">PREGUNTA 04 / 05</div>
+            <div class="qz-stem">El Diseño Universal para el Aprendizaje (DUA) propone que:</div>
+            <div class="qz-opts">
+              <button class="qz-opt" onclick="qans('q4','a','b')"><span class="qz-bul">A</span><span>Se cree un material estándar y luego se adapte individualmente para cada estudiante con discapacidad.</span></button>
+              <button class="qz-opt" onclick="qans('q4','b','b')"><span class="qz-bul">B</span><span>Se diseñen los materiales y entornos desde el inicio pensando en la diversidad de todas las personas, ofreciendo múltiples formas de representación, acción y motivación.</span></button>
+              <button class="qz-opt" onclick="qans('q4','c','b')"><span class="qz-bul">C</span><span>Se creen materiales separados y especiales exclusivamente para los estudiantes con discapacidad.</span></button>
+              <button class="qz-opt" onclick="qans('q4','d','b')"><span class="qz-bul">D</span><span>Se use siempre la misma forma de presentar la información para mantener la equidad entre estudiantes.</span></button>
+            </div>
+            <div class="qz-fb" id="q4fb"></div>
+          </div>
+
+          <div class="qz-item" id="q5">
+            <div class="qz-seq">PREGUNTA 05 / 05</div>
+            <div class="qz-stem">En el caso "La estudiante invisible", el hecho de que Mariana aprobara con excelente calificación cuando los materiales fueron accesibles demuestra que:</div>
+            <div class="qz-opts">
+              <button class="qz-opt" onclick="qans('q5','a','c')"><span class="qz-bul">A</span><span>Mariana necesitaba esforzarse más en las materias que reprobó anteriormente.</span></button>
+              <button class="qz-opt" onclick="qans('q5','b','c')"><span class="qz-bul">B</span><span>La discapacidad de Mariana era el verdadero obstáculo para su aprendizaje.</span></button>
+              <button class="qz-opt" onclick="qans('q5','c','c')"><span class="qz-bul">C</span><span>La barrera nunca estuvo en la capacidad de Mariana, sino en el diseño inaccesible de los materiales; al eliminarla, pudo demostrar su verdadero potencial.</span></button>
+              <button class="qz-opt" onclick="qans('q5','d','c')"><span class="qz-bul">D</span><span>Solo esa profesora tenía la obligación de hacer materiales accesibles, no el resto de la universidad.</span></button>
+            </div>
+            <div class="qz-fb" id="q5fb"></div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:14px;">
+          <button id="show-score" class="btn btn-t" style="display:none;padding:13px 36px;font-size:15px;" onclick="showSc()">Ver puntaje final</button>
+        </div>
+
+        <div class="score" id="score-panel">
+          <div class="score-num" id="score-num">—</div>
+          <div class="score-of">puntos de 100</div>
+          <div class="score-msg" id="score-msg"></div>
+          <div class="score-det" id="score-det"></div>
+          <button class="btn btn-gh" style="color:white;border-color:rgba(255,255,255,.3);margin-top:4px;" onclick="resetQz()">Intentar nuevamente</button>
+        </div>
+
+        <div style="margin-top:26px;">
+          <div class="cl-box"><div class="cl-ico">&#128197;</div><div class="cl-body"><h4>Entrega en Google Classroom</h4><p>Captura de pantalla del panel de puntaje final. Adjúntela en la tarea "Actividad 4 — Quiz Accesibilidad". Anote opcionalmente en los comentarios cuál pregunta fue más difícil.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLEXION -->
+  <section id="reflexion" class="panel">
+    <div class="phead">
+      <div class="plabel">Cierre y proyección</div>
+      <h2 class="ptitle">Reflexión <em>y aplicación profesional</em></h2>
+      <p class="pdesc">Cada material que diseñe como pedagogo será una decisión de incluir o excluir. La accesibilidad es una competencia profesional y un compromiso ético.</p>
+    </div>
+
+    <div class="text">
+      <p>La accesibilidad no es un tema técnico reservado a especialistas: es una responsabilidad de todo educador. Cuando usted sea docente, cada video que suba, cada documento que comparta y cada plataforma que elija abrirá o cerrará puertas a estudiantes con discapacidad. Esta reflexión final le ayuda a asumir ese compromiso de forma concreta y a integrarlo en su identidad profesional.</p>
+    </div>
+
+    <div class="rfx-grid">
+      <div class="rfx-card">
+        <h4>1. Lo que ahora veo distinto</h4>
+        <p>Después de este tema, ¿qué barreras de accesibilidad, que antes no notaba, ahora identifica en su entorno digital cotidiano?</p>
+        <textarea placeholder="Contraste su respuesta del Conocimiento Previo con lo que puede ver ahora..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>2. Tres prácticas que adoptaré</h4>
+        <p>Nombre tres prácticas concretas de accesibilidad que se compromete a aplicar siempre en los materiales que cree como futuro docente.</p>
+        <textarea placeholder="Ejemplo: subtitular todos mis videos, describir mis imágenes, usar buen contraste..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>3. El argumento que usaré</h4>
+        <p>Si un colega le dice "la accesibilidad es mucho trabajo y es solo para unos pocos", ¿qué le respondería con lo aprendido en este tema?</p>
+        <textarea placeholder="Construya un argumento sólido basado en derechos, en el modelo social y en el beneficio para todos..."></textarea>
+      </div>
+      <div class="rfx-card">
+        <h4>4. Mi compromiso con la inclusión</h4>
+        <p>¿Qué tipo de pedagogo quiere ser en relación con la inclusión de las personas con discapacidad? ¿Qué no está dispuesto a permitir en su práctica?</p>
+        <textarea placeholder="Formule su compromiso profesional con la inclusión..."></textarea>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <h3 style="font-family:'Bitter',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:18px;">Compromisos pedagógicos: próximos 30 días</h3>
+
+    <div class="g3">
+      <div class="card card-t">
+        <div class="ct">Semana 1-2: Experimentar la accesibilidad</div>
+        <p>Descargue el lector de pantalla gratuito NVDA y navegue con los ojos cerrados por una página o un documento. Experimente de primera mano lo que vive una persona ciega ante un contenido accesible y uno inaccesible.</p>
+      </div>
+      <div class="card card-p">
+        <div class="ct">Semana 2-3: Hacer accesible un material</div>
+        <p>Tome un material propio (una presentación, un documento) y hágalo accesible: agregue texto alternativo a las imágenes, mejore el contraste, estructure el texto. Documente el antes y el después.</p>
+      </div>
+      <div class="card card-o">
+        <div class="ct">Semana 3-4: Difundir la conciencia</div>
+        <p>Comparta con un compañero o docente lo aprendido sobre accesibilidad. Proponga, de forma respetuosa, una mejora concreta en algún material de su entorno universitario. La inclusión también se construye difundiéndola.</p>
+      </div>
+    </div>
+
+    <div class="call call-p" style="margin-top:36px;">
+      <div class="call-lbl">Reflexión integradora final — Opcional pero recomendada</div>
+      <p>Redacte en un documento personal una <strong>declaración de compromiso con la accesibilidad</strong>: un texto donde establezca qué prácticas de accesibilidad aplicará siempre en su trabajo como pedagogo, qué principios éticos guiarán sus decisiones, y cómo se asegurará de que ningún estudiante quede excluido por el diseño de sus materiales. Escríbala como un compromiso profesional con la inclusión y los derechos. Es su aprendizaje convertido en una promesa concreta hacia cada futuro estudiante.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p><strong>Universidad de la Ciénega — Plantel Centro</strong> — Sahuayo, Michoacán</p>
+  <p>Licenciatura en Pedagogía &mdash; Tecnología y Educación II</p>
+  <p>Unidad III, Tema 3.1: Barreras y soluciones del uso de las TIC por las personas con discapacidad</p>
+  <p style="margin-top:8px;font-size:11px;opacity:.5;">Guía diseñada con metodología constructivista, pedagogía activa y ABP, y elaborada con criterios de accesibilidad. Jalisco/Michoacán, México &mdash; 2026.</p>
+</footer>
+
+<script>
+const PANELS=['intro','contenido','recursos','previo','act1','act2','act3','act4','reflexion'];
+function show(id){
+  PANELS.forEach(p=>document.getElementById(p).classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(n=>n.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  const idx=PANELS.indexOf(id);
+  document.querySelectorAll('.ntab')[idx].classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('prog').style.width=Math.round(((idx+1)/PANELS.length)*100)+'%';
+}
+function sv(taId,msgId){const v=document.getElementById(taId).value.trim();if(v){localStorage.setItem(taId,v);const m=document.getElementById(msgId);m.style.display='inline';setTimeout(()=>m.style.display='none',3200);}}
+function cl(taId){document.getElementById(taId).value='';localStorage.removeItem(taId);}
+function saveCaso(){const ids=['c1','c2','c3','c4'];const data=ids.map(id=>document.getElementById(id).value);localStorage.setItem('casoAcc',JSON.stringify(data));const m=document.getElementById('caso-msg');m.style.display='inline';setTimeout(()=>m.style.display='none',3200);}
+window.addEventListener('load',()=>{
+  ['prev-ta','foro-ta'].forEach(k=>{const v=localStorage.getItem(k);const el=document.getElementById(k);if(v&&el)el.value=v;});
+  const cd=localStorage.getItem('casoAcc');
+  if(cd){const arr=JSON.parse(cd);['c1','c2','c3','c4'].forEach((id,i)=>{const el=document.getElementById(id);if(el&&arr[i])el.value=arr[i];});}
+});
+const QS={};
+const FB={
+  q1:{c:'Correcto. Según el modelo social de la discapacidad, la barrera reside en el diseño inaccesible del entorno o la tecnología, no en la persona. Una tecnología que no consideró a todas las personas es la que discapacita; cambiar el diseño elimina la barrera.',
+      w:'Incorrecto. El modelo social establece que la barrera NO reside en la persona ni en su condición, sino en el diseño inaccesible del entorno o la tecnología. No se trata de que la persona se adapte, sino de que el diseño incluya a todas las personas desde el principio.'},
+  q2:{c:'Correcto. Un video sin subtítulos ni transcripción excluye a las personas con discapacidad auditiva, que no pueden acceder a la información transmitida por el sonido. La solución es añadir subtítulos y transcripción, lo que además beneficia a todos.',
+      w:'Incorrecto. Un video sin subtítulos ni transcripción afecta principalmente a personas con discapacidad auditiva (sordera o hipoacusia), que no pueden acceder al contenido sonoro. La solución es el subtitulado y la transcripción.'},
+  q3:{c:'Correcto. El texto alternativo (alt) es la solución: describe el contenido y la función de la imagen para que el lector de pantalla lo transmita en voz. Sin él, la imagen simplemente no existe para una persona ciega.',
+      w:'Incorrecto. Aumentar el tamaño, cambiar colores o centrar la imagen no ayudan a una persona ciega que usa lector de pantalla. La solución es agregar texto alternativo (alt) que describa la imagen para que el lector de pantalla lo lea en voz.'},
+  q4:{c:'Correcto. El DUA propone diseñar desde el inicio pensando en la diversidad de todas las personas, ofreciendo múltiples formas de representación, de acción/expresión y de implicación. Así se previene la exclusión en lugar de adaptar después, y se beneficia a todo el estudiantado.',
+      w:'Incorrecto. El DUA no consiste en crear un material estándar y adaptarlo después, ni en hacer materiales separados. Su principio es diseñar desde el inicio para la diversidad de todas las personas, con múltiples formas de representación, acción y motivación.'},
+  q5:{c:'Correcto. El caso demuestra el principio central del modelo social: la barrera nunca estuvo en la capacidad de Mariana, sino en el diseño inaccesible de los materiales. Cuando la profesora eliminó las barreras, Mariana demostró su verdadero potencial. La discapacidad la construía el entorno, no la persona.',
+      w:'Incorrecto. El caso demuestra lo contrario: Mariana siempre tuvo la capacidad. La barrera estaba en el diseño inaccesible de los materiales, no en ella. Cuando se eliminaron las barreras, aprobó con excelencia. Y la accesibilidad es responsabilidad de toda la institución, no de una sola profesora.'}
+};
+let qDone=0,qScore=0;
+function qans(qid,chosen,correct){
+  if(QS[qid])return;QS[qid]=true;qDone++;
+  const el=document.getElementById(qid);
+  const opts=el.querySelectorAll('.qz-opt');
+  const letters=['a','b','c','d'];
+  const isOk=chosen===correct;
+  opts.forEach((o,i)=>{o.classList.add('locked');if(letters[i]===correct)o.classList.add('corr');else if(letters[i]===chosen&&!isOk)o.classList.add('incr');});
+  const fb=document.getElementById(qid+'fb');
+  fb.classList.add('show');
+  if(isOk){fb.classList.add('ok');fb.textContent=FB[qid].c;qScore+=20;el.classList.add('ok');}
+  else{fb.classList.add('fail');fb.textContent=FB[qid].w;el.classList.add('fail');}
+  if(qDone===5)document.getElementById('show-score').style.display='inline-block';
+}
+function showSc(){
+  const p=document.getElementById('score-panel');p.classList.add('show');
+  document.getElementById('score-num').textContent=qScore;
+  document.getElementById('score-det').textContent='Respondió correctamente '+(qScore/20)+' de 5 preguntas.';
+  let msg='';
+  if(qScore===100)msg='Desempeño sobresaliente. Domina las barreras y soluciones de accesibilidad. Lleve este conocimiento a cada material que diseñe.';
+  else if(qScore>=80)msg='Muy buen desempeño. Comprende la mayor parte del tema. Revise las preguntas incorrectas consultando el contenido temático.';
+  else if(qScore>=60)msg='Desempeño satisfactorio. Se recomienda releer las secciones sobre barreras, soluciones y el modelo social de la discapacidad.';
+  else msg='Se recomienda revisar el contenido temático completo y consultar al menos dos fuentes externas antes de volver a intentar.';
+  document.getElementById('score-msg').textContent=msg;
+  p.scrollIntoView({behavior:'smooth',block:'center'});
+  document.getElementById('show-score').style.display='none';
+}
+function resetQz(){
+  Object.keys(QS).forEach(k=>delete QS[k]);qDone=0;qScore=0;
+  ['q1','q2','q3','q4','q5'].forEach(qid=>{const el=document.getElementById(qid);el.className='qz-item';el.querySelectorAll('.qz-opt').forEach(o=>o.className='qz-opt');const fb=document.getElementById(qid+'fb');fb.className='qz-fb';fb.textContent='';});
+  document.getElementById('score-panel').classList.remove('show');
+  document.getElementById('show-score').style.display='none';
+}
+</script>
+</body>
+</html>
