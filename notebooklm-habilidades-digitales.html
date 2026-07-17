@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotebookLM para la Enseñanza y el Aprendizaje | Habilidades Digitales</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  --navy:#152A4A;
+  --navy-deep:#0D1D34;
+  --teal:#2E6F6B;
+  --teal-light:#4A928D;
+  --paper:#FAF7F0;
+  --paper-dim:#F1ECE1;
+  --ink:#232323;
+  --ink-soft:#5B5647;
+  --citation:#B9762E;
+  --citation-bg:#FBEEDD;
+  --card-line:#E4DCC8;
+  --ok:#2E6F6B;
+  --err:#A6452F;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.65;
+  font-size:16px;
+}
+
+h1,h2,h3,h4{
+  font-family:'Lora',serif;
+  color:var(--navy-deep);
+  margin:0 0 .5em 0;
+  line-height:1.25;
+}
+
+a{color:var(--teal);}
+
+.mono-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.03em;
+}
+
+/* ===== HEADER ===== */
+header.site{
+  background:var(--navy-deep);
+  color:#EFEEE7;
+  padding:0;
+  border-bottom:4px solid var(--citation);
+}
+.header-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:22px 32px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.header-inner img{
+  height:64px;
+  width:auto;
+  background:#fff;
+  border-radius:8px;
+  padding:6px;
+  flex-shrink:0;
+}
+.header-text .eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--teal-light);
+  margin-bottom:4px;
+}
+.header-text h1{
+  color:#fff;
+  font-size:1.55rem;
+  margin:0;
+}
+.header-text p{
+  margin:.35em 0 0 0;
+  color:#C7CBD6;
+  font-size:.95rem;
+}
+
+/* ===== LAYOUT ===== */
+.layout{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:0;
+  align-items:start;
+}
+nav.toc{
+  position:sticky;
+  top:0;
+  align-self:start;
+  padding:32px 18px 32px 32px;
+  height:100vh;
+  overflow-y:auto;
+}
+nav.toc .toc-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:14px;
+}
+nav.toc ul{list-style:none;padding:0;margin:0;border-left:2px solid var(--card-line);}
+nav.toc li{margin:0;}
+nav.toc a{
+  display:block;
+  padding:9px 0 9px 16px;
+  color:var(--ink-soft);
+  text-decoration:none;
+  font-size:.87rem;
+  border-left:2px solid transparent;
+  margin-left:-2px;
+  transition:all .15s ease;
+}
+nav.toc a:hover{color:var(--navy-deep);}
+nav.toc a.active{
+  color:var(--navy-deep);
+  border-left:2px solid var(--citation);
+  font-weight:600;
+  background:var(--paper-dim);
+}
+nav.toc .toc-tag{
+  display:inline-block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.65rem;
+  color:var(--citation);
+  margin-right:6px;
+}
+
+main{
+  padding:40px 40px 80px 40px;
+  border-left:1px solid var(--card-line);
+  min-width:0;
+}
+
+section{
+  margin-bottom:70px;
+  scroll-margin-top:20px;
+}
+section:first-of-type{margin-top:0;}
+
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--citation);
+  margin-bottom:8px;
+}
+section h2{font-size:1.7rem;}
+section h3{font-size:1.2rem;color:var(--teal);margin-top:1.6em;}
+
+p{margin:0 0 1em 0;}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#EFEEE7;
+  border-radius:14px;
+  padding:44px 44px;
+  margin-bottom:70px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-60px;
+  top:-60px;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(74,146,141,.35),transparent 70%);
+}
+.hero h1{
+  color:#fff;
+  font-size:2.1rem;
+  max-width:680px;
+  position:relative;
+}
+.hero p.lead{
+  color:#D6D9E2;
+  font-size:1.05rem;
+  max-width:640px;
+  position:relative;
+}
+.hero .hero-meta{
+  display:flex;
+  gap:28px;
+  margin-top:26px;
+  flex-wrap:wrap;
+  position:relative;
+}
+.hero .hero-meta div{
+  border-left:2px solid var(--teal-light);
+  padding-left:12px;
+}
+.hero .hero-meta .k{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--teal-light);
+}
+.hero .hero-meta .v{font-size:.9rem;color:#EFEEE7;margin-top:2px;}
+
+/* ===== SOURCE CARD (signature element) ===== */
+.source-card{
+  background:#fff;
+  border:1px solid var(--card-line);
+  border-radius:10px;
+  padding:20px 22px;
+  margin:22px 0;
+  position:relative;
+  box-shadow:0 1px 2px rgba(21,42,74,.04);
+}
+.source-card .tag{
+  position:absolute;
+  top:-11px;
+  left:18px;
+  background:var(--citation-bg);
+  color:var(--citation);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;
+  padding:3px 9px;
+  border-radius:5px;
+  border:1px solid var(--citation);
+  letter-spacing:.03em;
+}
+.source-card h4{
+  color:var(--navy-deep);
+  font-size:1.02rem;
+  margin-top:4px;
+}
+.source-card.teal .tag{
+  background:#E7F1F0;
+  color:var(--teal);
+  border-color:var(--teal);
+}
+
+/* ===== STEP LIST ===== */
+.steps{counter-reset:step;padding:0;list-style:none;margin:22px 0;}
+.steps li{
+  counter-increment:step;
+  position:relative;
+  padding:18px 20px 18px 62px;
+  margin-bottom:14px;
+  background:#fff;
+  border:1px solid var(--card-line);
+  border-radius:10px;
+}
+.steps li::before{
+  content:counter(step);
+  position:absolute;
+  left:16px;
+  top:18px;
+  width:32px;
+  height:32px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Lora',serif;
+  font-weight:600;
+  font-size:.95rem;
+}
+.steps li strong{color:var(--navy-deep);display:block;margin-bottom:4px;font-family:'Lora',serif;font-size:1.03rem;}
+
+/* ===== MOCKUP ===== */
+.mockup{
+  background:var(--navy-deep);
+  border-radius:12px;
+  padding:14px;
+  margin:20px 0;
+}
+.mockup-bar{
+  display:flex;
+  gap:6px;
+  padding:0 4px 12px 4px;
+}
+.mockup-bar span{width:10px;height:10px;border-radius:50%;background:#4A4E5E;}
+.mockup-screen{
+  background:#fff;
+  border-radius:8px;
+  padding:20px;
+  color:var(--ink);
+  font-size:.88rem;
+}
+
+/* ===== CALLOUT ===== */
+.callout{
+  border-left:4px solid var(--teal);
+  background:#F0F5F4;
+  padding:16px 20px;
+  border-radius:0 8px 8px 0;
+  margin:20px 0;
+}
+.callout.warn{border-left-color:var(--citation);background:var(--citation-bg);}
+.callout p:last-child{margin-bottom:0;}
+.callout .callout-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--teal);
+  margin-bottom:6px;
+  display:block;
+}
+.callout.warn .callout-title{color:var(--citation);}
+
+/* ===== TABLE ===== */
+table.compare{
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0;
+  font-size:.9rem;
+  background:#fff;
+}
+table.compare th{
+  background:var(--navy);
+  color:#fff;
+  text-align:left;
+  padding:11px 14px;
+  font-family:'Lora',serif;
+  font-weight:600;
+}
+table.compare td{
+  padding:11px 14px;
+  border-bottom:1px solid var(--card-line);
+  vertical-align:top;
+}
+table.compare tr:nth-child(even) td{background:var(--paper-dim);}
+
+/* ===== ACTIVITY CARDS ===== */
+.activity-card{
+  background:#fff;
+  border:1px solid var(--card-line);
+  border-radius:14px;
+  padding:30px 32px;
+  margin-bottom:28px;
+  border-top:5px solid var(--navy);
+}
+.activity-card.act-2{border-top-color:var(--teal);}
+.activity-card.act-3{border-top-color:var(--citation);}
+.activity-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.activity-header .badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  background:var(--paper-dim);
+  color:var(--ink-soft);
+  padding:5px 11px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.activity-card ul,.activity-card ol{padding-left:22px;}
+.activity-card li{margin-bottom:6px;}
+.rubric{
+  margin-top:18px;
+  border-top:1px dashed var(--card-line);
+  padding-top:16px;
+}
+.rubric-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+  margin-bottom:8px;
+  display:block;
+}
+
+/* ===== QUIZ ===== */
+.quiz-wrap{
+  background:#fff;
+  border:1px solid var(--card-line);
+  border-radius:14px;
+  padding:8px;
+}
+.quiz-question{
+  padding:24px 26px;
+  border-bottom:1px solid var(--card-line);
+}
+.quiz-question:last-of-type{border-bottom:none;}
+.quiz-question p.q-text{
+  font-family:'Lora',serif;
+  font-weight:600;
+  font-size:1.05rem;
+  color:var(--navy-deep);
+  margin-bottom:14px;
+}
+.quiz-question .q-num{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--citation);
+  margin-right:6px;
+}
+.opt{
+  display:block;
+  padding:11px 15px;
+  border:1px solid var(--card-line);
+  border-radius:8px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:all .12s ease;
+  font-size:.94rem;
+}
+.opt:hover{border-color:var(--teal);background:#F5F9F8;}
+.opt input{margin-right:10px;}
+.opt.correct{border-color:var(--ok);background:#EAF4F3;}
+.opt.incorrect{border-color:var(--err);background:#FBECE8;}
+.feedback{
+  display:none;
+  margin-top:10px;
+  padding:12px 15px;
+  border-radius:8px;
+  font-size:.88rem;
+  background:var(--paper-dim);
+  border-left:3px solid var(--teal);
+}
+.feedback.show{display:block;}
+.quiz-footer{
+  padding:26px;
+  text-align:center;
+}
+.btn{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:.92rem;
+  background:var(--navy);
+  color:#fff;
+  border:none;
+  padding:13px 30px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--navy-deep);}
+.btn:disabled{background:#B7BAC3;cursor:not-allowed;}
+#quiz-result{
+  margin-top:20px;
+  font-family:'Lora',serif;
+  font-size:1.3rem;
+  color:var(--navy-deep);
+  display:none;
+}
+#quiz-result.show{display:block;}
+#quiz-result .score-detail{
+  font-family:'Inter',sans-serif;
+  font-size:.9rem;
+  color:var(--ink-soft);
+  margin-top:6px;
+}
+
+/* ===== REFLECTION ===== */
+.reflect-box{
+  background:#fff;
+  border:1px solid var(--card-line);
+  border-radius:12px;
+  padding:24px;
+  margin-bottom:18px;
+}
+.reflect-box label{
+  display:block;
+  font-family:'Lora',serif;
+  font-weight:600;
+  color:var(--navy-deep);
+  margin-bottom:8px;
+}
+.reflect-box textarea{
+  width:100%;
+  min-height:90px;
+  border:1px solid var(--card-line);
+  border-radius:8px;
+  padding:12px;
+  font-family:'Inter',sans-serif;
+  font-size:.92rem;
+  resize:vertical;
+  background:var(--paper-dim);
+}
+.reflect-box textarea:focus{outline:2px solid var(--teal);outline-offset:1px;}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--navy-deep);
+  color:#B9BDC9;
+  padding:36px 32px;
+  text-align:center;
+  font-size:.85rem;
+}
+footer strong{color:#fff;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:880px){
+  .layout{grid-template-columns:1fr;}
+  nav.toc{position:relative;height:auto;padding:20px 24px 0 24px;}
+  nav.toc ul{display:flex;flex-wrap:wrap;border-left:none;gap:4px;}
+  nav.toc li{margin:0;}
+  nav.toc a{border-left:none;padding:6px 10px;border-radius:6px;}
+  nav.toc a.active{background:var(--navy);color:#fff;border-left:none;}
+  main{padding:28px 22px 60px 22px;border-left:none;}
+  .header-inner{padding:18px 20px;flex-wrap:wrap;}
+  .hero{padding:30px 26px;}
+  .hero h1{font-size:1.6rem;}
+}
+
+/* ===== ACCESSIBILITY ===== */
+a:focus-visible,button:focus-visible,.opt:focus-within{
+  outline:2px solid var(--citation);
+  outline-offset:2px;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <img src="data:image/jpeg;base64,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" alt="Escudo de la Universidad de la Ciénega">
+    <div class="header-text">
+      <div class="eyebrow">Licenciatura · Habilidades Digitales</div>
+      <h1>NotebookLM como Herramienta para la Generación de Contenido Orientado a la Enseñanza y el Aprendizaje</h1>
+      <p>Guía interactiva de trabajo autónomo — Universidad de la Ciénega, Plantel Centro</p>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Índice de la guía">
+    <div class="toc-title">Contenido de la guía</div>
+    <ul>
+      <li><a href="#introduccion" class="toc-link"><span class="toc-tag">00</span>Introducción</a></li>
+      <li><a href="#fundamentos" class="toc-link"><span class="toc-tag">01</span>Fundamentos</a></li>
+      <li><a href="#exploracion" class="toc-link"><span class="toc-tag">02</span>Exploración guiada</a></li>
+      <li><a href="#caso" class="toc-link"><span class="toc-tag">03</span>Caso de aplicación</a></li>
+      <li><a href="#actividad1" class="toc-link"><span class="toc-tag">04</span>Actividad 1 · Foro</a></li>
+      <li><a href="#actividad2" class="toc-link"><span class="toc-tag">05</span>Actividad 2 · Aplicación</a></li>
+      <li><a href="#actividad3" class="toc-link"><span class="toc-tag">06</span>Actividad 3 · Quiz</a></li>
+      <li><a href="#reflexion" class="toc-link"><span class="toc-tag">07</span>Reflexión y aplicación</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="introduccion">
+      <div class="hero">
+        <div class="section-eyebrow" style="color:#8FC2BD;">Punto de partida</div>
+        <h1>Toda inteligencia artificial generativa es tan confiable como las fuentes en las que se apoya.</h1>
+        <p class="lead">NotebookLM es un asistente de investigación que no responde desde un conocimiento general difuso, sino exclusivamente a partir de los documentos, audios, videos o enlaces que usted decide cargar. Esa restricción, lejos de ser una limitación, es su principal ventaja pedagógica: convierte a la inteligencia artificial en un colaborador que cita sus fuentes, organiza el material de un curso y ayuda a transformar información dispersa en contenido didáctico verificable.</p>
+        <div class="hero-meta">
+          <div>
+            <div class="k">Modalidad</div>
+            <div class="v">Autónoma, con evidencias en Classroom</div>
+          </div>
+          <div>
+            <div class="k">Enfoque</div>
+            <div class="v">Constructivista y basado en problemas</div>
+          </div>
+          <div>
+            <div class="k">Herramienta central</div>
+            <div class="v">NotebookLM (Google)</div>
+          </div>
+          <div>
+            <div class="k">Duración estimada</div>
+            <div class="v">Una sesión de trabajo (120–150 min)</div>
+          </div>
+        </div>
+      </div>
+
+      <p>Esta guía está dirigida a estudiantes de cualquier licenciatura que cursan la materia de Habilidades Digitales. No requiere conocimientos técnicos previos: requiere, sí, disposición para explorar, cuestionar y construir. A lo largo del documento usted identificará qué es NotebookLM y cómo funciona, lo explorará de manera guiada con un caso propio de su formación profesional, y resolverá un problema real de diseño de contenido educativo. El propósito final no es aprender a usar una herramienta más, sino desarrollar un criterio propio sobre cómo la inteligencia artificial generativa puede apoyar —sin sustituir— el trabajo intelectual de enseñar y de aprender.</p>
+
+      <div class="callout">
+        <span class="callout-title">Antes de comenzar</span>
+        <p>Tenga a la mano una cuenta de Google (personal o institucional) y, si es posible, algún material propio de sus estudios: apuntes de clase, un artículo, un capítulo de libro o la grabación de una conferencia. Ese material será la materia prima de su exploración.</p>
+      </div>
+    </section>
+
+    <section id="fundamentos">
+      <div class="section-eyebrow">01 · Marco conceptual</div>
+      <h2>¿Qué es NotebookLM y por qué importa para la docencia?</h2>
+      <p>NotebookLM es una aplicación de Google que funciona como un cuaderno de investigación potenciado por inteligencia artificial. A diferencia de un asistente conversacional genérico, que responde con base en todo lo que aprendió durante su entrenamiento, NotebookLM ancla cada una de sus respuestas en las fuentes específicas que el usuario carga: documentos PDF, presentaciones, páginas web, videos de YouTube, audios o texto pegado directamente. Este principio se conoce como <em>generación aumentada por recuperación</em> (RAG, por sus siglas en inglés) y es la razón por la que cada afirmación que produce la herramienta puede rastrearse hasta el fragmento exacto del documento original que la sustenta.</p>
+
+      <div class="source-card">
+        <span class="tag">[ concepto clave ]</span>
+        <h4>Aprendizaje fundamentado en fuentes</h4>
+        <p>Cuando NotebookLM genera un resumen, una guía de estudio o un guion de audio, cada dato relevante aparece acompañado de una cita numerada que remite al documento y al pasaje exacto de donde proviene. Esto reduce de manera significativa el riesgo de que la inteligencia artificial invente información —lo que se conoce como alucinación— porque su margen de acción está delimitado por lo que usted mismo decidió incluir.</p>
+      </div>
+
+      <h3>Funciones principales orientadas a la enseñanza y el aprendizaje</h3>
+      <table class="compare">
+        <thead>
+          <tr><th>Función</th><th>Qué hace</th><th>Uso docente o de estudio</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resumen automático de fuentes</td>
+            <td>Genera una síntesis general de todos los documentos cargados en el cuaderno.</td>
+            <td>Elaborar una introducción rápida a un tema antes de una clase o sesión de estudio.</td>
+          </tr>
+          <tr>
+            <td>Preguntas con respuesta citada</td>
+            <td>Responde consultas específicas señalando el fragmento exacto de la fuente utilizada.</td>
+            <td>Verificar conceptos de un texto complejo sin perder la referencia original.</td>
+          </tr>
+          <tr>
+            <td>Guía de estudio (Study Guide)</td>
+            <td>Produce preguntas de repaso, términos clave y una línea de tiempo cuando aplica.</td>
+            <td>Construir material de repaso alineado estrictamente al contenido visto en clase.</td>
+          </tr>
+          <tr>
+            <td>Resumen en audio (Audio Overview)</td>
+            <td>Genera una conversación tipo pódcast entre dos voces sintéticas que discuten las fuentes.</td>
+            <td>Ofrecer una vía de acceso auditivo al contenido, útil para el repaso y la atención a la diversidad de estilos de aprendizaje.</td>
+          </tr>
+          <tr>
+            <td>Mapas y esquemas (Mind Map)</td>
+            <td>Organiza visualmente los conceptos y su relación jerárquica.</td>
+            <td>Apoyar la planeación didáctica o la identificación de vacíos conceptuales antes de un examen.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <span class="callout-title">Distinción importante</span>
+        <p>NotebookLM no reemplaza el criterio pedagógico. Organiza, resume y facilita el acceso a información que usted ya seleccionó; la decisión sobre qué enseñar, en qué orden y con qué propósito formativo sigue siendo enteramente humana. Utilizarlo sin revisar críticamente sus productos equivale a delegar el juicio profesional en una herramienta que no lo posee.</p>
+      </div>
+    </section>
+
+    <section id="exploracion">
+      <div class="section-eyebrow">02 · Exploración guiada</div>
+      <h2>Primer recorrido por NotebookLM</h2>
+      <p>Siga esta secuencia de pasos utilizando el material propio que preparó antes de comenzar. La exploración es individual, pero las decisiones que tome —qué fuentes elegir, qué preguntas formular— deberán quedar registradas, ya que serán insumo directo para las actividades de la sección siguiente.</p>
+
+      <ol class="steps">
+        <li>
+          <strong>Acceda a la herramienta y cree un cuaderno nuevo</strong>
+          Ingrese a <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> con su cuenta de Google. Seleccione "Nuevo cuaderno" y asígnele un título que identifique claramente el tema y la asignatura con la que va a trabajar, por ejemplo: "Fundamentos de Psicología del Aprendizaje — Unidad 2".
+        </li>
+        <li>
+          <strong>Cargue entre dos y cuatro fuentes</strong>
+          Añada el material que preparó: un PDF, un enlace a un artículo, una presentación o la transcripción de un video. Procure que las fuentes sean coherentes entre sí, es decir, que traten un mismo tema desde ángulos complementarios y no contradictorios sin justificación.
+        </li>
+        <li>
+          <strong>Revise el resumen automático generado</strong>
+          Al terminar de cargar las fuentes, NotebookLM produce una síntesis inicial. Léala con atención crítica: identifique si refleja fielmente el contenido cargado o si, por el contrario, generaliza en exceso.
+        </li>
+        <li>
+          <strong>Formule tres preguntas específicas al cuaderno</strong>
+          Utilice el panel de chat para preguntar sobre matices, definiciones o relaciones entre conceptos que le interesen particularmente. Observe cómo cada respuesta incluye citas numeradas; haga clic en al menos una para comprobar que remite al fragmento correcto de la fuente.
+        </li>
+        <li>
+          <strong>Genere una guía de estudio</strong>
+          En el panel de productos, seleccione la opción de guía de estudio. Revise los términos clave y las preguntas de repaso que la herramienta propone, y valore si un estudiante de su misma carrera encontraría útil ese material tal como fue generado.
+        </li>
+        <li>
+          <strong>Explore el resumen en audio, si el idioma y la disponibilidad lo permiten</strong>
+          Genere un resumen conversacional en audio y escuche al menos los dos primeros minutos. Reflexione sobre qué tipo de estudiante se beneficiaría más de este formato frente al texto escrito.
+        </li>
+      </ol>
+
+      <div class="mockup" aria-hidden="true">
+        <div class="mockup-bar"><span></span><span></span><span></span></div>
+        <div class="mockup-screen">
+          <strong style="font-family:'Lora',serif;color:var(--navy-deep);">Fundamentos de Psicología del Aprendizaje — Unidad 2</strong>
+          <p style="margin:10px 0 6px 0;color:var(--ink-soft);font-size:.82rem;">3 fuentes cargadas · Resumen generado</p>
+          <div style="background:var(--paper-dim);border-radius:8px;padding:12px;margin-top:8px;font-size:.85rem;">
+            "El condicionamiento operante se distingue del clásico en que el comportamiento es modificado por sus consecuencias <span class="mono-tag" style="background:var(--citation-bg);color:var(--citation);padding:1px 5px;border-radius:4px;">[2]</span>, mientras que el segundo asocia estímulos previos al comportamiento <span class="mono-tag" style="background:var(--citation-bg);color:var(--citation);padding:1px 5px;border-radius:4px;">[1]</span>."
+          </div>
+        </div>
+      </div>
+
+      <div class="source-card teal">
+        <span class="tag">[ registro de evidencia ]</span>
+        <h4>Guarde constancia de este recorrido</h4>
+        <p>Tome una captura de pantalla del resumen generado y de al menos una respuesta con su cita correspondiente. Ambas imágenes se integrarán como evidencia en la Actividad 2.</p>
+      </div>
+    </section>
+
+    <section id="caso">
+      <div class="section-eyebrow">03 · Aprendizaje basado en problemas</div>
+      <h2>Caso: el rezago en la preparación de un examen departamental</h2>
+
+      <div class="source-card">
+        <span class="tag">[ situación ]</span>
+        <h4>Planteamiento</h4>
+        <p>Un grupo de veinticinco estudiantes de segundo semestre debe presentar en dos semanas un examen departamental que integra tres unidades completas del curso. El profesor titular ha compartido el temario, cuatro lecturas obligatorias y la grabación de dos clases, pero no existe un material de repaso unificado. Varios estudiantes manifiestan que no saben por dónde empezar y que el volumen de información les resulta abrumador.</p>
+      </div>
+
+      <p>Este es el tipo de situación que un futuro profesional —sea cual sea su disciplina— puede enfrentar como estudiante, como tutor de pares o, más adelante, como docente. La pregunta que debe resolver es la siguiente:</p>
+
+      <div class="callout">
+        <span class="callout-title">Pregunta problema</span>
+        <p>¿Cómo podría usted emplear NotebookLM para transformar ese conjunto disperso de materiales en una ruta de repaso clara, verificable y adecuada a los distintos ritmos de aprendizaje del grupo, sin sustituir el criterio del profesor titular ni introducir información no contenida en las fuentes originales?</p>
+      </div>
+
+      <p>No existe una única respuesta correcta. Se espera que usted diseñe una estrategia razonada, considerando al menos los siguientes elementos: qué fuentes cargaría y en qué orden, qué producto o productos de NotebookLM generaría (guía de estudio, resumen en audio, mapa conceptual, preguntas de repaso), cómo verificaría que la información generada corresponde fielmente a los materiales originales, y cómo distribuiría ese contenido entre los estudiantes del grupo. La resolución de este caso, redactada en un texto breve, constituye el contenido central de la Actividad 2.</p>
+    </section>
+
+    <section id="actividad1">
+      <div class="section-eyebrow">04 · Actividad práctica</div>
+      <h2>Actividad 1 — Foro de mediación</h2>
+      <div class="activity-card">
+        <div class="activity-header">
+          <h3 style="margin:0;">Discusión crítica en Classroom</h3>
+          <span class="badge">Entrega individual · Participación en foro</span>
+        </div>
+        <p>Ingrese al foro habilitado en Google Classroom y responda de manera argumentada a la siguiente pregunta detonadora. Después, lea al menos dos aportaciones de compañeros y elabore una réplica que agregue una idea nueva o cuestione, con respeto, algún supuesto de la aportación comentada.</p>
+
+        <div class="source-card">
+          <span class="tag">[ pregunta detonadora ]</span>
+          <p style="margin:0;">Si una herramienta de inteligencia artificial solo puede responder con base en las fuentes que nosotros mismos elegimos, ¿la responsabilidad sobre los posibles sesgos o vacíos del contenido educativo generado recae en quien programó la herramienta o en quien seleccionó las fuentes? Argumente su postura con un ejemplo concreto de su propia experiencia como estudiante.</p>
+        </div>
+
+        <h4 style="font-size:.95rem;color:var(--navy-deep);margin-top:20px;">Instrucciones paso a paso</h4>
+        <ol>
+          <li>Redacte una respuesta inicial de entre ciento cincuenta y doscientas cincuenta palabras, en prosa formal, sin viñetas.</li>
+          <li>Sustente su postura con al menos una idea trabajada en la sección de Fundamentos de esta guía.</li>
+          <li>Publique su aportación en el foro de Classroom antes de la fecha límite indicada por su profesor.</li>
+          <li>Lea las aportaciones de al menos dos compañeros y responda a una de ellas con una réplica de entre sesenta y cien palabras.</li>
+        </ol>
+
+        <div class="rubric">
+          <span class="rubric-title">Se evaluará</span>
+          <ul>
+            <li>Claridad y coherencia argumentativa de la postura inicial.</li>
+            <li>Vinculación explícita con los conceptos revisados en la guía.</li>
+            <li>Calidad de la réplica: que aporte una idea nueva y no se limite a validar lo dicho.</li>
+            <li>Redacción formal, ortografía y respeto en el intercambio de ideas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="actividad2">
+      <div class="section-eyebrow">05 · Actividad práctica</div>
+      <h2>Actividad 2 — Aplicación significativa</h2>
+      <div class="activity-card act-2">
+        <div class="activity-header">
+          <h3 style="margin:0;">Resolución del caso y evidencia de uso</h3>
+          <span class="badge">Entrega individual · Documento breve</span>
+        </div>
+        <p>Esta actividad integra el recorrido de exploración de la sección 02 con la resolución del caso planteado en la sección 03. El propósito es que usted demuestre una aplicación real y razonada de la herramienta, transferible a su propia práctica académica.</p>
+
+        <h4 style="font-size:.95rem;color:var(--navy-deep);">Instrucciones paso a paso</h4>
+        <ol>
+          <li>Elabore un documento breve (una a dos cuartillas) que responda a la pregunta problema planteada en la sección "Caso de aplicación".</li>
+          <li>Incluya en el documento las dos capturas de pantalla solicitadas durante su exploración guiada: el resumen generado y una respuesta con su cita correspondiente.</li>
+          <li>Describa, en un párrafo adicional, cómo adaptaría esta misma estrategia a una materia concreta de su propia licenciatura, distinta al ejemplo del caso.</li>
+          <li>Cierre el documento con una valoración personal: un beneficio y un riesgo concreto de aplicar NotebookLM en el contexto que usted describió.</li>
+          <li>Suba el documento en formato PDF a la tarea correspondiente en Google Classroom.</li>
+        </ol>
+
+        <div class="rubric">
+          <span class="rubric-title">Se evaluará</span>
+          <ul>
+            <li>Pertinencia y viabilidad de la estrategia propuesta para resolver el caso.</li>
+            <li>Presencia y calidad de la evidencia visual solicitada.</li>
+            <li>Transferencia genuina a un contexto propio de su carrera, no una simple repetición del ejemplo.</li>
+            <li>Nivel crítico de la valoración final (beneficio y riesgo).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="actividad3">
+      <div class="section-eyebrow">06 · Actividad práctica</div>
+      <h2>Actividad 3 — Quiz de comprensión</h2>
+      <p>Responda las siguientes cinco preguntas para verificar su comprensión de los conceptos centrales de esta guía. Al finalizar, el sistema mostrará su puntaje de manera automática. Tome una captura de pantalla del resultado final y súbala como evidencia a la tarea correspondiente en Google Classroom.</p>
+
+      <form class="quiz-wrap" id="quiz-form">
+
+        <div class="quiz-question" data-question="1">
+          <p class="q-text"><span class="q-num">01</span>¿En qué principio técnico se basa NotebookLM para generar sus respuestas?</p>
+          <label class="opt"><input type="radio" name="q1" value="a"> Entrenamiento exclusivo con datos públicos de internet, sin fuentes propias.</label>
+          <label class="opt"><input type="radio" name="q1" value="b" data-correcta="true"> Generación aumentada por recuperación, es decir, respuestas ancladas en las fuentes cargadas por el usuario.</label>
+          <label class="opt"><input type="radio" name="q1" value="c"> Un algoritmo de traducción automática entre idiomas.</label>
+          <label class="opt"><input type="radio" name="q1" value="d"> Una base de datos cerrada que no admite actualización.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-question" data-question="2">
+          <p class="q-text"><span class="q-num">02</span>¿Cuál es la principal ventaja pedagógica de que NotebookLM cite sus fuentes?</p>
+          <label class="opt"><input type="radio" name="q2" value="a"> Permite ignorar el contenido original una vez generado el resumen.</label>
+          <label class="opt"><input type="radio" name="q2" value="b" data-correcta="true"> Permite verificar que la información generada corresponde fielmente al material original, reduciendo el riesgo de errores.</label>
+          <label class="opt"><input type="radio" name="q2" value="c"> Aumenta la velocidad de procesamiento de la herramienta.</label>
+          <label class="opt"><input type="radio" name="q2" value="d"> Elimina la necesidad de que el estudiante lea las fuentes originales.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-question" data-question="3">
+          <p class="q-text"><span class="q-num">03</span>Un profesor carga el temario, las lecturas y la grabación de sus propias clases en un cuaderno de NotebookLM para generar material de repaso. ¿Qué función de la herramienta resulta más adecuada para producir preguntas de autoevaluación alineadas a ese contenido?</p>
+          <label class="opt"><input type="radio" name="q3" value="a" data-correcta="true"> La guía de estudio (Study Guide), que genera preguntas de repaso y términos clave.</label>
+          <label class="opt"><input type="radio" name="q3" value="b"> El resumen en audio (Audio Overview), pensado únicamente para escucha pasiva.</label>
+          <label class="opt"><input type="radio" name="q3" value="c"> La carga de una nueva fuente sin relación con el temario.</label>
+          <label class="opt"><input type="radio" name="q3" value="d"> El cambio de nombre del cuaderno.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-question" data-question="4">
+          <p class="q-text"><span class="q-num">04</span>De acuerdo con la distinción planteada en esta guía, ¿qué decisión pedagógica NO puede delegarse en NotebookLM?</p>
+          <label class="opt"><input type="radio" name="q4" value="a"> La organización visual de conceptos en un mapa.</label>
+          <label class="opt"><input type="radio" name="q4" value="b"> La generación de una síntesis de varias fuentes.</label>
+          <label class="opt"><input type="radio" name="q4" value="c" data-correcta="true"> La decisión sobre qué enseñar, en qué orden y con qué propósito formativo.</label>
+          <label class="opt"><input type="radio" name="q4" value="d"> La transcripción de un audio a texto.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-question" data-question="5">
+          <p class="q-text"><span class="q-num">05</span>Para que el resumen automático de un cuaderno resulte coherente y útil, ¿qué recomienda esta guía respecto a las fuentes que se cargan?</p>
+          <label class="opt"><input type="radio" name="q5" value="a"> Cargar la mayor cantidad posible de documentos, sin relación temática entre ellos.</label>
+          <label class="opt"><input type="radio" name="q5" value="b" data-correcta="true"> Procurar que las fuentes traten un mismo tema desde ángulos complementarios y no contradictorios sin justificación.</label>
+          <label class="opt"><input type="radio" name="q5" value="c"> Cargar exclusivamente un solo tipo de archivo, como imágenes.</label>
+          <label class="opt"><input type="radio" name="q5" value="d"> Evitar por completo el uso de artículos académicos.</label>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-footer">
+          <button type="button" class="btn" id="submit-quiz">Calificar quiz</button>
+          <div id="quiz-result"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="reflexion">
+      <div class="section-eyebrow">07 · Cierre</div>
+      <h2>Reflexión y aplicación</h2>
+      <p>Antes de concluir, dedique unos minutos a planificar de manera concreta cómo incorporará lo trabajado en esta guía a su vida académica y, eventualmente, profesional. Los siguientes espacios son de uso personal: le servirán como insumo para su propio proceso de estudio y no requieren entrega en Classroom, salvo que su profesor indique lo contrario.</p>
+
+      <div class="reflect-box">
+        <label for="r1">¿En qué materia o actividad académica concreta aplicará NotebookLM en las próximas dos semanas?</label>
+        <textarea id="r1" placeholder="Ejemplo: para organizar las lecturas del segundo parcial de Metodología de la Investigación..."></textarea>
+      </div>
+      <div class="reflect-box">
+        <label for="r2">¿Qué límite o riesgo de la herramienta deberá vigilar de manera particular en ese uso?</label>
+        <textarea id="r2" placeholder="Ejemplo: verificar que el resumen no omita matices importantes de una lectura extensa..."></textarea>
+      </div>
+      <div class="reflect-box">
+        <label for="r3">Si en el futuro ejerce funciones de docencia, tutoría o capacitación, ¿cómo introduciría esta herramienta a otras personas sin que la perciban como un sustituto del estudio propio?</label>
+        <textarea id="r3" placeholder="Ejemplo: presentándola como apoyo para organizar el repaso, nunca como fuente única de estudio..."></textarea>
+      </div>
+
+      <div class="callout">
+        <span class="callout-title">Idea final</span>
+        <p>Una herramienta como NotebookLM amplía la capacidad de organizar y comprender información, pero el valor formativo de esa organización depende enteramente del criterio de quien la utiliza. Egresar con la capacidad de emplear la inteligencia artificial de manera crítica y responsable es, en sí mismo, una competencia digital tan relevante como cualquier contenido disciplinar.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p><strong>Universidad de la Ciénega</strong> · Plantel Centro · Licenciatura en Pedagogía</p>
+  <p>Materia: Habilidades Digitales — Guía interactiva de uso libre para fines académicos</p>
+</footer>
+
+<script>
+(function(){
+  // Navegación con scroll-spy
+  const links = document.querySelectorAll('.toc-link');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+
+  function setActive(){
+    let current = sections[0];
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(sec => {
+      if(sec && sec.offsetTop <= scrollPos){ current = sec; }
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current.id);
+    });
+  }
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Quiz autocalificable
+  const form = document.getElementById('quiz-form');
+  const submitBtn = document.getElementById('submit-quiz');
+  const resultBox = document.getElementById('quiz-result');
+  const totalQuestions = form.querySelectorAll('.quiz-question').length;
+
+  submitBtn.addEventListener('click', function(){
+    const questions = form.querySelectorAll('.quiz-question');
+    let unanswered = [];
+    questions.forEach(q => {
+      const name = q.querySelector('input').name;
+      if(!form.querySelector('input[name="' + name + '"]:checked')){
+        unanswered.push(q.dataset.question);
+      }
+    });
+    if(unanswered.length > 0){
+      alert('Falta responder la(s) pregunta(s) número: ' + unanswered.join(', '));
+      return;
+    }
+
+    let score = 0;
+    questions.forEach(q => {
+      const name = q.querySelector('input').name;
+      const selected = form.querySelector('input[name="' + name + '"]:checked');
+      const options = q.querySelectorAll('.opt');
+      const feedback = q.querySelector('.feedback');
+      const isCorrect = selected.dataset.correcta === 'true';
+
+      options.forEach(opt => {
+        const input = opt.querySelector('input');
+        if(input.dataset.correcta === 'true'){
+          opt.classList.add('correct');
+        } else if(input === selected){
+          opt.classList.add('incorrect');
+        }
+        input.disabled = true;
+      });
+
+      if(isCorrect){
+        score++;
+        feedback.textContent = 'Respuesta correcta. ' + getFeedbackText(q.dataset.question, true);
+      } else {
+        feedback.textContent = 'Respuesta incorrecta. ' + getFeedbackText(q.dataset.question, false);
+      }
+      feedback.classList.add('show');
+    });
+
+    const percentage = Math.round((score / totalQuestions) * 100);
+    resultBox.innerHTML = 'Puntaje obtenido: ' + score + ' de ' + totalQuestions + ' (' + percentage + '%)' +
+      '<div class="score-detail">' + getMessage(percentage) + '</div>';
+    resultBox.classList.add('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Quiz calificado';
+    resultBox.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  function getFeedbackText(qNum, correct){
+    const texts = {
+      '1': 'NotebookLM ancla sus respuestas en las fuentes cargadas por el usuario, no en conocimiento general de internet.',
+      '2': 'La cita de fuentes permite rastrear cada afirmación hasta el fragmento original y así verificar su exactitud.',
+      '3': 'La guía de estudio (Study Guide) está diseñada específicamente para generar preguntas de repaso y términos clave.',
+      '4': 'El criterio pedagógico sobre qué, cómo y para qué enseñar es una decisión humana que no puede delegarse en la herramienta.',
+      '5': 'Fuentes coherentes entre sí producen resúmenes y respuestas más precisas y útiles para fines educativos.'
+    };
+    return texts[qNum] || '';
+  }
+
+  function getMessage(pct){
+    if(pct === 100) return 'Dominio completo de los conceptos revisados en esta guía.';
+    if(pct >= 80) return 'Buen dominio de los conceptos; revise la retroalimentación de la pregunta fallida.';
+    if(pct >= 60) return 'Dominio aceptable; se recomienda repasar la sección de Fundamentos antes de continuar.';
+    return 'Se recomienda revisar nuevamente las secciones de Fundamentos y Exploración guiada.';
+  }
+})();
+</script>
+
+</body>
+</html>
