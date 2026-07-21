@@ -1,0 +1,887 @@
+<!-- ... existing code ... -->
+    <title>Guía Interactiva: Normas y Grupos Educativos en la Conducción de Grupos</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons for professional formal graphics -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f2fa',
+                            100: '#e1e5f5',
+                            500: '#3b3b8c',
+                            600: '#2f2f73',
+                            700: '#24245b',
+                            800: '#1b1b45',
+                            900: '#121230',
+                        },
+                        accent: {
+                            500: '#c9932d',
+                            600: '#a67721',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .custom-shadow {
+            box-shadow: 0 4px 20px -2px rgba(47, 47, 115, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+
+        .tab-btn.active {
+            border-bottom: 3px solid #3b3b8c;
+            color: #3b3b8c;
+            font-weight: 600;
+            background-color: #f0f2fa;
+        }
+
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .quiz-option:hover {
+            border-color: #3b3b8c;
+            background-color: #f8fafc;
+        }
+
+        .quiz-option.selected {
+            border-color: #3b3b8c;
+            background-color: #e1e5f5;
+        }
+
+        .quiz-option.correct-option {
+            border-color: #16a34a !important;
+            background-color: #dcfce7 !important;
+            color: #14532d !important;
+        }
+
+        .quiz-option.incorrect-option {
+            border-color: #dc2626 !important;
+            background-color: #fee2e2 !important;
+            color: #7f1d1d !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Encabezado Institucional -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 custom-shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <!-- Logo Oficial de la Universidad de la Ciénega -->
+                <div class="bg-white p-1 rounded-md border border-slate-100 flex items-center justify-center">
+                    <img id="univ-logo" src="cienega_2.jpg" alt="Logo Oficial Universidad de la Ciénega Plantel Centro" class="h-16 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x80/2f2f73/ffffff?text=Universidad+de+la+Ci%C3%A9nega';">
+                </div>
+                <div class="border-l border-slate-300 pl-4">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Licenciatura en Pedagogía</span>
+                    <h1 class="text-lg font-bold text-brand-700 leading-tight">Técnicas de Conducción de Grupos</h1>
+                    <span class="text-xs font-medium text-slate-600">Unidades V y VI: Normas Grupales y Grupos Educativos</span>
+                </div>
+            </div>
+
+            <!-- Badge Metodológico -->
+            <div class="hidden lg:flex items-center gap-2 bg-brand-50 border border-brand-100 px-3 py-1.5 rounded-lg text-xs text-brand-800 font-medium">
+                <i class="fa-solid fa-graduation-cap text-brand-500"></i>
+                <span>Enfoque Constructivista & ABP</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-brand-800 text-white text-sm font-medium sticky top-[81px] z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto whitespace-nowrap divide-x divide-brand-700">
+            <a href="#introduccion" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-book-open text-xs"></i> Introducción
+            </a>
+            <a href="#saberes-previos" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-brain text-xs"></i> Saber Previo
+            </a>
+            <a href="#contenido-teorico" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-xs"></i> Fundamento Teórico
+            </a>
+            <a href="#materiales" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-bookmark text-xs"></i> Consultas
+            </a>
+            <a href="#actividades-classroom" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2 bg-brand-700/50">
+                <i class="fa-solid fa-list-check text-xs text-amber-400"></i> Actividades Classroom
+            </a>
+            <a href="#reflexion-final" class="py-3 px-4 hover:bg-brand-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-compass text-xs"></i> Aplicación Profesional
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-12">
+
+        <!-- SECCIÓN 1: INTRODUCCIÓN -->
+        <section id="introduccion" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center text-brand-600 font-bold">
+                    <i class="fa-solid fa-users-gear text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Guía de Aprendizaje Activo: Normas y Dinámica de los Grupos Educativos</h2>
+                    <p class="text-sm text-slate-500">Unidad V (Normas: 5.1. Explícitas / 5.2. Implícitas) y Unidad VI (Grupos Educativos: 6.1. El Grupo Escolar / 6.2. La Comunidad Educativa)</p>
+                </div>
+            </div>
+
+            <hr class="my-4 border-slate-100">
+
+            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                <p>
+                    Estimados estudiantes de la Licenciatura en Pedagogía: Bienvenidos a esta guía temática desarrollada bajo los principios de la <strong>pedagogía activa, la metodología constructivista y el aprendizaje basado en problemas (ABP)</strong>. En el ejercicio profesional de la docencia y la facilitación institucional, comprender la estructura interna de los grupos resulta indispensable para generar ambientes de aprendizaje efectivos, incluyentes y democráticos.
+                </p>
+                <p>
+                    Esta guía integra el estudio del <strong>marco normativo grupal</strong> (normas explícitas e implícitas) con el análisis de los <strong>grupos educativos</strong> en sus dos dimensiones fundamentales: el <em>grupo escolar</em> como microsistema del aula y la <em>comunidad educativa</em> como red institucional y social que le da sentido.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                    <p class="text-sm font-medium text-brand-900">
+                        <strong>Objetivo del Alumno:</strong> Diagnosticar, diferenciar e intervenir operativamente sobre las normas explícitas e implícitas presentes en sus grupos universitarios, vinculando la dinámica del grupo escolar con los principios y metas de la comunidad educativa institucional.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: SABERES PREVIOS -->
+        <section id="saberes-previos" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center text-amber-700 font-bold">
+                    <i class="fa-solid fa-lightbulb text-lg"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">Activación de Conocimientos Previos</h2>
+            </div>
+
+            <p class="text-slate-700">
+                El aprendizaje constructivista requiere conectar las estructuras teóricas nuevas con sus vivencias previas en la formación universitaria. Responda introspectivamente al siguiente cuestionamiento:
+            </p>
+
+            <div class="bg-amber-50/60 border border-amber-200 rounded-lg p-5 space-y-4">
+                <p class="font-semibold text-slate-800 text-base leading-snug">
+                    Pregunta Reflexiva Inicial:
+                </p>
+                <blockquote class="text-slate-700 italic border-l-2 border-amber-400 pl-4 py-1">
+                    "Durante su trayectoria universitaria, ¿de qué manera las normas implícitas de su grupo escolar (hábitos no escritos de los alumnos) han entrado en contradicción con las expectativas o reglamentos dictados por la comunidad educativa institucional? ¿Qué impacto tuvo este desacople en el rendimiento y en la convivencia escolar?"
+                </blockquote>
+
+                <div class="pt-2">
+                    <button onclick="toggleElement('reflection-hint')" class="text-xs font-semibold text-brand-600 hover:text-brand-800 flex items-center gap-1 focus:outline-none">
+                        <i class="fa-solid fa-circle-info"></i> Desplegar andamiaje conceptual para la reflexión
+                    </button>
+                    <div id="reflection-hint" class="hidden mt-3 text-xs text-slate-600 bg-white p-3 rounded border border-amber-200 leading-relaxed">
+                        <strong>Andamiaje Pedagógico:</strong> El grupo escolar no opera en el vacío; está inmerso en la comunidad educativa. Cuando los consensos tácitos del salón de clases van en sentido opuesto a las normas institucionales formales, el pedagogo debe actuar como mediador entre la dinámica micro del aula y la estructura macro de la institución.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CONTENIDO GENERAL -->
+        <section id="contenido-teorico" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200 space-y-8">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center text-brand-600 font-bold">
+                    <i class="fa-solid fa-book text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Fundamentación Teórica Integrada</h2>
+                    <p class="text-xs text-slate-500">Unidades V y VI del Programa de Técnicas de Conducción de Grupos</p>
+                </div>
+            </div>
+
+            <!-- UNIDAD 5: NORMAS -->
+            <div class="space-y-6 text-slate-700 leading-relaxed">
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="text-lg font-bold text-brand-700 mb-2">5. Concepto y Función de las Normas Grupales</h3>
+                    <p class="mb-3">
+                        Desde la psicología social y la pedagogía grupal (Muzafer Sherif, Enrique Pichon-Rivière, Kurt Lewin), las <strong>normas grupales</strong> son marcos de referencia y reglas de conducta compartidas por los miembros de un colectivo. Prescriben los límites de la interacción aceptable e inaceptable dentro del sistema grupal.
+                    </p>
+                    <p>
+                        Su propósito no es punitivo sino estructurante: aportan predictibilidad, fortalecen la cohesión, mitigan la ansiedad individual y coordinan las tareas académicas.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- 5.1 Normas Explícitas -->
+                    <div class="border border-slate-200 rounded-lg p-5 bg-white space-y-3">
+                        <div class="flex items-center gap-2 text-brand-600 font-bold text-base">
+                            <i class="fa-solid fa-file-contract"></i>
+                            <span>5.1. Normas Explícitas</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Son las pautas establecidas de manera formal, explícita y deliberada (por escrito o expuestas verbalmente) durante la fase de encuadre o en los reglamentos institucionales.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside bg-slate-50 p-3 rounded">
+                            <li><strong>Origen:</strong> Institucional, curricular o producto del encuadre negociado docente-alumnos.</li>
+                            <li><strong>Visibilidad:</strong> Alta. Visibles en silabarios, rúbricas de evaluación y reglamentos.</li>
+                            <li><strong>Sanción:</strong> Estandarizada, tipificada y formal.</li>
+                        </ul>
+                        <div class="text-xs bg-brand-50 p-3 rounded text-brand-800 border border-brand-100">
+                            <strong>Ejemplo:</strong> "Las evidencias de aprendizaje se entregarán exclusivamente en Google Classroom los viernes antes de las 23:59 h. Los trabajos extemporáneos tendrán una penalización estipulada del 20%."
+                        </div>
+                    </div>
+
+                    <!-- 5.2 Normas Implícitas -->
+                    <div class="border border-slate-200 rounded-lg p-5 bg-white space-y-3">
+                        <div class="flex items-center gap-2 text-amber-700 font-bold text-base">
+                            <i class="fa-solid fa-user-secret"></i>
+                            <span>5.2. Normas Implícitas</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Son acuerdos tácitos no verbalizados que emergen de la práctica cotidiana, los hábitos colectivos y la cultura informal del grupo.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside bg-slate-50 p-3 rounded">
+                            <li><strong>Origen:</strong> Costumbre, consensos subyacentes, influencia de líderes informales.</li>
+                            <li><strong>Visibilidad:</strong> Baja/Subyacente. Se dan por sentadas hasta que sufren una transgresión.</li>
+                            <li><strong>Sanción:</strong> Informal y psicosocial (aislamiento, miradas de reprobación, silencio grupal).</li>
+                        </ul>
+                        <div class="text-xs bg-amber-50 p-3 rounded text-amber-900 border border-amber-200">
+                            <strong>Ejemplo:</strong> Abstenerse de realizar preguntas al docente al final de la clase para no prolongar la jornada, o guardar silencio cuando un compañero con liderazgo expone una opinión.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIDAD 6: GRUPOS EDUCATIVOS -->
+            <div class="space-y-6 text-slate-700 leading-relaxed pt-4 border-t border-slate-200">
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="text-lg font-bold text-brand-700 mb-2">6. Los Grupos Educativos</h3>
+                    <p>
+                        Un <strong>grupo educativo</strong> es un sistema social intencionalmente constituido alrededor de procesos de enseñanza, aprendizaje y formación humana integral. Posee una estructura dialéctica donde confluyen la tarea explícita (adquisición de conocimientos y competencias) y la tarea implícita (elaboración de ansiedades, vinculación afectiva y desarrollo de la identidad).
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- 6.1 El Grupo Escolar -->
+                    <div class="border border-slate-200 rounded-lg p-5 bg-white space-y-3">
+                        <div class="flex items-center gap-2 text-brand-600 font-bold text-base">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            <span>6.1. El Grupo Escolar</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Es el microsistema socioeducativo primario dentro del aula. Se conforma por los estudiantes y el docente interaccionando de forma continua en torno a objetivos curriculares.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside bg-slate-50 p-3 rounded">
+                            <li><strong>Dimensiones:</strong> Dimensión afectiva (lazos sociométricos), dimensión cognoscitiva (construcción del conocimiento) y dimensión operativa (división de tareas y roles).</li>
+                            <li><strong>Rol Pedagógico:</strong> El docente actúa como conductor, facilitador y mediador del clima socioemocional del aula.</li>
+                        </ul>
+                        <div class="text-xs bg-brand-50 p-3 rounded text-brand-800 border border-brand-100">
+                            <strong>Características clave:</strong> Presencia de roles explícitos e implícitos (portavoz, chivo expiatorio, líder, saboteador) y un sentido dinámico de pertenencia.
+                        </div>
+                    </div>
+
+                    <!-- 6.2 La Comunidad Educativa -->
+                    <div class="border border-slate-200 rounded-lg p-5 bg-white space-y-3">
+                        <div class="flex items-center gap-2 text-amber-700 font-bold text-base">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>6.2. La Comunidad Educativa</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Es el macrosistema institucional y social en el que se inserta el grupo escolar. Integra a estudiantes, docentes, directivos, familias, personal de soporte y el entorno comunitario local.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside bg-slate-50 p-3 rounded">
+                            <li><strong>Función:</strong> Brindar marco axiológico, identidad institucional (PEI), recursos, normatividad general y sentido de corresponsabilidad social.</li>
+                            <li><strong>Articulación:</strong> Conecta el aprendizaje de aula con las necesidades reales del entorno sociocultural.</li>
+                        </ul>
+                        <div class="text-xs bg-amber-50 p-3 rounded text-amber-900 border border-amber-200">
+                            <strong>Características clave:</strong> Corresponsabilidad pedagógica, participación ciudadana, cultura escolar y gestión democrática del conocimiento.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-lg text-sm text-indigo-950">
+                    <h4 class="font-bold text-indigo-900 mb-1">
+                        <i class="fa-solid fa-network-wired mr-1"></i> Síntesis Pedagógica de Integración
+                    </h4>
+                    <p>
+                        El pedagogo profesional conduce el grupo escolar haciendo explícitas las normas que obstaculizan la tarea académica y alineando el clima del aula con los valores democráticos y de participación que promueve la comunidad educativa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: MATERIALES EXTERNOS DE CONSULTA -->
+        <section id="materiales" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
+                    <i class="fa-solid fa-book-bookmark text-lg"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">Materiales Externos de Consulta Formal</h2>
+            </div>
+
+            <p class="text-slate-700 text-sm">
+                Para profundizar en la conducción de grupos escolares, la gestión normativa y la articulación comunitaria bajo sustento académico, se recomienda la consulta de las siguientes obras de referencia en formato APA:
+            </p>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+                <div class="p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition flex items-start gap-3">
+                    <i class="fa-solid fa-scroll text-brand-600 mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-slate-800">Chehaybar y Kuri, E. (2012).</p>
+                        <p class="text-slate-600 italic">Técnicas para el trabajo de grupo: Aspectos puntuales en la conducción de grupos de aprendizaje.</p>
+                        <p class="text-slate-500 text-xs">Instituto de Investigaciones sobre la Universidad y la Educación (IISUE - UNAM).</p>
+                    </div>
+                </div>
+
+                <div class="p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition flex items-start gap-3">
+                    <i class="fa-solid fa-scroll text-brand-600 mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-slate-800">Pichon-Rivière, E. (2014).</p>
+                        <p class="text-slate-600 italic">El proceso grupal: Del psicoanálisis a la psicología social.</p>
+                        <p class="text-slate-500 text-xs">Ediciones Nueva Visión.</p>
+                    </div>
+                </div>
+
+                <div class="p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition flex items-start gap-3">
+                    <i class="fa-solid fa-scroll text-brand-600 mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-slate-800">San Fabián Maroto, J. L. (2008).</p>
+                        <p class="text-slate-600 italic">La participación escolar y la comunidad educativa: Retos y propuestas de mejora.</p>
+                        <p class="text-slate-500 text-xs">Revista de Educación, 347, 183-202.</p>
+                    </div>
+                </div>
+
+                <div class="p-3 border border-slate-200 rounded-lg hover:bg-slate-50 transition flex items-start gap-3">
+                    <i class="fa-solid fa-scroll text-brand-600 mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-slate-800">Zarzar Charur, C. (2000).</p>
+                        <p class="text-slate-600 italic">La dinámica de grupos en la docencia: La función del profesor como conductor.</p>
+                        <p class="text-slate-500 text-xs">Editorial Trillas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: ACTIVIDADES PRÁCTICAS PARA GOOGLE CLASSROOM -->
+        <section id="actividades-classroom" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200 space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold">
+                        <i class="fa-solid fa-laptop-code text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Actividades Prácticas de Aprendizaje Aplicable</h2>
+                        <p class="text-xs text-slate-500">Entregables obligatorios para la plataforma Google Classroom</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation for Activities -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-medium border-b border-slate-200 pb-2">
+                <button onclick="switchActivityTab('tab-act1')" id="btn-tab-act1" class="tab-btn active py-2 px-3 rounded-t-lg transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-comments"></i> 1. Foro Mediado
+                </button>
+                <button onclick="switchActivityTab('tab-act2')" id="btn-tab-act2" class="tab-btn py-2 px-3 rounded-t-lg transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-diagram-project"></i> 2. Matriz Aplicada
+                </button>
+                <button onclick="switchActivityTab('tab-act3')" id="btn-tab-act3" class="tab-btn py-2 px-3 rounded-t-lg transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-briefcase"></i> 3. Caso Práctico
+                </button>
+                <button onclick="switchActivityTab('tab-act4')" id="btn-tab-act4" class="tab-btn py-2 px-3 rounded-t-lg transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-square-check"></i> 4. Quiz Interactivo
+                </button>
+            </div>
+
+            <!-- ACTIVIDAD 1: FORO DE MEDIACIÓN -->
+            <div id="tab-act1" class="activity-content space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-brand-700">Actividad 1: Mediación en Foro Institucional</h3>
+                    <span class="text-xs font-semibold bg-brand-50 text-brand-700 px-2.5 py-1 rounded border border-brand-200">
+                        Entregable: Foro de Classroom
+                    </span>
+                </div>
+
+                <p class="text-sm text-slate-700">
+                    <strong>Objetivo:</strong> Promover el intercambio crítico sobre la articulación entre las normas del grupo escolar y la corresponsabilidad de la comunidad educativa.
+                </p>
+
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Pregunta Detonadora del Foro:</h4>
+                    <blockquote class="text-sm font-semibold text-slate-800 bg-white p-3 rounded border-l-4 border-brand-500 shadow-sm">
+                        "Cuando las normas implícitas de un grupo escolar universitario (como el encubrimiento de faltas académicas o la pasividad ante la injusticia) se contraponen a los principios axiológicos de la comunidad educativa institucional, ¿cuál debe ser el rol del pedagogo como conductor de grupo para mediar entre la cohesión interna de los alumnos y la responsabilidad ético-social de la institución?"
+                    </blockquote>
+                </div>
+
+                <div class="space-y-3 text-xs text-slate-700">
+                    <h4 class="font-bold text-slate-900 text-sm">Instrucciones Paso a Paso para el Estudiante:</h4>
+                    <ol class="list-decimal list-inside space-y-2 leading-relaxed bg-white p-4 rounded border border-slate-200">
+                        <li><strong>Paso 1:</strong> Ingrese al "Foro 1: Normas, Grupo Escolar y Comunidad Educativa" en Google Classroom.</li>
+                        <li><strong>Paso 2:</strong> Redacte una aportación principal de mínimo 200 palabras, fundamentando su postura en los autores revisados en el marco teórico.</li>
+                        <li><strong>Paso 3:</strong> Argumente y replique con juicio crítico formal a un mínimo de dos compañeros de clase. Su respuesta debe construir conocimiento de manera dialógica.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-emerald-50/60 border border-emerald-200 p-4 rounded-lg space-y-2">
+                    <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Ejemplo de Aportación Formal Esperada:</span>
+                    <p class="text-xs text-slate-700 italic leading-relaxed">
+                        "Considero que el pedagogo no debe actuar como un agente punitivo externo ni como un cómplice del silencio grupal. Basado en San Fabián Maroto, el grupo escolar forma parte de una comunidad educativa con valores éticos superiores. Si la norma implícita del aula vulnera la honestidad académica, el conductor del grupo debe convocar a una sesión de encuadre reflexivo para hacer explícito el conflicto implícito, vinculando el impacto de esas conductas con el compromiso que la universidad sostiene con la sociedad..."
+                    </p>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 2: MATRIZ DE DIAGNÓSTICO -->
+            <div id="tab-act2" class="activity-content hidden space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-brand-700">Actividad 2: Matriz de Diagnóstico y Articulación Educativa</h3>
+                    <span class="text-xs font-semibold bg-brand-50 text-brand-700 px-2.5 py-1 rounded border border-brand-200">
+                        Entregable: Documento PDF
+                    </span>
+                </div>
+
+                <p class="text-sm text-slate-700">
+                    <strong>Objetivo:</strong> Diseñar un diagnóstico socioeducativo aplicable a las asignaturas universitarias en curso, conectando las normas del grupo escolar con la comunidad educativa.
+                </p>
+
+                <div class="space-y-3 text-xs text-slate-700">
+                    <h4 class="font-bold text-slate-900 text-sm">Instrucciones Paso a Paso para el Estudiante:</h4>
+                    <ol class="list-decimal list-inside space-y-2 leading-relaxed bg-white p-4 rounded border border-slate-200">
+                        <li><strong>Paso 1:</strong> Seleccione dos grupos escolares universitarios de su programa formativo.</li>
+                        <li><strong>Paso 2:</strong> Diligencie una matriz diagnóstica analizando: 2 normas explícitas, 2 normas implícitas y el grado de integración con los valores de la comunidad educativa institucional.</li>
+                        <li><strong>Paso 3:</strong> Diseñe un plan de re-encuadre pedagógico de 1 cuartilla donde proponga estrategias para transformar normas implícitas negativas en acuerdos explicitados con sentido comunitario.</li>
+                        <li><strong>Paso 4:</strong> Suba su archivo PDF a Google Classroom con la nomenclatura <code>Apellido_Nombre_MatrizEducativa.pdf</code>.</li>
+                    </ol>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left text-slate-600 border border-slate-200">
+                        <thead class="bg-brand-800 text-white font-semibold">
+                            <tr>
+                                <th class="p-2 border">Dimensión Analítica</th>
+                                <th class="p-2 border">Grupo Escolar A (Alta Cohesión)</th>
+                                <th class="p-2 border">Grupo Escolar B (Desarticulado)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr>
+                                <td class="p-2 font-semibold bg-slate-50">Normas Explícitas Reguladoras</td>
+                                <td class="p-2">1. Uso de rúbrica pública.<br>2. Criterios de tolerancia informados.</td>
+                                <td class="p-2">1. 80% de asistencia obligatoria.<br>2. Prohibición de celulares.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-semibold bg-slate-50">Normas Implícitas de Aula</td>
+                                <td class="p-2">1. Colaboración solidaria entre pares.<br>2. Respeto al uso de la palabra.</td>
+                                <td class="p-2">1. Poca participación por apatía.<br>2. Trabajo individual fragmentado.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-semibold bg-slate-50">Vínculo con la Comunidad Educativa</td>
+                                <td class="p-2">Alineado a los valores de responsabilidad social del PEI.</td>
+                                <td class="p-2">Aislamiento de los propósitos de la institución.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 3: CASO PRÁCTICO (PBL) -->
+            <div id="tab-act3" class="activity-content hidden space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-brand-700">Actividad 3: Análisis de Caso Práctico (ABP)</h3>
+                    <span class="text-xs font-semibold bg-brand-50 text-brand-700 px-2.5 py-1 rounded border border-brand-200">
+                        Entregable: Reporte de Caso
+                    </span>
+                </div>
+
+                <div class="bg-amber-50/80 border border-amber-300 p-5 rounded-lg space-y-3">
+                    <div class="flex items-center gap-2 text-amber-900 font-bold text-sm">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Estudio de Caso: "La Fractura de la Comunidad en el Grupo 5º A"</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        En el grupo escolar de 5º semestre de Pedagogía, el reglamento explícito de la Universidad estipula la realización de un proyecto de intervención comunitaria con instituciones externas. No obstante, en el grupo escolar se ha consolidado una fuerte norma implícita promovida por un subgrupo: cumplir únicamente con los requisitos mínimos en papel, evitando la interacción real con los miembros de la comunidad para ahorrarse tiempo y desplazamientos.
+                    </p>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Cuando un equipo intentó desarrollar el proyecto presencial de forma comprometida, los demás integrantes del grupo escolar aplicaron sanciones informales (aislamiento, comentarios despectivos en chats privados, acusándolos de "hacer quedar mal al resto"). El docente a cargo advirtió la baja calidad de las propuestas pero reaccionó imponiendo sanciones disciplinarias punitivas sin indagar la dinámica socioafectiva subyacente.
+                    </p>
+                </div>
+
+                <div class="space-y-3 text-xs text-slate-700">
+                    <h4 class="font-bold text-slate-900 text-sm">Consignas de Resolución del Caso:</h4>
+                    <ul class="list-disc list-inside space-y-2 bg-white p-4 rounded border border-slate-200">
+                        <li><strong>1. Análisis de Normas:</strong> Identifique la contradicción entre la norma explícita institucional y la norma implícita del grupo escolar.</li>
+                        <li><strong>2. Diagnóstico Grupal:</strong> Evalúe el impacto de la sanción informal aplicada por el grupo hacia el equipo proactivo.</li>
+                        <li><strong>3. Intervención Pedagógica:</strong> Proponga una secuencia de 3 pasos concretos que el conductor del grupo debe realizar para restaurar el clima escolar y articular la tarea del aula con los valores de la comunidad educativa.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <label for="case-draft" class="block text-xs font-bold text-slate-700">Espacio de Trabajo para Borrador Personal:</label>
+                    <textarea id="case-draft" rows="3" class="w-full text-xs p-3 border rounded border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none" placeholder="Redacte aquí un borrador rápido de sus respuestas antes de pasarlas a su informe final..."></textarea>
+                    <div class="flex justify-end">
+                        <button onclick="copyDraft()" class="text-xs bg-slate-700 text-white px-3 py-1 rounded hover:bg-slate-800 transition flex items-center gap-1">
+                            <i class="fa-solid fa-copy"></i> Copiar Borrador al Portapapeles
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 4: QUIZ INTERACTIVO -->
+            <div id="tab-act4" class="activity-content hidden space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-brand-700">Actividad 4: Evaluación Interactiva Automatizada</h3>
+                        <p class="text-xs text-slate-500">Responda a los 5 reactivos para validar el dominio teórico de las Unidades V y VI.</p>
+                    </div>
+                    <span id="quiz-badge" class="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded-full border border-slate-300">
+                        Pregunta <span id="current-q-num">1</span> de 5
+                    </span>
+                </div>
+
+                <div id="quiz-card" class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-5">
+                    <p id="quiz-question-text" class="text-sm font-semibold text-slate-800 leading-snug">
+                        Cargando pregunta...
+                    </p>
+
+                    <div id="quiz-options-container" class="space-y-2 text-xs">
+                        <!-- Generado por JS -->
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden text-xs p-3 rounded-lg leading-relaxed"></div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <button id="btn-prev-q" onclick="navigateQuiz(-1)" class="text-xs px-3 py-1.5 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-medium disabled:opacity-40 disabled:cursor-not-allowed">
+                            Anterior
+                        </button>
+                        <button id="btn-next-q" onclick="navigateQuiz(1)" class="text-xs px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-sm">
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-result-panel" class="hidden bg-white p-6 rounded-xl border border-brand-200 text-center space-y-4 custom-shadow">
+                    <div class="w-16 h-16 rounded-full bg-brand-100 text-brand-700 mx-auto flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Evaluación Completada</h4>
+                    <p class="text-sm text-slate-600">Puntaje obtenido en las Unidades V y VI:</p>
+                    <div class="text-4xl font-extrabold text-brand-700" id="final-score-text">0 / 100</div>
+                    <p id="final-eval-feedback" class="text-xs text-slate-600 max-w-md mx-auto"></p>
+                    <div class="pt-2">
+                        <button onclick="resetQuiz()" class="text-xs bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-900 transition">
+                            Reintentar Evaluación
+                        </button>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded text-xs text-slate-500 border border-slate-200">
+                        <strong>Instrucción para Classroom:</strong> Capture una imagen de este panel con su puntaje visible y adjúntela a la entrega de la Actividad 4.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: REFLEXIÓN FINAL -->
+        <section id="reflexion-final" class="bg-white rounded-xl p-6 sm:p-8 custom-shadow border border-slate-200 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
+                    <i class="fa-solid fa-compass text-lg"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">Reflexión Final y Aplicación Profesional</h2>
+            </div>
+
+            <p class="text-slate-700 text-sm leading-relaxed">
+                El proceso formativo adquiere significatividad cuando el estudiante integra el conocimiento conceptual en un plan de acción concreto. Complete los compromisos pedagógicos a continuación:
+            </p>
+
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-lg space-y-4">
+                <h3 class="text-sm font-bold text-brand-800">Plan de Transferencia Profesional del Futuro Pedagogo</h3>
+                
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">1. Plan de Acción en el Grupo Escolar (Nivel Aula):</label>
+                        <input type="text" id="plan-1" class="w-full p-2.5 border rounded border-slate-300 focus:ring-1 focus:ring-brand-500 focus:outline-none" placeholder="Ejemplo: Aplicaré dinámicas de re-encuadre participativo al inicio de curso para explícitar las normas implícitas de mi grupo escolar...">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">2. Plan de Vinculación con la Comunidad Educativa (Nivel Institucional):</label>
+                        <input type="text" id="plan-2" class="w-full p-2.5 border rounded border-slate-300 focus:ring-1 focus:ring-brand-500 focus:outline-none" placeholder="Ejemplo: Diseñaré proyectos integradores que conecten las tareas explícitas del aula con las necesidades socioculturales de la comunidad educativa...">
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-end">
+                    <button onclick="copyActionPlan()" class="text-xs bg-brand-700 hover:bg-brand-800 text-white font-medium px-4 py-2 rounded transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i> Copiar Plan de Acción para Classroom
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-brand-900 text-white border-t border-brand-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="text-sm font-bold tracking-wide">UNIVERSIDAD DE LA CIÉNEGA PLANTEL CENTRO</p>
+            <p class="text-xs text-slate-400">Licenciatura en Pedagogía | Asignatura: Técnicas de Conducción de Grupos</p>
+            <p class="text-xs text-slate-500">Recurso Didáctico Interactivo para Grupos Educativos y Dinámicas Normativas.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl hidden transition-all duration-300 z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-msg">Notificación</span>
+    </div>
+
+    <!-- Script de Lógica Interactiva y Quiz -->
+    <script>
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        function switchActivityTab(tabId) {
+            document.querySelectorAll('.activity-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        function copyDraft() {
+            const text = document.getElementById('case-draft').value;
+            if (!text.trim()) {
+                showToast("El borrador está vacío. Ingrese sus notas primero.");
+                return;
+            }
+            
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("Borrador copiado al portapapeles.");
+        }
+
+        function copyActionPlan() {
+            const p1 = document.getElementById('plan-1').value;
+            const p2 = document.getElementById('plan-2').value;
+
+            if (!p1.trim() || !p2.trim()) {
+                showToast("Complete ambos campos del Plan de Acción.");
+                return;
+            }
+
+            const formattedText = `=== PLAN DE ACCIÓN PEDAGÓGICA (GRUPOS Y COMUNIDAD) ===\n\n1. Plan en el Grupo Escolar (Aula):\n${p1}\n\n2. Plan de Vinculación Comunitaria:\n${p2}`;
+            
+            const tempInput = document.createElement("textarea");
+            tempInput.value = formattedText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("Plan de Acción copiado con éxito.");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Estructura de Preguntas del Quiz (Unidades 5 y 6)
+        const quizQuestions = [
+            {
+                question: "1. ¿Cuál es la función estructurante de las NORMAS EXPLÍCITAS dentro de la conducción grupal?",
+                options: [
+                    "Sustituir los reglamentos de la universidad mediante sanciones punitivas.",
+                    "Formular con claridad las reglas formales para aportar predictibilidad y encuadre a la tarea.",
+                    "Permitir que el grupo desarrolle hábitos tácitos sin intervención del docente.",
+                    "Dividir al grupo escolar en subgrupos aislados según afinidad sociométrica."
+                ],
+                correct: 1,
+                feedback: "Correcto. Las normas explícitas otorgan predictibilidad y estructura formal para el desarrollo de la tarea académica."
+            },
+            {
+                question: "2. ¿Cómo se manifiesta habitualmente la sanción ante la violación de una NORMA IMPLÍCITA?",
+                options: [
+                    "A través de un reporte formal por escrito ante la dirección institucional.",
+                    "Por medio de presiones informales de pares como miradas de desaprobación, silencio o exclusión.",
+                    "Mediante la pérdida inmediata de créditos en la asignatura.",
+                    "A través de una asamblea pública convocada por la autoridad educativa."
+                ],
+                correct: 1,
+                feedback: "Correcto. Las normas implícitas se regulan mediante sanciones socioafectivas e informales del propio grupo escolar."
+            },
+            {
+                question: "3. El CONCEPTO DE GRUPO ESCOLAR (6.1) se define fundamentalmente como:",
+                options: [
+                    "Un grupo secundario puramente administrativo sin vínculos afectivos.",
+                    "El microsistema socioeducativo del aula constituido por docentes y alumnos articulados en torno al aprendizaje.",
+                    "La suma de directivos, docentes y familias pertenecientes a una región.",
+                    "Una reunión informal de estudiantes con propósitos exclusivamente recreativos."
+                ],
+                correct: 1,
+                feedback: "Correcto. El grupo escolar es el microsistema primario de interacción pedagógica dentro del aula."
+            },
+            {
+                question: "4. La COMUNIDAD EDUCATIVA (6.2) trasciende el grupo escolar porque:",
+                options: [
+                    "Sustituye la labor pedagógica del profesor por decisiones colectivas informales.",
+                    "Representa el macrosistema institucional que integra a estudiantes, docentes, directivos, familias y el entorno social.",
+                    "Se enfoca exclusivamente en la gestión financiera del plantel académico.",
+                    "Funciona únicamente durante las sesiones de evaluación de fin de ciclo."
+                ],
+                correct: 1,
+                feedback: "Correcto. La comunidad educativa abarca el entorno institucional y sociocultural en el que se ubica la escuela."
+            },
+            {
+                question: "5. Ante un conflicto entre las normas implícitas del grupo escolar y los valores de la comunidad educativa, la intervención técnica del pedagogo debe ser:",
+                options: [
+                    "Ignorar el conflicto para evitar la confrontación con los estudiantes.",
+                    "Explicitar y visibilizar la norma disfuncional en asamblea grupal para re-encuadrarla éticamente.",
+                    "Aplicar castigos colectivos automáticos sin escuchar al grupo escolar.",
+                    "Delegar la resolución de la dinámica interna a la directiva institucional."
+                ],
+                correct: 1,
+                feedback: "Correcto. Hacer explícito lo implícito permite la reflexión crítica y la alineación democrática con la comunidad educativa."
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+
+        function renderQuestion() {
+            const qData = quizQuestions[currentQuestionIdx];
+            document.getElementById('current-q-num').innerText = currentQuestionIdx + 1;
+            document.getElementById('quiz-question-text').innerText = qData.question;
+
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            qData.options.forEach((optText, optIdx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = `quiz-option w-full text-left p-3 rounded-lg border border-slate-300 flex items-center gap-3 ${userAnswers[currentQuestionIdx] === optIdx ? 'selected font-semibold' : ''}`;
+                
+                if (userAnswers[currentQuestionIdx] !== null) {
+                    if (optIdx === qData.correct) {
+                        optBtn.classList.add('correct-option');
+                    } else if (optIdx === userAnswers[currentQuestionIdx]) {
+                        optBtn.classList.add('incorrect-option');
+                    }
+                }
+
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center text-xs shrink-0 font-bold bg-white">${String.fromCharCode(65 + optIdx)}</span>
+                    <span>${optText}</span>
+                `;
+
+                optBtn.onclick = () => selectQuizOption(optIdx);
+                container.appendChild(optBtn);
+            });
+
+            document.getElementById('btn-prev-q').disabled = currentQuestionIdx === 0;
+            
+            const feedbackBox = document.getElementById('quiz-feedback');
+            if (userAnswers[currentQuestionIdx] !== null) {
+                feedbackBox.classList.remove('hidden');
+                if (userAnswers[currentQuestionIdx] === qData.correct) {
+                    feedbackBox.className = "text-xs p-3 rounded-lg leading-relaxed bg-emerald-100 text-emerald-900 border border-emerald-300";
+                    feedbackBox.innerHTML = `<strong>Acierto:</strong> ${qData.feedback}`;
+                } else {
+                    feedbackBox.className = "text-xs p-3 rounded-lg leading-relaxed bg-rose-100 text-rose-900 border border-rose-300";
+                    feedbackBox.innerHTML = `<strong>Respuesta Incorrecta:</strong> ${qData.feedback}`;
+                }
+            } else {
+                feedbackBox.classList.add('hidden');
+            }
+
+            if (currentQuestionIdx === quizQuestions.length - 1) {
+                document.getElementById('btn-next-q').innerText = "Calcular Resultados";
+            } else {
+                document.getElementById('btn-next-q').innerText = "Siguiente";
+            }
+        }
+
+        function selectQuizOption(optIdx) {
+            userAnswers[currentQuestionIdx] = optIdx;
+            renderQuestion();
+        }
+
+        function navigateQuiz(dir) {
+            if (dir === 1) {
+                if (userAnswers[currentQuestionIdx] === null) {
+                    showToast("Seleccione una respuesta antes de continuar.");
+                    return;
+                }
+                if (currentQuestionIdx === quizQuestions.length - 1) {
+                    calculateFinalScore();
+                    return;
+                }
+                currentQuestionIdx++;
+            } else {
+                currentQuestionIdx--;
+            }
+            renderQuestion();
+        }
+
+        function calculateFinalScore() {
+            let correctCount = 0;
+            userAnswers.forEach((ans, idx) => {
+                if (ans === quizQuestions[idx].correct) {
+                    correctCount++;
+                }
+            });
+
+            const score = (correctCount / quizQuestions.length) * 100;
+
+            document.getElementById('quiz-card').classList.add('hidden');
+            document.getElementById('quiz-result-panel').classList.remove('hidden');
+            document.getElementById('final-score-text').innerText = `${score} / 100 pts`;
+
+            const feedbackText = document.getElementById('final-eval-feedback');
+            if (score >= 80) {
+                feedbackText.innerText = "¡Excelente dominio teórico! Demuestra solvencia en la gestión de normas grupales y dinámicas de la comunidad educativa.";
+            } else if (score >= 60) {
+                feedbackText.innerText = "Nivel de comprensión satisfactorio. Se sugiere repasar los aspectos de articulación entre el grupo escolar y la comunidad.";
+            } else {
+                feedbackText.innerText = "Nivel de dominio básico. Revise nuevamente las fundamentaciones teóricas de las Unidades V y VI.";
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestionIdx = 0;
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            document.getElementById('quiz-result-panel').classList.add('hidden');
+            document.getElementById('quiz-card').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>

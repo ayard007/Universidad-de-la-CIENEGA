@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: Tecnología y Educación I - Integración de las TIC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#102a43',
+                            800: '#0b1b2b',
+                            900: '#06101e'
+                        },
+                        uc: {
+                            blue: '#1b365d',
+                            accent: '#2b548a',
+                            light: '#f4f6f9'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Institutional Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <img src="cienega_2.jpg" alt="Logo Universidad de la Ciénega Plantel Centro" class="h-16 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x80/1b365d/ffffff?text=Universidad+de+la+Ci%C3%A9nega';">
+                <div class="border-l-2 border-gray-300 pl-4">
+                    <h1 class="text-lg font-bold text-uc-blue leading-tight">Universidad de la Ciénega</h1>
+                    <p class="text-xs text-gray-700 font-semibold">Licenciatura en Pedagogía | Plantel Centro</p>
+                    <p class="text-xs text-gray-500 font-medium">Asignatura: Tecnología y Educación I</p>
+                </div>
+            </div>
+            <div class="text-right hidden md:block">
+                <span class="inline-block bg-blue-50 text-uc-blue text-xs font-semibold px-3 py-1.5 rounded-full border border-blue-200">
+                    Diseño Tecnopedagógico Constructivista y ABP
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-uc-blue text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-1 overflow-x-auto text-xs sm:text-sm py-2">
+                <a href="#introduccion" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">1. Introducción</a>
+                <a href="#conocimiento-previo" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">2. Saberes Previos</a>
+                <a href="#contenido" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">3. Fundamentos Teóricos</a>
+                <a href="#materiales" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">4. Acervo Formal</a>
+                <a href="#actividades" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">5. Actividades Prácticas</a>
+                <a href="#quiz" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">6. Evaluación (Quiz)</a>
+                <a href="#reflexion" class="px-3 py-2 rounded-md hover:bg-uc-accent transition font-medium whitespace-nowrap">7. Plan de Aplicación</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- SECTION 1: INTRODUCCIÓN -->
+        <section id="introduccion" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b border-gray-200 pb-4 mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-uc-accent">Unidad 3 | Licenciatura en Pedagogía</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-uc-blue mt-1">3. Penetración de las TIC en el Ámbito Educativo</h2>
+                <h3 class="text-lg font-semibold text-gray-700 mt-1">3.2. Integración de las TIC en los centros escolares</h3>
+            </div>
+            
+            <div class="space-y-4 text-gray-700 leading-relaxed text-justify text-sm sm:text-base">
+                <p>
+                    En el marco de la asignatura <strong>Tecnología y Educación I</strong>, el estudio de la penetración e integración de las Tecnologías de la Información y la Comunicación (TIC) trasciende el análisis instrumental del hardware y software. Para el profesional de la pedagogía, la incorporación tecnológica representa un objeto de estudio multidimensional donde convergen la teoría curricular, la cultura institucional, la formación docente y los procesos mediacionales del aprendizaje.
+                </p>
+                <p>
+                    Esta guía interactiva ha sido concebida bajo la <strong>metodología constructivista</strong>, la <strong>pedagogía activa</strong> y el <strong>aprendizaje basado en problemas (ABP)</strong>. Su finalidad es transferir el protagonismo pedagógico al estudiante universitario, capacitándolo para diagnosticar, evaluar y proyectar ambientes de aprendizaje mediados por tecnología que resulten pedagógicamente viables y transformadores.
+                </p>
+            </div>
+
+            <!-- Learning Objectives Box -->
+            <div class="mt-6 bg-slate-50 border-l-4 border-uc-blue p-5 rounded-r-lg">
+                <h4 class="font-bold text-uc-blue text-xs uppercase tracking-wider mb-2">Objetivos Tecnopedagógicos</h4>
+                <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-gray-700">
+                    <li>Distinguir los niveles de penetración tecnológica (Acceso, Adopción, Adaptación y Apropiación) en las instituciones educativas.</li>
+                    <li>Analizar críticamente los modelos teóricos de integración pedagógica (TPACK, SAMR y Matriz TIM) aplicados al nivel universitario.</li>
+                    <li>Sintetizar diagnósticos institucionales para la identificación de barreras internas y externas en la adopción tecnológica.</li>
+                    <li>Diseñar una estrategia de mediación didáctica aplicable al entorno universitario, fundamentada en principios constructivistas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PREGUNTA DE CONOCIMIENTO PREVIO -->
+        <section id="conocimiento-previo" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+                <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">1</div>
+                <h2 class="text-xl font-bold text-uc-blue">Activación de Conocimientos Previos</h2>
+            </div>
+
+            <p class="text-gray-700 mb-6 leading-relaxed text-sm">
+                El aprendizaje pedagógico requiere vincular las estructuras cognitivas formadas en la práctica cotidiana con las categorías analíticas de la asignatura. Antes de abordar las lecturas teóricas, analice el siguiente planteamiento desde su perspectiva como estudiante universitario de pedagogía.
+            </p>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 space-y-4">
+                <h3 class="font-semibold text-uc-blue text-base">Pregunta Detonadora Diagnóstica:</h3>
+                <p class="text-gray-800 font-medium italic bg-white p-4 rounded border border-blue-100 text-sm leading-relaxed">
+                    "En sus asignaturas universitarias actuales, ¿la presencia de plataformas digitales y herramientas tecnológicas ha modificado sustancialmente los procesos de mediación docente y construcción del conocimiento, o prevalece un uso sustitutivo que replica esquemas de enseñanza tradicional?"
+                </p>
+
+                <div class="mt-4">
+                    <label for="prev-answer" class="block text-xs font-semibold text-gray-700 uppercase mb-2">
+                        Redacte su diagnóstico cualitativo inicial (Este registro servirá de insumo para la evaluación final):
+                    </label>
+                    <textarea id="prev-answer" rows="4" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-uc-accent focus:border-transparent text-xs sm:text-sm" placeholder="Escriba aquí su reflexión analítica..."></textarea>
+                    
+                    <div class="mt-3 flex flex-wrap justify-between items-center gap-2">
+                        <button onclick="savePriorAnswer()" class="bg-uc-blue hover:bg-uc-accent text-white px-4 py-2 rounded-md text-xs font-semibold transition">
+                            Registrar Diagnóstico Inicial
+                        </button>
+                        <span id="prev-saved-msg" class="text-xs text-green-700 font-bold hidden">
+                            Diagnóstico almacenado en la sesión local.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CONTENIDO GENERAL DEL TEMA -->
+        <section id="contenido" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+                <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">2</div>
+                <h2 class="text-xl font-bold text-uc-blue">Fundamentos Teóricos Disciplinares</h2>
+            </div>
+
+            <div class="space-y-8 text-gray-700 text-sm leading-relaxed">
+                
+                <!-- Subtopic 3.1 -->
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-uc-accent mb-3 border-l-4 border-uc-accent pl-3">
+                        3.1. Penetración de las TIC en el Ámbito Educativo
+                    </h3>
+                    <p class="text-justify mb-4">
+                        La penetración de las TIC constituye un continuum evolutivo de inserción tecnológica en las organizaciones escolares. En la formación pedagógica, este proceso no se evalúa únicamente por el número de dispositivos disponibles, sino por la profundidad en la transformación del acto didáctico. Se distinguen cuatro fases cualitativas:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-4 gap-4 my-6">
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-uc-blue mb-1 text-xs uppercase">1. Fase de Acceso</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Dotación de infraestructura, conectividad a internet, servidores e instalaciones físicas básicas en el centro escolar.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-uc-blue mb-1 text-xs uppercase">2. Fase de Adopción</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Empleo instrumental de la tecnología. Las herramientas se utilizan para realizar las mismas tareas tradicionales sin alterar la pedagogía.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-uc-blue mb-1 text-xs uppercase">3. Fase de Adaptación</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Integración de software específico en secuencias didácticas, incrementando la productividad docente y el interés estudiantil.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-uc-blue mb-1 text-xs uppercase">4. Fase de Apropiación</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Transición transparente hacia la innovación pedagógica. La tecnología posibilita estrategias constructivistas inéditas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subtopic 3.2 -->
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-uc-accent mb-3 border-l-4 border-uc-accent pl-3">
+                        3.2. Integración de las TIC en los Centros Escolares
+                    </h3>
+                    <p class="text-justify mb-4">
+                        La integración efectiva demanda articular la mediación tecnológica con las metas del currículo universitario y las estructuras organizacionales. Para el análisis pedagógico, se emplean dos marcos teóricos consolidados:
+                    </p>
+
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="bg-gray-100 px-4 py-3 border-b border-gray-200 font-bold text-xs text-uc-blue uppercase">
+                            Modelos de Integración Tecnopedagógica
+                        </div>
+                        <div class="p-4 space-y-4 text-xs sm:text-sm">
+                            <div class="border-b border-gray-100 pb-3">
+                                <h4 class="font-bold text-gray-900">1. Modelo TPACK (Mishra & Koehler, 2006)</h4>
+                                <p class="text-gray-600 mt-1">
+                                    Sostiene que la enseñanza eficaz con tecnología requiere la intersección equilibrada de tres saberes: <em>Conocimiento Disciplinar (CK)</em>, <em>Conocimiento Pedagógico (PK)</em> y <em>Conocimiento Tecnológico (TK)</em>. La verdadera innovación surge de la zona de solapamiento central (TPACK).
+                                </p>
+                            </div>
+                            <div class="border-b border-gray-100 pb-3">
+                                <h4 class="font-bold text-gray-900">2. Modelo SAMR (Puentedura, 2006)</h4>
+                                <p class="text-gray-600 mt-1">
+                                    Clasifica las actividades mediadas por tecnología en cuatro escalones: <strong>Sustitución</strong> (la tecnología actúa como sustituto sin cambio funcional), <strong>Aumento</strong> (sustituto con mejora funcional), <strong>Modificación</strong> (rediseño significativo de la tarea) y <strong>Redefinición</strong> (creación de nuevas tareas antes inconcebibles).
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">3. Dimensiones de la Gestión Institucional</h4>
+                                <p class="text-gray-600 mt-1">
+                                    Para asegurar la sostenibilidad institucional, la pedagogía evalúa cuatro dimensiones interrelacionadas: <em>Pedagógico-Curricular</em>, <em>Organizativa-Directiva</em>, <em>Técnico-Infraestructural</em> y <em>Éticocultura Digital</em>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: MATERIALES EXTERNOS DE CONSULTA FORMALES -->
+        <section id="materiales" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+                <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">3</div>
+                <h2 class="text-xl font-bold text-uc-blue">Acervo de Consulta Formal y Fuentes Académicas</h2>
+            </div>
+
+            <p class="text-gray-700 mb-6 text-xs sm:text-sm">
+                Con la finalidad de fundamentar las producciones académicas solicitadas, se colocan a disposición las siguientes fuentes formales de organismos internacionales y repositorios científicos indexados.
+            </p>
+
+            <div class="space-y-4">
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="inline-block bg-blue-100 text-uc-blue text-xs font-semibold px-2.5 py-0.5 rounded mb-1">Directrices Internacionales</span>
+                        <h4 class="font-bold text-gray-800 text-xs sm:text-sm">UNESCO: Marco de Competencias Docentes en Materia de TIC</h4>
+                        <p class="text-xs text-gray-600 mt-1">
+                            Documento normativo global para la formulación de planes de formación docente e integración curricular.
+                        </p>
+                    </div>
+                    <a href="https://unesdoc.unesco.org/ark:/48223/pf0000371024" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs bg-uc-blue hover:bg-uc-accent text-white px-3 py-2 rounded font-semibold transition">
+                        Consultar UNESCO
+                    </a>
+                </div>
+
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="inline-block bg-blue-100 text-uc-blue text-xs font-semibold px-2.5 py-0.5 rounded mb-1">Artículo Seminal</span>
+                        <h4 class="font-bold text-gray-800 text-xs sm:text-sm">Mishra & Koehler (2006) - Technological Pedagogical Content Knowledge</h4>
+                        <p class="text-xs text-gray-600 mt-1">
+                            Fundamentación conceptual del marco TPACK publicado en Teachers College Record.
+                        </p>
+                    </div>
+                    <a href="https://www.redalyc.org/" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs bg-uc-blue hover:bg-uc-accent text-white px-3 py-2 rounded font-semibold transition">
+                        Buscar en Redalyc
+                    </a>
+                </div>
+
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="inline-block bg-blue-100 text-uc-blue text-xs font-semibold px-2.5 py-0.5 rounded mb-1">Revista Arbitrada</span>
+                        <h4 class="font-bold text-gray-800 text-xs sm:text-sm">RIED: Revista Iberoamericana de Educación a Distancia</h4>
+                        <p class="text-xs text-gray-600 mt-1">
+                            Publicación científica especializada en tecnología educativa e innovación pedagógica en el nivel superior.
+                        </p>
+                    </div>
+                    <a href="https://www.revistas.uned.es/index.php/ried" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs bg-uc-blue hover:bg-uc-accent text-white px-3 py-2 rounded font-semibold transition">
+                        Portal RIED
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ACTIVIDADES PRÁCTICAS PARA CLASSROOM -->
+        <section id="actividades" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-200 pb-4 mb-6 gap-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">4</div>
+                    <h2 class="text-xl font-bold text-uc-blue">Actividades Prácticas para Entregable en Google Classroom</h2>
+                </div>
+                <span class="text-xs bg-amber-100 text-amber-900 font-semibold px-3 py-1 rounded-full border border-amber-200">
+                    Evaluación Formativa y Sumativa
+                </span>
+            </div>
+
+            <p class="text-gray-700 text-xs sm:text-sm mb-8 leading-relaxed">
+                Las siguientes cuatro actividades académicas han sido estructuradas bajo el enfoque constructivista. Deberán desarrollarse atendiendo las instrucciones paso a paso e incorporarse a la plataforma <strong>Google Classroom</strong> en los espacios asignados.
+            </p>
+
+            <div class="space-y-10">
+
+                <!-- ACTIVIDAD 1: FORO -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white">
+                    <div class="bg-uc-blue text-white p-4 flex justify-between items-center">
+                        <h3 class="font-bold text-sm sm:text-base">Actividad 1: Mediación en Foro de Reflexión Crítica</h3>
+                        <span class="text-xs bg-white text-uc-blue px-2.5 py-1 rounded font-bold">Entregable Classroom</span>
+                    </div>
+                    <div class="p-6 space-y-4 text-xs sm:text-sm text-gray-700">
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-uc-blue">
+                            <h4 class="font-bold text-uc-blue text-xs uppercase mb-1">Pregunta Detonadora del Foro:</h4>
+                            <p class="font-semibold text-gray-800 italic leading-relaxed">
+                                "¿De qué manera la disparidad entre una alta infraestructura de conectividad y una baja transformación metodológica limita el desarrollo de la competencia digital en la formación inicial de pedagogos, y qué acciones mediacionales concretas pueden asumir los estudiantes para convertir el aula en un laboratorio de aprendizaje colaborativo?"
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Instrucciones Paso a Paso:</h4>
+                            <ol class="list-decimal list-inside space-y-1.5 text-gray-600 pl-2">
+                                <li>Ingrese al apartado <strong>"Foro 1: Integración Crítica en Pedagogía"</strong> en Google Classroom.</li>
+                                <li>Redacte una aportación principal de al menos 250 palabras que responda de forma analítica a la pregunta detonadora. Fundamente su postura articulando al menos un modelo teórico (TPACK o SAMR).</li>
+                                <li>Revise las intervenciones de sus compañeros de grupo y realice comentarios analíticos a un mínimo de dos participaciones.</li>
+                                <li>Las réplicas deben incluir preguntas de profundización, contraargumentos fundamentados o aportaciones conceptuales (evite comentarios meramente aprobatorios).</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-gray-800 text-xs uppercase mb-2">Ejemplo Formativo de Intervención Académica:</h4>
+                            <p class="text-xs text-gray-600 italic leading-relaxed">
+                                "Sostengo que la brecha observada responde a una permanencia en el nivel de 'Sustitución' del modelo SAMR. En asignaturas como Didáctica General, el uso de las TIC se limita a proyectar lecturas en formato PDF, manteniendo la pasividad del alumnado. Para escalar hacia la 'Redefinición', los estudiantes de pedagogía podríamos co-diseñar secuencias de aprendizaje con mapas de conocimiento colaborativos en tiempo real, transformando el rol del discente de receptor a diseñador didáctico..."
+                            </p>
+                        </div>
+
+                        <div class="pt-2">
+                            <button onclick="copyForumTemplate()" class="bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 px-3 py-1.5 rounded text-xs font-semibold transition">
+                                Copiar Plantilla de Foro
+                            </button>
+                            <span id="forum-copied" class="text-xs text-green-700 font-bold ml-2 hidden">¡Plantilla copiada al portapapeles!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO Y APLICABLE -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white">
+                    <div class="bg-uc-blue text-white p-4 flex justify-between items-center">
+                        <h3 class="font-bold text-sm sm:text-base">Actividad 2: Diseño de una Estrategia Tecnopedagógica Aplicada</h3>
+                        <span class="text-xs bg-white text-uc-blue px-2.5 py-1 rounded font-bold">Documento PDF / Classroom</span>
+                    </div>
+                    <div class="p-6 space-y-4 text-xs sm:text-sm text-gray-700">
+                        <p class="leading-relaxed">
+                            El propósito de esta actividad es que el estudiante de pedagogía aplique las categorías analíticas estudiadas para rediseñar una práctica de enseñanza en una asignatura de su plan de estudios universitario.
+                        </p>
+
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Instrucciones Paso a Paso:</h4>
+                            <ol class="list-decimal list-inside space-y-1.5 text-gray-600 pl-2">
+                                <li>Seleccione una asignatura correspondiente al semestre en curso de la Licenciatura en Pedagogía.</li>
+                                <li>Identifique una estrategia instruccional tradicional (ej. resumen individual, exposición frontal con diapositivas estáticas).</li>
+                                <li>Seleccione una herramienta digital de acceso libre (ej. Miro, Padlet, Zotero, Canva Educativo, Genially, Notion) que permita transformar la dinámica de mediación.</li>
+                                <li>Elabore un documento formal de 2 páginas estructurado de la siguiente forma:
+                                    <ul class="list-disc list-inside pl-6 text-xs text-gray-500 mt-1 space-y-1">
+                                        <li><strong>Datos institucionales:</strong> Nombre del estudiante, Licenciatura en Pedagogía, Asignatura seleccionada.</li>
+                                        <li><strong>Diagnóstico didáctico:</strong> Análisis de las limitaciones de la estrategia tradicional.</li>
+                                        <li><strong>Propuesta de mediación tecnológica:</strong> Descripción de la herramienta elegida y articulación con el modelo SAMR (Modificación o Redefinición).</li>
+                                        <li><strong>Secuencia didáctica:</strong> Fases de apertura, desarrollo y cierre colaborativo.</li>
+                                        <li><strong>Criterios de evaluación:</strong> Propuesta de rúbrica holística.</li>
+                                    </ul>
+                                </li>
+                                <li>Guarde el archivo en formato PDF e intégrelo en la tarea correspondiente en Google Classroom.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-gray-800 text-xs uppercase mb-2">Ejemplo Aplicado a la Licenciatura en Pedagogía:</h4>
+                            <div class="text-xs text-gray-600 space-y-1">
+                                <p><strong>Asignatura:</strong> Historia General de la Educación.</p>
+                                <p><strong>Estrategia Tradicional:</strong> Exposición individual sobre las corrientes pedagógicas del siglo XX.</p>
+                                <p><strong>Propuesta Tecnopedagógica:</strong> Construcción de un Museo Virtual Interactivo mediante la herramienta StoryMap JS/Padlet, donde cada equipo documenta una corriente pedagógica incorporando audios analíticos, fuentes primarias digitalizadas y líneas del tiempo interactivas, posibilitando la coevaluación del grupo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDAD 3: CASO PRÁCTICO (ABP) -->
+                <div class="border border-gray-300 rounded-xl overflow-hidden bg-white">
+                    <div class="bg-uc-blue text-white p-4 flex justify-between items-center">
+                        <h3 class="font-bold text-sm sm:text-base">Actividad 3: Análisis de Caso Práctico (Aprendizaje Basado en Problemas)</h3>
+                        <span class="text-xs bg-white text-uc-blue px-2.5 py-1 rounded font-bold">Informe Analítico / Classroom</span>
+                    </div>
+                    <div class="p-6 space-y-4 text-xs sm:text-sm text-gray-700">
+                        
+                        <!-- Case Scenario Box -->
+                        <div class="bg-slate-100 p-5 rounded-lg border-l-4 border-amber-600 space-y-2">
+                            <h4 class="font-bold text-gray-900 text-xs uppercase">Escenario Institucional: "El Centro Escolar San Miguel y la Paradoja de la Infraestructura"</h4>
+                            <p class="text-xs text-gray-700 leading-relaxed text-justify">
+                                El Centro Escolar San Miguel llevó a cabo una inversión considerable para equipar sus aulas con pantallas interactivas de última generación, conectividad de banda ancha y computadoras portátiles para el personal docente. Transcurrido un año lectivo, la coordinación pedagógica realizó una evaluación institucional que arrojó los siguientes hallazgos:
+                            </p>
+                            <ul class="list-disc list-inside text-xs text-gray-700 pl-2 space-y-1">
+                                <li>El 78% de la plantilla docente utiliza las pantallas interactivas de manera exclusiva para proyectar archivos de texto en PDF o diapositivas saturadas de información.</li>
+                                <li>Los estudiantes expresan insatisfacción, argumentando que las sesiones se mantienen estructuradas bajo exposiciones magistrales pasivas.</li>
+                                <li>La plataforma virtual del centro escolar registra un uso marginal, limitada al envío y recepción de tareas estáticas.</li>
+                                <li>La dirección escolar contempla implementar medidas disciplinarias y de control administrativo para obligar al profesorado a usar la tecnología.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Instrucciones Paso a Paso para el Análisis Pedagogíco:</h4>
+                            <ol class="list-decimal list-inside space-y-1.5 text-gray-600 pl-2">
+                                <li>Analice el escenario institucional desde la perspectiva de las dimensiones pedagógica, organizativa y tecnológica.</li>
+                                <li>Desarrolle un informe sintético estructurado dando respuesta a las siguientes interrogantes:
+                                    <ul class="list-disc list-inside pl-6 text-xs text-gray-500 mt-1 space-y-1">
+                                        <li><strong>Diagnóstico de Barreras:</strong> ¿Qué barreras intrínsecas (actitudes, creencias pedagógicas) y extrínsecas (capacitación, tiempo) condicionan la práctica docente en el Centro Escolar San Miguel?</li>
+                                        <li><strong>Crítica Pedagógica:</strong> ¿Por qué el enfoque sancionador de la dirección resulta ineficaz desde la teoría del cambio organizacional en educación?</li>
+                                        <li><strong>Plan de Intervención Tecnopedagógica:</strong> Diseñe un programa de acompañamiento docente en 3 fases (Sensibilización, Taller TPACK y Comunidades de Aprendizaje) para transformar la cultura institucional.</li>
+                                    </ul>
+                                </li>
+                                <li>Sube el informe titulado <code class="bg-gray-100 px-1 py-0.5 rounded text-xs text-gray-800">CasoPractico_Pedagogia_Apellido.pdf</code> a Google Classroom.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-gray-800 text-xs uppercase mb-1">Criterio de Evaluación Pedagógica:</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Se evaluará el rigor conceptual en el uso de la terminología de la materia, el análisis crítico de la cultura docente y la viabilidad instruccional de la propuesta de intervención.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: QUIZ INTERACTIVO -->
+        <section id="quiz" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-200 pb-4 mb-6 gap-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">5</div>
+                    <h2 class="text-xl font-bold text-uc-blue">Quiz de Autoevaluación Conceptualmente Guiado</h2>
+                </div>
+                <span class="text-xs bg-blue-100 text-uc-blue font-semibold px-3 py-1 rounded-full border border-blue-200">
+                    5 Cuestionamientos Didácticos
+                </span>
+            </div>
+
+            <p class="text-gray-700 text-xs sm:text-sm mb-6">
+                Seleccione la respuesta adecuada para cada reactivo. Al finalizar, presione el botón de evaluación para obtener su puntaje acumulado y la retroalimentación cualitativa correspondiente.
+            </p>
+
+            <form id="quiz-form" class="space-y-6 text-xs sm:text-sm">
+                
+                <!-- Q1 -->
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 space-y-3">
+                    <p class="font-bold text-gray-900">
+                        1. ¿Qué rasgo distingue a la fase de "Apropiación" en el proceso de penetración de las TIC dentro de una institución educativa?
+                    </p>
+                    <div class="space-y-2 pl-2 text-gray-700">
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q1" value="A" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>A) La adquisición masiva de equipos e instalación de redes inalámbricas de alta velocidad.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q1" value="B" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>B) El empleo de la tecnología como sustituto directo del papel sin alterar las dinámicas de clase.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q1" value="C" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>C) La integración transparente de las herramientas digitales para favorecer el aprendizaje constructivista y la innovación pedagógica.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q1" value="D" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>D) La informatización exclusiva de los procesos de control escolar e inscripciones.</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q1" class="hidden text-xs p-2.5 rounded font-medium mt-2"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 space-y-3">
+                    <p class="font-bold text-gray-900">
+                        2. En el marco del modelo TPACK, ¿qué situación se presenta cuando un docente domina ampliamente los contenidos disciplinares y las herramientas tecnológicas, pero carece de formación pedagógica?
+                    </p>
+                    <div class="space-y-2 pl-2 text-gray-700">
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q2" value="A" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>A) Logra una mediación didáctica ideal y transformadora en el aula.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q2" value="B" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>B) Utiliza recursos sofisticados pero carece de intencionalidad estratégica para promover el aprendizaje significativo.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q2" value="C" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>C) Asegura automáticamente la participación activa del alumnado en la sesión.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q2" value="D" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>D) Alcanza el nivel de Redefinición en el marco SAMR de Puentedura.</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q2" class="hidden text-xs p-2.5 rounded font-medium mt-2"></div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 space-y-3">
+                    <p class="font-bold text-gray-900">
+                        3. Según la taxonomía del modelo SAMR, ¿en qué nivel se ubica una actividad donde los estudiantes diseñan de manera colaborativa un entorno virtual interactivo inaccesible sin el uso de tecnología?
+                    </p>
+                    <div class="space-y-2 pl-2 text-gray-700">
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q3" value="A" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>A) Sustitución.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q3" value="B" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>B) Aumento.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q3" value="C" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>C) Redefinición.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q3" value="D" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>D) Asimilación.</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q3" class="hidden text-xs p-2.5 rounded font-medium mt-2"></div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 space-y-3">
+                    <p class="font-bold text-gray-900">
+                        4. ¿Por qué la sola dotación de infraestructura tecnológica no deriva automáticamente en la transformación de las prácticas educativas?
+                    </p>
+                    <div class="space-y-2 pl-2 text-gray-700">
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q4" value="A" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>A) Porque el cambio educativo requiere el desarrollo de competencias docentes, adecuación curricular y transformación de la cultura escolar.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q4" value="B" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>B) Porque los alumnos universitarios rechazan la incorporación de dispositivos en el espacio áulico.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q4" value="C" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>C) Porque las teorías pedagógicas desaconsejan el uso de recursos digitales en el nivel superior.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q4" value="D" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>D) Porque las herramientas digitales resultan obsoletas para la mediación didáctica.</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q4" class="hidden text-xs p-2.5 rounded font-medium mt-2"></div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 space-y-3">
+                    <p class="font-bold text-gray-900">
+                        5. ¿Qué dimensión de la gestión institucional contempla la actualización pedagógica continua del personal, el liderazgo directivo y la reestructuración de espacios escolares?
+                    </p>
+                    <div class="space-y-2 pl-2 text-gray-700">
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q5" value="A" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>A) Dimensión Tecnológica Instrumental.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q5" value="B" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>B) Dimensión Organizativa e Institucional.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q5" value="C" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>C) Dimensión Financiera Externa.</span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input type="radio" name="q5" value="D" class="mt-0.5 text-uc-blue focus:ring-uc-accent">
+                            <span>D) Dimensión de Equipamiento Físico.</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q5" class="hidden text-xs p-2.5 rounded font-medium mt-2"></div>
+                </div>
+
+                <!-- Quiz Action Buttons -->
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-200">
+                    <button type="button" onclick="evaluateQuiz()" class="w-full sm:w-auto bg-uc-blue hover:bg-uc-accent text-white px-6 py-2.5 rounded-lg font-bold text-xs sm:text-sm transition shadow-sm">
+                        Procesar Evaluacion
+                    </button>
+                    <div id="quiz-score-badge" class="hidden px-4 py-2 rounded-lg font-bold text-xs sm:text-sm text-center"></div>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- SECTION 7: REFLEXIÓN Y APLICACIÓN FINAL -->
+        <section id="reflexion" class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+                <div class="w-8 h-8 rounded-full bg-uc-blue text-white flex items-center justify-center font-bold text-sm">6</div>
+                <h2 class="text-xl font-bold text-uc-blue">Plan de Reflexión y Aplicación Tecnopedagógica</h2>
+            </div>
+
+            <p class="text-gray-700 text-xs sm:text-sm mb-6 leading-relaxed">
+                Como ejercicio integrador de la unidad, sistematice su plan de acción profesional. Este instrumento le permitirá estructurar sus compromisos de integración de las TIC tanto en su trayectoria escolar universitaria como en su futuro desempeño profesional como licenciado en Pedagogía.
+            </p>
+
+            <div class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">
+                            1. Aplicación en el rol de estudiante de pedagogía
+                        </label>
+                        <textarea id="plan-academic" rows="3" class="w-full p-3 border border-gray-300 rounded text-xs focus:ring-2 focus:ring-uc-accent" placeholder="¿De qué manera incorporará el diseño tecnopedagógico en sus entregables académicos del semestre?"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">
+                            2. Proyección hacia la práctica profesional docente/institucional
+                        </label>
+                        <textarea id="plan-professional" rows="3" class="w-full p-3 border border-gray-300 rounded text-xs focus:ring-2 focus:ring-uc-accent" placeholder="¿Cómo aplicará los modelos TPACK y SAMR al diseñar entornos de aprendizaje en su futuro ejercicio profesional?"></textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">
+                        3. Meta semestral de desarrollo de competencia digital docente
+                    </label>
+                    <input type="text" id="plan-goal" class="w-full p-3 border border-gray-300 rounded text-xs focus:ring-2 focus:ring-uc-accent" placeholder="Ejemplo: Dominar plataformas de curaduría de contenidos y repositorios educativos abiertos antes de concluir el ciclo.">
+                </div>
+
+                <div class="pt-2 flex flex-wrap gap-3">
+                    <button onclick="generatePlanSummary()" class="bg-uc-blue hover:bg-uc-accent text-white px-4 py-2 rounded text-xs font-semibold transition">
+                        Generar Resumen del Plan
+                    </button>
+                    <button onclick="copyPlanToClipboard()" class="bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 px-4 py-2 rounded text-xs font-semibold transition">
+                        Copiar Plan para Classroom
+                    </button>
+                </div>
+
+                <div id="plan-summary-output" class="hidden mt-4 p-4 bg-slate-50 border border-slate-200 rounded text-xs text-gray-800 leading-relaxed font-mono whitespace-pre-wrap"></div>
+                <span id="plan-copied-msg" class="text-xs text-green-700 font-bold hidden">¡Plan copiado al portapapeles con éxito!</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Institutional Footer -->
+    <footer class="bg-uc-blue text-white border-t border-gray-800 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-300">
+            <div>
+                <p class="font-bold text-white text-sm">Universidad de la Ciénega - Plantel Centro</p>
+                <p>Licenciatura en Pedagogía | Asignatura: Tecnología y Educación I</p>
+            </div>
+            <div class="text-right">
+                <p>Unidad 3: Penetración e Integración de las TIC en los Centros Escolares</p>
+                <p>Documento Web Compartible compatible con GitHub Pages y Google Classroom</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Scripts -->
+    <script>
+        // Save Prior Knowledge Answer locally
+        function savePriorAnswer() {
+            const answer = document.getElementById('prev-answer').value.trim();
+            const msg = document.getElementById('prev-saved-msg');
+            if (answer.length > 0) {
+                localStorage.setItem('uc_pedagogia_prior_answer', answer);
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('hidden'), 3000);
+            } else {
+                alertCustom('Por favor, redacte su diagnóstico cualitativo inicial antes de guardar.');
+            }
+        }
+
+        // Copy Forum Template
+        function copyForumTemplate() {
+            const templateText = `[ENTREGABLE CLASSROOM - ACTIVIDAD 1: FORO PEDAGÓGICO]
+Nombre del Estudiante: 
+Licenciatura: Pedagogía
+Asignatura: Tecnología y Educación I
+
+1. APORTACIÓN PRINCIPAL A LA PREGUNTA DETONADORA:
+En relación con la penetración tecnológica en los centros escolares, considero que...
+
+2. FUNDAMENTACIÓN TEÓRICA (Modelo TPACK / SAMR):
+De acuerdo con el modelo...
+
+3. ACCIÓN MEDIACIONAL PROPUESTA:
+Para promover la apropiación tecnológica en el aula universitaria, propongo...`;
+
+            executeCopy(templateText, 'forum-copied');
+        }
+
+        // Evaluate Quiz
+        function evaluateQuiz() {
+            const answers = {
+                q1: { correct: 'C', feedback: 'Correcto. La fase de apropiación implica el uso transparente, fluido y transformador de la tecnología para favorecer aprendizajes de corte constructivista.' },
+                q2: { correct: 'B', feedback: 'Correcto. Sin el conocimiento pedagógico (PK), las herramientas tecnológicas se emplean de forma instrumental sin un propósito didáctico articulado.' },
+                q3: { correct: 'C', feedback: 'Correcto. El nivel de Redefinición en el modelo SAMR permite la creación de tareas que serían imposibles de ejecutar sin la tecnología.' },
+                q4: { correct: 'A', feedback: 'Correcto. La incorporación tecnológica requiere desarrollo de competencias, adecuación de planes de estudio y transformación cultural.' },
+                q5: { correct: 'B', feedback: 'Correcto. La dimensión organizativa aborda la gestión de tiempos, recursos, liderazgo y la actualización pedagógica continua del cuerpo docente.' }
+            };
+
+            let score = 0;
+            let total = 5;
+
+            for (let i = 1; i <= total; i++) {
+                const qKey = 'q' + i;
+                const selected = document.querySelector(`input[name="${qKey}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback-${qKey}`);
+                feedbackDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+                if (selected) {
+                    if (selected.value === answers[qKey].correct) {
+                        score++;
+                        feedbackDiv.classList.add('bg-green-100', 'text-green-800');
+                        feedbackDiv.innerHTML = `<strong>Respuesta Correcta:</strong> ${answers[qKey].feedback}`;
+                    } else {
+                        feedbackDiv.classList.add('bg-red-100', 'text-red-800');
+                        feedbackDiv.innerHTML = `<strong>Respuesta Incorrecta:</strong> La opción adecuada es la ${answers[qKey].correct}. ${answers[qKey].feedback}`;
+                    }
+                } else {
+                    feedbackDiv.classList.add('bg-red-100', 'text-red-800');
+                    feedbackDiv.innerHTML = `<strong>Sin Responder:</strong> La opción adecuada es la ${answers[qKey].correct}. ${answers[qKey].feedback}`;
+                }
+            }
+
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            scoreBadge.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800', 'bg-red-100', 'text-red-800');
+            
+            if (score === 5) {
+                scoreBadge.classList.add('bg-green-100', 'text-green-800');
+                scoreBadge.innerHTML = `Resultado: ${score} / ${total} - Dominio Conceptual Sobresaliente.`;
+            } else if (score >= 3) {
+                scoreBadge.classList.add('bg-yellow-100', 'text-yellow-800');
+                scoreBadge.innerHTML = `Resultado: ${score} / ${total} - Desempeño Satisfactorio. Se sugiere revisar las lecturas de apoyo.`;
+            } else {
+                scoreBadge.classList.add('bg-red-100', 'text-red-800');
+                scoreBadge.innerHTML = `Resultado: ${score} / ${total} - Se requiere reorganizar la revisión de los fundamentos teóricos.`;
+            }
+        }
+
+        // Generate Plan Summary
+        function generatePlanSummary() {
+            const acad = document.getElementById('plan-academic').value.trim();
+            const prof = document.getElementById('plan-professional').value.trim();
+            const goal = document.getElementById('plan-goal').value.trim();
+
+            if (!acad || !prof || !goal) {
+                alertCustom('Por favor, complete los tres campos de reflexión antes de generar la síntesis del plan.');
+                return;
+            }
+
+            const summary = `================================================
+PLAN DE APLICACIÓN TECNOPEDAGÓGICA
+LICENCIATURA EN PEDAGOGÍA - UNIVERSIDAD DE LA CIÉNEGA
+================================================
+
+1. APLICACIÓN EN EL ROL DE ESTUDIANTE DE PEDAGOGÍA:
+${acad}
+
+2. PROYECCIÓN HACIA LA PRÁCTICA PROFESIONAL:
+${prof}
+
+3. META DE DESARROLLO DE COMPETENCIA DIGITAL DOCENTE:
+${goal}
+================================================`;
+
+            const output = document.getElementById('plan-summary-output');
+            output.textContent = summary;
+            output.classList.remove('hidden');
+        }
+
+        // Copy Plan to Clipboard
+        function copyPlanToClipboard() {
+            const output = document.getElementById('plan-summary-output').textContent;
+            if (!output) {
+                generatePlanSummary();
+            }
+            const textToCopy = document.getElementById('plan-summary-output').textContent;
+            if (textToCopy) {
+                executeCopy(textToCopy, 'plan-copied-msg');
+            }
+        }
+
+        // Execute Clipboard copy compliant with web constraints
+        function executeCopy(text, targetMsgId) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const msg = document.getElementById(targetMsgId);
+                if (msg) {
+                    msg.classList.remove('hidden');
+                    setTimeout(() => msg.classList.add('hidden'), 3000);
+                }
+            } catch (err) {
+                console.error('Error durante la copia:', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Custom Modal replacement for alert()
+        function alertCustom(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-sm w-full space-y-4 shadow-xl text-center">
+                    <p class="text-xs sm:text-sm font-semibold text-gray-800">${message}</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="bg-uc-blue text-white px-4 py-2 rounded text-xs font-bold">
+                        Aceptar
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Restore saved answer on window load
+        window.onload = function() {
+            const savedPrev = localStorage.getItem('uc_pedagogia_prior_answer');
+            if (savedPrev) {
+                document.getElementById('prev-answer').value = savedPrev;
+            }
+        };
+    </script>
+</body>
+</html>

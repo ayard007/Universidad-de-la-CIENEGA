@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: El Docente como Modelo a Seguir dentro de la Comunidad</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f0fa',
+                            100: '#e1e0f5',
+                            200: '#c5c3eb',
+                            500: '#312783',
+                            600: '#281f6d',
+                            700: '#1f1854',
+                            800: '#171240',
+                            900: '#100c2c'
+                        },
+                        accent: {
+                            50: '#f8fafc',
+                            500: '#475569',
+                            700: '#334155'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #312783;
+            color: #312783;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Encabezado Institucional -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="cienega.jpg" alt="Logo Universidad de la Ciénega" class="h-16 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x80/312783/ffffff?text=UC+Universidad+de+la+Ci%C3%A9nega';">
+                <div class="border-l-2 border-slate-200 pl-4">
+                    <span class="text-xs font-semibold tracking-wider text-brand-500 uppercase block">Licenciatura en Pedagogía</span>
+                    <h1 class="text-lg font-bold text-slate-900 leading-tight">Valores y Educación</h1>
+                    <p class="text-xs text-slate-500">Unidad 5: El Docente como Transmisor de Valores | Tema 5.2</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-xs font-medium text-slate-600 bg-slate-100 px-3 py-2 rounded-lg">
+                <span>Metodología: Aprendizaje Basado en Problemas (ABP)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="bg-brand-500 text-white py-10 px-4 sm:px-6 lg:px-8 shadow-inner">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl">
+                <span class="inline-block bg-brand-700 text-brand-100 text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-3 font-semibold">
+                    Guía Pedagógica Interactiva
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+                    5.2. El Docente como Modelo a Seguir dentro de la Comunidad
+                </h2>
+                <p class="text-brand-100 text-sm sm:text-base leading-relaxed">
+                    Esta guía ofrece un marco conceptual y práctico basado en el enfoque constructivista. A través del análisis de situaciones problemáticas reales, los estudiantes de Pedagogía desarrollarán competencias éticas, reflexivas y transformadoras aplicables tanto en su entorno universitario actual como en su futura praxis profesional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navegador de Secciones -->
+    <div class="bg-white border-b border-slate-200 sticky top-[73px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex space-x-4 sm:space-x-8 overflow-x-auto text-sm font-medium" id="main-tabs">
+                <button onclick="switchTab('introduccion')" id="tab-introduccion" class="tab-btn active py-4 px-2 whitespace-nowrap border-b-2 border-transparent hover:text-brand-500 transition-colors">
+                    1. Contexto y Caso ABP
+                </button>
+                <button onclick="switchTab('actividad1')" id="tab-actividad1" class="tab-btn py-4 px-2 whitespace-nowrap border-b-2 border-transparent hover:text-brand-500 transition-colors">
+                    2. Actividad 1: Foro Crítico
+                </button>
+                <button onclick="switchTab('actividad2')" id="tab-actividad2" class="tab-btn py-4 px-2 whitespace-nowrap border-b-2 border-transparent hover:text-brand-500 transition-colors">
+                    3. Actividad 2: Proyecto Práctico
+                </button>
+                <button onclick="switchTab('actividad3')" id="tab-actividad3" class="tab-btn py-4 px-2 whitespace-nowrap border-b-2 border-transparent hover:text-brand-500 transition-colors">
+                    4. Actividad 3: Cuestionario
+                </button>
+                <button onclick="switchTab('reflexion')" id="tab-reflexion" class="tab-btn py-4 px-2 whitespace-nowrap border-b-2 border-transparent hover:text-brand-500 transition-colors">
+                    5. Plan de Aplicación
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECCIÓN 1: INTRODUCCIÓN Y CASO ABP -->
+        <section id="sec-introduccion" class="space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h3 class="text-xl font-bold text-slate-900">Fundamentación Teórica y Aprendizaje Basado en Problemas</h3>
+                    <p class="text-sm text-slate-600 mt-1">Metodología Constructivista y Pedagogía Activa</p>
+                </div>
+
+                <div class="prose max-w-none text-slate-700 text-sm sm:text-base space-y-4">
+                    <p>
+                        El docente no transmite valores únicamente a través del discurso académico o del diseño curricular explícito. En la pedagogía contemporánea, el <strong>currículum oculto</strong> y el <strong>modelaje ético</strong> desempeñan un papel determinante. La congruencia entre las acciones cotidianas, las decisiones metodológicas y los principios proclamados constituye el pilar sobre el cual se edifica la confianza y el desarrollo moral de la comunidad educativa.
+                    </p>
+                    <p>
+                        Desde la perspectiva constructivista y la pedagogía crítica (Freire, Bandura, Tardif), la comunidad escolar y universitaria observa al pedagogo como un referente axiológico. La autenticidad, la justicia formativa, la empatía y el compromiso comunitario se aprenden mediante el testimonio y la interacción dialógica.
+                    </p>
+                </div>
+
+                <!-- Caso ABP -->
+                <div class="bg-slate-50 border-l-4 border-brand-500 p-5 rounded-r-lg space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-500 block">Caso de Estudio ABP: Situación Problemática Institucional</span>
+                    <h4 class="text-lg font-bold text-slate-900">El Dilema del Modelaje Docente en la Resolución de Conflictos Comunitarios</h4>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        En una facultad universitaria, se presenta una controversia entre estudiantes y la administración respecto a la evaluación justa de proyectos comunitarios. Un grupo de docentes defiende la estricta aplicación de los criterios formales sin considerar los factores socioeconómicos del entorno, argumentando rigor técnico. Por otro lado, un sector estudiantil señala que los docentes promueven discursos de equidad en sus clases de teoría, pero actúan de forma rígida e inflexible en la práctica académica cotidiana.
+                    </p>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Esta incoherencia percibida ha generado desinterés, desconfianza hacia la institución y un ambiente donde la transmisión teórica de valores carece de credibilidad. Como futuros pedagogos, ustedes deben analizar cómo el docente debe intervenir para reestructurar su rol como modelo axiológico positivo tanto dentro del aula universitaria como en la comunidad amplia.
+                    </p>
+                </div>
+
+                <!-- Objetivos de Aprendizaje -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <h5 class="font-semibold text-slate-900 text-sm mb-1">1. Reflexión Crítica</h5>
+                        <p class="text-xs text-slate-600">Analizar la coherencia entre el discurso pedagógico y la práctica profesional docente.</p>
+                    </div>
+                    <div class="p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <h5 class="font-semibold text-slate-900 text-sm mb-1">2. Construcción Colaborativa</h5>
+                        <p class="text-xs text-slate-600">Debatir propuestas fundamentadas para resolver vacíos de modelaje ético institucional.</p>
+                    </div>
+                    <div class="p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <h5 class="font-semibold text-slate-900 text-sm mb-1">3. Aplicación Práctica</h5>
+                        <p class="text-xs text-slate-600">Diseñar herramientas y planes de intervención aplicables en la comunidad educativa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: ACTIVIDAD 1 - FORO -->
+        <section id="sec-actividad1" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-500 uppercase tracking-wider block">Entregable Google Classroom 1</span>
+                        <h3 class="text-xl font-bold text-slate-900">Actividad de Mediación en Foro: Debate Crítico y Argumentación</h3>
+                    </div>
+                    <span class="bg-brand-50 text-brand-700 border border-brand-200 text-xs px-3 py-1 rounded-md font-semibold self-start sm:self-auto">
+                        Valor: 30%
+                    </span>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 text-amber-900 p-4 rounded-lg text-sm space-y-2">
+                    <p class="font-semibold">Instrucciones para la entrega:</p>
+                    <p>Esta actividad se realiza en el Foro de Debate de Google Classroom. Deberá publicar su intervención inicial y replicar con argumentos fundamentados al menos a dos compañeros de clase.</p>
+                </div>
+
+                <!-- Pregunta detonadora -->
+                <div class="bg-slate-900 text-white p-6 rounded-xl space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-slate-400 font-bold block">Pregunta Detonadora del Foro</span>
+                    <blockquote class="text-base sm:text-lg font-medium italic border-l-4 border-brand-500 pl-4">
+                        "¿Hasta qué punto la falta de congruencia entre el discurso ético del docente y sus acciones dentro de la comunidad universitaria invalida el aprendizaje de valores en los estudiantes? ¿Qué estrategia pedagógica concreta debe asumir el docente para restaurar su carácter de modelo comunitario sin caer en posturas autoritarias o paternalistas?"
+                    </blockquote>
+                </div>
+
+                <!-- Guía paso a paso -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-slate-900 text-md">Guía Paso a Paso para la Participación:</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700">
+                        <li><strong>Análisis del Caso ABP:</strong> Revise nuevamente el caso de estudio presentado en la Sección 1.</li>
+                        <li><strong>Redacción de la Aportación Principal (300 a 450 palabras):</strong>
+                            <ul class="list-disc list-inside pl-5 mt-1 text-xs text-slate-600 space-y-1">
+                                <li>Responda directamente a las dos vertientes de la pregunta detonadora.</li>
+                                <li>Sustente su respuesta con al menos un autor o concepto de la materia (ej. Freire, Bandura, Carr, Zabalza).</li>
+                                <li>Proponga una acción pedagógica concreta aplicable a su entorno universitario actual.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Interacción Dialógica:</strong> Comente la publicación de al menos dos compañeros cuestionando constructivamente o complementando su postura teórica.</li>
+                    </ol>
+                </div>
+
+                <!-- Ejemplo de Intervención -->
+                <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 space-y-3">
+                    <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Ejemplo de Intervención Estudiantil</h5>
+                    <div class="text-xs text-slate-700 space-y-2 italic bg-white p-4 rounded border border-slate-200">
+                        <p><strong>Aportación de Ejemplo:</strong></p>
+                        <p>"Considero que la incoherencia docente fractura directamente la credibilidad del proceso educativo. Siguiendo a Paulo Freire, la educación exige la enseñanza de la rigurosidad metódica acompañada de la coherencia entre lo que se dice y lo que se hace. Cuando un docente proclama la justicia distributiva pero evalúa de forma arbitraria, genera en el estudiante un cinismo ético, enseñando implícitamente que los valores son meros adornos retóricos.</p>
+                        <p>Para restaurar este modelo dentro de la comunidad universitaria, propongo la implementación de evaluaciones participativas y transparentes mediante rúbricas co-construidas. De este modo, el docente demuestra congruencia al democratizar el aula y aceptar la rendición de cuentas académica, transformando el modelaje autoritario en una práctica dialógica y transparente."</p>
+                    </div>
+                </div>
+
+                <!-- Botón plantilla copia -->
+                <div class="pt-2">
+                    <button onclick="copyToClipboard('template-foro')" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors flex items-center space-x-2">
+                        <span>Copiar Plantilla de Respuesta para Classroom</span>
+                    </button>
+                    <textarea id="template-foro" class="sr-only">FORO DE MEDIACIÓN: EL DOCENTE COMO MODELO A SEGUIR
+Estudiante: [Tu Nombre Completo]
+Fecha: [Fecha de Entrega]
+
+1. RESPUESTA A LA PREGUNTA DETONADORA:
+[Inserte aquí su análisis sobre la congruencia entre el discurso ético y las acciones del docente, citado teóricamente]
+
+2. ESTRATEGIA PEDAGÓGICA PROPUESTA:
+[Describa la acción concreta para restaurar la función del docente como modelo dentro de la comunidad universitaria]
+
+3. REFERENCIA TEÓRICA DE APOYO:
+[Citar autor/concepto de la asignatura]</textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: ACTIVIDAD 2 - PROYECTO PRÁCTICO -->
+        <section id="sec-actividad2" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-500 uppercase tracking-wider block">Entregable Google Classroom 2</span>
+                        <h3 class="text-xl font-bold text-slate-900">Actividad Práctica: Protocolo de Coherencia Pedagógica y Modelaje Comunitario</h3>
+                    </div>
+                    <span class="bg-brand-50 text-brand-700 border border-brand-200 text-xs px-3 py-1 rounded-md font-semibold self-start sm:self-auto">
+                        Valor: 40%
+                    </span>
+                </div>
+
+                <div class="text-sm text-slate-700 space-y-3">
+                    <p>
+                        El objetivo de esta actividad es llevar la teoría a la práctica activa. Como futuros pedagogos, diseñarán un <strong>Protocolo de Coherencia Pedagógica</strong> aplicable en su contexto universitario actual como alumnos, previendo su desempeño futuro como profesionales de la educación.
+                    </p>
+                </div>
+
+                <!-- Estructura del Documento a Subir -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wider">Estructura Requerida para el Documento en PDF / Word</h4>
+
+                    <div class="space-y-3 text-xs sm:text-sm">
+                        <div class="p-3 bg-white rounded border border-slate-200">
+                            <span class="font-bold text-brand-500 block mb-1">Sección A: Diagnóstico de Necesidades Axiológicas</span>
+                            <p class="text-slate-600">Identifique dos situaciones reales dentro de la vida universitaria donde exista tensión entre los valores enunciados por la institución/docentes y la práctica observada.</p>
+                        </div>
+
+                        <div class="p-3 bg-white rounded border border-slate-200">
+                            <span class="font-bold text-brand-500 block mb-1">Sección B: Decálogo del Docente como Modelo Comunitario</span>
+                            <p class="text-slate-600">Formule 10 principios redactados en primera persona, dirigidos a guiar la conducta profesional y comunitaria del pedagogo. Cada principio debe fundamentarse brevemente.</p>
+                        </div>
+
+                        <div class="p-3 bg-white rounded border border-slate-200">
+                            <span class="font-bold text-brand-500 block mb-1">Sección C: Plan de Intervención y Resolución de Incoherencias</span>
+                            <p class="text-slate-600">Diseñe un procedimiento paso a paso sobre cómo un docente o equipo de pedagogos debe actuar cuando se detecta un conflicto ético en el aula o la comunidad escolar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo Orientador -->
+                <div class="border-l-4 border-slate-700 pl-4 py-2 space-y-2">
+                    <h5 class="text-xs font-bold text-slate-700 uppercase">Ejemplo de Princípio para el Decálogo (Sección B):</h5>
+                    <p class="text-xs text-slate-600 italic">
+                        "Principio 3: Evaluación Formativa y Transparente. Me comprometo a fundamentar cada criterio de evaluación con claridad, garantizando espacios de retroalimentación oportuna y respetuosa, demostrando que la justicia pedagógica se ejerce de manera objetiva e e imparcial."
+                    </p>
+                </div>
+
+                <!-- Instrucciones de entrega -->
+                <div class="bg-slate-100 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                    <p class="font-bold">Pasos para subir a Classroom:</p>
+                    <ol class="list-decimal list-inside space-y-1">
+                        <li>Elabore el documento cumpliendo los puntos A, B y C descritos arriba.</li>
+                        <li>Guarde el archivo en formato PDF con la nomenclatura: <code>Apellido_Nombre_ProtocoloValores.pdf</code>.</li>
+                        <li>Adjunte el archivo en la tarea correspondiente de Google Classroom antes de la fecha límite señalada.</li>
+                    </ol>
+                </div>
+
+                <button onclick="copyToClipboard('template-practica')" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors">
+                    Copiar Esquema Guía de la Actividad 2
+                </button>
+                <textarea id="template-practica" class="sr-only">UNIVERSIDAD DE LA CIÉNEGA - LICENCIATURA EN PEDAGOGÍA
+MATERIA: VALORES Y EDUCACIÓN
+PROTOCOLO DE COHERENCIA PEDAGÓGICA Y MODELAJE COMUNITARIO
+
+Estudiante: [Nombre Completo]
+Fecha: [Fecha]
+
+1. DIAGNÓSTICO DE NECESIDADES AXIOLÓGICAS
+- Situación 1: [Descripción e impacto]
+- Situación 2: [Descripción e impacto]
+
+2. DECÁLOGO DEL DOCENTE COMO MODELO COMUNITARIO
+1. [Principio 1]
+2. [Principio 2]
+3. [Principio 3]
+4. [Principio 4]
+5. [Principio 5]
+6. [Principio 6]
+7. [Principio 7]
+8. [Principio 8]
+9. [Principio 9]
+10. [Principio 10]
+
+3. PLAN DE INTERVENCIÓN Y RESOLUCIÓN DE INCOHERENCIAS
+- Paso 1: Detección y diálogo reflexivo.
+- Paso 2: Análisis pedagógico contextual.
+- Paso 3: Acuerdos comunitarios y evaluación de seguimiento.</textarea>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: ACTIVIDAD 3 - QUIZ -->
+        <section id="sec-actividad3" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-500 uppercase tracking-wider block">Entregable Google Classroom 3</span>
+                        <h3 class="text-xl font-bold text-slate-900">Actividad 3: Cuestionario de Autoevaluación Diagnóstica</h3>
+                    </div>
+                    <span class="bg-brand-50 text-brand-700 border border-brand-200 text-xs px-3 py-1 rounded-md font-semibold self-start sm:self-auto">
+                        Valor: 30%
+                    </span>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                    Responda las siguientes 5 preguntas de opción múltiple para evaluar la comprensión teórica y práctica del tema "El Docente como Modelo a Seguir dentro de la Comunidad". Al finalizar, obtendrá su puntaje y el reporte para enviar en Google Classroom.
+                </p>
+
+                <!-- Formulario Quiz -->
+                <form id="quiz-form" class="space-y-6">
+
+                    <!-- Pregunta 1 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50 space-y-3">
+                        <p class="text-sm font-semibold text-slate-900">
+                            1. Desde la perspectiva constructivista y sociocrítica, ¿cuál es el pilar fundamental que define al docente como modelo comunitario?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="A" class="text-brand-500">
+                                <span>A) La transmisión memorística de códigos morales explícitos en el plan de estudio.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="B" class="text-brand-500">
+                                <span>B) La congruencia ética entre sus discursos, sus prácticas cotidianas y su interacción con la comunidad.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="C" class="text-brand-500">
+                                <span>C) El mantenimiento estricto de la autoridad sin permitir cuestionamientos de los alumnos.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50 space-y-3">
+                        <p class="text-sm font-semibold text-slate-900">
+                            2. ¿Qué impacto produce en el aprendizaje de valores la presencia de incongruencia entre la teoría impartida y la acción docente?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="A" class="text-brand-500">
+                                <span>A) Fortalece el pensamiento crítico al forzar al estudiante a estudiar por su cuenta.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="B" class="text-brand-500">
+                                <span>B) Genera cinismo ético, desconfianza institucional y desvalorización del discurso pedagógico.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="C" class="text-brand-500">
+                                <span>C) No produce ningún efecto, ya que los estudiantes solo atienden a los contenidos teóricos.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50 space-y-3">
+                        <p class="text-sm font-semibold text-slate-900">
+                            3. El concepto de "currículum oculto" en la formación axiológica se refiere principalmente a:
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="A" class="text-brand-500">
+                                <span>A) Las enseñanzas implícitas, actitudes y comportamientos que el docente manifiesta en la cotidianidad.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="B" class="text-brand-500">
+                                <span>B) El programa de estudios no autorizado por la Secretaría de Educación.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="C" class="text-brand-500">
+                                <span>C) Los libros de texto de carácter confidencial para el uso exclusivo del profesorado.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50 space-y-3">
+                        <p class="text-sm font-semibold text-slate-900">
+                            4. Ante una situación de injusticia o conflicto socioeducativo en la comunidad, la postura activa y reflexiva del pedagogo debe ser:
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="A" class="text-brand-500">
+                                <span>A) Mantener indiferencia absoluta argumentando neutralidad administrativa.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="B" class="text-brand-500">
+                                <span>B) Promover el diálogo formativo, mediando con equidad y fundamentando decisiones éticas transparentes.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="C" class="text-brand-500">
+                                <span>C) Imponer sanciones unilaterales sin consultar ni escuchar a las partes involucradas.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50 space-y-3">
+                        <p class="text-sm font-semibold text-slate-900">
+                            5. ¿Cuál es el fin último de aplicar la metodología de Aprendizaje Basado en Problemas en la materia de Valores y Educación?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="A" class="text-brand-500">
+                                <span>A) Memorizar autores clásicos de la filosofía sin vincularlos a la práctica actual.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="B" class="text-brand-500">
+                                <span>B) Desarraigar la teoría para enfocarse únicamente en aspectos técnicos sin sustento ético.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded bg-white border border-slate-200 hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="C" class="text-brand-500">
+                                <span>C) Desarrollar en el estudiante capacidad de juicio reflexivo y competencias de intervención contextualizada.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="evaluateQuiz()" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                        Calcular Puntaje y Generar Reporte de Evaluación
+                    </button>
+                </form>
+
+                <!-- Resultado del Quiz -->
+                <div id="quiz-result" class="hidden p-6 bg-slate-100 border border-slate-300 rounded-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h4 class="text-lg font-bold text-slate-900">Resultado de la Autoevaluación</h4>
+                        <span id="quiz-score-badge" class="px-3 py-1 bg-brand-500 text-white font-bold rounded-lg text-sm">0 / 5 puntos</span>
+                    </div>
+
+                    <p id="quiz-feedback" class="text-sm text-slate-700"></p>
+
+                    <div class="p-4 bg-white border border-slate-200 rounded-lg text-xs space-y-2">
+                        <span class="font-bold text-slate-900 block">Comprobante de Calificación para Classroom:</span>
+                        <p class="text-slate-600">Copie el siguiente reporte de resultados y péguelo en la tarea de Google Classroom como evidencia de realización.</p>
+                        <textarea id="quiz-report-text" readonly class="w-full h-24 p-2 bg-slate-50 border border-slate-200 rounded font-mono text-xs"></textarea>
+                        <button onclick="copyToClipboard('quiz-report-text')" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold py-1.5 px-3 rounded text-xs transition-colors">
+                            Copiar Reporte al Portapapeles
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PLAN DE APLICACIÓN Y REFLEXIÓN -->
+        <section id="sec-reflexion" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-brand-500 uppercase tracking-wider block">Cierre de Unidad y Aplicación</span>
+                    <h3 class="text-xl font-bold text-slate-900">Plan de Incorporación Profesional y Reflexión Crítica</h3>
+                </div>
+
+                <div class="prose max-w-none text-slate-700 text-sm space-y-3">
+                    <p>
+                        El aprendizaje constructivista culmina cuando el conocimiento se interioriza y se convierte en una guía de acción deliberada. Complete el siguiente compromiso de desarrollo axiológico para articular lo aprendido en esta unidad con su vida universitaria presente y su proyección laboral futura.
+                    </p>
+                </div>
+
+                <!-- Formulario de Plan de Acción -->
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+                            1. Ámbito Académico Universitario (Presente): ¿Qué cambio concreto implementará hoy en su interacción con docentes y compañeros?
+                        </label>
+                        <textarea id="plan-academico" rows="3" class="w-full p-3 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:border-brand-500" placeholder="Ejemplo: Promover la evaluación justa y la co-responsabilidad en trabajos en equipo..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+                            2. Ámbito Profesional Pedagógico (Futuro): ¿Cómo garantizará la congruencia entre el currículum explícito y sus actitudes cotidianas?
+                        </label>
+                        <textarea id="plan-profesional" rows="3" class="w-full p-3 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:border-brand-500" placeholder="Ejemplo: Establecer canales transparentes de solución de controversias pedagógicas..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+                            3. Compromiso con la Comunidad Educativa:
+                        </label>
+                        <textarea id="plan-comunidad" rows="2" class="w-full p-3 border border-slate-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:border-brand-500" placeholder="Escriba su compromiso ético personal..."></textarea>
+                    </div>
+
+                    <button onclick="generateActionPlan()" class="bg-brand-500 hover:bg-brand-600 text-white font-bold py-2.5 px-5 rounded-lg text-xs sm:text-sm transition-colors">
+                        Generar Ficha de Compromiso Ético PDF/Texto
+                    </button>
+                </div>
+
+                <!-- Resultado Plan de Acción -->
+                <div id="plan-output" class="hidden p-5 bg-white border border-brand-200 rounded-xl space-y-3">
+                    <h4 class="font-bold text-slate-900 text-sm">Ficha Personal de Compromiso Axio-Pedagógico</h4>
+                    <div id="plan-content" class="text-xs text-slate-700 whitespace-pre-wrap font-mono bg-slate-50 p-4 border rounded"></div>
+                    <button onclick="copyToClipboard('plan-content-text')" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs py-1.5 px-3 rounded transition-colors">
+                        Copiar Ficha de Compromiso
+                    </button>
+                    <textarea id="plan-content-text" class="sr-only"></textarea>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="text-xs font-semibold text-slate-300">Universidad de la Ciénega | Licenciatura en Pedagogía</p>
+            <p class="text-xs">Materia: Valores y Educación — Tema 5.2 El Docente como Modelo a Seguir dentro de la Comunidad</p>
+            <p class="text-[10px] text-slate-500">Diseñado bajo Metodología Constructivista y Aprendizaje Basado en Problemas para Uso Académico Universitario.</p>
+        </div>
+    </footer>
+
+    <!-- Script de Interacción -->
+    <script>
+        // Control de Pestañas
+        function switchTab(tabId) {
+            // Ocultar todas las secciones
+            const sections = ['introduccion', 'actividad1', 'actividad2', 'actividad3', 'reflexion'];
+            sections.forEach(sec => {
+                const el = document.getElementById('sec-' + sec);
+                if (el) el.classList.add('hidden');
+                const btn = document.getElementById('tab-' + sec);
+                if (btn) btn.classList.remove('active');
+            });
+
+            // Mostrar sección seleccionada
+            const targetSec = document.getElementById('sec-' + tabId);
+            if (targetSec) targetSec.classList.remove('hidden');
+
+            // Activar botón
+            const targetBtn = document.getElementById('tab-' + tabId);
+            if (targetBtn) targetBtn.classList.add('active');
+
+            // Desplazar suavemente arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Función para copiar al portapapeles de forma segura
+        function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            let textToCopy = el.value || el.innerText;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('Contenido copiado exitosamente al portapapeles. Listo para pegar en Google Classroom.');
+            } catch (err) {
+                console.error('Error al copiar:', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Evaluación del Quiz
+        function evaluateQuiz() {
+            const correctAnswers = {
+                q1: 'B',
+                q2: 'B',
+                q3: 'A',
+                q4: 'B',
+                q5: 'C'
+            };
+
+            let score = 0;
+            let total = 5;
+            let form = document.getElementById('quiz-form');
+
+            for (let i = 1; i <= total; i++) {
+                let qVal = form['q' + i] ? form['q' + i].value : '';
+                if (qVal === correctAnswers['q' + i]) {
+                    score++;
+                }
+            }
+
+            // Mostrar resultados
+            const resultDiv = document.getElementById('quiz-result');
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            const feedback = document.getElementById('quiz-feedback');
+            const reportText = document.getElementById('quiz-report-text');
+
+            resultDiv.classList.remove('hidden');
+            scoreBadge.innerText = score + ' / ' + total + ' Puntos';
+
+            let percentage = (score / total) * 100;
+            let feedbackMessage = '';
+
+            if (percentage === 100) {
+                feedbackMessage = 'Excelente comprensión teórica y práctica del modelaje docente y la pedagogía comunitaria de valores.';
+            } else if (percentage >= 60) {
+                feedbackMessage = 'Buen desempeño. Se sugiere repasar los conceptos de currículum oculto y resolución dialógica de dilemas axiológicos.';
+            } else {
+                feedbackMessage = 'Se recomienda revisar nuevamente la fundamentación teórica del módulo y el caso ABP antes de realizar la entrega final.';
+            }
+
+            feedback.innerText = feedbackMessage;
+
+            let now = new Date().toLocaleString();
+            let report = `REPORTE DE AUTOEVALUACIÓN - VALORES Y EDUCACIÓN (TEMA 5.2)\n` +
+                         `Institución: Universidad de la Ciénega - Licenciatura en Pedagogía\n` +
+                         `Fecha de Realización: ${now}\n` +
+                         `Puntaje Obtenido: ${score} de ${total} (${percentage}%)\n` +
+                         `Estado: ${percentage >= 60 ? 'APROBADO' : 'REQUIERE REVISIÓN'}\n` +
+                         `Retroalimentación: ${feedbackMessage}`;
+
+            reportText.value = report;
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generar Ficha de Compromiso
+        function generateActionPlan() {
+            const aca = document.getElementById('plan-academico').value.trim();
+            const pro = document.getElementById('plan-profesional').value.trim();
+            const com = document.getElementById('plan-comunidad').value.trim();
+
+            if (!aca || !pro || !com) {
+                alert('Por favor complete los tres campos de reflexión antes de generar la ficha.');
+                return;
+            }
+
+            const outputDiv = document.getElementById('plan-output');
+            const contentDiv = document.getElementById('plan-content');
+            const hiddenText = document.getElementById('plan-content-text');
+
+            const dateStr = new Date().toLocaleDateString();
+
+            const text = `FICHA DE COMPROMISO AXIO-PEDAGÓGICO
+UNIVERSIDAD DE LA CIÉNEGA — LICENCIATURA EN PEDAGÓGICA
+MATERIA: VALORES Y EDUCACIÓN (TEMA 5.2)
+
+FECHA DE ELABORACIÓN: ${dateStr}
+
+1. APLICACIÓN EN LA VIDA ACADÉMICA ACTUAL:
+${aca}
+
+2. PROYECCIONAL DE PRÁCTICA PROFESIONAL FUTURA:
+${pro}
+
+3. COMPROMISO ÉTICO CON LA COMUNIDAD EDUCATIVA:
+${com}
+
+Firma Digital de Compromiso Estudiantil.`;
+
+            contentDiv.innerText = text;
+            hiddenText.value = text;
+            outputDiv.classList.remove('hidden');
+            outputDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

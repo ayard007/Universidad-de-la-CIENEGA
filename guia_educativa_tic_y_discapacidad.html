@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica Interactiva: Las TIC en la Educación de las Personas con Discapacidad</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            600: '#2b4c7e',
+                            700: '#1a365d',
+                            800: '#102a43',
+                            900: '#0b1b2d',
+                        },
+                        accent: {
+                            600: '#2c7a7b',
+                            700: '#234e52'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .nav-btn-active {
+            background-color: #1a365d !important;
+            border-bottom: 3px solid #38bdf8;
+            font-weight: 600;
+        }
+        .content-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased">
+
+    <!-- Header Institucional -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <img src="cienega.jpg" alt="Logo Universidad de la Ciénega Plantel Centro" class="h-16 w-auto object-contain" onerror="this.onerror=null; this.src='cienega_2.jpg';">
+                    <div class="border-l-2 border-slate-300 pl-4">
+                        <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Universidad de la Ciénega - Plantel Centro</span>
+                        <h1 class="text-lg md:text-xl font-bold text-brand-800">Licenciatura en Pedagogía</h1>
+                        <p class="text-xs text-slate-600">Asignatura: Tecnologías y Educación II | Unidad 3</p>
+                    </div>
+                </div>
+                <div class="text-right hidden md:block">
+                    <span class="inline-block bg-brand-50 text-brand-800 text-xs px-3 py-1.5 rounded-full font-medium border border-brand-100">
+                        Metodología Constructivista & ABP
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Principal -->
+    <nav class="bg-brand-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto space-x-1 sm:space-x-4 py-3 text-xs sm:text-sm font-medium no-scrollbar">
+                <button onclick="switchTab('introduccion')" id="btn-introduccion" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors nav-btn-active">Introducción</button>
+                <button onclick="switchTab('diagnostico')" id="btn-diagnostico" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Conocimientos Previos</button>
+                <button onclick="switchTab('temario')" id="btn-temario" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Contenido Temático</button>
+                <button onclick="switchTab('materiales')" id="btn-materiales" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Materiales de Consulta</button>
+                <button onclick="switchTab('actividades')" id="btn-actividades" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Actividades Classroom</button>
+                <button onclick="switchTab('evaluacion')" id="btn-evaluacion" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Quiz de Evaluación</button>
+                <button onclick="switchTab('reflexion')" id="btn-reflexion" class="nav-btn px-3 py-2 rounded-md whitespace-nowrap hover:bg-brand-800 transition-colors">Plan de Aplicación</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- SECCIÓN: INTRODUCCIÓN -->
+        <section id="tab-introduccion" class="tab-content block space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Unidad Didáctica 3</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-brand-800 mt-1">Las TIC en la Educación de las Personas con Discapacidad</h2>
+                </div>
+
+                <div class="prose max-w-none text-slate-700 space-y-4 leading-relaxed text-justify">
+                    <p>
+                        Bienvenido a la guía didáctica interactiva correspondiente a la asignatura <strong>Tecnologías y Educación II</strong>. En el paradigma educativo contemporáneo, la formación del licenciado en pedagogía requiere la aprehensión de competencias conceptuales, metodológicas y técnicas para diseñar entornos de aprendizaje verdaderamente inclusivos. La incorporación intencionada de las Tecnologías de la Información y la Comunicación (TIC), las Tecnologías del Aprendizaje y el Conocimiento (TAC) y las Tecnologías del Empoderamiento y la Participación (TEP) reconfigura la atención pedagógica brindada a las personas con discapacidad.
+                    </p>
+                    <p>
+                        Esta unidad se sustenta en el <strong>constructivismo pedagógico</strong>, la <strong>pedagogía activa</strong> y el <strong>Aprendizaje Basado en Problemas (ABP)</strong>. Se privilegia una postura crítica mediante la cual los contenidos teóricos no se asimilan de forma pasiva, sino que se transforman en herramientas de intervención concreta para sus clases universitarias y su ejercicio profesional futuro. La tecnología no constituye un fin en sí misma, sino un mediador pedagógico orientado a eliminar las barreras para el aprendizaje y la participación (BAP).
+                    </p>
+
+                    <div class="bg-slate-50 border-l-4 border-brand-600 p-5 rounded-r-md my-6">
+                        <h3 class="font-bold text-brand-800 text-sm uppercase tracking-wide">Objetivo General de la Unidad</h3>
+                        <p class="text-sm text-slate-700 mt-1">
+                            Analizar críticamente las barreras, ventajas, retos y buenas prácticas en la integración pedagógica de las TIC para la educación de personas con discapacidad, diseñando estrategias educativas accesibles e innovadoras aplicables en el nivel universitario desde el enfoque del Diseño Universal para el Aprendizaje (DUA) y los derechos humanos.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="bg-white p-4 border border-slate-200 rounded-md">
+                            <h4 class="font-semibold text-brand-700 mb-2 border-b pb-1">Estructura Temática</h4>
+                            <ul class="list-disc list-inside text-xs sm:text-sm space-y-2 text-slate-600">
+                                <li><strong>3.1.</strong> Barreras y soluciones del uso de las TIC por las personas con discapacidad.</li>
+                                <li><strong>3.2.</strong> Ventajas de las TIC en la educación de las personas con discapacidad.</li>
+                                <li><strong>3.3.</strong> Los retos de la educación ante la exclusión digital.</li>
+                                <li><strong>3.4.</strong> Experiencias y buenas prácticas.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 border border-slate-200 rounded-md">
+                            <h4 class="font-semibold text-brand-700 mb-2 border-b pb-1">Ruta Metodológica de Trabajo</h4>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                El proceso de aprendizaje contempla la activación de esquemas previos, el estudio de referentes teóricos actualizados, la resolución colaborativa de un caso práctico (ABP), la discusión teórica en foro de mediación, el diseño de un recurso adaptado y la autoevaluación mediante reactivos de opción múltiple.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONOCIMIENTOS PREVIOS -->
+        <section id="tab-diagnostico" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-4 mb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Fase 1: Diagnóstico Cognitivo</span>
+                    <h2 class="text-2xl font-bold text-brand-800 mt-1">Activación de Conocimientos Previos</h2>
+                </div>
+                <p class="text-slate-700 text-sm mb-6">
+                    El constructivismo sostiene que el aprendizaje significativo se edifica sobre las estructuras cognitivas preexistentes. A continuación, explicite sus vivencias y concepciones teóricas sobre la accesibilidad digital en el entorno universitario.
+                </p>
+
+                <div class="bg-slate-50 p-5 rounded-md border border-slate-200 space-y-4">
+                    <label for="pregunta-previa" class="block font-semibold text-brand-900 text-base">
+                        Pregunta Detonadora de Diagnóstico Cognitivo:
+                    </label>
+                    <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed">
+                        "A partir de su experiencia como estudiante en la Licenciatura en Pedagogía, analice los recursos tecnológicos y materiales digitales que sus docentes utilizan habitualmente (presentaciones, archivos PDF, videos, plataformas virtuales). ¿De qué manera estos recursos garantizan o limitan la participación activa de un estudiante con discapacidad visual, auditiva o motora? Argumente su respuesta identificando un caso concreto u observado."
+                    </p>
+                    <textarea id="pregunta-previa" rows="6" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-brand-600 focus:outline-none text-xs sm:text-sm text-slate-800" placeholder="Escriba aquí su reflexión argumentada (extensión recomendada: 150 a 250 palabras)..."></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <button onclick="evaluarRespuestaPrevia()" class="bg-brand-700 hover:bg-brand-800 text-white font-medium text-xs sm:text-sm px-5 py-2.5 rounded-md transition-colors">
+                            Guardar y Analizar Reflexión
+                        </button>
+                        <span id="feedback-previo-status" class="text-xs font-semibold text-slate-500"></span>
+                    </div>
+
+                    <div id="resultado-previo" class="hidden mt-4 p-4 bg-blue-50 border border-blue-200 rounded-md text-xs sm:text-sm text-slate-700 space-y-2">
+                        <h4 class="font-bold text-brand-800">Criterio Pedagógico de Autoanálisis:</h4>
+                        <p id="texto-evaluacion-previa"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONTENIDO TEMÁTICO -->
+        <section id="tab-temario" class="tab-content hidden space-y-8">
+            
+            <!-- Subtema 3.1 -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-3 mb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Subtema 3.1</span>
+                    <h3 class="text-xl font-bold text-brand-800">Barreras y Soluciones del Uso de las TIC por las Personas con Discapacidad</h3>
+                </div>
+                <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4 text-justify">
+                    <p>
+                        Desde la perspectiva del <strong>Modelo Social de la Discapacidad</strong>, las limitaciones funcionales no residen en el individuo, sino en la interacción conflictiva entre las condiciones de la persona y un entorno no diseñado para la diversidad. En los entornos virtuales de aprendizaje, las Barreras para el Aprendizaje y la Participación (BAP) surgen cuando los sistemas digitales ignoran los principios de accesibilidad.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                        <div class="bg-red-50/60 p-4 border-l-4 border-red-600 rounded-r-md">
+                            <h4 class="font-bold text-red-900 text-xs sm:text-sm mb-2 uppercase tracking-wide">Barreras Digitales Frecuentes</h4>
+                            <ul class="list-disc list-inside space-y-2 text-xs text-slate-700">
+                                <li><strong>Sensoriales:</strong> Ausencia de texto alternativo (ALT) en recursos visuales; videos sin subtitulado accesible ni interpretación en Lengua de Señas Mexicana (LSM); bajo contraste cromático.</li>
+                                <li><strong>Motoras:</strong> Interfaces web incompatibles con la navegación exclusiva mediante teclado o pulsadores; limites de tiempo inflexibles para responder actividades.</li>
+                                <li><strong>Cognitivas:</strong> Arquitectura de información caótica; exceso de estímulos emergentes; redacción compleja sin estructuración jerárquica clara.</li>
+                                <li><strong>Tecnológicas:</strong> Incompatibilidad de Entornos Virtuales de Aprendizaje (EVA) con software lector de pantalla (NVDA, JAWS, VoiceOver).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-emerald-50/60 p-4 border-l-4 border-emerald-600 rounded-r-md">
+                            <h4 class="font-bold text-emerald-900 text-xs sm:text-sm mb-2 uppercase tracking-wide">Soluciones y Tecnologías de Apoyo</h4>
+                            <ul class="list-disc list-inside space-y-2 text-xs text-slate-700">
+                                <li><strong>Hardware Adaptado:</strong> Teclados conceptuales u orotáctiles, conmutadores, sistemas de seguimiento ocular (eye-tracking) y emuladores de ratón de mentón o cabeza.</li>
+                                <li><strong>Software Asistencial:</strong> Lectores de pantalla, revisores de texto a voz, magnificadores ópticos e inteligencias artificiales para transcripción en tiempo real.</li>
+                                <li><strong>Estándares WCAG 2.1:</strong> Aplicación de los cuatro principios internacionales de accesibilidad web: Perceptible, Operable, Comprensible y Robusto (POOR).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtema 3.2 -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-3 mb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Subtema 3.2</span>
+                    <h3 class="text-xl font-bold text-brand-800">Ventajas de las TIC en la Educación de las Personas con Discapacidad</h3>
+                </div>
+                <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4 text-justify">
+                    <p>
+                        La mediación tecnológica en el proceso educativo trasciende la simple suplencia de limitaciones físicas o sensoriales; actúa como un catalizador del desarrollo cognitivo y social del estudiante.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                        <div class="p-4 border border-slate-200 rounded-md bg-slate-50">
+                            <h4 class="font-semibold text-brand-800 mb-1">Autonomía en el Aprendizaje</h4>
+                            <p class="text-xs text-slate-600">Permite la autorregulación de los ritmos de estudio, la revisión asincrónica de materiales y el ajuste individualizado de interfaces según necesidades específicas.</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-md bg-slate-50">
+                            <h4 class="font-semibold text-brand-800 mb-1">Multimodalidad de la Información</h4>
+                            <p class="text-xs text-slate-600">Facilita la representación analógica, digital, auditiva y kinestésica del conocimiento, cumpliendo el principio del DUA de proporcionar múltiples formas de representación.</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-md bg-slate-50">
+                            <h4 class="font-semibold text-brand-800 mb-1">Inclusión Social y Colaboración</h4>
+                            <p class="text-xs text-slate-600">Elimina el estigma al permitir que estudiantes con discapacidad interactúen en plataformas comunes con sus pares, participando equitativamente en foros y producciones grupales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtema 3.3 -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-3 mb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Subtema 3.3</span>
+                    <h3 class="text-xl font-bold text-brand-800">Los Retos de la Educación Ante la Exclusión Digital</h3>
+                </div>
+                <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4 text-justify">
+                    <p>
+                        La brecha digital no debe interpretarse únicamente como la carencia de infraestructura o dispositivos (brecha de primer nivel). En el ámbito universitario, cobra particular relevancia la brecha de segundo nivel, caracterizada por la falta de competencias digitales e instruccionales por parte del cuerpo docente para diseñar experiencias inclusivas.
+                    </p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-md">
+                        <h4 class="font-bold text-amber-900 text-xs sm:text-sm mb-2">Desafíos Prioritarios para la Intervención Pedagógica:</h4>
+                        <ol class="list-decimal list-inside text-xs space-y-2 text-amber-900">
+                            <li><strong>Formación Docente Continua:</strong> Superar el desconocimiento sobre metodologías accesibles, tecnología de asistencia y normativas de accesibilidad digital.</li>
+                            <li><strong>Inversión Institucional Sostenible:</strong> Adquirir licenciamiento de software asistencial y equipamiento accesible en aulas virtuales y laboratorios de cómputo universitarios.</li>
+                            <li><strong>Transformación Curricular:</strong> Transitar de ajustes razonables reactivos a un diseño curricular concebido universalmente desde su origen.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtema 3.4 -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-3 mb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Subtema 3.4</span>
+                    <h3 class="text-xl font-bold text-brand-800">Experiencias y Buenas Prácticas</h3>
+                </div>
+                <div class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4 text-justify">
+                    <p>
+                        Diversas instituciones de educación superior a nivel global han consolidado modelos exitosos de inclusión tecnológica. Destacan iniciativas como los repositorios académicos en formatos abiertos y accesibles (por ejemplo, Bookshare o bibliotecas digitales adaptadas), la incorporación sistemática de subtitulado automático validado en plataformas de videoconferencia, y la instauración de Unidades de Apoyo Técnico-Pedagógico para la Accesibilidad.
+                    </p>
+                    <p>
+                        Las buenas prácticas educativas demuestran que la efectividad de las TIC no radica en la sofisticación del dispositivo, sino en la intencionalidad pedagógica con la que se articula en el diseño instruccional del curso.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN: MATERIALES EXTERNOS DE CONSULTA -->
+        <section id="tab-materiales" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Fundamentación Teórica</span>
+                    <h2 class="text-2xl font-bold text-brand-800 mt-1">Materiales Externos de Consulta Formal</h2>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-700 mb-6">
+                    Para profundizar en los marcos normativos, técnicos y metodológicos de esta unidad, se presenta la selección de acervos institucionales e internacionales de obligada revisión:
+                </p>
+
+                <div class="space-y-4">
+                    <!-- Material 1 -->
+                    <div class="p-4 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-brand-700 uppercase bg-brand-50 px-2 py-0.5 rounded border border-brand-100">Estándar Técnico Internacional</span>
+                            <h3 class="font-bold text-slate-900 text-base mt-1">Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 - W3C</h3>
+                            <p class="text-xs text-slate-600 mt-1">Consorcio World Wide Web. Marco normativo mundial sobre pautas de accesibilidad para recursos digitales.</p>
+                        </div>
+                        <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-900 text-white text-xs px-4 py-2 rounded font-medium whitespace-nowrap">
+                            Consultar Estándar
+                        </a>
+                    </div>
+
+                    <!-- Material 2 -->
+                    <div class="p-4 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-brand-700 uppercase bg-brand-50 px-2 py-0.5 rounded border border-brand-100">Organismo Internacional</span>
+                            <h3 class="font-bold text-slate-900 text-base mt-1">UNESCO - Directrices para la inclusión de alumnos con discapacidad en Educación Superior</h3>
+                            <p class="text-xs text-slate-600 mt-1">Directrices estratégicas para la democratización de la enseñanza universitaria mediante la tecnología.</p>
+                        </div>
+                        <a href="https://unesdoc.unesco.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-900 text-white text-xs px-4 py-2 rounded font-medium whitespace-nowrap">
+                            Visitar Repositorio
+                        </a>
+                    </div>
+
+                    <!-- Material 3 -->
+                    <div class="p-4 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-brand-700 uppercase bg-brand-50 px-2 py-0.5 rounded border border-brand-100">Modelo Pedagógico</span>
+                            <h3 class="font-bold text-slate-900 text-base mt-1">CAST (2018). Pautas del Diseño Universal para el Aprendizaje (DUA) versión 2.2</h3>
+                            <p class="text-xs text-slate-600 mt-1">Center for Applied Special Technology. Fundamentos teóricos para currículos accesibles y flexibles.</p>
+                        </div>
+                        <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-900 text-white text-xs px-4 py-2 rounded font-medium whitespace-nowrap">
+                            Consultar Pautas CAST
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ACTIVIDADES PRÁCTICAS CLASSROOM -->
+        <section id="tab-actividades" class="tab-content hidden space-y-8">
+            
+            <div class="bg-brand-800 text-white p-6 rounded-lg shadow">
+                <span class="text-xs uppercase tracking-widest font-semibold text-brand-100">Evaluación Formativa y Sumativa</span>
+                <h2 class="text-xl md:text-2xl font-bold mt-1">Actividades Prácticas para Entrega en Google Classroom</h2>
+                <p class="text-xs sm:text-sm text-slate-200 mt-2 leading-relaxed">
+                    Las actividades siguientes han sido estructuradas para consolidar competencias pedagógicas de diseño, análisis crítico y resolución de problemas. Deberán elaborarse siguiendo las instrucciones específicas y subirse a la plataforma Google Classroom en las tareas designadas.
+                </p>
+            </div>
+
+            <!-- ACTIVIDAD 1: FORO DE MEDIACIÓN -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card space-y-4">
+                <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Actividad 1 | Foro de Mediación en Plataforma</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-brand-800 mt-1">Foro Debate: Ética, TIC y Accesibilidad Digital en el Nivel Universitario</h3>
+                    </div>
+                    <span class="bg-brand-100 text-brand-800 text-xs px-3 py-1 rounded-full font-bold self-start sm:self-auto">Ponderación: 20%</span>
+                </div>
+
+                <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+                    <h4 class="font-bold text-slate-900 text-sm">Pregunta Detonadora para la Reflexión Crítica:</h4>
+                    <div class="bg-slate-50 p-4 border-l-4 border-brand-700 rounded-r-md italic leading-relaxed">
+                        "Considerando que el acceso a la tecnología es calificado como un derecho humano, ¿hasta qué punto la falta de adaptación accesible en las plataformas y materiales educativos universitarios representa una forma de exclusión institucional sistemática? ¿Cuál es la responsabilidad ética y técnica del futuro licenciado en pedagogía frente a esta problemática?"
+                    </div>
+
+                    <h4 class="font-bold text-slate-900 text-sm mt-4">Instrucciones Paso a Paso:</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-xs text-slate-700">
+                        <li><strong>Redacción de la aportación principal:</strong> Elabore un texto argumentativo de mínimo 250 palabras fundamentado en las lecturas de la unidad.</li>
+                        <li><strong>Interacción colaborativa:</strong> Lea las aportaciones de sus compañeros y replique de manera fundamentada a dos de ellos, cuestionando, complementando o contrastando sus posturas con respeto académico.</li>
+                        <li><strong>Evidencia en Classroom:</strong> Tome capturas de pantalla de su participación principal y sus dos réplicas en el foro, consolidándolas en un documento PDF con portada institucional para su entrega formal.</li>
+                    </ol>
+
+                    <div class="mt-4 p-4 bg-slate-100 rounded-md border border-slate-200">
+                        <h5 class="font-bold text-brand-900 text-xs uppercase mb-1">Ejemplo de Respuesta Argumentada para el Foro:</h5>
+                        <p class="text-xs text-slate-600 italic leading-relaxed">
+                            "La digitalización educativa no garantiza per se la inclusión. Cuando un docente universitario distribuye un archivo PDF escaneado como imagen inaccesible para un lector de pantalla, no solo comete una omisión técnica, sino que vulnera el derecho a la educación de estudiantes con discapacidad visual. Como pedagogos, nuestra responsabilidad ética radica en asumir el Diseño Universal como un estándar profesional no negociable, auditando y adaptando todo recurso instruccional previo a su implementación."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 2: APRENDIZAJE SIGNIFICATIVO -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card space-y-4">
+                <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Actividad 2 | Diseño Pedagogico Aplicado</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-brand-800 mt-1">Rediseño Inclusivo de un Material Didáctico Universitario</h3>
+                    </div>
+                    <span class="bg-brand-100 text-brand-800 text-xs px-3 py-1 rounded-full font-bold self-start sm:self-auto">Ponderación: 30%</span>
+                </div>
+
+                <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+                    <p class="leading-relaxed">
+                        Esta actividad busca la transferencia directa de los aprendizajes teóricos a la práctica pedagógica real, capacitando al estudiante para adaptar materiales docentes habitualmente empleados en sus clases de licenciatura.
+                    </p>
+
+                    <h4 class="font-bold text-slate-900 text-sm mt-3">Instrucciones Paso a Paso:</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-xs text-slate-700">
+                        <li><strong>Selección del recurso base:</strong> Seleccione un recurso didáctico digital real utilizado en alguna de sus asignaturas universitarias actuales (ej. presentación en diapositivas, lectura en PDF o video corto).</li>
+                        <li><strong>Diagnóstico de accesibilidad:</strong> Identifique al menos tres barreras digitales presentes en el recurso original (ej. falta de contraste, falta de descripciones en imágenes, ausencia de subtítulos).</li>
+                        <li><strong>Aplicación de adaptaciones DUA:</strong>
+                            <ul class="list-disc list-inside ml-5 my-1 space-y-1">
+                                <li>Incorpore descripciones de texto alternativo (ALT) en imágenes e infografías.</li>
+                                <li>Reestructure la tipografía y contraste cromático conforme a normas WCAG 2.1.</li>
+                                <li>Genere o integre subtitulado accesible en caso de recursos audiovisuales.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Documentación y entrega:</strong> Elabore un informe comparativo ("Antes y Después") que incluya el enlace al recurso corregido o adjunto en Classroom, acompañado de una justificación pedagógica de los cambios realizados.</li>
+                    </ol>
+
+                    <div class="mt-4 p-4 bg-slate-100 rounded-md border border-slate-200">
+                        <h5 class="font-bold text-brand-900 text-xs uppercase mb-1">Ejemplo de Justificación de Adaptación:</h5>
+                        <p class="text-xs text-slate-600 italic leading-relaxed">
+                            "En la diapositiva 4 del tema 'Teorías del Aprendizaje', la imagen conteniendo el mapa conceptual carecía de texto alternativo. Se reconfiguró mediante código estructurado e inclusión de atributo ALT detallado, permitiendo que lectores de pantalla como NVDA verbalicen la secuencia lógica jerárquica para estudiantes con discapacidad visual."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 3: CASO PRÁCTICO (ABP) -->
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card space-y-4">
+                <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Actividad 3 | Aprendizaje Basado en Problemas (ABP)</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-brand-800 mt-1">Resolución de Caso Práctico: Inclusión Digital Institucional</h3>
+                    </div>
+                    <span class="bg-brand-100 text-brand-800 text-xs px-3 py-1 rounded-full font-bold self-start sm:self-auto">Ponderación: 30%</span>
+                </div>
+
+                <div class="space-y-4 text-xs sm:text-sm text-slate-700">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-700 rounded-r-md">
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Planteamiento del Caso Práctico:</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed text-justify">
+                            En el grupo de 4º semestre de la Licenciatura en Pedagogía se ha inscrito un estudiante con baja visión severa y un estudiante con discapacidad auditiva neurosensorial profunda. La materia 'Evaluación Curricular' utiliza una plataforma Moodle en la que los docentes suben frecuentemente clases grabadas en video sin subtitular y archivos de lecturas escaneados en formato PDF de baja calidad sin OCR (reconocimiento óptico de caracteres). Además, las evaluaciones parciales son cuestionarios cronometrados de opción múltiple sin tiempo extendido.
+                        </p>
+                    </div>
+
+                    <h4 class="font-bold text-slate-900 text-sm">Instrucciones de Análisis y Propuesta:</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-xs text-slate-700">
+                        <li><strong>Identificación de BAP:</strong> Enliste minuciosamente las Barreras para el Aprendizaje y la Participación (técnicas, pedagógicas e instruccionales) presentes en el caso.</li>
+                        <li><strong>Diseño de la Intervención Pedagógica:</strong> Proponga un plan de remediación tecnológica que especifique:
+                            <ul class="list-disc list-inside ml-5 my-1 space-y-1">
+                                <li>Software de asistencia y herramientas tecnológicas requeridas.</li>
+                                <li>Ajustes razonables en las estrategias de evaluación y entrega de contenidos.</li>
+                                <li>Estrategia de sensibilización y capacitación para el docente de la asignatura.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Formato de entrega:</strong> Subir a Classroom un informe ejecutivo estructurado (Introducción, Diagnóstico de Barreras, Plan de Solución y Conclusiones) en formato PDF.</li>
+                    </ol>
+
+                    <div class="mt-2 p-4 bg-slate-100 rounded-md border border-slate-200">
+                        <h5 class="font-bold text-brand-900 text-xs uppercase mb-1">Guía de Puntos Clave para la Solución:</h5>
+                        <p class="text-xs text-slate-600 italic leading-relaxed">
+                            Una propuesta sólida debe incluir: procesamiento de archivos con software OCR (ej. Adobe Acrobat Pro o ABBYY FineReader), habilitación del lector de pantalla NVDA o TalkBack, implementación de subtitulado automático en videos a través de Whisper o YouTube Studio, y flexibilidad en los tiempos de evaluación presencial o virtual.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN: QUIZ DE EVALUACIÓN -->
+        <section id="tab-evaluacion" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card">
+                <div class="border-b border-slate-200 pb-4 mb-6 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Evaluación Formativa Automatizada</span>
+                        <h2 class="text-2xl font-bold text-brand-800 mt-1">Quiz de Evaluación Teórico-Práctica</h2>
+                    </div>
+                    <span class="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded">5 Reactivos</span>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-700 mb-6">
+                    Responda las siguientes preguntas de opción múltiple para evaluar su comprensión teórica sobre la integración de las TIC en la educación de personas con discapacidad. Al finalizar, haga clic en el botón para obtener su diagnóstico cualitativo y cuantitativo.
+                </p>
+
+                <form id="quiz-form" class="space-y-6">
+                    <!-- Pregunta 1 -->
+                    <div class="p-4 border border-slate-200 rounded-md bg-slate-50 space-y-3">
+                        <p class="font-semibold text-xs sm:text-sm text-brand-900">
+                            1. De acuerdo con el Modelo Social de la Discapacidad y las pautas WCAG, ¿cuál de las siguientes situaciones constituye una Barrera para el Aprendizaje y la Participación (BAP) de tipo digital?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q1" value="a" class="text-brand-600 focus:ring-brand-500">
+                                <span>a) La falta de destreza motriz individual del estudiante para utilizar teclados convencionales.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q1" value="b" class="text-brand-600 focus:ring-brand-500">
+                                <span>b) La publicación de lecturas en archivos PDF escaneados como imagen sin capa de texto seleccionable ni OCR.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q1" value="c" class="text-brand-600 focus:ring-brand-500">
+                                <span>c) La existencia de diferentes velocidades de conexión a internet en los domicilios de los estudiantes.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="p-4 border border-slate-200 rounded-md bg-slate-50 space-y-3">
+                        <p class="font-semibold text-xs sm:text-sm text-brand-900">
+                            2. ¿Cuál es la función pedagógica principal del software lector de pantalla (como NVDA o JAWS) en la educación superior?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q2" value="a" class="text-brand-600 focus:ring-brand-500">
+                                <span>a) Traducir automáticamente textos en idiomas extranjeros a la lengua materna del usuario.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q2" value="b" class="text-brand-600 focus:ring-brand-500">
+                                <span>b) Convertir el contenido textual e interfaz gráfica digital en voz sintetizada o salida Braille accesible para personas con discapacidad visual.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q2" value="c" class="text-brand-600 focus:ring-brand-500">
+                                <span>c) Aumentar el tamaño de las fuentes tipográficas en la pantalla del ordenador para facilitar la lectura.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="p-4 border border-slate-200 rounded-md bg-slate-50 space-y-3">
+                        <p class="font-semibold text-xs sm:text-sm text-brand-900">
+                            3. ¿A qué se refiere el concepto de brecha digital de "segundo nivel" en el ámbito de la educación universitaria?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q3" value="a" class="text-brand-600 focus:ring-brand-500">
+                                <span>a) A las disparidades en las competencias digitales e instruccionales necesarias para dar un uso pedagógico e inclusivo a las tecnologías.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q3" value="b" class="text-brand-600 focus:ring-brand-500">
+                                <span>b) A la falta de acceso físico a computadoras e infraestructura de red en zonas rurales.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q3" value="c" class="text-brand-600 focus:ring-brand-500">
+                                <span>c) A la diferencia de precio entre dispositivos móviles Android y sistemas operativos iOS.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="p-4 border border-slate-200 rounded-md bg-slate-50 space-y-3">
+                        <p class="font-semibold text-xs sm:text-sm text-brand-900">
+                            4. ¿Cuál de los siguientes enunciados define adecuadamente el Diseño Universal para el Aprendizaje (DUA)?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q4" value="a" class="text-brand-600 focus:ring-brand-500">
+                                <span>a) Un programa de software educativo diseñado exclusivamente para estudiantes con diagnóstico de discapacidad.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q4" value="b" class="text-brand-600 focus:ring-brand-500">
+                                <span>b) Un enfoque curricular que diseña la enseñanza de origen de manera flexible, ofreciendo múltiples formas de representación, acción, expresión e implicación para todo el alumnado.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q4" value="c" class="text-brand-600 focus:ring-brand-500">
+                                <span>c) Una normativa legal que obliga a las universidades a sustituir los libros impresos por tabletas electrónicas.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="p-4 border border-slate-200 rounded-md bg-slate-50 space-y-3">
+                        <p class="font-semibold text-xs sm:text-sm text-brand-900">
+                            5. Al integrar videos didácticos en un entorno virtual de aprendizaje, ¿qué requisito esencial de accesibilidad debe garantizarse para estudiantes con discapacidad auditiva?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q5" value="a" class="text-brand-600 focus:ring-brand-500">
+                                <span>a) Aumentar el volumen del audio al máximo en la grabación original.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q5" value="b" class="text-brand-600 focus:ring-brand-500">
+                                <span>b) Incluir subtitulación sincronizada de calidad o interpretación en Lengua de Señas Mexicana (LSM).</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-white border border-transparent hover:border-slate-200">
+                                <input type="radio" name="q5" value="c" class="text-brand-600 focus:ring-brand-500">
+                                <span>c) Proporcionar un resumen escrito de tres líneas al final del video.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="evaluarQuiz()" class="bg-brand-700 hover:bg-brand-800 text-white font-medium text-xs sm:text-sm px-6 py-3 rounded-md transition-colors w-full sm:w-auto">
+                        Evaluar Respuestas
+                    </button>
+                </form>
+
+                <!-- Resultado del Quiz -->
+                <div id="quiz-result" class="hidden mt-6 p-6 border rounded-md">
+                    <h3 id="quiz-score-title" class="text-lg font-bold"></h3>
+                    <p id="quiz-score-text" class="text-xs sm:text-sm text-slate-700 mt-2"></p>
+                    <div id="quiz-feedback-details" class="mt-4 text-xs space-y-2 border-t pt-4 text-slate-600"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PLAN DE APLICACIÓN Y REFLEXIÓN -->
+        <section id="tab-reflexion" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-lg border border-slate-200 content-card space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Cierre Metodológico Constructivista</span>
+                    <h2 class="text-2xl font-bold text-brand-800 mt-1">Plan de Aplicación Académica y Profesional</h2>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify">
+                    El verdadero aprendizaje pedagógico se consolida cuando el estudiante interioriza el conocimiento y planifica su transferencia explícita a sus contextos reales de actuación. Complete el siguiente formulario interactivo para estructurar su Plan Personal de Accesibilidad Digital, el cual podrá copiar y adjuntar como evidencia de reflexión final en Classroom.
+                </p>
+
+                <div class="bg-slate-50 p-6 rounded-md border border-slate-200 space-y-4">
+                    <div>
+                        <label for="plan-materia" class="block font-semibold text-xs sm:text-sm text-brand-900 mb-1">
+                            1. Asignatura Universitaria de Aplicación Inmediata:
+                        </label>
+                        <input type="text" id="plan-materia" class="w-full p-2.5 border border-slate-300 rounded text-xs sm:text-sm" placeholder="Ej. Didáctica General, Evaluación Educativa, etc.">
+                    </div>
+
+                    <div>
+                        <label for="plan-herramienta" class="block font-semibold text-xs sm:text-sm text-brand-900 mb-1">
+                            2. Herramientas Tecnológicas e Inclusivas que Seleccionará para sus Exposiciones y Entregas:
+                        </label>
+                        <input type="text" id="plan-herramienta" class="w-full p-2.5 border border-slate-300 rounded text-xs sm:text-sm" placeholder="Ej. Lector NVDA, Subtitulado automático, Verificador de contraste WCAG">
+                    </div>
+
+                    <div>
+                        <label for="plan-compromiso" class="block font-semibold text-xs sm:text-sm text-brand-900 mb-1">
+                            3. Compromiso Ético y Pedagógico Profesional:
+                        </label>
+                        <textarea id="plan-compromiso" rows="4" class="w-full p-2.5 border border-slate-300 rounded text-xs sm:text-sm" placeholder="Describa cómo promoverá la cultura de la accesibilidad digital entre sus compañeros y futuros docentes..."></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button onclick="generarPlanText()" class="bg-brand-700 hover:bg-brand-800 text-white font-medium text-xs sm:text-sm px-5 py-2.5 rounded transition-colors">
+                            Generar y Copiar Informe para Classroom
+                        </button>
+                    </div>
+
+                    <div id="plan-output-container" class="hidden mt-4 p-4 bg-white border border-slate-300 rounded text-xs sm:text-sm text-slate-800 space-y-2">
+                        <h4 class="font-bold text-brand-800">Vista Previa del Plan Generado (Copiado al Portapapeles):</h4>
+                        <pre id="plan-output" class="whitespace-pre-wrap bg-slate-50 p-3 rounded border border-slate-200 text-xs font-mono text-slate-700"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página Institucional -->
+    <footer class="bg-brand-900 text-white border-t border-brand-800 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-300 space-y-2">
+            <p class="font-semibold text-white">Universidad de la Ciénega - Plantel Centro</p>
+            <p>Licenciatura en Pedagogía | Asignatura: Tecnologías y Educación II</p>
+            <p class="text-slate-400">Guía Didáctica Diseñada bajo Principios Constructivistas y de Accesibilidad Universal</p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interacción e Inteligencia Didáctica -->
+    <script>
+        function switchTab(tabId) {
+            // Ocultar todas las secciones
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // Quitar clase activa de todos los botones
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('nav-btn-active');
+            });
+
+            // Mostrar sección seleccionada
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            // Activar botón seleccionado
+            const selectedBtn = document.getElementById('btn-' + tabId);
+            if (selectedBtn) {
+                selectedBtn.classList.add('nav-btn-active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function evaluarRespuestaPrevia() {
+            const texto = document.getElementById('pregunta-previa').value.trim();
+            const statusLabel = document.getElementById('feedback-previo-status');
+            const resultBox = document.getElementById('resultado-previo');
+            const resultText = document.getElementById('texto-evaluacion-previa');
+
+            if (texto.length < 50) {
+                alert("Por favor, elabore una reflexión más detallada de al menos 50 palabras para poder realizar la evaluación pedagógica.");
+                return;
+            }
+
+            statusLabel.textContent = "Reflexión Guardada Correctamente";
+            statusLabel.className = "text-xs font-semibold text-emerald-600";
+            resultBox.classList.remove('hidden');
+
+            resultText.textContent = "Su reflexión previa demuestra la identificación de elementos contextuales clave. A lo largo de los contenidos teóricos de esta unidad, podrá contrastar sus observaciones empíricas con los criterios de accesibilidad WCAG 2.1 y el marco del Diseño Universal para el Aprendizaje (DUA), fortaleciendo su capacidad de diagnóstico e intervención pedagógica.";
+        }
+
+        function evaluarQuiz() {
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'a',
+                q4: 'b',
+                q5: 'b'
+            };
+
+            let score = 0;
+            let total = 5;
+            let feedbackDetails = [];
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    if (selected.value === answers[`q${i}`]) {
+                        score++;
+                        feedbackDetails.push(`Reactivo ${i}: Correcto.`);
+                    } else {
+                        feedbackDetails.push(`Reactivo ${i}: Incorrecto. Revisa la fundamentación teórica correspondiente.`);
+                    }
+                } else {
+                    feedbackDetails.push(`Reactivo ${i}: Sin responder.`);
+                }
+            }
+
+            const percentage = (score / total) * 100;
+            const resultBox = document.getElementById('quiz-result');
+            const scoreTitle = document.getElementById('quiz-score-title');
+            const scoreText = document.getElementById('quiz-score-text');
+            const detailsBox = document.getElementById('quiz-feedback-details');
+
+            resultBox.classList.remove('hidden');
+
+            if (percentage >= 80) {
+                resultBox.className = "mt-6 p-6 border rounded-md bg-emerald-50 border-emerald-200 text-emerald-900";
+                scoreTitle.textContent = `Puntaje Obtenido: ${score} / ${total} (${percentage}%) - Dominio Sobresaliente`;
+                scoreText.textContent = "Felicidades. Ha demostrado una sólida comprensión conceptual sobre el uso de las TIC y la accesibilidad digital en el marco de la educación inclusiva.";
+            } else if (percentage >= 60) {
+                resultBox.className = "mt-6 p-6 border rounded-md bg-amber-50 border-amber-200 text-amber-900";
+                scoreTitle.textContent = `Puntaje Obtenido: ${score} / ${total} (${percentage}%) - Dominio Satisfactorio`;
+                scoreText.textContent = "Ha alcanzado un nivel de comprensión adecuado. Se recomienda repasar los subtemas 3.1 y 3.3 para afianzar conceptos técnicos.";
+            } else {
+                resultBox.className = "mt-6 p-6 border rounded-md bg-red-50 border-red-200 text-red-900";
+                scoreTitle.textContent = `Puntaje Obtenido: ${score} / ${total} (${percentage}%) - Requiere Repaso`;
+                scoreText.textContent = "Se sugiere realizar una relectura analítica de los materiales temáticos y las pautas WCAG antes de proceder con el envío de las actividades prácticas en Classroom.";
+            }
+
+            detailsBox.innerHTML = feedbackDetails.map(item => `<p>${item}</p>`).join('');
+        }
+
+        function generarPlanText() {
+            const materia = document.getElementById('plan-materia').value.trim();
+            const herramienta = document.getElementById('plan-herramienta').value.trim();
+            const compromiso = document.getElementById('plan-compromiso').value.trim();
+
+            if (!materia || !herramienta || !compromiso) {
+                alert("Por favor complete todos los campos del plan de aplicación antes de generar el informe.");
+                return;
+            }
+
+            const formattedText = `UNIVERSIDAD DE LA CIÉNEGA - PLANTEL CENTRO
+LICENCIATURA EN PEDAGOGÍA
+ASIGNATURA: TECNOLOGÍAS Y EDUCACIÓN II
+PLAN PERSONAL DE APLICACIÓN Y REFLEXIÓN EN ACCESIBILIDAD DIGITAL
+
+1. Asignatura Universitaria de Aplicación:
+${materia}
+
+2. Herramientas Tecnológicas e Inclusivas Seleccionadas:
+${herramienta}
+
+3. Compromiso Ético y Pedagógico Profesional:
+${compromiso}
+
+Generado en la Guía Didáctica Interactiva - Unidad 3`;
+
+            document.getElementById('plan-output').textContent = formattedText;
+            document.getElementById('plan-output-container').classList.remove('hidden');
+
+            // Copy to clipboard fallback logic
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = formattedText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                alert("El Plan de Aplicación ha sido copiado exitosamente al portapapeles. Puede pegarlo directamente en la entrega de Google Classroom.");
+            } catch (err) {
+                alert("Plan generado con éxito. Puede seleccionar y copiar el texto manualmente.");
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: Análisis Comparativo de las Teorías del Conocimiento</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        uc: {
+                            blue: '#1E295D',
+                            lightBlue: '#3B82F6',
+                            accent: '#0D9488',
+                            neutralBg: '#F8FAFC',
+                            cardBg: '#FFFFFF',
+                            border: '#E2E8F0',
+                            textDark: '#0F172A',
+                            textMuted: '#475569'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+        .tab-active {
+            border-bottom: 3px solid #1E295D;
+            color: #1E295D;
+            font-weight: 700;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Header Principal -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <img src="cienega.jpg" alt="Logo Universidad de la Ciénega" class="h-14 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x80/1e295d/ffffff?text=U+de+la+Ci%C3%A9nega';">
+                    <div class="hidden md:block h-10 w-px bg-slate-300"></div>
+                    <div class="hidden md:block">
+                        <span class="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Universidad de la Ciénega</span>
+                        <span class="block text-sm font-bold text-slate-800">Guía Didáctica de Aprendizaje Activo</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-300">
+                        Nivel Licenciatura
+                    </span>
+                    <p class="text-xs text-slate-500 mt-1">Metodología Constructivista / ABP</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Navegación por Secciones -->
+    <nav class="bg-slate-900 text-white shadow-md sticky top-20 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-1 overflow-x-auto custom-scrollbar py-2 text-xs md:text-sm font-medium">
+                <button onclick="switchTab('introduccion')" id="btn-introduccion" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap bg-slate-800 text-white font-semibold">1. Introducción</button>
+                <button onclick="switchTab('diagnostico')" id="btn-diagnostico" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">2. Diagnóstico Previo</button>
+                <button onclick="switchTab('contenido')" id="btn-contenido" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">3. Contenido Temático</button>
+                <button onclick="switchTab('materiales')" id="btn-materiales" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">4. Consulta Externa</button>
+                <button onclick="switchTab('actividades')" id="btn-actividades" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">5. Actividades Classroom</button>
+                <button onclick="switchTab('caso')" id="btn-caso" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">6. Caso Práctico ABP</button>
+                <button onclick="switchTab('quiz')" id="btn-quiz" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">7. Evaluación / Quiz</button>
+                <button onclick="switchTab('reflexion')" id="btn-reflexion" class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800 transition whitespace-nowrap text-slate-300">8. Plan de Aplicación</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION 1: INTRODUCCIÓN -->
+        <section id="sec-introduccion" class="tab-content block space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Unidad Temática 3</span>
+                    <h1 class="text-3xl font-extrabold text-slate-900 mt-1">Análisis Comparativo de las Teorías Revisadas</h1>
+                    <p class="text-slate-600 mt-2 text-base">Un enfoque epistemológico, psicológico y pedagógico para el estudiante de licenciatura.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">Pedagogía Activa</h2>
+                        <p class="text-xs text-slate-600 leading-relaxed">Promueve que el estudiante no sea un receptor pasivo, sino un agente analítico capaz de confrontar constructos teóricos con realidades académicas.</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">Constructivismo</h2>
+                        <p class="text-xs text-slate-600 leading-relaxed">El aprendizaje se genera mediante la reestructuración de esquemas mentales previos a partir de la interacción con el entorno pedagógico.</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">Aprendizaje Basado en Problemas</h2>
+                        <p class="text-xs text-slate-600 leading-relaxed">Se abordan dilemas reales del ámbito universitario para transferir el conocimiento teórico a soluciones docentes e institucionales de impacto.</p>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-slate-700 space-y-4">
+                    <h2 class="text-xl font-bold text-slate-900">Presentación del Objeto de Estudio</h2>
+                    <p class="text-justify leading-relaxed">
+                        El estudio de los procesos de enseñanza y aprendizaje en el nivel superior exige una comprensión profunda de las bases teóricas que sostienen el acto educativo. Esta guía tiene como finalidad analizar comparativamente los enfoques fundamentales del conocimiento estudiados previamente: los aspectos filosóficos, psicológicos y pedagógicos del problema del conocimiento (Tema 1) y los paradigmas psicológicos del Estímulo-Respuesta, Campo Cognoscitivo y Gestalt (Tema 2).
+                    </p>
+                    <p class="text-justify leading-relaxed">
+                        A través de este análisis comparativo (Tema 3), el estudiante de licenciatura identificará las aportaciones conceptuales y las limitaciones metodológicas de cada corriente (Sección 3.4). El objetivo final es dotar al alumno de herramientas metodológicas e interpretativas que pueda aplicar en sus propias dinámicas de aprendizaje universitario y en su futura práctica profesional.
+                    </p>
+                </div>
+
+                <div class="mt-8 p-4 bg-indigo-50 border-l-4 border-indigo-700 rounded-r-lg">
+                    <h3 class="text-sm font-bold text-indigo-900 uppercase">Objetivo General de Aprendizaje</h3>
+                    <p class="text-sm text-indigo-800 mt-1">
+                        Sintetizar y valorar de manera crítica las convergencias, divergencias, alcances y limitaciones de las teorías filosóficas y psicológicas del conocimiento, diseñando estrategias aplicables al contexto educativo universitario actual.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DIAGNÓSTICO PREVIO -->
+        <section id="sec-diagnostico" class="tab-content hidden space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Fase de Activación Metacognitiva</span>
+                    <h1 class="text-2xl font-bold text-slate-900 mt-1">Pregunta de Indagación de Conocimientos Previos</h1>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mb-6">
+                    <p class="text-sm font-semibold text-slate-800 mb-2">Planteamiento Reflexivo:</p>
+                    <p class="text-base text-slate-700 leading-relaxed italic">
+                        "En tu experiencia como estudiante de nivel licenciatura, ¿consideras que el conocimiento que adquieres en tus asignaturas es principalmente una respuesta memorística a estímulos académicos (calificaciones, exámenes), una percepción global de conceptos interconectados (Gestalt) o una reconstrucción activa basada en tus campos cognoscitivos previos? Justifica tu postura con un ejemplo cotidiano de tus clases."
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <label for="prev-knowledge-input" class="block text-sm font-medium text-slate-700">Escribe tu reflexión inicial (Mínimo 100 palabras):</label>
+                    <textarea id="prev-knowledge-input" rows="5" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-800" placeholder="Redacta aquí tu análisis argumentado..."></textarea>
+                    
+                    <div class="flex items-center justify-between">
+                        <span id="char-counter" class="text-xs text-slate-500">0 palabras</span>
+                        <button onclick="savePrevKnowledge()" class="px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-md hover:bg-slate-800 transition">
+                            Registrar Respuesta en Sesión
+                        </button>
+                    </div>
+                </div>
+
+                <div id="prev-knowledge-feedback" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+                    <h2 class="text-sm font-bold text-emerald-900">Respuesta registrada correctamente</h2>
+                    <p class="text-xs text-emerald-800 mt-1">Esta reflexión servirá como insumo para contrastar tu postura antes y después de revisar el contenido teórico comparativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CONTENIDO TEMÁTICO -->
+        <section id="sec-contenido" class="tab-content hidden space-y-8">
+            <!-- Introducción al Tema 3 -->
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Tema Central</span>
+                    <h1 class="text-3xl font-extrabold text-slate-900 mt-1">3. Análisis Comparativo de las Teorías Revisadas</h1>
+                    <p class="text-slate-600 mt-1 text-sm">Síntesis teórica, conceptualizaciones clave, aportaciones, limitaciones (3.4) y causas de origen físico (3.5).</p>
+                </div>
+
+                <!-- Resumen de Temas Previos (1 y 2) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Tema 1 -->
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-300 pb-2 mb-4">1. El Problema del Conocimiento</h2>
+                        
+                        <div class="space-y-4 text-xs text-slate-700">
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">1.1 Aspectos Filosóficos</h3>
+                                <p class="mt-1 text-justify">Analiza la relación entre el sujeto cognoscente y el objeto conocido. Aborda posturas como el Dogmatismo, Escepticismo, Racionalismo (prioridad de la razón) y Empirismo (prioridad de la experiencia sensible). Plantea la interrogante fundamental: ¿es posible aprehender la verdad de manera objetiva?</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">1.2 Aspectos Psicológicos</h3>
+                                <p class="mt-1 text-justify">Estudia los mecanismos internos mediante los cuales el individuo procesa, codifica, almacena y recupera información. Se centra en la percepción, la memoria, la atención y las estructuras cognitivas que posibilitan la aprehensión del entorno.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">1.3 Aspectos Pedagógicos</h3>
+                                <p class="mt-1 text-justify">Examina la traducción de las teorías epistemológicas a la práctica educativa. Evalúa cómo las concepciones del conocimiento determinan los métodos de enseñanza, la relación docente-estudiante, la selección curricular y los criterios de evaluación.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tema 2 -->
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-300 pb-2 mb-4">2. Enfoques Psicológicos acerca del Conocimiento</h2>
+                        
+                        <div class="space-y-4 text-xs text-slate-700">
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">2.1 Estímulo - Respuesta (Conductismo)</h3>
+                                <p class="mt-1 text-justify">Encabezado por Watson, Pavlov, Thorndike y Skinner. concibe el aprendizaje como un cambio observable en la conducta, producto de la asociación entre estímulos ambientales y respuestas reforzadas. Modela al estudiante como un ente reactivo.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">2.2 Campo Cognoscitivo (Cognitivismo / Constructivismo)</h3>
+                                <p class="mt-1 text-justify">Desarrollado por autores como Lewin, Piaget, Vygotsky y Ausubel. Define el aprendizaje como la reestructuración interna de esquemas mentales. El sujeto organiza activamente la información en un campo de fuerzas conceptuales e interacciones sociales.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-indigo-900 text-sm">2.3 Gestalt (Psicología de la Forma)</h3>
+                                <p class="mt-1 text-justify">Fundada por Wertheimer, Köhler y Koffka. Sostiene que "el todo es diferente de la suma de las partes". El aprendizaje ocurre por reestructuración perceptiva e intuición repentina (Insight), priorizando la comprensión holística de patrones y estructuras.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matriz Comparativa Detallada (3.4) -->
+                <div class="mt-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-900">3.4 Aportaciones y Limitaciones de las Teorías Revisadas</h2>
+                        <span class="text-xs text-slate-500">Matriz de Análisis Comparativo Sistémico</span>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl shadow-sm bg-white">
+                        <table class="w-full text-left text-xs text-slate-700">
+                            <thead class="bg-slate-900 text-white uppercase text-[11px] tracking-wider">
+                                <tr>
+                                    <th class="p-4 border-b border-slate-800">Paradigma / Enfoque</th>
+                                    <th class="p-4 border-b border-slate-800">Concepción del Conocimiento</th>
+                                    <th class="p-4 border-b border-slate-800">Rol del Estudiante y Docente</th>
+                                    <th class="p-4 border-b border-slate-800">Aportaciones Principales</th>
+                                    <th class="p-4 border-b border-slate-800">Limitaciones Críticas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <!-- Conductismo -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-4 font-bold text-slate-900 bg-slate-50/50">
+                                        Estímulo - Respuesta<br>
+                                        <span class="text-[10px] text-slate-500 font-normal">(Skinner, Watson)</span>
+                                    </td>
+                                    <td class="p-4">
+                                        Asociativo, externo y observable. El conocimiento es la réplica de respuestas correctas ante estímulos específicos.
+                                    </td>
+                                    <td class="p-4">
+                                        <strong>Estudiante:</strong> Receptor pasivo/reactivo.<br>
+                                        <strong>Docente:</strong> Programador de contingencias y refuerzos.
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-emerald-800">
+                                            <li>Sistematización de la instrucción.</li>
+                                            <li>Diseño de objetivos conductuales precisos.</li>
+                                            <li>Eficacia en adquisición de destrezas procedimentales automatizadas.</li>
+                                        </ul>
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-rose-800">
+                                            <li>Ignora procesos mentales internos y metacognición.</li>
+                                            <li>Fomenta la pasividad crítica.</li>
+                                            <li>Reduccionismo mecanicista de la conducta humana.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                                <!-- Campo Cognoscitivo -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-4 font-bold text-slate-900 bg-slate-50/50">
+                                        Campo Cognoscitivo<br>
+                                        <span class="text-[10px] text-slate-500 font-normal">(Piaget, Vygotsky, Lewin)</span>
+                                    </td>
+                                    <td class="p-4">
+                                        Constructivo, dinámico e interno. Resultado de la interacción entre esquemas previas y la experiencia con el medio social e instruccional.
+                                    </td>
+                                    <td class="p-4">
+                                        <strong>Estudiante:</strong> Agente activo que procesa y construye.<br>
+                                        <strong>Docente:</strong> Facilitador, mediador y creador de zonas de desarrollo.
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-emerald-800">
+                                            <li>Promoción del aprendizaje significativo y autónomo.</li>
+                                            <li>Valoración del error como insumo de reestructuración.</li>
+                                            <li>Enfoque en el desarrollo psicogenético y sociocultural.</li>
+                                        </ul>
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-rose-800">
+                                            <li>Mayor complejidad metodológica para la evaluación.</li>
+                                            <li>Dificultad de estandarización en aulas masivas.</li>
+                                            <li>Requiere mayor tiempo y recursos instruccionales.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                                <!-- Gestalt -->
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-4 font-bold text-slate-900 bg-slate-50/50">
+                                        Gestalt<br>
+                                        <span class="text-[10px] text-slate-500 font-normal">(Wertheimer, Köhler)</span>
+                                    </td>
+                                    <td class="p-4">
+                                        Holístico y estructural. Surge de la comprensión súbita de relaciones dentro de un todo organizado (Insight).
+                                    </td>
+                                    <td class="p-4">
+                                        <strong>Estudiante:</strong> Perceptor intuitivo y reorganizador del problema.<br>
+                                        <strong>Docente:</strong> Presentador de problemas estructurados globalmente.
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-emerald-800">
+                                            <li>Comprensión profunda de estructuras de resolución.</li>
+                                            <li>Superación del memorismo parcelado.</li>
+                                            <li>Énfasis en la percepción y creatividad problemática.</li>
+                                        </ul>
+                                    </td>
+                                    <td class="p-4">
+                                        <ul class="list-disc list-inside space-y-1 text-rose-800">
+                                            <li>Explicación limitada del proceso de Insight paulatino.</li>
+                                            <li>Menor aplicación directa en contenidos abstractos formales.</li>
+                                            <li>Difícil operacionalización pedagógica diaria.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Subtema 3.5: Causas de Origen Físico del Conocimiento -->
+                <div class="mt-10 border-t border-slate-200 pt-8">
+                    <div class="border-b border-slate-200 pb-3 mb-6">
+                        <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Subtema 3.5</span>
+                        <h2 class="text-2xl font-bold text-slate-900 mt-1">3.5. Causas de Origen Físico del Conocimiento</h2>
+                        <p class="text-xs text-slate-600 mt-1">Fundamentación neurofisiológica, biológica y sensorial del procesamiento de información.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h3 class="text-sm font-bold text-indigo-900 uppercase tracking-wider mb-2">1. Recepción Sensorial Somática</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed text-justify">El conocimiento inicia físicamente con la excitación de los receptores sensoriales (vista, oído, tacto, propiocepción). Sin el estímulo físico y su transducción electroquímica en el sistema nervioso periférico, resulta imposible la génesis de impresiones cognitivas primarias.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h3 class="text-sm font-bold text-indigo-900 uppercase tracking-wider mb-2">2. Neuroplasticidad y Sinapsis</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed text-justify">La aprehensión de conceptos consolida redes neuronales específicas. La neuroplasticidad demuestra que el aprendizaje no es meramente abstracto, sino que modifica físicamente la arquitectura cerebral mediante la potenciación a largo plazo y el fortalecimiento sináptico.</p>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                            <h3 class="text-sm font-bold text-indigo-900 uppercase tracking-wider mb-2">3. Factores Fisiológicos y Homeostasis</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed text-justify">Variables físicas como los ritmos circadianos, la oxigenación cerebral, la glucemia y la fatiga neuromuscular condicionan directamente la atención, la memoria de trabajo y la capacidad de reestructuración conceptual del estudiante universitario.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-indigo-50/70 border-l-4 border-indigo-800 rounded-r-lg text-xs text-slate-800">
+                        <p class="font-bold text-indigo-950 uppercase mb-1">Integración Epistemológico-Fisiológica:</p>
+                        <p class="text-justify leading-relaxed">
+                            Las causas de origen físico constituyen el sustrato material sobre el cual se edifican los procesos psicológicos y pedagógicos. Una teoría del conocimiento completa debe articular las bases biológicas (Subtema 3.5) con las dimensiones de procesamiento mental (Tema 2) y los marcos de interpretación filosófica (Tema 1), permitiendo al docente y al estudiante optimizar las condiciones físicas del aula para favorecer el aprendizaje.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MATERIALES EXTERNOS DE CONSULTA -->
+        <section id="sec-materiales" class="tab-content hidden space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Soportes Académicos Formales</span>
+                    <h1 class="text-2xl font-bold text-slate-900 mt-1">Materiales Externos de Consulta Bibliográfica</h1>
+                    <p class="text-slate-600 mt-1 text-sm">Fuentes documentales dictaminadas para profundizar en el análisis comparativo del conocimiento.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:border-slate-400 transition">
+                        <span class="px-2 py-0.5 text-[10px] font-semibold bg-indigo-100 text-indigo-800 rounded">Artículo Académico (Dialnet / Scielo)</span>
+                        <h2 class="text-base font-bold text-slate-900 mt-2">Hessen, J. (2011). <em>Teoría del Conocimiento</em>. Instituto Latinoamericano de Ciencia y Arte.</h2>
+                        <p class="text-xs text-slate-600 mt-2 text-justify">Texto clásico esencial para comprender los aspectos filosóficos del problema del conocimiento: la posibilidad, el origen y la esencia de la aprehensión cognoscitiva.</p>
+                        <div class="mt-4">
+                            <a href="https://dialnet.unirioja.es" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-indigo-700 hover:underline">
+                                Consultar en Dialnet
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:border-slate-400 transition">
+                        <span class="px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800 rounded">Monografía Arbitrada (Redalyc)</span>
+                        <h2 class="text-base font-bold text-slate-900 mt-2">Schunk, D. H. (2012). <em>Teorías del Aprendizaje: Una perspectiva educativa</em>. Pearson Educación.</h2>
+                        <p class="text-xs text-slate-600 mt-2 text-justify">Revisión exhaustiva de los enfoques de Estímulo-Respuesta, Constructivismo y Gestalt, analizando sus aplicaciones directas en el aula universitaria.</p>
+                        <div class="mt-4">
+                            <a href="https://www.redalyc.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-emerald-700 hover:underline">
+                                Consultar en Redalyc
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:border-slate-400 transition">
+                        <span class="px-2 py-0.5 text-[10px] font-semibold bg-amber-100 text-amber-800 rounded">Capítulo de Libro Académico</span>
+                        <h2 class="text-base font-bold text-slate-900 mt-2">Pozo, J. I. (2006). <em>Teorías cognitivas del aprendizaje</em>. Ediciones Morata.</h2>
+                        <p class="text-xs text-slate-600 mt-2 text-justify">Análisis crítico de la transición desde el paradigma asociacionista (conductista) hacia las teorías del procesamiento de información y reestructuración cognoscitiva.</p>
+                        <div class="mt-4">
+                            <a href="https://scielo.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-amber-700 hover:underline">
+                                Consultar en SciELO
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 hover:border-slate-400 transition">
+                        <span class="px-2 py-0.5 text-[10px] font-semibold bg-purple-100 text-purple-800 rounded">Documento Institucional UNESCO</span>
+                        <h2 class="text-base font-bold text-slate-900 mt-2">UNESCO. (2021). <em>Reconceptualizar el aprendizaje en la educación superior</em>. París.</h2>
+                        <p class="text-xs text-slate-600 mt-2 text-justify">Informe técnico que problematiza la vigencia de los modelos asociacionistas en la educación universitaria contemporánea y promueve pedagogías activas.</p>
+                        <div class="mt-4">
+                            <a href="https://unesdoc.unesco.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-purple-700 hover:underline">
+                                Consultar en UNESDOC
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ACTIVIDADES PARA CLASSROOM -->
+        <section id="sec-actividades" class="tab-content hidden space-y-8">
+            <!-- Introducción de Actividades -->
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Evaluación Formativa y Sumativa</span>
+                    <h1 class="text-2xl font-bold text-slate-900 mt-1">Actividades Prácticas para Entregar en Google Classroom</h1>
+                    <p class="text-slate-600 mt-1 text-sm">Sigue las instrucciones paso a paso para elaborar tus entregables de manera rigurosa y colaborativa.</p>
+                </div>
+
+                <!-- ACTIVIDAD 1: FORO DE MEDIACIÓN -->
+                <div class="mb-10 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-300 pb-3 mb-4">
+                        <span class="text-xs font-bold px-3 py-1 bg-indigo-900 text-white rounded-full">Actividad 1</span>
+                        <span class="text-xs font-semibold text-slate-500">Modalidad: Foro Colaborativo en Classroom</span>
+                    </div>
+
+                    <h2 class="text-lg font-bold text-slate-900">Foro de Mediación Crítica: Pregunta Detonadora</h2>
+                    <p class="text-xs text-slate-600 mt-1 mb-4">Esta actividad busca fomentar el debate reflexivo, la confrontación argumentativa de teorías y la co-construcción de conocimiento.</p>
+
+                    <div class="bg-indigo-50 border-l-4 border-indigo-800 p-4 rounded-r-md mb-6">
+                        <p class="text-xs font-bold text-indigo-900 uppercase">Pregunta Detonadora del Foro:</p>
+                        <p class="text-sm font-semibold text-indigo-950 mt-1">
+                            "Frente a los retos profesionales del siglo XXI, ¿hasta qué punto el paradigma conductista (Estímulo-Respuesta) sigue limitando el desarrollo autónomo en las aulas universitarias, y en qué medida la integración del Campo Cognoscitivo y la Gestalt representa una solución efectiva? Fundamenta tu postura analizando una limitación de cada enfoque."
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-slate-800">Instrucciones Paso a Paso:</h3>
+                        <ol class="list-decimal list-inside text-xs text-slate-700 space-y-2">
+                            <li><strong>Publicación Individual (Aportación Principal):</strong> Redacta un texto argumentativo de entre 250 y 350 palabras respondiendo a la pregunta detonadora. Debes citar al menos una aportación y una limitación teórica de la Sección 3.4.</li>
+                            <li><strong>Réplica Colaborativa:</strong> Lee las publicaciones de tus compañeros y realiza un mínimo de dos comentarios analíticos constructivos (100 palabras cada uno), debatiendo con respeto sus argumentos.</li>
+                            <li><strong>Evidencia en Classroom:</strong> Toma captura de pantalla de tu aportación y de tus dos réplicas, o pega el enlace directo de tu intervención en el documento PDF de entregables.</li>
+                        </ol>
+
+                        <div class="mt-4 p-4 bg-white border border-slate-300 rounded-lg">
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Ejemplo de Respuesta Esperada para el Foro:</h4>
+                            <div class="bg-slate-50 p-3 rounded text-xs text-slate-600 font-mono leading-relaxed border border-slate-200">
+                                "Considero que el enfoque Estímulo-Respuesta mantiene una presencia predominante en la universidad mediante la evaluación sumativa punitiva, lo cual limita la metacognición al adiestrar al alumno para aprobar y no para comprender. No obstante, su aportación en la automatización de procedimientos técnicos es innegable. Por otro lado, la adopción del Campo Cognoscitivo permite concebir al alumno como un sujeto activo que reestructura sus esquemas mediante el conflicto cognitivo. La principal limitación radica en que exige un tiempo instruccional del que muchas veces se carece en programas saturados..."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDAD 2: APLICACIÓN PRÁCTICA EN CLASES -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-300 pb-3 mb-4">
+                        <span class="text-xs font-bold px-3 py-1 bg-teal-800 text-white rounded-full">Actividad 2</span>
+                        <span class="text-xs font-semibold text-slate-500">Modalidad: Matriz de Intervención Pedagógica</span>
+                    </div>
+
+                    <h2 class="text-lg font-bold text-slate-900">Diseño de una Propuesta de Aprendizaje Significativo Universitario</h2>
+                    <p class="text-xs text-slate-600 mt-1 mb-4">Diseña una estrategia de estudio o enseñanza aplicable a una materia de tu plan de estudios de licenciatura.</p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-slate-800">Instrucciones Paso a Paso:</h3>
+                        <ol class="list-decimal list-inside text-xs text-slate-700 space-y-2">
+                            <li><strong>Selección de Asignatura:</strong> Elige una materia compleja que estés cursando en tu programa de licenciatura.</li>
+                            <li><strong>Diagnóstico del Enfoque Actual:</strong> Identifica si dicha materia se enseña bajo un esquema puramente asociacionista (memorización/conductismo).</li>
+                            <li><strong>Rediseño Constructivista / Gestáltico:</strong> Propón una actividad que reemplace la memorización por la comprensión de la estructura global (Gestalt) o la reestructuración conceptual (Campo Cognoscitivo).</li>
+                            <li><strong>Entrega en Classroom:</strong> Completa la matriz que se presenta a continuación y súbela en formato PDF a la plataforma.</li>
+                        </ol>
+
+                        <!-- Plantilla de Matriz -->
+                        <div class="mt-4 p-4 bg-white border border-slate-300 rounded-lg">
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Ejemplo de Formato de Entrega:</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs text-left border border-slate-300">
+                                    <thead class="bg-slate-800 text-white">
+                                        <tr>
+                                            <th class="p-2 border">Campo</th>
+                                            <th class="p-2 border">Ejemplo Resuelto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200">
+                                        <tr>
+                                            <td class="p-2 font-bold bg-slate-100 border">Nombre de la Asignatura</td>
+                                            <td class="p-2 border">Metodología de la Investigación II</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-bold bg-slate-100 border">Problemática Identificada</td>
+                                            <td class="p-2 border">Enseñanza memorística de los pasos del método científico (Conductismo E-R).</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-bold bg-slate-100 border">Estrategia Propuesta</td>
+                                            <td class="p-2 border">Aprendizaje Basado en Indagación (Campo Cognoscitivo): Analizar un problema comunitario real sin guías predeterminadas, formulando hipótesis de forma dialéctica.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-bold bg-slate-100 border">Fundamento Teórico</td>
+                                            <td class="p-2 border">Teoría de la equilibración de Piaget (asimilación-acomodación) y reestructuración Gestáltica del problema.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CASO PRÁCTICO ABP -->
+        <section id="sec-caso" class="tab-content hidden space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Aprendizaje Basado en Problemas (ABP)</span>
+                    <h1 class="text-2xl font-bold text-slate-900 mt-1">Caso Práctico: El Dilema Pedagógico en la Facultad de Economía</h1>
+                </div>
+
+                <!-- Caso Escrito -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-6 space-y-3">
+                    <span class="px-2.5 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase rounded">Escenario para Análisis</span>
+                    <h2 class="text-base font-bold text-slate-900">Descripción de la Problemática Universitario-Docente:</h2>
+                    <p class="text-xs text-slate-700 text-justify leading-relaxed">
+                        En la materia de "Teoría Microeconómica" de cuarto semestre, el profesor Ramírez aplica evaluaciones semanales basadas exclusivamente en opción múltiple y repetición de fórmulas memorizadas. El 75% de los estudiantes aprueba los exámenes escritos, pero al llegar a las materias clínicas de formulación de proyectos en semestres avanzados, los alumnos muestran una incapacidad severa para interpretar problemas financieros reales, conectar variables macroeconómicas o proponer soluciones creativas.
+                    </p>
+                    <p class="text-xs text-slate-700 text-justify leading-relaxed">
+                        El comité académico ha citado a un equipo de estudiantes avanzados y docentes para diagnosticar el origen del fracaso formativo y proponer una reestructuración teórica de la asignatura.
+                    </p>
+                </div>
+
+                <!-- Preguntas de Análisis para ABP -->
+                <div class="space-y-6">
+                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Consignas para la Resolución del Caso:</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 border border-slate-200 rounded-lg bg-white">
+                            <span class="font-bold text-xs text-indigo-800 block mb-1">1. Diagnóstico Paradigmático</span>
+                            <p class="text-xs text-slate-600">¿Bajo qué paradigma del conocimiento está operando la enseñanza del profesor Ramírez y qué limitaciones de dicho modelo explican el bajo desempeño posterior de los estudiantes?</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-lg bg-white">
+                            <span class="font-bold text-xs text-indigo-800 block mb-1">2. Rediseño desde la Gestalt</span>
+                            <p class="text-xs text-slate-600">¿Cómo podría aplicarse el principio del Insight (comprensión de la estructura global) para que los alumnos entiendan las fórmulas como un todo y no como datos aislados?</p>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-lg bg-white">
+                            <span class="font-bold text-xs text-indigo-800 block mb-1">3. Propuesta Cognoscitiva</span>
+                            <p class="text-xs text-slate-600">Diseña una actividad de 3 pasos basada en el paradigma del Campo Cognoscitivo que favorezca el aprendizaje significativo en lugar de la memorización pasiva.</p>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo de Solución ABP -->
+                    <div class="mt-6 p-5 bg-indigo-50/50 border border-indigo-200 rounded-lg">
+                        <h4 class="text-xs font-bold text-indigo-900 uppercase mb-2">Ejemplo de Argumentación Resolutiva (Guía de Cotejo):</h4>
+                        <p class="text-xs text-slate-700 text-justify leading-relaxed">
+                            <strong>Diagnóstico:</strong> El profesor utiliza un modelo puramente conductista (Estímulo-Respuesta), donde el estímulo es el examen y la respuesta es la repetición de la fórmula. La limitación principal es la ausencia de asimilación profunda y transferencia de aprendizaje.
+                            <br><br>
+                            <strong>Solución Propuesta:</strong> Transicionar hacia un modelo de Campo Cognoscitivo introduciendo simulaciones de casos reales donde el estudiante enfrente un desequilibrio cognitivo. En lugar de memorizar la fórmula de elasticidad, el alumno manipula datos de una empresa real en crisis y reestructura activamente su comprensión del mercado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: QUIZ DE EVALUACIÓN -->
+        <section id="sec-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Evaluación Objetiva</span>
+                        <h1 class="text-2xl font-bold text-slate-900 mt-1">Quiz Interactivo: 5 Preguntas sobre Teorías del Conocimiento</h1>
+                    </div>
+                    <div id="quiz-score-badge" class="hidden text-right bg-slate-900 text-white px-4 py-2 rounded-lg">
+                        <span class="block text-[10px] uppercase tracking-wider text-slate-400">Puntaje Final</span>
+                        <span id="quiz-score-text" class="text-xl font-extrabold text-emerald-400">0 / 100</span>
+                    </div>
+                </div>
+
+                <form id="quiz-form" onsubmit="evaluateQuiz(event)" class="space-y-8">
+                    <!-- Pregunta 1 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50">
+                        <p class="text-sm font-bold text-slate-900 mb-3">1. ¿Cuál es la limitación principal del paradigma Estímulo-Respuesta (Conductismo) en la educación superior?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q1" value="a" class="text-indigo-600">
+                                <span>a) Impide la evaluación objetiva de las conductas observables del estudiante.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q1" value="b" class="text-indigo-600">
+                                <span>b) Ignora los procesos mentales internos, reduciendo el aprendizaje a la ejecución mecanicista de respuestas.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q1" value="c" class="text-indigo-600">
+                                <span>c) Requiere demasiado tiempo para la reestructuración de esquemas cognoscitivos.</span>
+                            </label>
+                        </div>
+                        <p id="q1-feedback" class="hidden mt-3 text-xs p-2 rounded font-medium"></p>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50">
+                        <p class="text-sm font-bold text-slate-900 mb-3">2. El concepto de "Insight" o comprensión repentina de una estructura como un todo es una aportación central de:</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q2" value="a" class="text-indigo-600">
+                                <span>a) La Psicología de la Gestalt.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q2" value="b" class="text-indigo-600">
+                                <span>b) El Conductismo Operante de Skinner.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q2" value="c" class="text-indigo-600">
+                                <span>c) El Empirismo Filosófico Dogmático.</span>
+                            </label>
+                        </div>
+                        <p id="q2-feedback" class="hidden mt-3 text-xs p-2 rounded font-medium"></p>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50">
+                        <p class="text-sm font-bold text-slate-900 mb-3">3. En la teoría del Campo Cognoscitivo, ¿cómo se define el papel del estudiante en el proceso de conocimiento?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q3" value="a" class="text-indigo-600">
+                                <span>a) Como una 'tabla rasa' que acumula datos proporcionados por el docente.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q3" value="b" class="text-indigo-600">
+                                <span>b) Como un sujeto activo que procesa, reorganiza e integra activamente nuevos conceptos en sus esquemas previos.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q3" value="c" class="text-indigo-600">
+                                <span>c) Como un ente condicionado pasivamente por reforzadores externos positivos y negativos.</span>
+                            </label>
+                        </div>
+                        <p id="q3-feedback" class="hidden mt-3 text-xs p-2 rounded font-medium"></p>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50">
+                        <p class="text-sm font-bold text-slate-900 mb-3">4. Respecto a las causas de origen físico del conocimiento (Subtema 3.5), ¿cuál de las siguientes afirmaciones explica su impacto en el aprendizaje?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q4" value="a" class="text-indigo-600">
+                                <span>a) El cuerpo físico no interviene en la cognición, ya que el conocimiento es un proceso exclusivamente abstracto e inmaterial.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q4" value="b" class="text-indigo-600">
+                                <span>b) La transducción sensorial, la neuroplasticidad y la homeostasis constituyen el sustrato biológico indispensable para la formación de esquemas cognoscitivos.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q4" value="c" class="text-indigo-600">
+                                <span>c) Las causas físicas únicamente determinan la conducta memorística de los animales, sin aplicar al ser humano.</span>
+                            </label>
+                        </div>
+                        <p id="q4-feedback" class="hidden mt-3 text-xs p-2 rounded font-medium"></p>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="p-5 border border-slate-200 rounded-lg bg-slate-50">
+                        <p class="text-sm font-bold text-slate-900 mb-3">5. ¿Cuál es el beneficio pedagógico de integrar el análisis comparativo de teorías en la formación universitaria?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q5" value="a" class="text-indigo-600">
+                                <span>a) Elegir una única teoría dogmática y descartar todas las demás.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q5" value="b" class="text-indigo-600">
+                                <span>b) Desarrollar criterio crítico para seleccionar la estrategia más idónea según el tipo de aprendizaje requerido.</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-white border border-transparent hover:border-slate-300 cursor-pointer">
+                                <input type="radio" name="q5" value="c" class="text-indigo-600">
+                                <span>c) Eliminar la necesidad de realizar evaluaciones en la carrera.</span>
+                            </label>
+                        </div>
+                        <p id="q5-feedback" class="hidden mt-3 text-xs p-2 rounded font-medium"></p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="submit" class="px-6 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-lg hover:bg-slate-800 transition">
+                            Enviar y Evaluar Quiz
+                        </button>
+                        <button type="button" onclick="resetQuiz()" class="px-4 py-2 border border-slate-300 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-100 transition">
+                            Reiniciar Evaluación
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 8: REFLEXIÓN Y APLICACIÓN -->
+        <section id="sec-reflexion" class="tab-content hidden space-y-6">
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-widest">Metacognición y Transferencia</span>
+                    <h1 class="text-2xl font-bold text-slate-900 mt-1">Plan de Aplicación Académica y Profesional</h1>
+                    <p class="text-slate-600 mt-1 text-sm">Planifica de manera concreta cómo transformarás tus hábitos de estudio e intervención profesional con base en las teorías analizadas.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Formulario del Plan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="plan-1" class="block text-xs font-bold text-slate-800 uppercase mb-2">1. Ajustes en tus Métodos de Estudio Personal:</label>
+                            <textarea id="plan-1" rows="4" class="w-full p-3 border border-slate-300 rounded-md text-xs text-slate-800 focus:ring-2 focus:ring-indigo-500" placeholder="¿Cómo abandonarás el memorismo asociacionista para adoptar mapas conceptuales holísticos (Gestalt) y reestructuración de esquemas (Campo Cognoscitivo)?"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="plan-2" class="block text-xs font-bold text-slate-800 uppercase mb-2">2. Propuesta para el Aula Universitaria:</label>
+                            <textarea id="plan-2" rows="4" class="w-full p-3 border border-slate-300 rounded-md text-xs text-slate-800 focus:ring-2 focus:ring-indigo-500" placeholder="¿Qué dinámicas propondrás en tus trabajos de equipo para fomentar el debate y la construcción colaborativa?"></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="plan-3" class="block text-xs font-bold text-slate-800 uppercase mb-2">3. Transferencia al Perfil Profesional Egresado:</label>
+                        <textarea id="plan-3" rows="3" class="w-full p-3 border border-slate-300 rounded-md text-xs text-slate-800 focus:ring-2 focus:ring-indigo-500" placeholder="¿De qué manera el análisis crítico de la relación sujeto-objeto fortalece tu toma de decisiones éticas y metodológicas en el campo laboral?"></textarea>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xs font-bold text-slate-800">Generador de Documento Resumen de Entregable</h2>
+                            <p class="text-[11px] text-slate-500">Copia el resumen consolidado de tus reflexiones y actividades para adjuntarlo en tu entrega de Google Classroom.</p>
+                        </div>
+                        <button onclick="generateSummaryReport()" class="px-5 py-2.5 bg-indigo-900 text-white text-xs font-bold rounded-md hover:bg-indigo-800 transition">
+                            Generar Resumen de Sesión
+                        </button>
+                    </div>
+
+                    <!-- Visualizador del Resumen -->
+                    <div id="summary-output-container" class="hidden mt-6 p-6 bg-slate-900 text-slate-100 rounded-xl space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <h3 class="text-sm font-bold text-emerald-400">Resumen Consolidado de Aprendizaje</h3>
+                            <button onclick="copySummaryReport()" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 rounded border border-slate-700">
+                                Copiar Texto al Portapapeles
+                            </button>
+                        </div>
+                        <pre id="summary-text" class="text-xs font-mono whitespace-pre-wrap leading-relaxed text-slate-300"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Institucional -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-3">
+                <img src="cienega.jpg" alt="Logo Universidad de la Ciénega" class="h-10 w-auto filter brightness-200 contrast-200" onerror="this.onerror=null; this.src='https://placehold.co/120x50/1e295d/ffffff?text=UC';">
+                <div>
+                    <p class="text-xs font-bold text-slate-200">Universidad de la Ciénega</p>
+                    <p class="text-[11px] text-slate-500">Guía Didáctica Interactiva para Licenciatura</p>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 text-center">
+                Desarrollado bajo metodología constructivista, pedagogía activa y aprendizaje basado en problemas (ABP).
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        /* TAB SWITCHING SYSTEM */
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Show selected tab content
+            const targetContent = document.getElementById('sec-' + tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Update nav button states
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-slate-800', 'text-white', 'font-semibold');
+                btn.classList.add('text-slate-300');
+            });
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-slate-800', 'text-white', 'font-semibold');
+                activeBtn.classList.remove('text-slate-300');
+            }
+
+            // Scroll smoothly to top of main
+            window.scrollTo({ top: 80, behavior: 'smooth' });
+        }
+
+        /* PREVIOUS KNOWLEDGE LOGIC */
+        const prevInput = document.getElementById('prev-knowledge-input');
+        const charCounter = document.getElementById('char-counter');
+
+        if (prevInput) {
+            prevInput.addEventListener('input', () => {
+                const text = prevInput.value.trim();
+                const wordCount = text ? text.split(/\s+/).length : 0;
+                charCounter.textContent = `${wordCount} palabras`;
+            });
+        }
+
+        function savePrevKnowledge() {
+            const text = prevInput.value.trim();
+            if (text.length < 20) {
+                alert('Por favor redacta un análisis previo más detallado antes de guardar.');
+                return;
+            }
+            const feedback = document.getElementById('prev-knowledge-feedback');
+            feedback.classList.remove('hidden');
+        }
+
+        /* QUIZ EVALUATION SYSTEM */
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'a',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b'
+        };
+
+        const feedbacks = {
+            q1: {
+                correct: "Correcto. El conductismo se limita a la conducta observable y desatiende la metacognición y las estructuras cognoscitivas internas.",
+                incorrect: "Incorrecto. La limitación principal es que ignora los procesos mentales internos, asumiendo al sujeto como una caja negra."
+            },
+            q2: {
+                correct: "Correcto. La Gestalt sostiene que el Insight es la reestructuración perceptiva e intuitiva de la totalidad del problema.",
+                incorrect: "Incorrecto. El Insight o reestructuración holística es el aporte central de la Psicología de la Gestalt."
+            },
+            q3: {
+                correct: "Correcto. En el Campo Cognoscitivo, el alumno es un agente activo que reestructura constantemente sus esquemas conceptuales.",
+                incorrect: "Incorrecto. El Campo Cognoscitivo define al estudiante como un procesador y constructor activo, no receptivo."
+            },
+            q4: {
+                correct: "Correcto. Las causas físicas (transducción sensorial, neuroplasticidad y homeostasis) forman la base material del proceso cognoscitivo.",
+                incorrect: "Incorrecto. Las bases neurofisiológicas y sensoriales constituyen el soporte biológico real para todo procesamiento cognitivo."
+            },
+            q5: {
+                correct: "Correcto. El análisis comparativo brinda criterio reflexivo para seleccionar estrategias según la naturaleza del aprendizaje.",
+                incorrect: "Incorrecto. Analizar diversas teorías permite seleccionar críticamente las mejores herramientas pedagógicas."
+            }
+        };
+
+        function evaluateQuiz(event) {
+            event.preventDefault();
+            const form = document.getElementById('quiz-form');
+            let score = 0;
+            const totalQuestions = 5;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qKey = 'q' + i;
+                const selectedOption = form.elements[qKey].value;
+                const feedbackEl = document.getElementById(qKey + '-feedback');
+
+                if (!selectedOption) {
+                    alert('Por favor responde la pregunta ' + i + ' antes de evaluar.');
+                    return;
+                }
+
+                feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-rose-100', 'text-rose-900');
+
+                if (selectedOption === correctAnswers[qKey]) {
+                    score += 20;
+                    feedbackEl.textContent = feedbacks[qKey].correct;
+                    feedbackEl.classList.add('bg-emerald-100', 'text-emerald-900', 'border', 'border-emerald-300');
+                } else {
+                    feedbackEl.textContent = feedbacks[qKey].incorrect;
+                    feedbackEl.classList.add('bg-rose-100', 'text-rose-900', 'border', 'border-rose-300');
+                }
+            }
+
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            const scoreText = document.getElementById('quiz-score-text');
+            scoreBadge.classList.remove('hidden');
+            scoreText.textContent = score + ' / 100';
+
+            scoreBadge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            const form = document.getElementById('quiz-form');
+            form.reset();
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            scoreBadge.classList.add('hidden');
+
+            for (let i = 1; i <= 5; i++) {
+                const feedbackEl = document.getElementById('q' + i + '-feedback');
+                feedbackEl.classList.add('hidden');
+            }
+        }
+
+        /* GENERATE SUMMARY REPORT */
+        function generateSummaryReport() {
+            const prevText = document.getElementById('prev-knowledge-input').value.trim() || 'Sin respuesta registrada';
+            const plan1 = document.getElementById('plan-1').value.trim() || 'Sin respuesta registrada';
+            const plan2 = document.getElementById('plan-2').value.trim() || 'Sin respuesta registrada';
+            const plan3 = document.getElementById('plan-3').value.trim() || 'Sin respuesta registrada';
+            const scoreText = document.getElementById('quiz-score-text').textContent || 'No evaluado';
+
+            const summary = `UNIVERSIDAD DE LA CIÉNEGA
+INFORME DIDÁCTICO DE APRENDIZAJE ACTIVO
+TEMA 3: ANÁLISIS COMPARATIVO DE LAS TEORÍAS DEL CONOCIMIENTO
+============================================================
+
+1. DIAGNÓSTICO DE CONOCIMIENTOS PREVIOS:
+${prevText}
+
+2. PUNTAJE OBTENIDO EN EL QUIZ EVALUATIVO:
+${scoreText}
+
+3. PLAN DE APLICACIÓN ACADÉMICA Y PROFESIONAL:
+A. Ajuste a Métodos de Estudio Personal:
+${plan1}
+
+B. Propuesta para el Aula Universitaria:
+${plan2}
+
+C. Transferencia al Perfil Profesional:
+${plan3}
+
+============================================================
+Fecha de generación: ${new Date().toLocaleDateString('es-MX')}
+Documento listo para anexar en entrega de Google Classroom.`;
+
+            document.getElementById('summary-text').textContent = summary;
+            document.getElementById('summary-output-container').classList.remove('hidden');
+            document.getElementById('summary-output-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copySummaryReport() {
+            const summaryText = document.getElementById('summary-text').textContent;
+            
+            // Legacy copy support for iframe restrictions
+            const textarea = document.createElement('textarea');
+            textarea.value = summaryText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('El informe resumido ha sido copiado al portapapeles.');
+            } catch (err) {
+                alert('No se pudo copiar automáticamente. Selecciona el texto manualmente.');
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
