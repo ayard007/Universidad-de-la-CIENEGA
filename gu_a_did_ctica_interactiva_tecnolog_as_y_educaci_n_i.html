@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías y Educación I - Guía Didáctica e Integradora | Licenciatura en Pedagogía</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            600: '#1e3a8a',
+                            700: '#1e293b',
+                            800: '#0f172a',
+                            accent: '#2563eb'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            scroll-behavior: smooth;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .nav-link.active {
+            border-left-color: #2563eb;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background-color: #ffffff;
+                color: #000000;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header Institucional -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <!-- Logo Universidad de la Ciénega -->
+                    <div class="flex items-center">
+                        <img src="cienega.png" alt="Universidad de la Ciénega" class="h-14 w-auto object-contain" id="university-logo" onerror="this.onerror=null; this.src='https://placehold.co/300x100/1e293b/ffffff?text=Universidad+de+la+Ci%C3%A9nega';">
+                    </div>
+                    <div class="hidden md:block border-l border-slate-300 pl-4">
+                        <span class="text-xs uppercase tracking-widest text-slate-500 font-semibold block">Plantel Centro</span>
+                        <h1 class="text-sm font-bold text-slate-800 tracking-tight">Licenciatura en Pedagogía</h1>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs px-3 py-1 rounded-full font-medium border border-slate-200">
+                        Tecnologías y Educación I
+                    </span>
+                    <p class="text-xs text-slate-500 mt-1 hidden sm:block">Guía Tecnopedagógica de Aprendizaje Basado en Problemas</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full flex flex-col lg:flex-row gap-8">
+
+        <!-- Menú Lateral de Navegación -->
+        <aside class="lg:w-72 flex-shrink-0 no-print">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sticky top-24">
+                <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-3">Estructura Curricular</h2>
+                <nav class="space-y-1 text-sm" id="main-nav">
+                    <button onclick="switchTab('presentacion')" id="nav-presentacion" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between active">
+                        <span>1. Presentación e Introducción</span>
+                    </button>
+                    <button onclick="switchTab('fundamentacion')" id="nav-fundamentacion" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>2. Enfoque Tecnopedagógico</span>
+                    </button>
+                    <button onclick="switchTab('modulos')" id="nav-modulos" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>3. Herramientas Digitales</span>
+                    </button>
+                    <button onclick="switchTab('proyecto')" id="nav-proyecto" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>4. Proyecto Integrador Final</span>
+                    </button>
+                    <button onclick="switchTab('simulador')" id="nav-simulador" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>5. Generador de Clase Virtual</span>
+                    </button>
+                    <button onclick="switchTab('materiales')" id="nav-materiales" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>6. Fuentes Académicas</span>
+                    </button>
+                    <button onclick="switchTab('reflexion')" id="nav-reflexion" class="nav-link w-full text-left px-3 py-2.5 rounded-lg border-l-4 border-transparent hover:bg-slate-50 text-slate-700 transition flex items-center justify-between">
+                        <span>7. Reflexión y Transferencia</span>
+                    </button>
+                </nav>
+
+                <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-500">
+                    <p class="font-medium text-slate-700 mb-1">Modalidad de Trabajo:</p>
+                    <p>Sincrónico y Asincrónico mediante Metodología Constructivista.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área de Contenido Principal -->
+        <main class="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-10 min-w-0">
+
+            <!-- SECCIÓN 1: PRESENTACIÓN E INTRODUCCIÓN -->
+            <section id="sec-presentacion" class="tab-content space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Licenciatura en Pedagogía - Programa de Asignatura</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Tecnologías y Educación I: Integración Digital en Entornos de Educación Primaria</h2>
+                    <p class="text-slate-600 text-sm mt-2">Universidad de la Ciénega - Plantel Centro</p>
+                </div>
+
+                <div class="prose max-w-none text-slate-700 space-y-4 leading-relaxed text-justify">
+                    <h3 class="text-lg font-semibold text-slate-800">1. Introducción al Campo Disciplinar</h3>
+                    <p>
+                        La inserción de las Tecnologías de la Información y la Comunicación (TIC) en los procesos de enseñanza-aprendizaje de nivel primaria trasciende la mera dotación de equipamiento informático. Exige una reconceptualización pedagógica orientada a la mediación didáctica transformadora. En el marco de la materia <strong>Tecnologías y Educación I</strong>, los estudiantes de la Licenciatura en Pedagogía analizarán y diseñarán ambientes virtuales de aprendizaje estructurados bajo principios del constructivismo, la pedagogía activa y el Aprendizaje Basado en Problemas (ABP).
+                    </p>
+                    <p>
+                        Esta guía interactiva constituye un instrumento metodológico para direccionar el trabajo académico del semestre. Su propósito central es acompañar la estructuración de un <strong>Proyecto Integrador Final</strong>, en el cual los discentes diseñarán una propuesta formativa completa para un grado de educación primaria (primero a sexto grado), articulando cinco tecnologías clave: <em>Google Sites, Google Classroom, Padlet, Educaplay y Herramientas de Gamificación Educativa</em>.
+                    </p>
+
+                    <div class="bg-slate-50 border-l-4 border-slate-800 p-4 rounded-r-lg my-4">
+                        <h4 class="font-semibold text-slate-900 text-sm mb-1">Objetivo General del Curso</h4>
+                        <p class="text-sm text-slate-700">
+                            Diseñar un ecosistema digital tecno-educativo para un bloque curricular de Educación Primaria, aplicando modelos teóricos de integración tecnológica y metodologías activas para dar respuesta a problemáticas reales de aprendizaje.
+                        </p>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-800 pt-2">2. Competencias del Perfil de Egresado a Desarrollar</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm">
+                        <li><strong>Competencia Pedagógica Digital:</strong> Selecciona e integra herramientas digitales evaluando su pertinecia didáctica y su coherencia con el nivel cognoscitivo del alumnado de primaria.</li>
+                        <li><strong>Diseño Instruccional Constructivista:</strong> Elabora Secuencias Didácticas Digitales que favorecen la indagación, la colaboración y la autonomía del estudiante.</li>
+                        <li><strong>Resolución de Problemas Educativos:</strong> Diagnosticando contextos escolares reales para proponer soluciones mediadas por tecnología que superen brechas de aprendizaje.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: FUNDAMENTACIÓN TECNOPEDAGÓGICA -->
+            <section id="sec-fundamentacion" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Estrategia Metodológica</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Fundamentación Pedagógica y Modelos de Integración</h2>
+                </div>
+
+                <div class="space-y-6 text-sm text-slate-700 leading-relaxed">
+                    <p>
+                        El diseño de ambientes virtuales de aprendizaje a nivel primaria exige una articulación rigurosa entre el conocimiento del contenido disciplinar, los métodos pedagógicos y las posibilidades tencológicas. Esta asignatura se fundamenta en los siguientes pilares teóricos:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-slate-900 mb-2">Constructivismo Digital</h3>
+                            <p class="text-xs text-slate-600">
+                                El conocimiento no se transmite de forma pasiva; se construye activamente mediante la exploración, la manipulación de recursos digitales y la interacción con objetos de aprendizaje significativos.
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-slate-900 mb-2">Pedagogía Activa</h3>
+                            <p class="text-xs text-slate-600">
+                                Ubica al estudiante de primaria en el centro del proceso educativo, fomentando el aprender haciendo (learning by doing) mediante retos, juegos e investigación guiada.
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-slate-900 mb-2">Aprendizaje Basado en Problemas</h3>
+                            <p class="text-xs text-slate-600">
+                                Organiza el currículo en torno a situaciones del mundo real que demandan análisis crítico, colaboración en red y la creación de un producto auténtico.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-800 pt-4">Modelos de Referencia para la Práctica Pedagogía</h3>
+                    
+                    <div class="border border-slate-200 rounded-lg overflow-hidden">
+                        <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 font-semibold text-slate-800">
+                            Modelo SAMR (Redefinición del uso de tecnología)
+                        </div>
+                        <div class="p-4 space-y-3 text-xs">
+                            <div class="flex items-start space-y-1 md:space-y-0 md:flex-row gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold uppercase w-28 text-center flex-shrink-0">Sustitución</span>
+                                <p>La tecnología actúa como un sustituto directo sin cambio funcional (ej. leer un PDF en pantalla).</p>
+                            </div>
+                            <div class="flex items-start space-y-1 md:space-y-0 md:flex-row gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold uppercase w-28 text-center flex-shrink-0">Aumento</span>
+                                <p>La tecnología sustituye pero añade una mejora funcional (ej. un formulario digital con retroalimentación inmediata).</p>
+                            </div>
+                            <div class="flex items-start space-y-1 md:space-y-0 md:flex-row gap-2">
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold uppercase w-28 text-center flex-shrink-0">Modificación</span>
+                                <p>La tecnología permite un rediseño significativo de las tareas académicas (ej. muro colaborativo en Padlet).</p>
+                            </div>
+                            <div class="flex items-start space-y-1 md:space-y-0 md:flex-row gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold uppercase w-28 text-center flex-shrink-0">Redefinición</span>
+                                <p>Permite la creación de nuevas tareas antes inconcebibles (ej. desarrollo de un juego o sitio web interactivo por estudiantes).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: CONTENIDO TEMÁTICO Y HERRAMIENTAS DIGITALES -->
+            <section id="sec-modulos" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Módulos de Estudio Tecnopedagógico</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Análisis y Uso Educativo de las Herramientas Digitales</h2>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                    A continuación se presentan las cinco herramientas obligatorias que deberán integrarse de manera coherente e interconectada en el Proyecto Integrador Final.
+                </p>
+
+                <div class="space-y-6">
+
+                    <!-- Módulo 1: Google Sites -->
+                    <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition bg-white shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600 uppercase">Módulo A | Portal Integrador</span>
+                                <h3 class="text-lg font-bold text-slate-900">Google Sites</h3>
+                            </div>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded">Rol: Centro de Operaciones</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Funciona como la interfaz pública y concentradora de la unidad didáctica. En él se publica la presentación de la materia, la problemática inicial, la ruta de aprendizaje y las incrustaciones (embeds) de las actividades.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                            <p class="font-semibold text-slate-900">Instrucciones de Configuración Didáctica:</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>Crear un sitio web en Google Sites instituido para el grado escolar de primaria seleccionado.</li>
+                                <li>Estructurar cuatro páginas primarias: Inicio (Problema contextualizado), Módulos de Trabajo, Galería de Evidencias y Evaluaciones.</li>
+                                <li>Insertar mediante código iFrame o incrustación directa las aplicaciones auxiliares (Padlet, Educaplay y Juegos).</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 2: Google Classroom -->
+                    <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition bg-white shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600 uppercase">Módulo B | Gestión del Aprendizaje (LMS)</span>
+                                <h3 class="text-lg font-bold text-slate-900">Google Classroom</h3>
+                            </div>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded">Rol: Gestión y Entrega</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Permite administrar el flujo de trabajo académico, la asignación de tareas con criterios explícitos, la comunicación asincrónica y la evaluación formativa individualizada.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                            <p class="font-semibold text-slate-900">Instrucciones de Configuración Didáctica:</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>Configurar un Aula Virtual dividida por Temas coherentes con el programa de estudios de primaria.</li>
+                                <li>Diseñar al menos 3 Tareas de Trabajo con rúbricas de evaluación adjuntas en formato analítico.</li>
+                                <li>Generar preguntas de foro para discusión guiada entre los alumnos.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 3: Padlet -->
+                    <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition bg-white shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600 uppercase">Módulo C | Construcción Colaborativa</span>
+                                <h3 class="text-lg font-bold text-slate-900">Padlet</h3>
+                            </div>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded">Rol: Muro Interactivo</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Muro digital cooperativo para lluvia de ideas, coevaluación, muros de investigación y portafolios digitales compartidos.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                            <p class="font-semibold text-slate-900">Instrucciones de Configuración Didáctica:</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>Seleccionar un formato adecuado (Muro, Columna o Mapa según la disciplina de primaria).</li>
+                                <li>Redactar una consigna clara que exija a los alumnos de primaria adjuntar texto, imagen, audio o dibujo.</li>
+                                <li>Habilitar la opción de comentarios estructurados para fomentar la coevaluación de pares.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 4: Educaplay -->
+                    <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition bg-white shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600 uppercase">Módulo D | Actividades Interactivas</span>
+                                <h3 class="text-lg font-bold text-slate-900">Educaplay</h3>
+                            </div>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded">Rol: Refuerzo y Diagnóstico</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Plataforma para la creación de crucigramas, sopas de letras, adivinanzas, mapas interactivos y ordenamiento de palabras para consolidar vocabulario y conceptos clave.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                            <p class="font-semibold text-slate-900">Instrucciones de Configuración Didáctica:</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>Diseñar al menos dos actividades interactivas adaptadas al nivel léxico del grado de primaria atendido.</li>
+                                <li>Establecer retroalimentación inmediata orientada a la autocorrección.</li>
+                                <li>Obtener el código HTML iFrame para incrustar la actividad directamente dentro del portal de Google Sites.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 5: Gamificación (Wordwall, Kahoot, Quizizz, Genially) -->
+                    <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition bg-white shadow-sm">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600 uppercase">Módulo E | Ludificación Digital</span>
+                                <h3 class="text-lg font-bold text-slate-900">Herramientas de Gamificación (Wordwall / Quizizz / Kahoot / Genially)</h3>
+                            </div>
+                            <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded">Rol: Mecánicas de Juego</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Integración de mecánicas de juego (puntos, niveles, retos) para incrementar la motivación intrínseca, la evaluación diagnóstica o sumativa lúdica.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-lg space-y-2 text-xs text-slate-700">
+                            <p class="font-semibold text-slate-900">Instrucciones de Configuración Didáctica:</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>Seleccionar una herramienta (ej. Wordwall o Quizizz) coherente con los contenidos temáticos.</li>
+                                <li>Configurar preguntas con elementos visuales representativos para niños de educación primaria.</li>
+                                <li>Establecer mecánicas de desafío individual o colaborativo para la resolución formativa del reto.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: PROYECTO INTEGRADOR FINAL -->
+            <section id="sec-proyecto" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Evaluación de Asignatura</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Especificaciones del Proyecto Integrador Final</h2>
+                </div>
+
+                <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                    <p>
+                        Los estudiantes universitarios de la Licenciatura en Pedagogía elaborarán de manera individual o en binas un <strong>Entorno Virtual de Aprendizaje (EVA)</strong> orientado a la educación primaria.
+                    </p>
+
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-2">
+                        <h3 class="font-bold text-blue-900 text-base">Estructura Obligatoria del Entorno Virtual</h3>
+                        <ul class="list-disc pl-5 space-y-1.5 text-xs text-blue-950">
+                            <li><strong>Nivel Escolar:</strong> Educación Primaria (Seleccionar un grado específico entre 1° y 6°).</li>
+                            <li><strong>Asignatura Base:</strong> Seleccionar una asignatura oficial (Lengua Materna/Español, Matemáticas, Ciencias Naturales, Geografía, Historia, o Formación Cívica y Ética).</li>
+                            <li><strong>Problemática Contextualizada (ABP):</strong> Definir un dilema, pregunta detonadora o reto del entorno que los niños de primaria deban resolver.</li>
+                            <li><strong>Articulación Tecnológica Completa:</strong> El producto debe integrar sinérgicamente Google Sites (sitio web articulador), Google Classroom (plataforma LMS), Padlet (muro cooperativo), Educaplay (ejercitación) y una herramienta de Gamificación.</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-800 pt-2">Pasos Metodológicos de Desarrollo</h3>
+
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 p-3 rounded-lg border border-slate-200">
+                            <span class="bg-slate-800 text-white font-bold rounded-full h-6 w-6 flex items-center justify-center text-xs flex-shrink-0">1</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs">Fase 1: Diagnóstico Curricular y Delimitación</h4>
+                                <p class="text-xs text-slate-600">Revisión de los Aprendizajes Esperados del plan de estudios de educación primaria. Selección del bloque y diseño del detonador ABP.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-lg border border-slate-200">
+                            <span class="bg-slate-800 text-white font-bold rounded-full h-6 w-6 flex items-center justify-center text-xs flex-shrink-0">2</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs">Fase 2: Arquitectura del Sitio Web (Google Sites)</h4>
+                                <p class="text-xs text-slate-600">Creación de la estructura del sitio con lenguaje, colores e iconografía apropiados para la infancia.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-lg border border-slate-200">
+                            <span class="bg-slate-800 text-white font-bold rounded-full h-6 w-6 flex items-center justify-center text-xs flex-shrink-0">3</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs">Fase 3: Desarrollo e Incrustación de Recursos</h4>
+                                <p class="text-xs text-slate-600">Elaboración de las actividades interactivas en Educaplay, Padlet y Gamificación e incrustación en el sitio web.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-lg border border-slate-200">
+                            <span class="bg-slate-800 text-white font-bold rounded-full h-6 w-6 flex items-center justify-center text-xs flex-shrink-0">4</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs">Fase 4: Configuración de Aula Virtual (Google Classroom)</h4>
+                                <p class="text-xs text-slate-600">Creación de la clase, vinculación con el sitio web, diseño de consignas, rubricas e instrumentos de evaluación.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-3 rounded-lg border border-slate-200">
+                            <span class="bg-slate-800 text-white font-bold rounded-full h-6 w-6 flex items-center justify-center text-xs flex-shrink-0">5</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs">Fase 5: Validación y Presentación GitHub</h4>
+                                <p class="text-xs text-slate-600">Verificación de accesibilidad, despliegue del repositorio de código/documentación y simulación de clase virtual.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: GENERADOR Y SIMULADOR INTERACTIVO -->
+            <section id="sec-simulador" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Herramienta Didáctica Interactiva</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Planificador de Entorno Virtual de Aprendizaje (Primaria)</h2>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                    Utilice esta herramienta para simular la planeación de su proyecto final. Al completar los campos, el sistema generará una matriz tecnopedagógica estructurada que podrá copiar o imprimir para su revisión académica.
+                </p>
+
+                <!-- Formulario Interactivo -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Grado Escolar de Primaria</label>
+                            <select id="sim-grado" class="w-full text-xs p-2.5 rounded border border-slate-300 bg-white">
+                                <option value="1° Grado de Primaria">1° Grado de Primaria</option>
+                                <option value="2° Grado de Primaria">2° Grado de Primaria</option>
+                                <option value="3° Grado de Primaria" selected>3° Grado de Primaria</option>
+                                <option value="4° Grado de Primaria">4° Grado de Primaria</option>
+                                <option value="5° Grado de Primaria">5° Grado de Primaria</option>
+                                <option value="6° Grado de Primaria">6° Grado de Primaria</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Asignatura Curricular</label>
+                            <select id="sim-materia" class="w-full text-xs p-2.5 rounded border border-slate-300 bg-white">
+                                <option value="Ciencias Naturales">Ciencias Naturales</option>
+                                <option value="Lengua Materna / Español">Lengua Materna / Español</option>
+                                <option value="Matemáticas">Matemáticas</option>
+                                <option value="Geografía">Geografía</option>
+                                <option value="Historia">Historia</option>
+                                <option value="Formación Cívica y Ética">Formación Cívica y Ética</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Tema / Unidad Didáctica</label>
+                        <input type="text" id="sim-tema" value="Cuidado del Medio Ambiente y Clasificación de Residuos" class="w-full text-xs p-2.5 rounded border border-slate-300 bg-white" placeholder="Ej. El Sistema Solar, Operaciones con Fracciones">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Problemática Contextualizada (Metodología ABP)</label>
+                        <textarea id="sim-problema" rows="2" class="w-full text-xs p-2.5 rounded border border-slate-300 bg-white" placeholder="Describa el problema real que los alumnos de primaria deberán resolver...">En la escuela primaria existe una gran acumulación de plásticos. ¿Cómo podemos crear una campaña digital interactiva para reducir y clasificar los residuos en nuestra comunidad?</textarea>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-3">
+                        <span class="block text-xs font-bold text-slate-700 mb-2">Integración de Herramientas Tecnológicas Seleccionadas:</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="flex items-center space-x-2 bg-white p-2 rounded border border-slate-200">
+                                <input type="checkbox" checked disabled class="rounded text-blue-600">
+                                <span><strong>Google Sites:</strong> Hub principal de la unidad</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-white p-2 rounded border border-slate-200">
+                                <input type="checkbox" checked disabled class="rounded text-blue-600">
+                                <span><strong>Google Classroom:</strong> Gestión de tareas y rúbricas</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-white p-2 rounded border border-slate-200">
+                                <input type="checkbox" id="chk-padlet" checked class="rounded text-blue-600">
+                                <span><strong>Padlet:</strong> Muro de evidencias colaborativo</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-white p-2 rounded border border-slate-200">
+                                <input type="checkbox" id="chk-educaplay" checked class="rounded text-blue-600">
+                                <span><strong>Educaplay:</strong> Actividad de clasificación interactiva</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-white p-2 rounded border border-slate-200 sm:col-span-2">
+                                <input type="checkbox" id="chk-gamificacion" checked class="rounded text-blue-600">
+                                <span><strong>Gamificación (Wordwall/Quizizz):</strong> Reto final de preguntas y respuestas</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="generarPlanMatriz()" class="bg-blue-700 hover:bg-blue-800 text-white font-semibold text-xs px-5 py-2.5 rounded-lg transition shadow-sm w-full sm:w-auto">
+                            Generar Matriz Tecnopedagógica de Clase
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resultado de la Matriz Generada -->
+                <div id="sim-resultado" class="mt-6 border border-slate-300 rounded-xl p-5 bg-white space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                        <h3 class="font-bold text-slate-900 text-sm">Matriz de Propuesta Tecnopedagógica Generada</h3>
+                        <button onclick="copiarMatriz()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-1 rounded border border-slate-300 transition">
+                            Copiar Texto
+                        </button>
+                    </div>
+                    <div id="matriz-contenido" class="text-xs text-slate-700 space-y-3 font-mono bg-slate-50 p-4 rounded border border-slate-200 overflow-x-auto">
+                        Presione "Generar Matriz Tecnopedagógica de Clase" para visualiza la estructura del proyecto.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 6: MATERIALES DE CONSULTA Y FUENTES -->
+            <section id="sec-materiales" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Sustento Teórico y Documentación</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Materiales Externos de Consulta Académica</h2>
+                </div>
+
+                <p class="text-sm text-slate-600">
+                    A continuación se listan las fuentes bibliográficas y los marcos institucionales que fundamentan la inserción de las tecnologías en la educación primaria.
+                </p>
+
+                <div class="space-y-4 text-xs">
+                    <div class="border border-slate-200 rounded-lg p-4 bg-white hover:bg-slate-50 transition">
+                        <span class="bg-slate-100 text-slate-800 text-2xs px-2 py-0.5 rounded font-bold uppercase mb-1 inline-block">Marco Internacional</span>
+                        <h3 class="font-bold text-slate-900 text-sm">UNESCO (2019). Marco de competencias de los docentes en materia de TIC.</h3>
+                        <p class="text-slate-600 mt-1">Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura. París, Francia.</p>
+                        <p class="text-slate-500 mt-2 italic">Establece las pautas para la formación docente en adquisición de conocimientos, profundización y generación de conocimiento mediante las TIC.</p>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-4 bg-white hover:bg-slate-50 transition">
+                        <span class="bg-slate-100 text-slate-800 text-2xs px-2 py-0.5 rounded font-bold uppercase mb-1 inline-block">Modelo Teórico</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Mishra, P., & Koehler, M. J. (2006). Technological Pedagogical Content Knowledge: A Framework for Teacher Knowledge.</h3>
+                        <p class="text-slate-600 mt-1">Teachers College Record, 108(6), 1017–1054.</p>
+                        <p class="text-slate-500 mt-2 italic">Define el modelo TPACK como la intersección disciplinar, pedagógica y tecnológica fundamental en el diseño de proyectos escolares.</p>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-4 bg-white hover:bg-slate-50 transition">
+                        <span class="bg-slate-100 text-slate-800 text-2xs px-2 py-0.5 rounded font-bold uppercase mb-1 inline-block">Constructivismo y TIC</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Jonassen, D. H. (2000). Computers as Mindtools for Schools: Engaging Critical Thinking.</h3>
+                        <p class="text-slate-600 mt-1">Prentice Hall. Upper Saddle River, NJ.</p>
+                        <p class="text-slate-500 mt-2 italic">Aborda el uso de las tecnologías como herramientas de la mente para potenciar el pensamiento crítico e indagatorio en estudiantes de primaria.</p>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-lg p-4 bg-white hover:bg-slate-50 transition">
+                        <span class="bg-slate-100 text-slate-800 text-2xs px-2 py-0.5 rounded font-bold uppercase mb-1 inline-block">Documentación Técnica</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Google for Education (2024). Guías de Integración de Google Classroom y Google Sites en Educación Básica.</h3>
+                        <p class="text-slate-600 mt-1">Recursos Oficiales para Educadores. Google Workspace for Education.</p>
+                        <p class="text-slate-500 mt-2 italic">Manuales de configuración técnica, administración de usuarios y entornos seguros para menores de edad.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 7: REFLEXIÓN Y APLICACIÓN PROFESIONAL -->
+            <section id="sec-reflexion" class="tab-content hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">Cierre Metacognitivo</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Reflexión Crítica y Aplicación en la Práctica Profesional</h2>
+                </div>
+
+                <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                    <p>
+                        El proceso de formación en la Licenciatura en Pedagogía requiere de una constante evaluación metacognitiva sobre la práctica docente. Diseñar entornos virtuales no es un ejercicio meramente técnico, sino una decisión ético-pedagógica sobre cómo se facilita el acceso al conocimiento.
+                    </p>
+
+                    <h3 class="text-base font-bold text-slate-900 pt-2">Cuestionario de Autoevaluación de Transferencia Profesional</h3>
+                    
+                    <div class="space-y-4 text-xs">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <label class="font-bold text-slate-800 block">1. Coherencia Pedagógica:</label>
+                            <p class="text-slate-600">¿De qué manera las herramientas seleccionadas (Sites, Classroom, Padlet, Educaplay, Gamificación) responden directamente al desarrollo cognitivo de los niños del grado escolar seleccionado?</p>
+                            <textarea rows="2" class="w-full p-2 rounded border border-slate-300 bg-white" placeholder="Redacte su reflexión pedagógica..."></textarea>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <label class="font-bold text-slate-800 block">2. Inclusión y Accesibilidad Digital:</label>
+                            <p class="text-slate-600">¿Qué estrategias implementará en su proyecto para asegurar que los estudiantes de primaria con conectividad limitada o necesidades educativas específicas puedan participar plenamente?</p>
+                            <textarea rows="2" class="w-full p-2 rounded border border-slate-300 bg-white" placeholder="Redacte sus alternativas de accesibilidad..."></textarea>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <label class="font-bold text-slate-800 block">3. Transferencia a su Vida Académica y Profesional:</label>
+                            <p class="text-slate-600">¿Cómo aplicará las competencias desarrolladas en esta asignatura en sus futuras prácticas profesionales y en la gestión de aulas en instituciones educativas de la región?</p>
+                            <textarea rows="2" class="w-full p-2 rounded border border-slate-300 bg-white" placeholder="Describa su plan de desarrollo profesional continuo..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-100 p-4 rounded-lg text-xs text-slate-700 border-l-4 border-slate-800 mt-4">
+                        <h4 class="font-bold text-slate-900 mb-1">Compromiso Institucional</h4>
+                        <p>
+                            Como futuro Licenciado en Pedagogía de la Universidad de la Ciénega Plantel Centro, asumo el compromiso de promover un uso crítico, humanista y transformador de la tecnología en favor de la equidad educativa y el desarrollo integral de las infancias.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer Institucional -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-xs border-t border-slate-800 no-print mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <img src="cienega.png" alt="Universidad de la Ciénega" class="h-8 w-auto brightness-200 grayscale contrast-200" onerror="this.style.display='none'">
+                <div>
+                    <p class="font-semibold text-slate-200">Universidad de la Ciénega - Plantel Centro</p>
+                    <p class="text-slate-500">Licenciatura en Pedagogía | Asignatura: Tecnologías y Educación I</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-slate-500">
+                <p>Guía de Aprendizaje Basado en Problemas y Diseño Tecnopedagógico</p>
+                <p class="mt-0.5">Formato Digital Adaptable para GitHub Pages</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interacción -->
+    <script>
+        // Función para cambiar entre pestañas
+        function switchTab(tabId) {
+            // Ocultar todos los contenidos de pestaña
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remover estado activo de los botones
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Mostrar el contenido seleccionado
+            const selectedContent = document.getElementById('sec-' + tabId);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+            }
+
+            // Activar botón seleccionado
+            const selectedLink = document.getElementById('nav-' + tabId);
+            if (selectedLink) {
+                selectedLink.classList.add('active');
+            }
+
+            // Desplazar suavemente al inicio del contenido en móviles
+            if (window.innerWidth < 1024) {
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+        }
+
+        // Función para generar la Matriz Tecnopedagógica en la herramienta interactiva
+        function generarPlanMatriz() {
+            const grado = document.getElementById('sim-grado').value;
+            const materia = document.getElementById('sim-materia').value;
+            const tema = document.getElementById('sim-tema').value || 'Tema No Especificado';
+            const problema = document.getElementById('sim-problema').value || 'Sin problema definido';
+            
+            const padlet = document.getElementById('chk-padlet').checked ? 'Sí (Muro Colaborativo)' : 'No incluido';
+            const educaplay = document.getElementById('chk-educaplay').checked ? 'Sí (Actividad Interactiva de Refuerzo)' : 'No incluido';
+            const gamificacion = document.getElementById('chk-gamificacion').checked ? 'Sí (Reto Ludificado de Cierre)' : 'No incluido';
+
+            const textoMatriz = `===================================================================
+MATRIZ DE PROYECTO TECNOPEDAGÓGICO - EDUCACIÓN PRIMARIA
+Asignatura: Tecnologías y Educación I | Licenciatura en Pedagogía
+Universidad de la Ciénega - Plantel Centro
+===================================================================
+
+1. DATOS GENERALES DEL PROYECTO
+   - Nivel Educativo: ${grado}
+   - Asignatura Base: ${materia}
+   - Unidad / Tema: ${tema}
+
+2. PLANTEAMIENTO METODOLÓGICO (ABP)
+   - Situación Problemática:
+     "${problema}"
+
+3. ARQUITECTURA TECNOLÓGICA Y HERRAMIENTAS INTEGRADAS
+   - Portal Integrador (Google Sites):
+     Estructura web publica con bienvenida, planteamiento del reto y paginas por módulo.
+   - LMS y Gestión (Google Classroom):
+     Aulas digitales para entrega formal, asignación de rubricas y foro de discusión.
+   - Muro Colaborativo (Padlet):
+     ${padlet}
+   - Ejercitación Interactiva (Educaplay):
+     ${educaplay}
+   - Evaluacion Gamificada (Wordwall/Quizizz/Kahoot):
+     ${gamificacion}
+
+4. SECUENCIA DIDÁCTICA CONSTRUCTIVISTA
+   - Fase de Inicio: Presentacion del caso problema en Google Sites y diagnostico lúdico.
+   - Fase de Desarrollo: Investigación individual/equipo, registros en Padlet y entregas en Classroom.
+   - Fase de Cierre: Presentación de solución en el sitio web y juego interactivo de consolidación.
+
+===================================================================
+Documento generado dinámicamente para la asignatura Tecnologías y Educación I.`;
+
+            document.getElementById('matriz-contenido').innerText = textoMatriz;
+        }
+
+        // Función para copiar la matriz generada
+        function copiarMatriz() {
+            const contenido = document.getElementById('matriz-contenido').innerText;
+            if (!contenido || contenido.includes('Presione "Generar')) {
+                alert('Por favor genere primero la matriz antes de copiar.');
+                return;
+            }
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = contenido;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = '¡Copiado!';
+            btn.classList.add('bg-emerald-100', 'text-emerald-800');
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-emerald-100', 'text-emerald-800');
+            }, 2000);
+        }
+
+        // Inicialización al cargar la página
+        window.onload = function() {
+            switchTab('presentacion');
+            generarPlanMatriz();
+        };
+    </script>
+</body>
+</html>
