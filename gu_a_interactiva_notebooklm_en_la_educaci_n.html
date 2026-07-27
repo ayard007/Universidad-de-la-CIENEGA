@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: NotebookLM en la Enseñanza y el Aprendizaje</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        uc: {
+                            navy: '#1d2a58',
+                            blue: '#3b51a3',
+                            light: '#f1f5f9',
+                            accent: '#2563eb',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header Institucional -->
+    <header class="bg-white border-b-4 border-uc-navy shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="cienega.png" alt="Universidad de la Ciénega" class="h-16 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/240x80/1d2a58/ffffff?text=Universidad+de+la+Ci%C3%A9nega';">
+                <div class="border-l-2 border-slate-300 pl-4">
+                    <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Materia: Habilidades Digitales</span>
+                    <span class="block text-sm font-bold text-uc-navy">Licenciatura Universitaria</span>
+                </div>
+            </div>
+            <div class="text-center sm:text-right">
+                <h1 class="text-xl sm:text-2xl font-bold text-uc-navy leading-tight">NotebookLM: Generación de Contenido Educativo</h1>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">Guía Interactiva con Pedagogía Activa y Aprendizaje Basado en Problemas</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Rápida -->
+    <nav class="bg-uc-navy text-white text-xs sm:text-sm shadow-inner py-2.5 px-4 sticky top-[80px] z-40">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 font-medium">
+            <a href="#problema" class="hover:text-blue-200 transition-colors">1. Planteamiento del Problema</a>
+            <a href="#fundamentacion" class="hover:text-blue-200 transition-colors">2. Principios de NotebookLM</a>
+            <a href="#paso-a-paso" class="hover:text-blue-200 transition-colors">3. Guía Paso a Paso</a>
+            <a href="#actividades" class="hover:text-blue-200 transition-colors">4. Actividades Classroom</a>
+            <a href="#reflexion" class="hover:text-blue-200 transition-colors">5. Reflexión y Aplicación</a>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-12">
+
+        <!-- Banner Introductorio -->
+        <section class="bg-gradient-to-r from-uc-navy to-uc-blue rounded-2xl text-white p-6 sm:p-10 shadow-lg">
+            <div class="max-w-4xl space-y-4">
+                <span class="inline-block bg-blue-500/30 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full border border-blue-300/30">
+                    Metodología Constructivista
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight">Transformación del Procesamiento de Información Académica mediante IA Grounded</h2>
+                <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                    Esta guía interactiva está diseñada para que los estudiantes universitarios de cualquier disciplina dominen el uso de NotebookLM como un asistente analítico sustentado rigurosamente en fuentes documentales verificadas.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: Planteamiento del Problema (ABP) -->
+        <section id="problema" class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-uc-navy">1. Planteamiento del Problema Académico (ABP)</h2>
+                <p class="text-slate-600 text-sm mt-1">Escenario real de aprendizaje universitario</p>
+            </div>
+
+            <div class="bg-slate-50 border-l-4 border-uc-blue p-5 rounded-r-lg space-y-3">
+                <h3 class="font-semibold text-slate-900 text-base">Escenario del Estudiante Universitario:</h3>
+                <p class="text-slate-700 text-sm leading-relaxed">
+                    Un equipo universitario de la materia de Habilidades Digitales debe abordar una unidad de estudio multidisciplinaria que incluye lecturas densas en PDF, conferencias grabadas en video, articulos científicos en inglés y bases normativas. Los integrantes se enfrentan a los siguientes desafíos:
+                </p>
+                <ul class="list-disc list-inside text-sm text-slate-700 space-y-1 pl-2">
+                    <li>Riesgo de alucinación de datos e imprecisión teórica al consultar inteligencia artificial generativa convencional.</li>
+                    <li>Dificultad para sintetizar volúmenes elevados de información en formatos diversos (audio, mapas conceptuales, diapositivas).</li>
+                    <li>Falta de tiempo para estructurar guías de estudio interactivas y cronologías precisas para repasar antes de exámenes.</li>
+                </ul>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
+                <h3 class="font-bold text-uc-navy text-base mb-2">Pregunta Eje del Reto:</h3>
+                <p class="text-slate-800 text-sm italic">
+                    "¿De qué manera podemos utilizar NotebookLM para construir un ecosistema de aprendizaje y enseñanza autónomo, capaz de transformar lecturas complejas en insumos educativos multiformato sustentados estrictamente en nuestras fuentes originales?"
+                </p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Fundamentación Teórica de NotebookLM -->
+        <section id="fundamentacion" class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-uc-navy">2. Principios de Funcionamiento de NotebookLM</h2>
+                <p class="text-slate-600 text-sm mt-1">Fundamentos del modelo enfocado en fuentes exclusivas (Grounded AI)</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 bg-slate-50">
+                    <h3 class="font-bold text-slate-900 text-base border-b border-slate-200 pb-2">Chatbots Tradicionales (IA Abierta)</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">[X]</span>
+                            <span>Buscan información en toda la red abierta o en su base de entrenamiento previa.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">[X]</span>
+                            <span>Pueden generar alucinaciones (datos falsos o referencias inexistentes).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">[X]</span>
+                            <span>Dificultad para rastrear la cita textual exacta del autor.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-blue-300 rounded-lg p-5 space-y-3 bg-blue-50/50">
+                    <h3 class="font-bold text-uc-navy text-base border-b border-blue-200 pb-2">NotebookLM (Grounded AI)</h3>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">[OK]</span>
+                            <span>Responde únicamente con base en las fuentes cargadas explícitamente por el usuario.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">[OK]</span>
+                            <span>Cada afirmación incluye citas interactivas con acceso directo al párrafo de origen.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">[OK]</span>
+                            <span>Permite generar productos derivados como resúmenes en audio, guías de estudio y esquemas.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: Guía Técnica Paso a Paso -->
+        <section id="paso-a-paso" class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-uc-navy">3. Guía Paso a Paso: Configuración y Generación de Contenidos</h2>
+                <p class="text-slate-600 text-sm mt-1">Instrucciones técnicas para la creación de insumos educativos</p>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- Paso 1 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">1</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Configuración Inicial y Carga de Fuentes</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Acceda a la plataforma institucional de NotebookLM e inicie sesión con su cuenta. Cree un nuevo cuaderno ("New Notebook") e importe los materiales de estudio.
+                    </p>
+                    <div class="pl-11 grid sm:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-100 p-3 rounded border border-slate-200">
+                            <strong>Formatos Aceptados:</strong> Documentos PDF, Google Docs, Google Slides, texto copiado, enlaces web públicos, videos de YouTube (transcripción) y archivos de audio (MP3, WAV).
+                        </div>
+                        <div class="bg-slate-100 p-3 rounded border border-slate-200">
+                            <strong>Límite Recomendado:</strong> Hasta 50 fuentes por cuaderno con un máximo de 500,000 palabras por fuente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">2</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Interacción con el Chatbot Acotado a Fuentes</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Utilice la consola de chat para realizar consultas específicas. El chatbot analizará exclusivamente el corpus cargado.
+                    </p>
+                    <div class="pl-11 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs font-mono text-slate-800 space-y-2">
+                        <p class="font-bold text-uc-navy font-sans">Ejemplo de Prompt Efectivo para Estudiantes:</p>
+                        <p>"Con base en los capítulos 2 y 3 del PDF cargado, contrasta las teorías del aprendizaje activo y tradicional. Presenta la respuesta en una tabla de dos columnas e incluye las citas textuales pertinentes."</p>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">3</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Generación de Resúmenes Automáticos y Guías de Estudio</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Diríjase al panel superior "Notebook Guide" para acceder a las opciones de sintetización automatizada.
+                    </p>
+                    <ul class="pl-11 list-disc list-inside text-sm text-slate-600 space-y-1">
+                        <td><strong>Guía de Estudio:</strong> Genera automáticamente un resumen conceptual, un glosario de términos clave y preguntas de comprensión.</td>
+                        <td><strong>Documento FAQ:</strong> Elabora una lista de preguntas frecuentes con respuestas detalladas extraídas del material.</td>
+                    </ul>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">4</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Generación de Resúmenes en Audio y Podcasts (Audio Overview)</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        NotebookLM permite transformar lecturas extensas en una discusión en audio fluida tipo pódcast entre dos voces sintéticas.
+                    </p>
+                    <div class="pl-11 bg-blue-50/60 p-4 rounded-lg border border-blue-200 text-xs text-slate-700 space-y-2">
+                        <p><strong>Procedimiento:</strong> Haga clic en "Audio Overview" -> Seleccione "Generate". Puede personalizar el enfoque del audio introduciendo instrucciones adicionales (ejemplo: "Enfocar la discusión en las aplicaciones prácticas para la carrera de Ingeniería/Administración/Educación").</p>
+                    </div>
+                </div>
+
+                <!-- Paso 5 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">5</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Estructuración de Mapas Conceptuales y Mentales</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Aunque la interfaz entrega texto, puede solicitarle al chatbot la arquitectura conceptual en sintaxis estructurada para exportarla a herramientas de mapas como Mermaid.js, CmapTools o XMind.
+                    </p>
+                    <div class="pl-11 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs font-mono text-slate-800">
+                        <p class="font-bold text-uc-navy font-sans mb-1">Prompt Recomendado:</p>
+                        <p>"Genera la jerarquía conceptual de las fuentes en formato de esquema con viñetas indicando: Concepto Principal -> Subconceptos -> Enlaces lógicos -> Ejemplos. Prepara el texto listo para diagramar un mapa mental."</p>
+                    </div>
+                </div>
+
+                <!-- Paso 6 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">6</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Generación de Cronologías y Líneas del Tiempo</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Para materias históricas, normativas o procedimentales, ordene los hitos en secuencia temporal estricta.
+                    </p>
+                    <div class="pl-11 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs text-slate-700">
+                        <p><strong>Instrucción en Chat:</strong> "Extrae todos los eventos, fechas clave y etapas secuenciales citadas en los documentos. Presenta una tabla cronológica que contenga: Fecha/Etapa, Evento Principal, Causa y Consecuencia."</p>
+                    </div>
+                </div>
+
+                <!-- Paso 7 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">7</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Estructuración de Presentaciones y Guiones para Diapositivas</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        Planifique exposiciones escolares estructurando el contenido diapositiva por diapositiva.
+                    </p>
+                    <div class="pl-11 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs text-slate-700">
+                        <p><strong>Instrucción en Chat:</strong> "Crea el guión de una presentación oral de 10 minutos basada en los documentos. Incluye: Título de la diapositiva, puntos clave sintéticos y notas del orador con explicaciones breves para cada lámina."</p>
+                    </div>
+                </div>
+
+                <!-- Paso 8 -->
+                <div class="border border-slate-200 rounded-lg p-5 space-y-3 hover:border-uc-blue transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-uc-navy text-white font-bold rounded-full h-8 w-8 flex items-center justify-center text-sm">8</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Resúmenes Multimodal y Estrategias para Resumen en Video</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm pl-11">
+                        NotebookLM procesa videos de YouTube mediante sus transcripciones y permite crear guiones audiovisuales para la producción de cápsulas de video educativo.
+                    </p>
+                    <div class="pl-11 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs text-slate-700">
+                        <p><strong>Instrucción en Chat:</strong> "Toma la transcripción del video cargado y las lecturas en PDF para diseñar un guión de video educativo de 3 minutos. Divide el guión en dos columnas: Marcador Visual (imágenes/esquemas) y Marcador de Audio (locución sustentada en las fuentes)."</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: Actividades Prácticas para Google Classroom -->
+        <section id="actividades" class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-10">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-uc-navy">4. Actividades Prácticas para Entregar en Google Classroom</h2>
+                <p class="text-slate-600 text-sm mt-1">Actividades formativas orientadas a la evaluación continua y la construcción colaborativa del conocimiento</p>
+            </div>
+
+            <!-- ACTIVIDAD 1 -->
+            <div class="border-2 border-uc-blue rounded-xl p-6 bg-slate-50/50 space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200 pb-3">
+                    <span class="bg-uc-navy text-white text-xs font-bold px-3 py-1 rounded-md">ACTIVIDAD 1: FORO DE DISCUSIÓN</span>
+                    <span class="text-xs font-semibold text-slate-500">Valor: Mediación Crítica</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">Foro de Reflexión Crítica: La Autonomía del Aprendizaje e IA Grounded</h3>
+                <p class="text-sm text-slate-700">
+                    <strong>Instrucción general:</strong> Ingrese al módulo de Foros en Google Classroom y responda argumentativamente a la siguiente pregunta detonadora.
+                </p>
+
+                <div class="bg-white border-l-4 border-uc-navy p-4 rounded shadow-sm text-sm text-slate-800 italic">
+                    "¿En qué medida el uso de herramientas de IA delimitadas por fuentes (como NotebookLM) fortalece la capacidad crítica del estudiante universitario para evaluar evidencia, y cuáles son los riesgos académicos de sustituir la lectura directa e integral por síntesis automatizadas en la formación profesional?"
+                </div>
+
+                <div class="space-y-2 text-xs text-slate-700">
+                    <p class="font-bold text-slate-900">Requisitos de Entrega en Classroom:</p>
+                    <ol class="list-decimal list-inside space-y-1 pl-2">
+                        <li>Publicar una aportación original con una extensión mínima de 250 palabras y máxima de 400 palabras.</li>
+                        <li>Utilizar al menos dos conceptos clave abordados en la materia (ej. curaduría digital, validez de la evidencia, grounded AI, pensamiento crítico).</li>
+                        <li>Realizar al menos dos réplicas analíticas y respetuosas a las publicaciones de otros compañeros de clase.</li>
+                        <li>Adjuntar la captura de pantalla de su participación al apartado correspondiente en Classroom.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 2 -->
+            <div class="border-2 border-uc-blue rounded-xl p-6 bg-slate-50/50 space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200 pb-3">
+                    <span class="bg-uc-navy text-white text-xs font-bold px-3 py-1 rounded-md">ACTIVIDAD 2: PROYECTO PRÁCTICO APLICADO</span>
+                    <span class="text-xs font-semibold text-slate-500">Valor: Aprendizaje Significativo</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">Construcción de un Kit Multimodal de Aprendizaje Universitario</h3>
+                <p class="text-sm text-slate-700">
+                    <strong>Objetivo:</strong> Diseñar un paquete integral de insumos de estudio para un tema complejo de cualquier materia que curse actualmente en la licenciatura.
+                </p>
+
+                <div class="space-y-3 text-xs text-slate-700">
+                    <p class="font-bold text-slate-900 text-sm">Pasos de Ejecución:</p>
+                    <ol class="list-decimal list-inside space-y-2 pl-2">
+                        <li><strong>Selección y Carga:</strong> Seleccione un tema complejo de alguna asignatura actual y cargue en NotebookLM al menos 3 fuentes confiables (1 PDF académico, 1 artículo/enlace web y 1 video con transcripción).</li>
+                        <li><strong>Generación de Productos en NotebookLM:</strong>
+                            <ul class="list-disc list-inside pl-4 mt-1 space-y-1">
+                                <li>Cree una <em>Guía de Estudio Sintética</em> con glosario.</li>
+                                <li>Genere un <em>Resumen de Audio (Audio Overview)</em> o configure su escaleta/guión.</li>
+                                <li>Obtenga un esquema para <em>Mapa Conceptual</em> y una <em>Cronología/Tabla de hitos</em>.</li>
+                                <li>Realice 3 preguntas avanzadas al chatbot y copie las respuestas junto con sus citas textuales de verificación.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Integración del Documento Final:</strong> Consolide todos los insumos en un documento PDF estructurado (portada, introducción, enlace/evidencia del cuaderno de NotebookLM, insumos generados y conclusiones).</li>
+                        <li><strong>Entrega:</strong> Suba el documento PDF a la asignación de Google Classroom antes de la fecha límite.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 3: QUIZ INTERACTIVO -->
+            <div class="border-2 border-uc-navy rounded-xl p-6 bg-white space-y-6 shadow-md">
+                <div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200 pb-3">
+                    <span class="bg-uc-navy text-white text-xs font-bold px-3 py-1 rounded-md">ACTIVIDAD 3: AUTOEVALUACIÓN INTERACTIVA</span>
+                    <span class="text-xs font-semibold text-slate-500">Cuestionario de 5 Preguntas</span>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">Quiz de Verificación de Dominio Técnico de NotebookLM</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Responda las preguntas planteadas. Al finalizar, haga clic en "Evaluar Quiz" para obtener su puntaje dinámico. Tome una captura de pantalla del resultado obtenido para subirla a Google Classroom.
+                    </p>
+                </div>
+
+                <!-- Formulario del Quiz -->
+                <form id="quizForm" class="space-y-6">
+
+                    <!-- Pregunta 1 -->
+                    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-sm text-slate-900">1. ¿Cuál es la diferencia fundamental entre un modelo de IA generativa genérico y el enfoque de NotebookLM?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="A" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>A) NotebookLM busca respuestas de manera aleatoria en redes sociales y foros abiertos.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="B" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>B) NotebookLM trabaja de forma acotada (Grounded AI) respondiendo únicamente con base en las fuentes cargadas por el usuario.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q1" value="C" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>C) NotebookLM no permite cargar archivos externos y funciona solo con plantillas predefinidas.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-sm text-slate-900">2. ¿Qué ventaja académica aportan las citas interactivas incluidas en las respuestas de NotebookLM?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="A" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>A) Permiten verificar de inmediato la fuente exacta de la afirmación, facilitando el rigor y la autenticidad académica.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="B" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>B) Reemplazan automáticamente la necesidad de incluir referencias bibliográficas en la tesis.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q2" value="C" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>C) Eliminan los derechos de autor de los documentos subidos.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-sm text-slate-900">3. ¿En qué consiste la función "Audio Overview" en NotebookLM?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="A" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>A) En un dictado de voz para escribir comandos sin usar el teclado.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="B" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>B) En la traducción simultánea de llamadas telefónicas del estudiante.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q3" value="C" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>C) En la generación de una conversación/pódcast en audio entre voces sintéticas que discuten y analizan las fuentes subidas.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-sm text-slate-900">4. ¿Cuáles de los siguientes tipos de fuentes se pueden importar directamente a NotebookLM?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="A" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>A) Archivos PDF, Google Docs, enlaces web, transcripciones/links de YouTube y archivos de audio.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="B" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>B) Únicamente imágenes escaneadas en formato JPG sin texto.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q4" value="C" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>C) Solamente archivos ejecutables de programas de software.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-sm text-slate-900">5. Desde la pedagogía constructivista, ¿cuál es el rol principal del estudiante al utilizar NotebookLM?</p>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="A" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>A) Actuar como sujeto pasivo que acepta las respuestas generadas sin realizar lectura ni validación.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="B" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>B) Actuar como curador activo que selecciona fuentes rigurosas, formula interrogantes estratégicos y valida la coherencia del contenido.</span>
+                            </label>
+                            <label class="flex items-start p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q5" value="C" class="mt-0.5 mr-2 text-uc-navy">
+                                <span>C) Delegar la autoría completa del trabajo académico sin ejercer revisión.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="button" onclick="calcularResultadoQuiz()" class="w-full sm:w-auto bg-uc-navy hover:bg-uc-blue text-white font-bold text-sm px-6 py-3 rounded-lg shadow transition-colors">
+                            Evaluar Quiz y Obtener Comprobante
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Panel de Resultado -->
+                <div id="resultadoQuiz" class="hidden p-5 rounded-lg border text-sm space-y-3">
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <span class="font-bold text-base" id="tituloResultado">Resultado de Autoevaluación</span>
+                        <span class="font-extrabold text-lg px-3 py-1 rounded bg-white border" id="puntajeTexto">0 / 5</span>
+                    </div>
+                    <p id="mensajeRetroalimentacion" class="text-xs sm:text-sm"></p>
+                    <div class="bg-white/80 p-3 rounded border text-xs text-slate-600">
+                        <strong>Comprobante para Google Classroom:</strong> Tome una captura de pantalla completa de esta sección donde se observe el puntaje asignado y adjúntela a su entrega correspondiente.
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN 5: Reflexión y Aplicación -->
+        <section id="reflexion" class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl sm:text-2xl font-bold text-uc-navy">5. Plan de Reflexión y Transferencia del Aprendizaje</h2>
+                <p class="text-slate-600 text-sm mt-1">Planificación estratégica para la vida universitaria y el ejercicio profesional</p>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                El aprendizaje tecnológico cobra sentido cuando se transfiere a la práctica cotidiana. A continuación, complete mentalmente y en sus notas personales la siguiente matriz de autogestión profesional.
+            </p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                        <tr class="bg-uc-navy text-white">
+                            <th class="p-3 border border-slate-300 font-semibold">Dimensión</th>
+                            <th class="p-3 border border-slate-300 font-semibold">Estrategia de Aplicación con NotebookLM</th>
+                            <th class="p-3 border border-slate-300 font-semibold">Impacto Esperado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-slate-50">
+                        <tr>
+                            <td class="p-3 border border-slate-300 font-bold text-slate-900">Gestión de Lecturas Universitarias</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Crear un cuaderno por asignatura y subir las lecturas del plan de estudios al inicio del ciclo lectivo.</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Reducción del tiempo de búsqueda y síntesis rápida con verificación directa de citas.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-slate-300 font-bold text-slate-900">Preparación de Exámenes y Repasos</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Generar resúmenes en audio (Audio Overview) y guías de estudio para repaso auditivo durante desplazamientos.</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Refuerzo multimodal de conceptos clave y mayor tasa de retención conceptual.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-slate-300 font-bold text-slate-900">Trabajo Colaborativo y Docencia entre Pares</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Compartir cuadernos temáticos con compañeros de equipo para estructurar exposiciones, mapas conceptuales y cuestionarios.</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Construcción colaborativa fundamentada en datos rigurosos y discusión técnica de nivel universitario.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-slate-300 font-bold text-slate-900">Ejercicio Profesional Futuro</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Sintetizar manuales técnicos, marcos legales, normativas ISO y reportes de investigación sectorial.</td>
+                            <td class="p-3 border border-slate-300 text-slate-700">Toma de decisiones ejecutivas sustentada en evidencia verificable con alta productividad.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 text-xs sm:text-sm text-slate-800 space-y-2">
+                <p class="font-bold text-uc-navy">Compromiso Ético y Académico del Estudiante:</p>
+                <p class="leading-relaxed">
+                    Al utilizar herramientas avanzadas de inteligencia artificial como NotebookLM, me comprometo a mantener el rigor ético, citando debidamente a las autorías originales, validando la coherencia conceptual de los resultados y utilizando la tecnología como un catalizador del pensamiento crítico y no como un sustituto del esfuerzo intelectual.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-uc-dark text-slate-400 text-xs py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left space-y-1">
+                <p class="font-bold text-white text-sm">Universidad de la Ciénega</p>
+                <p>Materia: Habilidades Digitales - Nivel Licenciatura</p>
+            </div>
+            <div class="text-center sm:text-right space-y-1">
+                <p>Diseño Educativo con Pedagogía Activa y Aprendizaje Basado en Problemas</p>
+                <p>Formato compatible para despliegue en GitHub Pages y Google Classroom</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interactividad -->
+    <script>
+        function calcularResultadoQuiz() {
+            const respuestasCorrectas = {
+                q1: 'B',
+                q2: 'A',
+                q3: 'C',
+                q4: 'A',
+                q5: 'B'
+            };
+
+            let puntaje = 0;
+            let total = 5;
+            let respondidas = 0;
+
+            const form = document.getElementById('quizForm');
+            const resultadoDiv = document.getElementById('resultadoQuiz');
+            const tituloResultado = document.getElementById('tituloResultado');
+            const puntajeTexto = document.getElementById('puntajeTexto');
+            const mensajeRetroalimentacion = document.getElementById('mensajeRetroalimentacion');
+
+            for (let q in respuestasCorrectas) {
+                const seleccion = form.querySelector(`input[name="${q}"]:checked`);
+                if (seleccion) {
+                    respondidas++;
+                    if (seleccion.value === respuestasCorrectas[q]) {
+                        puntaje++;
+                    }
+                }
+            }
+
+            if (respondidas < total) {
+                resultadoDiv.classList.remove('hidden', 'bg-green-50', 'bg-yellow-50', 'border-green-300', 'border-yellow-300');
+                resultadoDiv.classList.add('bg-red-50', 'border-red-300', 'text-red-800');
+                tituloResultado.textContent = "Cuestionario Incompleto";
+                puntajeTexto.textContent = respondidas + " / " + total;
+                mensajeRetroalimentacion.textContent = "Por favor responda las 5 preguntas antes de evaluar su prueba.";
+                resultadoDiv.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            resultadoDiv.classList.remove('hidden', 'bg-red-50', 'border-red-300', 'text-red-800');
+            puntajeTexto.textContent = puntaje + " / " + total;
+
+            if (puntaje === 5) {
+                resultadoDiv.classList.add('bg-green-50', 'border-green-300', 'text-green-900');
+                tituloResultado.textContent = "¡Excelente Desempeño!";
+                mensajeRetroalimentacion.textContent = "Ha demostrado un dominio completo sobre el funcionamiento, ventajas académicas y alcance pedagógico de NotebookLM. Su comprobante está listo para ser capturado y subido a Google Classroom.";
+            } else if (puntaje >= 3) {
+                resultadoDiv.classList.add('bg-yellow-50', 'border-yellow-300', 'text-yellow-900');
+                tituloResultado.textContent = "Desempeño Satisfactorio";
+                mensajeRetroalimentacion.textContent = "Ha comprendido los conceptos fundamentales. Se recomienda repasar la Guía Paso a Paso para consolidar los aspectos técnicos antes de entregar la Actividad 2.";
+            } else {
+                resultadoDiv.classList.add('bg-red-50', 'border-red-300', 'text-red-900');
+                tituloResultado.textContent = "Requiere Revisión";
+                mensajeRetroalimentacion.textContent = "Se sugiere realizar una relectura detenida de la sección de Principios de Funcionamiento y la Guía Técnica Paso a Paso para volver a intentar el cuestionario.";
+            }
+
+            resultadoDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
