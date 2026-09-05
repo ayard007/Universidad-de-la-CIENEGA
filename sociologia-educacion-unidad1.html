@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociología de la Educación — La Sociología: definición, origen y fundadores</title>
+<style>
+:root{
+  --azul-profundo:#1a2a6c;
+  --azul-medio:#3b4a9c;
+  --azul-claro:#8a97c9;
+  --terracota:#b23a2e;
+  --arena:#f4f1ea;
+  --gris-texto:#2c2f38;
+  --blanco:#ffffff;
+  --sombra:rgba(26,42,108,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Georgia,'Times New Roman',serif;
+  color:var(--gris-texto);
+  background:var(--arena);
+  line-height:1.7;
+}
+header.hero{
+  background:linear-gradient(135deg,var(--azul-profundo),var(--azul-medio));
+  color:var(--blanco);
+  padding:2.5rem 1.5rem;
+  text-align:center;
+}
+header.hero img{
+  width:120px;height:120px;object-fit:contain;
+  background:var(--blanco);border-radius:50%;padding:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);margin-bottom:1rem;
+}
+header.hero h1{font-size:1.9rem;font-weight:normal;letter-spacing:0.5px;margin-bottom:0.4rem;}
+header.hero .sub{font-size:1.05rem;color:var(--azul-claro);font-style:italic;}
+header.hero .meta{margin-top:0.8rem;font-size:0.9rem;opacity:0.9;}
+.layout{display:flex;max-width:1200px;margin:0 auto;}
+nav.sidebar{
+  width:250px;flex-shrink:0;position:sticky;top:0;height:100vh;
+  overflow-y:auto;background:var(--blanco);border-right:1px solid #e0dcd2;
+  padding:1.5rem 1rem;
+}
+nav.sidebar h2{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--terracota);margin-bottom:0.8rem;}
+nav.sidebar a{
+  display:block;color:var(--azul-medio);text-decoration:none;
+  font-size:0.92rem;padding:0.45rem 0.6rem;border-radius:6px;margin-bottom:0.2rem;
+  border-left:3px solid transparent;transition:all 0.2s;
+}
+nav.sidebar a:hover{background:var(--arena);border-left-color:var(--terracota);}
+main{flex:1;padding:2rem 2.5rem;max-width:900px;}
+section{margin-bottom:3rem;scroll-margin-top:1rem;}
+section h2.titulo{
+  font-size:1.6rem;color:var(--azul-profundo);border-bottom:3px solid var(--azul-claro);
+  padding-bottom:0.5rem;margin-bottom:1.2rem;
+}
+section h3{color:var(--terracota);font-size:1.2rem;margin:1.5rem 0 0.7rem;}
+p{margin-bottom:1rem;text-align:justify;}
+.tarjeta{
+  background:var(--blanco);border-radius:10px;padding:1.5rem;
+  box-shadow:0 3px 12px var(--sombra);margin:1.2rem 0;border-top:4px solid var(--azul-medio);
+}
+.destacado{
+  background:#eef1f9;border-left:4px solid var(--azul-medio);
+  padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;font-style:italic;
+}
+.problema{
+  background:#fbf0ee;border-left:4px solid var(--terracota);
+  padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;
+}
+.problema strong{color:var(--terracota);}
+ul.lista,ol.lista{margin:0.8rem 0 1rem 1.5rem;}
+ul.lista li,ol.lista li{margin-bottom:0.6rem;}
+table.fundadores{width:100%;border-collapse:collapse;margin:1.2rem 0;background:var(--blanco);border-radius:8px;overflow:hidden;box-shadow:0 3px 12px var(--sombra);}
+table.fundadores th{background:var(--azul-profundo);color:var(--blanco);padding:0.8rem;text-align:left;font-size:0.95rem;}
+table.fundadores td{padding:0.8rem;border-bottom:1px solid #e8e4da;vertical-align:top;font-size:0.92rem;}
+table.fundadores tr:last-child td{border-bottom:none;}
+.timeline{border-left:3px solid var(--azul-claro);margin:1.5rem 0 1.5rem 1rem;padding-left:1.5rem;}
+.timeline .evento{position:relative;margin-bottom:1.3rem;}
+.timeline .evento::before{content:'';position:absolute;left:-1.9rem;top:0.3rem;width:14px;height:14px;background:var(--terracota);border-radius:50%;border:3px solid var(--arena);}
+.timeline .evento .anio{font-weight:bold;color:var(--azul-profundo);}
+.actividad{
+  background:var(--blanco);border-radius:12px;padding:1.8rem;margin:1.5rem 0;
+  box-shadow:0 4px 16px var(--sombra);border-top:5px solid var(--terracota);
+}
+.actividad .etiqueta{
+  display:inline-block;background:var(--terracota);color:var(--blanco);
+  font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;
+  padding:0.3rem 0.9rem;border-radius:20px;margin-bottom:0.9rem;font-family:Arial,sans-serif;
+}
+.actividad h3{color:var(--azul-profundo);margin-top:0;}
+.pasos{counter-reset:paso;list-style:none;margin:1rem 0;}
+.pasos li{position:relative;padding-left:2.6rem;margin-bottom:0.9rem;}
+.pasos li::before{
+  counter-increment:paso;content:counter(paso);
+  position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;
+  background:var(--azul-medio);color:var(--blanco);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:0.9rem;
+}
+.ejemplo{background:#f0f4ee;border:1px dashed #7a9c6a;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-size:0.93rem;}
+.ejemplo strong{color:#4a6a3a;}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Ciénega">
+  <h1>Sociología de la Educación</h1>
+  <div class="sub">Unidad 1. La Sociología: definición, origen y fundadores</div>
+  <div class="meta">Licenciatura en Pedagogía &middot; Guía interactiva de aprendizaje</div>
+</header>
+<div class="layout">
+<nav class="sidebar">
+  <h2>Contenido</h2>
+  <a href="#intro">Presentación</a>
+  <a href="#t11">1.1 Definición y objeto</a>
+  <a href="#t12">1.2 Origen de la Sociología</a>
+  <a href="#t13">1.3 Los fundadores</a>
+  <a href="#act1">Actividad 1 &middot; Foro</a>
+  <a href="#act2">Actividad 2 &middot; Aplicación</a>
+  <a href="#act3">Actividad 3 &middot; Quiz</a>
+  <a href="#reflexion">Reflexión y aplicación</a>
+</nav>
+<main>
+<section id="intro">
+  <h2 class="titulo">Presentación de la guía</h2>
+  <p>Esta guía ha sido diseñada para acompañar su proceso de construcción del conocimiento en la asignatura de Sociología de la Educación. Su estructura responde a una metodología constructivista y al aprendizaje basado en problemas (ABP): en lugar de recibir la información como un producto terminado, usted será invitado a interrogar los conceptos, contrastarlos con su realidad como estudiante universitario y elaborar respuestas propias mediante la colaboración con sus pares.</p>
+  <div class="destacado">
+    Como futuros pedagogos, ustedes no solo aprenderán sociología: aprenderán a mirar la educación con lentes sociológicos. Este cambio de mirada constituye el propósito central de la unidad.
+  </div>
+  <div class="tarjeta">
+    <h3>Propósito de aprendizaje</h3>
+    <p>Al concluir esta unidad, usted será capaz de definir la sociología y delimitar su objeto de estudio, explicar las condiciones históricas que dieron origen a la disciplina y caracterizar las aportaciones de sus principales fundadores, aplicando estas nociones al análisis de su propia experiencia educativa.</p>
+  </div>
+  <div class="problema">
+    <strong>Problema orientador de la unidad:</strong> Cada mañana, miles de estudiantes universitarios en México ingresan a las aulas. Algunos permanecen; otros abandonan. Algunos participan; otros callan. ¿Por qué la trayectoria educativa de una persona no depende únicamente de su esfuerzo o inteligencia individual? ¿Qué fuerzas sociales, invisibles a primera vista, modelan lo que ocurre en el salón de clases? La sociología nace, precisamente, para responder preguntas de esta naturaleza.
+  </div>
+</section>
+
+<section id="t11">
+  <h2 class="titulo">1.1 Definición y objeto de estudio</h2>
+  <p>La sociología es la ciencia social que estudia sistemáticamente la vida en sociedad: las relaciones que los seres humanos establecen entre sí, las instituciones que crean, las estructuras que los organizan y los procesos de cambio que los transforman. Su método es empírico y su ambición es explicativa: no se conforma con describir lo que ocurre, sino que busca comprender por qué ocurre.</p>
+  <h3>El objeto de estudio</h3>
+  <p>El objeto de estudio de la sociología es el hecho social. Este concepto, formulado con precisión por Émile Durkheim, designa toda manera de actuar, pensar o sentir que es exterior al individuo y que ejerce sobre él una coacción. Los hechos sociales no se explican por la psicología individual, sino por su carácter colectivo: existen antes de que nazcamos, nos son transmitidos y persisten después de nosotros.</p>
+  <div class="tarjeta">
+    <h3>Características del hecho social</h3>
+    <ul class="lista">
+      <li><strong>Exterioridad:</strong> existe fuera de las conciencias individuales; el lenguaje, las leyes o las costumbres preexisten al sujeto.</li>
+      <li><strong>Coacción:</strong> ejerce una presión sobre el individuo; quien transgrede una norma social experimenta sanciones, desde la desaprobación hasta el castigo formal.</li>
+      <li><strong>Generalidad:</strong> es común a los miembros de una sociedad, aunque adopta formas particulares en cada individuo.</li>
+    </ul>
+  </div>
+  <div class="destacado">
+    Pensar sociológicamente implica reconocer que aquello que vivimos como decisiones estrictamente personales &mdash;elegir una carrera, casarse, migrar&mdash; está atravesado por patrones sociales compartidos por miles de personas en circunstancias semejantes.
+  </div>
+  <div class="problema">
+    <strong>Situación para analizar:</strong> La sociología distingue entre las inquietudes personales y los problemas públicos. Si un estudiante reprueba, puede tratarse de una inquietud personal. Pero si en una generación reprueba el cuarenta por ciento de los estudiantes, ¿seguimos ante un problema individual o ante un problema social que exige explicación estructural? Sostenga su posición con argumentos.
+  </div>
+</section>
+<section id="t12">
+  <h2 class="titulo">1.2 Origen de la Sociología</h2>
+  <p>La sociología no surgió por azar ni como una simple curiosidad intelectual. Nació como respuesta a una época de profundas transformaciones que hicieron insuficientes las explicaciones tradicionales sobre el orden social. Entre finales del siglo XVIII y el siglo XIX, Europa vivió una serie de rupturas que desestabilizaron las certezas heredadas.</p>
+  <h3>Las condiciones que la hicieron posible</h3>
+  <div class="timeline">
+    <div class="evento"><span class="anio">Revolución Industrial:</span> la mecanización de la producción transformó el trabajo, concentró a la población en ciudades y generó nuevas clases sociales, así como problemas inéditos de pobreza, hacinamiento y conflicto.</div>
+    <div class="evento"><span class="anio">Revolución Francesa (1789):</span> derrumbó el orden monárquico y proclamó nuevos principios de igualdad y ciudadanía, planteando la pregunta sobre cómo reconstruir el vínculo social sin los fundamentos tradicionales.</div>
+    <div class="evento"><span class="anio">Ilustración y desarrollo de la ciencia:</span> la confianza en la razón y en el método científico llevó a pensar que la sociedad, como la naturaleza, podía estudiarse con rigor para descubrir sus leyes.</div>
+    <div class="evento"><span class="anio">Urbanización y secularización:</span> el crecimiento de las ciudades y el debilitamiento de la explicación religiosa del mundo exigieron nuevas formas de comprender la convivencia humana.</div>
+  </div>
+  <p>Fue Auguste Comte quien acuñó el término sociología hacia 1838, con la aspiración de crear una física social capaz de estudiar la sociedad con la misma objetividad con que las ciencias naturales estudiaban los fenómenos físicos. La disciplina nace, así, con una doble vocación: comprender el desorden de su tiempo y contribuir a construir un nuevo orden.</p>
+  <div class="destacado">
+    La sociología es hija de la crisis. Surge cuando las sociedades europeas, sacudidas por la industrialización y la revolución política, necesitaron explicarse a sí mismas de un modo nuevo.
+  </div>
+</section>
+
+<section id="t13">
+  <h2 class="titulo">1.3 Los fundadores de la Sociología</h2>
+  <p>Aunque muchos pensadores contribuyeron al nacimiento de la disciplina, tres figuras son reconocidas como sus fundadores clásicos. Cada una ofreció una respuesta distinta a la pregunta por el orden y el cambio social, y sus aportaciones continúan orientando el análisis educativo contemporáneo.</p>
+  <table class="fundadores">
+    <thead>
+      <tr><th>Autor</th><th>Aportación central</th><th>Relevancia para la educación</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Auguste Comte</strong><br>(1798&ndash;1857)</td>
+        <td>Nombró la disciplina y propuso el positivismo: el conocimiento válido es el que se apoya en la observación y la ley de los tres estados del pensamiento humano.</td>
+        <td>Concibe la educación como instrumento de consenso social y de progreso ordenado de la humanidad.</td>
+      </tr>
+      <tr>
+        <td><strong>Émile Durkheim</strong><br>(1858&ndash;1917)</td>
+        <td>Estableció el hecho social como objeto de estudio y dotó a la sociología de método propio. Analizó la solidaridad social y la función integradora de las instituciones.</td>
+        <td>Es el fundador de la sociología de la educación; definió la educación como la socialización metódica de las nuevas generaciones.</td>
+      </tr>
+      <tr>
+        <td><strong>Max Weber</strong><br>(1864&ndash;1920)</td>
+        <td>Propuso la sociología comprensiva, centrada en el sentido que los individuos otorgan a su acción. Analizó la burocracia, la autoridad y la racionalización.</td>
+        <td>Permite comprender la escuela como organización burocrática y el papel de las credenciales en la distribución de posiciones sociales.</td>
+      </tr>
+      <tr>
+        <td><strong>Karl Marx</strong><br>(1818&ndash;1883)</td>
+        <td>Aunque anterior a la institucionalización de la disciplina, aportó el análisis de las clases sociales, el conflicto y la determinación económica de la vida social.</td>
+        <td>Inspira las lecturas críticas que ven en la educación un espacio de reproducción, pero también de posible transformación de las desigualdades.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="problema">
+    <strong>Tensión productiva:</strong> Durkheim mira la educación como fuerza de cohesión que integra a los individuos en la sociedad; las lecturas inspiradas en Marx la miran como mecanismo que reproduce las desigualdades existentes. ¿Puede la escuela ser ambas cosas a la vez? Esta tensión no tiene una respuesta única y será el eje de sus actividades.
+  </div>
+</section>
+<section id="act1">
+  <h2 class="titulo">Actividades para Google Classroom</h2>
+  <p>Las siguientes tres actividades deberán ser desarrolladas y entregadas en Google Classroom. Cada una promueve una competencia distinta: la deliberación crítica, la aplicación significativa y la autoevaluación del aprendizaje. Lea con atención las instrucciones y los ejemplos.</p>
+
+  <div class="actividad">
+    <span class="etiqueta">Actividad 1 &middot; Mediación en foro</span>
+    <h3>Deliberar sobre el orden y el conflicto</h3>
+    <p>Esta actividad busca que usted participe en la construcción colaborativa del conocimiento a través del intercambio argumentado de ideas. No se trata de tener la respuesta correcta, sino de razonar públicamente y dialogar con las aportaciones de sus compañeros.</p>
+    <p><strong>Pregunta detonadora:</strong></p>
+    <div class="destacado">
+      Si la sociología nos enseña que nuestras trayectorias educativas están modeladas por fuerzas sociales que no elegimos, ¿significa esto que el esfuerzo individual es irrelevante? ¿La escuela integra o reproduce desigualdades? Argumente desde su propia experiencia como estudiante universitario.
+    </div>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Ingrese al tema del foro publicado en Google Classroom, en la pestaña Trabajo de clase.</li>
+      <li>Redacte una aportación inicial de entre 150 y 200 palabras que responda la pregunta detonadora. Fundamente su postura con al menos un concepto de la unidad (hecho social, socialización, reproducción o integración).</li>
+      <li>Lea las aportaciones de al menos dos compañeros y responda a cada una con un comentario que amplíe, matice o cuestione respetuosamente su argumento.</li>
+      <li>Cierre su participación con una breve reflexión sobre cómo el diálogo modificó o enriqueció su postura inicial.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de aportación:</strong> Considero que el esfuerzo individual conserva importancia, pero la sociología me permite ver que no opera en el vacío. En mi generación, quienes contamos con acceso a internet estable pudimos sostener el ritmo universitario durante la pandemia; quienes no, se rezagaron pese a su esfuerzo. Esto ilustra lo que Durkheim llamaría un hecho social: una condición exterior que ejerce coacción sobre nuestras posibilidades reales.
+    </div>
+  </div>
+
+  <div class="actividad" id="act2">
+    <span class="etiqueta">Actividad 2 &middot; Aplicación significativa</span>
+    <h3>La mirada sociológica sobre mi propia aula</h3>
+    <p>El objetivo es que usted transfiera los conceptos de la unidad al análisis de su realidad cotidiana como estudiante universitario, generando un aprendizaje significativo y aplicable a su formación como pedagogo.</p>
+    <p><strong>Producto a entregar:</strong> un breve ensayo analítico (una a dos cuartillas) titulado La sociología en mi salón de clases.</p>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Observe durante una semana su grupo universitario con mirada sociológica. Registre situaciones que revelen hechos sociales: normas no escritas, formas de participación, jerarquías informales o patrones de asistencia.</li>
+      <li>Seleccione dos observaciones significativas y descríbalas con objetividad, evitando juicios apresurados.</li>
+      <li>Analice cada observación empleando al menos dos conceptos de la unidad y la perspectiva de uno de los fundadores estudiados.</li>
+      <li>Concluya explicando cómo esta mirada sociológica podría influir en su futura práctica como pedagogo.</li>
+      <li>Suba el documento en formato PDF a la tarea correspondiente en Google Classroom.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de observación analizada:</strong> Observé que, aunque nadie lo indica por escrito, los estudiantes ocupamos siempre los mismos lugares en el aula. Interpretado desde Durkheim, esto constituye un hecho social: una costumbre exterior a cada individuo que ejerce una coacción sutil, pues sentarse en un lugar ajeno genera incomodidad colectiva. Como futura pedagoga, esto me lleva a considerar cómo la disposición del espacio condiciona las interacciones y el aprendizaje.
+    </div>
+  </div>
+</section>
+<section id="act3">
+  <div class="actividad">
+    <span class="etiqueta">Actividad 3 &middot; Quiz</span>
+    <h3>Autoevaluación del aprendizaje</h3>
+    <p>Responda las siguientes cinco preguntas para verificar su comprensión de la unidad. Al finalizar obtendrá su puntaje. Capture el resultado y súbalo a Google Classroom según indique su docente.</p>
+    <div id="quiz"></div>
+    <div id="resultado" style="display:none;"></div>
+    <button id="btnEnviar" onclick="calificar()" style="background:var(--terracota);color:#fff;border:none;padding:0.8rem 1.8rem;border-radius:8px;font-size:1rem;cursor:pointer;font-family:Arial,sans-serif;margin-top:1rem;">Ver mi puntaje</button>
+  </div>
+</section>
+
+<section id="reflexion">
+  <h2 class="titulo">Reflexión y aplicación</h2>
+  <p>Cierre esta unidad planificando cómo incorporará lo aprendido en su vida académica y profesional. Sus respuestas se guardarán en este navegador para que pueda retomarlas.</p>
+  <div class="tarjeta">
+    <h3>Planificador personal</h3>
+    <p><strong>1. ¿Qué idea de esta unidad cambió mi manera de mirar la educación?</strong></p>
+    <textarea id="r1" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:Georgia,serif;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>2. ¿Cómo aplicaré la mirada sociológica en mis clases como estudiante universitario?</strong></p>
+    <textarea id="r2" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:Georgia,serif;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>3. Como futuro pedagogo, ¿qué compromiso asumo a partir de lo aprendido?</strong></p>
+    <textarea id="r3" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:Georgia,serif;" oninput="guardar()"></textarea>
+    <p style="margin-top:0.8rem;font-size:0.85rem;color:#777;">Sus respuestas se guardan automáticamente en este dispositivo.</p>
+  </div>
+  <div class="destacado">
+    Pensar sociológicamente no es una tarea que concluye con esta unidad: es una disposición que lo acompañará en toda su práctica pedagógica. Quien comprende las fuerzas sociales que atraviesan el aula está en mejores condiciones de intervenir sobre ellas.
+  </div>
+</section>
+</main>
+</div>
+<footer style="background:var(--azul-profundo);color:#fff;text-align:center;padding:1.5rem;font-size:0.85rem;">
+  Universidad de la Ciénega &middot; Licenciatura en Pedagogía &middot; Sociología de la Educación
+</footer>
+<script>
+var preguntas=[
+  {p:"Segun Emile Durkheim, el objeto de estudio propio de la sociologia es:",
+   o:["La conciencia individual","El hecho social","El instinto biologico","La opinion personal"],c:1},
+  {p:"Una caracteristica central del hecho social es que:",
+   o:["Es interno a cada persona y voluntario","Es exterior al individuo y ejerce coaccion sobre el","Solo existe en las sociedades primitivas","Depende exclusivamente de la psicologia"],c:1},
+  {p:"El pensador que acuno el termino sociologia y propuso una fisica social fue:",
+   o:["Max Weber","Karl Marx","Auguste Comte","Emile Durkheim"],c:2},
+  {p:"La sociologia surgio historicamente como respuesta a:",
+   o:["El auge de las redes digitales","Las transformaciones de la Revolucion Industrial y la Revolucion Francesa","La caida del Imperio Romano","El descubrimiento de America"],c:1},
+  {p:"Max Weber es reconocido principalmente por proponer una sociologia:",
+   o:["Comprensiva, centrada en el sentido de la accion","Basada solo en experimentos de laboratorio","Que niega el estudio de las instituciones","Fundada en la biologia evolutiva"],c:0}
+];
+
+function render(){
+  var q=document.getElementById("quiz");
+  var h="";
+  for(var i=0;i<preguntas.length;i++){
+    h+="<div style='background:#f7f5f0;padding:1rem 1.2rem;border-radius:8px;margin-bottom:1rem;'>";
+    h+="<p style='font-weight:bold;color:#1a2a6c;'>"+(i+1)+". "+preguntas[i].p+"</p>";
+    for(var j=0;j<preguntas[i].o.length;j++){
+      h+="<label style='display:block;margin:0.4rem 0;cursor:pointer;'>";
+      h+="<input type='radio' name='p"+i+"' value='"+j+"'> "+preguntas[i].o[j];
+      h+="</label>";
+    }
+    h+="</div>";
+  }
+  q.innerHTML=h;
+}
+
+function calificar(){
+  var punt=0;
+  var detalle="";
+  for(var i=0;i<preguntas.length;i++){
+    var sel=document.querySelector("input[name='p"+i+"']:checked");
+    var ok=sel && parseInt(sel.value)===preguntas[i].c;
+    if(ok)punt++;
+    detalle+="<p style='margin:0.3rem 0;'>Pregunta "+(i+1)+": "+(ok?"<span style=\"color:#2a7a2a;\">Correcta</span>":"<span style=\"color:#b23a2e;\">Incorrecta</span> (respuesta: "+preguntas[i].o[preguntas[i].c]+")")+"</p>";
+  }
+  var r=document.getElementById("resultado");
+  var pct=Math.round(punt/preguntas.length*100);
+  var msg=pct>=80?"Excelente comprension de la unidad.":pct>=60?"Buen avance; conviene repasar algunos conceptos.":"Le recomendamos revisar nuevamente el contenido de la unidad.";
+  r.style.display="block";
+  r.style.background="#fff";
+  r.style.border="2px solid #1a2a6c";
+  r.style.borderRadius="10px";
+  r.style.padding="1.3rem";
+  r.style.marginTop="1.2rem";
+  r.innerHTML="<h3 style='color:#b23a2e;margin-top:0;'>Su puntaje: "+punt+" de "+preguntas.length+" ("+pct+"%)</h3><p style='font-style:italic;'>"+msg+"</p>"+detalle;
+  r.scrollIntoView({behavior:"smooth"});
+}
+
+function guardar(){
+  localStorage.setItem("soc_r1",document.getElementById("r1").value);
+  localStorage.setItem("soc_r2",document.getElementById("r2").value);
+  localStorage.setItem("soc_r3",document.getElementById("r3").value);
+}
+function cargar(){
+  if(localStorage.getItem("soc_r1"))document.getElementById("r1").value=localStorage.getItem("soc_r1");
+  if(localStorage.getItem("soc_r2"))document.getElementById("r2").value=localStorage.getItem("soc_r2");
+  if(localStorage.getItem("soc_r3"))document.getElementById("r3").value=localStorage.getItem("soc_r3");
+}
+
+render();
+cargar();
+</script>
+</body>
+</html>
