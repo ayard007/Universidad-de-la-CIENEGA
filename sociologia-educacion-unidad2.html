@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociología de la Educación — Orígenes de la disciplina</title>
+<style>
+:root{
+  --verde-profundo:#1f4d3f;
+  --verde-medio:#2e7d64;
+  --verde-claro:#8fbfa9;
+  --ocre:#c17a2b;
+  --crema:#f5f2e9;
+  --gris-texto:#2b2f2d;
+  --blanco:#ffffff;
+  --sombra:rgba(31,77,63,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Candara,Optima,Georgia,serif;color:var(--gris-texto);background:var(--crema);line-height:1.7;}
+header.hero{background:linear-gradient(135deg,var(--verde-profundo),var(--verde-medio));color:var(--blanco);padding:2.5rem 1.5rem;text-align:center;}
+header.hero img{max-width:340px;width:80%;background:var(--blanco);border-radius:12px;padding:14px 18px;box-shadow:0 6px 18px rgba(0,0,0,0.25);margin-bottom:1.2rem;}
+header.hero h1{font-size:1.9rem;font-weight:600;letter-spacing:0.5px;margin-bottom:0.4rem;}
+header.hero .sub{font-size:1.05rem;color:var(--verde-claro);font-style:italic;}
+header.hero .meta{margin-top:0.8rem;font-size:0.9rem;opacity:0.92;}
+.layout{display:flex;max-width:1200px;margin:0 auto;}
+nav.sidebar{width:255px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--blanco);border-right:1px solid #e2ddce;padding:1.5rem 1rem;}
+nav.sidebar h2{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--ocre);margin-bottom:0.8rem;}
+nav.sidebar a{display:block;color:var(--verde-medio);text-decoration:none;font-size:0.92rem;padding:0.45rem 0.6rem;border-radius:6px;margin-bottom:0.2rem;border-left:3px solid transparent;transition:all 0.2s;}
+nav.sidebar a:hover{background:var(--crema);border-left-color:var(--ocre);}
+main{flex:1;padding:2rem 2.5rem;max-width:900px;}
+section{margin-bottom:3rem;scroll-margin-top:1rem;}
+section h2.titulo{font-size:1.6rem;color:var(--verde-profundo);border-bottom:3px solid var(--verde-claro);padding-bottom:0.5rem;margin-bottom:1.2rem;}
+section h3{color:var(--ocre);font-size:1.2rem;margin:1.5rem 0 0.7rem;}
+p{margin-bottom:1rem;text-align:justify;}
+.tarjeta{background:var(--blanco);border-radius:10px;padding:1.5rem;box-shadow:0 3px 12px var(--sombra);margin:1.2rem 0;border-top:4px solid var(--verde-medio);}
+.destacado{background:#e9f1ec;border-left:4px solid var(--verde-medio);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;font-style:italic;}
+.problema{background:#f8efe2;border-left:4px solid var(--ocre);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;}
+.problema strong{color:var(--ocre);}
+ul.lista,ol.lista{margin:0.8rem 0 1rem 1.5rem;}
+ul.lista li,ol.lista li{margin-bottom:0.6rem;}
+table.autores{width:100%;border-collapse:collapse;margin:1.2rem 0;background:var(--blanco);border-radius:8px;overflow:hidden;box-shadow:0 3px 12px var(--sombra);}
+table.autores th{background:var(--verde-profundo);color:var(--blanco);padding:0.8rem;text-align:left;font-size:0.95rem;}
+table.autores td{padding:0.8rem;border-bottom:1px solid #e8e4da;vertical-align:top;font-size:0.92rem;}
+table.autores tr:last-child td{border-bottom:none;}
+.timeline{border-left:3px solid var(--verde-claro);margin:1.5rem 0 1.5rem 1rem;padding-left:1.5rem;}
+.timeline .evento{position:relative;margin-bottom:1.3rem;}
+.timeline .evento::before{content:'';position:absolute;left:-1.9rem;top:0.3rem;width:14px;height:14px;background:var(--ocre);border-radius:50%;border:3px solid var(--crema);}
+.timeline .evento .anio{font-weight:bold;color:var(--verde-profundo);}
+.actividad{background:var(--blanco);border-radius:12px;padding:1.8rem;margin:1.5rem 0;box-shadow:0 4px 16px var(--sombra);border-top:5px solid var(--ocre);}
+.actividad .etiqueta{display:inline-block;background:var(--ocre);color:var(--blanco);font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:20px;margin-bottom:0.9rem;font-family:Arial,sans-serif;}
+.actividad h3{color:var(--verde-profundo);margin-top:0;}
+.pasos{counter-reset:paso;list-style:none;margin:1rem 0;}
+.pasos li{position:relative;padding-left:2.6rem;margin-bottom:0.9rem;}
+.pasos li::before{counter-increment:paso;content:counter(paso);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:var(--verde-medio);color:var(--blanco);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:0.9rem;}
+.ejemplo{background:#eef3ec;border:1px dashed #6a9c7a;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-size:0.93rem;}
+.ejemplo strong{color:#3a6a4a;}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="data:image/png;base64,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" alt="Universidad de la Ciénega">
+  <h1>Sociología de la Educación</h1>
+  <div class="sub">Unidad 2. Orígenes de la Sociología de la Educación</div>
+  <div class="meta">Licenciatura en Pedagogía &middot; Guía interactiva de aprendizaje</div>
+</header>
+<div class="layout">
+<nav class="sidebar">
+  <h2>Contenido</h2>
+  <a href="#intro">Presentación</a>
+  <a href="#contexto">Condiciones de surgimiento</a>
+  <a href="#durkheim">Durkheim: la fundación</a>
+  <a href="#consolidacion">Consolidación e institucionalización</a>
+  <a href="#corrientes">Corrientes y actualidad</a>
+  <a href="#act1">Actividad 1 &middot; Foro</a>
+  <a href="#act2">Actividad 2 &middot; Aplicación</a>
+  <a href="#act3">Actividad 3 &middot; Quiz</a>
+  <a href="#reflexion">Reflexión y aplicación</a>
+</nav>
+<main>
+<section id="intro">
+  <h2 class="titulo">Presentación de la guía</h2>
+  <p>Esta guía acompaña su estudio de los orígenes de la Sociología de la Educación como campo disciplinar autónomo. A diferencia de una exposición cerrada, la presente propuesta le invita a reconstruir el recorrido histórico de la disciplina interrogando cada etapa: por qué surgió, a qué problemas respondía y qué concepción de la educación defendía. Desde una metodología constructivista y de aprendizaje basado en problemas, usted no memorizará una cronología, sino que comprenderá la Sociología de la Educación como una construcción social en permanente transformación.</p>
+  <div class="destacado">
+    La Sociología de la Educación no nació terminada. Cada vez que la sociedad cambió, la disciplina reformuló sus preguntas. Comprender sus orígenes es comprender que aquello que hoy estudiamos también seguirá escribiéndose.
+  </div>
+  <div class="tarjeta">
+    <h3>Propósito de aprendizaje</h3>
+    <p>Al concluir esta unidad, usted será capaz de explicar las condiciones históricas y sociales que hicieron posible el surgimiento de la Sociología de la Educación, caracterizar la aportación fundacional de Durkheim, distinguir las principales corrientes que la han transformado y valorar su vigencia actual, aplicando este recorrido al análisis de su propia formación.</p>
+  </div>
+  <div class="problema">
+    <strong>Problema orientador de la unidad:</strong> Durante siglos, la educación fue asunto de la filosofía, la moral o la religión. ¿Por qué, en un momento determinado de la historia, fue necesario estudiarla científicamente como un hecho social? ¿Qué transformaciones hicieron insuficientes las explicaciones anteriores y exigieron una nueva disciplina? Este recorrido buscará responderlo.
+  </div>
+</section>
+
+<section id="contexto">
+  <h2 class="titulo">Condiciones de surgimiento</h2>
+  <p>La Sociología de la Educación es una rama de la sociología general y, como ella, es hija de las grandes transformaciones de los siglos XVIII y XIX. No pudo existir antes porque antes no existían ni la sociología como ciencia ni los problemas sociales que la hicieron necesaria.</p>
+  <div class="timeline">
+    <div class="evento"><span class="anio">Revolución Industrial:</span> la urbanización, la aparición de nuevas clases sociales y la necesidad de formar trabajadores plantearon por primera vez la educación como un problema social masivo, no individual.</div>
+    <div class="evento"><span class="anio">Revolución Francesa y el Estado moderno:</span> la extensión de la escolarización pública y obligatoria convirtió a la escuela en una institución nacional, objeto legítimo de análisis social.</div>
+    <div class="evento"><span class="anio">Nacimiento de la sociología:</span> Comte propone estudiar la sociedad con método científico; se abre la posibilidad de analizar también la educación con esa mirada.</div>
+    <div class="evento"><span class="anio">Consolidación de los sistemas educativos nacionales:</span> hacia finales del siglo XIX, la escuela masiva requería comprender su función social, sus efectos y sus tensiones.</div>
+  </div>
+  <div class="destacado">
+    La Sociología de la Educación surge cuando la escuela deja de ser un privilegio de pocos y se convierte en una institución de masas: solo entonces se vuelve urgente preguntarse qué hace la sociedad con la educación y qué hace la educación con la sociedad.
+  </div>
+</section>
+<section id="durkheim">
+  <h2 class="titulo">Durkheim: la fundación de la disciplina</h2>
+  <p>Émile Durkheim (1858&ndash;1917) es reconocido como el fundador de la Sociología de la Educación. Fue el primero en sostener que la educación es un hecho social y, por tanto, susceptible de estudio sociológico riguroso. Desde su cátedra en la Sorbona, dedicada a la ciencia de la educación, sentó las bases teóricas del campo.</p>
+  <div class="tarjeta">
+    <h3>Sus tesis fundamentales</h3>
+    <ul class="lista">
+      <li><strong>La educación es un hecho social:</strong> es exterior al individuo, le es transmitida y ejerce sobre él una coacción. No la inventa cada persona; la recibe de su sociedad.</li>
+      <li><strong>La educación es socialización metódica:</strong> es la acción ejercida por las generaciones adultas sobre las jóvenes para prepararlas para la vida social, transmitiendo los valores y saberes que la colectividad considera indispensables.</li>
+      <li><strong>La educación varía con la sociedad:</strong> no existe una educación ideal y universal; cada sociedad, en cada momento, configura el tipo de educación que corresponde a sus necesidades.</li>
+      <li><strong>Función integradora:</strong> la educación asegura la cohesión social al transmitir a todos un fondo común de ideas y sentimientos.</li>
+    </ul>
+  </div>
+  <div class="problema">
+    <strong>Punto de discusión:</strong> Si, como sostiene Durkheim, la educación reproduce los valores que la sociedad considera deseables, ¿qué ocurre cuando esos valores incluyen desigualdades? ¿Puede la misma institución que integra ser también la que perpetúa las diferencias? Esta pregunta abrirá, décadas después, toda una corriente crítica.
+  </div>
+</section>
+
+<section id="consolidacion">
+  <h2 class="titulo">Consolidación e institucionalización</h2>
+  <p>Tras Durkheim, la disciplina se expandió y adquirió reconocimiento académico, especialmente en la primera mitad del siglo XX. Otros clásicos aportaron miradas complementarias que enriquecieron el análisis de la educación.</p>
+  <table class="autores">
+    <thead>
+      <tr><th>Autor / corriente</th><th>Aportación</th><th>Concepción de la educación</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Max Weber</strong><br>(1864&ndash;1920)</td>
+        <td>Análisis de la burocracia, la autoridad y la racionalización. Estudio de las credenciales y la selección social.</td>
+        <td>La escuela como organización burocrática que otorga títulos y distribuye posiciones sociales.</td>
+      </tr>
+      <tr>
+        <td><strong>Funcionalismo</strong><br>(Talcott Parsons, 1940&ndash;1960)</td>
+        <td>La escuela cumple funciones necesarias para el sistema social: socialización de valores y asignación de roles según el mérito.</td>
+        <td>La educación como mecanismo de integración y de distribución equitativa de posiciones.</td>
+      </tr>
+      <tr>
+        <td><strong>Institucionalización académica</strong></td>
+        <td>Creación de cátedras, revistas e investigaciones empíricas, sobre todo en Estados Unidos y Europa.</td>
+        <td>La educación como objeto de estudio empírico y sistemático.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="corrientes">
+  <h2 class="titulo">Corrientes críticas y actualidad</h2>
+  <p>Desde la década de 1960, la mirada optimista del funcionalismo fue cuestionada. Nuevas corrientes revelaron el papel de la escuela en la reproducción de las desigualdades, y en las últimas décadas el campo se ha diversificado enormemente.</p>
+  <table class="autores">
+    <thead>
+      <tr><th>Corriente / autores</th><th>Aportación central</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Teorías de la reproducción</strong><br>Bourdieu y Passeron; Bowles y Gintis</td>
+        <td>La escuela reproduce las desigualdades sociales. Conceptos de capital cultural y violencia simbólica: la cultura escolar favorece a quienes ya poseen la cultura dominante.</td>
+      </tr>
+      <tr>
+        <td><strong>Sociología del currículo</strong><br>Basil Bernstein</td>
+        <td>El lenguaje y la organización del conocimiento escolar median entre la clase social y el rendimiento educativo.</td>
+      </tr>
+      <tr>
+        <td><strong>Enfoques contemporáneos</strong></td>
+        <td>Género y educación, desigualdad digital, credencialismo, interacciones en el aula, educación y globalización, y los estudios situados en América Latina y México.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="destacado">
+    De Durkheim a la actualidad, la Sociología de la Educación pasó de preguntarse cómo la escuela integra a la sociedad, a preguntarse también cómo puede reproducir o transformar sus desigualdades. Ambas preguntas siguen vigentes.
+  </div>
+</section>
+<section id="act1">
+  <h2 class="titulo">Actividades para Google Classroom</h2>
+  <p>Las siguientes tres actividades deberán desarrollarse y entregarse en Google Classroom. Cada una atiende una dimensión distinta del aprendizaje: la deliberación crítica, la aplicación significativa y la autoevaluación. Lea con atención las instrucciones y los ejemplos.</p>
+
+  <div class="actividad">
+    <span class="etiqueta">Actividad 1 &middot; Mediación en foro</span>
+    <h3>Integración o reproducción: un debate fundacional</h3>
+    <p>Esta actividad promueve la construcción colaborativa del conocimiento mediante el intercambio argumentado. El propósito no es hallar la respuesta única, sino razonar públicamente y dialogar con las aportaciones de sus compañeros.</p>
+    <p><strong>Pregunta detonadora:</strong></p>
+    <div class="destacado">
+      Durkheim sostuvo que la educación integra a los individuos en la sociedad; las teorías de la reproducción afirmaron, décadas después, que la escuela perpetúa las desigualdades. A la luz de su experiencia como estudiante universitario, ¿cuál de estas dos miradas explica mejor lo que usted observa hoy en las aulas? ¿Es posible que ambas sean ciertas al mismo tiempo?
+    </div>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Ingrese al tema del foro publicado en Google Classroom, en la pestaña Trabajo de clase.</li>
+      <li>Redacte una aportación inicial de entre 150 y 200 palabras. Tome una postura y fundaméntela con al menos un autor o corriente de la unidad (Durkheim, funcionalismo, teorías de la reproducción).</li>
+      <li>Lea las aportaciones de al menos dos compañeros y responda a cada una ampliando, matizando o cuestionando respetuosamente su argumento.</li>
+      <li>Cierre con una breve reflexión sobre cómo el diálogo modificó o enriqueció su postura inicial.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de aportación:</strong> Considero que ambas miradas son complementarias. La universidad me integró a una comunidad con valores y lenguajes compartidos, tal como describe Durkheim. Pero también observo, siguiendo a Bourdieu, que quienes llegaron con mayor capital cultural &mdash;lecturas previas, familiaridad con el lenguaje académico&mdash; avanzan con más facilidad. La escuela integra y, al mismo tiempo, reproduce diferencias de origen.
+    </div>
+  </div>
+
+  <div class="actividad" id="act2">
+    <span class="etiqueta">Actividad 2 &middot; Aplicación significativa</span>
+    <h3>Línea de tiempo comentada de mi disciplina</h3>
+    <p>El objetivo es que usted se apropie del recorrido histórico de la disciplina construyéndolo con sus propias palabras y vinculándolo a su formación como pedagogo, generando un aprendizaje significativo y transferible.</p>
+    <p><strong>Producto a entregar:</strong> una línea de tiempo comentada de los orígenes de la Sociología de la Educación, elaborada en la herramienta digital de su preferencia (documento, presentación, Canva o mural digital).</p>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Identifique al menos cinco momentos clave del desarrollo de la disciplina, desde las condiciones de su surgimiento hasta la actualidad.</li>
+      <li>Para cada momento, registre: los años, el autor o corriente, la aportación central en una frase y el contexto social que la explica.</li>
+      <li>Añada a cada momento un comentario personal breve que responda: ¿qué de este periodo sigue presente en mi vida universitaria actual?</li>
+      <li>Concluya con un párrafo que explique cómo este recorrido influye en su comprensión de la educación como futuro pedagogo.</li>
+      <li>Exporte su línea de tiempo en formato PDF o comparta el enlace, y súbala a la tarea correspondiente en Google Classroom.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de momento comentado:</strong> 1960&ndash;1980, teorías de la reproducción, Bourdieu y Passeron: la escuela reproduce las desigualdades mediante el capital cultural. Comentario personal: reconozco este fenómeno cuando noto que ciertos códigos del lenguaje académico se dan por supuestos y no todos llegamos a la universidad con ellos. Como futura pedagoga, esto me compromete a hacer explícitos esos códigos para mis estudiantes.
+    </div>
+  </div>
+</section>
+<section id="act3">
+  <div class="actividad">
+    <span class="etiqueta">Actividad 3 &middot; Quiz</span>
+    <h3>Autoevaluación del aprendizaje</h3>
+    <p>Responda las siguientes cinco preguntas para verificar su comprensión de la unidad. Al finalizar obtendrá su puntaje. Capture el resultado y súbalo a Google Classroom según indique su docente.</p>
+    <div id="quiz"></div>
+    <div id="resultado" style="display:none;"></div>
+    <button id="btnEnviar" onclick="calificar()" style="background:var(--ocre);color:#fff;border:none;padding:0.8rem 1.8rem;border-radius:8px;font-size:1rem;cursor:pointer;font-family:Arial,sans-serif;margin-top:1rem;">Ver mi puntaje</button>
+  </div>
+</section>
+
+<section id="reflexion">
+  <h2 class="titulo">Reflexión y aplicación</h2>
+  <p>Cierre esta unidad planificando cómo incorporará lo aprendido en su vida académica y profesional. Sus respuestas se guardarán en este navegador para que pueda retomarlas.</p>
+  <div class="tarjeta">
+    <h3>Planificador personal</h3>
+    <p><strong>1. ¿Qué momento del desarrollo de la disciplina me resultó más revelador y por qué?</strong></p>
+    <textarea id="r1" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>2. ¿Cómo me ayuda conocer los orígenes de la Sociología de la Educación a comprender mi propia formación universitaria?</strong></p>
+    <textarea id="r2" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>3. Como futuro pedagogo, ¿qué compromiso asumo frente a la tensión entre integración y reproducción social?</strong></p>
+    <textarea id="r3" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:0.8rem;font-size:0.85rem;color:#777;">Sus respuestas se guardan automáticamente en este dispositivo.</p>
+  </div>
+  <div class="destacado">
+    Conocer los orígenes de una disciplina no es un ejercicio de erudición: es comprender que las preguntas que hoy nos hacemos tienen historia, y que como pedagogos participamos en el siguiente capítulo de esa historia.
+  </div>
+</section>
+</main>
+</div>
+<footer style="background:var(--verde-profundo);color:#fff;text-align:center;padding:1.5rem;font-size:0.85rem;">
+  Universidad de la Ciénega &middot; Licenciatura en Pedagogía &middot; Sociología de la Educación
+</footer>
+<script>
+var preguntas=[
+  {p:"El autor reconocido como fundador de la Sociologia de la Educacion es:",
+   o:["Max Weber","Auguste Comte","Emile Durkheim","Pierre Bourdieu"],c:2},
+  {p:"Segun Durkheim, la educacion se define esencialmente como:",
+   o:["Una eleccion individual y espontanea","La socializacion metodica de las nuevas generaciones","Un fenomeno exclusivamente biologico","Una actividad sin relacion con la sociedad"],c:1},
+  {p:"La Sociologia de la Educacion surgio historicamente cuando:",
+   o:["La escuela se convirtio en una institucion de masas tras la industrializacion","Se invento la imprenta","Cayo el Imperio Romano","Aparecio internet"],c:0},
+  {p:"Las teorias de la reproduccion (Bourdieu, Passeron) sostienen que la escuela:",
+   o:["Elimina por completo las desigualdades","Reproduce las desigualdades sociales mediante el capital cultural","No tiene ninguna funcion social","Solo transmite conocimientos tecnicos"],c:1},
+  {p:"Desde la perspectiva funcionalista (Parsons), la escuela cumple la funcion de:",
+   o:["Socializar valores y asignar roles sociales","Reprimir toda forma de cultura","Sustituir a la familia por completo","Impedir la movilidad social"],c:0}
+];
+
+function render(){
+  var q=document.getElementById("quiz");
+  var h="";
+  for(var i=0;i<preguntas.length;i++){
+    h+="<div style='background:#f2f5f0;padding:1rem 1.2rem;border-radius:8px;margin-bottom:1rem;'>";
+    h+="<p style='font-weight:bold;color:#1f4d3f;'>"+(i+1)+". "+preguntas[i].p+"</p>";
+    for(var j=0;j<preguntas[i].o.length;j++){
+      h+="<label style='display:block;margin:0.4rem 0;cursor:pointer;'>";
+      h+="<input type='radio' name='p"+i+"' value='"+j+"'> "+preguntas[i].o[j];
+      h+="</label>";
+    }
+    h+="</div>";
+  }
+  q.innerHTML=h;
+}
+
+function calificar(){
+  var punt=0;
+  var detalle="";
+  for(var i=0;i<preguntas.length;i++){
+    var sel=document.querySelector("input[name='p"+i+"']:checked");
+    var ok=sel && parseInt(sel.value)===preguntas[i].c;
+    if(ok)punt++;
+    detalle+="<p style='margin:0.3rem 0;'>Pregunta "+(i+1)+": "+(ok?"<span style=\"color:#2a7a2a;\">Correcta</span>":"<span style=\"color:#c17a2b;\">Incorrecta</span> (respuesta: "+preguntas[i].o[preguntas[i].c]+")")+"</p>";
+  }
+  var r=document.getElementById("resultado");
+  var pct=Math.round(punt/preguntas.length*100);
+  var msg=pct>=80?"Excelente comprension de la unidad.":pct>=60?"Buen avance; conviene repasar algunos conceptos.":"Le recomendamos revisar nuevamente el contenido de la unidad.";
+  r.style.display="block";
+  r.style.background="#fff";
+  r.style.border="2px solid #1f4d3f";
+  r.style.borderRadius="10px";
+  r.style.padding="1.3rem";
+  r.style.marginTop="1.2rem";
+  r.innerHTML="<h3 style='color:#c17a2b;margin-top:0;'>Su puntaje: "+punt+" de "+preguntas.length+" ("+pct+"%)</h3><p style='font-style:italic;'>"+msg+"</p>"+detalle;
+  r.scrollIntoView({behavior:"smooth"});
+}
+
+function guardar(){
+  localStorage.setItem("soc2_r1",document.getElementById("r1").value);
+  localStorage.setItem("soc2_r2",document.getElementById("r2").value);
+  localStorage.setItem("soc2_r3",document.getElementById("r3").value);
+}
+function cargar(){
+  if(localStorage.getItem("soc2_r1"))document.getElementById("r1").value=localStorage.getItem("soc2_r1");
+  if(localStorage.getItem("soc2_r2"))document.getElementById("r2").value=localStorage.getItem("soc2_r2");
+  if(localStorage.getItem("soc2_r3"))document.getElementById("r3").value=localStorage.getItem("soc2_r3");
+}
+
+render();
+cargar();
+</script>
+</body>
+</html>
