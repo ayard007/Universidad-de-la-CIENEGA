@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociología de la Educación — Orígenes y exponentes</title>
+<style>
+:root{
+  --tinta:#25324f;
+  --azul:#3a5a8c;
+  --azul-claro:#9db3d4;
+  --vino:#8c3a4e;
+  --dorado:#c19a3b;
+  --papel:#f6f3ec;
+  --gris-texto:#2a2e38;
+  --blanco:#ffffff;
+  --sombra:rgba(37,50,79,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Georgia,'Iowan Old Style','Palatino Linotype',serif;color:var(--gris-texto);background:var(--papel);line-height:1.72;}
+header.hero{background:linear-gradient(140deg,var(--tinta),var(--azul));color:var(--blanco);padding:2.6rem 1.5rem;text-align:center;}
+header.hero img{width:130px;height:130px;object-fit:contain;background:var(--blanco);border-radius:50%;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.28);margin-bottom:1.1rem;}
+header.hero h1{font-size:1.95rem;font-weight:normal;letter-spacing:0.5px;margin-bottom:0.4rem;}
+header.hero .sub{font-size:1.08rem;color:var(--azul-claro);font-style:italic;}
+header.hero .meta{margin-top:0.8rem;font-size:0.9rem;opacity:0.92;}
+.layout{display:flex;max-width:1220px;margin:0 auto;}
+nav.sidebar{width:262px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--blanco);border-right:1px solid #e3ddd0;padding:1.5rem 1rem;}
+nav.sidebar h2{font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--vino);margin-bottom:0.8rem;}
+nav.sidebar a{display:block;color:var(--azul);text-decoration:none;font-size:0.9rem;padding:0.42rem 0.6rem;border-radius:6px;margin-bottom:0.18rem;border-left:3px solid transparent;transition:all 0.2s;}
+nav.sidebar a:hover{background:var(--papel);border-left-color:var(--vino);}
+nav.sidebar a.sec{font-size:0.78rem;color:var(--vino);text-transform:uppercase;letter-spacing:1px;margin-top:0.9rem;pointer-events:none;}
+main{flex:1;padding:2rem 2.6rem;max-width:920px;}
+section{margin-bottom:3rem;scroll-margin-top:1rem;}
+section h2.titulo{font-size:1.6rem;color:var(--tinta);border-bottom:3px solid var(--azul-claro);padding-bottom:0.5rem;margin-bottom:1.2rem;}
+section h3{color:var(--vino);font-size:1.2rem;margin:1.5rem 0 0.7rem;}
+p{margin-bottom:1rem;text-align:justify;}
+.tarjeta{background:var(--blanco);border-radius:10px;padding:1.5rem;box-shadow:0 3px 12px var(--sombra);margin:1.2rem 0;border-top:4px solid var(--azul);}
+.destacado{background:#eaf0f7;border-left:4px solid var(--azul);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;font-style:italic;}
+.problema{background:#f7ecee;border-left:4px solid var(--vino);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;}
+.problema strong{color:var(--vino);}
+ul.lista,ol.lista{margin:0.8rem 0 1rem 1.5rem;}
+ul.lista li,ol.lista li{margin-bottom:0.6rem;}
+.figura{text-align:center;margin:1.4rem 0;}
+.figura svg{max-width:100%;border-radius:10px;box-shadow:0 3px 14px var(--sombra);background:var(--blanco);}
+.figura figcaption{font-size:0.85rem;color:#6a6458;margin-top:0.5rem;font-style:italic;}
+.timeline{border-left:3px solid var(--azul-claro);margin:1.5rem 0 1.5rem 1rem;padding-left:1.5rem;}
+.timeline .evento{position:relative;margin-bottom:1.3rem;}
+.timeline .evento::before{content:'';position:absolute;left:-1.9rem;top:0.3rem;width:14px;height:14px;background:var(--vino);border-radius:50%;border:3px solid var(--papel);}
+.timeline .evento .anio{font-weight:bold;color:var(--tinta);}
+.exponente{display:flex;gap:1.2rem;background:var(--blanco);border-radius:12px;padding:1.3rem;box-shadow:0 3px 12px var(--sombra);margin:1.3rem 0;border-left:5px solid var(--dorado);align-items:flex-start;}
+.exponente .retrato{flex-shrink:0;width:110px;}
+.exponente .retrato svg{width:110px;height:130px;border-radius:8px;background:#eee;}
+.exponente .datos h4{color:var(--tinta);font-size:1.15rem;margin-bottom:0.15rem;}
+.exponente .datos .vida{font-size:0.82rem;color:var(--vino);margin-bottom:0.5rem;font-style:italic;}
+.exponente .datos p{margin-bottom:0.5rem;font-size:0.93rem;}
+.actividad{background:var(--blanco);border-radius:12px;padding:1.8rem;margin:1.5rem 0;box-shadow:0 4px 16px var(--sombra);border-top:5px solid var(--vino);}
+.actividad .etiqueta{display:inline-block;background:var(--vino);color:var(--blanco);font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:20px;margin-bottom:0.9rem;font-family:Arial,sans-serif;}
+.actividad h3{color:var(--tinta);margin-top:0;}
+.pasos{counter-reset:paso;list-style:none;margin:1rem 0;}
+.pasos li{position:relative;padding-left:2.6rem;margin-bottom:0.9rem;}
+.pasos li::before{counter-increment:paso;content:counter(paso);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:var(--azul);color:var(--blanco);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:0.9rem;}
+.ejemplo{background:#f0f2ec;border:1px dashed #9a8a5a;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-size:0.93rem;}
+.ejemplo strong{color:#7a6a2a;}
+@media(max-width:720px){nav.sidebar{display:none;}main{padding:1.5rem 1.2rem;}.exponente{flex-direction:column;align-items:center;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACo2lRZFhJ+ZwSB7DGT+o/Ooru6hs7d7qc4SMZJ/z61y/hiefUp7rV7j+MiOMf3VHOB+dUo6NiuXfGH/Iran/ANesv/oJr4wr7P8AF/8AyK2p/wDXrL/6Ca+MK9LAfAwZ9406m06vLGJiloooAKKKKACiiuL8XeNNP8K2oaYCW5kH7uEHk+59F9/yqoxcnZAdTeXtpp9u11fSpDEvVnOBXj2u/GKygLReH7f7SR/y1lyqfgv3j+OK8Y17xLq3iS8N3qcu7H3IxkIg9FX+vX3q74e8F694lIewh2QZwZpDtT8DyT+FehDBwiuaqyWz2n4a+K9Z8UXGovqsissQjMaIoVV3bs47noOpNeH63resrrN6iXtwqrPIABKwwNx96+jPA/glfB8dwzXBuJbrZvwu1RszjHU9+tfL+u/8hu+/6+Jf/QzVYbklUlyrQD32O6u3+EBvXmkM3kk+YWO7IlPOeteMWPjXxXp+PI1GYgdBI3mD8nzX0L4FsLTU/h9ZWF8nmQyxuHUkjI8xj1GDVDUfhF4XulJsTLZt22tvX8Q2T+RFZUqtOEpRqLqM4/RvjLeRlY9ctVlXoZITtbHqVPBP0Ir2fQ/Eej+IoDPpU6ybcbk6Ouf7ynkfXoe1fOev/C7xDo4ae0AvoB3iB3gepTr+Wa9d+GnhUaDo/wBtuV23d5h2B6on8K+x7n3+lLEwo8vNTA9I81BIIiQGIyB6gdalrmvEizRWS39scS2zhwfY8EfT1q9pGrQavaLcw8Hoynqprj5Xa4XNeikFLUjCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqhqV4thYy3bYOxSQD3PYfiaaTbsgPPvGeqma4Gmwt8kXL+7EdPwrr/C9v9m0WBT95wXP/AAI8fpXjcrvNI00h3O5JY+pPWve7OAW1rFbj/lmip+QxXViEowUEZQd3cxfF/wDyK2p/9esv/oJr4wr7P8X/APIq6n/16y/+gmvjCunAfAzRn3jTqaKdXljCiiigAooprMFBZjgDkk0Act4v8T2vhbSzezYaZzshj7u3+A6k/wBcV8h6lqN5q17JqF85kmlOST+gHoB2FdJ458SyeJddluEP+jRExwDttB+99WPP6V3Pwr8Greyf8JJqaZiibFujDh2HVz7Kenv9K9SnBYenzy3ZL1L/AIF+GKmNNW8Sx53fNHbN6di//wAT+fpXu0aJGgjjUKqgAADAAHoKfRXn1a0qjvIaQGviLXR/xO77/r4l/wDQzX27XxFrv/Ibvv8Ar4l/9DNduX7sGfU3w3/5ErTv9x//AENq7iuH+G//ACJWnf7j/wDobV3FcVb45eoBRRRWYEFzAtzbyW79JFKn8RXj2i6m+jagTJ9wkpKvt6/ga9orxLxJD9n1u5jHQtu/76Ga6sLZtxZMnZXPa0dXUOpyCMin1x3g/UvtVibOQ5eDge6dvyrsawqQcZOLHF3VwoooqCgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArhPHNyUtILUf8tWJP0XH9TXd15V44ctqcUfZYgfzJ/wAK3wyvNEzdkctZoJLyGJud7qv5mvfa8J0gZ1S1H/TZP/QhXu1a4zdEwRzni/8A5FbU/wDr1l/9BNfGFfZ/i/8A5FXU/wDr1l/9BNfGFdGA+Bls+8RSikp1eWCCiiigYV558TtYbSfC0yRErLdnyFI7Bgd3/joI/GvQ6+e/jPfeZfWGnA8RxtK3/Azgf+g1vhoqVRJiZ5FpGmT6zqdvpdvw9xIEBxnAPUn2A5Nfaen2NvptlDY2q7I4UVFHsoxXzt8INOW51+e/kAItITtJ7O5wP/Hd1fS1b46d5cnRCQtIaWkrhKCviHXf+Q3ff9fEv/oZr7er4h13/kN33/XxL/6Ga9HLt2Jn1N8N/wDkStO/3H/9Dau4rh/hv/yJWnf7j/8AobV3FcVb45eoBRigUtZDEryfxvFs1SOUD78Qz9QTXrNedePYwfskn++D/wCO104V/vERNaHN+GLw2mrxEn5ZP3bf8C6frivaK+eo3aNldeCpBH4V9AxSCWJZF6MoI/GtMYtVIUNrEtFJmlrjNAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAryPxoP+Jz9Yl/ma9crzLxzbhby3uf76Ff++Tn/ANmrpwr98iexyukHGqWp/wCmyf8AoQr3avAbWQQ3Ecx/hYH9a99HSrxi1TJpnO+MP+RW1P8A69Zf/QTXxhX2p4qjaXw1qUS9WtJgP++DXxUK6MA/dki2z7yp1V7aRZreOVejorD8RmpxXlsYtFFFAwr5b+LcjP4tKnolvGo/U/1r6kr5g+L0HleKUcdJLZD+IZh/SuvBP94SzqvgtH+51OU8ktCPyDV7pXg3wVmGdTgJ5PksB9NwP9K95qMV/FYIWiikrnKA18Ra9/yGr7/r4l/9DNfbtfDmrTLc6ndXCfdkmkYfQsTXo5duxM+q/hv/AMiVp3+4/wD6G1dxXF/DyNovBmmo3UxFv++mJ/rXaVw1fjl6gLRRRUDErgPHg/c2rejP/Su/rz7x6wCWi+pc/lt/xrfDfxETLY84zXvWm86fb/8AXJP5CvB1UswVRkk4H1r6At4hDAkI6IoX8hiujG9CIE1AoxS1wGoUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVy/i2yN3pRkUZaBg/4dD+nNdRTHVXUo4yGGCKqMuVpoTV0fPte7abP9qsILj+/GpP1xzXjeq6e2mX0loRwDlT6qehr0fwdd/adIEZGDCxT8Oo/nXbirSgpIzho7HSzxLPC8L8q6lT9CMV8N3drLZXUtpMMPC7I31UkH+VfdVfLXxT0U6Z4jN6gxFfL5o9A4wHH8j+NGAmlJx7mh7r4D1JdU8KWMwPzRxiF/8Aej+X9QM/jXY185/CHxELS+l8P3DfLdfvIif+ei/eH/Ah/KvouufEU+SbQIWiiisBhXhfxn05mgsNVQZCFoXPfn5l/ka90rmfFui/2/oF1poGXdd0f++vK/meK2oVOSopCZ88/C7VU0zxVHFKQEu0aAk+pwy/mRj8a+q6+FVaa1uAy5jmhbIPdWU/zBr7F8J69F4j0WHUUI8wjbKvdXXqPoeo9jXVjqVmqiEjpqQ0Cg155RheJNSXR9DvNSJwYYWKn/aIwo/EkV8VqrMQq8knHuSa96+MHiNNkXhu2bLEiWfHp/Av4nn8q88+HmiHWvFFsrrmG2PnyemE+6PxbH4V6mEXsqbnIln1No1gNM0m008f8sIUj/FQAT+NalFFeW9W2MWiiigYleY+Opt15bwf3Iy3/fR/+tXp1ePeKp/tGtSgfdjCoPwGT+prpwi/eXIm9Cj4ftDeavbxjorb2+i8/wD1q9vrg/BOnGKGTUpBzL8qf7o6n8T/ACrvKWKnzTt2FBaC0UUVzmgUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUlAHLeKNG/tGz86Bczwglf9odx/hXKeC7vydQktGOBOnA/2l/8ArE16mRXnviHR5dNuxr2nD5VYPIg7EH730PeumlUvF02Q1rc9CrjfHHhv/hJdDktIgPtEf7yAn++O30Ycf/qrq7a4juoI7iI5WRQw+hqesIzcWmij4VSS5sbnem6GeB+D0ZWU/wAwa+s/BHjC38U6aGchbyFQJ06c/wB4ex/TpXD/ABM8Bveb/EWjpmUDNxEo5fH8a+/qO/Xr18L0rVb/AEW9TUNOlMUsZ4I6EdwR3Br1JpYiF47i2PuWivNPCXxI0rxAq2t+VtL04+RjhHP+wT/I8/WvSq8ucHF2kigoooqRHzR8U/CbaXqJ1+zTFtdMfMx/DKecn2br9c+1c74I8XzeFtR8yTL2k2FmQdcDow9x+or6tvrC01K0ksb2MSwyqVZT3B/l9a8D/wCFNXsmqvEbpEsA2Vk+9KV9NvTI6Z6e1ejRxEZU3CoB7/Z3trqFrHe2UiywyqGVlOQQawPFviiy8LaY15cENK4KwxZ5dv8AAdzXHXniLwv8ONLOj6axubgEnyt+47j/ABO3Rc+gH0FfP2ua5qPiG+bUNTk3yN0A4VR2VR2A/wD11lRwrlK72C5T1C/udUvJdQvG3zTMWdvUn+g6D2r6i+HHhd/Dui+bdrtu7vDyA9VH8KH3Gefc15/8M/AbTSx+JNZjIjQhraJv4j2dh6DsO/Xp1+g6vF1l/DjsIWiiivPGLSVnanq2n6PbG71KZIIh3Y4z7AdSfYVcgniuoUuIGDxyKGVhyCpGQRVWdrjHSSJDG0khwqgsT7DrXiNpbXGt6rsXP75y7t/dBOSf6V6V4svDb6WYEz5lwfLUDrg9ePpx+NL4b0RdKti8oBnlwXPoOy/h3963pSUIOXUlq50EEKW8SwRDaiAKB6AVMKTFLXPuNIWiiigYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFIyqylWGQeCKWigDOsLJbFGt4f9Vu3IP7ueoHtnkfWtClooeurAb1ryDxp8L7bVnfU9C2wXZ5eI8JIfUdlb9D7da9hpMVpTqypvmixNHw1faff6XctZ6jC8Eq9VcYP/ANce/Suq0P4geJ9CVYYLjz4F6RTjePwPDD6A4r6n1TRdK1qA22qW6XCdtw5H0PUfhXk+rfBuwlJfRrt4Cekco3r9ARggfXNd8MVTqK1RBYrWXxpiOBqOnsD/ABNE4P5KwH862P8Ahc3hr/n2u/8AvlP/AIuvOLr4T+Lbc4hWG4HqkmP/AEMLWafhp40/58P/ACJH/wDFUeywz2Yrnot78abRciw0+Rz2MrhP0UN/OvOta+JPijWFMQnFrEeqwZUn6tnd+uKu2nwo8X3DYliitx6ySA/+gbq7bSfgzDG4fWb1pBjmOAbR/wB9HOR+Ap3w9PVDPB7W2u7+4W3tInmlc4CoCzE/zr3Twr8M7bS1Gt+L2QCEeYICRsXHeQ9D9Onua9d0jw9o+gweRpFskA7sBlj9WPJ/OjW9B0zxBZ/YdVj82LO4AEqQfUYNY1cY5+6tEKx4vr3xguYtQEfhyGNrWPK7plJ8w+oAIKj07nvTrf42TqmLrTFZvVJSo/Iq3860NQ+C1lI5bTL94gedsqB//HgV/ka5eT4N+JFOIri1ce7MP/ZTWkfqzVmBuy/G4bf3Wl8/7U3+CVzWofFzxPeKUsxDaD1Rdzfm2R+lOX4O+KWbDS2qj13sf/Za3rD4LS5B1PUVHqsKZ/8AHmx/Kq/2aIHjV/qN9qc32nUJ5J5P70jFvyz0r6N+Et3rD6I1nqMEiwRHNvKwwGVuqjPJAPQ9Ocdq39G+HfhbRWWaG28+Zekk53n8uFB9wK7YDFc+IxMZrkitBme1iJr9b2c7hCuIl7Anq31PQVpUClrkuAtFFFIYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFY2p21+R5+mS7Jh/C3KP7EHofcVs0hpp2A8/j8Zy20v2fVbUpIvDbP/AIk/410lr4i0e6XKXCqfR/lP64FP1bRLPVo8TjbIPuyDqP8AEV5bqeh3+lOTMu6LtIvIx7+ldNOFOppsyG2j2dXVwGUgg9xTq8BjuJoDuhdkPqpI/lWnD4h1qHG25cgf3sN/MGqeEfRkqa6nttIK8iTxfrS9XRvqg/pipP8AhNNZ/wCmf/fJ/wAan6pND9pE9aoryF/GOtN0dF+i/wCOaoS+I9cn4e6cA9lwv8hQsJNh7RHtbMqDcxAHqawrrxLpFqOZhIfRPm/lxXkZkvr5xHukmc9ASWNdto3g4nE+qNx18pf/AGY/0FOVCEFebHdvY17TW7/W326bD5MGcGaXn/vkDv8Aia6qNNihSSx9T1NCRpEixxqFVRgADAAp9c0muiKQuKMUtFSMSilooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKjZFYFWAIPY1JRQFjkNQ8IaZeMZIAbd/8AY+7/AN8/4YrlLrwdq0LfuNky+xwfyP8AjXrJFFbxxE46EOCZ4fJomrRtta1lz7KSP0qP+yNV7Ws3/fB/wr3PFFa/XJdhKmjxmDwxrc/IgKL6uQP06/pXSWXgYDDX8+fVYx/U/wCFeh0tRLFTeiH7NFCy06zsE2WsSp7gcn6nqavUYpa5229WUhKKWkxSGLRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFYF/4m0fTdUg0a7lK3Vzjy02sc7iQOQCByO9NJvYDfopM0tIAoprMEUs3QDNYmheI9J8RwyT6TIZUiYKxKleSM9wKdna4G7RRRSAKKKx4de0241ebQ4pCbuBQ7ptYAKcc5Ix3Hemk3sBsUUUUgCiiigAooooAKKKKACiiigAooooAKKx7zXdMsdRttJuZCtzd58pNrHOPcDA/GtfNHqAtFFRyypBG0shwqAsT7Dk0ASUVkaNrmm6/Z/b9LkMkW4rkqV5HswBrXptW0YBRRRSAKKKKACisbWtd03QLZLvVJDHG7iNSFLZYgkDAB9K2adnuAUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK8N8Zf8AJTNC+kP/AKNavcq8N8Zf8lM0L6Q/+jWrahu/QD3GgUUtYgRzf6p/90/yrw34WapY6P4c1G/1GTyoY7hdzYJxkADgAnqa9ym/1T/7p/lXy/o3/JNNc/6+If8A0JK6qEVKEovyEz3288Y+G9Pt4bq8vUjS4RZIxyWKNyDtA3AfUVij4o+CSwX7aee/lSf/ABNUfBXg3Qv7Cs9SvbdLu5uIUdpJxvwCPlVQ2cBRgcV2jeG/D7rtk0+1Ye8Kf4VnJU4trUZLpOuaTrkJn0q5S4Uddp5H1HUfjWOL3wvba/eyJtGoww77lgrFhGAp9CDxjpzXnsOm2vhr4q2dno6+TBe27M8a/dHyucAemUB/lWzo/wDyVbV8/wDPqn8oqp00ruL0sB6FpGtaZrtr9t0qYTxBipYAjBHUEEAitWvELBj4A8dyaY/yaZq5DRf3UcngfgTj6EGva3dY1LuQFAJJPYCs6lPlemzFcyNY8Q6RoPk/2pN5RuGKxqFZixGM4CgnuKg1bxZ4f0Jgmq3aQuRuCcs2P91QT+YrzTQUfx140m8SzqTYaafLtgehYdDj/wAePuRXL+G9b8IHU9Q1rxi6yXM0zeUjxtIoX14BHoB6AcVqqC67oLnqf/C0fBf/AD9v/wB+pP8A4mtjSvGvhjWpxa6feK8x6IwZGP0DAZ/CuO/4TX4Wf3YP/AVv/iK4bxzrfgi+s4bvwuyxajDKrKYomiyvPJ+UAkHGD1pqgm7crQXPervX9Jsb+LS7ucR3Eyl0QgjKrkk5xgY2nqa5u4+Jngy3laJ73cVOMojsv4ELg/hXn/i63TX/ABfoEVySqXtrGX2nHysWLAY9RkV69b+FvDltGIodPtgo/wCmSk/mRk1m4wilzAQ6P4v8Oa/J5GlXiyy4z5ZBV8eysAT+FLrPi3w9oDiLVbpYpCN2wAs2PXCgkfjXA+LPDCWHiHRdW8P2Rjb7SBP9njO0JuXlgvA4yCeM1zUN3oGm+P8AWH8ZRKTI+YGmQyLjPHGD/DjBxxjtVxowl7y2/ED0T/hafgr/AJ+3/wC/Un/xNaum+O/CurTrbWV6plbhVcMhJ9BuAyfasP8A4SL4Y+tj/wB+R/8AE1ha3ZfD3xUsNnpN9aWN2JAyvGgUsOm3HyZySO9L2ceqaA7/AFKTw2NesF1AKdQYN9lJViffBAwPxrT1bW9K0OAXGq3CQIxwu7qT7AZJ/CvOPE2V8feHFY7iFcE+vWs2Swt/EvxUurTVx51vYQAxxH7pOEPI9MsSR370eyTs29LBc6w/FLwWP+Xxj/2yk/8AiakHjvwtrNtPaWN4pleJwqOrITwem4AE+3WunTQNCQbVsLYD2iT/AArC8R+DvD+paTcp9jhilEbNHIiBWVgMg5A6Z6jvUp077MDB+Eg2+El/67P/AEre1D4g+EdMuGtbm+UyISGEatIAR2JUEZrl/hmpfwNMomEG55v3h/g4HzdR93rWDoeofDXwxZmwuZY9SnDsXn+zFvoBuzwB6H3rScFKUrq47nbr8UvBbHb9rYfWKT/4muz03VdO1e2F3psyzxHjcp6H0PcH2NeXL40+Fsp8t7aFQe7WvH6KareCPsNl491TT9DcNp0tss6KpyufkPHsNxFTKlHlbStYR6TrHivQNBZU1S6WJ2GQgyzY9dqgnFc9/wALS8Ff8/bf9+n/APia5XwNpVl4j1jWNd1iJbqQXRRBKNwUc9jx0wB6Yr1b+wdE/wCfG3/79J/hSnGEHyvcZ5J8Q/Eej+IfDNvLpFwswS8j3AZDD5X6ggH9K9wBrwz4p+G9JsLS01bT4Et5DcLG4iUKrAgnJA4yMda9zHSipbkjy+Yh1FFFYDCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK8P+JcculeJNH8T7GeGBlV8D+4+4DPqQTj6V7hVW7s7W/ga1vYlmifqjgEH8DV058ruBgW3jXwrdQLPHqVuoYZw7hGH1VsEVY/4Szwx/wBBO1/7+p/jWDL8MvBkrbvsZX/dkcf+zVF/wq3wX/z6v/39f/GrtS7sC1rvjzw1p2nSzRXsM8pVhHHE4dmbHH3c4HqTXkenWE1l8JdQurhCPtU8ciA9SgdFB/PNetW3w08GWsoljsQxBzh3dh+KliD+VdTf6Rp+qWLaZexB7ZgoMYyowpBH3cYAxVqrCCSgJmd4QP8AxS2mf9esX/oArpKrWlrBY2sVnarsihQIi9cKowOTzViueTu2wPINY/5K9o//AF6t/wCgTVY0g5+K2r/9eqfyir0GbQ9Ln1aHXJoQ15ApSOTJyFIIxjOP4j2oi0PTINWm1uKLF3OgR5MnlRjjGcfwjtWrqK1vKwznfHvh0+ItBkigGbq3/ewEddwHK/8AAhx9cV5jf+OrrXPClr4ftNzapeP9llx/dHGc+r5Gf+BV9CEVzdp4Q8O2OqNrNraKl0zMxcFurZyQCcDOfSnTqxStNbbCLPhzQ7fw7pEGlW3PljLt/ec8s34n9OK8d8Ey6Bo2pan4e8TR28c6Tlo3uFXDDpgMw47Ec8g8V7/XPav4V0DXmD6vaJO4GN/Ktj03KQcfjShU3UuoWKOfA3/UN/8AIVcr4m8S+DtChjbTbOxv7h22iKIR5A7klVYD2Hetj/hVvgj/AJ8m/wC/sn/xVaml+BvCujTLc2FiglXlXctIQfUbicH3FPmprVthY4HXWP8AwsPw4XQRMbdcoOi/f4H06V7VWPdaFpd7qUGsXMO66thiN9zDaOewOD1PUVsCs5zUkrALXlUXiPTNQ8R6lofjCGyjFo4Fq86gbkJJ5ZyRnG08YzzXqtc1rPhDw94gcS6rarLIo2hwSjY9MqQTj3optJ+8Bk+R8Nf7mlf+Qa4H4h23gUaC8mjizF4rp5f2XbuOT82QnUY9a7j/AIVb4K/582/7+v8A/FVasvh14PsJ1uILEM68jzGZwPwYkVtCcIu92M4a6eaTxL4Pe6JMrWqly3XcU5z+NPlvIPC/xSub7VW8u3v4VVJW+6CQvX0GVIz7ivVrrQ9MvNRt9VuYQ9zaZ8lyT8uevAOPzFO1TRtM1qAW+qW6ToDkbhyp9iOR+BqVWWz2EQDxP4cYbl1K0IP/AE2T/GsPxH4y8P2ekXDQ3sM80iMkUcLh2Z2GAMLnv3qo3wt8Esc/YiPpLJ/8VWnpngLwpo84ubGyUSr0Z2ZyPcbicH3HNL92tbsDyrR0uH+EN+LfJIlYtt67Ay7v/Hc59q6/wLqfg2Dw1Zp51pDMIwJhKyK+/wDizuwT/hXoWmaLpujWZsNOhEcBJYpksMnr94mubufhv4Mu5Glk09VZjk7GdB/3yrAD8BVOrGV0+4WNF9Z8JOpVryxI9DJGR/OvNfBkulSfEvVX0QJ9kNudnlgBM5j3bfbdnFdgnwu8ERuH+w7sdjLIR/6FXR2XhvRtO1BtSsrdYZ2jERKkgbFxgbc7RjaOgpc8Emk3qM8w8E6xp/hnWtY0LWJVtWa5MkbSHarA57njkYIz1r1L/hJfD3/QRtf+/wAn+NQ6x4V0DX2D6taJM6jaG5Vsem5SDj2rnv8AhV3gr/nzb/v7J/8AFUSlCb5mI4v4peJdK1KztNL0ydLmRZxK7REOqgAgAkcZOf0r3WuSTwL4WjszYJZIIS6yEZbJZc4JbOTjJwM111TOUbKMQFooorIYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAmKWs661bTrK5gs7qZI5bk4iVjgueBgfmK0M0ALRRRQAUUVDcXENrC9xcMEjjUuzHoAoySfwoAmoqlYahZ6nbLeWEqzQvna68g4OD+tXaACiiikAUUVRvtRsdNh+06hNHBHnG6Rgo+nPenZvYC9RXFN8RPBqnH9ooforH+S03/hY3gz/oIJ/3y/8A8TV+yn2A7aiue07xZ4d1aQQ2F7FJIeiZwx+inBrQvNX02wuILW8nSKW5O2JWOC5yBgfiRUuLWlgNKiikJCgknAHrSAWiqtvfWV2SLSeOYr12MGxn1watUAJijFLRQAUUUUgCiiimAUUUUgCiiiiwBRRRQAUUUUwCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooriPiHql1pPhW6ubJikrbYww4Kh2AJHvjpVRi5NJAbd34l8P2DmK8v7eJx1RpFDD8M5qoPGnhQkD+07bn/AKaL/jXG+GPht4aOkW91qVubmeeNZXZ3YAFxnAAIGBmuh/4V34Oxj+z0/Bm/+KrS1NOzuDZynjOeK48YeGZoHWSNpSVZTkH5l6EcV6xcXVtZxGe7lSGMdWdgoH4mvBNY8N23hrxzokGnlxaTzK6RMxYI28BguecHipNWfS/E3j+5tPEt4tvp2nrtjjaQRhmGARkkckkkkc4GK1dNSSttYR643jLwopwdUtfwlU/1qzaeJvD9/KILO/t5XPRUlUn8s5rhRpHwiHBksD9bn/7OsPxBoPwxl0ud9Lu7SC6jRniaO4DEsoyBgscg1CpwbtqB7lmsHxV/yLOqf9ek3/oBrB+G+rXWr+FoJb1zJLCzQsx5JC/dz77SK3fFf/Isap/16Tf+gGsuXlnZjOb+F3/ImWv+9L/6Ga6W58U+HLOUw3WoW0bqcFTIuR9RmvO/C1nqN78L/smlSrBPL5iiRyVCgyHdyASPlzWfo+g/DPT9Pit9ZubS4u8ZlcTEjd7YIwPwraVNNtsD01fGfhRmCjVLXJ9ZVH9a6CC4guohPbSLLG3KshDA/QjivJRpfwhmPlB7QE+szL+u4VS8KwJ4a8fXHhzT5mewuIPNjUtuw2AwI/DI9xUukmny3+YHtteB6tZf8Jp8SpNGvnY2VjHnYGxkKF3fiWbBPXAr3uvEfDP/ACVbV/8ArnJ/6FHRQ+0+yEd/H4E8IRLtXTYce4J/U81J/wAIR4T/AOgbB/3zXVUVm60+47niXxD8E6LpuitrujRfZbi1dG/dk4ILBemeCM5BFdWLbQ9ct9A1TxDMsd8I45YFMgQvKdjHCnr8wHFeh1498Qv+Rt8L/wDXz/7UjrWE3O0W9e4Hrs00VvE00zqiKMlmOAPqTXnHivWtH1uzXSrbXLS1glbFw4kBcx91XBxz35/rXL+Op7bWPGll4c1a7Ftp0UfmS5cICxBPJOB0AA9MmtlNG+EcUe0SWR9zcZP6vTjTUUpO9/IVzpfDl74K0uBNJ0K8teSOBIpd29Sc5JP/AOqurvL+y0+IT388dvGTt3SsEGfTJxzxXkGp6D8K7qykjtLq0gm2kxulwMhu3BYgj2xXE3+r3Wp/C2AXj+ZJbagsIY9SojYjP0zj6Ch0eb3kFz6NvNY0rTgp1C6ht94yvmOq5+mTzWdH4w8LSnamp2ufeVR/M1zWnfD3RrqFL/xAHvr2ZQ8ju7AZI6KqkAAdBV2f4aeDZkKiy8s44ZHcEe/XH6VHLTWjbGdzHIsqCRCGVuQQcgis++1nStMwNSuobYsMgSOq5+mTXlPgG5n0O48QaG7tLb6YxeLcew3Z+m7AP/665zwhZeFdbin17xrewyXk8jYjlm2FVHcgMDz2HQDGKfsUm77CbPZf+Ez8Kf8AQTtv+/grWsNW0zVFL6dcxXAHUxOHx9cGvOTpHwjP8dh/4Ef/AGdcVr58M+F9X0/WvBt3Hnzds8MMokBTjOeWIBGQfwqo0YvSNwufQtxc29pEZ7qRIox1Z2CgfieK59vGnhRTj+07Y/SRT/I15xrVmfGHxDPh+/kb7DYQiQxqcBiQCfxO4DPoK7cfDrwYBj+z0P1Zyf51HJGKXOM3LLxJoGpSCGxvreaQ8hFkUt+Wc1es9QsdRiM1hPHcIDtLROHAPpkd64i/+G3hlrZ206E2dyo3RTRuwZHHQ8nHWub+FH2hvCN8LUhZmnkEZPQP5aBcn60ezi4uUWB6de+IdC05zFf30EMg/geRQ35ZzVNfGXhRjganbfjIB/OvKdF8N+CNOgdPF95a3WoGRjIRcMQOehAIOfXIrbXTvg9Idge0BP8A02Zf1LCqdGK7sVz1m2ura8iE9pKk0Z6MjBgfxFWK8Q8O20Phb4hf2Lo8m/TtRt/OVd24AgEgg9/unHsa9uFZ1IcrGLRRRWYBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXnfxSieTwdc7ATtaNjjsN45r0SobiCG5he3uEDxyKVZWGQQeCCKqEuWSkBg+E7611Dw9Yz2rhx5EasAeVZVAIPuDXRV5Tc/CTRWmMunXVzZ5/hRgQPpkZ/M1CPhLbHiTVrxlPUbhyP1rS0G7834CM/xjqNrdfELQbKBw728q+ZtOdpdxgH3+X9aybbSdFuviXqmn+I4kdZsyQByVBZtrDBBHOCePavQbT4a+H7GexuLUyq9lIZd2QTIxx98kcgY4AxWp4k8FaJ4o2yX6Mk6Das0R2uB1x3BGeeQa0VWKsk+gFUfDjwUCT/Zyf99v/wDFVS1TwT4C0qxm1G8sEWOFSzfO+TgdB83U9BWZ/wAKtC/LDrV8iDoN/T8sU5fhPpkrq2pX93dqpztdxj+RP5GjmX84HSeBrjQbrRPP8O2r2lq0jfJJ1LAAE/ebjt17VpeK/wDkWNT/AOvSb/0A1q2NjaabaR2NjGIoYhhVHQCm6jZR6lYT6fMSqXEbxMV6gOCCR781z8153GfOWo3VzB8KdOhhYqk926yYOMgFyAfbIB/CvXNJ8C+DBp8DRWUU6vGrCRjvLZHXOcc+3FaNr4M0eDw6vhicPc2qksDIRvyWLZBAGCCa48/CLTo2Is9SvIUP8IYfzAFdLqqV0nYR2D+B/CLDH9mW4+i4/lXmGhWOnaX8VpLDSzi3jibau4sFJTJUEk9DmugX4S2TMBcapeSJ3XcB/MGuj0jwBoeh6tHq+neYjxRGMISCpyMFjxuJPfmj2qimnJu6A7mvCLa6i8P/ABYuzqDCOO8Tajtwo3hWGfxUj617sK5XxJ4N0bxTGo1FGWSMYWWM7XA9O4I+orGlUUW1LqB1AKkZU5pa8cPwb08cRalcKo7EKf5YpB8HbMf8xO4/75H+NPkp/wA34AdV8Q9fXRfDk7W9wIbuTCwgNhs5G4jHPC55rzbWZLy4uvA9xeuzzSMjszdSWeM5NdjYfCPw/azrcXk092VOdshAU/UAZP511ms+E7DWr/T7+4kkjbTX3xLHtCnlThgQePlHTFXGcI2SGeW+KdO0uX4n20fiCMNZ3kCgbyQu7BUDII/iGPxr0P8A4Vv4Kx/yDk/77k/+KrV8QeF9I8TW4t9UjJ2ElHU4ZSeuD79x0ril+FcEPy2mr30SdgH/AMMUlUUkvesI2LnwB4Ds4HurmxjjijBZmaRwAB/wKvL/ABNeeHr7wCJvDVpJaW/9oKGWQcs4jPP3m4wR3rt/+FTafOw/tHUr25UHO1nGP1BrpNU8DaLqOhQ+How1rbQSCRfKxuyARyWDZzuOc801UUWryuB1lt/qI/8AcX+VWBTEQRoqDkKAOfaniuZvUDxXQYHuvFHi+1i5eVCij3O4Csz4beHfCevaNImoWyS3sMjK4ZmDbf4TgMOO3TtXrOl+GLPSdYvtat5JGlvyDIrY2jBJ+XAB79ya57WfhloGqXr6lbvNY3Mh3M0DAAsepwQcE+2K6XVT0v2Auf8ACuPBv/QPT/vuT/4quY8RaT8OfDMlut5phklnbCJEzMwx3IZxxk4qx/wq4/8AQbv/APvv/wCvWpo3w00HSrxdRmea9uEO5WnYEKfUADqOxOafNFaubYHLXt7B4Y+KUuo6qfLttQgASX+FSFUc490x+Oa9SXxL4ekXcmo2pH/XZP8AGuG8T+IdJj8RJ4c8V2cR0+VBJHcPk4Y/+g85GR/KoB4X+FEgBWS2x7Xbf0eiUVJJyuB1+reMvDem2UlxJfQSEKdqRyK7MewAUk814x4eurm0+FOsTWjFH+0bdwOCA4iU4/Amu2ez+F3hmNtVtjbPNGpMaiUzMWHTapZuc9+3WpPhfo+/wfNDqMWYb6aRtjD70ZUL+pB/nTjaEL+gCeCfB3hK78OWd9LaRXUs0YaR3Jb5+4xnAx0rrD4F8IEEf2Zbj6Lj+VcpL8I9GErPYXl1bKxztVgQPpkZ/Mmmj4TWbMPN1S8Ze4DAfzB/lSlNNt84MwrDTtP0n4rW9jpRxAsDNs3lgjMjEgZJxnrj3r3gVwmlfD7Q9G1S21WxaVXtozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Ciénega">
+  <h1>Sociología de la Educación</h1>
+  <div class="sub">Unidad 2. Orígenes de la Sociología de la Educación</div>
+  <div class="meta">Licenciatura en Pedagogía &middot; Guía interactiva de aprendizaje</div>
+</header>
+<div class="layout">
+<nav class="sidebar">
+  <h2>Contenido</h2>
+  <a href="#intro">Introducción</a>
+  <a href="#t22">Primeras manifestaciones</a>
+  <a href="#t23">Principales exponentes</a>
+  <a class="sec">Actividades</a>
+  <a href="#act1">1 &middot; Foro de mediación</a>
+  <a href="#act2">2 &middot; Aplicación significativa</a>
+  <a href="#act3">3 &middot; Quiz</a>
+  <a href="#reflexion">Reflexión y aplicación</a>
+</nav>
+<main>
+<section id="intro">
+  <h2 class="titulo">Introducción</h2>
+  <p>La Sociología de la Educación no surgió como una construcción abstracta ni de manera repentina. Fue el resultado de un largo proceso en el que pensadores de distintas épocas y tradiciones intentaron comprender la relación entre la educación y la sociedad. Antes de constituirse como disciplina científica, esa reflexión ya latía en la filosofía, en la pedagogía y en los proyectos de formación de la ciudadanía moderna.</p>
+  <p>Esta guía propone recorrer los orígenes de la disciplina desde una metodología constructivista y de aprendizaje basado en problemas. Usted no recibirá una información cerrada para memorizar: será invitado a reconocer las primeras manifestaciones sociológicas de la educación y a dialogar con los principales exponentes que sentaron sus bases, vinculando cada aportación con su propia experiencia como estudiante universitario y futuro pedagogo.</p>
+  <div class="figura">
+  <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="De la reflexion filosofica a la ciencia social">
+    <rect width="640" height="200" fill="#eaf0f7"/>
+    <circle cx="110" cy="100" r="55" fill="#9db3d4" opacity="0.55"/>
+    <text x="110" y="96" text-anchor="middle" font-family="Georgia" font-size="15" fill="#25324f">Filosofía</text>
+    <text x="110" y="116" text-anchor="middle" font-family="Georgia" font-size="15" fill="#25324f">y pedagogía</text>
+    <circle cx="320" cy="100" r="55" fill="#c19a3b" opacity="0.55"/>
+    <text x="320" y="96" text-anchor="middle" font-family="Georgia" font-size="15" fill="#25324f">Educación</text>
+    <text x="320" y="116" text-anchor="middle" font-family="Georgia" font-size="15" fill="#25324f">y ciudadanía</text>
+    <circle cx="530" cy="100" r="55" fill="#8c3a4e" opacity="0.55"/>
+    <text x="530" y="96" text-anchor="middle" font-family="Georgia" font-size="14" fill="#ffffff">Sociología de</text>
+    <text x="530" y="116" text-anchor="middle" font-family="Georgia" font-size="14" fill="#ffffff">la Educación</text>
+    <path d="M170 100 L262 100" stroke="#25324f" stroke-width="2.5" marker-end="url(#a)"/>
+    <path d="M380 100 L472 100" stroke="#25324f" stroke-width="2.5" marker-end="url(#a)"/>
+    <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="#25324f"/></marker></defs>
+  </svg>
+  <figcaption>Figura 1. Del pensamiento filosófico sobre la educación a la constitución de una ciencia social autónoma.</figcaption>
+  </div>
+  <div class="problema">
+    <strong>Problema orientador de la unidad:</strong> Si distintos pensadores, en siglos y contextos diferentes, se preguntaron por la relación entre educación y sociedad, ¿por qué decimos que la Sociología de la Educación es una disciplina relativamente reciente? ¿Qué distingue a una reflexión filosófica sobre la educación de un estudio propiamente sociológico? Este será el hilo conductor de nuestro recorrido.
+  </div>
+</section>
+<section id="t22">
+  <h2 class="titulo">Primeras manifestaciones sociológicas de la educación</h2>
+  <p>Mucho antes de que la sociología existiera como ciencia, ya había un pensamiento que vinculaba la educación con la vida social. Estas primeras manifestaciones no constituían todavía sociología en sentido estricto, pero prepararon el terreno para ella al sostener que la educación cumple funciones sociales, y no únicamente individuales. Reconocer estos antecedentes permite comprender que la disciplina no nació de la nada, sino que decantó siglos de reflexión.</p>
+
+  <h3>De la reflexión filosófica al estudio sociológico</h3>
+  <p>La diferencia fundamental entre estas primeras manifestaciones y la sociología propiamente dicha reside en el método. Los pensadores ilustrados reflexionaban sobre cómo debería ser la educación: proponían ideales, valores y finalidades. La sociología, en cambio, se pregunta cómo es la educación en la realidad y por qué funciona de determinada manera, apoyándose en la observación sistemática de los hechos. Se pasa así de una mirada prescriptiva, que dice lo que debe ser, a una mirada explicativa, que busca comprender lo que efectivamente ocurre.</p>
+
+  <div class="tarjeta">
+    <h3>Cuatro ideas precursoras</h3>
+    <p>Las primeras manifestaciones sociológicas de la educación pueden agruparse en cuatro grandes intuiciones que, con el tiempo, la disciplina retomaría y sometería a estudio riguroso.</p>
+    <ul class="lista">
+      <li><strong>La educación como formación del ciudadano:</strong> desde la Ilustración, pensadores como Rousseau, Kant y Fichte concibieron la educación como el medio para formar sujetos libres, morales y comprometidos con la comunidad. La educación deja de ser un asunto privado para volverse una cuestión de interés público.</li>
+      <li><strong>La educación como reforma social:</strong> Pestalozzi vinculó la enseñanza con la mejora de las condiciones de vida de los sectores más pobres, anticipando la idea de la educación como instrumento de transformación social y de justicia.</li>
+      <li><strong>La educación como experiencia y vida en común:</strong> Dewey planteó que la escuela es una comunidad en miniatura, un espacio de vida social donde se aprende a convivir democráticamente. Educar no es solo transmitir contenidos, sino formar en la convivencia.</li>
+      <li><strong>La educación como hecho social:</strong> con Durkheim, estas intuiciones se convierten en tesis científica: la educación es un hecho social objetivo, exterior al individuo, que ejerce coacción sobre él y puede estudiarse con método propio.</li>
+    </ul>
+  </div>
+
+  <div class="figura">
+  <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="De la intuicion a la ciencia">
+    <rect width="640" height="170" fill="#f7ecee"/>
+    <text x="320" y="34" text-anchor="middle" font-family="Georgia" font-size="16" fill="#8c3a4e">De la intuición filosófica a la tesis científica</text>
+    <rect x="30" y="66" width="170" height="70" rx="10" fill="#9db3d4" opacity="0.6"/>
+    <text x="115" y="96" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#25324f">Educar forma</text>
+    <text x="115" y="114" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#25324f">al ciudadano</text>
+    <rect x="235" y="66" width="170" height="70" rx="10" fill="#c19a3b" opacity="0.6"/>
+    <text x="320" y="96" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#25324f">Educar mejora</text>
+    <text x="320" y="114" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#25324f">la sociedad</text>
+    <rect x="440" y="66" width="170" height="70" rx="10" fill="#8c3a4e" opacity="0.75"/>
+    <text x="525" y="96" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#ffffff">La educación es</text>
+    <text x="525" y="114" text-anchor="middle" font-family="Georgia" font-size="12.5" fill="#ffffff">un hecho social</text>
+    <path d="M205 101 L230 101" stroke="#25324f" stroke-width="2.5" marker-end="url(#b)"/>
+    <path d="M410 101 L435 101" stroke="#25324f" stroke-width="2.5" marker-end="url(#b)"/>
+    <defs><marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="#25324f"/></marker></defs>
+  </svg>
+  <figcaption>Figura 2. Las primeras manifestaciones anticipan, en clave filosófica, lo que Durkheim formulará como ciencia.</figcaption>
+  </div>
+
+  <h3>El contexto que las hizo posibles</h3>
+  <p>Estas manifestaciones no aparecieron de forma aislada. Fueron respuesta a las grandes transformaciones de los siglos XVIII y XIX: la Ilustración y su confianza en la razón, la Revolución Francesa y la idea de ciudadanía, la Revolución Industrial y la aparición de nuevas clases sociales, y la extensión de la escolarización pública. Cuando la escuela dejó de ser un privilegio de pocos y comenzó a convertirse en una institución de masas, se volvió urgente preguntarse qué hace la sociedad con la educación y qué hace la educación con la sociedad. Esa pregunta es, precisamente, la que dará origen a la disciplina.</p>
+
+  <div class="destacado">
+    Las primeras manifestaciones sociológicas de la educación comparten una convicción: educar no es un acto individual y aislado, sino una acción social con consecuencias colectivas. Faltaba únicamente dotar esa convicción de un método científico para que naciera la Sociología de la Educación.
+  </div>
+
+  <div class="problema">
+    <strong>Punto de discusión:</strong> ¿Basta con afirmar que la educación tiene efectos sociales para hacer sociología? ¿Qué le faltaba a la reflexión de Rousseau o de Pestalozzi para ser considerada propiamente sociológica? Sostenga su respuesta distinguiendo con claridad entre emitir una opinión sobre la educación y realizar un estudio metódico de ella.
+  </div>
+</section>
+<section id="t23">
+  <h2 class="titulo">Principales exponentes</h2>
+  <p>Los siguientes pensadores, aunque pertenecen a tradiciones y épocas distintas, comparten el haber contribuido a comprender la educación en su dimensión social. Se presentan en orden cronológico para apreciar cómo la reflexión evolucionó desde la filosofía ilustrada hasta la fundación de la disciplina y su vínculo con la vida democrática. En cada caso se indica su obra educativa más representativa.</p>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#f0ece2"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#7a3540"/><rect x="47" y="74" width="16" height="20" fill="#eccca9"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#eccca9"/><path d="M29 54 Q26 24 55 24 Q84 24 81 54 Q84 60 78 60 Q80 40 55 38 Q30 40 32 60 Q26 60 29 54 Z" fill="#efefef"/><ellipse cx="34" cy="62" rx="7" ry="10" fill="#efefef"/><ellipse cx="76" cy="62" rx="7" ry="10" fill="#efefef"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+    <div class="datos">
+      <h4>Jean-Jacques Rousseau</h4>
+      <div class="vida">1712 - 1778 &middot; Obra clave: Emilio, o De la educación (1762)</div>
+      <p>Filósofo ginebrino, figura central de la Ilustración. Rechazó la educación memorística y autoritaria de su tiempo y propuso una educación natural, respetuosa de las etapas del desarrollo del niño y guiada por la experiencia antes que por la imposición.</p>
+      <p><strong>Aporte a la mirada social:</strong> Concibió la educación como formación del ciudadano y como base del pacto social. Para Rousseau, educar bien es formar personas capaces de vivir en libertad y de sostener una sociedad justa, de modo que el problema educativo es inseparable del problema político y social.</p>
+    </div>
+  </div>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#eaf0ea"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#40506a"/><rect x="47" y="74" width="16" height="20" fill="#e8caa6"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e8caa6"/><path d="M29 54 Q26 24 55 24 Q84 24 81 54 Q84 60 78 60 Q80 40 55 38 Q30 40 32 60 Q26 60 29 54 Z" fill="#f2f2f2"/><ellipse cx="34" cy="62" rx="7" ry="10" fill="#f2f2f2"/><ellipse cx="76" cy="62" rx="7" ry="10" fill="#f2f2f2"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+    <div class="datos">
+      <h4>Immanuel Kant</h4>
+      <div class="vida">1724 - 1804 &middot; Obra clave: Pedagogía (Über Pädagogik, 1803)</div>
+      <p>Filósofo alemán, uno de los pensadores más influyentes de la modernidad. Sostuvo que el ser humano es la única criatura que debe ser educada, y que solo llega a ser plenamente humano a través de la educación.</p>
+      <p><strong>Aporte a la mirada social:</strong> Planteó la educación como una tarea de la humanidad orientada a la autonomía moral. Educar no es solo instruir, sino disciplinar, cultivar y moralizar para que cada generación deje a la siguiente en mejores condiciones: una visión de la educación como motor del progreso de la especie, no solo del individuo.</p>
+    </div>
+  </div>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#f2efe6"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#5a3a2a"/><rect x="47" y="74" width="16" height="20" fill="#e6c6a2"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e6c6a2"/><path d="M31 50 Q31 30 55 30 Q79 30 79 50 Q70 40 55 40 Q40 40 31 50 Z" fill="#5a5a5a"/><path d="M31 54 Q29 66 33 74 L36 74 Q32 62 34 54 Z" fill="#5a5a5a"/><path d="M79 54 Q81 66 77 74 L74 74 Q78 62 76 54 Z" fill="#5a5a5a"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+    <div class="datos">
+      <h4>Johann H. Pestalozzi</h4>
+      <div class="vida">1746 - 1827 &middot; Obra clave: Cómo Gertrudis enseña a sus hijos (1801)</div>
+      <p>Pedagogo y reformador social suizo. Dedicó su vida a educar a niños huérfanos y en situación de pobreza, y desarrolló un método basado en la intuición sensible, el afecto y la actividad, partiendo de lo concreto hacia lo abstracto.</p>
+      <p><strong>Aporte a la mirada social:</strong> Entendió la educación como instrumento de reforma social y de dignificación de los sectores desfavorecidos. Al llevar la enseñanza a los más pobres, mostró en la práctica que la educación puede transformar las condiciones de vida de una comunidad, anticipando la preocupación sociológica por la equidad.</p>
+    </div>
+  </div>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#efeae6"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#3a3a3a"/><rect x="47" y="74" width="16" height="20" fill="#e8c9a6"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e8c9a6"/><path d="M29 54 Q26 24 55 24 Q84 24 81 54 Q84 60 78 60 Q80 40 55 38 Q30 40 32 60 Q26 60 29 54 Z" fill="#e8e8e8"/><ellipse cx="34" cy="62" rx="7" ry="10" fill="#e8e8e8"/><ellipse cx="76" cy="62" rx="7" ry="10" fill="#e8e8e8"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+    <div class="datos">
+      <h4>Johann G. Fichte</h4>
+      <div class="vida">1762 - 1814 &middot; Obra clave: Discursos a la nación alemana (1808)</div>
+      <p>Filósofo alemán del idealismo. En un contexto de ocupación extranjera, defendió una educación nacional capaz de formar la conciencia y la identidad de todo un pueblo.</p>
+      <p><strong>Aporte a la mirada social:</strong> Vinculó de manera explícita la educación con la nación, mostrando el poder de la escuela para construir identidad colectiva y cohesión social. Anticipó así uno de los grandes temas de la Sociología de la Educación: el papel del sistema educativo en la formación de la conciencia nacional y en la integración de la sociedad.</p>
+    </div>
+  </div>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#efe9ef"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#2f2b33"/><rect x="47" y="74" width="16" height="20" fill="#e6c6a4"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e6c6a4"/><path d="M31 50 Q31 26 55 26 Q79 26 79 50 Q79 44 55 42 Q31 44 31 50 Z" fill="#3a3330"/><path d="M36 66 Q36 90 55 90 Q74 90 74 66 Q66 78 55 78 Q44 78 36 66 Z" fill="#3a3330"/><rect x="47" y="60" width="16" height="8" fill="#3a3330"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+    <div class="datos">
+      <h4>Émile Durkheim</h4>
+      <div class="vida">1858 - 1917 &middot; Obra clave: Educación y sociología (1922, póstuma)</div>
+      <p>Sociólogo francés, considerado el fundador de la Sociología de la Educación. Desde su cátedra en la Sorbona, fue el primero en afirmar que la educación es un hecho social y, por tanto, objeto de una ciencia con método propio.</p>
+      <p><strong>Aporte a la mirada social:</strong> Definió la educación como la socialización metódica de las nuevas generaciones: la acción que las generaciones adultas ejercen sobre las jóvenes para transmitirles los saberes y valores que la sociedad considera indispensables. Sostuvo además que cada sociedad configura el tipo de educación que corresponde a sus necesidades, con lo que convirtió la reflexión educativa en análisis científico de la sociedad.</p>
+    </div>
+  </div>
+  <div class="exponente">
+    <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#e9eef5"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#3a4a63"/><rect x="47" y="74" width="16" height="20" fill="#e8c9a8"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e8c9a8"/><path d="M31 50 Q31 28 55 28 Q79 28 79 50 Q70 40 55 40 Q40 40 31 50 Z" fill="#6b6b6b"/><circle cx="45" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><circle cx="65" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><line x1="52" y1="56" x2="58" y2="56" stroke="#333" stroke-width="1.5"/><path d="M48 68 Q55 72 62 68" fill="none" stroke="#6b6b6b" stroke-width="3"/></svg></div>
+    <div class="datos">
+      <h4>John Dewey</h4>
+      <div class="vida">1859 - 1952 &middot; Obra clave: Democracia y educación (1916)</div>
+      <p>Filósofo y pedagogo estadounidense, principal figura de la escuela activa. Criticó la enseñanza pasiva y libresca y propuso el aprender haciendo, con el estudiante como protagonista de su aprendizaje.</p>
+      <p><strong>Aporte a la mirada social:</strong> Entendió la educación como un proceso social y como experiencia de vida en común. Para Dewey, la escuela es una comunidad democrática en miniatura donde se aprende a convivir, deliberar y cooperar; de este modo, educación y democracia se sostienen mutuamente y la enseñanza adquiere una función social explícita.</p>
+    </div>
+  </div>
+  <h3>Síntesis comparativa</h3>
+  <p>Puede advertirse una progresión: los cuatro primeros exponentes piensan la educación desde la filosofía y la pedagogía, formulando ideales sobre cómo formar al individuo y al ciudadano. Con Durkheim, la educación se convierte por primera vez en objeto de una ciencia; con Dewey, se vincula estrechamente con la experiencia y la vida democrática. Todos, sin embargo, coinciden en un punto decisivo: la educación no es un asunto meramente individual, sino una acción con hondas consecuencias sociales.</p>
+  <div class="destacado">Retratos ilustrativos de elaboración propia. Estos seis exponentes trazan un puente entre la filosofía de la educación y la sociología: preparan el paso de preguntarse cómo debe educarse a preguntarse cómo y por qué educa realmente la sociedad.</div>
+  <div class="problema"><strong>Tensión productiva:</strong> Rousseau centra la educación en el desarrollo natural del individuo; Durkheim la define como la acción de la sociedad sobre el individuo. ¿Educa la sociedad al individuo, o se educa el individuo por sí mismo? Esta tensión entre lo individual y lo social atraviesa toda la Sociología de la Educación y será el eje de la primera actividad.</div>
+</section><section id="act1">
+  <h2 class="titulo">Actividades para Google Classroom</h2>
+  <p>Las siguientes tres actividades deberán desarrollarse y entregarse en Google Classroom. Cada una atiende una dimensión distinta del aprendizaje: la deliberación crítica, la aplicación significativa y la autoevaluación. Lea con atención las instrucciones y los ejemplos.</p>
+
+  <div class="actividad">
+    <span class="etiqueta">Actividad 1 &middot; Mediación en foro</span>
+    <h3>¿Educa la sociedad o se educa el individuo?</h3>
+    <p>Esta actividad promueve la construcción colaborativa del conocimiento mediante el intercambio argumentado. El propósito no es hallar la respuesta única, sino razonar públicamente y dialogar con las aportaciones de sus compañeros.</p>
+    <p><strong>Pregunta detonadora:</strong></p>
+    <div class="destacado">
+      Rousseau confiaba en el desarrollo natural del individuo; Durkheim afirmaba que es la sociedad la que educa e integra a cada persona. En su experiencia como estudiante universitario, ¿quién ha educado más su forma de pensar: usted mismo por su cuenta, o las instituciones y grupos a los que pertenece? ¿Puede separarse realmente lo individual de lo social en su formación?
+    </div>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Ingrese al tema del foro publicado en Google Classroom, en la pestaña Trabajo de clase.</li>
+      <li>Redacte una aportación inicial de entre 150 y 200 palabras. Tome una postura y fundaméntela con al menos uno de los exponentes de la unidad (Rousseau, Kant, Pestalozzi, Fichte, Durkheim o Dewey).</li>
+      <li>Lea las aportaciones de al menos dos compañeros y responda a cada una ampliando, matizando o cuestionando respetuosamente su argumento.</li>
+      <li>Cierre con una breve reflexión sobre cómo el diálogo enriqueció o modificó su postura inicial.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de aportación:</strong> Me inclino por la postura de Durkheim. Aunque creo haber formado mis ideas por cuenta propia, al observar con detenimiento reconozco que mi manera de argumentar, mis referencias y hasta mis dudas provienen de los profesores, lecturas y compañeros de la universidad. Como diría Durkheim, mi pensamiento es en buena medida un hecho social que me fue transmitido. Sin embargo, rescato de Rousseau que ese aprendizaje solo arraiga cuando lo hago propio activamente.
+    </div>
+  </div>
+
+  <div class="actividad" id="act2">
+    <span class="etiqueta">Actividad 2 &middot; Aplicación significativa</span>
+    <h3>Galería de exponentes: una ficha viva</h3>
+    <p>El objetivo es que usted se apropie del pensamiento de un exponente y lo traduzca a su realidad universitaria actual, generando un aprendizaje significativo y transferible a su formación como pedagogo.</p>
+    <p><strong>Producto a entregar:</strong> una ficha ilustrada de un exponente, elaborada en la herramienta digital de su preferencia (Canva, presentación o documento con imagen), que conecte su pensamiento con una situación concreta de su vida universitaria.</p>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Elija uno de los seis exponentes de la unidad. Procure que, en conjunto, el grupo cubra a los seis; coordínense en el foro para no repetir en exceso.</li>
+      <li>Investigue brevemente su vida y su idea central sobre la educación, más allá de lo expuesto en esta guía.</li>
+      <li>Elabore una ficha que incluya: nombre y época, una imagen o retrato, su idea educativa central en una frase propia, y una situación real de su vida universitaria que esa idea ayude a comprender.</li>
+      <li>Añada un párrafo final titulado Aplicación pedagógica, donde explique cómo llevaría esa idea a su futura práctica docente.</li>
+      <li>Exporte la ficha en PDF o comparta el enlace y súbala a la tarea correspondiente en Google Classroom.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de aplicación:</strong> Exponente elegido: Dewey. Idea central en mis palabras: se aprende haciendo y conviviendo, no solo escuchando. Situación universitaria: en los trabajos en equipo aprendo más cuando debatimos y resolvemos juntos que cuando solo recibo una exposición. Aplicación pedagógica: como futura pedagoga, diseñaré mis clases como comunidades de trabajo donde los estudiantes construyan el conocimiento activamente.
+    </div>
+  </div>
+</section>
+<section id="act3">
+  <div class="actividad">
+    <span class="etiqueta">Actividad 3 &middot; Quiz</span>
+    <h3>Autoevaluación del aprendizaje</h3>
+    <p>Responda las siguientes cinco preguntas para verificar su comprensión de la unidad. Al finalizar obtendrá su puntaje. Capture el resultado y súbalo a Google Classroom según indique su docente.</p>
+    <div id="quiz"></div>
+    <div id="resultado" style="display:none;"></div>
+    <button id="btnEnviar" onclick="calificar()" style="background:var(--vino);color:#fff;border:none;padding:0.8rem 1.8rem;border-radius:8px;font-size:1rem;cursor:pointer;font-family:Arial,sans-serif;margin-top:1rem;">Ver mi puntaje</button>
+  </div>
+</section>
+
+<section id="reflexion">
+  <h2 class="titulo">Reflexión y aplicación</h2>
+  <p>Cierre esta unidad planificando cómo incorporará lo aprendido en su vida académica y profesional. Sus respuestas se guardarán en este navegador para que pueda retomarlas.</p>
+  <div class="tarjeta">
+    <h3>Planificador personal</h3>
+    <p><strong>1. ¿Cuál de los exponentes revisados conecta mejor con mi manera de entender la educación y por qué?</strong></p>
+    <textarea id="r1" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>2. ¿Cómo me ayuda distinguir entre la reflexión filosófica y el estudio sociológico de la educación para comprender mi propia formación universitaria?</strong></p>
+    <textarea id="r2" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>3. Como futuro pedagogo, ¿qué aportación de estos exponentes me comprometo a incorporar en mi práctica?</strong></p>
+    <textarea id="r3" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:0.8rem;font-size:0.85rem;color:#777;">Sus respuestas se guardan automáticamente en este dispositivo.</p>
+  </div>
+  <div class="destacado">
+    Conocer a quienes pensaron la educación antes que nosotros no es mirar al pasado: es reconocer que formamos parte de una conversación que continúa. Como pedagogos, seremos el siguiente eslabón de esa historia.
+  </div>
+</section>
+</main>
+</div>
+<footer style="background:var(--tinta);color:#fff;text-align:center;padding:1.5rem;font-size:0.85rem;">
+  Universidad de la Ciénega &middot; Licenciatura en Pedagogía &middot; Sociología de la Educación
+</footer>
+<script>
+var preguntas=[
+  {p:"Las primeras manifestaciones sociologicas de la educacion se distinguen de la sociologia propiamente dicha porque:",
+   o:["Eran reflexiones filosoficas que aun no empleaban un metodo cientifico sistematico","Negaban toda relacion entre educacion y sociedad","Fueron escritas en el siglo XX","Rechazaban la idea de formar ciudadanos"],c:0},
+  {p:"La diferencia central entre la reflexion filosofica y el estudio sociologico de la educacion es que:",
+   o:["La filosofia dice como deberia ser la educacion y la sociologia estudia como es en la realidad","No existe ninguna diferencia entre ambas","La sociologia es anterior a la filosofia","La filosofia utiliza mas datos empiricos que la sociologia"],c:0},
+  {p:"Se considera fundador de la Sociologia de la Educacion como ciencia a:",
+   o:["Jean-Jacques Rousseau","Emile Durkheim","Immanuel Kant","Johann Pestalozzi"],c:1},
+  {p:"El exponente que concibio la escuela como una comunidad democratica donde se aprende haciendo fue:",
+   o:["John Dewey","Johann Fichte","Immanuel Kant","Emile Durkheim"],c:0},
+  {p:"Pestalozzi es recordado, sobre todo, por entender la educacion como:",
+   o:["Un instrumento de reforma social dirigido a los sectores mas pobres","Un privilegio reservado a las elites","Una actividad puramente teorica","Un medio para eliminar la escuela publica"],c:0}
+];
+
+function render(){
+  var q=document.getElementById("quiz");
+  var h="";
+  for(var i=0;i<preguntas.length;i++){
+    h+="<div style='background:#f2eff2;padding:1rem 1.2rem;border-radius:8px;margin-bottom:1rem;'>";
+    h+="<p style='font-weight:bold;color:#25324f;'>"+(i+1)+". "+preguntas[i].p+"</p>";
+    for(var j=0;j<preguntas[i].o.length;j++){
+      h+="<label style='display:block;margin:0.4rem 0;cursor:pointer;'>";
+      h+="<input type='radio' name='p"+i+"' value='"+j+"'> "+preguntas[i].o[j];
+      h+="</label>";
+    }
+    h+="</div>";
+  }
+  q.innerHTML=h;
+}
+
+function calificar(){
+  var punt=0;
+  var detalle="";
+  for(var i=0;i<preguntas.length;i++){
+    var sel=document.querySelector("input[name='p"+i+"']:checked");
+    var ok=sel && parseInt(sel.value)===preguntas[i].c;
+    if(ok)punt++;
+    detalle+="<p style='margin:0.3rem 0;'>Pregunta "+(i+1)+": "+(ok?"<span style=\"color:#2a7a2a;\">Correcta</span>":"<span style=\"color:#8c3a4e;\">Incorrecta</span> (respuesta: "+preguntas[i].o[preguntas[i].c]+")")+"</p>";
+  }
+  var r=document.getElementById("resultado");
+  var pct=Math.round(punt/preguntas.length*100);
+  var msg=pct>=80?"Excelente comprension de la unidad.":pct>=60?"Buen avance; conviene repasar algunos conceptos.":"Le recomendamos revisar nuevamente el contenido de la unidad.";
+  r.style.display="block";
+  r.style.background="#fff";
+  r.style.border="2px solid #25324f";
+  r.style.borderRadius="10px";
+  r.style.padding="1.3rem";
+  r.style.marginTop="1.2rem";
+  r.innerHTML="<h3 style='color:#8c3a4e;margin-top:0;'>Su puntaje: "+punt+" de "+preguntas.length+" ("+pct+"%)</h3><p style='font-style:italic;'>"+msg+"</p>"+detalle;
+  r.scrollIntoView({behavior:"smooth"});
+}
+
+function guardar(){
+  localStorage.setItem("soc23_r1",document.getElementById("r1").value);
+  localStorage.setItem("soc23_r2",document.getElementById("r2").value);
+  localStorage.setItem("soc23_r3",document.getElementById("r3").value);
+}
+function cargar(){
+  if(localStorage.getItem("soc23_r1"))document.getElementById("r1").value=localStorage.getItem("soc23_r1");
+  if(localStorage.getItem("soc23_r2"))document.getElementById("r2").value=localStorage.getItem("soc23_r2");
+  if(localStorage.getItem("soc23_r3"))document.getElementById("r3").value=localStorage.getItem("soc23_r3");
+}
+
+render();
+cargar();
+</script>
+</body>
+</html>
