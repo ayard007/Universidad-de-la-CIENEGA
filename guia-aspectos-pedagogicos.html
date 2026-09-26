@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía 1.3 — Aspectos Pedagógicos del Conocimiento | Teorías del Aprendizaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --jade:       #1a6b5a;
+  --jade-light: #e6f4f1;
+  --jade-mid:   #2d8b74;
+  --terra:      #b84c2a;
+  --terra-light:#fdf0eb;
+  --terra-mid:  #d4623e;
+  --cream:      #faf8f4;
+  --ink:        #1c1c1e;
+  --ink-soft:   #3a3a3c;
+  --muted:      #6b7280;
+  --border:     #d1d5db;
+  --white:      #ffffff;
+  --gold:       #c9962a;
+  --gold-light: #fef9ed;
+  --radius:     10px;
+  --shadow:     0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+h1, h2, h3, h4 { font-family: 'Lora', serif; line-height: 1.3; }
+code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+
+/* ---- HEADER ---- */
+.site-header {
+  background: linear-gradient(135deg, var(--jade) 0%, #0f4a3d 100%);
+  color: var(--white);
+  padding: 0;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.logo-wrap img { height: 64px; width: auto; filter: brightness(0) invert(1); }
+.header-text { flex: 1; }
+.header-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.header-text h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.header-text .subtitle {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+}
+.header-meta {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 20px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta-pill {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ---- NAV ---- */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 2px solid var(--jade);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+.nav-inner a {
+  display: inline-block;
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-inner a:hover { color: var(--jade); border-bottom-color: var(--jade-mid); }
+
+/* ---- MAIN LAYOUT ---- */
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; }
+.section { margin-bottom: 56px; }
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.section-num {
+  width: 36px; height: 36px;
+  background: var(--jade);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.section-label h2 {
+  font-size: 1.45rem;
+  color: var(--jade);
+  font-weight: 700;
+}
+.section-label h2.terra { color: var(--terra); }
+.section-num.terra { background: var(--terra); }
+.section-num.gold { background: var(--gold); }
+.section-label h2.gold { color: var(--gold); }
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.card.jade-accent { border-left: 4px solid var(--jade); }
+.card.terra-accent { border-left: 4px solid var(--terra); }
+.card.gold-accent { border-left: 4px solid var(--gold); }
+
+/* ---- INTRO HIGHLIGHT ---- */
+.intro-box {
+  background: var(--jade-light);
+  border: 1px solid rgba(26,107,90,0.2);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+.intro-box p { color: var(--ink-soft); font-size: 0.97rem; }
+.intro-box strong { color: var(--jade); }
+
+/* ---- PREVIOS QUESTION ---- */
+.previos-box {
+  background: var(--gold-light);
+  border: 1px solid rgba(201,150,42,0.3);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+.previos-box .question-label {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+.previos-input {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid rgba(201,150,42,0.4);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--white);
+  resize: vertical;
+  margin-top: 8px;
+}
+.previos-input:focus { outline: 2px solid var(--gold); }
+
+/* ---- CONTENT GRID ---- */
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 720px) { .content-grid { grid-template-columns: 1fr; } }
+.header-inner { flex-wrap: wrap; }
+@media (max-width: 600px) { .header-inner { padding: 20px; } .main { padding: 24px 16px 60px; } .nav-inner a { padding: 12px 12px; } }
+
+/* ---- THEORY BLOCKS ---- */
+.theory-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.theory-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.bg-jade { background: var(--jade); }
+.bg-terra { background: var(--terra); }
+.bg-gold { background: var(--gold); }
+.bg-slate { background: #4b5563; }
+.bg-violet { background: #6d28d9; }
+.bg-teal { background: #0d9488; }
+.theory-header h3 { font-size: 1.1rem; color: var(--ink); }
+.theory-header .thinker { font-size: 0.82rem; color: var(--muted); font-style: italic; font-family: 'DM Sans', sans-serif; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.pill {
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.pill-jade { background: var(--jade-light); color: var(--jade); border: 1px solid rgba(26,107,90,0.2); }
+.pill-terra { background: var(--terra-light); color: var(--terra); border: 1px solid rgba(184,76,42,0.2); }
+.pill-gold { background: var(--gold-light); color: var(--gold); border: 1px solid rgba(201,150,42,0.2); }
+.pill-slate { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+
+/* ---- COMPARISON TABLE ---- */
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.comp-table th {
+  background: var(--jade);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+.comp-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.comp-table tr:nth-child(even) td { background: #f9fafb; }
+.comp-table tr:hover td { background: var(--jade-light); }
+
+/* ---- ACTIVITIES ---- */
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  color: var(--white);
+}
+.activity-header.foro { background: linear-gradient(135deg, #1a6b5a, #0d5244); }
+.activity-header.activ { background: linear-gradient(135deg, #b84c2a, #8c3218); }
+.activity-header.caso { background: linear-gradient(135deg, #c9962a, #a07318); }
+.activity-header.quiz-h { background: linear-gradient(135deg, #4b5563, #1f2937); }
+.activity-badge {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.activity-title { font-size: 1.15rem; font-weight: 700; font-family: 'Lora', serif; }
+.activity-sub { font-size: 0.82rem; opacity: 0.85; }
+.activity-body {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 28px 32px;
+}
+.activity-card { margin-bottom: 32px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.step-list { counter-reset: step; list-style: none; margin: 14px 0; }
+.step-list li {
+  counter-increment: step;
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.step-list li::before {
+  content: counter(step);
+  min-width: 28px; height: 28px;
+  background: var(--jade-light);
+  color: var(--jade);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-list.terra li::before { background: var(--terra-light); color: var(--terra); }
+.step-list.gold li::before { background: var(--gold-light); color: var(--gold); }
+.ejemplo-box {
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 14px;
+}
+.ejemplo-box .ejemplo-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.ejemplo-box p { font-size: 0.9rem; color: var(--ink-soft); font-style: italic; }
+.classroom-note {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: #1e40af;
+  margin-top: 16px;
+}
+.classroom-note strong { font-weight: 600; }
+
+/* ---- CASO PRACTICO ---- */
+.caso-scenario {
+  background: linear-gradient(135deg, #fef9ed, #fdf0eb);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.caso-scenario p { color: var(--ink-soft); line-height: 1.7; }
+.caso-scenario .char { font-weight: 600; color: var(--terra); }
+.caso-preguntas ol { padding-left: 20px; }
+.caso-preguntas li {
+  margin-bottom: 12px;
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  padding-left: 6px;
+}
+
+/* ---- QUIZ ---- */
+#quiz-container { }
+.quiz-progress-bar-wrap {
+  background: #e5e7eb;
+  border-radius: 20px;
+  height: 6px;
+  margin-bottom: 24px;
+}
+.quiz-progress-bar {
+  background: var(--jade);
+  height: 6px;
+  border-radius: 20px;
+  transition: width 0.4s;
+}
+.quiz-question-num {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.quiz-q-text {
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.quiz-options { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 16px;
+  background: #f9fafb;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.93rem;
+}
+.quiz-option:hover { border-color: var(--jade); background: var(--jade-light); }
+.quiz-option.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; }
+.quiz-option.incorrect { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+.quiz-option.disabled { pointer-events: none; }
+.opt-letter {
+  min-width: 28px; height: 28px;
+  background: var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.quiz-option.correct .opt-letter { background: #16a34a; color: white; }
+.quiz-option.incorrect .opt-letter { background: #dc2626; color: white; }
+.quiz-fb {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  display: none;
+}
+.quiz-fb.show { display: block; }
+.quiz-fb.fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.quiz-fb.fb-incorrect { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.quiz-nav { margin-top: 20px; display: flex; gap: 12px; }
+.btn {
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-jade { background: var(--jade); color: var(--white); }
+.btn-jade:hover { background: var(--jade-mid); }
+.btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--ink-soft); }
+.btn-outline:hover { border-color: var(--jade); color: var(--jade); }
+.btn-terra { background: var(--terra); color: var(--white); }
+.btn-terra:hover { background: var(--terra-mid); }
+#quiz-result {
+  display: none;
+  text-align: center;
+  padding: 16px 0;
+}
+.result-score {
+  font-family: 'Lora', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--jade);
+  line-height: 1;
+}
+.result-label { font-size: 1rem; color: var(--muted); margin-top: 6px; }
+.result-msg { font-size: 0.95rem; color: var(--ink-soft); margin-top: 14px; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+/* ---- RESOURCES ---- */
+.resource-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--white);
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+.resource-link:hover { border-color: var(--jade); background: var(--jade-light); }
+.res-icon {
+  width: 36px; height: 36px;
+  background: var(--jade-light);
+  color: var(--jade);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.res-info .res-title { font-weight: 600; font-size: 0.9rem; }
+.res-info .res-meta { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+/* ---- REFLECTION ---- */
+.reflection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 720px) { .reflection-grid { grid-template-columns: 1fr; } }
+.reflection-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--jade);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.reflection-field textarea {
+  width: 100%;
+  min-height: 88px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: #fafafa;
+  resize: vertical;
+}
+.reflection-field textarea:focus { outline: 2px solid var(--jade); }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: #1c1c1e;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 28px 32px;
+  font-size: 0.82rem;
+}
+.site-footer strong { color: rgba(255,255,255,0.9); }
+
+/* ---- DIVIDER ---- */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 40px 0;
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><div class="logo-wrap"><img src="data:image/png;base64,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" alt="Universidad de la Ciénega" /></div><div class="header-text"><div class="header-tag">Teorías del Aprendizaje &bull; Unidad 1 &bull; Tema 1.3</div><h1>Aspectos Pedagógicos del Conocimiento</h1><p class="subtitle">Licenciatura en Pedagogía &mdash; Universidad de la Ciénega, Plantel Centro</p></div></div><div class="header-meta"><span class="meta-pill">Metodología constructivista</span><span class="meta-pill">Aprendizaje Basado en Problemas</span><span class="meta-pill">Pedagogía activa</span><span class="meta-pill">4 actividades integradoras</span></div></header><nav class="sticky-nav"><div class="nav-inner"><a href="#intro">Introducción</a><a href="#previos">Conocimientos previos</a><a href="#contenido">Contenido</a><a href="#recursos">Recursos</a><a href="#act1">Foro</a><a href="#act2">Actividad</a><a href="#act3">Caso práctico</a><a href="#act4">Quiz</a><a href="#reflexion">Reflexión</a></div></nav><main class="main">
+
+<!-- ========== INTRODUCCIÓN ========== -->
+<section class="section" id="intro">
+  <div class="section-label">
+    <div class="section-num">I</div>
+    <h2>Introducción</h2>
+  </div>
+
+  <div class="intro-box">
+    <p>El conocimiento no ocurre en el vacío. Toda persona que aprende lo hace desde un cuerpo, una cultura, una historia y un conjunto de experiencias previas que condicionan radicalmente <strong>cómo, qué y para qué aprende</strong>. La pregunta por el conocimiento —qué es, cómo se genera y qué validez tiene— constituye el campo de la epistemología; sin embargo, cuando esa pregunta se traslada al aula, emerge el aspecto pedagógico del conocimiento: la reflexión sobre <strong>cómo se enseña, cómo se aprende y qué condiciones hacen posible que el saber transforme a quien aprende</strong>.</p>
+  </div>
+
+  <div class="card jade-accent">
+    <p>En este tema explorarás las principales perspectivas que, a lo largo del siglo XX y XXI, han ofrecido respuestas pedagógicas a la pregunta epistemológica. Desde John Dewey hasta Paulo Freire, pasando por el constructivismo piagetiano y vygotskiano, descubrirás que <strong>la forma en que concebimos el conocimiento determina las prácticas con las que lo enseñamos</strong>. Como estudiantes universitarios de Pedagogía, esta reflexión no es abstracta: incide directamente en las decisiones que tomarán como educadores.</p>
+  </div>
+
+  <div class="content-grid" style="margin-top:20px;">
+    <div class="card">
+      <h4 style="color:var(--jade);margin-bottom:10px;font-size:1rem;">Propósito del tema</h4>
+      <p style="font-size:0.93rem;">Analizar cómo las distintas concepciones del conocimiento generan enfoques pedagógicos específicos, y reflexionar sobre su implicación en la práctica docente contemporánea.</p>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--terra);margin-bottom:10px;font-size:1rem;">Competencias que desarrollarás</h4>
+      <p style="font-size:0.93rem;">Pensamiento crítico epistemológico, diseño de experiencias de aprendizaje significativas, análisis comparativo de enfoques pedagógicos y aplicación en contextos reales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONOCIMIENTOS PREVIOS ========== -->
+<section class="section" id="previos">
+  <div class="section-label">
+    <div class="section-num bg-gold" style="background:var(--gold);">?</div>
+    <h2 class="gold">Activación de conocimientos previos</h2>
+  </div>
+
+  <div class="previos-box">
+    <p class="question-label">Pregunta de reflexión inicial</p>
+    <p style="font-size:0.95rem;color:var(--ink-soft);">Antes de iniciar el estudio formal del tema, reflexiona con honestidad sobre tu propia experiencia como estudiante universitario:</p>
+    <blockquote style="border-left:3px solid var(--gold);padding:10px 18px;margin:16px 0;color:var(--ink);font-family:'Lora',serif;font-size:1.05rem;font-style:italic;background:rgba(201,150,42,0.05);border-radius:4px;">
+      "¿Qué imagen tienes del conocimiento? ¿Crees que el conocimiento es algo que se <em>recibe</em> de un experto, algo que se <em>construye</em> en interacción con otros, o algo que se <em>descubre</em> mediante la experiencia directa? ¿Cómo se manifiesta esa idea en la forma en que estudias y participas en clase?"
+    </blockquote>
+    <textarea class="previos-input" id="previos-respuesta" placeholder="Escribe aquí tu reflexión antes de continuar con el contenido..."></textarea>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:8px;">Tu respuesta se guarda localmente en este dispositivo.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== CONTENIDO TEMÁTICO ========== -->
+<section class="section" id="contenido">
+  <div class="section-label">
+    <div class="section-num">C</div>
+    <h2>Contenido temático</h2>
+  </div>
+
+  <!-- 1. ¿Qué son los aspectos pedagógicos del conocimiento? -->
+  <div class="card jade-accent" style="margin-bottom:28px;">
+    <h3 style="font-size:1.2rem;color:var(--jade);margin-bottom:12px;">1. ¿Qué son los aspectos pedagógicos del conocimiento?</h3>
+    <p>La epistemología pregunta: <em>¿qué es el conocimiento y cómo se justifica?</em> La pedagogía recoge esa pregunta y la traslada al terreno de la acción educativa: <em>¿cómo organizamos la enseñanza para que el estudiante acceda, construya y use el conocimiento de manera significativa?</em> Este puente entre filosofía y práctica constituye el <strong>aspecto pedagógico del conocimiento</strong>.</p>
+    <p style="margin-top:10px;">No es lo mismo concebir el conocimiento como una verdad objetiva y acabada —transmisible mediante la instrucción directa— que considerarlo una construcción dinámica, situada y social. Cada concepción genera <strong>metodologías, roles docentes, tipos de evaluación y ambientes de aprendizaje radicalmente distintos</strong>.</p>
+    <div class="pill-row" style="margin-top:14px;">
+      <span class="pill pill-jade">Epistemología aplicada</span>
+      <span class="pill pill-jade">Diseño instruccional</span>
+      <span class="pill pill-jade">Evaluación auténtica</span>
+      <span class="pill pill-jade">Práctica reflexiva</span>
+    </div>
+  </div>
+
+  <!-- 2. Principales enfoques -->
+  <h3 style="font-family:'Lora',serif;font-size:1.25rem;color:var(--ink);margin-bottom:20px;">2. Principales enfoques pedagógico-epistemológicos</h3>
+
+  <div class="content-grid">
+    <!-- Dewey -->
+    <div class="card">
+      <div class="theory-header">
+        <div class="theory-icon bg-jade">D</div>
+        <div>
+          <h3>Pragmatismo pedagógico</h3>
+          <p class="thinker">John Dewey (1859–1952)</p>
+        </div>
+      </div>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Para Dewey, el conocimiento no es contemplación pasiva de la realidad, sino el resultado de la <strong>experiencia activa y reflexiva</strong>. Aprender es resolver problemas reales; el aula debe ser un laboratorio de vida democrática. Su <em>learning by doing</em> coloca la experiencia como punto de partida y la reflexión como mecanismo de construcción del saber.</p>
+      <div class="pill-row">
+        <span class="pill pill-jade">Experiencia</span>
+        <span class="pill pill-jade">Reflexión</span>
+        <span class="pill pill-jade">Democracia</span>
+        <span class="pill pill-jade">Resolución de problemas</span>
+      </div>
+    </div>
+
+    <!-- Freire -->
+    <div class="card">
+      <div class="theory-header">
+        <div class="theory-icon bg-terra">F</div>
+        <div>
+          <h3>Pedagogía crítica y liberadora</h3>
+          <p class="thinker">Paulo Freire (1921–1997)</p>
+        </div>
+      </div>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Freire denuncia la <strong>"educación bancaria"</strong>: la concepción del alumno como recipiente vacío que el docente llena con información. Propone una pedagogía dialógica en la que educador y educando co-construyen el conocimiento a partir de <em>palabras generadoras</em> vinculadas al mundo vivido. El conocimiento es siempre político y transformador.</p>
+      <div class="pill-row">
+        <span class="pill pill-terra">Diálogo</span>
+        <span class="pill pill-terra">Concienciación</span>
+        <span class="pill pill-terra">Praxis</span>
+        <span class="pill pill-terra">Educación bancaria</span>
+      </div>
+    </div>
+
+    <!-- Piaget -->
+    <div class="card">
+      <div class="theory-header">
+        <div class="theory-icon bg-violet">P</div>
+        <div>
+          <h3>Constructivismo cognitivo</h3>
+          <p class="thinker">Jean Piaget (1896–1980)</p>
+        </div>
+      </div>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">El conocimiento no se recibe, se construye. Piaget muestra que el sujeto asimila la realidad a sus estructuras mentales y las acomoda cuando la experiencia genera conflicto cognitivo. El <strong>aprendizaje auténtico ocurre cuando hay desequilibrio</strong>: el estudiante enfrenta algo que sus esquemas actuales no pueden explicar y debe reorganizarlos.</p>
+      <div class="pill-row">
+        <span class="pill pill-slate">Asimilación</span>
+        <span class="pill pill-slate">Acomodación</span>
+        <span class="pill pill-slate">Equilibración</span>
+        <span class="pill pill-slate">Estadios</span>
+      </div>
+    </div>
+
+    <!-- Vygotski -->
+    <div class="card">
+      <div class="theory-header">
+        <div class="theory-icon bg-teal">V</div>
+        <div>
+          <h3>Constructivismo sociocultural</h3>
+          <p class="thinker">Lev Vygotski (1896–1934)</p>
+        </div>
+      </div>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Vygotski sitúa el conocimiento en la <strong>interacción social</strong>: primero ocurre en el plano interpsicológico (entre personas) y luego se internaliza. La Zona de Desarrollo Próximo (ZDP) señala que el aprendizaje más potente ocurre en lo que el estudiante <em>aún no puede hacer solo</em> pero sí con la guía de otro más experto.</p>
+      <div class="pill-row">
+        <span class="pill pill-jade">ZDP</span>
+        <span class="pill pill-jade">Andamiaje</span>
+        <span class="pill pill-jade">Mediación</span>
+        <span class="pill pill-jade">Zona interpsicológica</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla comparativa -->
+  <div class="card" style="margin-top:28px;">
+    <h3 style="font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);margin-bottom:16px;">3. Implicaciones pedagógicas: tabla comparativa</h3>
+    <div style="overflow-x:auto;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Enfoque</th>
+            <th>Concepción del conocimiento</th>
+            <th>Rol del docente</th>
+            <th>Rol del estudiante</th>
+            <th>Evaluación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pragmatismo<br>(Dewey)</strong></td>
+            <td>Instrumento de acción; se valida en la experiencia</td>
+            <td>Organizador de experiencias; guía reflexivo</td>
+            <td>Investigador activo; resuelve problemas reales</td>
+            <td>Por desempeño y resolución de problemas</td>
+          </tr>
+          <tr>
+            <td><strong>Pedagogía crítica<br>(Freire)</strong></td>
+            <td>Construcción dialógica; siempre situado y político</td>
+            <td>Co-aprendiz; facilitador del diálogo crítico</td>
+            <td>Sujeto histórico; reflexiona sobre su realidad</td>
+            <td>Participación, reflexión crítica, transformación</td>
+          </tr>
+          <tr>
+            <td><strong>Constructivismo cognitivo<br>(Piaget)</strong></td>
+            <td>Construcción activa del sujeto sobre la realidad</td>
+            <td>Generador de conflicto cognitivo</td>
+            <td>Constructor; reorganiza sus esquemas mentales</td>
+            <td>Comprensión profunda; resolución de contradicciones</td>
+          </tr>
+          <tr>
+            <td><strong>Sociocultural<br>(Vygotski)</strong></td>
+            <td>Construcción social mediada por el lenguaje y la cultura</td>
+            <td>Mediador; andamia desde la ZDP</td>
+            <td>Aprendiz social; interactúa con pares y expertos</td>
+            <td>Procesos colaborativos; trabajo en ZDP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Evaluación auténtica y diseño instruccional -->
+  <div class="card gold-accent" style="margin-top:28px;">
+    <h3 style="font-family:'Lora',serif;font-size:1.1rem;color:var(--gold);margin-bottom:12px;">4. Evaluación auténtica y diseño instruccional desde los aspectos pedagógicos</h3>
+    <p>Comprender los aspectos pedagógicos del conocimiento tiene consecuencias directas sobre cómo se diseñan situaciones de aprendizaje y cómo se evalúa. La <strong>evaluación auténtica</strong> —propuesta por autores como Grant Wiggins— plantea que los estudiantes demuestran aprendizaje realizando tareas similares a las que realizarían en la vida real, no respondiendo reactivos desconectados de su contexto.</p>
+    <p style="margin-top:10px;">El <strong>diseño instruccional</strong> que parte de los aspectos pedagógicos del conocimiento considera: (a) los saberes previos de los estudiantes, (b) la secuencia de actividades que genera desequilibrio y reequilibración, (c) el papel del diálogo y la colaboración, y (d) la coherencia entre propósitos de aprendizaje, actividades y evidencias de evaluación.</p>
+    <div class="pill-row" style="margin-top:14px;">
+      <span class="pill pill-gold">Evaluación auténtica</span>
+      <span class="pill pill-gold">Retroalimentación formativa</span>
+      <span class="pill pill-gold">Coherencia didáctica</span>
+      <span class="pill pill-gold">Diseño hacia atrás (backward design)</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== RECURSOS ========== -->
+<section class="section" id="recursos">
+  <div class="section-label">
+    <div class="section-num bg-slate" style="background:#4b5563;">R</div>
+    <h2 style="color:#4b5563;">Materiales de consulta</h2>
+  </div>
+
+  <p style="font-size:0.93rem;color:var(--muted);margin-bottom:18px;">Se recomienda revisar los siguientes recursos antes de realizar las actividades. Todos son de acceso abierto.</p>
+
+  <a class="resource-link" href="https://www.redalyc.org/pdf/440/44025130002.pdf" target="_blank" rel="noopener">
+    <div class="res-icon">PDF</div>
+    <div class="res-info">
+      <p class="res-title">El legado pedagógico de John Dewey — Redalyc</p>
+      <p class="res-meta">Artículo académico revisado por pares &bull; Acceso abierto &bull; Español</p>
+    </div>
+  </a>
+
+  <a class="resource-link" href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1665-26732010000100002" target="_blank" rel="noopener">
+    <div class="res-icon">SCI</div>
+    <div class="res-info">
+      <p class="res-title">La pedagogía de la liberación de Paulo Freire — SciELO México</p>
+      <p class="res-meta">Revista de Educación &bull; SciELO &bull; Texto completo</p>
+    </div>
+  </a>
+
+  <a class="resource-link" href="https://www.redalyc.org/pdf/356/35603206.pdf" target="_blank" rel="noopener">
+    <div class="res-icon">PDF</div>
+    <div class="res-info">
+      <p class="res-title">Constructivismo: orígenes y perspectivas — Redalyc</p>
+      <p class="res-meta">Cubre Piaget, Vygotski y sus implicaciones didácticas &bull; Español</p>
+    </div>
+  </a>
+
+  <a class="resource-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=3987765" target="_blank" rel="noopener">
+    <div class="res-icon">DL</div>
+    <div class="res-info">
+      <p class="res-title">Evaluación auténtica: un concepto clave en la educación actual — Dialnet</p>
+      <p class="res-meta">Artículo completo en Dialnet &bull; Español &bull; Acceso libre</p>
+    </div>
+  </a>
+
+  <a class="resource-link" href="https://www.educacionyfp.gob.es/revista-cee/pdf/n14-gutierrez-vazquez.pdf" target="_blank" rel="noopener">
+    <div class="res-icon">GOB</div>
+    <div class="res-info">
+      <p class="res-title">La Zona de Desarrollo Próximo: una apuesta por la colaboración — Revista CEE</p>
+      <p class="res-meta">Consejo Escolar del Estado, España &bull; PDF descargable &bull; Español</p>
+    </div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== ACTIVIDADES ========== -->
+<section class="section" id="act1">
+  <div class="section-label">
+    <div class="section-num">A</div>
+    <h2>Actividades integradoras</h2>
+  </div>
+
+  <!-- ACTIVIDAD 1: FORO -->
+  <div class="activity-card" id="foro">
+    <div class="activity-header foro">
+      <div class="activity-badge">A1</div>
+      <div>
+        <p class="activity-title">Actividad 1 — Foro de mediación</p>
+        <p class="activity-sub">Participación colaborativa en Google Classroom &bull; Reflexión crítica sobre concepciones del conocimiento</p>
+      </div>
+    </div>
+    <div class="activity-body">
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--jade);margin-bottom:14px;">Propósito</h4>
+      <p style="font-size:0.93rem;margin-bottom:18px;">Desarrollar la capacidad de reflexión crítica sobre las propias concepciones epistemológicas y compartirlas con otros para generar conocimiento colectivo. Esta actividad fomenta la construcción colaborativa a través del diálogo académico, en coherencia con la perspectiva freireana y sociocultural.</p>
+
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--jade);margin-bottom:12px;">Pregunta detonadora</h4>
+      <blockquote style="border-left:3px solid var(--jade);padding:14px 20px;background:var(--jade-light);border-radius:0 8px 8px 0;font-family:'Lora',serif;font-size:1.05rem;color:var(--ink);font-style:italic;margin-bottom:20px;">
+        "La educación bancaria convierte a los estudiantes en archivadores pasivos. Si revisas tu trayectoria como estudiante universitario, ¿en qué momentos has sido un 'archivador' y en cuáles has sido un 'constructor activo' del conocimiento? ¿Qué condiciones hicieron posible esa diferencia?"
+      </blockquote>
+
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--jade);margin-bottom:12px;">Instrucciones paso a paso</h4>
+      <ol class="step-list">
+        <li><strong>Revisa</strong> el contenido del tema 1.3, especialmente los enfoques de Freire y Dewey, y al menos uno de los recursos de consulta.</li>
+        <li><strong>Reflexiona</strong> sobre la pregunta detonadora a partir de experiencias concretas vividas en clases universitarias (no abstractas).</li>
+        <li><strong>Redacta</strong> tu participación inicial de entre 150 y 250 palabras. Debe incluir: una experiencia específica, el enfoque pedagógico con que la conectas, y una postura fundamentada.</li>
+        <li><strong>Publica</strong> tu participación en el foro habilitado en Google Classroom.</li>
+        <li><strong>Lee</strong> las participaciones de al menos dos compañeros y escribe una respuesta a cada una (mínimo 80 palabras por respuesta), ampliando, cuestionando o complementando sus ideas con argumentos propios.</li>
+        <li><strong>Guarda</strong> captura de pantalla de tu hilo completo de participación para entregarlo si se solicita.</li>
+      </ol>
+
+      <div class="ejemplo-box">
+        <p class="ejemplo-label">Ejemplo orientador (inicio de participación)</p>
+        <p>"Durante el primer semestre de la carrera, en la materia de Psicología General, el docente dictaba las definiciones que debíamos copiar y memorizar para el examen. Reconozco en esa dinámica lo que Freire denomina educación bancaria: yo era el 'depósito' y el profesor, el 'depositante'. En contraste, en el taller de Didáctica del semestre pasado, diseñamos una secuencia didáctica para aplicarla con niños reales. Ahí tuve que consultar, decidir, probar y corregir. El conocimiento no me fue entregado: lo construí desde la necesidad concreta..."</p>
+      </div>
+
+      <div class="classroom-note" style="margin-top:16px;">
+        <strong>Entrega en Classroom:</strong> Participación inicial + evidencia de dos respuestas a compañeros. Plazo indicado por el docente.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 2 -->
+  <div class="activity-card" id="act2" style="margin-top:28px;">
+    <div class="activity-header activ">
+      <div class="activity-badge">A2</div>
+      <div>
+        <p class="activity-title">Actividad 2 — Mapa epistemológico aplicado</p>
+        <p class="activity-sub">Aprendizaje Basado en Proyectos &bull; Entregable individual o en binas</p>
+      </div>
+    </div>
+    <div class="activity-body">
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--terra);margin-bottom:14px;">Propósito</h4>
+      <p style="font-size:0.93rem;margin-bottom:18px;">Construir una representación visual que relacione los enfoques epistemológico-pedagógicos con prácticas concretas observables en el aula universitaria, desarrollando la capacidad de análisis comparativo y transferencia.</p>
+
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--terra);margin-bottom:12px;">Descripción de la actividad</h4>
+      <p style="font-size:0.93rem;margin-bottom:14px;">Elaborarás un <strong>mapa epistemológico aplicado</strong>: un organizador gráfico que, para cada uno de los cuatro enfoques estudiados (Dewey, Freire, Piaget, Vygotski), muestre de manera articulada: la concepción del conocimiento, el rol del docente y del estudiante, una práctica pedagógica concreta, y un ejemplo real observado o vivido en la universidad.</p>
+
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--terra);margin-bottom:12px;">Instrucciones paso a paso</h4>
+      <ol class="step-list terra">
+        <li><strong>Elige</strong> el formato de representación: mapa conceptual, tabla visual, infografía, cuadro sinóptico enriquecido o diagramas de flujo. Puedes usar Canva, PowerPoint, papel o cualquier herramienta digital.</li>
+        <li><strong>Construye</strong> el mapa incluyendo los cuatro enfoques con sus dimensiones correspondientes: concepción del conocimiento, rol docente, rol del alumno, práctica pedagógica concreta y ejemplo real.</li>
+        <li><strong>Incorpora al menos un ejemplo real</strong> por enfoque, tomado de tu experiencia como estudiante universitario o de observaciones en práctica docente. Los ejemplos deben ser específicos y situados, no generales.</li>
+        <li><strong>Redacta</strong> un párrafo de conclusión (100–150 palabras) respondiendo: ¿qué enfoque predomina en tu formación universitaria actual? ¿Con cuál te identificas más como futuro educador y por qué?</li>
+        <li><strong>Sube</strong> el mapa (imagen, PDF o link) junto con el párrafo de conclusión a Google Classroom.</li>
+      </ol>
+
+      <div class="ejemplo-box">
+        <p class="ejemplo-label">Ejemplo de entrada para el enfoque de Dewey</p>
+        <p>Concepción del conocimiento: instrumento de acción, validado en la experiencia. Rol docente: organizador de situaciones problemáticas. Rol del alumno: investigador activo. Práctica pedagógica: Aprendizaje Basado en Proyectos. Ejemplo real: "En Tecnologías de la Información, diseñamos una encuesta digital, la aplicamos a estudiantes de otras carreras y presentamos los resultados al grupo. Tuve que aprender a usar Google Forms no porque el profesor lo explicara, sino porque el proyecto lo necesitaba."</p>
+      </div>
+
+      <div class="classroom-note">
+        <strong>Entrega en Classroom:</strong> Imagen/PDF del mapa epistemológico + párrafo de conclusión en comentario o documento de texto.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 3: CASO PRÁCTICO -->
+  <div class="activity-card" id="act3" style="margin-top:28px;">
+    <div class="activity-header caso">
+      <div class="activity-badge">A3</div>
+      <div>
+        <p class="activity-title">Actividad 3 — Caso práctico: "El dilema de la profesora Claudia"</p>
+        <p class="activity-sub">Análisis de caso situado &bull; Aprendizaje Basado en Problemas</p>
+      </div>
+    </div>
+    <div class="activity-body">
+      <h4 style="font-family:'Lora',serif;font-size:1.05rem;color:var(--gold);margin-bottom:14px;">Propósito</h4>
+      <p style="font-size:0.93rem;margin-bottom:18px;">Aplicar los marcos teóricos estudiados al análisis de una situación pedagógica real, desarrollando la capacidad de diagnóstico, argumentación y propuesta fundamentada.</p>
+
+      <div class="caso-scenario">
+        <h4 style="font-family:'Lora',serif;font-size:1rem;color:var(--gold);margin-bottom:12px;">Situación</h4>
+        <p><span class="char">La profesora Claudia</span> imparte la materia de Historia de la Educación en el tercer semestre de la Licenciatura en Pedagogía. Lleva doce años enseñando y se considera una docente rigurosa: sus clases están bien estructuradas, sus presentaciones son completas y sus exámenes cubren todos los temas del programa.</p>
+        <p style="margin-top:10px;">Sin embargo, al revisar las evaluaciones parciales este semestre, Claudia nota algo preocupante: el 60% del grupo respondió correctamente las preguntas de memorización (fechas, nombres, definiciones), pero cuando las preguntas pedían <em>relacionar conceptos o aplicarlos a situaciones nuevas</em>, la tasa de aciertos cayó al 22%. Además, al preguntar informalmente a sus estudiantes si habían aplicado alguna idea de la historia de la educación en sus prácticas docentes o en su vida universitaria, la respuesta más frecuente fue: "Pues... no mucho, la verdad."</p>
+        <p style="margin-top:10px;">Claudia está desconcertada. Ella enseña bien, los estudiantes memorizan bien, pero <strong>¿por qué el conocimiento no se transfiere, no se aplica, no se hace acción?</strong> Consulta a una colega del área de Teorías del Aprendizaje, quien le responde: "Claudia, el problema podría estar en cómo estás concibiendo el conocimiento mismo."</p>
+      </div>
+
+      <div class="caso-preguntas">
+        <h4 style="font-family:'Lora',serif;font-size:1rem;color:var(--gold);margin-bottom:14px;">Preguntas para el análisis</h4>
+        <ol>
+          <li>¿Qué concepción del conocimiento subyace a la práctica actual de la profesora Claudia? Identifica el enfoque epistemológico-pedagógico que mejor la describe y justifica tu elección con evidencias del caso.</li>
+          <li>¿Por qué, desde la perspectiva de Piaget y Vygotski, los estudiantes memorizan pero no transfieren el conocimiento? Explica el fenómeno utilizando al menos dos conceptos teóricos de los enfoques estudiados.</li>
+          <li>Desde la pedagogía de Freire y la propuesta de Dewey, ¿qué cambios concretos podría introducir la profesora Claudia en el diseño de sus clases para superar este problema? Propón al menos tres estrategias específicas y argumenta por qué funcionarían en este contexto.</li>
+          <li>¿Cómo se relaciona el problema de Claudia con tu propia experiencia como estudiante universitario? ¿Has vivido situaciones similares? ¿Qué las provocó y qué las habría resuelto?</li>
+        </ol>
+      </div>
+
+      <h4 style="font-family:'Lora',serif;font-size:1rem;color:var(--gold);margin-top:20px;margin-bottom:12px;">Instrucciones de entrega</h4>
+      <ol class="step-list gold">
+        <li>Lee el caso completo con atención, subrayando elementos relevantes antes de responder.</li>
+        <li>Responde cada pregunta de manera desarrollada (no en puntos sueltos). Cada respuesta debe ser un párrafo argumentado de mínimo 100 palabras.</li>
+        <li>Cita al menos dos de los autores estudiados (Dewey, Freire, Piaget o Vygotski) respaldando tus argumentos con ideas específicas de sus propuestas.</li>
+        <li>Sube tu análisis en documento Word o PDF a Google Classroom.</li>
+      </ol>
+
+      <div class="classroom-note">
+        <strong>Entrega en Classroom:</strong> Documento con las cuatro respuestas desarrolladas. Extensión orientativa: 600–900 palabras totales.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 4: QUIZ -->
+  <div class="activity-card" id="act4" style="margin-top:28px;">
+    <div class="activity-header quiz-h">
+      <div class="activity-badge">A4</div>
+      <div>
+        <p class="activity-title">Actividad 4 — Quiz de comprensión</p>
+        <p class="activity-sub">5 preguntas autocalificadas con retroalimentación inmediata</p>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p style="font-size:0.93rem;color:var(--muted);margin-bottom:20px;">Responde cada pregunta. Recibirás retroalimentación inmediata por cada opción seleccionada. Al finalizar verás tu puntaje total.</p>
+      <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-bar" style="width:0%"></div></div>
+      <div id="quiz-container"></div>
+      <div id="quiz-result">
+        <div class="result-score" id="result-score">0/5</div>
+        <p class="result-label">Puntaje obtenido</p>
+        <p class="result-msg" id="result-msg"></p>
+        <div style="margin-top:20px;">
+          <button class="btn btn-jade" onclick="reinitializeQuiz()">Reintentar quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== REFLEXIÓN FINAL ========== -->
+<section class="section" id="reflexion">
+  <div class="section-label">
+    <div class="section-num bg-jade">R</div>
+    <h2>Reflexión y planificación de aplicación</h2>
+  </div>
+
+  <div class="card jade-accent" style="margin-bottom:20px;">
+    <p style="font-size:0.95rem;color:var(--ink-soft);">El aprendizaje universitario cobra sentido cuando trasciendes los límites del aula. En esta sección te invitamos a sistematizar lo aprendido y a trazar un puente concreto hacia tu vida académica y profesional futura. Completa los cuatro campos con reflexiones genuinas y específicas.</p>
+  </div>
+
+  <div class="reflection-grid">
+    <div class="reflection-field">
+      <label>Lo más significativo que aprendí en este tema</label>
+      <textarea id="ref1" placeholder="Describe con precisión la idea, concepto o perspectiva que más transformó tu comprensión..." onchange="saveReflection()"></textarea>
+    </div>
+    <div class="reflection-field">
+      <label>Una creencia que este tema cuestionó o transformó</label>
+      <textarea id="ref2" placeholder="¿Qué idea previa sobre la enseñanza o el conocimiento fue desafiada por lo que estudiaste?" onchange="saveReflection()"></textarea>
+    </div>
+    <div class="reflection-field">
+      <label>Cómo aplicaré esto como estudiante universitario ahora</label>
+      <textarea id="ref3" placeholder="¿Qué cambio concreto harás en tu forma de estudiar, participar o aprender en la universidad?" onchange="saveReflection()"></textarea>
+    </div>
+    <div class="reflection-field">
+      <label>Cómo lo aplicaré en mi práctica docente futura</label>
+      <textarea id="ref4" placeholder="Como futuro pedagogo, ¿qué principio de este tema incorporarás en el diseño de tus clases?" onchange="saveReflection()"></textarea>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;text-align:center;">
+    <button class="btn btn-jade" onclick="saveReflection()">Guardar reflexión</button>
+    <span id="save-status" style="margin-left:12px;font-size:0.85rem;color:var(--muted);"></span>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p><strong>Universidad de la Ciénega, Plantel Centro</strong></p>
+  <p style="margin-top:4px;">Licenciatura en Pedagogía &bull; Teorías del Aprendizaje &bull; Unidad 1, Tema 1.3: Aspectos Pedagógicos del Conocimiento</p>
+  <p style="margin-top:4px;opacity:0.6;">Material didáctico de uso educativo interno. 2026.</p>
+</footer>
+
+<script>
+// =========================================================
+// QUIZ DATA
+// =========================================================
+var quizData = [
+  {
+    q: "Según John Dewey, el conocimiento pedagógicamente válido es aquel que:",
+    opts: [
+      { l:"A", t:"Se transmite de manera fiel del docente al estudiante mediante explicaciones claras y ordenadas." },
+      { l:"B", t:"Resulta de la experiencia activa y reflexiva del sujeto al enfrentarse a situaciones problemáticas reales." },
+      { l:"C", t:"Se encuentra almacenado en los libros de texto y debe ser memorizado para su uso posterior." },
+      { l:"D", t:"Proviene exclusivamente de la observación directa de la naturaleza, sin mediación social ni cultural." }
+    ],
+    correct: "B",
+    fb: {
+      A: "No es correcta. Esa descripción corresponde al modelo transmisivo o bancario, que Dewey precisamente critica. Para él, la transmisión no garantiza aprendizaje real.",
+      B: "Correcto. Dewey plantea que el conocimiento es un instrumento de acción que se construye cuando el sujeto actúa sobre situaciones concretas y reflexiona sobre esa experiencia. Esta es la base del 'aprender haciendo' (learning by doing).",
+      C: "No es correcta. La memorización de contenidos de libros es el modelo que Dewey rechaza, pues considera que separa el conocimiento de su función vital y práctica.",
+      D: "No es correcta. Si bien Dewey valora la experiencia directa, no excluye la mediación social y cultural, que es central en su visión de la escuela como comunidad democrática."
+    }
+  },
+  {
+    q: "Paulo Freire utiliza el término 'educación bancaria' para referirse a:",
+    opts: [
+      { l:"A", t:"Una modalidad educativa en la que se enseñan habilidades financieras básicas a comunidades vulnerables." },
+      { l:"B", t:"El modelo pedagógico que concibe al estudiante como depositario pasivo de información transferida por el docente." },
+      { l:"C", t:"La tendencia de las universidades privadas a cobrar altas colegiaturas por acceder al conocimiento formal." },
+      { l:"D", t:"El proceso por el cual las instituciones educativas acumulan y preservan el patrimonio cultural de una sociedad." }
+    ],
+    correct: "B",
+    fb: {
+      A: "No es correcta. Freire no usa el término en ese sentido. La 'educación bancaria' no tiene relación con educación financiera.",
+      B: "Correcto. Freire critica la concepción del alumno como un 'banco' vacío que el docente 'deposita' con información. Esta metáfora denuncia una pedagogía que inhibe la conciencia crítica y la agencia del estudiante.",
+      C: "No es correcta. Aunque Freire sí critica las estructuras de poder en la educación, el término 'bancario' no se refiere a asuntos económicos de la institución.",
+      D: "No es correcta. Freire no usa ese término para describir funciones de preservación cultural, sino para denunciar una relación pedagógica opresiva."
+    }
+  },
+  {
+    q: "El concepto de Zona de Desarrollo Próximo (ZDP) de Vygotski implica pedagógicamente que:",
+    opts: [
+      { l:"A", t:"El docente debe trabajar únicamente con contenidos que el estudiante ya domina, para garantizar el éxito en la tarea." },
+      { l:"B", t:"El aprendizaje más significativo ocurre cuando el estudiante trabaja solo, sin interferencia del docente ni de los compañeros." },
+      { l:"C", t:"El aprendizaje potencialmente más rico se sitúa en lo que el estudiante aún no puede realizar de manera autónoma, pero sí con apoyo de otro más competente." },
+      { l:"D", t:"El conocimiento se construye únicamente en la relación directa entre el estudiante y el objeto material de estudio." }
+    ],
+    correct: "C",
+    fb: {
+      A: "No es correcta. Si el docente trabaja solo con lo que el alumno ya domina, no activa ningún aprendizaje nuevo. La ZDP señala precisamente la zona entre lo que ya sabe y lo que aún no puede hacer solo.",
+      B: "No es correcta. La perspectiva vygotskiana es radicalmente social: el aprendizaje ocurre primero en el plano interpsicológico (con otros) y luego se internaliza.",
+      C: "Correcto. La ZDP es el espacio entre el nivel de desarrollo real (lo que el alumno puede hacer solo) y el nivel de desarrollo potencial (lo que puede lograr con la guía de un experto). El andamiaje del docente o de los pares opera en esa zona.",
+      D: "No es correcta. Para Vygotski, el conocimiento no se construye en soledad con el objeto: la mediación social, cultural y lingüística es condición indispensable del aprendizaje."
+    }
+  },
+  {
+    q: "Desde el constructivismo piagetiano, el aprendizaje genuino ocurre cuando:",
+    opts: [
+      { l:"A", t:"El estudiante repite correctamente la información explicada por el docente hasta retenerla en la memoria a largo plazo." },
+      { l:"B", t:"Se genera un desequilibrio cognitivo que lleva al estudiante a reorganizar sus esquemas mentales para integrar la nueva experiencia." },
+      { l:"C", t:"El docente diseña materiales tan claros que no existen zonas de duda o incertidumbre para el estudiante." },
+      { l:"D", t:"Los estudiantes aprenden de manera simultánea al mismo ritmo, dado que los estadios de desarrollo son universales." }
+    ],
+    correct: "B",
+    fb: {
+      A: "No es correcta. La retención memorística no es, para Piaget, aprendizaje genuino. El verdadero aprendizaje implica reorganización estructural, no acumulación de información.",
+      B: "Correcto. Piaget describe el aprendizaje como un proceso de equilibración: una situación nueva que no encaja en los esquemas existentes genera desequilibrio, lo que obliga al sujeto a asimilar y acomodar, construyendo esquemas más complejos.",
+      C: "No es correcta. Eliminar la incertidumbre impide el desequilibrio cognitivo, que es, para Piaget, el motor del aprendizaje real.",
+      D: "No es correcta. Aunque Piaget propone estadios universales, reconoce diferencias individuales en los ritmos de desarrollo y no propone una enseñanza homogénea."
+    }
+  },
+  {
+    q: "La evaluación auténtica, vinculada a los aspectos pedagógicos del conocimiento, se caracteriza principalmente por:",
+    opts: [
+      { l:"A", t:"Medir la capacidad del estudiante para reproducir fielmente los conceptos definidos en el programa de estudios." },
+      { l:"B", t:"Proponer tareas de desempeño similares a las que el estudiante enfrentaría en situaciones reales fuera del aula, mostrando comprensión profunda y transferencia." },
+      { l:"C", t:"Reducir el tiempo de evaluación para que los estudiantes puedan dedicar más horas al estudio de los contenidos." },
+      { l:"D", t:"Sustituir los exámenes escritos por exámenes orales como único mecanismo válido de comprobación del aprendizaje." }
+    ],
+    correct: "B",
+    fb: {
+      A: "No es correcta. La evaluación que solo verifica reproducción de conceptos es precisamente la que la evaluación auténtica cuestiona, pues no evidencia comprensión ni aplicación.",
+      B: "Correcto. La evaluación auténtica (Wiggins, 1990) propone que los estudiantes demuestren su aprendizaje realizando tareas que simulan los desafíos reales de su vida profesional y social. Se evalúa la capacidad de transferir, no solo de memorizar.",
+      C: "No es correcta. La evaluación auténtica no se define por su extensión en tiempo, sino por el tipo de evidencia que solicita al estudiante.",
+      D: "No es correcta. La evaluación auténtica no excluye ni privilegia un formato específico (escrito u oral); lo que la distingue es la naturaleza de la tarea, no el medio en que se realiza."
+    }
+  }
+];
+
+var currentQ = 0;
+var score = 0;
+var answered = [];
+
+function buildQuestion(idx) {
+  var d = quizData[idx];
+  var pct = (idx / quizData.length * 100).toFixed(0);
+  document.getElementById('quiz-bar').style.width = pct + '%';
+
+  var html = '<div class="quiz-question-num">Pregunta ' + (idx+1) + ' de ' + quizData.length + '</div>';
+  html += '<p class="quiz-q-text">' + d.q + '</p>';
+  html += '<ul class="quiz-options" id="opts-' + idx + '">';
+  for (var i = 0; i < d.opts.length; i++) {
+    var o = d.opts[i];
+    html += '<li class="quiz-option" id="opt-' + idx + '-' + o.l + '" onclick="selectOption(' + idx + ',\'' + o.l + '\')">';
+    html += '<span class="opt-letter">' + o.l + '</span><span>' + o.t + '</span>';
+    html += '</li>';
+  }
+  html += '</ul>';
+  html += '<div class="quiz-fb" id="fb-' + idx + '"></div>';
+  html += '<div class="quiz-nav">';
+  if (idx < quizData.length - 1) {
+    html += '<button class="btn btn-jade" id="btn-next-' + idx + '" onclick="nextQuestion(' + idx + ')" style="display:none">Siguiente pregunta</button>';
+  } else {
+    html += '<button class="btn btn-jade" id="btn-next-' + idx + '" onclick="showResult()" style="display:none">Ver resultados</button>';
+  }
+  html += '</div>';
+  document.getElementById('quiz-container').innerHTML = html;
+}
+
+function selectOption(idx, letter) {
+  if (answered[idx]) return;
+  answered[idx] = letter;
+  var d = quizData[idx];
+  var isCorrect = (letter === d.correct);
+  if (isCorrect) score++;
+
+  for (var i = 0; i < d.opts.length; i++) {
+    var el = document.getElementById('opt-' + idx + '-' + d.opts[i].l);
+    el.classList.add('disabled');
+    if (d.opts[i].l === d.correct) el.classList.add('correct');
+    if (d.opts[i].l === letter && !isCorrect) el.classList.add('incorrect');
+  }
+
+  var fb = document.getElementById('fb-' + idx);
+  fb.textContent = d.fb[letter];
+  fb.className = 'quiz-fb show ' + (isCorrect ? 'fb-correct' : 'fb-incorrect');
+  document.getElementById('btn-next-' + idx).style.display = 'inline-block';
+}
+
+function nextQuestion(idx) {
+  currentQ = idx + 1;
+  buildQuestion(currentQ);
+}
+
+function showResult() {
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('quiz-bar').style.width = '100%';
+  var r = document.getElementById('quiz-result');
+  r.style.display = 'block';
+  document.getElementById('result-score').textContent = score + '/5';
+  var msgs = [
+    'Revisa el contenido nuevamente. Presta especial atención a los conceptos de cada autor.',
+    'Buen esfuerzo. Repasa las preguntas que no acertaste y consolida los conceptos.',
+    'Desempeño satisfactorio. Puedes profundizar en los recursos de consulta para afianzar.',
+    'Muy buen resultado. Tienes una comprensión sólida de los enfoques pedagógicos.',
+    'Excelente. Dominas con claridad los aspectos pedagógicos del conocimiento estudiados en este tema.'
+  ];
+  document.getElementById('result-msg').textContent = msgs[score];
+}
+
+function reinitializeQuiz() {
+  currentQ = 0;
+  score = 0;
+  answered = [];
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  document.getElementById('quiz-bar').style.width = '0%';
+  buildQuestion(0);
+}
+
+function reattach() {
+  buildQuestion(currentQ);
+}
+
+// =========================================================
+// REFLECTION PERSISTENCE
+// =========================================================
+function saveReflection() {
+  try {
+    localStorage.setItem('ref1_13', document.getElementById('ref1').value);
+    localStorage.setItem('ref2_13', document.getElementById('ref2').value);
+    localStorage.setItem('ref3_13', document.getElementById('ref3').value);
+    localStorage.setItem('ref4_13', document.getElementById('ref4').value);
+    localStorage.setItem('previos_13', document.getElementById('previos-respuesta').value);
+    var st = document.getElementById('save-status');
+    st.textContent = 'Reflexión guardada correctamente.';
+    setTimeout(function(){ st.textContent = ''; }, 2500);
+  } catch(e) {}
+}
+
+function loadReflection() {
+  try {
+    var r1 = localStorage.getItem('ref1_13'); if (r1) document.getElementById('ref1').value = r1;
+    var r2 = localStorage.getItem('ref2_13'); if (r2) document.getElementById('ref2').value = r2;
+    var r3 = localStorage.getItem('ref3_13'); if (r3) document.getElementById('ref3').value = r3;
+    var r4 = localStorage.getItem('ref4_13'); if (r4) document.getElementById('ref4').value = r4;
+    var pr = localStorage.getItem('previos_13'); if (pr) document.getElementById('previos-respuesta').value = pr;
+  } catch(e) {}
+}
+
+// =========================================================
+// INIT
+// =========================================================
+window.onload = function() {
+  buildQuestion(0);
+  loadReflection();
+};
+</script>
+</body>
+</html>
