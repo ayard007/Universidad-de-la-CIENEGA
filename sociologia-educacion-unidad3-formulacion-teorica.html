@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociología de la Educación — Formulación teórica actual</title>
+<style>
+:root{
+  --vino:#5e2233;--guinda:#8c3a52;--rosa:#d8a9b8;--oro:#c9962a;--petroleo:#1f5a66;
+  --crema:#f6f1ec;--gris:#2c2a2d;--blanco:#fff;--sombra:rgba(94,34,51,0.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia','Iowan Old Style',serif;color:var(--gris);background:var(--crema);line-height:1.72;}
+header.hero{background:linear-gradient(135deg,var(--vino),var(--guinda));color:#fff;padding:2.7rem 1.5rem;text-align:center;}
+header.hero img{width:126px;height:126px;object-fit:contain;background:#fff;border-radius:50%;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.28);margin-bottom:1.1rem;}
+header.hero .kicker{font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--rosa);margin-bottom:0.5rem;}
+header.hero h1{font-size:1.9rem;font-weight:bold;letter-spacing:0.5px;margin-bottom:0.4rem;}
+header.hero .sub{font-size:1.04rem;color:var(--rosa);font-style:italic;}
+header.hero .meta{margin-top:0.8rem;font-size:0.9rem;opacity:0.92;}
+.layout{display:flex;max-width:1220px;margin:0 auto;}
+nav.sidebar{width:272px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:#fff;border-right:1px solid #e3ddce;padding:1.5rem 1rem;}
+nav.sidebar h2{font-size:0.76rem;text-transform:uppercase;letter-spacing:1px;color:var(--petroleo);margin-bottom:0.8rem;}
+nav.sidebar a{display:block;color:var(--guinda);text-decoration:none;font-size:0.86rem;padding:0.38rem 0.6rem;border-radius:6px;margin-bottom:0.12rem;border-left:3px solid transparent;transition:all 0.2s;}
+nav.sidebar a:hover{background:var(--crema);border-left-color:var(--petroleo);}
+nav.sidebar a.sub{padding-left:1.3rem;font-size:0.82rem;}
+nav.sidebar a.sec{font-size:0.72rem;color:var(--petroleo);text-transform:uppercase;letter-spacing:1px;margin-top:0.9rem;pointer-events:none;}
+main{flex:1;padding:2rem 2.6rem;max-width:920px;}
+section{margin-bottom:3rem;scroll-margin-top:1rem;}
+section h2.titulo{font-size:1.54rem;color:var(--vino);border-bottom:3px solid var(--rosa);padding-bottom:0.5rem;margin-bottom:1.2rem;}
+section h3{color:var(--petroleo);font-size:1.16rem;margin:1.5rem 0 0.7rem;}
+p{margin-bottom:1rem;text-align:justify;}
+.tarjeta{background:#fff;border-radius:10px;padding:1.5rem;box-shadow:0 3px 12px var(--sombra);margin:1.2rem 0;border-top:4px solid var(--guinda);}
+.destacado{background:#f3e9ec;border-left:4px solid var(--guinda);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;font-style:italic;}
+.problema{background:#e9f0f1;border-left:4px solid var(--petroleo);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;}
+.problema strong{color:var(--petroleo);}
+.nota{background:#fbf6ea;border:1px solid #e6d6a8;border-radius:8px;padding:0.8rem 1.1rem;margin:1rem 0;font-size:0.88rem;color:#6a5a2a;}
+ul.lista,ol.lista{margin:0.8rem 0 1rem 1.5rem;}
+ul.lista li,ol.lista li{margin-bottom:0.6rem;}
+.figura{text-align:center;margin:1.4rem 0;}
+.figura svg{max-width:100%;border-radius:10px;box-shadow:0 3px 14px var(--sombra);background:#fff;}
+.figura figcaption{font-size:0.85rem;color:#6a6458;margin-top:0.5rem;font-style:italic;}
+.autor{display:flex;gap:1.2rem;background:#fff;border-radius:12px;padding:1.3rem;box-shadow:0 3px 12px var(--sombra);margin:1.3rem 0;border-left:5px solid var(--oro);align-items:flex-start;}
+.autor .retrato{flex-shrink:0;width:110px;}
+.autor .retrato svg{width:110px;height:130px;border-radius:8px;background:#eee;}
+.autor .datos h4{color:var(--vino);font-size:1.12rem;margin-bottom:0.15rem;}
+.autor .datos .vida{font-size:0.8rem;color:var(--guinda);margin-bottom:0.5rem;font-style:italic;}
+.autor .datos p{margin-bottom:0.5rem;font-size:0.92rem;}
+table.cuadro{width:100%;border-collapse:collapse;margin:1.2rem 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 3px 12px var(--sombra);font-size:0.9rem;}
+table.cuadro th{background:var(--vino);color:#fff;padding:0.75rem;text-align:left;}
+table.cuadro td{padding:0.75rem;border-bottom:1px solid #e8e4da;vertical-align:top;}
+table.cuadro tr:last-child td{border-bottom:none;}
+table.cuadro td.c1{font-weight:bold;color:var(--vino);}
+.actividad{background:#fff;border-radius:12px;padding:1.8rem;margin:1.5rem 0;box-shadow:0 4px 16px var(--sombra);border-top:5px solid var(--petroleo);}
+.actividad .etiqueta{display:inline-block;background:var(--petroleo);color:#fff;font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:20px;margin-bottom:0.9rem;font-family:Arial,sans-serif;}
+.actividad.caso .etiqueta{background:var(--oro);}
+.actividad h3{color:var(--vino);margin-top:0;}
+.pasos{counter-reset:paso;list-style:none;margin:1rem 0;}
+.pasos li{position:relative;padding-left:2.6rem;margin-bottom:0.9rem;}
+.pasos li::before{counter-increment:paso;content:counter(paso);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:var(--guinda);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:0.9rem;}
+.ejemplo{background:#f3eef0;border:1px dashed #a07a8a;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-size:0.93rem;}
+.ejemplo strong{color:#6a3a4a;}
+.caso-texto{background:#fdfbf6;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;margin:1rem 0;font-size:0.94rem;}
+@media(max-width:720px){nav.sidebar{display:none;}main{padding:1.5rem 1.2rem;}.autor{flex-direction:column;align-items:center;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmSdkQA9QICwPUB0LIGepSKOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAF9jcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAV1UkdCAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNUAAEAAAABFslYWVogAAAAAAAAb6AAADjyAAADj1hZWiAAAAAAAABilgAAt4kAABjaWFlaIAAAAAAAACSgAAAPhQAAtsRjdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////2wBDAAcHBwcHBwwHBwwRDAwMERcRERERFx4XFxcXFx4kHh4eHh4eJCQkJCQkJCQrKysrKysyMjIyMjg4ODg4ODg4ODj/2wBDAQkJCQ4NDhkNDRk7KCEoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6RooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKqXt9bafCZ7pwiD9fYeprzPWPF15eExaeTBEf4v4z+Pb8PzrWnSlPYlySPQr/WtO00H7TKAw/hHLfkOn41yNz47UEraW30Lt/Qf4152clizEknqTzUkcMsx2xIzn0UZrsjhoL4iHN9DpJfGWsyNlCiD0C5/nmox4w14/8ALVf++BWWNG1VuVtZSPXYamHh/V/+faT8q0UKXWxLcjorfxvfJxcwxyD/AGcqf6/yro7LxhpVzhZybdj/AH+V/MV5y2iaqnW2l/BSf5VSmtriA4mjZP8AeBH86iVGlLYalLqe+RyxyqHiYOp6EHIP41JXhGn6pe6bJutZGUd1zlT9R0r0fR/FlrekW94BBL6n7p+hP9a5auHlDVaotS7nYUUmaWucsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKguLiG0he4uGCRxqWdm4AA5JNc5/wm/hT/AKCVv/32KpRb2QHVVlalqkdgoARppnHyRJyzf4D3rVqIIAxYAAnqfWkrX1A83l8P+IdduPtOpOsIx8qsc7R7KOn4mtiz8EadCo+1O8x7j7o/x/Wuzp1aOtLZCtcyYNE0q2AENtGMdyMn8zmtRVCjCjAp1FZuTe4WExRS0lIYYooooAzrjSdNuv8AX28bE9TtAP5jmucu/BOnSgm0d4D/AN9L+R5/Wu0oq1OS2YrHHWEOuaIRFcj7XajoyH94g+h5I9hmuuikWVQ6cg9KfiilKXNqAtFFFSMKKKKACiiigAooooAKKKKACiiigAooooAK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ozGFJBDlsgsxIySc+o7V3YrOtUUmrALRRRWIwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAExRS0UAFIaWigBKKMUtABSUtFABSUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBk6vomla5ALbVbdJ0HK7hyp9QRyPwNcqPhj4K4/wBBP/f2X/4qvQKbVKpJaJgcPB8N/BkEqzJYKzKcje7uPxDMQa7eONIkWONQqqMADoBThS0SnKXxMBKKKKkQtFFFAwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="Universidad de la Ciénega">
+  <div class="kicker">Unidad 3 &middot; Sociología de la Educación actual</div>
+  <h1>Formulación teórica actual y problemática contemporánea</h1>
+  <div class="sub">Aportes de Mannheim, Azevedo, Brookover y Agulla</div>
+  <div class="meta">Licenciatura en Pedagogía &middot; Guía interactiva de aprendizaje</div>
+</header>
+<div class="layout">
+<nav class="sidebar">
+  <h2>Contenido</h2>
+  <a href="#intro">Introducción</a>
+  <a href="#t24">2.4 La disciplina en el siglo XX</a>
+  <a class="sec">3.2 Aportes significativos</a>
+  <a href="#t32">Formulación teórica actual</a>
+  <a class="sub" href="#mannheim">3.2.1 Karl Mannheim</a>
+  <a class="sub" href="#azevedo">3.2.2 Fernando Azevedo</a>
+  <a class="sub" href="#brookover">3.2.3 W. Brookover</a>
+  <a class="sub" href="#agulla">3.2.4 J. C. Agulla</a>
+  <a class="sec">3.3 y 3.4</a>
+  <a href="#t33">3.3 Problemática actual</a>
+  <a href="#t34">3.4 Desarrollo y educación</a>
+  <a class="sec">Actividades</a>
+  <a href="#act1">1 · Foro de mediación</a>
+  <a href="#act2">2 · Aplicación significativa</a>
+  <a href="#act3">3 · Caso de estudio</a>
+  <a href="#act4">4 · Quiz</a>
+  <a href="#reflexion">Reflexión y aplicación</a>
+</nav>
+<main>
+<section id="intro">
+  <h2 class="titulo">Introducción</h2>
+  <p>Esta guía aborda la formulación teórica actual de la Sociología de la Educación y su problemática contemporánea. Tras consolidarse como disciplina a lo largo del siglo XX, el campo recibió aportaciones significativas de autores que, desde distintos países y tradiciones, ampliaron su mirada: Karl Mannheim desde la sociología del conocimiento, Fernando Azevedo desde el pensamiento latinoamericano, Wilbur Brookover desde la investigación empírica estadounidense y Juan Carlos Agulla desde una perspectiva sistemática e histórica.</p>
+  <p>Conocer estos aportes no es un ejercicio de erudición: cada autor ofrece una herramienta distinta para comprender cómo la educación se relaciona con el conocimiento, con la sociedad y con el desarrollo. La guía culmina en dos temas de plena vigencia: la problemática actual de la disciplina y la relación entre desarrollo, subdesarrollo y educación, especialmente urgente en América Latina.</p>
+  <div class="destacado">
+    La teoría no se opone a la práctica: la ilumina. Comprender cómo distintos autores han pensado la educación le dará, como futuro pedagogo, un repertorio de lentes para interpretar e intervenir en la realidad educativa.
+  </div>
+  <div class="problema">
+    <strong>Problema orientador:</strong> Si la Sociología de la Educación cuenta con tantas teorías distintas, ¿significa que ninguna es verdadera, o que cada una ilumina una parte del fenómeno? ¿Cómo elige un pedagogo qué enfoque usar para comprender un problema educativo concreto? Este será el hilo conductor de la guía.
+  </div>
+</section>
+
+<section id="t24">
+  <h2 class="titulo">2.4 La Sociología de la Educación en el siglo XX</h2>
+  <p>El siglo XX transformó una intuición fundadora en una disciplina plural. Sobre las bases establecidas por Durkheim, el campo se desarrolló a través de grandes corrientes que siguen vigentes como marcos de análisis.</p>
+  <table class="cuadro">
+    <thead><tr><th>Corriente</th><th>Mirada sobre la escuela</th></tr></thead>
+    <tbody>
+      <tr><td class="c1">Funcionalismo</td><td>La escuela integra a la sociedad: socializa valores y asigna posiciones según el mérito.</td></tr>
+      <tr><td class="c1">Teorías de la reproducción</td><td>La escuela reproduce las desigualdades sociales mediante el capital cultural.</td></tr>
+      <tr><td class="c1">Teorías de la resistencia</td><td>La escuela es también un espacio de conflicto donde los sujetos cuestionan y transforman.</td></tr>
+    </tbody>
+  </table>
+  <p>Es sobre este terreno consolidado que se construyen los aportes teóricos que estudiaremos a continuación. Cada uno dialoga, de manera explícita o implícita, con estas corrientes.</p>
+</section>
+
+<section id="t32">
+  <h2 class="titulo">3.2 Formulación teórica actual. Aportes significativos</h2>
+  <p>La formulación teórica actual de la disciplina no parte de cero: recoge y reelabora las aportaciones de autores que enriquecieron el campo desde mediados del siglo XX. A continuación se presentan cuatro de ellos, cada uno representativo de una tradición distinta.</p>
+  <div class="figura">
+  <svg viewBox="0 0 660 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuatro aportes a la disciplina">
+    <rect width="660" height="160" fill="#f3e9ec"/>
+    <text x="330" y="26" text-anchor="middle" font-family="Georgia" font-size="14" fill="#5e2233">Cuatro tradiciones, cuatro aportes</text>
+    <rect x="25" y="52" width="145" height="80" rx="9" fill="#33404f" opacity="0.82"/>
+    <text x="97" y="86" text-anchor="middle" font-family="Georgia" font-size="12" fill="#fff">Mannheim</text>
+    <text x="97" y="104" text-anchor="middle" font-family="Georgia" font-size="9.5" fill="#fff">Conocimiento</text>
+    <rect x="185" y="52" width="145" height="80" rx="9" fill="#8c3a52" opacity="0.85"/>
+    <text x="257" y="86" text-anchor="middle" font-family="Georgia" font-size="12" fill="#fff">Azevedo</text>
+    <text x="257" y="104" text-anchor="middle" font-family="Georgia" font-size="9.5" fill="#fff">América Latina</text>
+    <rect x="345" y="52" width="145" height="80" rx="9" fill="#2f5a4a" opacity="0.85"/>
+    <text x="417" y="86" text-anchor="middle" font-family="Georgia" font-size="12" fill="#fff">Brookover</text>
+    <text x="417" y="104" text-anchor="middle" font-family="Georgia" font-size="9.5" fill="#fff">Clima escolar</text>
+    <rect x="505" y="52" width="145" height="80" rx="9" fill="#c9962a" opacity="0.9"/>
+    <text x="577" y="86" text-anchor="middle" font-family="Georgia" font-size="12" fill="#fff">Agulla</text>
+    <text x="577" y="104" text-anchor="middle" font-family="Georgia" font-size="9.5" fill="#fff">Sistema e historia</text>
+  </svg>
+  <figcaption>Figura 1. Cuatro aportes complementarios a la formulación teórica actual de la disciplina.</figcaption>
+  </div>
+</section>
+<section id="t32b">
+<div class="autor" id="mannheim">
+  <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#e8ecf2"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#33404f"/><rect x="47" y="74" width="16" height="20" fill="#e8c9a8"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e8c9a8"/><path d="M31 50 Q31 28 55 28 Q79 28 79 50 Q70 40 55 40 Q40 40 31 50 Z" fill="#3a3630"/><circle cx="45" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><circle cx="65" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><line x1="52" y1="56" x2="58" y2="56" stroke="#333" stroke-width="1.5"/></svg></div>
+  <div class="datos">
+    <h4>3.2.1 Karl Mannheim</h4>
+    <div class="vida">1893 - 1947 &middot; Hungría / Alemania / Inglaterra</div>
+    <p>Sociólogo central de la sociología del conocimiento. Sostuvo que las ideas y los modos de pensar están condicionados socialmente: lo que consideramos conocimiento depende de la posición social e histórica de quien lo produce.</p>
+    <p><strong>El sentido tradicional de su obra en educación:</strong> concibió la educación como un instrumento del planeamiento democrático. En tiempos de crisis, la educación debe formar personas capaces de pensar de manera autónoma y de sostener una sociedad democrática, evitando tanto el autoritarismo como el caos. La escuela transmite no solo contenidos, sino formas socialmente situadas de comprender el mundo.</p>
+  </div>
+</div>
+<div class="autor" id="azevedo">
+  <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#efe9e4"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#5a3a2a"/><rect x="47" y="74" width="16" height="20" fill="#e6c6a2"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e6c6a2"/><path d="M31 52 Q31 28 55 28 Q79 28 79 50 Q60 36 40 42 Q33 46 31 52 Z" fill="#4a4038"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+  <div class="datos">
+    <h4>3.2.2 Fernando de Azevedo</h4>
+    <div class="vida">1894 - 1974 &middot; Brasil</div>
+    <p>Sociólogo y educador brasileño, pionero de la Sociología de la Educación en América Latina. Autor de una obra clásica, Sociología de la Educación (1940), y figura clave del movimiento de renovación educativa en Brasil.</p>
+    <p><strong>Su aporte:</strong> situó la educación como un fenómeno social fundamental para el desarrollo y la modernización de los países latinoamericanos. Defendió una escuela pública, laica y renovadora, y analizó la educación en estrecha relación con la cultura y la estructura social de la nación.</p>
+  </div>
+</div>
+<div class="autor" id="brookover">
+  <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#e9f0ee"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#2f5a4a"/><rect x="47" y="74" width="16" height="20" fill="#e8c9a6"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e8c9a6"/><path d="M31 50 Q31 28 55 28 Q79 28 79 50 Q70 40 55 40 Q40 40 31 50 Z" fill="#8a8a8a"/><circle cx="45" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><circle cx="65" cy="56" r="7" fill="none" stroke="#333" stroke-width="1.5"/><line x1="52" y1="56" x2="58" y2="56" stroke="#333" stroke-width="1.5"/></svg></div>
+  <div class="datos">
+    <h4>3.2.3 Wilbur B. Brookover</h4>
+    <div class="vida">1911 - 2003 &middot; Estados Unidos</div>
+    <p>Sociólogo estadounidense de la educación, orientado a la investigación empírica. Estudió los factores sociales que inciden en el aprendizaje dentro de la escuela.</p>
+    <p><strong>Su aporte:</strong> destacó la importancia del clima social de la escuela y del autoconcepto académico del estudiante. Mostró que las expectativas que la escuela y los docentes tienen sobre los alumnos influyen en su rendimiento: no solo cuentan los recursos materiales, sino el ambiente de relaciones y creencias compartidas.</p>
+  </div>
+</div>
+<div class="autor" id="agulla">
+  <div class="retrato"><svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="130" fill="#efeae6"/><path d="M12 130 Q12 92 55 92 Q98 92 98 130 Z" fill="#4a3a4a"/><rect x="47" y="74" width="16" height="20" fill="#e6c6a2"/><ellipse cx="55" cy="54" rx="24" ry="28" fill="#e6c6a2"/><path d="M31 52 Q31 28 55 28 Q79 28 79 50 Q60 36 40 42 Q33 46 31 52 Z" fill="#5a5048"/><circle cx="46" cy="55" r="2.2" fill="#33302c"/><circle cx="64" cy="55" r="2.2" fill="#33302c"/></svg></div>
+  <div class="datos">
+    <h4>3.2.4 Juan Carlos Agulla</h4>
+    <div class="vida">1928 - 2008 &middot; Argentina</div>
+    <p>Sociólogo argentino que abordó la educación con un enfoque sistemático e histórico. Analizó la educación como una función social dentro del conjunto de la sociedad.</p>
+    <p><strong>Su aporte, de tarea sistemática e historiadora:</strong> buscó ordenar el campo de la Sociología de la Educación y comprender la educación como un proceso que debe estudiarse tanto en su lógica de sistema como en su desarrollo histórico. Vinculó la educación con los procesos de cambio social y con el desarrollo de América Latina.</p>
+  </div>
+</div>
+<div class="nota"><strong>Nota de estudio:</strong> estos autores son menos difundidos que los clásicos fundacionales, y la bibliografía sobre ellos es dispersa. Se recomienda verificar y ampliar estos datos en las fuentes de su programa de estudios y en los textos indicados por su docente antes de citarlos en trabajos formales.</div>
+<div class="problema"><strong>Punto de integración:</strong> observe que los cuatro autores iluminan dimensiones distintas: Mannheim, el vínculo entre conocimiento y sociedad; Azevedo, la educación y el desarrollo nacional; Brookover, el clima y las expectativas dentro del aula; Agulla, la educación como sistema con historia. Ningún enfoque agota el fenómeno; juntos ofrecen una mirada más completa.</div>
+</section><section id="t33">
+  <h2 class="titulo">3.3 Problemática actual de la Sociología de la Educación</h2>
+  <p>La disciplina enfrenta hoy un conjunto de problemas que son, a la vez, teóricos y prácticos. No se trata solo de describir la educación, sino de comprender fenómenos cada vez más complejos en un mundo globalizado y desigual.</p>
+  <div class="tarjeta">
+    <h3>Los grandes problemas contemporáneos</h3>
+    <ul class="lista">
+      <li><strong>La persistencia de la desigualdad:</strong> pese a la expansión educativa, el origen social sigue condicionando las trayectorias. Explicar por qué es una pregunta aún abierta.</li>
+      <li><strong>La relación entre educación y mercado laboral:</strong> el credencialismo y la devaluación de los títulos plantean si la educación realmente garantiza movilidad social.</li>
+      <li><strong>La diversidad y la interculturalidad:</strong> cómo educar en sociedades plurales sin imponer una sola cultura ni negar las diferencias.</li>
+      <li><strong>La tecnología y la brecha digital:</strong> el impacto de las nuevas tecnologías y de la inteligencia artificial en el acceso y la calidad educativa.</li>
+      <li><strong>La tensión entre reproducción y transformación:</strong> el debate, nunca cerrado, sobre si la escuela perpetúa o puede cambiar el orden social.</li>
+    </ul>
+  </div>
+  <div class="destacado">
+    La problemática actual de la disciplina no es señal de debilidad, sino de vitalidad: una ciencia social viva es la que sigue haciéndose preguntas difíciles sobre su objeto de estudio.
+  </div>
+</section>
+
+<section id="t34">
+  <h2 class="titulo">3.4 Desarrollo, subdesarrollo y educación</h2>
+  <p>Uno de los temas centrales de la Sociología de la Educación contemporánea, especialmente en América Latina, es la relación entre educación y desarrollo. Durante décadas se sostuvo que invertir en educación conducía automáticamente al desarrollo económico y social. La realidad resultó más compleja.</p>
+  <div class="tarjeta">
+    <h3>Dos visiones en tensión</h3>
+    <table class="cuadro">
+      <thead><tr><th>Visión</th><th>Tesis central</th><th>Límite</th></tr></thead>
+      <tbody>
+        <tr><td class="c1">Teoría del capital humano</td><td>La educación es una inversión que aumenta la productividad y promueve el desarrollo.</td><td>Supone que basta con educar más para desarrollarse, ignorando las estructuras de desigualdad.</td></tr>
+        <tr><td class="c1">Teorías críticas y de la dependencia</td><td>En contextos de subdesarrollo, la educación puede reproducir la dependencia y la desigualdad si no se transforman las condiciones sociales.</td><td>Riesgo de minimizar lo que la educación sí puede aportar al cambio.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>La experiencia latinoamericana muestra que la educación es necesaria pero no suficiente para el desarrollo: sin políticas que atiendan la desigualdad, la expansión educativa puede convivir con el subdesarrollo. La pedagogía de Paulo Freire representa una respuesta regional: una educación para la liberación y la conciencia crítica, no solo para la adaptación al sistema.</p>
+  <div class="figura">
+  <svg viewBox="0 0 640 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Educacion y desarrollo">
+    <rect width="640" height="180" fill="#e9f0f1"/>
+    <text x="320" y="28" text-anchor="middle" font-family="Georgia" font-size="14" fill="#1f5a66">Educación y desarrollo: una relación no automática</text>
+    <rect x="50" y="70" width="150" height="60" rx="9" fill="#8c3a52" opacity="0.8"/>
+    <text x="125" y="105" text-anchor="middle" font-family="Georgia" font-size="13" fill="#fff">Educación</text>
+    <rect x="445" y="70" width="150" height="60" rx="9" fill="#2f5a4a" opacity="0.82"/>
+    <text x="520" y="105" text-anchor="middle" font-family="Georgia" font-size="13" fill="#fff">Desarrollo</text>
+    <path d="M205 100 L440 100" stroke="#1f5a66" stroke-width="2.5" marker-end="url(#f)"/>
+    <text x="322" y="90" text-anchor="middle" font-family="Georgia" font-size="11" fill="#5e2233" font-style="italic">solo si se atiende</text>
+    <text x="322" y="118" text-anchor="middle" font-family="Georgia" font-size="11" fill="#5e2233" font-style="italic">la desigualdad social</text>
+    <defs><marker id="f" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="#1f5a66"/></marker></defs>
+  </svg>
+  <figcaption>Figura 2. La educación contribuye al desarrollo solo cuando se acompaña de transformaciones sociales que atiendan la desigualdad.</figcaption>
+  </div>
+  <div class="problema">
+    <strong>Para pensar como pedagogo:</strong> si la educación por sí sola no garantiza el desarrollo, ¿cuál es entonces el papel del educador en un país como México? ¿Resignarse a reproducir, o buscar, como proponía Freire, una educación que forme conciencia crítica y capacidad de transformación?
+  </div>
+</section>
+<section id="act1">
+  <h2 class="titulo">Actividades para Google Classroom</h2>
+  <p>Las siguientes cuatro actividades integran los temas de la unidad. Cada una promueve una competencia distinta: la deliberación crítica, la aplicación significativa, el análisis de casos y la autoevaluación. Lea con atención las instrucciones y los ejemplos.</p>
+
+  <div class="actividad">
+    <span class="etiqueta">Actividad 1 &middot; Mediación en foro</span>
+    <h3>¿Qué teoría necesito para este problema?</h3>
+    <p>Esta actividad promueve la construcción colaborativa del conocimiento mediante el intercambio argumentado. El propósito es aprender a elegir el enfoque teórico adecuado para comprender un problema educativo.</p>
+    <p><strong>Pregunta detonadora:</strong></p>
+    <div class="destacado">
+      De los cuatro autores estudiados (Mannheim, Azevedo, Brookover y Agulla), ¿cuál ofrece la herramienta más útil para comprender un problema educativo actual de su entorno? Elija un problema concreto, asócielo a un autor y explique por qué ese enfoque, y no otro, lo ilumina mejor.
+    </div>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Ingrese al tema del foro publicado en Google Classroom, en la pestaña Trabajo de clase.</li>
+      <li>Redacte una aportación inicial de entre 180 y 220 palabras: nombre el problema, elija un autor y justifique la elección.</li>
+      <li>Lea las aportaciones de al menos dos compañeros que hayan elegido autores distintos al suyo y dialogue con ellos.</li>
+      <li>Cierre señalando qué aprendió al comparar su enfoque con el de sus compañeros.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de aportación:</strong> El problema que elijo es la baja participación de ciertos estudiantes en mi grupo. Lo asocio a Brookover, porque su concepto de clima escolar y de autoconcepto académico me ayuda a ver que esos estudiantes quizá no participan porque el ambiente del aula no les transmite la expectativa de que pueden hacerlo. Otros autores explican lo estructural, pero Brookover ilumina lo que ocurre dentro del aula, que es donde yo puedo intervenir.
+    </div>
+  </div>
+
+  <div class="actividad" id="act2">
+    <span class="etiqueta">Actividad 2 &middot; Aplicación significativa</span>
+    <h3>Cuadro comparativo de los aportes teóricos</h3>
+    <p>El objetivo es que usted organice y se apropie de los aportes de los cuatro autores, relacionándolos con su utilidad para la práctica pedagógica.</p>
+    <p><strong>Producto a entregar:</strong> un cuadro comparativo, elaborado en la herramienta de su preferencia (documento, Canva o presentación), acompañado de una conclusión personal.</p>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Elabore un cuadro con cuatro columnas: autor, idea central, concepto clave y utilidad para mi práctica como pedagogo.</li>
+      <li>Complete una fila por cada autor (Mannheim, Azevedo, Brookover, Agulla) con información precisa y breve.</li>
+      <li>Verifique sus datos en al menos una fuente adicional a esta guía.</li>
+      <li>Escriba una conclusión de un párrafo respondiendo: ¿qué aporte integraré a mi forma de entender la educación y por qué?</li>
+      <li>Suba el cuadro en formato PDF a la tarea correspondiente en Google Classroom.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Ejemplo de fila:</strong> Autor: Azevedo &middot; Idea central: la educación es clave para el desarrollo nacional &middot; Concepto clave: escuela pública renovadora &middot; Utilidad: me recuerda que mi trabajo tiene una dimensión social que trasciende el aula.
+    </div>
+  </div>
+</section>
+  <div class="actividad caso" id="act3">
+    <span class="etiqueta">Actividad 3 &middot; Caso de estudio</span>
+    <h3>Dos secundarias, un mismo país</h3>
+    <p>Esta actividad desarrolla el análisis aplicado mediante el estudio de un caso. Lea la situación y resuélvala empleando los conceptos de la unidad.</p>
+    <div class="caso-texto">
+      <p>En una misma ciudad de México existen dos secundarias. La Secundaria Benito Juárez se ubica en una colonia popular: cuenta con pocos recursos tecnológicos, grupos numerosos y alta rotación docente. Muchos de sus estudiantes trabajan por las tardes. La Secundaria Las Colinas, en una zona acomodada, dispone de laboratorios, grupos reducidos y docentes estables; sus estudiantes dedican las tardes al estudio y a actividades extracurriculares.</p>
+      <p>Al final del ciclo, los resultados en la prueba nacional son muy distintos: Las Colinas supera ampliamente a Benito Juárez. Sin embargo, una docente de Benito Juárez implementó un proyecto de tutorías entre pares y mejoró notablemente la permanencia y el ánimo de su grupo, aunque los recursos siguieron siendo escasos.</p>
+    </div>
+    <p><strong>Instrucciones paso a paso:</strong></p>
+    <ol class="pasos">
+      <li>Analice el caso con la teoría de la reproducción: ¿cómo explica la diferencia de resultados entre ambas escuelas?</li>
+      <li>Aplique el aporte de Brookover: ¿qué papel juegan el clima escolar y las expectativas en lo que logró la docente de Benito Juárez?</li>
+      <li>Relacione el caso con el tema 3.4: ¿qué muestra esta situación sobre la relación entre educación, desigualdad y desarrollo?</li>
+      <li>Proponga, desde la perspectiva de la resistencia y de Freire, dos acciones pedagógicas concretas que usted impulsaría en la Secundaria Benito Juárez.</li>
+      <li>Redacte sus respuestas en un documento de una a dos cuartillas y súbalo a Google Classroom.</li>
+    </ol>
+    <div class="ejemplo">
+      <strong>Pista de análisis:</strong> el caso ilustra que la estructura reproduce desigualdad (dos circuitos escolares distintos), pero que la acción pedagógica dentro del aula (clima, expectativas, resistencia) puede abrir márgenes de transformación. Ambas lecturas son ciertas y complementarias: ese es el corazón del debate contemporáneo.
+    </div>
+  </div>
+
+<section id="act4">
+  <div class="actividad">
+    <span class="etiqueta">Actividad 4 &middot; Quiz</span>
+    <h3>Autoevaluación del aprendizaje</h3>
+    <p>Responda las siguientes cinco preguntas para verificar su comprensión de la unidad. Al finalizar obtendrá su puntaje. Capture el resultado y súbalo a Google Classroom según indique su docente.</p>
+    <div id="quiz"></div>
+    <div id="resultado" style="display:none;"></div>
+    <button id="btnEnviar" onclick="calificar()" style="background:var(--petroleo);color:#fff;border:none;padding:0.8rem 1.8rem;border-radius:8px;font-size:1rem;cursor:pointer;font-family:Arial,sans-serif;margin-top:1rem;">Ver mi puntaje</button>
+  </div>
+</section>
+<section id="reflexion">
+  <h2 class="titulo">Reflexión y aplicación</h2>
+  <p>Cierre esta unidad planificando cómo incorporará lo aprendido en su vida académica y profesional. Sus respuestas se guardan en este navegador.</p>
+  <div class="tarjeta">
+    <h3>Planificador personal</h3>
+    <p><strong>1. ¿Cuál de los cuatro autores (Mannheim, Azevedo, Brookover, Agulla) incorporaré a mi forma de analizar la educación y por qué?</strong></p>
+    <textarea id="r1" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>2. De la problemática actual de la disciplina, ¿qué problema me interpela más como futuro pedagogo?</strong></p>
+    <textarea id="r2" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <p style="margin-top:1rem;"><strong>3. Frente a la relación entre educación y desarrollo, ¿qué compromiso concreto asumo en mi práctica profesional?</strong></p>
+    <textarea id="r3" style="width:100%;min-height:70px;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-family:inherit;" oninput="guardar()"></textarea>
+    <button onclick="descargar()" style="background:var(--guinda);color:#fff;border:none;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.95rem;cursor:pointer;margin-top:1rem;">Descargar mis respuestas</button>
+    <p style="margin-top:0.8rem;font-size:0.85rem;color:#777;">Sus respuestas se guardan automáticamente en este dispositivo.</p>
+  </div>
+  <div class="destacado">
+    Cada teoría que ha estudiado es una lente. Un buen pedagogo no se queda con una sola: aprende a elegir, combinar y aplicar la que mejor ilumine el problema que tiene enfrente. Esa es la madurez profesional que esta unidad busca cultivar.
+  </div>
+</section>
+</main>
+</div>
+<footer style="background:var(--vino);color:#fff;text-align:center;padding:1.5rem;font-size:0.85rem;">
+  Universidad de la Ciénega &middot; Licenciatura en Pedagogía &middot; Sociología de la Educación
+</footer>
+<script>
+var preguntas=[
+  {p:"Karl Mannheim es reconocido principalmente por su contribucion a:",
+   o:["La sociologia del conocimiento y la educacion para el planeamiento democratico","La invencion del examen estandarizado","La pedagogia conductista","La estadistica educativa"],c:0},
+  {p:"Fernando Azevedo destaco por ser:",
+   o:["Un pionero de la Sociologia de la Educacion en America Latina (Brasil)","Un fisico aleman","Un funcionalista estadounidense","Un pedagogo de la antigua Grecia"],c:0},
+  {p:"El concepto de clima escolar y autoconcepto academico se asocia a:",
+   o:["Wilbur Brookover","Karl Mannheim","Auguste Comte","Fernando Azevedo"],c:0},
+  {p:"La tarea sistematica e historiadora en el estudio de la educacion se atribuye a:",
+   o:["Juan Carlos Agulla","John Dewey","Max Weber","Pestalozzi"],c:0},
+  {p:"Respecto a la relacion entre educacion y desarrollo, la experiencia latinoamericana muestra que la educacion es:",
+   o:["Suficiente por si sola para lograr el desarrollo","Necesaria pero no suficiente: requiere atender la desigualdad","Irrelevante para el desarrollo","Un obstaculo para el desarrollo"],c:1}
+];
+
+function render(){
+  var q=document.getElementById("quiz");
+  var h="";
+  for(var i=0;i<preguntas.length;i++){
+    h+="<div style='background:#f3eef0;padding:1rem 1.2rem;border-radius:8px;margin-bottom:1rem;'>";
+    h+="<p style='font-weight:bold;color:#5e2233;'>"+(i+1)+". "+preguntas[i].p+"</p>";
+    for(var j=0;j<preguntas[i].o.length;j++){
+      h+="<label style='display:block;margin:0.4rem 0;cursor:pointer;'>";
+      h+="<input type='radio' name='p"+i+"' value='"+j+"'> "+preguntas[i].o[j];
+      h+="</label>";
+    }
+    h+="</div>";
+  }
+  q.innerHTML=h;
+}
+
+function calificar(){
+  var punt=0;
+  var detalle="";
+  for(var i=0;i<preguntas.length;i++){
+    var sel=document.querySelector("input[name='p"+i+"']:checked");
+    var ok=sel && parseInt(sel.value)===preguntas[i].c;
+    if(ok)punt++;
+    detalle+="<p style='margin:0.3rem 0;'>Pregunta "+(i+1)+": "+(ok?"<span style=\"color:#2a7a2a;\">Correcta</span>":"<span style=\"color:#8c3a52;\">Incorrecta</span> (respuesta: "+preguntas[i].o[preguntas[i].c]+")")+"</p>";
+  }
+  var r=document.getElementById("resultado");
+  var pct=Math.round(punt/preguntas.length*100);
+  var msg=pct>=80?"Excelente comprension de la unidad.":pct>=60?"Buen avance; conviene repasar algunos conceptos.":"Le recomendamos revisar nuevamente el contenido.";
+  r.style.display="block";
+  r.style.background="#fff";
+  r.style.border="2px solid #5e2233";
+  r.style.borderRadius="10px";
+  r.style.padding="1.3rem";
+  r.style.marginTop="1.2rem";
+  r.innerHTML="<h3 style='color:#8c3a52;margin-top:0;'>Su puntaje: "+punt+" de "+preguntas.length+" ("+pct+"%)</h3><p style='font-style:italic;'>"+msg+"</p>"+detalle;
+  r.scrollIntoView({behavior:"smooth"});
+}
+
+function guardar(){
+  localStorage.setItem("g32_r1",document.getElementById("r1").value);
+  localStorage.setItem("g32_r2",document.getElementById("r2").value);
+  localStorage.setItem("g32_r3",document.getElementById("r3").value);
+}
+function cargar(){
+  if(localStorage.getItem("g32_r1"))document.getElementById("r1").value=localStorage.getItem("g32_r1");
+  if(localStorage.getItem("g32_r2"))document.getElementById("r2").value=localStorage.getItem("g32_r2");
+  if(localStorage.getItem("g32_r3"))document.getElementById("r3").value=localStorage.getItem("g32_r3");
+}
+function descargar(){
+  var t="REFLEXION - SOCIOLOGIA DE LA EDUCACION (Unidad 3)\n\n";
+  t+="1. Autor que incorporare:\n"+document.getElementById("r1").value+"\n\n";
+  t+="2. Problema que mas me interpela:\n"+document.getElementById("r2").value+"\n\n";
+  t+="3. Compromiso frente a educacion y desarrollo:\n"+document.getElementById("r3").value+"\n";
+  var b=new Blob([t],{type:"text/plain"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(b);
+  a.download="reflexion_sociologia_unidad3.txt";
+  a.click();
+}
+
+render();
+cargar();
+</script>
+</body>
+</html>
